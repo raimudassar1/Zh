@@ -35874,5 +35874,191 @@
         ]
       }
     ]
+  },
+  {
+    "id": 31,
+    "title": "Semiconductor Workplace Intro",
+    "titleZh": "半導體職場入門",
+    "level": "b1",
+    "description": "Essential vocabulary and safety rules for working in a semiconductor fabrication plant (Fab) in Taiwan.",
+    "vocab": [
+      { "hanzi": "半導體", "pinyin": "bàn dǎo tǐ", "definition": "semiconductor", "example_sentence": { "sentence": "台灣是全球半導體產業的中心。", "pinyin": "Táiwān shì quánqiú bàndǎotǐ chǎnyè de zhōngxīn.", "english": "Taiwan is the center of the global semiconductor industry." } },
+      { "hanzi": "晶圓", "pinyin": "jīng yuán", "definition": "wafer", "example_sentence": { "sentence": "工程師正在檢查晶圓的品質。", "pinyin": "Gōngchéngshī zhèngzài jiǎnchá jīngyuán de pǐnzhí.", "english": "The engineer is checking the quality of the wafer." } },
+      { "hanzi": "製程", "pinyin": "zhì chéng", "definition": "fabrication process / process node", "example_sentence": { "sentence": "這個製程需要高度精確。", "pinyin": "Zhège zhìchéng xūyào gāodù jīngquè.", "english": "This fabrication process requires high precision." } },
+      { "hanzi": "良率", "pinyin": "liáng lǜ", "definition": "yield rate", "example_sentence": { "sentence": "提升良率是廠長的首要任務。", "pinyin": "Tíshēng liánglǜ shì chǎngzhǎng de shǒuyào rènwù.", "english": "Improving the yield rate is the plant manager's top priority." } },
+      { "hanzi": "工程師", "pinyin": "gōng chéng shī", "definition": "engineer", "example_sentence": { "sentence": "他在美光擔任設備工程師。", "pinyin": "Tā zài Měiguāng dānrèn shèbèi gōngchéngshī.", "english": "He works as an equipment engineer at Micron." } },
+      { "hanzi": "無塵室", "pinyin": "wú chén shì", "definition": "cleanroom", "example_sentence": { "sentence": "進入無塵室前必須穿上無塵衣。", "pinyin": "Jìnrù wúchénshì qián bìxū chuānshàng wúchényī.", "english": "You must put on a cleanroom suit before entering the cleanroom." } },
+      { "hanzi": "輪班", "pinyin": "lún bān", "definition": "shift rotation", "example_sentence": { "sentence": "在晶圓廠工作通常需要輪班。", "pinyin": "Zài jīngyuánchǎng gōngzuò tōngcháng xūyào lúnbān.", "english": "Working in a wafer fab usually requires shift rotations." } },
+      { "hanzi": "加班", "pinyin": "jiā bān", "definition": "overtime", "example_sentence": { "sentence": "為了趕進度，今天需要加班。", "pinyin": "Wèile gǎn jìndù, jīntiān xūyào jiābān.", "english": "To catch up on the schedule, we need to work overtime today." } },
+      { "hanzi": "安全規定", "pinyin": "ān quán guī dìng", "definition": "safety regulations", "example_sentence": { "sentence": "請務必遵守廠內的所有安全規定。", "pinyin": "Qǐng wùbì zūnshǒu chǎngnèi de suǒyǒu ānquán guīdìng.", "english": "Please be sure to follow all safety regulations in the plant." } },
+      { "hanzi": "設備", "pinyin": "shè bèi", "definition": "equipment", "example_sentence": { "sentence": "這台設備需要定期維修。", "pinyin": "Zhè tái shèbèi xūyào dìngqí wéixiū.", "english": "This equipment needs regular maintenance." } }
+    ],
+    "dialogue": {
+      "title": "Cleanroom Orientation",
+      "lines": [
+        { "speaker": "主管", "zh": "歡迎來到無塵室。首先，安全是最重要的。", "pinyin": "Huānyíng láidào wúchénshì. Shǒuxiān, ānquán shì zuì zhòngyào de.", "english": "Welcome to the cleanroom. First, safety is the most important thing." },
+        { "speaker": "新人", "zh": "好的，我會嚴格遵守安全規定。", "pinyin": "Hǎo de, wǒ huì yángé zūnshǒu ānquán guīdìng.", "english": "Okay, I will strictly follow the safety regulations." },
+        { "speaker": "主管", "zh": "很好。穿好無塵衣後，我們要經過風淋室。", "pinyin": "Hěn hǎo. Chuānhǎo wúchényī hòu, wǒmen yào jīngguò fēnglínshì.", "english": "Good. After putting on the cleanroom suit, we need to pass through the air shower." },
+        { "speaker": "新人", "zh": "明白了。那晶圓在哪裡生產？", "pinyin": "Míngbái le. Nà jīngyuán zài nǎlǐ shēngchǎn?", "english": "Understood. So where are the wafers produced?" },
+        { "speaker": "主管", "zh": "就在前方的自動化生產線。", "pinyin": "Jiù zài qiánfāng de zìdònghuà shēngchǎnxiàn.", "english": "Right there on the automated production line ahead." }
+      ]
+    },
+    "grammar_notes": [
+      { "pattern": "必須 + V", "explanation": "Used to express necessity or obligation.", "example": "進入無塵室必須穿無塵衣。" },
+      { "pattern": "為了 + Goal, ...", "explanation": "Expressing purpose or reason.", "example": "為了提升良率，我們需要更新設備。" }
+    ],
+    "exercises": [
+      { "type": "choice", "question": "What is 'cleanroom' in Chinese?", "options": ["會議室", "無塵室", "辦公室", "實驗室"], "answer": "無塵室" },
+      { "type": "fill-blank", "sentence": "穿上___衣後才能進入無塵室。", "answer": "無塵", "hint": "clean" }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Office Communication",
+    "titleZh": "辦公室溝通",
+    "level": "b1",
+    "description": "Essential phrases for meetings, emails, and managing projects in a professional environment.",
+    "vocab": [
+      { "hanzi": "開會", "pinyin": "kāi huì", "definition": "to have a meeting", "example_sentence": { "sentence": "我們明天早上十點要開會。", "pinyin": "Wǒmen míngtiān zǎoshàng shí diǎn yào kāihuì.", "english": "We have a meeting at 10 AM tomorrow." } },
+      { "hanzi": "報告", "pinyin": "bào gào", "definition": "report / to report", "example_sentence": { "sentence": "請在星期五前提交進度報告。", "pinyin": "Qǐng zài xīngqīwǔ qián tíjiāo jìndù bàogào.", "english": "Please submit the progress report before Friday." } },
+      { "hanzi": "截止日期", "pinyin": "jié zhǐ rì qī", "definition": "deadline", "example_sentence": { "sentence": "這個專案的截止日期快到了。", "pinyin": "Zhège zhuānyàn de jiézhǐ rìqī kuài dào le.", "english": "The deadline for this project is coming up." } },
+      { "hanzi": "專案", "pinyin": "zhuān àn", "definition": "project", "example_sentence": { "sentence": "我正在負責一個新的專案。", "pinyin": "Wǒ zhèngzài fùzé yīgè xīn de zhuānyàn.", "english": "I am currently responsible for a new project." } },
+      { "hanzi": "電子郵件", "pinyin": "diàn zǐ yóu jiàn", "definition": "email", "example_sentence": { "sentence": "我已經把附件寄到你的電子郵件了。", "pinyin": "Wǒ yǐjīng bǎ fùjiàn jì dào nǐ de diànzǐ yóujiàn le.", "english": "I have already sent the attachment to your email." } },
+      { "hanzi": "確認", "pinyin": "què rèn", "definition": "to confirm / confirmation", "example_sentence": { "sentence": "請確認一下會議的時間。", "pinyin": "Qǐng quèrèn yīxià huìyì de shíjiān.", "english": "Please confirm the time of the meeting." } },
+      { "hanzi": "附件", "pinyin": "fù jiàn", "definition": "attachment", "example_sentence": { "sentence": "請查看電子郵件中的附件。", "pinyin": "Qǐng chákàn diànzǐ yóujiàn zhōng de fùjiàn.", "english": "Please check the attachment in the email." } },
+      { "hanzi": "負責人", "pinyin": "fù zé rén", "definition": "person in charge", "example_sentence": { "sentence": "誰是這個專案的負責人？", "pinyin": "Shéi shì zhège zhuānyàn de fùzérén?", "english": "Who is the person in charge of this project?" } },
+      { "hanzi": "進度", "pinyin": "jìn dù", "definition": "progress", "example_sentence": { "sentence": "目前的專案進度非常順利。", "pinyin": "Mùqián de zhuānyàn jìndù fēicháng shùnlì.", "english": "The current project progress is very smooth." } },
+      { "hanzi": "聯絡", "pinyin": "lián luò", "definition": "to contact / contact", "example_sentence": { "sentence": "有問題請隨時跟我聯絡。", "pinyin": "Yǒu wèntí qǐng suíshí gēn wǒ liánluò.", "english": "If you have any questions, please feel free to contact me." } }
+    ],
+    "dialogue": {
+      "title": "Discussing Project Progress",
+      "lines": [
+        { "speaker": "主管", "zh": "大家早，我們來討論一下目前的專案進度。", "pinyin": "Dàjiā zǎo, wǒmen lái tǎolùn yīxià mùqián de zhuānyàn jìndù.", "english": "Good morning everyone, let's discuss the current project progress." },
+        { "speaker": "員工", "zh": "主管，關於截止日期，我們可能需要延後兩天。", "pinyin": "Zhǔguǎn, guānyú jiézhǐ rìqī, wǒmen kěnéng xūyào yánhòu liǎng tiān.", "english": "Manager, regarding the deadline, we might need to delay it by two days." },
+        { "speaker": "主管", "zh": "為什麼？遇到了什麼問題嗎？", "pinyin": "Wèishéme? Yùdào le shénme wèntí ma?", "english": "Why? Did you encounter any problems?" },
+        { "speaker": "員工", "zh": "是的，我們在測試階段發現了一些缺陷。", "pinyin": "Shì de, wǒmen zài cèshì jiēduàn fāxiàn le yīxiē quēxiàn.", "english": "Yes, we found some defects during the testing phase." },
+        { "speaker": "主管", "zh": "明白了。請發一封電子郵件跟團隊確認新的時程。", "pinyin": "Míngbái le. Qǐng fā yī fēng diànzǐ yóujiàn gēn tuánduì quèrèn xīn de shíchéng.", "english": "Understood. Please send an email to confirm the new schedule with the team." }
+      ]
+    },
+    "grammar_notes": [
+      { "pattern": "關於 + Topic", "explanation": "Used to introduce the subject or matter being discussed.", "example": "這是一份關於市場調查的報告。" },
+      { "pattern": "延後 / 提前", "explanation": "Used to describe rescheduling actions (delay/bring forward).", "example": "會議延後到下午三點。" }
+    ],
+    "exercises": [
+      { "type": "choice", "question": "What does 專案 mean?", "options": ["Meeting", "Project", "Email", "Report"], "answer": "Project" },
+      { "type": "fill-blank", "sentence": "請___電子郵件中的附件。", "answer": "查看", "hint": "check/view" }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Living in Taiwan (Hsinchu Area)",
+    "titleZh": "在台灣生活",
+    "level": "a2",
+    "description": "Practical vocabulary for renting an apartment, using public transport, and navigating daily life in Taiwan.",
+    "vocab": [
+      { "hanzi": "租房", "pinyin": "zū fáng", "definition": "to rent a room/apartment", "example_sentence": { "sentence": "我想在新竹科學園區附近租房。", "pinyin": "Wǒ xiǎng zài Xīnzhú Kēxué Yuánqū fùjìn zūfáng.", "english": "I want to rent an apartment near Hsinchu Science Park." } },
+      { "hanzi": "房東", "pinyin": "fáng dōng", "definition": "landlord", "example_sentence": { "sentence": "我的房東人很好。", "pinyin": "Wǒ de fángdōng rén hěn hǎo.", "english": "My landlord is very nice." } },
+      { "hanzi": "租金", "pinyin": "zū jīn", "definition": "rent (money)", "example_sentence": { "sentence": "這間套房的租金每個月一萬元。", "pinyin": "Zhè jiān tàofáng de zūjīn měi gè yuè yī wàn yuán.", "english": "The rent for this studio is 10,000 TWD per month." } },
+      { "hanzi": "水電費", "pinyin": "shuǐ diàn fèi", "definition": "utility bills (water and electricity)", "example_sentence": { "sentence": "租金包含水電費嗎？", "pinyin": "Zūjīn bāohán shuǐdiànfèi ma?", "english": "Does the rent include water and electricity?" } },
+      { "hanzi": "捷運", "pinyin": "jié yùn", "definition": "MRT / Subway", "example_sentence": { "sentence": "在台北搭捷運非常方便。", "pinyin": "Zài Táiběi dā jiéyùn fēicháng fāngbiàn.", "english": "Taking the MRT in Taipei is very convenient." } },
+      { "hanzi": "機車", "pinyin": "jī chē", "definition": "scooter / motorcycle", "example_sentence": { "sentence": "台灣有很多人騎機車。", "pinyin": "Táiwān yǒu hěnduō rén qí jīchē.", "english": "Many people ride scooters in Taiwan." } },
+      { "hanzi": "超商", "pinyin": "chāo shāng", "definition": "convenience store", "example_sentence": { "sentence": "超商可以繳費和取貨。", "pinyin": "Chāoshāng kěyǐ jiǎofèi hé qǔhuò.", "english": "You can pay bills and pick up packages at convenience stores." } },
+      { "hanzi": "健保", "pinyin": "jiàn bǎo", "definition": "National Health Insurance (NHI)", "example_sentence": { "sentence": "台灣的健保制度世界聞名。", "pinyin": "Táiwān de jiànbǎo zhìdù shìjiè wénmíng.", "english": "Taiwan's NHI system is world-famous." } },
+      { "hanzi": "夜市", "pinyin": "yè shì", "definition": "night market", "example_sentence": { "sentence": "我們週末去逛夜市吧。", "pinyin": "Wǒmen zhōumò qù guàng yèshì ba.", "english": "Let's go to the night market this weekend." } },
+      { "hanzi": "薪水", "pinyin": "xīn shuǐ", "definition": "salary", "example_sentence": { "sentence": "這份工作的薪水很不錯。", "pinyin": "Zhè fèn gōngzuò de xīnshuǐ hěn bùcuò.", "english": "The salary for this job is quite good." } }
+    ],
+    "dialogue": {
+      "title": "Inquiring About a Rental",
+      "lines": [
+        { "speaker": "房客", "zh": "您好，我想看這間在金山街的套房。", "pinyin": "Nín hǎo, wǒ xiǎng kàn zhè jiān zài Jīnshān Jiē de tàofáng.", "english": "Hello, I'd like to see this studio apartment on Jinshan Street." },
+        { "speaker": "房東", "zh": "沒問題，這間離科學園區很近，騎機車只要五分鐘。", "pinyin": "Méi wèntí, zhè jiān lí Kēxué Yuánqū hěn jìn, qí jīchē zhǐyào wǔ fēnzhōng.", "english": "No problem, it's very close to the Science Park, only 5 minutes by scooter." },
+        { "speaker": "房客", "zh": "租金包含網路和第四台嗎？", "pinyin": "Zūjīn bāohán wǎng lù hé dìsìtái ma?", "english": "Does the rent include internet and cable TV?" },
+        { "speaker": "房東", "zh": "有的，但不包含電費。", "pinyin": "Yǒu de, dàn bù bāohán diànfèi.", "english": "Yes, but it doesn't include electricity." },
+        { "speaker": "房客", "zh": "押金是多少？", "pinyin": "Yājīn shì duōshǎo?", "english": "How much is the deposit?" },
+        { "speaker": "房東", "zh": "押金是兩個月。", "pinyin": "Yājīn shì liǎng gè yuè.", "english": "The deposit is two months' rent." }
+      ]
+    },
+    "grammar_notes": [
+      { "pattern": "離 + Place + 很近/很遠", "explanation": "Used to describe distance from a reference point.", "example": "我家離捷運站很近。" },
+      { "pattern": "只要 + Time/Amount", "explanation": "Used to indicate that a small amount is sufficient.", "example": "走路只要三分鐘。" }
+    ],
+    "exercises": [
+      { "type": "choice", "question": "What is 'landlord' in Chinese?", "options": ["房東", "房客", "老師", "醫生"], "answer": "房東" },
+      { "type": "fill-blank", "sentence": "這間套房的___是每個月一萬元。", "answer": "租金", "hint": "rent" }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "HR & Contracts",
+    "titleZh": "人事與合約",
+    "level": "b1",
+    "description": "Understanding employment contracts, benefits, and HR procedures in Taiwan.",
+    "vocab": [
+      { "hanzi": "勞動契約", "pinyin": "láo dòng qiè yuē", "definition": "labor contract", "example_sentence": { "sentence": "在入職前，請仔細閱讀勞動契約。", "pinyin": "Zài rùzhí qián, qǐng zǐxì yuèdú láodòng qièyuē.", "english": "Before joining, please read the labor contract carefully." } },
+      { "hanzi": "試用期", "pinyin": "shì yòng qī", "definition": "probation period", "example_sentence": { "sentence": "這份工作的試用期是三個月。", "pinyin": "Zhè fèn gōngzuò de shìyòngqī shì sān gè yuè.", "english": "The probation period for this job is three months." } },
+      { "hanzi": "薪資", "pinyin": "xīn zī", "definition": "salary / compensation", "example_sentence": { "sentence": "薪資會在每個月的五號發放。", "pinyin": "Xīnzī huì zài měi gè yuè de wǔ hào fāfàng.", "english": "Salary will be paid on the 5th of every month." } },
+      { "hanzi": "加班費", "pinyin": "jiā bān fèi", "definition": "overtime pay", "example_sentence": { "sentence": "公司會依法支付加班費。", "pinyin": "Gōngsī huì yīfǎ zhīfù jiābānfèi.", "english": "The company will pay overtime pay according to the law." } },
+      { "hanzi": "特休", "pinyin": "tè xiū", "definition": "annual leave / special leave", "example_sentence": { "sentence": "你今年還有幾天特休？", "pinyin": "Nǐ jīnnián háiyǒu jǐ tiān tèxiū?", "english": "How many days of annual leave do you have left this year?" } },
+      { "hanzi": "勞保", "pinyin": "láo bǎo", "definition": "Labor Insurance", "example_sentence": { "sentence": "所有員工都必須投保勞保。", "pinyin": "Suǒyǒu yuángōng dōu bìxū tóubǎo láobǎo.", "english": "All employees must be enrolled in Labor Insurance." } },
+      { "hanzi": "升遷", "pinyin": "shēng qiān", "definition": "promotion", "example_sentence": { "sentence": "他在公司的升遷管道很通暢。", "pinyin": "Tā zài gōngsī de shēngqiān guǎndào hěn tōngchàng.", "english": "His path to promotion in the company is very clear." } },
+      { "hanzi": "離職", "pinyin": "lí zhí", "definition": "to resign / leave a job", "example_sentence": { "sentence": "他因為個人因素決定離職。", "pinyin": "Tā yīnwèi gèrén yīnsù juédìng lízhí.", "english": "He decided to resign due to personal reasons." } },
+      { "hanzi": "面試", "pinyin": "miàn shì", "definition": "interview", "example_sentence": { "sentence": "我明天要參加台積電的面試。", "pinyin": "Wǒ míngtiān yào cānjiā Táijīdiàn de miànshì.", "english": "I have an interview at TSMC tomorrow." } },
+      { "hanzi": "錄取", "pinyin": "lù qǔ", "definition": "to be hired / accepted", "example_sentence": { "sentence": "恭喜你被公司錄取了！", "pinyin": "Gōngxǐ nǐ bèi gōngsī lùqǔ le!", "english": "Congratulations, you have been hired by the company!" } }
+    ],
+    "dialogue": {
+      "title": "Onboarding with HR",
+      "lines": [
+        { "speaker": "HR", "zh": "歡迎加入我們公司。這是您的勞動契約。", "pinyin": "Huānyíng jiārù wǒmen gōngsī. Zhè shì nín de láodòng qièyuē.", "english": "Welcome to our company. This is your labor contract." },
+        { "speaker": "員工", "zh": "謝謝。請問關於試用期的規定是什麼？", "pinyin": "Xièxiè. Qǐngwèn guānyú shìyòngqī de guīdìng shì shénme?", "english": "Thank you. What are the regulations regarding the probation period?" },
+        { "speaker": "HR", "zh": "試用期為三個月，期間薪資照常發放。", "pinyin": "Shìyòngqī wéi sān gè yuè, qījiān xīnzī zhàocháng fāfàng.", "english": "The probation period is three months, and salary will be paid as usual during this time." },
+        { "speaker": "員工", "zh": "那關於特休和健保呢？", "pinyin": "Nà guānyú tèxiū hé jiànbǎo ne?", "english": "And what about annual leave and health insurance?" },
+        { "speaker": "HR", "zh": "我們會為您投保勞健保，特休則依照勞基法規定。", "pinyin": "Wǒmen huì wèi nín tóubǎo láojiànbǎo, tèxiū zé yīzhào Láojīfǎ guīdìng.", "english": "We will provide labor and health insurance, and annual leave follows the Labor Standards Act." }
+      ]
+    },
+    "grammar_notes": [
+      { "pattern": "依照 + Standard/Law", "explanation": "Used to indicate that an action follows a specific rule or standard.", "example": "依照規定，進入廠區必須戴安全帽。" },
+      { "pattern": "期間", "explanation": "Refers to a specific period of time or duration.", "example": "面試期間請關閉手機。" }
+    ],
+    "exercises": [
+      { "type": "choice", "question": "What is 'probation period'?", "options": ["試用期", "特休", "加班費", "錄取"], "answer": "試用期" },
+      { "type": "fill-blank", "sentence": "恭喜你被公司___了！", "answer": "錄取", "hint": "hired" }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Taiwanese English Loanwords",
+    "titleZh": "台灣職場英中混用",
+    "level": "b1",
+    "description": "Understanding how English terms are commonly mixed into Mandarin in Taiwanese tech and office environments.",
+    "vocab": [
+      { "hanzi": "開meeting", "pinyin": "kāi meeting", "definition": "to have a meeting", "example_sentence": { "sentence": "我們正在開meeting，稍後回電。", "pinyin": "Wǒmen zhèngzài kāi meeting, shāohòu huídiàn.", "english": "We are having a meeting, I'll call you back later." } },
+      { "hanzi": "deadline", "pinyin": "deadline", "definition": "deadline", "example_sentence": { "sentence": "這個project的deadline是明天。", "pinyin": "Zhège project de deadline shì míngtiān.", "english": "The deadline for this project is tomorrow." } },
+      { "hanzi": "KPI", "pinyin": "KPI", "definition": "Key Performance Indicator", "example_sentence": { "sentence": "主管在跟我討論今年的KPI。", "pinyin": "Zhǔguǎn zài gēn wǒ tǎolùn jīnnián de KPI.", "english": "The manager is discussing this year's KPI with me." } },
+      { "hanzi": "update", "pinyin": "update", "definition": "to update / an update", "example_sentence": { "sentence": "請把最新的進度update給我。", "pinyin": "Qǐng bǎ zuìxīn de jìndù update gěi wǒ.", "english": "Please provide me with the latest progress update." } },
+      { "hanzi": "confirm", "pinyin": "confirm", "definition": "to confirm", "example_sentence": { "sentence": "我已經跟客戶confirm過時間了。", "pinyin": "Wǒ yǐjīng gēn kèhù confirm guò shíjiān le.", "english": "I have already confirmed the time with the client." } },
+      { "hanzi": "schedule", "pinyin": "schedule", "definition": "schedule", "example_sentence": { "sentence": "我的schedule最近排得很滿。", "pinyin": "Wǒ de schedule zuìjìn pái de hěn mǎn.", "english": "My schedule has been very full lately." } },
+      { "hanzi": "feedback", "pinyin": "feedback", "definition": "feedback", "example_sentence": { "sentence": "謝謝你提供的feedback。", "pinyin": "Xièxiè nǐ tígōng de feedback.", "english": "Thank you for the feedback you provided." } },
+      { "hanzi": "milestone", "pinyin": "milestone", "definition": "milestone", "example_sentence": { "sentence": "我們達成了一個重要的milestone。", "pinyin": "Wǒmen dáchéng le yīgè zhòngyào de milestone.", "english": "We have reached an important milestone." } },
+      { "hanzi": "shift", "pinyin": "shift", "definition": "work shift", "example_sentence": { "sentence": "他是上晚班的shift。", "pinyin": "Tā shì shàng wǎnbān de shift.", "english": "He is on the night shift." } },
+      { "hanzi": "defect", "pinyin": "defect", "definition": "defect / bug", "example_sentence": { "sentence": "這批貨有一些defect需要處理。", "pinyin": "Zhè pī huò yǒu yīxiē defect xūyào chǔlǐ.", "english": "This batch of goods has some defects that need to be handled." } }
+    ],
+    "dialogue": {
+      "title": "A Typical Office Sync",
+      "lines": [
+        { "speaker": "同事A", "zh": "欸，那個project的deadline是不是改了？", "pinyin": "Ei, nàge project de deadline shì bù shì gǎi le?", "english": "Hey, was the deadline for that project changed?" },
+        { "speaker": "同事B", "zh": "對，主管說要delay兩天，因為還有一些defect要fix。", "pinyin": "Duì, zhǔguǎn shuō yào delay liǎng tiān, yīnwèi hái yǒu yīxiē defect yào fix.", "english": "Yes, the manager said to delay it by two days because there are still some defects to fix." },
+        { "speaker": "同事A", "zh": "了解。那明早的meeting會先cancel嗎？", "pinyin": "Liǎojiě. Nà míngzǎo de meeting huì xiān cancel ma?", "english": "Understood. Will tomorrow morning's meeting be cancelled then?" },
+        { "speaker": "同事B", "zh": "不會，我們要先sync一下最新的schedule。", "pinyin": "Búhuì, wǒmen yào xiān sync yīxià zuìxīn de schedule.", "english": "No, we need to sync up on the latest schedule first." },
+        { "speaker": "同事A", "zh": "OK，那我再把這份report的version update一下。", "pinyin": "OK, nà wǒ zài bǎ zhè fèn report de version update yīxià.", "english": "OK, I'll update the version of this report then." }
+      ]
+    },
+    "grammar_notes": [
+      { "pattern": "動詞 + 一下", "explanation": "Used after a verb to indicate a brief or casual action. In workplace English-mixing, it is often added after English verbs.", "example": "確認一下 (Check for a moment), sync一下 (Sync up for a bit)." },
+      { "pattern": "English Verb + 過", "explanation": "The particle '過' (indicating past experience) is often appended directly to English verbs in common speech.", "example": "confirm過 (confirmed before), check過 (checked before)." }
+    ],
+    "exercises": [
+      { "type": "choice", "question": "What is 'deadline' in Taiwanese office speak?", "options": ["deadline", "早退", "升遷", "錄取"], "answer": "deadline" },
+      { "type": "fill-blank", "sentence": "我們要先___一下最新的schedule。", "answer": "sync", "hint": "synchronize" }
+    ]
   }
 ]

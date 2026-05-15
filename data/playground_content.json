@@ -1539,7 +1539,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "start-here",
+    "stage_label": "🟢 Week 1 — Start Here",
+    "recommended_week": 1,
+    "prerequisite": null,
+    "chapter_links": [
+      1,
+      2
+    ],
+    "entry_description": "Begin here! Master numbers and basic counting characters."
   },
   {
     "id": "pg2",
@@ -3081,7 +3090,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "start-here",
+    "stage_label": "🟢 Week 2 — Identity & Greetings",
+    "recommended_week": 2,
+    "prerequisite": "pg1",
+    "chapter_links": [
+      1,
+      3
+    ],
+    "entry_description": "Learn to introduce yourself and talk about people."
   },
   {
     "id": "pg3",
@@ -4623,7 +4641,15 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "people-places",
+    "stage_label": "🔵 Week 5 — Body & Health",
+    "recommended_week": 5,
+    "prerequisite": "pg2",
+    "chapter_links": [
+      10
+    ],
+    "entry_description": "Body parts vocabulary for health and daily life."
   },
   {
     "id": "pg4",
@@ -6165,7 +6191,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 4 — Action Verbs",
+    "recommended_week": 4,
+    "prerequisite": "pg2",
+    "chapter_links": [
+      4,
+      6
+    ],
+    "entry_description": "Essential verbs for daily actions."
   },
   {
     "id": "pg5",
@@ -7707,7 +7742,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "people-places",
+    "stage_label": "🔵 Week 6 — Nature & Weather",
+    "recommended_week": 6,
+    "prerequisite": "pg4",
+    "chapter_links": [
+      8,
+      25
+    ],
+    "entry_description": "Weather and nature vocabulary."
   },
   {
     "id": "pg6",
@@ -9249,7 +9293,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 3 — Daily Objects",
+    "recommended_week": 3,
+    "prerequisite": "pg1",
+    "chapter_links": [
+      6,
+      11
+    ],
+    "entry_description": "Objects you encounter every day in Taiwan."
   },
   {
     "id": "pg7",
@@ -10791,7 +10844,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 3 — Food & Restaurants",
+    "recommended_week": 3,
+    "prerequisite": "pg1",
+    "chapter_links": [
+      4,
+      12
+    ],
+    "entry_description": "Essential for ordering food anywhere in Taiwan."
   },
   {
     "id": "pg8",
@@ -12333,7 +12395,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 4 — Time & Dates",
+    "recommended_week": 4,
+    "prerequisite": "pg1",
+    "chapter_links": [
+      7,
+      8
+    ],
+    "entry_description": "Tell time, plan meetings, discuss schedules."
   },
   {
     "id": "pg9",
@@ -13875,7 +13946,15 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 4 — Colors & Shapes",
+    "recommended_week": 4,
+    "prerequisite": "pg2",
+    "chapter_links": [
+      5
+    ],
+    "entry_description": "Describe objects and go shopping."
   },
   {
     "id": "pg10",
@@ -15417,7 +15496,15 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "daily-life",
+    "stage_label": "🟡 Week 5 — Animals",
+    "recommended_week": 5,
+    "prerequisite": "pg6",
+    "chapter_links": [
+      9
+    ],
+    "entry_description": "Animals and nature — common in Taiwanese conversation."
   },
   {
     "id": "pg11",
@@ -16959,7 +17046,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "people-places",
+    "stage_label": "🔵 Week 7 — Home Life",
+    "recommended_week": 7,
+    "prerequisite": "pg6",
+    "chapter_links": [
+      20,
+      27
+    ],
+    "entry_description": "Describe your home and apartment in Taiwan."
   },
   {
     "id": "pg12",
@@ -18501,7 +18597,15 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "work-study",
+    "stage_label": "🟠 Week 8 — School & Study",
+    "recommended_week": 8,
+    "prerequisite": "pg4",
+    "chapter_links": [
+      16
+    ],
+    "entry_description": "School vocabulary — also useful for language class."
   },
   {
     "id": "pg13",
@@ -20043,7 +20147,17 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "work-study",
+    "stage_label": "🟠 Week 10 — Work & Career",
+    "recommended_week": 10,
+    "prerequisite": "pg12",
+    "chapter_links": [
+      13,
+      31,
+      32
+    ],
+    "entry_description": "Key for working at TSMC or Micron!"
   },
   {
     "id": "pg14",
@@ -21585,7 +21699,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "people-places",
+    "stage_label": "🔵 Week 6 — Travel & Places",
+    "recommended_week": 6,
+    "prerequisite": "pg6",
+    "chapter_links": [
+      15,
+      14
+    ],
+    "entry_description": "Navigate Taiwan, book tickets, find places."
   },
   {
     "id": "pg15",
@@ -23127,7 +23250,15 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "people-places",
+    "stage_label": "🔵 Week 5 — Directions",
+    "recommended_week": 5,
+    "prerequisite": "pg6",
+    "chapter_links": [
+      6
+    ],
+    "entry_description": "Get around Taipei and Hsinchu."
   },
   {
     "id": "pg16",
@@ -24669,7 +24800,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "social",
+    "stage_label": "🟣 Week 9 — Describe People & Things",
+    "recommended_week": 9,
+    "prerequisite": "pg4",
+    "chapter_links": [
+      9,
+      11
+    ],
+    "entry_description": "Adjectives make your speech sound natural."
   },
   {
     "id": "pg17",
@@ -26211,7 +26351,16 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "social",
+    "stage_label": "🟣 Week 10 — More Descriptive Words",
+    "recommended_week": 10,
+    "prerequisite": "pg16",
+    "chapter_links": [
+      23,
+      26
+    ],
+    "entry_description": "Advanced descriptions for richer conversation."
   },
   {
     "id": "pg18",
@@ -27753,7 +27902,13 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "grammar-review",
+    "stage_label": "🔴 Week 12 — Grammar Patterns",
+    "recommended_week": 12,
+    "prerequisite": "pg17",
+    "chapter_links": [],
+    "entry_description": "Particles and connectors that hold sentences together."
   },
   {
     "id": "pg19",
@@ -29295,7 +29450,17 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "social",
+    "stage_label": "🟣 Week 11 — Social Chinese",
+    "recommended_week": 11,
+    "prerequisite": "pg16",
+    "chapter_links": [
+      11,
+      19,
+      28
+    ],
+    "entry_description": "Chat with Taiwanese colleagues and friends."
   },
   {
     "id": "pg20",
@@ -30837,6 +31002,12 @@
         ],
         "repetition_factor": 10
       }
-    ]
+    ],
+    "stage": "grammar-review",
+    "stage_label": "🔴 Week 16 — Full Review",
+    "recommended_week": 16,
+    "prerequisite": "pg19",
+    "chapter_links": [],
+    "entry_description": "Review everything before your TOCFL exam!"
   }
 ]

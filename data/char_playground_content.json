@@ -1,0 +1,398 @@
+[
+  {
+    "id": "cpg1",
+    "title": "Block 1: Human Body Radicals",
+    "titleZh": "第一組：人體部首",
+    "subtitle": "The 6 radicals derived from the human body — appear in 400+ everyday characters",
+    "icon": "🧍",
+    "color": "#e74c3c",
+    "lessons": [
+      {
+        "id": "cpg1-l1",
+        "radical": "人",
+        "radical_pinyin": "rén",
+        "radical_meaning": "person / people",
+        "stroke_count": 2,
+        "variant_forms": ["亻"],
+        "variant_note": "亻 appears on the left side of characters",
+        "mnemonic": "Two legs of a person walking — a simple, elegant human silhouette.",
+        "frequency_note": "Appears in over 200 common characters",
+        "compounds": [
+          {"hanzi":"你","pinyin":"nǐ","definition":"you","breakdown":"亻(person) + 尓(phonetic nǐ) = you, a person","example_sentence":"你好，很高興認識你。","example_pinyin":"Nǐ hǎo, hěn gāoxìng rènshì nǐ.","example_english":"Hello, nice to meet you."},
+          {"hanzi":"他","pinyin":"tā","definition":"he / him","breakdown":"亻(person) + 也(also) = that other person","example_sentence":"他是我的朋友。","example_pinyin":"Tā shì wǒ de péngyǒu.","example_english":"He is my friend."},
+          {"hanzi":"休","pinyin":"xiū","definition":"rest / to rest","breakdown":"亻(person) + 木(tree) = person leaning against a tree, resting","example_sentence":"我想休息一下。","example_pinyin":"Wǒ xiǎng xiūxi yīxià.","example_english":"I want to rest a bit."},
+          {"hanzi":"信","pinyin":"xìn","definition":"letter / to believe / trust","breakdown":"亻(person) + 言(speech) = person's word, trustworthy","example_sentence":"我相信他說的話。","example_pinyin":"Wǒ xiāngxìn tā shuō de huà.","example_english":"I believe what he said."},
+          {"hanzi":"做","pinyin":"zuò","definition":"to do / to make","breakdown":"亻(person) + 故(cause) = person doing something","example_sentence":"你在做什麼？","example_pinyin":"Nǐ zài zuò shénme?","example_english":"What are you doing?"},
+          {"hanzi":"們","pinyin":"men","definition":"plural suffix (people)","breakdown":"亻(person) + 門(gate/door) = many people","example_sentence":"他們都是學生。","example_pinyin":"Tāmen dōu shì xuéshēng.","example_english":"They are all students."},
+          {"hanzi":"保","pinyin":"bǎo","definition":"to protect / to guarantee","breakdown":"亻(person) + 呆(stay) = person protecting","example_sentence":"請保重身體。","example_pinyin":"Qǐng bǎozhòng shēntǐ.","example_english":"Please take care of yourself."},
+          {"hanzi":"借","pinyin":"jiè","definition":"to borrow / to lend","breakdown":"亻(person) + 昔(past) = person borrowing from past debt","example_sentence":"我可以借你的筆嗎？","example_pinyin":"Wǒ kěyǐ jiè nǐ de bǐ ma?","example_english":"Can I borrow your pen?"}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap all characters that contain 亻 (person radical)","chars":["你","吃","他","口","人","休","水","信","門","做"],"answers":["你","他","人","休","信","做"]},
+          {"type":"meaning_match","hanzi":"休","options":["eat","rest","walk","write"],"answer":"rest","hint":"Think: person + tree"},
+          {"type":"build_recognition","prompt":"Which character means \"to borrow\"?","options":["借","信","做","保"],"answer":"借"},
+          {"type":"sentence_fill","sentence":"___好！很高興認識你。","options":["你","他","休","們"],"answer":"你","translation":"Hello! Nice to meet you."}
+        ]
+      },
+      {
+        "id": "cpg1-l2",
+        "radical": "口",
+        "radical_pinyin": "kǒu",
+        "radical_meaning": "mouth / entrance",
+        "stroke_count": 3,
+        "variant_forms": [],
+        "mnemonic": "A simple open square representing a mouth or an opening.",
+        "compounds": [
+          {"hanzi":"吃","pinyin":"chī","definition":"to eat","breakdown":"口(mouth) + 乞(beg) = to beg for food with mouth","example_sentence":"你喜歡吃什麼？","example_pinyin":"Nǐ xǐhuān chī shénme?","example_english":"What do you like to eat?"},
+          {"hanzi":"喝","pinyin":"hē","definition":"to drink","breakdown":"口(mouth) + 曷(phonetic hé) = using mouth to drink","example_sentence":"你要喝水嗎？","example_pinyin":"Nǐ yào hē shuǐ ma?","example_english":"Do you want to drink water?"},
+          {"hanzi":"叫","pinyin":"jiào","definition":"to call / to be called","breakdown":"口(mouth) + 丩(intertwine) = sound coming out of mouth","example_sentence":"你叫什麼名字？","example_pinyin":"Nǐ jiào shénme míngzì?","example_english":"What is your name?"},
+          {"hanzi":"問","pinyin":"wèn","definition":"to ask","breakdown":"門(gate) + 口(mouth) = asking a question at the gate","example_sentence":"我可以問你一個問題嗎？","example_pinyin":"Wǒ kěyǐ wèn nǐ yīgè wèntí ma?","example_english":"Can I ask you a question?"},
+          {"hanzi":"回","pinyin":"huí","definition":"to return / to answer","breakdown":"口(outside) + 口(inside) = something revolving or returning","example_sentence":"我明天回台灣。","example_pinyin":"Wǒ míngtiān huí Táiwān.","example_english":"I am returning to Taiwan tomorrow."},
+          {"hanzi":"聽","pinyin":"tīng","definition":"to listen / to hear","breakdown":"耳(ear) + 口(mouth) + 壬/𢛳(phonetic/other) = using ear and mouth to communicate","example_sentence":"請聽我說。","example_pinyin":"Qǐng tīng wǒ shuō.","example_english":"Please listen to me."},
+          {"hanzi":"唱","pinyin":"chàng","definition":"to sing","breakdown":"口(mouth) + 昌(prosperous/light) = singing with an open mouth","example_sentence":"她很喜歡唱歌。","example_pinyin":"Tā hěn xǐhuān chànggē.","example_english":"She likes singing very much."},
+          {"hanzi":"名","pinyin":"míng","definition":"name","breakdown":"夕(evening) + 口(mouth) = calling a name at dusk when you can't see","example_sentence":"這是他的名字。","example_pinyin":"Zhè shì tā de míngzì.","example_english":"This is his name."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 口 (mouth)","chars":["吃","水","喝","火","叫","問","木","回","唱","名"],"answers":["吃","喝","叫","問","回","唱","名"]},
+          {"type":"meaning_match","hanzi":"喝","options":["eat","drink","sing","ask"],"answer":"drink"},
+          {"type":"build_recognition","prompt":"Which character means \"to return\"?","options":["回","叫","名","問"],"answer":"回"},
+          {"type":"sentence_fill","sentence":"請___我說。","options":["聽","吃","喝","叫"],"answer":"聽","translation":"Please listen to me."}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cpg2",
+    "title": "Block 2: Nature Radicals",
+    "titleZh": "第二組：自然部首",
+    "subtitle": "Essential building blocks from the world around us — Sun, Moon, Water, and Trees",
+    "icon": "🏔️",
+    "color": "#27ae60",
+    "lessons": [
+      {
+        "id": "cpg2-l1",
+        "radical": "日",
+        "radical_pinyin": "rì",
+        "radical_meaning": "sun / day",
+        "stroke_count": 4,
+        "variant_forms": [],
+        "mnemonic": "A rectangle with a line in the middle, originally representing the sun with a sunspot.",
+        "frequency_note": "Found in many time-related characters",
+        "compounds": [
+          {"hanzi":"明","pinyin":"míng","definition":"bright / clear","breakdown":"日(sun) + 月(moon) = bright, like both celestial bodies","example_sentence":"明天會更好。","example_pinyin":"Míngtiān huì gèng hǎo.","example_english":"Tomorrow will be even better."},
+          {"hanzi":"時","pinyin":"shí","definition":"time / hour","breakdown":"日(sun) + 寺(temple/phonetic) = time determined by sun's position","example_sentence":"現在是什麼時間？","example_pinyin":"Xiànzài shì shénme shíjiān?","example_english":"What time is it now?"},
+          {"hanzi":"昨","pinyin":"zuó","definition":"yesterday","breakdown":"日(day) + 乍(suddenly/phonetic) = the day that just passed","example_sentence":"我昨天去台北。","example_pinyin":"Wǒ zuótiān qù Táiběi.","example_english":"I went to Taipei yesterday."},
+          {"hanzi":"晚","pinyin":"wǎn","definition":"evening / late","breakdown":"日(sun) + 免(get rid of/phonetic) = sun getting rid of its light, evening","example_sentence":"晚上好！","example_pinyin":"Wǎnshàng hǎo!","example_english":"Good evening!"},
+          {"hanzi":"晴","pinyin":"qíng","definition":"clear / sunny","breakdown":"日(sun) + 青(blue/green/phonetic) = sunny sky","example_sentence":"今天天氣很晴朗。","example_pinyin":"Jīntiān tiānqì hěn qínglǎng.","example_english":"The weather is very sunny today."},
+          {"hanzi":"是","pinyin":"shì","definition":"to be / is / yes","breakdown":"日(sun) + 正(upright/straight) = upright like the sun, true/correct","example_sentence":"我是學生。","example_pinyin":"Wǒ shì xuéshēng.","example_english":"I am a student."},
+          {"hanzi":"星","pinyin":"xīng","definition":"star","breakdown":"日(sun/celestial) + 生(birth) = birth of light in the sky, star","example_sentence":"晚上的星星很美。","example_pinyin":"Wǎnshàng de xīngxīng hěn měi.","example_english":"The stars at night are beautiful."},
+          {"hanzi":"早","pinyin":"zǎo","definition":"early / morning","breakdown":"日(sun) + 十(needle/phonetic) = sun just rising above the horizon","example_sentence":"早安！","example_pinyin":"Zǎo ān!","example_english":"Good morning!"}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 日 (sun)","chars":["明","月","時","水","昨","火","晚","木","晴","星"],"answers":["明","時","昨","晚","晴","星"]},
+          {"type":"meaning_match","hanzi":"明","options":["dark","bright","cold","hot"],"answer":"bright"},
+          {"type":"build_recognition","prompt":"Which character means \"star\"?","options":["星","是","早","晚"],"answer":"星"},
+          {"type":"sentence_fill","sentence":"___天會更好。","options":["明","昨","早","是"],"answer":"明","translation":"Tomorrow will be even better."}
+        ]
+      },
+      {
+        "id": "cpg2-l2",
+        "radical": "水",
+        "radical_pinyin":"shuǐ",
+        "radical_meaning":"water",
+        "stroke_count": 4,
+        "variant_forms": ["氵"],
+        "variant_note":"氵 is the common 'three drops of water' form on the left",
+        "mnemonic":"Flowing ripples of a stream.",
+        "compounds": [
+          {"hanzi":"洗","pinyin":"xǐ","definition":"to wash","breakdown":"氵(water) + 先(before/phonetic) = using water to clean","example_sentence":"我要去洗手。","example_pinyin":"Wǒ yào qù xǐshǒu.","example_english":"I am going to wash my hands."},
+          {"hanzi":"海","pinyin":"hǎi","definition":"sea / ocean","breakdown":"氵(water) + 每(every/phonetic) = every stream flows to the sea","example_sentence":"我喜歡去海邊。","example_pinyin":"Wǒ xǐhuān qù hǎibiān.","example_english":"I like going to the seaside."},
+          {"hanzi":"河","pinyin":"hé","definition":"river","breakdown":"氵(water) + 可(can/phonetic) = large flowing body of water","example_sentence":"這條河很乾淨。","example_pinyin":"Zhè tiáo hé hěn gānjìng.","example_english":"This river is very clean."},
+          {"hanzi":"淡","pinyin":"dàn","definition":"bland / weak / light (color/flavor)","breakdown":"氵(water) + 炎(flame) = diluted fire, weak/bland","example_sentence":"這杯茶味道很淡。","example_pinyin":"Zhè bēi chá wèidào hěn dàn.","example_english":"This cup of tea is very bland."},
+          {"hanzi":"清","pinyin":"qīng","definition":"clear / pure","breakdown":"氵(water) + 青(blue/green/phonetic) = clear water","example_sentence":"溪水很清澈。","example_pinyin":"Xīshuǐ hěn qīngchè.","example_english":"The stream water is very clear."},
+          {"hanzi":"渴","pinyin":"kě","definition":"thirsty","breakdown":"氵(water) + 曷(exhausted) = exhausting water from body, thirsty","example_sentence":"我很渴，想喝水。","example_pinyin":"Wǒ hěn kě, xiǎng hē shuǐ.","example_english":"I am very thirsty, I want to drink water."},
+          {"hanzi":"漢","pinyin":"hàn","definition":"Han (Chinese) / man / Han river","breakdown":"氵(water) + 𦰩(yellow/phonetic) = name of a major river in China","example_sentence":"我在學漢語。","example_pinyin":"Wǒ zài xué hànyǔ.","example_english":"I am learning Chinese."},
+          {"hanzi":"泳","pinyin":"yǒng","definition":"to swim","breakdown":"氵(water) + 永(forever/phonetic) = movement in water","example_sentence":"他每天去游泳。","example_pinyin":"Tā měitiān qù yóuyǒng.","example_english":"He goes swimming every day."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 氵 (water drops)","chars":["洗","火","海","木","河","淡","土","清","渴","漢"],"answers":["洗","海","河","淡","清","渴","漢"]},
+          {"type":"meaning_match","hanzi":"海","options":["lake","sea","river","pond"],"answer":"sea"},
+          {"type":"build_recognition","prompt":"Which character means \"to wash\"?","options":["洗","泳","清","淡"],"answer":"洗"},
+          {"type":"sentence_fill","sentence":"我很___，想喝水。","options":["渴","洗","淡","海"],"answer":"渴","translation":"I am very thirsty, I want to drink water."}
+          ]
+          },
+          {
+          "id": "cpg2-l3",
+          "radical": "木",
+          "radical_pinyin": "mù",
+          "radical_meaning":"tree / wood",
+          "stroke_count": 4,
+          "variant_forms": [],
+          "mnemonic":"A tree with branches and roots.",
+          "compounds": [
+          {"hanzi":"林","pinyin":"lín","definition":"woods / grove","breakdown":"木(tree) + 木(tree) = many trees, a woods","example_sentence":"這片林子很大。","example_pinyin":"Zhè piàn línzi hěn dà.","example_english":"This woods is very large."},
+          {"hanzi":"森","pinyin":"sēn","definition":"forest","breakdown":"木+木+木 = a dense forest","example_sentence":"森林裡有很多動物。","example_pinyin":"Sēnlín lǐ yǒu hěnduō dòngwù.","example_english":"There are many animals in the forest."},
+          {"hanzi":"桌","pinyin":"zhuō","definition":"table / desk","breakdown":"木(wood) + 卓(high/eminent) = high wooden furniture","example_sentence":"書在桌子上。","example_pinyin":"Shū zài zhuōzi shàng.","example_english":"The book is on the table."},
+          {"hanzi":"椅","pinyin":"yǐ","definition":"chair","breakdown":"木(wood) + 奇(strange/phonetic) = wooden seat","example_sentence":"請坐這張椅子。","example_pinyin":"Qǐng zuò zhè zhāng yǐzi.","example_english":"Please sit on this chair."},
+          {"hanzi":"校","pinyin":"xiào","definition":"school / to proofread","breakdown":"木(wood) + 交(intersect/exchange) = wooden building for exchange of knowledge","example_sentence":"他去學校了。","example_pinyin":"Tā qù xuéxiào le.","example_english":"He went to school."},
+          {"hanzi":"標","pinyin":"biāo","definition":"mark / sign / standard","breakdown":"木(wood) + 票(ticket/phonetic) = wooden marker or pole","example_sentence":"這是我們的標準。","example_pinyin":"Zhè shì wǒmen de biāozhǔn.","example_english":"This is our standard."},
+          {"hanzi":"樣","pinyin":"yàng","definition":"manner / style / appearance","breakdown":"木(wood) + 羕(phonetic/water flowing) = wooden mold, model","example_sentence":"你喜歡什麼樣的衣服？","example_pinyin":"Nǐ xǐhuān shénme yàng de yīfú?","example_english":"What kind of clothes do you like?"},
+          {"hanzi":"機","pinyin":"jī","definition":"machine / opportunity","breakdown":"木(wood) + 幾(small/minute) = complex wooden mechanism (loom)","example_sentence":"我的手機壞了。","example_pinyin":"Wǒ de shǒujī huài le.","english":"My cell phone is broken."}
+          ],
+          "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 木 (tree/wood)","chars":["林","火","森","土","桌","水","椅","校","日","樣"],"answers":["林","森","桌","椅","校","樣"]},
+          {"type":"meaning_match","hanzi":"森","options":["woods","forest","mountain","lake"],"answer":"forest"},
+          {"type":"build_recognition","prompt":"Which character means \"table\"?","options":["桌","椅","校","機"],"answer":"桌"},
+          {"type":"sentence_fill","sentence":"他在___學中文。","options":["校","林","樣","機"],"answer":"校","translation":"He is learning Chinese at school."}
+          ]
+          },
+          {
+          "id": "cpg2-l4",
+          "radical": "土",
+          "radical_pinyin": "tǔ",
+          "radical_meaning":"earth / soil / ground",
+          "stroke_count": 3,
+          "variant_forms": [],
+          "mnemonic":"A sprout growing out of the ground.",
+          "compounds": [
+          {"hanzi":"地","pinyin":"dì","definition":"earth / ground / place","breakdown":"土(earth) + 也(also/phonetic) = the ground we stand on","example_sentence":"這塊地很肥沃。","example_pinyin":"Zhè kuài dì hěn féiwò.","example_english":"This land is very fertile."},
+          {"hanzi":"坐","pinyin":"zuò","definition":"to sit / to travel by","breakdown":"人+人+土 = two people sitting on the ground","example_sentence":"請坐。","example_pinyin":"Qǐng zuò.","example_english":"Please sit down."},
+          {"hanzi":"場","pinyin":"chǎng","definition":"place / field / market","breakdown":"土(earth) + 昜(bright/open) = open level ground","example_sentence":"我們去操場運動。","example_pinyin":"Wǒmen qù cāochǎng yùndòng.","example_english":"Let's go to the playground for sports."},
+          {"hanzi":"在","pinyin":"zài","definition":"at / in / (indicating action in progress)","breakdown":"土(ground) + 才(talent/phonetic) = standing on the ground, present","example_sentence":"你在哪裡？","example_pinyin":"Nǐ zài nǎlǐ?","example_english":"Where are you?"},
+          {"hanzi":"壞","pinyin":"huài","definition":"bad / broken","breakdown":"土(earth/crumbling) + 褱(phonetic) = earth crumbling, ruined/bad","example_sentence":"這個東西壞了。","example_pinyin":"Zhè gè dōngxī huài le.","example_english":"This thing is broken."},
+          {"hanzi":"型","pinyin":"xíng","definition":"model / type / style","breakdown":"刑(phonetic) + 土(soil/clay) = a clay mold","example_sentence":"你喜歡哪種機型？","example_pinyin":"Nǐ xǐhuān nǎ zhǒng jīxíng?","example_english":"Which machine model do you like?"},
+          {"hanzi":"塊","pinyin":"kuài","definition":"piece / lump / (measure word for money/units)","breakdown":"土(earth/lump) + 鬼(phonetic) = a lump of earth","example_sentence":"這塊蛋糕很好吃。","example_pinyin":"Zhè kuài dàngāo hěn hǎochī.","example_english":"This piece of cake is delicious."},
+          {"hanzi":"基","pinyin":"jī","definition":"base / foundation / basic","breakdown":"其(phonetic) + 土(earth) = the earth at the base","example_sentence":"這是基本常識。","example_pinyin":"Zhè shì jīběn chángshí.","example_english":"This is basic common sense."}
+          ],
+          "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 土 (earth)","chars":["地","水","坐","木","場","在","火","壞","型","基"],"answers":["地","坐","場","在","壞","型","基"]},
+          {"type":"meaning_match","hanzi":"地","options":["sky","ground","water","fire"],"answer":"ground"},
+          {"type":"build_recognition","prompt":"Which character means \"to sit\"?","options":["坐","在","地","場"],"answer":"坐"},
+          {"type":"sentence_fill","sentence":"我___家裡等妳。","options":["在","地","坐","基"],"answer":"在","translation":"I am waiting for you at home."}
+          ]
+          }
+    ]
+  },
+  {
+    "id": "cpg4",
+    "title": "Block 4: Earth & Food Radicals",
+    "titleZh": "第四組：土地與食物部首",
+    "subtitle": "Radicals representing the natural world and essential sustenance.",
+    "icon": "🍱",
+    "color": "#e67e22",
+    "lessons": [
+      {
+        "id": "cpg4-l1",
+        "radical": "山",
+        "radical_pinyin": "shān",
+        "radical_meaning": "mountain",
+        "stroke_count": 3,
+        "variant_forms": [],
+        "mnemonic": "Three mountain peaks.",
+        "compounds": [
+          {"hanzi":"島","pinyin":"dǎo","definition":"island","breakdown":"山(mountain) + 鳥(bird) = a mountain in the sea where birds rest, an island","example_sentence":"台灣是一個美麗的島。","example_pinyin":"Táiwān shì yīgè měilì de dǎo.","example_english":"Taiwan is a beautiful island."},
+          {"hanzi":"歲","pinyin":"suì","definition":"year / age","breakdown":"山(mountain/cycle) + 步(step/walk) = the cycle of seasons or mountains, age","example_sentence":"你今年幾歲？","example_pinyin":"Nǐ jīnnián jǐ suì?","example_english":"How old are you this year?"},
+          {"hanzi":"出","pinyin":"chū","definition":"to go out / to exit","breakdown":"山 + 山 (stacked) = originally representing feet walking out of a cave/mountain","example_sentence":"他在出口等你。","example_pinyin":"Tā zài chūkǒu děng nǐ.","example_english":"He is waiting for you at the exit."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 山 (mountain)","chars":["島","歲","出","火","水","林","石","田"],"answers":["島","歲","出"]},
+          {"type":"meaning_match","hanzi":"島","options":["mountain","island","forest","river"],"answer":"island"}
+        ]
+      },
+      {
+        "id": "cpg4-l2",
+        "radical": "食",
+        "radical_pinyin": "shí",
+        "radical_meaning":"food / to eat",
+        "stroke_count": 9,
+        "variant_forms": ["飠"],
+        "variant_note":"飠 is the common left-side variant",
+        "mnemonic":"A person (人) over a container of food (良).",
+        "compounds": [
+          {"hanzi":"飯","pinyin":"fàn","definition":"cooked rice / meal","breakdown":"飠(food) + 反(phonetic) = food served as a meal","example_sentence":"你吃飯了嗎？","example_pinyin":"Nǐ chīfàn le ma?","example_english":"Have you eaten?"},
+          {"hanzi":"館","pinyin":"guǎn","definition":"building / shop / restaurant","breakdown":"飠(food) + 官(official/phonetic) = a public building for food/lodging","example_sentence":"這家餐館很有名。","example_pinyin":"Zhè jiā cānguǎn hěn yǒumíng.","example_english":"This restaurant is very famous."},
+          {"hanzi":"飽","pinyin":"bǎo","definition":"full (from eating)","breakdown":"飠(food) + 包(wrap/phonetic) = stomach wrapped/full of food","example_sentence":"我吃飽了。","example_pinyin":"Wǒ chībǎo le.","example_english":"I'm full."},
+          {"hanzi":"餓","pinyin":"è","definition":"hungry","breakdown":"飠(food) + 我(I/phonetic) = my need for food, hungry","example_sentence":"我肚子餓了。","example_pinyin":"Wǒ dùzi è le.","example_english":"I am hungry."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 飠 (food)","chars":["飯","館","飽","餓","洗","海","渴","說"],"answers":["飯","館","飽","餓"]},
+          {"type":"meaning_match","hanzi":"餓","options":["full","hungry","thirsty","tired"],"answer":"hungry"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cpg5",
+    "title": "Block 5: Shelter & Cloth Radicals",
+    "titleZh": "第五組：房屋與布料部首",
+    "subtitle": "Radicals for man-made structures and textiles.",
+    "icon": "🏠",
+    "color": "#3498db",
+    "lessons": [
+      {
+        "id": "cpg5-l1",
+        "radical": "宀",
+        "radical_pinyin": "mián",
+        "radical_meaning": "roof",
+        "stroke_count": 3,
+        "variant_forms": [],
+        "mnemonic": "The roof and walls of a house.",
+        "compounds": [
+          {"hanzi":"家","pinyin":"jiā","definition":"home / family","breakdown":"宀(roof) + 豕(pig) = a pig under a roof (sign of a settled home)","example_sentence":"我要回家。","example_pinyin":"Wǒ yào huíjiā.","example_english":"I want to go home."},
+          {"hanzi":"室","pinyin":"shì","definition":"room","breakdown":"宀(roof) + 至(reach/arrive) = a place where you arrive and rest under a roof","example_sentence":"這是會議室。","example_pinyin":"Zhè shì huìyìshì.","example_english":"This is the meeting room."},
+          {"hanzi":"安","pinyin":"ān","definition":"safe / peaceful / quiet","breakdown":"宀(roof) + 女(woman) = a woman under a roof, a sign of peace and safety","example_sentence":"路上平安。","example_pinyin":"Lùshàng píng'ān.","example_english":"Have a safe trip."},
+          {"hanzi":"定","pinyin":"dìng","definition":"to set / to fix / definite","breakdown":"宀(roof) + 止/正(foot/stable) = a foot settled under a roof, stable/fixed","example_sentence":"我們說定了。","example_pinyin":"Wǒmen shuōdìng le.","example_english":"It's a deal / We've settled it."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 宀 (roof)","chars":["家","室","安","定","林","森","河","海"],"answers":["家","室","安","定"]},
+          {"type":"meaning_match","hanzi":"家","options":["school","office","home","shop"],"answer":"home"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cpg6",
+    "title": "Block 6: Metal & Nature Radicals",
+    "titleZh": "第六組：金屬與自然部首",
+    "subtitle": "Radicals for metals, insects, and animals.",
+    "icon": "⚖️",
+    "color": "#f1c40f",
+    "lessons": [
+      {
+        "id": "cpg6-l1",
+        "radical": "金",
+        "radical_pinyin": "jīn",
+        "radical_meaning": "gold / metal",
+        "stroke_count": 8,
+        "variant_forms": ["釒"],
+        "variant_note": "釒 is the common left-side form",
+        "mnemonic": "Layers of earth with nuggets of gold or metal inside.",
+        "compounds": [
+          {"hanzi":"錢","pinyin":"qián","definition":"money","breakdown":"釒(metal) + 戔(phonetic/small) = small pieces of metal used for trade, money","example_sentence":"這要多少錢？","example_pinyin":"Zhè yào duōshǎo qián?","example_english":"How much money is this?"},
+          {"hanzi":"鐘","pinyin":"zhōng","definition":"clock / bell","breakdown":"釒(metal) + 童(phonetic/child) = a metal bell or clock","example_sentence":"現在幾點鐘？","example_pinyin":"Xiànzài jǐ diǎnzhōng?","example_english":"What time is it now?"},
+          {"hanzi":"銀","pinyin":"yín","definition":"silver","breakdown":"釒(metal) + 艮(phonetic/stiff) = silver metal","example_sentence":"他在銀行工作。","example_pinyin":"Tā zài yínháng gōngzuò.","example_english":"He works at a bank."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 釒 (metal)","chars":["錢","鐘","銀","木","土","水","火","日"],"answers":["錢","鐘","銀"]},
+          {"type":"meaning_match","hanzi":"錢","options":["money","clock","silver","gold"],"answer":"money"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cpg7",
+    "title": "Block 7: Numbers as Radicals",
+    "titleZh": "第七組：數字部首",
+    "subtitle": "Common numerical characters that also function as building blocks.",
+    "icon": "🔢",
+    "color": "#e74c3c",
+    "lessons": [
+      {
+        "id": "cpg7-l1",
+        "radical": "一",
+        "radical_pinyin": "yī",
+        "radical_meaning": "one",
+        "stroke_count": 1,
+        "variant_forms": [],
+        "mnemonic": "A single horizontal line.",
+        "compounds": [
+          {"hanzi":"丁","pinyin":"dīng","definition":"man / nail / T-shaped","breakdown":"一(top) + 亅(hook) = a T-shaped nail or a robust man","example_sentence":"他是園丁。","example_pinyin":"Tā shì yuándīng.","example_english":"He is a gardener."},
+          {"hanzi":"三","pinyin":"sān","definition":"three","breakdown":"一 + 一 + 一 = three lines","example_sentence":"我有三個朋友。","example_pinyin":"Wǒ yǒu sān gè péngyǒu.","example_english":"I have three friends."}
+        ],
+        "drills": [
+          {"type":"meaning_match","hanzi":"三","options":["one","two","three","four"],"answer":"three"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cpg8",
+    "title": "Block 8: Compound Logic",
+    "titleZh": "第八組：合體字邏輯",
+    "subtitle": "Exploring how semantic and phonetic parts work together.",
+    "icon": "🧩",
+    "color": "#1abc9c",
+    "lessons": [
+      {
+        "id": "cpg8-l1",
+        "radical": "青",
+        "radical_pinyin": "qīng",
+        "radical_meaning": "blue / green / youth (as phonetic)",
+        "stroke_count": 8,
+        "variant_forms": [],
+        "mnemonic": "The color of growing plants.",
+        "compounds": [
+          {"hanzi":"請","pinyin":"qǐng","definition":"please / invite","breakdown":"言(speech) + 青(qīng phonetic) = polite request","example_sentence":"請進。","example_pinyin":"Qǐng jìn.","example_english":"Please come in."},
+          {"hanzi":"清","pinyin":"qīng","definition":"clear / pure","breakdown":"氵(water) + 青(qīng phonetic) = clear water","example_sentence":"這水很清。","example_pinyin":"Zhè shuǐ hěn qīng.","example_english":"This water is very clear."},
+          {"hanzi":"晴","pinyin":"qíng","definition":"sunny / clear sky","breakdown":"日(sun) + 青(qīng phonetic) = a day with clear sky","example_sentence":"今天晴天。","example_pinyin":"Jīntiān qíngtiān.","example_english":"Today is a sunny day."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 青 (qīng phonetic)","chars":["請","清","晴","情","心","水","日","言"],"answers":["請","清","晴","情"]},
+          {"type":"meaning_match","hanzi":"情","options":["feeling","water","sun","speech"],"answer":"feeling","hint":"Look at the radical 忄(heart)"}
+        ]
+      }
+    ]
+  }
+]
+    "id": "cpg3",
+    "title": "Block 3: Mind & Motion Radicals",
+    "titleZh": "第三組：心智與動作部首",
+    "subtitle": "Radicals related to thoughts, feelings, speech, and physical movement.",
+    "icon": "🧠",
+    "color": "#9b59b6",
+    "lessons": [
+      {
+        "id": "cpg3-l1",
+        "radical": "心",
+        "radical_pinyin": "xīn",
+        "radical_meaning": "heart / mind / feelings",
+        "stroke_count": 4,
+        "variant_forms": ["忄"],
+        "variant_note": "忄 is the 'vertical heart' form used on the left side",
+        "mnemonic": "A pictograph of a human heart.",
+        "compounds": [
+          {"hanzi":"想","pinyin":"xiǎng","definition":"to think / to want / to miss","breakdown":"相(mutual/phonetic) + 心(heart) = thinking with one's heart","example_sentence":"我想喝咖啡。","example_pinyin":"Wǒ xiǎng hē kāfēi.","example_english":"I want to drink coffee."},
+          {"hanzi":"念","pinyin":"niàn","definition":"to study / to read aloud / to miss","breakdown":"今(now) + 心(heart) = keeping something in one's heart now, missing/studying","example_sentence":"他在念大學。","example_pinyin":"Tā zài niàn dàxué.","example_english":"He is studying at university."},
+          {"hanzi":"忘","pinyin":"wàng","definition":"to forget","breakdown":"亡(perish) + 心(heart) = heart/mind perishing, forgetting","example_sentence":"別忘了帶鑰匙。","example_pinyin":"Bié wàng le dài yàoshi.","example_english":"Don't forget to bring your keys."},
+          {"hanzi":"怕","pinyin":"pà","definition":"to be afraid / fear","breakdown":"忄(heart) + 白(white/phonetic) = heart turning white with fear","example_sentence":"我不怕黑。","example_pinyin":"Wǒ bù pà hēi.","example_english":"I am not afraid of the dark."},
+          {"hanzi":"快","pinyin":"kuài","definition":"fast / quick / happy","breakdown":"忄(heart) + 夬(phonetic/break) = heart feeling a sudden burst of speed or joy","example_sentence":"生日快樂！","example_pinyin":"Shēngrì kuàilè!","example_english":"Happy birthday!"},
+          {"hanzi":"愛","pinyin":"ài","definition":"to love / love","breakdown":"心(heart) in the middle = love comes from the heart","example_sentence":"我愛台灣。","example_pinyin":"Wǒ ài Táiwān.","example_english":"I love Taiwan."},
+          {"hanzi":"感","pinyin":"gǎn","definition":"to feel / sense / emotion","breakdown":"咸(all/phonetic) + 心(heart) = heart's response to everything","example_sentence":"謝謝你的感謝。","example_pinyin":"Xièxiè nǐ de gǎnxiè.","example_english":"Thank you for your gratitude."},
+          {"hanzi":"急","pinyin":"jí","definition":"urgent / hurried / worried","breakdown":"芻(phonetic) + 心(heart) = heart feeling pressure, urgent","example_sentence":"這件事很急。","example_pinyin":"Zhè jiàn shì hěn jí.","example_english":"This matter is very urgent."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 心 or 忄 (heart)","chars":["想","言","念","走","忘","怕","車","快","愛","急"],"answers":["想","念","忘","怕","快","愛","急"]},
+          {"type":"meaning_match","hanzi":"忘","options":["remember","forget","study","fear"],"answer":"forget"},
+          {"type":"build_recognition","prompt":"Which character means \"happy\" in 生日快樂?","options":["快","慢","忙","急"],"answer":"快"},
+          {"type":"sentence_fill","sentence":"我___喝咖啡。","options":["想","忘","怕","急"],"answer":"想","translation":"I want to drink coffee."}
+        ]
+      },
+      {
+        "id": "cpg3-l2",
+        "radical": "言",
+        "radical_pinyin": "yán",
+        "radical_meaning":"speech / words",
+        "stroke_count": 7,
+        "variant_forms": ["訁"],
+        "variant_note":"訁 is the simplified/shorthand form (though in Traditional it is often fully written out in many fonts, the 訁 variant exists in some styles)",
+        "mnemonic":"A mouth with lines representing words coming out.",
+        "compounds": [
+          {"hanzi":"說","pinyin":"shuō","definition":"to speak / to say","breakdown":"言(speech) + 兌(exchange/phonetic) = exchanging words","example_sentence":"他在說什麼？","example_pinyin":"Tā zài shuō shénme?","example_english":"What is he saying?"},
+          {"hanzi":"話","pinyin":"huà","definition":"word / speech / dialect","breakdown":"言(speech) + 舌(tongue) = words from the tongue","example_sentence":"你會說國語嗎？","example_pinyin":"Nǐ huì shuō Guóyǔ ma?","example_english":"Can you speak Mandarin?"},
+          {"hanzi":"請","pinyin":"qǐng","definition":"please / to invite / to ask","breakdown":"言(speech) + 青(phonetic) = polite speech","example_sentence":"請坐。","example_pinyin":"Qǐng zuò.","example_english":"Please sit down."},
+          {"hanzi":"謝","pinyin":"xiè","definition":"to thank / thanks","breakdown":"言(speech) + 射(phonetic/release) = releasing words of gratitude","example_sentence":"謝謝你！","example_pinyin":"Xièxiè nǐ!","example_english":"Thank you!"},
+          {"hanzi":"語","pinyin":"yǔ","definition":"language / speech","breakdown":"言(speech) + 吾(I/phonetic) = my speech, language","example_sentence":"漢語不難學。","example_pinyin":"Hànyǔ bù nán xué.","example_english":"Chinese is not hard to learn."},
+          {"hanzi":"記","pinyin":"jì","definition":"to remember / to record","breakdown":"言(speech) + 己(self/phonetic) = recording words for oneself","example_sentence":"我忘記了。","example_pinyin":"Wǒ wàngjì le.","example_english":"I forgot."},
+          {"hanzi":"試","pinyin":"shì","definition":"to try / test / exam","breakdown":"言(speech) + 式(style/formula/phonetic) = testing words or knowledge","example_sentence":"我想試試看。","example_pinyin":"Wǒ xiǎng shìshì kàn.","example_english":"I want to give it a try."},
+          {"hanzi":"訂","pinyin":"dìng","definition":"to book / to reserve / to conclude (a treaty)","breakdown":"言(speech) + 丁(phonetic) = setting words down, booking","example_sentence":"我要訂房。","example_pinyin":"Wǒ yào dìngfáng.","example_english":"I want to book a room."}
+        ],
+        "drills": [
+          {"type":"spot_radical","instruction":"Tap characters containing 言 (speech)","chars":["說","想","話","走","請","謝","車","語","記","試"],"answers":["說","話","請","謝","語","記","試"]},
+          {"type":"meaning_match","hanzi":"謝","options":["please","thank","speak","try"],"answer":"thank"},
+          {"type":"build_recognition","prompt":"Which character means \"to try\"?","options":["試","訂","記","說"],"answer":"試"},
+          {"type":"sentence_fill","sentence":"你會___國語嗎？","options":["說","想","怕","忘"],"answer":"說","translation":"Can you speak Mandarin?"}
+        ]
+      }
+    ]
+  }
+]

@@ -5,27 +5,24 @@ A comprehensive web-based Chinese learning platform designed for learners progre
 ## 📊 Project Statistics
 
 - **Total Characters:** 1,443 (TOCFL Novice, A1, A2, and B1)
-- **Unique Vocabulary:** 1,649 words (including 100 new Playground lessons)
-- **Structured Chapters:** 30 (Novice to A2)
-- **Beginner Playground Chapters:** 20 (High-repetition foundation)
-- **Total Foundation Lessons:** 100 (60 words per lesson, 10x repetition)
-- **Interactive Scenarios:** 7 specialized modules
-- **Data Footprint:** ~6MB of JSON-based learning content
+- **Unique Vocabulary:** 2,500+ words (Complete Workplace/Tech and Foundation data)
+- **Structured Chapters:** 35 (Novice to B1, including 5 Tech Industry Chapters)
+- **Beginner Playground Chapters:** 20 (High-repetition foundation with stage-based progression)
+- **Character Playground Blocks:** 8 (Radical-based character mastery curriculum)
+- **Graded Readings:** 45 passages (Taipei MRT, Hsinchu Science Park, THSR, Culture, Nature)
+- **B1 Grammar Patterns:** 30 essential logical connectors and structures
 
 ## 🚀 Key Learning Features
 
 | Feature | Status | Description |
 | :--- | :--- | :--- |
-| **Beginner Playground** | ✅ NEW | 100 lessons focused on "baby-style" high-repetition recognition (10x drills). |
-| **Character Playground** | ✅ NEW | Decomposition, Formation Lab, and "Build a Character" game. |
-| **Voice Practice** | ✅ NEW | Record and play back your own pronunciation for comparison with native TTS. |
-| **PWA Support** | ✅ NEW | Installable on mobile/desktop with full offline support via Service Worker. |
-| **Dashboard** | ✅ Complete | Overview of progress, streak tracking, and personalized "Targeted Review." |
-| **Learning Path** | ✅ Complete | Map-based progression integrating both Playground and TOCFL levels. |
-| **Flashcards (SRS)** | ✅ Complete | Spaced-repetition system now integrated with Playground completion. |
-| **Character Library** | ✅ Complete | Searchable database of 1,443 characters with stroke animations. |
-| **Mock Tests** | ✅ Complete | Reading and Listening simulations for TOCFL preparation. |
-| **Writing Board** | ✅ Complete | Guided and freehand character writing practice. |
+| **Tech Workplace Module** | ✅ NEW | Chapters 31-35 covering Semiconductor Fabs, Office Sync, and HR/Contracts. |
+| **Character Radical Blocks** | ✅ NEW | 8 blocks of radical-focused learning (Human Body, Nature, Metal, etc.). |
+| **Stage-Based Learning** | ✅ NEW | Foundation playground now organized by Weekly Stages (Week 1 to 16). |
+| **Taiwan Career Guide** | ✅ NEW | Curated content for working at companies like Micron and TSMC. |
+| **Beginner Playground** | ✅ Complete | 100 lessons focused on "baby-style" high-repetition recognition (10x drills). |
+| **Voice Practice** | ✅ Complete | Record and play back your own pronunciation for comparison with native TTS. |
+| **PWA Support** | ✅ Complete | Installable on mobile/desktop with full offline support. |
 
 ## 📂 Project Structure
 

@@ -7,6 +7,7 @@
 const PlaygroundModule = (() => {
 
   let playgroundData = null;
+  let charPlaygroundData = null;
   let currentLesson = null;
   let currentStep = 0;
   let sessionVocab = [];
@@ -21,31 +22,60 @@ const PlaygroundModule = (() => {
         playgroundData = [];
       }
     }
+    if (!charPlaygroundData) {
+      try {
+        const res = await fetch('data/char_playground_content.json');
+        charPlaygroundData = await res.json();
+      } catch (e) {
+        console.error("Failed to load character playground data", e);
+        charPlaygroundData = [];
+      }
+    }
   }
+
+  // ── Extreme Beginner Playground ──────────────────────────────────────────
 
   async function render(container) {
     await init();
+    
+    // Group by stage
+    const stages = {};
+    playgroundData.forEach(pg => {
+      const s = pg.stage || 'other';
+      if (!stages[s]) stages[s] = { label: pg.stage_label || 'Other', groups: [] };
+      stages[s].groups.push(pg);
+    });
+
     container.innerHTML = `
       <div class="page-header">
         <h2>Extreme Beginner Playground</h2>
         <p>Baby-style repetitive learning. Master the foundations through intense recognition drills.</p>
       </div>
       
-      <div class="pg-grid" id="pg-list">
-        ${playgroundData.map(pg => {
-          const completedCount = pg.lessons.filter(l => App.state.progress.playground?.[l.id]).length;
-          const isDone = completedCount === pg.lessons.length;
-          return `
-            <div class="pg-card ${isDone ? 'pg-complete' : ''}" onclick="PlaygroundModule.openPlayground('${pg.id}')">
-              <div class="pg-card-icon">${isDone ? '🏆' : '🎠'}</div>
-              <div class="pg-card-content">
-                <h3>${pg.title}</h3>
-                <p>${pg.subtitle}</p>
-                <div class="pg-lesson-count">${completedCount} / ${pg.lessons.length} Lessons</div>
-              </div>
+      <div class="pg-stages">
+        ${Object.keys(stages).map(sKey => `
+          <div class="pg-stage-section">
+            <h3 class="pg-stage-title">${stages[sKey].label}</h3>
+            <div class="pg-grid">
+              ${stages[sKey].groups.map(pg => {
+                const completedCount = pg.lessons.filter(l => App.state.progress.playground?.[l.id]).length;
+                const isDone = completedCount === pg.lessons.length;
+                const isLocked = pg.prerequisite && !App.state.progress.playground?.[playgroundData.find(p => p.id === pg.prerequisite)?.lessons[0]?.id]; // Simple lock check
+
+                return `
+                  <div class="pg-card ${isDone ? 'pg-complete' : ''} ${isLocked ? 'locked' : ''}" onclick="${isLocked ? '' : `PlaygroundModule.openPlayground('${pg.id}')`}">
+                    <div class="pg-card-icon">${isLocked ? '🔒' : (isDone ? '🏆' : '🎠')}</div>
+                    <div class="pg-card-content">
+                      <h3>${pg.title}</h3>
+                      <p>${pg.entry_description || pg.subtitle}</p>
+                      <div class="pg-lesson-count">${completedCount} / ${pg.lessons.length} Lessons</div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
             </div>
-          `;
-        }).join('')}
+          </div>
+        `).join('')}
       </div>
     `;
   }
@@ -60,6 +90,7 @@ const PlaygroundModule = (() => {
         <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.render(document.getElementById('page-content'))">← Back</button>
         <h2>${pg.title}</h2>
         <p>${pg.subtitle}</p>
+        ${pg.chapter_links && pg.chapter_links.length ? `<div class="text-small text-muted mt-4">Reinforces Chapters: ${pg.chapter_links.join(', ')}</div>` : ''}
       </div>
       
       <div class="pg-lessons-list">
@@ -87,32 +118,20 @@ const PlaygroundModule = (() => {
 
     currentLesson = lesson;
     currentStep = 0;
-    
-    // Create a repetitive session
     sessionVocab = [];
     const baseVocab = lesson.vocab;
     const reps = lesson.repetition_factor || 10;
 
-    // Sequence: 
-    // 1. Learn (all)
-    // 2. Repetitive drills (shuffled sets)
-    // 3. Challenge Quiz (normal chapter style)
-
-    // Phase 1: Direct Learning
     baseVocab.forEach(v => sessionVocab.push({ ...v, mode: 'learn' }));
 
-    // Phase 2: Repetitive drills
     for (let i = 0; i < reps; i++) {
       const shuffled = [...baseVocab].sort(() => Math.random() - 0.5);
       shuffled.forEach(v => {
-        // Alternating between recognition and audio
         const mode = Math.random() > 0.5 ? 'recog' : 'audio';
         sessionVocab.push({ ...v, mode });
       });
     }
 
-    // Phase 3: Challenge Quiz
-    // Mix of multiple choice and simple translation
     const quizCount = 10;
     for (let i = 0; i < quizCount; i++) {
       const v = baseVocab[Math.floor(Math.random() * baseVocab.length)];
@@ -253,7 +272,6 @@ const PlaygroundModule = (() => {
     } else {
       btn.classList.remove('btn-outline');
       btn.classList.add('btn-error');
-      // Shake effect
       btn.style.animation = 'shake 0.4s';
       setTimeout(() => {
         btn.style.animation = '';
@@ -269,17 +287,12 @@ const PlaygroundModule = (() => {
   }
 
   function renderCompletion() {
-    // Save progress
     if (!App.state.progress.playground) App.state.progress.playground = {};
     App.state.progress.playground[currentLesson.id] = true;
     App.saveProgress();
 
-    // SRS Bridge: Add lesson vocab to SRS
     if (typeof SRS !== 'undefined') {
-      currentLesson.vocab.forEach(v => {
-        // We use a high quality to indicate initial mastery from the playground
-        SRS.review(v.hanzi, 'GOOD', 'novice');
-      });
+      currentLesson.vocab.forEach(v => SRS.review(v.hanzi, 'GOOD', 'novice'));
     }
 
     const container = document.getElementById('page-content');
@@ -296,55 +309,238 @@ const PlaygroundModule = (() => {
 
   // ─── Character Playground ───────────────────────────────────────────────────
   
-  const FORMATIONS = [
-    { parts: ['人', '人'], result: '从', meaning: 'Follow' },
-    { parts: ['从', '人'], result: '众', meaning: 'Crowd' },
-    { parts: ['木', '木'], result: '林', meaning: 'Woods' },
-    { parts: ['林', '木'], result: '森', meaning: 'Forest' },
-    { parts: ['日', '月'], result: '明', meaning: 'Bright' },
-    { parts: ['女', '子'], result: '好', meaning: 'Good' },
-    { parts: ['口', '口'], result: '回', meaning: 'Return' },
-    { parts: ['火', '火'], result: '炎', meaning: 'Flame' },
-    { parts: ['火', '炎'], result: '焱', meaning: 'Blaze' },
-    { parts: ['门', '口'], result: '问', meaning: 'Ask' },
-    { parts: ['门', '日'], result: '间', meaning: 'Between' },
-    { parts: ['门', '木'], result: '闲', meaning: 'Leisure' },
-    { parts: ['纟', '工'], result: '红', meaning: 'Red' },
-    { parts: ['氵', '青'], result: '清', meaning: 'Clear' },
-    { parts: ['日', '生'], result: '星', meaning: 'Star' },
-    { parts: ['目', '目'], result: '眏', meaning: 'To gaze' },
-    { parts: ['手', '目'], result: '看', meaning: 'Watch/Look' },
-    { parts: ['小', '大'], result: '尖', meaning: 'Sharp/Pointed' },
-    { parts: ['不', '正'], result: '歪', meaning: 'Crooked' },
-    { parts: ['白', '水'], result: '泉', meaning: 'Spring (water)' },
-    { parts: ['山', '石'], result: '岩', meaning: 'Rock/Cliff' },
-    { parts: ['田', '力'], result: '男', meaning: 'Man/Male' },
-    { parts: ['人', '木'], result: '休', meaning: 'Rest' },
-    { parts: ['口', '鸟'], result: '鸣', meaning: 'Chirp' },
-    { parts: ['心', '亡'], result: '忘', meaning: 'Forget' },
-    { parts: ['女', '家'], result: '安', meaning: 'Safe/Peace' },
-    { parts: ['豕', '宀'], result: '家', meaning: 'Home/Pig under roof' },
-    { parts: ['日', '免'], result: '晚', meaning: 'Evening' }
-  ];
-
   async function renderCharPlayground(container) {
+    await init();
     container.innerHTML = `
       <div class="page-header">
         <h2>Character Playground</h2>
-        <p>Explore how basic components combine to form complex characters.</p>
+        <p>Master characters through their radical building blocks.</p>
       </div>
 
       <div class="cp-tabs">
-        <button class="cp-tab active" onclick="PlaygroundModule.switchCPTab('decomp')">Decomposition</button>
-        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('lab')">Formation Lab</button>
-        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('game')">Formation Game</button>
+        <button class="cp-tab active" onclick="PlaygroundModule.switchCPTab('blocks')">Radical Blocks</button>
+        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('decomp')">Explorer</button>
+        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('game')">Game</button>
       </div>
 
       <div id="cp-tab-content">
-        ${renderDecompTab()}
+        ${renderBlocksTab()}
       </div>
     `;
   }
+
+  function renderBlocksTab() {
+    return `
+      <div class="cp-blocks-grid">
+        ${charPlaygroundData.map(block => `
+          <div class="cp-block-card" style="border-top: 4px solid ${block.color}" onclick="PlaygroundModule.openRadicalBlock('${block.id}')">
+            <div class="cp-block-icon">${block.icon}</div>
+            <div class="cp-block-info">
+              <h3>${block.title}</h3>
+              <div class="text-zh">${block.titleZh}</div>
+              <p>${block.subtitle}</p>
+              <div class="cp-lesson-badges">
+                ${block.lessons.map(l => `<span class="badge badge-outline">${l.radical}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function openRadicalBlock(id) {
+    const block = charPlaygroundData.find(b => b.id === id);
+    if (!block) return;
+
+    const container = document.getElementById('page-content');
+    container.innerHTML = `
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back</button>
+        <h2>${block.title}</h2>
+        <p>${block.subtitle}</p>
+      </div>
+      
+      <div class="cp-lessons-list">
+        ${block.lessons.map((lesson, idx) => `
+          <div class="cp-lesson-card" onclick="PlaygroundModule.startRadicalLesson('${block.id}', '${lesson.id}')">
+            <div class="cp-lesson-radical">${lesson.radical}</div>
+            <div class="cp-lesson-info">
+              <h4>${lesson.radical_meaning}</h4>
+              <div class="text-muted text-small">${lesson.radical_pinyin} • ${lesson.stroke_count} strokes</div>
+              <div class="cp-compounds-preview">
+                ${lesson.compounds.slice(0, 5).map(c => `<span>${c.hanzi}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function startRadicalLesson(blockId, lessonId) {
+    const block = charPlaygroundData.find(b => b.id === blockId);
+    const lesson = block.lessons.find(l => l.id === lessonId);
+    if (!lesson) return;
+
+    currentLesson = lesson;
+    currentStep = 0;
+    
+    // Radical lessons follow a different flow:
+    // 1. Radical Card (intro)
+    // 2. Compounds explorer
+    // 3. Drills
+    
+    renderRadicalStep();
+  }
+
+  function renderRadicalStep() {
+    const lesson = currentLesson;
+    const container = document.getElementById('page-content');
+    
+    // For simplicity, we'll implement a 3-part lesson: Intro -> Compounds -> Quiz
+    if (currentStep === 0) {
+      container.innerHTML = `
+        <div class="cp-lesson-step">
+          <div class="cp-radical-intro">
+            <div class="cp-radical-big">${lesson.radical}</div>
+            <div class="cp-radical-meta">${lesson.radical_pinyin} • ${lesson.radical_meaning}</div>
+            ${lesson.variant_forms.length ? `<div class="cp-variants">Variants: ${lesson.variant_forms.join(', ')}</div>` : ''}
+            <div class="cp-mnemonic card mt-24">
+              <strong>Mnemonic:</strong> ${lesson.mnemonic}
+            </div>
+            <button class="btn btn-primary btn-lg mt-32" onclick="PlaygroundModule.nextRadicalStep()">Explore Compounds →</button>
+          </div>
+        </div>
+      `;
+    } else if (currentStep === 1) {
+      container.innerHTML = `
+        <div class="cp-lesson-step">
+          <h3>Compounds containing 「${lesson.radical}」</h3>
+          <p class="mb-24">See how the radical gives meaning to these characters.</p>
+          <div class="cp-compounds-grid">
+            ${lesson.compounds.map(c => `
+              <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')">
+                <div class="cp-c-hanzi">${c.hanzi}</div>
+                <div class="cp-c-meta">
+                  <div class="cp-c-py">${c.pinyin}</div>
+                  <div class="cp-c-def">${c.definition}</div>
+                </div>
+                <div class="cp-c-breakdown">${c.breakdown}</div>
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn btn-primary btn-lg mt-32" onclick="PlaygroundModule.nextRadicalStep()">Start Drills →</button>
+        </div>
+      `;
+    } else if (currentStep <= lesson.drills.length + 1) {
+      const drillIdx = currentStep - 2;
+      if (drillIdx >= lesson.drills.length) {
+        renderRadicalCompletion();
+        return;
+      }
+      renderRadicalDrill(lesson.drills[drillIdx]);
+    }
+  }
+
+  function renderRadicalDrill(drill) {
+    const container = document.getElementById('page-content');
+    container.innerHTML = `
+      <div class="pg-lesson-header">
+        <div class="pg-step-meta">Drill ${currentStep - 1} / ${currentLesson.drills.length}</div>
+      </div>
+      <div class="cp-drill-container">
+        <h3 class="mb-16">${drill.instruction || 'Identify the correct character'}</h3>
+        ${renderDrillContent(drill)}
+      </div>
+    `;
+  }
+
+  function renderDrillContent(drill) {
+    switch (drill.type) {
+      case 'spot_radical':
+        return `
+          <div class="cp-spot-grid">
+            ${drill.chars.map(c => `<button class="cp-block" onclick="PlaygroundModule.checkSpot('${c}', this)">${c}</button>`).join('')}
+          </div>
+          <button class="btn btn-primary mt-24" onclick="PlaygroundModule.verifySpot()">Check Answers</button>
+        `;
+      case 'meaning_match':
+        return `
+          <div class="pg-big-hanzi">${drill.hanzi}</div>
+          <div class="pg-options-grid">
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+          </div>
+        `;
+      case 'build_recognition':
+        return `
+          <div class="pg-quiz-q mb-24">${drill.prompt}</div>
+          <div class="pg-options-grid">
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn pg-hanzi-opt" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+          </div>
+        `;
+      case 'sentence_fill':
+        return `
+          <div class="cp-sentence-q mb-24">${drill.sentence.replace('___', '<span class="blank">?</span>')}</div>
+          <div class="pg-options-grid">
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+          </div>
+        `;
+    }
+  }
+
+  // Helper for multi-select drills
+  window._cpSpotSelected = [];
+  function checkSpot(char, btn) {
+    if (btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      window._cpSpotSelected = window._cpSpotSelected.filter(c => c !== char);
+    } else {
+      btn.classList.add('selected');
+      window._cpSpotSelected.push(char);
+    }
+  }
+
+  function verifySpot() {
+    const drill = currentLesson.drills[currentStep - 2];
+    const correct = drill.answers.sort().join(',');
+    const selected = window._cpSpotSelected.sort().join(',');
+    
+    if (correct === selected) {
+      nextRadicalStep();
+    } else {
+      alert('Keep looking! Find all characters with the radical.');
+    }
+  }
+
+  function checkRadicalAnswer(sel, ans, btn) {
+    if (sel === ans) {
+      btn.classList.add('btn-success');
+      setTimeout(() => nextRadicalStep(), 600);
+    } else {
+      btn.classList.add('btn-error');
+      setTimeout(() => btn.classList.remove('btn-error'), 500);
+    }
+  }
+
+  function nextRadicalStep() {
+    currentStep++;
+    renderRadicalStep();
+  }
+
+  function renderRadicalCompletion() {
+    const container = document.getElementById('page-content');
+    container.innerHTML = `
+      <div class="pg-completion">
+        <div class="pg-done-icon">🌟</div>
+        <h2>Radical Mastered!</h2>
+        <p>You've learned the building blocks of Chinese characters.</p>
+        <button class="btn btn-primary mt-24" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Back to Characters</button>
+      </div>
+    `;
+  }
+
+  // ── Legacy / Explorer Support ──────────────────────────────────────────────
 
   function renderDecompTab() {
     return `
@@ -353,17 +549,13 @@ const PlaygroundModule = (() => {
           <input type="text" class="input" id="cp-input" placeholder="Enter a character (e.g. 森, 好, 媽)...">
           <button class="btn btn-primary" onclick="PlaygroundModule.decompose()">Decompose</button>
         </div>
-
         <div id="cp-result" class="cp-result-area">
-          <div class="empty-state">
-            <p>Enter a character above to see its "building blocks".</p>
-          </div>
+          <div class="empty-state"><p>Enter a character above to see its "building blocks".</p></div>
         </div>
-
         <div class="cp-basic-blocks mt-32">
           <h3>Common Building Blocks</h3>
           <div class="cp-block-grid">
-            ${['人','口','木','水','火','土','日','月','心','手','女','子','门','纟'].map(c => `
+            ${['人','口','木','水','火','土','日','月','心','手','女','子','門','纟'].map(c => `
               <div class="cp-block" onclick="PlaygroundModule.showCombinations('${c}')">${c}</div>
             `).join('')}
           </div>
@@ -372,37 +564,12 @@ const PlaygroundModule = (() => {
     `;
   }
 
-  function renderLabTab() {
-    return `
-      <div class="cp-container">
-        <h3>Character Formation Lab</h3>
-        <p class="text-muted mb-24">Watch how simple characters combine to create new meanings.</p>
-        
-        <div class="cp-lab-grid">
-          ${FORMATIONS.map(f => `
-            <div class="cp-lab-item">
-              <div class="cp-lab-parts">
-                ${f.parts.map(p => `<span class="cp-lab-part">${p}</span>`).join('<span class="cp-plus">+</span>')}
-              </div>
-              <div class="cp-lab-arrow">→</div>
-              <div class="cp-lab-result" onclick="showCharModal('${f.result}')">
-                <div class="cp-lr-char">${f.result}</div>
-                <div class="cp-lr-mean">${f.meaning}</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  }
-
   function renderGameTab() {
+    // We'll use the first block for the game for now
+    const FORMATIONS = charPlaygroundData[0]?.lessons[0]?.compounds || [];
+    if (!FORMATIONS.length) return `<div class="empty-state">No formation data available.</div>`;
+
     const challenge = FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)];
-    const pool = new Set(challenge.parts);
-    while (pool.size < 8) {
-      pool.add(FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)].parts[0]);
-    }
-    const shuffledPool = Array.from(pool).sort(() => Math.random() - 0.5);
     window._cpGameTarget = challenge;
     window._cpGameSelected = [];
 
@@ -410,55 +577,25 @@ const PlaygroundModule = (() => {
       <div class="cp-container cp-game-view">
         <div class="cp-game-header">
           <h3>Build the Character!</h3>
-          <p>Select the components that form: <strong class="text-accent" style="font-size:1.5rem">「${challenge.result}」</strong></p>
-          <div class="text-muted text-small">Meaning: ${challenge.meaning}</div>
+          <p>Select components for: <strong class="text-accent" style="font-size:1.5rem">「${challenge.hanzi}」</strong></p>
+          <div class="text-muted text-small">Meaning: ${challenge.definition}</div>
         </div>
-        <div class="cp-built-area" id="cp-game-built">
-          <span class="text-muted">Select components below...</span>
-        </div>
-        <div class="cp-game-pool">
-          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" onclick="PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
-        </div>
+        <div class="cp-built-area" id="cp-game-built">Select components...</div>
         <div id="cp-game-feedback" class="quiz-feedback"></div>
         <div class="flex gap-12 justify-center mt-24">
-          <button class="btn btn-primary" onclick="PlaygroundModule.cpGameCheck()">Check Formation</button>
-          <button class="btn btn-ghost" onclick="PlaygroundModule.switchCPTab('game')">New Character 🔄</button>
+          <button class="btn btn-primary" onclick="PlaygroundModule.switchCPTab('game')">Next Character 🔄</button>
         </div>
       </div>
     `;
-  }
-
-  function cpGameSelect(part, btn) {
-    if (btn.classList.contains('selected')) {
-      btn.classList.remove('selected');
-      window._cpGameSelected = window._cpGameSelected.filter(p => p !== part);
-    } else {
-      btn.classList.add('selected');
-      window._cpGameSelected.push(part);
-    }
-    const area = document.getElementById('cp-game-built');
-    if (area) {
-      area.innerHTML = window._cpGameSelected.map(p => `<span class="cp-built-part">${p}</span>`).join(' + ') || '<span class="text-muted">Select components below...</span>';
-    }
-  }
-
-  function cpGameCheck() {
-    const target = window._cpGameTarget;
-    const selected = [...window._cpGameSelected].sort();
-    const correct = [...target.parts].sort();
-    const feedback = document.getElementById('cp-game-feedback');
-    const isCorrect = JSON.stringify(selected) === JSON.stringify(correct);
-    feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
-    feedback.innerHTML = isCorrect ? `✓ Perfect! <strong>${target.parts.join(' + ')} = ${target.result}</strong>` : `✗ Not quite. Try again!`;
-    if (isCorrect) App.logActivity('🧩', `Solved character puzzle: ${target.result}`);
   }
 
   function switchCPTab(tab) {
     const content = document.getElementById('cp-tab-content');
     const tabs = document.querySelectorAll('.cp-tab');
     tabs.forEach(t => t.classList.toggle('active', t.textContent.toLowerCase().includes(tab)));
-    if (tab === 'decomp') content.innerHTML = renderDecompTab();
-    else if (tab === 'lab') content.innerHTML = renderLabTab();
+    
+    if (tab === 'blocks') content.innerHTML = renderBlocksTab();
+    else if (tab === 'decomp') content.innerHTML = renderDecompTab();
     else content.innerHTML = renderGameTab();
   }
 
@@ -481,14 +618,13 @@ const PlaygroundModule = (() => {
         </div>
         <div class="cp-arrow">⬇️ decomposes into</div>
         <div class="cp-parts">
-          ${(charData.radicals || []).map(r => `
+          ${(charData.components || charData.radicals || []).map(c => `
             <div class="cp-part-item">
-              <div class="cp-part-char">${r}</div>
-              <div class="cp-part-label">Radical</div>
-            </div>`).join('')}
-          <div class="cp-part-plus">+</div>
-          <div class="cp-part-item"><div class="cp-part-char">?</div><div class="cp-part-label">Other</div></div>
+              <div class="cp-part-char">${c}</div>
+              <div class="cp-part-label">${charData.radicals?.includes(c) ? 'Radical' : 'Component'}</div>
+            </div>`).join('<div class="cp-part-plus">+</div>')}
         </div>
+        ${charData.mnemonic ? `<div class="cp-mnemonic mt-24"><strong>Mnemonic:</strong> ${charData.mnemonic}</div>` : ''}
       </div>`;
   }
 
@@ -520,7 +656,11 @@ const PlaygroundModule = (() => {
     decompose,
     showCombinations,
     switchCPTab,
-    cpGameSelect,
-    cpGameCheck
+    openRadicalBlock,
+    startRadicalLesson,
+    nextRadicalStep,
+    checkSpot,
+    verifySpot,
+    checkRadicalAnswer
   };
 })();

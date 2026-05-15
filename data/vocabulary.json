@@ -4997,7 +4997,7 @@
     {
       "id": "ch11",
       "name": "Chapter 11: Meeting Friends",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "聚會",
@@ -5529,7 +5529,7 @@
     {
       "id": "ch12",
       "name": "Chapter 12: Ordering at a Restaurant",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "服務員",
@@ -6031,7 +6031,7 @@
     {
       "id": "ch13",
       "name": "Chapter 13: Work & Career",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "面試",
@@ -6553,7 +6553,7 @@
     {
       "id": "ch14",
       "name": "Chapter 14: At the Bank",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "銀行",
@@ -7090,7 +7090,7 @@
     {
       "id": "ch15",
       "name": "Chapter 15: Travel & Booking",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "旅遊",
@@ -7752,7 +7752,7 @@
     {
       "id": "ch16",
       "name": "Chapter 16: School Life",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "科目",
@@ -8399,7 +8399,7 @@
     {
       "id": "ch17",
       "name": "Chapter 17: Bargaining & Markets",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "討價還價",
@@ -9044,7 +9044,7 @@
     {
       "id": "ch18",
       "name": "Chapter 18: Emergency & Help",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "緊急",
@@ -9701,7 +9701,7 @@
     {
       "id": "ch19",
       "name": "Chapter 19: Social Media & Tech",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "社群媒體",
@@ -10363,7 +10363,7 @@
     {
       "id": "ch20",
       "name": "Chapter 20: At Home",
-      "level": "A1",
+      "level": "a1",
       "words": [
         {
           "word": "家裡",
@@ -10991,7 +10991,7 @@
     {
       "id": "ch21",
       "name": "Chapter 21: Watching the News",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "新聞",
@@ -11658,7 +11658,7 @@
     {
       "id": "ch22",
       "name": "Chapter 22: Business Meetings",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "商務",
@@ -12295,7 +12295,7 @@
     {
       "id": "ch23",
       "name": "Chapter 23: Cultural Differences",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "文化差異",
@@ -17554,7 +17554,7 @@
     {
       "id": "greetings",
       "name": "Greetings & Introductions",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "你好",
@@ -17786,7 +17786,7 @@
     {
       "id": "family",
       "name": "Family Members",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "爸爸",
@@ -18138,7 +18138,7 @@
     {
       "id": "food",
       "name": "Food & Dining",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "早餐",
@@ -18485,7 +18485,7 @@
     {
       "id": "transport",
       "name": "Transportation",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "捷運",
@@ -18837,7 +18837,7 @@
     {
       "id": "time",
       "name": "Time Expressions",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "今天",
@@ -19189,7 +19189,7 @@
     {
       "id": "shopping",
       "name": "Shopping",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "百貨公司",
@@ -19411,7 +19411,7 @@
     {
       "id": "weather",
       "name": "Weather",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "晴天",
@@ -19648,7 +19648,7 @@
     {
       "id": "health",
       "name": "Health & Body",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "頭痛",
@@ -19870,7 +19870,7 @@
     {
       "id": "school",
       "name": "School & Study",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "大學",
@@ -20107,7 +20107,7 @@
     {
       "id": "directions",
       "name": "Directions & Places",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "左邊",
@@ -20344,7 +20344,7 @@
     {
       "id": "work",
       "name": "Work & Careers",
-      "level": "B1",
+      "level": "b1",
       "words": [
         {
           "word": "公司",
@@ -20556,7 +20556,7 @@
     {
       "id": "hobbies",
       "name": "Hobbies & Leisure",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "看電影",
@@ -20763,7 +20763,7 @@
     {
       "id": "classifiers",
       "name": "Measure Words (量詞)",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "一個人",
@@ -21000,7 +21000,7 @@
     {
       "id": "m4",
       "name": "Digital Communication",
-      "level": "A2/B1",
+      "level": "a2/b1",
       "words": [
         {
           "word": "通訊軟體",
@@ -21507,7 +21507,7 @@
     {
       "id": "m5",
       "name": "Conversation Management",
-      "level": "B1",
+      "level": "b1",
       "words": [
         {
           "word": "澄清",
@@ -22014,7 +22014,7 @@
     {
       "id": "m6",
       "name": "Health & Fitness",
-      "level": "A2/B1",
+      "level": "a2/b1",
       "words": [
         {
           "word": "瑜珈",
@@ -22521,7 +22521,7 @@
     {
       "id": "m7",
       "name": "Work & Career",
-      "level": "B1",
+      "level": "b1",
       "words": [
         {
           "word": "財務",
@@ -23028,7 +23028,7 @@
     {
       "id": "m1",
       "name": "Socializing & Routine",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "正在",
@@ -23535,7 +23535,7 @@
     {
       "id": "m2",
       "name": "Professional & Academic",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "項目",
@@ -24042,7 +24042,7 @@
     {
       "id": "m3",
       "name": "Navigating the City",
-      "level": "A2",
+      "level": "a2",
       "words": [
         {
           "word": "捷運",

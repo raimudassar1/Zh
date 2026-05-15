@@ -626,6 +626,7 @@ const routes = {
   '/scenarios':           { title: 'Everyday Scenarios', render: renderScenariosPage,     route: 'scenarios' },
   '/library':             { title: 'Character Library',  render: renderLibrary,           route: 'library' },
   '/vocabulary':          { title: 'Vocabulary Library', render: renderVocabLibrary,       route: 'vocabulary' },
+  '/grammar':             { title: 'Grammar Library',    render: renderGrammarLibrary,     route: 'grammar' },
   '/flashcards':          { title: 'Flashcards',         render: renderFlashcardsPage,    route: 'flashcards' },
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
   '/quiz/pronunciation':  { title: 'Pronunciation Quiz', render: renderPronunciationQuiz, route: 'quiz-pronunciation' },
@@ -759,7 +760,7 @@ async function renderDashboard(container) {
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <a href="#/onboarding" class="btn" style="background:#fff;color:var(--red);font-weight:700">🎵 Start: Pinyin & Tones →</a>
-        <a href="#/learn" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)">🗺️ View Learning Path</a>
+        <a href="#/playground" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)">🎠 Day 1: Playground pg1</a>
       </div>
     </div>` : ''}
 
@@ -1256,6 +1257,11 @@ function renderVocabQuiz(container) {
 function renderVocabLibrary(container) {
   if (window.VocabularyModule) return window.VocabularyModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Vocabulary Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+}
+
+function renderGrammarLibrary(container) {
+  if (typeof GrammarModule !== 'undefined') return GrammarModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Grammar Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderReadingPage(container) {
