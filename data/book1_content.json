@@ -740,152 +740,673 @@
         "hanzi": "和",
         "pinyin": "hé",
         "definition": "and"
+      },
+      {
+        "hanzi": "個",
+        "pinyin": "gè",
+        "definition": "measure word for people"
+      },
+      {
+        "hanzi": "幾",
+        "pinyin": "jǐ",
+        "definition": "how many"
+      },
+      {
+        "hanzi": "兩",
+        "pinyin": "liǎng",
+        "definition": "two (count)"
+      },
+      {
+        "hanzi": "歲",
+        "pinyin": "suì",
+        "definition": "years old"
+      },
+      {
+        "hanzi": "照片",
+        "pinyin": "zhàopiàn",
+        "definition": "photo"
+      },
+      {
+        "hanzi": "這",
+        "pinyin": "zhè",
+        "definition": "this"
+      },
+      {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "definition": "that"
+      },
+      {
+        "hanzi": "誰",
+        "pinyin": "shéi",
+        "definition": "who"
+      },
+      {
+        "hanzi": "的",
+        "pinyin": "de",
+        "definition": "possessive particle"
+      },
+      {
+        "hanzi": "可愛",
+        "pinyin": "kě'ài",
+        "definition": "cute"
+      },
+      {
+        "hanzi": "漂亮",
+        "pinyin": "piàoliang",
+        "definition": "beautiful"
+      },
+      {
+        "hanzi": "帥",
+        "pinyin": "shuài",
+        "definition": "handsome"
+      },
+      {
+        "hanzi": "張",
+        "pinyin": "zhāng",
+        "definition": "measure word for photos/paper"
+      },
+      {
+        "hanzi": "工程師",
+        "pinyin": "gōngchéngshī",
+        "definition": "engineer"
+      },
+      {
+        "hanzi": "公司",
+        "pinyin": "gōngsī",
+        "definition": "company"
+      },
+      {
+        "hanzi": "美光",
+        "pinyin": "Měiguāng",
+        "definition": "Micron"
+      },
+      {
+        "hanzi": "台積電",
+        "pinyin": "Táijīdiàn",
+        "definition": "TSMC"
+      },
+      {
+        "hanzi": "住在",
+        "pinyin": "zhù zài",
+        "definition": "live in"
+      },
+      {
+        "hanzi": "台北",
+        "pinyin": "Táiběi",
+        "definition": "Taipei"
+      },
+      {
+        "hanzi": "新竹",
+        "pinyin": "Xīnzhú",
+        "definition": "Hsinchu"
+      },
+      {
+        "hanzi": "大",
+        "pinyin": "dà",
+        "definition": "big"
+      },
+      {
+        "hanzi": "小",
+        "pinyin": "xiǎo",
+        "definition": "small"
+      },
+      {
+        "hanzi": "那邊",
+        "pinyin": "nàbiān",
+        "definition": "there"
+      },
+      {
+        "hanzi": "這裡",
+        "pinyin": "zhèlǐ",
+        "definition": "here"
+      },
+      {
+        "hanzi": "做",
+        "pinyin": "zuò",
+        "definition": "to do"
+      },
+      {
+        "hanzi": "忙",
+        "pinyin": "máng",
+        "definition": "busy"
+      },
+      {
+        "hanzi": "男",
+        "pinyin": "nán",
+        "definition": "male"
+      },
+      {
+        "hanzi": "女",
+        "pinyin": "nǚ",
+        "definition": "female"
+      },
+      {
+        "hanzi": "朋友",
+        "pinyin": "péngyǒu",
+        "definition": "friend"
       }
     ],
     "dialogues": [
       {
-        "title": "How Many People in Your Family?",
+        "title": "我的家人 Conversation 1",
         "lines": [
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
           },
           {
             "speaker": "田中",
-            "zh": "美玲，妳家有幾個人？",
-            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
-            "en": "Meiling, how many people in your family?"
+            "zh": "田中正在說關於我的家人的話。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
           },
           {
             "speaker": "美玲",
-            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
-            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
-            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+            "zh": "美玲正在說關於我的家人的話。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於我的家人的話。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Conversation 2",
+        "lines": [
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊我的家人的工作內容。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊我的家人的工作內容。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Conversation 3",
+        "lines": [
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理我的家人的相關事宜。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理我的家人的相關事宜。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
           }
         ]
       }
     ],
     "readings": [
       {
-        "title": "My Big Family",
-        "text": "我家有很多人。爸爸是老師，媽媽是醫生。哥哥和姐姐都是學生。我們住在台北。雖然大家都很忙，但是我們很高興能在一起生活。我愛我的家人，他們也愛我。每天晚上，我們都一起吃晚飯。",
+        "title": "我的家人 Reading 1",
+        "text": "我的家人是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
         "py": "...",
-        "questions": []
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "我的家人",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "我的家人"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Reading 2",
+        "text": "我的家人是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "我的家人",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "我的家人"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Reading 3",
+        "text": "我的家人是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "我的家人",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "我的家人"
+          }
+        ]
       }
     ],
     "listening": [
       {
-        "title": "Audio: Who is she?",
-        "text": "她是我的姐姐。她在美光工作。她是工程師。她很喜歡台灣。",
+        "title": "我的家人 Listening 1",
+        "text": "請聽這段關於我的家人的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
         "py": "...",
-        "questions": []
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "我的家人",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "我的家人"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Listening 2",
+        "text": "請聽這段關於我的家人的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "我的家人",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "我的家人"
+          }
+        ]
+      },
+      {
+        "title": "我的家人 Listening 3",
+        "text": "請聽這段關於我的家人的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "我的家人",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "我的家人"
+          }
+        ]
       }
     ],
-    "quizzes": []
+    "quizzes": [
+      {
+        "type": "choice",
+        "question": "Select 我的家人 related word:",
+        "options": [
+          "家",
+          "其他",
+          "不對",
+          "錯誤"
+        ],
+        "answer": "家"
+      },
+      {
+        "type": "fill",
+        "sentence": "家是___。",
+        "answer": "家",
+        "hint": "family/home"
+      }
+    ]
   },
   {
     "id": "b1_c3",
@@ -899,152 +1420,723 @@
         "hanzi": "週末",
         "pinyin": "zhōumò",
         "definition": "weekend"
+      },
+      {
+        "hanzi": "打球",
+        "pinyin": "dǎqiú",
+        "definition": "to play ball"
+      },
+      {
+        "hanzi": "看",
+        "pinyin": "kàn",
+        "definition": "to watch/look/read"
+      },
+      {
+        "hanzi": "電視",
+        "pinyin": "diànshì",
+        "definition": "TV"
+      },
+      {
+        "hanzi": "電影",
+        "pinyin": "diànyǐng",
+        "definition": "movie"
+      },
+      {
+        "hanzi": "唱歌",
+        "pinyin": "chànggē",
+        "definition": "to sing"
+      },
+      {
+        "hanzi": "跳舞",
+        "pinyin": "tiàowǔ",
+        "definition": "to dance"
+      },
+      {
+        "hanzi": "聽",
+        "pinyin": "tīng",
+        "definition": "to listen"
+      },
+      {
+        "hanzi": "音樂",
+        "pinyin": "yīnyuè",
+        "definition": "music"
+      },
+      {
+        "hanzi": "書",
+        "pinyin": "shū",
+        "definition": "book"
+      },
+      {
+        "hanzi": "對不對",
+        "pinyin": "duìbúduì",
+        "definition": "right?"
+      },
+      {
+        "hanzi": "有的時候",
+        "pinyin": "yǒudeshíhòu",
+        "definition": "sometimes"
+      },
+      {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "definition": "to go"
+      },
+      {
+        "hanzi": "外國",
+        "pinyin": "wàiguó",
+        "definition": "foreign country"
+      },
+      {
+        "hanzi": "請客",
+        "pinyin": "qǐngkè",
+        "definition": "to treat someone"
+      },
+      {
+        "hanzi": "昨天",
+        "pinyin": "zuótiān",
+        "definition": "yesterday"
+      },
+      {
+        "hanzi": "所以",
+        "pinyin": "suǒyǐ",
+        "definition": "so"
+      },
+      {
+        "hanzi": "小",
+        "pinyin": "xiǎo",
+        "definition": "small"
+      },
+      {
+        "hanzi": "好久不見",
+        "pinyin": "hǎojiǔbújiàn",
+        "definition": "long time no see"
+      },
+      {
+        "hanzi": "不錯",
+        "pinyin": "búcuò",
+        "definition": "not bad"
+      },
+      {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "definition": "to want/think"
+      },
+      {
+        "hanzi": "覺得",
+        "pinyin": "juédé",
+        "definition": "to feel/think"
+      },
+      {
+        "hanzi": "有意思",
+        "pinyin": "yǒuyìsi",
+        "definition": "interesting"
+      },
+      {
+        "hanzi": "只",
+        "pinyin": "zhǐ",
+        "definition": "only"
+      },
+      {
+        "hanzi": "睡覺",
+        "pinyin": "shuìjiào",
+        "definition": "to sleep"
+      },
+      {
+        "hanzi": "算了",
+        "pinyin": "suànle",
+        "definition": "forget it"
+      },
+      {
+        "hanzi": "找",
+        "pinyin": "zhǎo",
+        "definition": "to look for"
+      },
+      {
+        "hanzi": "別人",
+        "pinyin": "biérén",
+        "definition": "other people"
+      },
+      {
+        "hanzi": "別的",
+        "pinyin": "biéde",
+        "definition": "other"
+      },
+      {
+        "hanzi": "運動",
+        "pinyin": "yùndòng",
+        "definition": "exercise/sports"
+      },
+      {
+        "hanzi": "跑步",
+        "pinyin": "pǎobù",
+        "definition": "running"
+      },
+      {
+        "hanzi": "游泳",
+        "pinyin": "yóuyǒng",
+        "definition": "swimming"
+      },
+      {
+        "hanzi": "爬山",
+        "pinyin": "páshān",
+        "definition": "hiking"
+      },
+      {
+        "hanzi": "KTV",
+        "pinyin": "KTV",
+        "definition": "KTV"
+      },
+      {
+        "hanzi": "咖啡館",
+        "pinyin": "kāfēiguǎn",
+        "definition": "cafe"
+      },
+      {
+        "hanzi": "逛街",
+        "pinyin": "guàngjie",
+        "definition": "shopping"
+      },
+      {
+        "hanzi": "愛",
+        "pinyin": "ài",
+        "definition": "love"
+      },
+      {
+        "hanzi": "籃球",
+        "pinyin": "lánqiú",
+        "definition": "basketball"
+      },
+      {
+        "hanzi": "網球",
+        "pinyin": "wǎngqiú",
+        "definition": "tennis"
+      },
+      {
+        "hanzi": "棒球",
+        "pinyin": "bàngqiú",
+        "definition": "baseball"
       }
     ],
     "dialogues": [
       {
-        "title": "Weekend Plans",
+        "title": "週末活動 Conversation 1",
         "lines": [
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
           },
           {
-            "speaker": "A",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
           },
           {
-            "speaker": "B",
-            "zh": "你週末想做什麼？",
-            "py": "Nǐ zhōumò xiǎng zuò shénme?",
-            "en": "What do you want to do this weekend?"
+            "speaker": "美玲",
+            "zh": "美玲正在說關於週末活動的話。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於週末活動的話。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Conversation 2",
+        "lines": [
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊週末活動的工作內容。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊週末活動的工作內容。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Conversation 3",
+        "lines": [
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理週末活動的相關事宜。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理週末活動的相關事宜。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
           }
         ]
       }
     ],
     "readings": [
       {
-        "title": "My Weekend",
-        "text": "週末我很忙。我喜歡看電影，也喜歡打球。",
+        "title": "週末活動 Reading 1",
+        "text": "週末活動是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
         "py": "...",
-        "questions": []
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "週末活動",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "週末活動"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Reading 2",
+        "text": "週末活動是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "週末活動",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "週末活動"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Reading 3",
+        "text": "週末活動是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "週末活動",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "週末活動"
+          }
+        ]
       }
     ],
     "listening": [
       {
-        "title": "Audio: Saturday",
-        "text": "星期六我要去圖書館看書。",
+        "title": "週末活動 Listening 1",
+        "text": "請聽這段關於週末活動的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
         "py": "...",
-        "questions": []
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "週末活動",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "週末活動"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Listening 2",
+        "text": "請聽這段關於週末活動的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "週末活動",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "週末活動"
+          }
+        ]
+      },
+      {
+        "title": "週末活動 Listening 3",
+        "text": "請聽這段關於週末活動的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "週末活動",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "週末活動"
+          }
+        ]
       }
     ],
-    "quizzes": []
+    "quizzes": [
+      {
+        "type": "choice",
+        "question": "Select 週末活動 related word:",
+        "options": [
+          "週末",
+          "其他",
+          "不對",
+          "錯誤"
+        ],
+        "answer": "週末"
+      },
+      {
+        "type": "fill",
+        "sentence": "週末是___。",
+        "answer": "週末",
+        "hint": "weekend"
+      }
+    ]
   },
   {
     "id": "b1_c4",
@@ -1053,11 +2145,733 @@
     "title": "請問一共多少錢？",
     "subtitle": "Asking Prices",
     "intro": "Placeholder intro.",
-    "vocab": [],
-    "dialogues": [],
-    "readings": [],
-    "listening": [],
-    "quizzes": []
+    "vocab": [
+      {
+        "hanzi": "請問",
+        "pinyin": "qǐngwèn",
+        "definition": "excuse me"
+      },
+      {
+        "hanzi": "一共",
+        "pinyin": "yígòng",
+        "definition": "altogether"
+      },
+      {
+        "hanzi": "多少",
+        "pinyin": "duōshǎo",
+        "definition": "how much"
+      },
+      {
+        "hanzi": "錢",
+        "pinyin": "qián",
+        "definition": "money"
+      },
+      {
+        "hanzi": "塊",
+        "pinyin": "kuài",
+        "definition": "dollar (measure word)"
+      },
+      {
+        "hanzi": "毛",
+        "pinyin": "máo",
+        "definition": "10 cents"
+      },
+      {
+        "hanzi": "分",
+        "pinyin": "fēn",
+        "definition": "cent"
+      },
+      {
+        "hanzi": "百",
+        "pinyin": "bǎi",
+        "definition": "hundred"
+      },
+      {
+        "hanzi": "千",
+        "pinyin": "qiān",
+        "definition": "thousand"
+      },
+      {
+        "hanzi": "萬",
+        "pinyin": "wàn",
+        "definition": "ten thousand"
+      },
+      {
+        "hanzi": "買",
+        "pinyin": "mǎi",
+        "definition": "to buy"
+      },
+      {
+        "hanzi": "東西",
+        "pinyin": "dōngxi",
+        "definition": "thing/stuff"
+      },
+      {
+        "hanzi": "衣服",
+        "pinyin": "yīfú",
+        "definition": "clothes"
+      },
+      {
+        "hanzi": "件",
+        "pinyin": "jiàn",
+        "definition": "measure word for clothes"
+      },
+      {
+        "hanzi": "襯衫",
+        "pinyin": "chènshān",
+        "definition": "shirt"
+      },
+      {
+        "hanzi": "褲子",
+        "pinyin": "kùzi",
+        "definition": "pants"
+      },
+      {
+        "hanzi": "鞋子",
+        "pinyin": "xiézi",
+        "definition": "shoes"
+      },
+      {
+        "hanzi": "便宜",
+        "pinyin": "piányí",
+        "definition": "cheap"
+      },
+      {
+        "hanzi": "貴",
+        "pinyin": "guì",
+        "definition": "expensive"
+      },
+      {
+        "hanzi": "打折",
+        "pinyin": "dǎzhé",
+        "definition": "discount"
+      },
+      {
+        "hanzi": "刷卡",
+        "pinyin": "shuākǎ",
+        "definition": "credit card"
+      },
+      {
+        "hanzi": "付錢",
+        "pinyin": "fùqián",
+        "definition": "to pay"
+      },
+      {
+        "hanzi": "現金",
+        "pinyin": "xiànjīn",
+        "definition": "cash"
+      },
+      {
+        "hanzi": "找錢",
+        "pinyin": "zhǎoqián",
+        "definition": "give change"
+      },
+      {
+        "hanzi": "這裡",
+        "pinyin": "zhèlǐ",
+        "definition": "here"
+      },
+      {
+        "hanzi": "收據",
+        "pinyin": "shōujù",
+        "definition": "receipt"
+      },
+      {
+        "hanzi": "發票",
+        "pinyin": "fāpiào",
+        "definition": "invoice"
+      },
+      {
+        "hanzi": "袋子",
+        "pinyin": "dàizi",
+        "definition": "bag"
+      },
+      {
+        "hanzi": "可以",
+        "pinyin": "kěyǐ",
+        "definition": "can/may"
+      },
+      {
+        "hanzi": "試穿",
+        "pinyin": "shìchuān",
+        "definition": "try on"
+      },
+      {
+        "hanzi": "號",
+        "pinyin": "hào",
+        "definition": "size/number"
+      },
+      {
+        "hanzi": "大號",
+        "pinyin": "dàhào",
+        "definition": "large size"
+      },
+      {
+        "hanzi": "中號",
+        "pinyin": "zhōnghào",
+        "definition": "medium size"
+      },
+      {
+        "hanzi": "小號",
+        "pinyin": "xiǎohào",
+        "definition": "small size"
+      },
+      {
+        "hanzi": "顏色",
+        "pinyin": "yánsè",
+        "definition": "color"
+      },
+      {
+        "hanzi": "紅",
+        "pinyin": "hóng",
+        "definition": "red"
+      },
+      {
+        "hanzi": "黑",
+        "pinyin": "hēi",
+        "definition": "black"
+      },
+      {
+        "hanzi": "白",
+        "pinyin": "bái",
+        "definition": "white"
+      },
+      {
+        "hanzi": "藍",
+        "pinyin": "lán",
+        "definition": "blue"
+      },
+      {
+        "hanzi": "黃",
+        "pinyin": "huáng",
+        "definition": "yellow"
+      },
+      {
+        "hanzi": "綠",
+        "pinyin": "lǜ",
+        "definition": "green"
+      }
+    ],
+    "dialogues": [
+      {
+        "title": "詢問價格 Conversation 1",
+        "lines": [
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於詢問價格的話。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於詢問價格的話。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Conversation 2",
+        "lines": [
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊詢問價格的工作內容。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊詢問價格的工作內容。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Conversation 3",
+        "lines": [
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理詢問價格的相關事宜。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理詢問價格的相關事宜。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      }
+    ],
+    "readings": [
+      {
+        "title": "詢問價格 Reading 1",
+        "text": "詢問價格是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "詢問價格",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Reading 2",
+        "text": "詢問價格是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "詢問價格",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Reading 3",
+        "text": "詢問價格是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "詢問價格",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      }
+    ],
+    "listening": [
+      {
+        "title": "詢問價格 Listening 1",
+        "text": "請聽這段關於詢問價格的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "詢問價格",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Listening 2",
+        "text": "請聽這段關於詢問價格的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "詢問價格",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      },
+      {
+        "title": "詢問價格 Listening 3",
+        "text": "請聽這段關於詢問價格的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "詢問價格",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "詢問價格"
+          }
+        ]
+      }
+    ],
+    "quizzes": [
+      {
+        "type": "choice",
+        "question": "Select 詢問價格 related word:",
+        "options": [
+          "請問",
+          "其他",
+          "不對",
+          "錯誤"
+        ],
+        "answer": "請問"
+      },
+      {
+        "type": "fill",
+        "sentence": "請問是___。",
+        "answer": "請問",
+        "hint": "excuse me"
+      }
+    ]
   },
   {
     "id": "b1_c5",
@@ -1066,11 +2880,733 @@
     "title": "牛肉麵真好吃",
     "subtitle": "Ordering Food",
     "intro": "Placeholder intro.",
-    "vocab": [],
-    "dialogues": [],
-    "readings": [],
-    "listening": [],
-    "quizzes": []
+    "vocab": [
+      {
+        "hanzi": "牛肉麵",
+        "pinyin": "niúròumiàn",
+        "definition": "beef noodles"
+      },
+      {
+        "hanzi": "真",
+        "pinyin": "zhēn",
+        "definition": "really"
+      },
+      {
+        "hanzi": "好吃",
+        "pinyin": "hǎochī",
+        "definition": "delicious"
+      },
+      {
+        "hanzi": "點餐",
+        "pinyin": "diǎncān",
+        "definition": "to order food"
+      },
+      {
+        "hanzi": "菜單",
+        "pinyin": "càidān",
+        "definition": "menu"
+      },
+      {
+        "hanzi": "服務員",
+        "pinyin": "fúwùyuán",
+        "definition": "waiter"
+      },
+      {
+        "hanzi": "杯",
+        "pinyin": "bēi",
+        "definition": "measure word for cup"
+      },
+      {
+        "hanzi": "碗",
+        "pinyin": "wǎn",
+        "definition": "measure word for bowl"
+      },
+      {
+        "hanzi": "盤",
+        "pinyin": "pán",
+        "definition": "measure word for plate"
+      },
+      {
+        "hanzi": "水",
+        "pinyin": "shuǐ",
+        "definition": "water"
+      },
+      {
+        "hanzi": "茶",
+        "pinyin": "chá",
+        "definition": "tea"
+      },
+      {
+        "hanzi": "咖啡",
+        "pinyin": "kāfēi",
+        "definition": "coffee"
+      },
+      {
+        "hanzi": "可樂",
+        "pinyin": "kělè",
+        "definition": "cola"
+      },
+      {
+        "hanzi": "果汁",
+        "pinyin": "guǒzhī",
+        "definition": "juice"
+      },
+      {
+        "hanzi": "酸",
+        "pinyin": "suān",
+        "definition": "sour"
+      },
+      {
+        "hanzi": "甜",
+        "pinyin": "tián",
+        "definition": "sweet"
+      },
+      {
+        "hanzi": "苦",
+        "pinyin": "kǔ",
+        "definition": "bitter"
+      },
+      {
+        "hanzi": "辣",
+        "pinyin": "là",
+        "definition": "spicy"
+      },
+      {
+        "hanzi": "鹹",
+        "pinyin": "xián",
+        "definition": "salty"
+      },
+      {
+        "hanzi": "味道",
+        "pinyin": "wèidào",
+        "definition": "taste/flavor"
+      },
+      {
+        "hanzi": "熱",
+        "pinyin": "rè",
+        "definition": "hot"
+      },
+      {
+        "hanzi": "冷",
+        "pinyin": "lěng",
+        "definition": "cold"
+      },
+      {
+        "hanzi": "冰",
+        "pinyin": "bīng",
+        "definition": "ice"
+      },
+      {
+        "hanzi": "飽",
+        "pinyin": "bǎo",
+        "definition": "full"
+      },
+      {
+        "hanzi": "餓",
+        "pinyin": "è",
+        "definition": "hungry"
+      },
+      {
+        "hanzi": "渴",
+        "pinyin": "kě",
+        "definition": "thirsty"
+      },
+      {
+        "hanzi": "餐廳",
+        "pinyin": "cāntīng",
+        "definition": "restaurant"
+      },
+      {
+        "hanzi": "推薦",
+        "pinyin": "tuījiàn",
+        "definition": "recommend"
+      },
+      {
+        "hanzi": "特色",
+        "pinyin": "tèsè",
+        "definition": "specialty"
+      },
+      {
+        "hanzi": "小吃",
+        "pinyin": "xiǎochī",
+        "definition": "snacks"
+      },
+      {
+        "hanzi": "滷肉飯",
+        "pinyin": "lǔròufàn",
+        "definition": "braised pork rice"
+      },
+      {
+        "hanzi": "珍珠奶茶",
+        "pinyin": "zhēnnǎichá",
+        "definition": "bubble tea"
+      },
+      {
+        "hanzi": "炸雞排",
+        "pinyin": "zhàjīpái",
+        "definition": "fried chicken"
+      },
+      {
+        "hanzi": "臭豆腐",
+        "pinyin": "chòudòufu",
+        "definition": "stinky tofu"
+      },
+      {
+        "hanzi": "歡迎光臨",
+        "pinyin": "huānyíngguānglín",
+        "definition": "welcome"
+      },
+      {
+        "hanzi": "幾位",
+        "pinyin": "jǐwèi",
+        "definition": "how many people"
+      },
+      {
+        "hanzi": "內用",
+        "pinyin": "nèiyòng",
+        "definition": "dine in"
+      },
+      {
+        "hanzi": "外帶",
+        "pinyin": "wàidài",
+        "definition": "take out"
+      },
+      {
+        "hanzi": "買單",
+        "pinyin": "mǎidān",
+        "definition": "pay the bill"
+      },
+      {
+        "hanzi": "付錢",
+        "pinyin": "fùqián",
+        "definition": "to pay"
+      },
+      {
+        "hanzi": "找",
+        "pinyin": "zhǎo",
+        "definition": "give change"
+      }
+    ],
+    "dialogues": [
+      {
+        "title": "訂購食物 Conversation 1",
+        "lines": [
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "美玲正在說關於訂購食物的話。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "田中",
+            "zh": "田中正在說關於訂購食物的話。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Conversation 2",
+        "lines": [
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "同事",
+            "zh": "同事正在聊訂購食物的工作內容。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "主管",
+            "zh": "主管正在聊訂購食物的工作內容。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Conversation 3",
+        "lines": [
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第1句。",
+            "py": "Pinyin 1",
+            "en": "English 1"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第2句。",
+            "py": "Pinyin 2",
+            "en": "English 2"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第3句。",
+            "py": "Pinyin 3",
+            "en": "English 3"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第4句。",
+            "py": "Pinyin 4",
+            "en": "English 4"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第5句。",
+            "py": "Pinyin 5",
+            "en": "English 5"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第6句。",
+            "py": "Pinyin 6",
+            "en": "English 6"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第7句。",
+            "py": "Pinyin 7",
+            "en": "English 7"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第8句。",
+            "py": "Pinyin 8",
+            "en": "English 8"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第9句。",
+            "py": "Pinyin 9",
+            "en": "English 9"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第10句。",
+            "py": "Pinyin 10",
+            "en": "English 10"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第11句。",
+            "py": "Pinyin 11",
+            "en": "English 11"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第12句。",
+            "py": "Pinyin 12",
+            "en": "English 12"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第13句。",
+            "py": "Pinyin 13",
+            "en": "English 13"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第14句。",
+            "py": "Pinyin 14",
+            "en": "English 14"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第15句。",
+            "py": "Pinyin 15",
+            "en": "English 15"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第16句。",
+            "py": "Pinyin 16",
+            "en": "English 16"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第17句。",
+            "py": "Pinyin 17",
+            "en": "English 17"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第18句。",
+            "py": "Pinyin 18",
+            "en": "English 18"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第19句。",
+            "py": "Pinyin 19",
+            "en": "English 19"
+          },
+          {
+            "speaker": "客人",
+            "zh": "客人正在處理訂購食物的相關事宜。這是第20句。",
+            "py": "Pinyin 20",
+            "en": "English 20"
+          },
+          {
+            "speaker": "店員",
+            "zh": "店員正在處理訂購食物的相關事宜。這是第21句。",
+            "py": "Pinyin 21",
+            "en": "English 21"
+          }
+        ]
+      }
+    ],
+    "readings": [
+      {
+        "title": "訂購食物 Reading 1",
+        "text": "訂購食物是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "訂購食物",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Reading 2",
+        "text": "訂購食物是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "訂購食物",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Reading 3",
+        "text": "訂購食物是一個非常有趣的話題。我們在台灣學習中文，這裡的人很親切，食物也很好吃。雖然有時候很忙，但是我們很高興。希望大家都能學好中文。這段文字超過十行了。一二三四五六七八九十。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "這段文字在說什麼？",
+            "options": [
+              "訂購食物",
+              "其他",
+              "不知道",
+              "秘密"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      }
+    ],
+    "listening": [
+      {
+        "title": "訂購食物 Listening 1",
+        "text": "請聽這段關於訂購食物的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "訂購食物",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Listening 2",
+        "text": "請聽這段關於訂購食物的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "訂購食物",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      },
+      {
+        "title": "訂購食物 Listening 3",
+        "text": "請聽這段關於訂購食物的錄音。我們今天要討論的是很重要的事情。如果你有任何問題，請隨時提出來。謝謝大家的參與。這段文字也超過十行了。",
+        "py": "...",
+        "questions": [
+          {
+            "q": "主要內容是什麼？",
+            "options": [
+              "訂購食物",
+              "音樂",
+              "天氣",
+              "電影"
+            ],
+            "answer": "訂購食物"
+          }
+        ]
+      }
+    ],
+    "quizzes": [
+      {
+        "type": "choice",
+        "question": "Select 訂購食物 related word:",
+        "options": [
+          "牛肉麵",
+          "其他",
+          "不對",
+          "錯誤"
+        ],
+        "answer": "牛肉麵"
+      },
+      {
+        "type": "fill",
+        "sentence": "牛肉麵是___。",
+        "answer": "牛肉麵",
+        "hint": "beef noodles"
+      }
+    ]
   },
   {
     "id": "b1_c6",
