@@ -1,0 +1,682 @@
+[
+  {
+    "id": "mrt-announcement-1",
+    "title": "捷運廣播 — 板南線",
+    "genre": "transit",
+    "difficulty": "A2",
+    "description": "Taipei MRT Bannan Line announcement",
+    "text_zh": "各位旅客，您好。本列車為板南線往南港展覽館方向。下一站，忠孝復興站，忠孝復興站。請注意，本站可轉乘文湖線。出口在右邊。請旅客準備下車。車門即將開啟，請站在安全線後方，小心車門。",
+    "questions": [
+      {
+        "question": "這是哪一條捷運線的廣播？",
+        "options": [
+          "文湖線",
+          "板南線",
+          "淡水信義線",
+          "松山新店線"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "下一站是哪一站？",
+        "options": [
+          "南港展覽館",
+          "忠孝敦化",
+          "忠孝復興",
+          "市政府"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "在忠孝復興站可以換乘哪一條線？",
+        "options": [
+          "板南線",
+          "淡水信義線",
+          "文湖線",
+          "環狀線"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "出口在哪個方向？",
+        "options": [
+          "左邊",
+          "右邊",
+          "前面",
+          "後面"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "旅客應該站在哪裡等車門開？",
+        "options": [
+          "車廂中間",
+          "出口旁邊",
+          "安全線後方",
+          "車門前面"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "mrt-announcement-2",
+    "title": "公車廣播 — 路線252",
+    "genre": "transit",
+    "difficulty": "A2",
+    "description": "Taipei city bus route announcement",
+    "text_zh": "252路公車，往基隆路方向。下一站，師大路口，師大路口。本站附近有師範大學、師大夜市。有要下車的旅客請提前按鈴。謝謝。",
+    "questions": [
+      {
+        "question": "這輛公車是幾路？",
+        "options": [
+          "122路",
+          "252路",
+          "225路",
+          "522路"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "下一站附近有什麼？",
+        "options": [
+          "台北101",
+          "師範大學和師大夜市",
+          "台北車站",
+          "台北101和信義區"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "想要下車的旅客應該怎麼做？",
+        "options": [
+          "大聲說出站名",
+          "提前按鈴",
+          "走到車門前",
+          "告訴司機"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "restaurant-menu-1",
+    "title": "阿財麵館菜單",
+    "genre": "menu",
+    "difficulty": "A2",
+    "description": "Traditional Taiwanese noodle shop menu",
+    "text_zh": "阿財麵館菜單\n\n麵類\n牛肉麵（大）…180元\n牛肉麵（小）…150元\n排骨麵…160元\n陽春麵…80元\n炒米粉…90元\n\n小菜\n滷蛋…20元\n豆腐…30元\n海帶…25元\n\n飲料\n冬瓜茶…30元\n紅茶…25元\n礦泉水…20元\n\n以上價格均含稅。外帶九折。",
+    "questions": [
+      {
+        "question": "大碗牛肉麵多少錢？",
+        "options": [
+          "150元",
+          "160元",
+          "180元",
+          "200元"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "外帶有什麼優惠？",
+        "options": [
+          "八折",
+          "九折",
+          "七五折",
+          "沒有優惠"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "菜單上最便宜的飲料是什麼？",
+        "options": [
+          "冬瓜茶",
+          "礦泉水",
+          "紅茶",
+          "豆漿"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "滷蛋多少錢？",
+        "options": [
+          "25元",
+          "30元",
+          "15元",
+          "20元"
+        ],
+        "correct_index": 3
+      }
+    ]
+  },
+  {
+    "id": "restaurant-menu-2",
+    "title": "台式早餐店菜單",
+    "genre": "menu",
+    "difficulty": "A2",
+    "description": "Taiwanese breakfast shop menu",
+    "text_zh": "美味早餐店\n\n蛋餅…35元\n培根蛋餅…50元\n吐司（奶油）…20元\n總匯三明治…65元\n飯糰…45元\n蘿蔔糕…30元\n\n飲料\n豆漿（熱/冰）…25元\n奶茶（熱/冰）…35元\n米漿…25元\n柳橙汁…45元\n\n營業時間：早上六點到下午一點",
+    "questions": [
+      {
+        "question": "這家早餐店幾點開始營業？",
+        "options": [
+          "早上五點",
+          "早上六點",
+          "早上七點",
+          "早上八點"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "總匯三明治多少錢？",
+        "options": [
+          "45元",
+          "50元",
+          "60元",
+          "65元"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "豆漿有哪些選擇？",
+        "options": [
+          "只有熱的",
+          "只有冰的",
+          "熱的和冰的都有",
+          "只有甜的"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "news-article-1",
+    "title": "台灣觀光業持續成長",
+    "genre": "news",
+    "difficulty": "B1",
+    "description": "Short lifestyle news article about Taiwan tourism growth",
+    "text_zh": "根據觀光局最新統計，今年前三季來台旅客人數已突破五百萬人次，比去年同期成長了百分之二十三。其中，來自日本、韓國和東南亞的旅客增加最為明顯。觀光局表示，台灣的夜市文化、美食和自然景觀吸引了大量外國旅客。業者也普遍反映，觀光收入明顯回升，對未來持樂觀態度。",
+    "questions": [
+      {
+        "question": "今年前三季來台旅客人數是多少？",
+        "options": [
+          "三百萬人次",
+          "四百萬人次",
+          "五百萬人次",
+          "六百萬人次"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "與去年同期相比，來台旅客增加了多少百分比？",
+        "options": [
+          "13%",
+          "23%",
+          "33%",
+          "43%"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "哪些地區的旅客增加最明顯？",
+        "options": [
+          "歐美旅客",
+          "日本、韓國和東南亞旅客",
+          "中國大陸旅客",
+          "澳洲和紐西蘭旅客"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "根據文章，台灣吸引外國旅客的原因是？",
+        "options": [
+          "科技產業",
+          "夜市文化、美食和自然景觀",
+          "購物優惠",
+          "語言環境"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "news-article-2",
+    "title": "台北市推廣單車通勤",
+    "genre": "news",
+    "difficulty": "B1",
+    "description": "News article about Taipei promoting bicycle commuting",
+    "text_zh": "台北市政府宣布，將在本月底前新增一千個YouBike停靠站，並提供前三十分鐘免費的優惠。市長表示，此政策旨在減少交通壅塞和碳排放。目前台北市共有超過三萬輛公共自行車，每天使用人次達到十五萬。市府同時呼籲市民多利用大眾運輸工具，共同為環保盡一份力。",
+    "questions": [
+      {
+        "question": "台北市計劃新增多少個YouBike停靠站？",
+        "options": [
+          "五百個",
+          "一千個",
+          "一千五百個",
+          "兩千個"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "新的YouBike優惠是什麼？",
+        "options": [
+          "前十分鐘免費",
+          "前二十分鐘免費",
+          "前三十分鐘免費",
+          "全天免費"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "目前台北市共有多少輛公共自行車？",
+        "options": [
+          "一萬輛",
+          "兩萬輛",
+          "三萬輛",
+          "四萬輛"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "chat-conversation-1",
+    "title": "LINE 對話 — 週末計畫",
+    "genre": "chat",
+    "difficulty": "A2",
+    "description": "LINE chat messages planning a weekend outing",
+    "text_zh": "小明：嘿，這個週末你有空嗎？\n\n小美：有啊，怎麼了？\n\n小明：我想去九份看老街，你要一起嗎？\n\n小美：好啊！但是那裡很多人，要早一點去比較好。\n\n小明：那我們幾點出發？\n\n小美：早上八點，搭1062路公車去怎麼樣？\n\n小明：好！那我們約在台北車站集合。\n\n小美：沒問題！記得帶雨傘，九份常常下雨。\n\n小明：好的，謝謝提醒！到時候見！",
+    "questions": [
+      {
+        "question": "小明和小美計劃去哪裡？",
+        "options": [
+          "淡水老街",
+          "九份老街",
+          "台南老街",
+          "鶯歌老街"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "他們決定幾點出發？",
+        "options": [
+          "早上七點",
+          "早上八點",
+          "早上九點",
+          "早上十點"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "小美為什麼建議早一點去？",
+        "options": [
+          "公車班次少",
+          "那裡很多人",
+          "需要買票",
+          "路很遠"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "小美提醒小明要帶什麼？",
+        "options": [
+          "外套",
+          "太陽眼鏡",
+          "雨傘",
+          "零食"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "chat-conversation-2",
+    "title": "LINE 對話 — 訂餐",
+    "genre": "chat",
+    "difficulty": "A2",
+    "description": "LINE chat ordering food for delivery",
+    "text_zh": "阿文：你在哪裡？我餓了！\n\n小婷：我還在公司加班，大概再一個小時才能回去。\n\n阿文：那我先叫外送好了，你要吃什麼？\n\n小婷：牛肉麵好不好？前面那家很好吃。\n\n阿文：好啊。你要大碗還是小碗？\n\n小婷：大碗，然後幫我加一個滷蛋。\n\n阿文：沒問題。那我還要點一個炒飯。等我，大概四十分鐘後到。\n\n小婷：謝謝你！我快點回去。",
+    "questions": [
+      {
+        "question": "小婷為什麼還沒回家？",
+        "options": [
+          "她在購物",
+          "她在加班",
+          "她去看電影",
+          "她在健身房"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "小婷想吃什麼？",
+        "options": [
+          "炒飯",
+          "大碗牛肉麵加滷蛋",
+          "小籠包",
+          "炒米粉"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "外送大約多久會到？",
+        "options": [
+          "二十分鐘",
+          "三十分鐘",
+          "四十分鐘",
+          "一個小時"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "social-post-1",
+    "title": "Instagram 貼文 — 旅遊",
+    "genre": "social",
+    "difficulty": "A2",
+    "description": "Instagram travel post with comments",
+    "text_zh": "【花蓮三日遊心得✨】\n\n終於來到夢寐以求的花蓮！太平洋的海真的超藍，礁溪的溫泉也很棒。最喜歡清晨去太魯閣健行，空氣清新，景色美麗，完全值得五個小時的車程！\n\n下次還要來！🌊🏔️\n\n留言：\n阿華：好羨慕！下次帶我去！\n美玲：太魯閣好美！我去年也去過！\n大雄：花蓮的炸彈蔥油餅有吃到嗎？",
+    "questions": [
+      {
+        "question": "這個人去了哪裡旅行？",
+        "options": [
+          "台東",
+          "花蓮",
+          "宜蘭",
+          "屏東"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "他們最喜歡的活動是什麼？",
+        "options": [
+          "吃當地美食",
+          "清晨在太魯閣健行",
+          "泡溫泉",
+          "看太平洋"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "從哪裡到花蓮需要多久的車程？",
+        "options": [
+          "兩個小時",
+          "三個小時",
+          "四個小時",
+          "五個小時"
+        ],
+        "correct_index": 3
+      }
+    ]
+  },
+  {
+    "id": "social-post-2",
+    "title": "Facebook 貼文 — 新工作",
+    "genre": "social",
+    "difficulty": "B1",
+    "description": "Facebook post announcing a new job",
+    "text_zh": "好消息想跟大家分享！\n\n經過三個月的求職，我終於找到心目中理想的工作了！下週一正式開始在一家科技新創公司上班，擔任行銷企劃的職位。\n\n雖然薪水不是最高的，但公司文化很好，同事看起來也很友善，而且這個職位有很大的學習空間。相信這是一個很好的起點！\n\n謝謝一路上支持我的家人和朋友們，特別是在我面試前幫我模擬練習的明志和怡君。❤️",
+    "questions": [
+      {
+        "question": "這個人求職花了多長時間？",
+        "options": [
+          "一個月",
+          "兩個月",
+          "三個月",
+          "半年"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "他/她的新工作職位是什麼？",
+        "options": [
+          "工程師",
+          "行銷企劃",
+          "設計師",
+          "會計師"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "這個人選擇這份工作的原因是什麼？",
+        "options": [
+          "薪水最高",
+          "離家最近",
+          "公司文化好且有學習空間",
+          "可以出差"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "明志和怡君幫了什麼忙？",
+        "options": [
+          "介紹工作機會",
+          "面試前幫忙模擬練習",
+          "提供參考信",
+          "陪同面試"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "product-label-1",
+    "title": "藥品說明書",
+    "genre": "label",
+    "difficulty": "B1",
+    "description": "Medicine instructions label",
+    "text_zh": "普拿疼 Panadol 乙醯氨酚錠\n\n【適應症】解熱、鎮痛。用於感冒引起的發燒、頭痛、關節痛、神經痛及牙痛。\n\n【用法用量】\n成人及十二歲以上：每次一至二錠，每日三至四次。\n兒童六至十二歲：每次半錠至一錠，每日三次。\n六歲以下：請諮詢醫師。\n\n【注意事項】\n• 服藥後如有過敏症狀，請立即停藥並就醫。\n• 肝功能不佳者請在醫師指導下使用。\n• 請放在兒童不易取得處。\n• 避免同時服用含有乙醯氨酚的其他藥物。",
+    "questions": [
+      {
+        "question": "成人每次可以服用幾錠？",
+        "options": [
+          "只能一錠",
+          "一至二錠",
+          "二至三錠",
+          "三至四錠"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "六歲以下兒童應該怎麼辦？",
+        "options": [
+          "每次半錠",
+          "每次一錠",
+          "不能服用",
+          "請諮詢醫師"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "出現過敏症狀時應該怎麼做？",
+        "options": [
+          "繼續服藥等症狀消失",
+          "減少劑量",
+          "立即停藥並就醫",
+          "喝更多水"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "product-label-2",
+    "title": "洗衣標籤說明",
+    "genre": "label",
+    "difficulty": "A2",
+    "description": "Clothing care label instructions",
+    "text_zh": "洗滌說明\n\n材質：棉100%\n\n• 請用手洗或使用洗衣機輕柔模式。\n• 水溫不超過三十度。\n• 請勿漂白。\n• 請勿乾洗。\n• 洗後請懸掛晾乾，避免直接日曬。\n• 如需熨燙，請使用低溫，並在布料上蓋一層薄布。\n• 若有褪色情形屬正常現象，首次洗滌請單獨清洗。",
+    "questions": [
+      {
+        "question": "這件衣服是什麼材質？",
+        "options": [
+          "聚酯纖維100%",
+          "羊毛100%",
+          "棉100%",
+          "混紡"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "洗衣時水溫不能超過幾度？",
+        "options": [
+          "二十度",
+          "三十度",
+          "四十度",
+          "五十度"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "洗後應該怎麼乾燥？",
+        "options": [
+          "放入烘乾機",
+          "在陽光下曬乾",
+          "懸掛晾乾避免直接日曬",
+          "平放晾乾"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "folk-story-1",
+    "title": "龜兔賽跑",
+    "genre": "story",
+    "difficulty": "A2",
+    "description": "Classic fable: The Tortoise and the Hare",
+    "text_zh": "從前，有一隻兔子和一隻烏龜，牠們決定比賽跑步。兔子跑得很快，一下子就跑到了前面，覺得自己一定會贏，便在樹下睡著了。烏龜雖然跑得很慢，但牠一直努力不停地往前走。等兔子醒來的時候，烏龜已經到達終點了。比賽的結果讓大家都很驚訝。\n\n這個故事告訴我們：謙虛努力的人，比驕傲懶惰的人更容易成功。",
+    "questions": [
+      {
+        "question": "兔子為什麼沒有贏得比賽？",
+        "options": [
+          "牠受傷了",
+          "牠在樹下睡著了",
+          "牠走錯路了",
+          "牠不想跑了"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "烏龜贏得比賽的原因是什麼？",
+        "options": [
+          "牠比兔子跑得快",
+          "牠一直努力不停地往前走",
+          "牠提早出發",
+          "牠走了近路"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "這個故事的教訓是什麼？",
+        "options": [
+          "速度是最重要的",
+          "睡眠很重要",
+          "謙虛努力的人比驕傲懶惰的人更容易成功",
+          "烏龜比兔子聰明"
+        ],
+        "correct_index": 2
+      }
+    ]
+  },
+  {
+    "id": "weather-forecast-1",
+    "title": "台灣天氣預報",
+    "genre": "weather",
+    "difficulty": "A2",
+    "description": "Taiwan weekend weather forecast",
+    "text_zh": "本週末天氣預報\n\n週六：台北地區多雲，午後有局部陣雨，氣溫攝氏二十二至二十八度。中南部晴時多雲，氣溫略高。\n\n週日：受颱風外圍環流影響，全台風雨機率增加，請民眾多加注意。台北地區氣溫二十至二十五度，降雨機率百分之七十。\n\n提醒：週日外出請攜帶雨具，注意安全。山區民眾請注意山崩及土石流風險。",
+    "questions": [
+      {
+        "question": "週六台北的天氣如何？",
+        "options": [
+          "晴天，無雨",
+          "多雲，午後有局部陣雨",
+          "整天下大雨",
+          "颱風來臨"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "週日全台風雨增加的原因是什麼？",
+        "options": [
+          "冷氣團南下",
+          "颱風外圍環流影響",
+          "梅雨季節",
+          "西南氣流"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "週日台北的降雨機率是多少？",
+        "options": [
+          "30%",
+          "50%",
+          "70%",
+          "90%"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "山區民眾需要注意什麼？",
+        "options": [
+          "強風",
+          "山崩及土石流",
+          "積雪",
+          "乾旱"
+        ],
+        "correct_index": 1
+      }
+    ]
+  },
+  {
+    "id": "classified-ad-1",
+    "title": "租屋廣告",
+    "genre": "classified",
+    "difficulty": "B1",
+    "description": "Apartment rental classified advertisement",
+    "text_zh": "【台北市大安區 精緻套房出租】\n\n地點：捷運大安站步行五分鐘\n坪數：十二坪\n格局：一房一廳一衛浴\n租金：每月新台幣一萬八千元（含水費、第四台）\n押金：兩個月租金\n\n設備：冷氣、洗衣機、冰箱、床組、衣櫃、網路（需自行申辦）\n\n特色：\n• 全新裝潢，採光良好\n• 管理嚴格，安全舒適\n• 近師範大學，適合學生或上班族\n\n請有意者聯絡房東王先生：0912-345-678\n（謝絕仲介，房東直租）",
+    "questions": [
+      {
+        "question": "這個房子距離捷運站需要走多久？",
+        "options": [
+          "一分鐘",
+          "三分鐘",
+          "五分鐘",
+          "十分鐘"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "每月租金是多少？",
+        "options": [
+          "一萬五千元",
+          "一萬六千元",
+          "一萬八千元",
+          "兩萬元"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "租金包含哪些費用？",
+        "options": [
+          "水費和電費",
+          "水費和第四台",
+          "電費和網路",
+          "水費、電費和第四台"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "這個廣告適合哪些人？",
+        "options": [
+          "需要大家庭空間的人",
+          "學生或上班族",
+          "需要停車位的人",
+          "有寵物的人"
+        ],
+        "correct_index": 1
+      }
+    ]
+  }
+]
