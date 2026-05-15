@@ -1,0 +1,1205 @@
+[
+  {
+    "id": "b1_c1",
+    "book": 1,
+    "chapter": 1,
+    "title": "歡迎你來臺灣！",
+    "subtitle": "Welcome to Taiwan!",
+    "intro": "Basic greetings and first introductions in Taiwan.",
+    "vocab": [
+      {
+        "hanzi": "歡迎",
+        "pinyin": "huānyíng",
+        "definition": "to welcome"
+      },
+      {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "definition": "you (singular)"
+      },
+      {
+        "hanzi": "來",
+        "pinyin": "lái",
+        "definition": "to come"
+      },
+      {
+        "hanzi": "臺灣",
+        "pinyin": "Táiwān",
+        "definition": "Taiwan"
+      },
+      {
+        "hanzi": "你好",
+        "pinyin": "nǐ hǎo",
+        "definition": "Hello / Hi"
+      },
+      {
+        "hanzi": "請教",
+        "pinyin": "qǐngjiào",
+        "definition": "to ask (polite)"
+      },
+      {
+        "hanzi": "姓",
+        "pinyin": "xìng",
+        "definition": "surname / to be surnamed"
+      },
+      {
+        "hanzi": "叫",
+        "pinyin": "jiào",
+        "definition": "to be called / to call"
+      },
+      {
+        "hanzi": "名字",
+        "pinyin": "míngzì",
+        "definition": "name"
+      },
+      {
+        "hanzi": "先生",
+        "pinyin": "xiānshēng",
+        "definition": "Mr. / husband"
+      },
+      {
+        "hanzi": "小姐",
+        "pinyin": "xiǎojiě",
+        "definition": "Miss / young lady"
+      },
+      {
+        "hanzi": "什麼",
+        "pinyin": "shénme",
+        "definition": "what"
+      },
+      {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "definition": "I / me"
+      },
+      {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "definition": "to be / yes"
+      },
+      {
+        "hanzi": "哪",
+        "pinyin": "nǎ",
+        "definition": "which"
+      },
+      {
+        "hanzi": "國",
+        "pinyin": "guó",
+        "definition": "country"
+      },
+      {
+        "hanzi": "人",
+        "pinyin": "rén",
+        "definition": "person / people"
+      },
+      {
+        "hanzi": "也",
+        "pinyin": "yě",
+        "definition": "also / too"
+      },
+      {
+        "hanzi": "很",
+        "pinyin": "hěn",
+        "definition": "very"
+      },
+      {
+        "hanzi": "高興",
+        "pinyin": "gāoxìng",
+        "definition": "happy / glad"
+      },
+      {
+        "hanzi": "認識",
+        "pinyin": "rènshì",
+        "definition": "to know / recognize"
+      }
+    ],
+    "dialogues": [
+      {
+        "title": "Meeting at the Airport",
+        "lines": [
+          {
+            "speaker": "司機",
+            "zh": "你好，歡迎你來臺灣！",
+            "py": "Nǐ hǎo, huānyíng nǐ lái Táiwān!",
+            "en": "Hello, welcome to Taiwan!"
+          },
+          {
+            "speaker": "田中",
+            "zh": "你好，謝謝。請問計程車在哪裡？",
+            "py": "Nǐ hǎo, xièxiè. Qǐngwèn jìchéngchē zài nǎlǐ?",
+            "en": "Hello, thank you. Excuse me, where are the taxis?"
+          },
+          {
+            "speaker": "司機",
+            "zh": "就在前面。請問您貴姓？",
+            "py": "Jiù zài qiánmiàn. Qǐngwèn nín guìxìng?",
+            "en": "Just ahead. May I ask your surname?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "我姓田中。我是日本人。",
+            "py": "Wǒ xìng Tiánzhōng. Wǒ shì Rìběn rén.",
+            "en": "My surname is Tanaka. I am Japanese."
+          },
+          {
+            "speaker": "司機",
+            "zh": "田中先生，很高興認識你。",
+            "py": "Tiánzhōng xiānshēng, hěn gāoxìng rènshì nǐ.",
+            "en": "Mr. Tanaka, nice to meet you."
+          },
+          {
+            "speaker": "田中",
+            "zh": "我也很高興認識你。",
+            "py": "Wǒ yě hěn gāoxìng rènshì nǐ.",
+            "en": "I am also glad to meet you."
+          },
+          {
+            "speaker": "司機",
+            "zh": "請問你要去哪裡？",
+            "py": "Qǐngwèn nǐ yào qù nǎlǐ?",
+            "en": "Where would you like to go?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "我要去新竹。那裡有很多科技公司。",
+            "py": "Wǒ yào qù Xīnzhú. Nàlǐ yǒu hěnduō kējì gōngsī.",
+            "en": "I want to go to Hsinchu. There are many tech companies there."
+          },
+          {
+            "speaker": "司機",
+            "zh": "是的，新竹是科學園區。你來這裡工作嗎？",
+            "py": "Shì de, Xīnzhú shì kēxué yuánqū. Nǐ lái zhèlǐ gōngzuò ma?",
+            "en": "Yes, Hsinchu is the Science Park. Are you coming here for work?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "對，我是工程師。我來美光公司。",
+            "py": "Duì, wǒ shì gōngchéngshī. Wǒ lái Měiguāng gōngsī.",
+            "en": "Yes, I am an engineer. I'm coming to Micron."
+          },
+          {
+            "speaker": "司機",
+            "zh": "太好了！美光是一家很大的公司。",
+            "py": "Tài hǎo le! Měiguāng shì yī jiā hěn dà de gōngsī.",
+            "en": "That's great! Micron is a very big company."
+          },
+          {
+            "speaker": "田中",
+            "zh": "司機先生，請問車費多少錢？",
+            "py": "Sījī xiānshēng, qǐngwèn chēfèi duōshǎo qián?",
+            "en": "Mr. Driver, how much is the fare?"
+          },
+          {
+            "speaker": "司機",
+            "zh": "大約是一千五百元。",
+            "py": "Dàyuē shì yīqiān wǔbǎi yuán.",
+            "en": "It's about 1,500 NTD."
+          },
+          {
+            "speaker": "田中",
+            "zh": "好的，沒問題。現在可以走嗎？",
+            "py": "Hǎo de, méi wèntí. Xiànzài kěyǐ zǒu ma?",
+            "en": "Okay, no problem. Can we leave now?"
+          },
+          {
+            "speaker": "司機",
+            "zh": "可以。請上車。你的行李我來拿。",
+            "py": "Kěyǐ. Qǐng shàng chē. Nǐ de xínglǐ wǒ lái ná.",
+            "en": "Yes. Please get in. I will take your luggage."
+          },
+          {
+            "speaker": "田中",
+            "zh": "謝謝，你人真好。",
+            "py": "Xièxiè, nǐ rén zhēn hǎo.",
+            "en": "Thank you, you are very kind."
+          },
+          {
+            "speaker": "司機",
+            "zh": "不客氣。這是我的工作。",
+            "py": "Bù kèqì. Zhè shì wǒ de gōngzuò.",
+            "en": "You're welcome. This is my job."
+          },
+          {
+            "speaker": "田中",
+            "zh": "司機先生，請問你叫什麼名字？",
+            "py": "Sījī xiānshēng, qǐngwèn nǐ jiào shénme míngzì?",
+            "en": "Mr. Driver, what is your name?"
+          },
+          {
+            "speaker": "司機",
+            "zh": "我姓李，你叫我老李就好。",
+            "py": "Wǒ xìng Lǐ, nǐ jiào wǒ Lǎo Lǐ jiù hǎo.",
+            "en": "My surname is Li, you can just call me Old Li."
+          },
+          {
+            "speaker": "田中",
+            "zh": "老李，很高興遇見你。",
+            "py": "Lǎo Lǐ, hěn gāoxìng yùjiàn nǐ.",
+            "en": "Old Li, nice to meet you."
+          },
+          {
+            "speaker": "司機",
+            "zh": "我也是。我們出發吧！",
+            "py": "Wǒ yě shì. Wǒmen chūfā ba!",
+            "en": "Me too. Let's head out!"
+          }
+        ]
+      },
+      {
+        "title": "Introducing the Team",
+        "lines": [
+          {
+            "speaker": "主管",
+            "zh": "大家早，這位是我們的新同事。",
+            "py": "Dàjiā zǎo, zhè wèi shì wǒmen de xīn tóngshì.",
+            "en": "Good morning everyone, this is our new colleague."
+          },
+          {
+            "speaker": "田中",
+            "zh": "大家好，我叫田中太郎。",
+            "py": "Dàjiā hǎo, wǒ jiào Tiánzhōng Tàiláng.",
+            "en": "Hello everyone, my name is Taro Tanaka."
+          },
+          {
+            "speaker": "同事A",
+            "zh": "你好，田中先生。歡迎來到新竹。",
+            "py": "Nǐ hǎo, Tiánzhōng xiānshēng. Huānyíng lái dào Xīnzhú.",
+            "en": "Hello, Mr. Tanaka. Welcome to Hsinchu."
+          },
+          {
+            "speaker": "田中",
+            "zh": "謝謝。請問您貴姓？",
+            "py": "Xièxiè. Qǐngwèn nín guìxìng?",
+            "en": "Thank you. May I ask your surname?"
+          },
+          {
+            "speaker": "同事A",
+            "zh": "我姓陳，我叫陳明美。",
+            "py": "Wǒ xìng Chén, wǒ jiào Chén Míngměi.",
+            "en": "My surname is Chen, I am called Ming-mei Chen."
+          },
+          {
+            "speaker": "田中",
+            "zh": "陳小姐，很高興認識妳。",
+            "py": "Chén xiǎojiě, hěn gāoxìng rènshì nǐ.",
+            "en": "Miss Chen, nice to meet you."
+          },
+          {
+            "speaker": "陳小姐",
+            "zh": "我也很高興認識你。你是日本人嗎？",
+            "py": "Wǒ yě hěn gāoxìng rènshì nǐ. Nǐ shì Rìběn rén ma?",
+            "en": "I'm also glad to meet you. Are you Japanese?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "對，我是日本人。我是從東京來的。",
+            "py": "Duì, wǒ shì Rìběn rén. Wǒ shì cóng Dōngjīng lái de.",
+            "en": "Yes, I am Japanese. I come from Tokyo."
+          },
+          {
+            "speaker": "同事B",
+            "zh": "你好，我姓王，是這裡的測試工程師。",
+            "py": "Nǐ hǎo, wǒ xìng Wáng, shì zhèlǐ de cèshì gōngchéngshī.",
+            "en": "Hello, my surname is Wang, I'm a test engineer here."
+          },
+          {
+            "speaker": "田中",
+            "zh": "王先生，你好。請多多指教。",
+            "py": "Wáng xiānshēng, nǐ hǎo. Qǐng duōduō zhǐjiào.",
+            "en": "Hello, Mr. Wang. Please guide me."
+          },
+          {
+            "speaker": "王先生",
+            "zh": "沒問題。你有什麼問題都可以問我。",
+            "py": "Méi wèntí. Nǐ yǒu shénme wèntí dōu kěyǐ wèn wǒ.",
+            "en": "No problem. You can ask me any questions."
+          },
+          {
+            "speaker": "田中",
+            "zh": "謝謝。這裡的環境很棒。",
+            "py": "Xièxiè. Zhèlǐ de huánjìng hěn bàng.",
+            "en": "Thank you. The environment here is great."
+          },
+          {
+            "speaker": "主管",
+            "zh": "好，大家開始工作吧。",
+            "py": "Hǎo, dàjiā kāishǐ gōngzuò ba.",
+            "en": "Okay, everyone let's start working."
+          },
+          {
+            "speaker": "田中",
+            "zh": "主管，請問我的座位在哪裡？",
+            "py": "Zhǔguǎn, qǐngwèn wǒ de zuòwèi zài nǎlǐ?",
+            "en": "Manager, where is my seat?"
+          },
+          {
+            "speaker": "主管",
+            "zh": "就在陳小姐的旁邊。",
+            "py": "Jiù zài Chén xiǎojiě de pángbiān.",
+            "en": "It's right next to Miss Chen."
+          },
+          {
+            "speaker": "陳小姐",
+            "zh": "田中先生，請跟我來。",
+            "py": "Tiánzhōng xiānshēng, qǐng gēn wǒ lái.",
+            "en": "Mr. Tanaka, please follow me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "好的，謝謝妳。",
+            "py": "Hǎo de, xièxiè nǐ.",
+            "en": "Okay, thank you."
+          },
+          {
+            "speaker": "陳小姐",
+            "zh": "不用客氣。你的座位已經準備好了。",
+            "py": "Bùyòng kèqì. Nǐ de zuòwèi yǐjīng zhǔnbèi hǎo le.",
+            "en": "You're welcome. Your seat is ready."
+          },
+          {
+            "speaker": "田中",
+            "zh": "真的很漂亮。這台電腦是新的嗎？",
+            "py": "Zhēnde hěn piàoliang. Zhè tái diànnǎo shì xīn de ma?",
+            "en": "It's really nice. Is this computer new?"
+          },
+          {
+            "speaker": "陳小姐",
+            "zh": "對，是公司為你準備的新電腦。",
+            "py": "Duì, shì gōngsī wèi nǐ zhǔnbèi de xīn diànnǎo.",
+            "en": "Yes, it's a new computer the company prepared for you."
+          }
+        ]
+      },
+      {
+        "title": "Meeting a New Friend at a Cafe",
+        "lines": [
+          {
+            "speaker": "服務員",
+            "zh": "歡迎光臨！請問幾位？",
+            "py": "Huānyíng guānglín! Qǐngwèn jǐ wèi?",
+            "en": "Welcome! How many people?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "一位。謝謝。",
+            "py": "Yī wèi. Xièxiè.",
+            "en": "One person. Thank you."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "這邊請。這是菜單。",
+            "py": "Zhèbiān qǐng. Zhè shì càidān.",
+            "en": "This way please. Here is the menu."
+          },
+          {
+            "speaker": "鄰座人",
+            "zh": "你好，這本書是你的嗎？",
+            "py": "Nǐ hǎo, zhè běn shū shì nǐ de ma?",
+            "en": "Hello, is this book yours?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "啊，對！是我的，謝謝你。",
+            "py": "A, duì! Shì wǒ de, xièxiè nǐ.",
+            "en": "Ah, yes! It's mine, thank you."
+          },
+          {
+            "speaker": "鄰座人",
+            "zh": "不客氣。你在學中文嗎？",
+            "py": "Bù kèqì. Nǐ zài xué Zhōngwén ma?",
+            "en": "You're welcome. Are you learning Chinese?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "對，我剛來臺灣。我叫田中。",
+            "py": "Duì, wǒ gāng lái Táiwān. Wǒ jiào Tiánzhōng.",
+            "en": "Yes, I just arrived in Taiwan. I'm called Tanaka."
+          },
+          {
+            "speaker": "鄰座人",
+            "zh": "田中先生，你好。我叫林美玲。",
+            "py": "Tiánzhōng xiānshēng, nǐ hǎo. Wǒ jiào Lín Měilíng.",
+            "en": "Mr. Tanaka, hello. My name is Mei-ling Lin."
+          },
+          {
+            "speaker": "田中",
+            "zh": "林小姐，很高興認識妳。",
+            "py": "Lín xiǎojiě, hěn gāoxìng rènshì nǐ.",
+            "en": "Miss Lin, nice to meet you."
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "我也很高興認識你. 你是哪國人？",
+            "py": "Wǒ yě hěn gāoxìng rènshì nǐ. Nǐ shì nǎ guó rén?",
+            "en": "I'm also glad to meet you. What is your nationality?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "我是日本人。妳是臺灣人嗎？",
+            "py": "Wǒ shì Rìběn rén. Nǐ shì Táiwān rén ma?",
+            "en": "I am Japanese. Are you Taiwanese?"
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "對，我是臺灣人。我住在台北。",
+            "py": "Duì, wǒ shì Táiwān rén. Wǒ zhù zài Táiběi.",
+            "en": "Yes, I am Taiwanese. I live in Taipei."
+          },
+          {
+            "speaker": "田中",
+            "zh": "台北是一個很漂亮的城市。",
+            "py": "Táiběi shì yī gè hěn piàoliang de chéngshì.",
+            "en": "Taipei is a very beautiful city."
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "謝謝。你覺得新竹怎麼樣？",
+            "py": "Xièxiè. Nǐ juédé Xīnzhú zěnmeyàng?",
+            "en": "Thank you. What do you think of Hsinchu?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "新竹很熱鬧，人也很多。",
+            "py": "Xīnzhú hěn rènào, rén yě hěnduō.",
+            "en": "Hsinchu is very lively, and there are many people."
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "對，那裡有很多科技人才。",
+            "py": "Duì, nàlǐ yǒu hěnduō kējì réncái.",
+            "en": "Yes, there are many tech talents there."
+          },
+          {
+            "speaker": "田中",
+            "zh": "林小姐，妳在做什麼工作？",
+            "py": "Lín xiǎojiě, nǐ zài zuò shénme gōngzuò?",
+            "en": "Miss Lin, what kind of work do you do?"
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "我是老師。我教英文。",
+            "py": "Wǒ shì lǎoshī. Wǒ jiāo Yīngwén.",
+            "en": "I am a teacher. I teach English."
+          },
+          {
+            "speaker": "田中",
+            "zh": "太棒了！妳的英文一定很好。",
+            "py": "Tài bàng le! Nǐ de Yīngwén yīdìng hěn hǎo.",
+            "en": "Awesome! Your English must be very good."
+          },
+          {
+            "speaker": "林小姐",
+            "zh": "還可以。如果你想練習中文，可以找我。",
+            "py": "Hái kěyǐ. Rúguǒ nǐ xiǎng liànxí Zhōngwén, kěyǐ zhǎo wǒ.",
+            "en": "It's okay. If you want to practice Chinese, you can find me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "真的嗎？太謝謝妳了！",
+            "py": "Zhēnde ma? Tài xièxiè nǐ le!",
+            "en": "Really? Thank you so much!"
+          }
+        ]
+      }
+    ],
+    "readings": [
+      {
+        "title": "Welcome to Taiwan",
+        "text": "你好！歡迎你來臺灣。臺灣是一個非常美麗的地方，這裡的山很高，海也很藍。如果你剛來臺灣，你會發現這裡的人非常熱情，也非常友好。這裡有很多好吃的東西，像是牛肉麵和珍珠奶茶。台北是一個很繁華的都市，有很多高樓大廈。新竹則是著名的科學園區，有很多科技公司。來到這裡學習中文是一個很好的選擇。認識新朋友是非常高興的事情，他們會帶你去逛夜市。請多多跟臺灣人說話，你的中文一定會進步很快。祝你在臺灣生活愉快！",
+        "py": "Nǐ hǎo! Huānyíng nǐ lái Táiwān. Táiwān shì yī gè fēicháng měilì de dìfāng. Zhèlǐ de rén hěn rèqíng, yě hěn yǒuhǎo. Rúguǒ nǐ gāng lái Táiwān, nǐ huì fāxiàn zhèlǐ yǒu hěnduō hǎochī de dōngxī. Táiběi hé Xīnzhú dōu shì hěn rènào de chéngshì. Hěnduō rén lái Táiwān xuéxí Zhōngwén, yěyǒu hěnduō rén lái zhèlǐ gōngzuò. Rènshì xīn péngyǒu shì fēicháng gāoxìng de shìqíng. Qǐng duōduō gēn Táiwān rén shuōhuà, nǐ de Zhōngwén yīdìng huì jìnbù hěn kuài. Zhù nǐ zài Táiwān shēnghuó yúkuài!",
+        "questions": [
+          {
+            "q": "臺灣是一個什麼樣的地方？",
+            "options": [
+              "很冷的地方",
+              "美麗的地方",
+              "沒人的地方",
+              "很小的地方"
+            ],
+            "answer": "美麗的地方"
+          },
+          {
+            "q": "為什麼要多跟臺灣人說話？",
+            "options": [
+              "因為很無聊",
+              "因為可以買東西",
+              "因為中文會進步",
+              "因為要找計程車"
+            ],
+            "answer": "中文會進步"
+          }
+        ]
+      },
+      {
+        "title": "My Name is Tanaka",
+        "text": "我姓田中，叫田中太郎，今年二十五歲。我是日本人，是從東京坐飛機來的。我是一名工程師，現在在新竹的一家科技公司工作。我很喜歡臺灣的工作環境，也喜歡這裡的便利商店。在公司，我認識了很多新同事，他們人都很好，教了我很多事情。我有時候去咖啡館看書，在那裡我也認識了新朋友。學習中文雖然有一點難，但是我覺得很有意思。我希望以後能說流利的中文，也希望能更了解臺灣文化。這裡的人對外國人很親切。",
+        "py": "Wǒ xìng Tiánzhōng, jiào Tiánzhōng Tàiláng. Wǒ shì Rìběn rén, cóng Dōngjīng lái de. Wǒ shì yī míng gōngchéngshī, xiànzài zài Xīnzhú de yī jiā kējì gōngsī gōngzuò. Wǒ hěn xǐhuān Táiwān de huánjìng, yě xǐhuān zhèlǐ de shíwù. Zài gōngsī, wǒ rènshì le hěnduō xīn tóngshì, tāmen rén dōu hěn hǎo. Wǒ yǒushíhòu qù kāfēiguǎn kànshū, zài nàlǐ wǒ yě rènshì le xīn péngyǒu. Xuéxí Zhōngwén suīrán yǒu yīdiǎn nán, dànshì wǒ juédé hěn yǒuyìsi. Wǒ xīwàng yǐhòu néng shuō liúlì de Zhōngwén.",
+        "questions": [
+          {
+            "q": "田中先生是在哪裡工作？",
+            "options": [
+              "台北",
+              "新竹",
+              "東京",
+              "台中"
+            ],
+            "answer": "新竹"
+          },
+          {
+            "q": "田中先生覺得學習中文怎麼樣？",
+            "options": [
+              "很簡單",
+              "沒意思",
+              "有一點難但有意思",
+              "太難了不想學"
+            ],
+            "answer": "有一點難但有意思"
+          }
+        ]
+      },
+      {
+        "title": "First Week in Taiwan",
+        "text": "來到臺灣的第一個星期，我去了很多地方參觀。我搭計程車去了公司，也搭捷運去了著名的台北101。臺灣的交通非常方便，到哪裡都很快速。我學會了怎麼用中文點餐，也學會了怎麼簡單介紹自己。每當我說「你好」的時候，臺灣人都會笑著跟我打招呼。我很高興能來這裡生活和工作。每天都有新的發現，也認識了不同背景的人。我越來越喜歡這個地方了，感覺像是在家一樣。這是一個充滿活力的島嶼。",
+        "py": "Lái dào Táiwān de dì yī gè xīngqī, wǒ qù le hěnduō dìfāng. Wǒ dā jìchéngchē qù le gōngsī, yě dā jiéyùn qù le Táiběi yī-líng-yī. Táiwān de jiāotōng fēicháng fāngbiàn. Wǒ xuéhuì le zěnme yòng Zhōngwén diǎncān, yě xuéhuì le zěnme jièshào zìjǐ. Měidāng wǒ shuō 'nǐ hǎo' de shíhòu, Táiwān rén dōu huì xiào zhe gēn wǒ dǎ zhāohū. Wǒ hěn gāoxìng néng lái zhèlǐ shēnghuó. Měitiān dōu yǒu xīn de fāxiàn, yě rènshì le xīn de rén. Wǒ yuè lái yuè xǐhuān zhège dìfāng le.",
+        "questions": [
+          {
+            "q": "田中先生第一週去了哪裡？",
+            "options": [
+              "公司和台北101",
+              "家裡",
+              "醫院",
+              "學校"
+            ],
+            "answer": "公司和台北101"
+          },
+          {
+            "q": "田中先生覺得台灣的交通怎麼樣？",
+            "options": [
+              "很慢",
+              "很貴",
+              "非常方便",
+              "很不方便"
+            ],
+            "answer": "非常方便"
+          }
+        ]
+      }
+    ],
+    "listening": [
+      {
+        "title": "Audio Challenge: Welcome Greeting",
+        "text": "歡迎來到臺灣！我是你的導遊。請問你貴姓？你叫什麼名字？我是臺灣人，很高興認識你。希望你在這裡玩得開心。 今天的天氣很好，我們一起去喝杯咖啡吧。那家店的甜點很有名。你覺得怎麼樣？如果你有空，我們可以下午三點在捷運站門口見面。不見不散！",
+        "py": "Huānyíng lái dào Táiwān! Wǒ shì nǐ de dǎoyóu. Qǐngwèn nín guìxìng? Nǐ jiào shénme míngzì? Wǒ shì Táiwān rén, hěn gāoxìng rènshì nǐ. Xīwàng nǐ zài zhèlǐ wán de kāixīn.",
+        "questions": [
+          {
+            "q": "說話的人是誰？",
+            "options": [
+              "司機",
+              "導遊",
+              "老師",
+              "學生"
+            ],
+            "answer": "導遊"
+          }
+        ]
+      },
+      {
+        "title": "Audio Challenge: Self Introduction",
+        "text": "你好，我叫陳明美。我是陳小姐。我是臺灣人。我是在這家公司工作的工程師。很高興認識你。 今天的天氣很好，我們一起去喝杯咖啡吧。那家店的甜點很有名。你覺得怎麼樣？如果你有空，我們可以下午三點在捷運站門口見面。不見不散！",
+        "py": "Nǐ hǎo, wǒ jiào Chén Míngměi. Wǒ shì Chén xiǎojiě. Wǒ shì Táiwān rén. Wǒ shì zài zhè jiā gōngsī gōngzuò de gōngchéngshī. Hěn gāoxìng rènshì nǐ.",
+        "questions": [
+          {
+            "q": "陳小姐的工作是什麼？",
+            "options": [
+              "老師",
+              "司機",
+              "工程師",
+              "服務員"
+            ],
+            "answer": "工程師"
+          }
+        ]
+      },
+      {
+        "title": "Audio Challenge: Simple Questions",
+        "text": "請問計程車在哪裡？我要去新竹。請問車費多少錢？謝謝你，你人真好。 今天的天氣很好，我們一起去喝杯咖啡吧。那家店的甜點很有名。你覺得怎麼樣？如果你有空，我們可以下午三點在捷運站門口見面。不見不散！",
+        "py": "Qǐngwèn jìchéngchē zài nǎlǐ? Wǒ yào qù Xīnzhú. Qǐngwèn chēfèi duōshǎo qián? Xièxiè nǐ, nǐ rén zhēn hǎo.",
+        "questions": [
+          {
+            "q": "這個人要去哪裡？",
+            "options": [
+              "台北",
+              "高雄",
+              "新竹",
+              "台中"
+            ],
+            "answer": "新竹"
+          }
+        ]
+      }
+    ],
+    "quizzes": [
+      {
+        "type": "choice",
+        "question": "Which one means 'Welcome'?",
+        "options": [
+          "認識",
+          "歡迎",
+          "高興",
+          "名字"
+        ],
+        "answer": "歡迎"
+      },
+      {
+        "type": "fill",
+        "sentence": "我___田中，叫田中太郎。",
+        "answer": "姓",
+        "hint": "surname"
+      }
+    ]
+  },
+  {
+    "id": "b1_c2",
+    "book": 1,
+    "chapter": 2,
+    "title": "我的家人",
+    "subtitle": "My Family",
+    "intro": "Talking about family members, relationships, and professions.",
+    "vocab": [
+      {
+        "hanzi": "家",
+        "pinyin": "jiā",
+        "definition": "family/home"
+      },
+      {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "definition": "to have"
+      },
+      {
+        "hanzi": "人",
+        "pinyin": "rén",
+        "definition": "person"
+      },
+      {
+        "hanzi": "爸爸",
+        "pinyin": "bàba",
+        "definition": "dad"
+      },
+      {
+        "hanzi": "媽媽",
+        "pinyin": "māma",
+        "definition": "mom"
+      },
+      {
+        "hanzi": "哥哥",
+        "pinyin": "gēge",
+        "definition": "older brother"
+      },
+      {
+        "hanzi": "姐姐",
+        "pinyin": "jiějie",
+        "definition": "older sister"
+      },
+      {
+        "hanzi": "弟弟",
+        "pinyin": "dìdi",
+        "definition": "younger brother"
+      },
+      {
+        "hanzi": "妹妹",
+        "pinyin": "mèimei",
+        "definition": "younger sister"
+      },
+      {
+        "hanzi": "工作",
+        "pinyin": "gōngzuò",
+        "definition": "work/job"
+      },
+      {
+        "hanzi": "老師",
+        "pinyin": "lǎoshī",
+        "definition": "teacher"
+      },
+      {
+        "hanzi": "醫生",
+        "pinyin": "yīshēng",
+        "definition": "doctor"
+      },
+      {
+        "hanzi": "學生",
+        "pinyin": "xuéshēng",
+        "definition": "student"
+      },
+      {
+        "hanzi": "都",
+        "pinyin": "dōu",
+        "definition": "all/both"
+      },
+      {
+        "hanzi": "和",
+        "pinyin": "hé",
+        "definition": "and"
+      }
+    ],
+    "dialogues": [
+      {
+        "title": "How Many People in Your Family?",
+        "lines": [
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          },
+          {
+            "speaker": "田中",
+            "zh": "美玲，妳家有幾個人？",
+            "py": "Měilíng, nǐ jiā yǒu jǐ gè rén?",
+            "en": "Meiling, how many people in your family?"
+          },
+          {
+            "speaker": "美玲",
+            "zh": "我家有五個人。爸爸、媽媽、哥哥、妹妹和我。",
+            "py": "Wǒ jiā yǒu wǔ gè rén. Bàba, māma, gēge, mèimei hé wǒ.",
+            "en": "My family has 5 people. Dad, mom, brother, sister and me."
+          }
+        ]
+      }
+    ],
+    "readings": [
+      {
+        "title": "My Big Family",
+        "text": "我家有很多人。爸爸是老師，媽媽是醫生。哥哥和姐姐都是學生。我們住在台北。雖然大家都很忙，但是我們很高興能在一起生活。我愛我的家人，他們也愛我。每天晚上，我們都一起吃晚飯。",
+        "py": "...",
+        "questions": []
+      }
+    ],
+    "listening": [
+      {
+        "title": "Audio: Who is she?",
+        "text": "她是我的姐姐。她在美光工作。她是工程師。她很喜歡台灣。",
+        "py": "...",
+        "questions": []
+      }
+    ],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c3",
+    "book": 1,
+    "chapter": 3,
+    "title": "週末做什麼？",
+    "subtitle": "Weekend Activities",
+    "intro": "Discussing weekend plans and hobbies.",
+    "vocab": [
+      {
+        "hanzi": "週末",
+        "pinyin": "zhōumò",
+        "definition": "weekend"
+      }
+    ],
+    "dialogues": [
+      {
+        "title": "Weekend Plans",
+        "lines": [
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "A",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          },
+          {
+            "speaker": "B",
+            "zh": "你週末想做什麼？",
+            "py": "Nǐ zhōumò xiǎng zuò shénme?",
+            "en": "What do you want to do this weekend?"
+          }
+        ]
+      }
+    ],
+    "readings": [
+      {
+        "title": "My Weekend",
+        "text": "週末我很忙。我喜歡看電影，也喜歡打球。",
+        "py": "...",
+        "questions": []
+      }
+    ],
+    "listening": [
+      {
+        "title": "Audio: Saturday",
+        "text": "星期六我要去圖書館看書。",
+        "py": "...",
+        "questions": []
+      }
+    ],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c4",
+    "book": 1,
+    "chapter": 4,
+    "title": "請問一共多少錢？",
+    "subtitle": "Asking Prices",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c5",
+    "book": 1,
+    "chapter": 5,
+    "title": "牛肉麵真好吃",
+    "subtitle": "Ordering Food",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c6",
+    "book": 1,
+    "chapter": 6,
+    "title": "他們學校在山上",
+    "subtitle": "Locations",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c7",
+    "book": 1,
+    "chapter": 7,
+    "title": "早上九點去KTV",
+    "subtitle": "Time/Appointments",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c8",
+    "book": 1,
+    "chapter": 8,
+    "title": "坐火車去臺南",
+    "subtitle": "Transportation",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c9",
+    "book": 1,
+    "chapter": 9,
+    "title": "放假去哪裡玩？",
+    "subtitle": "Holidays",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c10",
+    "book": 1,
+    "chapter": 10,
+    "title": "臺灣的水果很好吃",
+    "subtitle": "Preferences",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c11",
+    "book": 1,
+    "chapter": 11,
+    "title": "我要租房子",
+    "subtitle": "Renting",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c12",
+    "book": 1,
+    "chapter": 12,
+    "title": "你計畫在臺灣學多久的中文？",
+    "subtitle": "Study Plans",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c13",
+    "book": 1,
+    "chapter": 13,
+    "title": "生日快樂",
+    "subtitle": "Celebrations",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c14",
+    "book": 1,
+    "chapter": 14,
+    "title": "天氣這麼冷！",
+    "subtitle": "Weather",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  },
+  {
+    "id": "b1_c15",
+    "book": 1,
+    "chapter": 15,
+    "title": "我很不舒服",
+    "subtitle": "Health",
+    "intro": "Placeholder intro.",
+    "vocab": [],
+    "dialogues": [],
+    "readings": [],
+    "listening": [],
+    "quizzes": []
+  }
+]

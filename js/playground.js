@@ -1,215 +1,303 @@
 /* ═══════════════════════════════════════════════════════════════
-   playground.js — Extreme Beginner & Character Playgrounds
+   playground.js — 3-Volume Contemporary Chinese Course
    ═══════════════════════════════════════════════════════════════ */
 
 'use strict';
 
 window.PlaygroundModule = (() => {
 
-  let playgroundData = null;
-  let charPlaygroundData = null;
-  let currentLesson = null;
-  let currentStep = 0;
-  let sessionVocab = [];
+  let currentBookData = null;
+  let currentCharData = null;
+  let currentBookId = 1;
+  let currentChapterId = null;
 
   async function init() {
-    if (!playgroundData) {
-      try {
-        const res = await fetch('data/playground_content.json');
-        playgroundData = await res.json();
-      } catch (e) {
-        console.error("Failed to load playground data", e);
-        playgroundData = [];
-      }
-    }
-    if (!charPlaygroundData) {
+    if (!currentCharData) {
       try {
         const res = await fetch('data/char_playground_content.json');
-        charPlaygroundData = await res.json();
+        currentCharData = await res.json();
       } catch (e) {
         console.error("Failed to load character playground data", e);
-        charPlaygroundData = [];
+        currentCharData = [];
       }
     }
   }
 
-  // ── Extreme Beginner Playground ──────────────────────────────────────────
+  async function loadBook(bookId) {
+    try {
+      const res = await fetch(`data/book${bookId}_content.json`);
+      currentBookData = await res.json();
+      currentBookId = bookId;
+    } catch (e) {
+      console.error(`Failed to load Book ${bookId} data`, e);
+      currentBookData = [];
+    }
+  }
+
+  // ── Main Entry (Book Selection) ──────────────────────────────────────────
 
   async function render(container) {
     await init();
-    
-    // Group by stage
-    const stages = {};
-    playgroundData.forEach(pg => {
-      const s = pg.stage || 'other';
-      if (!stages[s]) stages[s] = { label: pg.stage_label || 'Other', groups: [] };
-      stages[s].groups.push(pg);
-    });
-
     container.innerHTML = `
       <div class="page-header">
-        <h2>Extreme Beginner Playground</h2>
-        <p>Baby-style repetitive learning. Master the foundations through intense recognition drills.</p>
+        <h2>A Course in Contemporary Chinese</h2>
+        <p>A comprehensive 3-volume curriculum for mastering Mandarin in Taiwan.</p>
       </div>
       
       <div class="pg-stages">
-        ${Object.keys(stages).map(sKey => `
-          <div class="pg-stage-section">
-            <h3 class="pg-stage-title">${stages[sKey].label}</h3>
-            <div class="pg-grid">
-              ${stages[sKey].groups.map(pg => {
-                const completedCount = pg.lessons.filter(l => App.state.progress.playground?.[l.id]).length;
-                const isDone = completedCount === pg.lessons.length;
-                const isLocked = false; // All content unlocked for static page
-
-                return `
-                  <div class="pg-card ${isDone ? 'pg-complete' : ''}" onclick="window.PlaygroundModule.openPlayground('${pg.id}')">
-                    <div class="pg-card-icon">${isDone ? '🏆' : '🎠'}</div>
-                    <div class="pg-card-content">
-                      <h3>${pg.title}</h3>
-                      <p>${pg.entry_description || pg.subtitle}</p>
-                      <div class="pg-lesson-count">${completedCount} / ${pg.lessons.length} Lessons</div>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
+        <div class="pg-grid">
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(1)">
+            <div class="pg-card-icon">📘</div>
+            <div class="pg-card-content">
+              <h3>Book 1: Foundations</h3>
+              <p>Survival greetings, family, shopping, and arrival in Taiwan.</p>
+              <div class="pg-lesson-count">15 Chapters</div>
             </div>
+          </div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(2)">
+            <div class="pg-card-icon">📗</div>
+            <div class="pg-card-content">
+              <h3>Book 2: Daily Life</h3>
+              <p>Directions, transportation, work, and local customs.</p>
+              <div class="pg-lesson-count">15 Chapters</div>
+            </div>
+          </div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(3)">
+            <div class="pg-card-icon">📙</div>
+            <div class="pg-card-content">
+              <h3>Book 3: Advanced Social</h3>
+              <p>Culture, trends, society, and professional fluency.</p>
+              <div class="pg-lesson-count">12 Chapters</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  async function openBook(bookId) {
+    await loadBook(bookId);
+    const container = document.getElementById('page-content');
+    
+    // The user provided specific names for the chapters. 
+    // If the JSON doesn't have them all yet, we'll list the expected ones.
+    const bookTitles = {
+      1: "A Course in Contemporary Chinese 1",
+      2: "A Course in Contemporary Chinese 2",
+      3: "A Course in Contemporary Chinese 3"
+    };
+
+    container.innerHTML = `
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.render(document.getElementById('page-content'))">← Back to Books</button>
+        <h2>${bookTitles[bookId]}</h2>
+        <p>Select a chapter to begin your deep-dive practice.</p>
+      </div>
+      
+      <div class="pg-lessons-list">
+        ${currentBookData.map((ch, idx) => `
+          <div class="pg-lesson-item" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
+            <div class="pg-lesson-num">${ch.chapter}</div>
+            <div class="pg-lesson-info">
+              <h4 class="font-zh">${ch.title}</h4>
+              <p>${ch.subtitle}</p>
+            </div>
+            <div class="pg-lesson-status">➡️</div>
           </div>
         `).join('')}
       </div>
     `;
   }
 
-  function openPlayground(id) {
-    const pg = playgroundData.find(p => p.id === id);
-    if (!pg) return;
+  async function startChapter(chId) {
+    const ch = currentBookData.find(c => c.id === chId);
+    if (!ch) return;
 
+    currentChapterId = chId;
     const container = document.getElementById('page-content');
-    container.innerHTML = `
-      <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.render(document.getElementById('page-content'))">← Back</button>
-        <h2>${pg.title}</h2>
-        <p>${pg.subtitle}</p>
-        ${pg.chapter_links && pg.chapter_links.length ? `<div class="text-small text-muted mt-4">Reinforces Chapters: ${pg.chapter_links.join(', ')}</div>` : ''}
-      </div>
-      
-      <div class="pg-lessons-list">
-        ${pg.lessons.map((lesson, idx) => {
-          const isDone = App.state.progress.playground?.[lesson.id];
-          return `
-            <div class="pg-lesson-item ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.startLesson('${pg.id}', '${lesson.id}')">
-              <div class="pg-lesson-num">${isDone ? '✓' : idx + 1}</div>
-              <div class="pg-lesson-info">
-                <h4>${lesson.title}</h4>
-                <p>${lesson.dialogue ? lesson.dialogue.length : 0} Lines • Conversation Simulator</p>
-              </div>
-              <div class="pg-lesson-status">${isDone ? 'Completed' : '➡️'}</div>
+
+    // Section 1: Vocabulary
+    let vocabHTML = ch.vocab && ch.vocab.length ? `
+      <section class="lesson-section card mb-32 p-24">
+        <h3 class="section-title">1. Vocabulary Focus</h3>
+        <p class="text-muted mb-16">Unique characters and key terms for this chapter.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px">
+          ${ch.vocab.map(v => `
+            <div class="card text-center p-12" style="background:var(--off-white);cursor:pointer;border:1px solid var(--border)" onclick="showCharModal('${v.hanzi}')">
+              <div class="font-zh color-accent" style="font-size:2rem;font-weight:900">${v.hanzi}</div>
+              <div class="text-muted text-small mt-4">${v.pinyin}</div>
+              <div class="text-tiny" style="font-size:0.75rem">${v.definition}</div>
             </div>
-          `;
-        }).join('')}
-      </div>
-    `;
-  }
-
-  function startLesson(pgId, lessonId) {
-    const pg = playgroundData.find(p => p.id === pgId);
-    const lesson = pg.lessons.find(l => l.id === lessonId);
-    if (!lesson) return;
-
-    currentLesson = lesson;
-    const container = document.getElementById('page-content');
-
-    const dialogue = lesson.dialogue || [];
-    
-    // Dynamically extract all unique characters from the conversation
-    const uniqueChars = new Set();
-    dialogue.forEach(line => {
-      const chars = line.zh.match(/[\u4e00-\u9fa5]/g) || [];
-      chars.forEach(c => uniqueChars.add(c));
-    });
-
-    const vocabList = Array.from(uniqueChars).map(char => {
-      const charData = App.state.characters.find(c => c.hanzi === char) || { hanzi: char, pinyin: '' };
-      return charData;
-    });
-
-    let vocabHTML = '';
-    if (vocabList.length > 0) {
-      vocabHTML = `
-        <div class="mb-32">
-          <h3 class="mb-16">Vocabulary Focus (Unique Characters)</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px">
-            ${vocabList.map(v => `
-              <div class="card text-center p-12" style="background:var(--off-white);cursor:pointer;border:1px solid var(--border);transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'" onclick="showCharModal('${v.hanzi}')">
-                <div class="font-zh color-accent" style="font-size:2.5rem;font-weight:900;line-height:1.2">${v.hanzi}</div>
-                <div class="text-muted text-small mt-4">${v.pinyin}</div>
-              </div>
-            `).join('')}
-          </div>
+          `).join('')}
         </div>
-      `;
-    }
+      </section>
+    ` : '';
 
-    let dialogueHTML = '';
-    if (dialogue.length > 0) {
-      dialogueHTML = `
-        <div class="mb-32">
-          <h3 class="mb-16">Conversation Script</h3>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            ${dialogue.map((line, idx) => `
-              <div class="card p-16" style="background:var(--card-bg);display:flex;gap:16px;align-items:flex-start;border-left:4px solid var(--accent)">
-                <div class="badge badge-primary flex-shrink-0 mt-4" style="min-width:40px;text-align:center">${line.speaker}</div>
-                <div style="flex:1">
-                  <div class="font-zh" style="font-size:1.8rem;font-weight:700;cursor:pointer;margin-bottom:8px;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color=''" onclick="TTS.speak('${line.zh}')">🔊 ${line.zh}</div>
-                  <div class="text-muted" style="font-size:1.1rem;margin-bottom:4px">${line.pinyin}</div>
-                  <div class="color-text-2">${line.en}</div>
+    // Section 2: Dialogues (min 3, min 20 lines)
+    let dialoguesHTML = ch.dialogues && ch.dialogues.length ? `
+      <section class="lesson-section card mb-32 p-24">
+        <h3 class="section-title">2. Situational Dialogues</h3>
+        <p class="text-muted mb-24">Practice these conversations aloud to build natural flow.</p>
+        ${ch.dialogues.map((d, dIdx) => `
+          <div class="dialogue-block mb-32">
+            <h4 class="mb-12">Conversation ${dIdx + 1}: ${d.title}</h4>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              ${d.lines.map(line => `
+                <div class="dialogue-line" style="display:flex;gap:12px;align-items:flex-start">
+                  <div class="badge badge-outline flex-shrink-0" style="min-width:60px;text-align:center">${line.speaker}</div>
+                  <div style="flex:1">
+                    <div class="font-zh" style="font-size:1.4rem;cursor:pointer" onclick="TTS.speak('${line.zh}')">🔊 ${line.zh}</div>
+                    <div class="text-muted ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}" style="font-size:0.9rem">${line.py}</div>
+                    <div class="color-text-2" style="font-size:0.95rem">${line.en}</div>
+                  </div>
                 </div>
-              </div>
-            `).join('')}
+              `).join('')}
+            </div>
           </div>
+        `).join('')}
+      </section>
+    ` : '';
+
+    // Section 3: Readings (min 3, min 10 lines)
+    let readingsHTML = ch.readings && ch.readings.length ? `
+      <section class="lesson-section card mb-32 p-24">
+        <h3 class="section-title">3. Reading Comprehension</h3>
+        <p class="text-muted mb-24">Read the following passages and test your understanding.</p>
+        ${ch.readings.map((r, rIdx) => `
+          <div class="reading-block mb-40">
+            <h4 class="mb-12">Passage ${rIdx + 1}: ${r.title}</h4>
+            <div class="card p-20 mb-20 font-zh" style="background:var(--off-white);line-height:2.2;font-size:1.2rem">
+              ${r.text}
+            </div>
+            <div class="questions-list">
+              ${r.questions.map((q, qIdx) => `
+                <div class="q-item mb-16">
+                  <div style="font-weight:600;margin-bottom:8px">${qIdx+1}. ${q.q}</div>
+                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                    ${q.options.map(opt => `
+                      <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </section>
+    ` : '';
+
+    // Section 4: Listening (min 3, min 10 lines)
+    let listeningHTML = ch.listening && ch.listening.length ? `
+      <section class="lesson-section card mb-32 p-24">
+        <h3 class="section-title">4. Listening Lab</h3>
+        <p class="text-muted mb-24">Listen to the audio and answer the questions. Do not read the text until finished!</p>
+        ${ch.listening.map((l, lIdx) => `
+          <div class="listening-block mb-40">
+            <h4 class="mb-16">Listening Challenge ${lIdx + 1}: ${l.title}</h4>
+            <div class="text-center mb-20">
+              <button class="btn btn-gold btn-lg pulse-animation" onclick="TTS.speak(\`${l.text}\`)">🔊 Play Listening Audio</button>
+            </div>
+            <div class="text-center mb-20">
+              <button class="btn btn-ghost btn-sm" onclick="this.nextElementSibling.classList.toggle('hidden')">Show/Hide Transcript</button>
+              <div class="card p-16 mt-12 hidden font-zh" style="background:var(--off-white);text-align:left;line-height:2">${l.text}</div>
+            </div>
+            <div class="questions-list">
+              ${l.questions.map((q, qIdx) => `
+                <div class="q-item mb-16">
+                  <div style="font-weight:600;margin-bottom:8px">${qIdx+1}. ${q.q}</div>
+                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                    ${q.options.map(opt => `
+                      <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </section>
+    ` : '';
+
+    // Section 5: Quizzes
+    let quizHTML = ch.quizzes && ch.quizzes.length ? `
+      <section class="lesson-section card mb-40 p-24" style="border:2px solid var(--accent)">
+        <h3 class="section-title">5. Final Assessment</h3>
+        <p class="text-muted mb-24">Test your mastery of this chapter's characters and grammar.</p>
+        <div class="quiz-list">
+          ${ch.quizzes.map((q, qIdx) => `
+            <div class="q-item mb-24">
+              <div style="font-weight:700;margin-bottom:12px">Q${qIdx+1}: ${q.type === 'fill' ? 'Fill in the blank' : q.question}</div>
+              ${q.type === 'fill' ? `
+                <div class="mb-12 font-zh" style="font-size:1.5rem">${q.sentence.replace('___', `<input type="text" class="input inline-input" style="width:100px" id="quiz-fill-${qIdx}">`)}</div>
+                <button class="btn btn-primary btn-sm" onclick="window.PlaygroundModule.checkFill(this, 'quiz-fill-${qIdx}', '${q.answer}')">Check Answer</button>
+              ` : `
+                <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                  ${q.options.map(opt => `
+                    <button class="btn btn-outline" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                  `).join('')}
+                </div>
+              `}
+            </div>
+          `).join('')}
         </div>
-      `;
-    }
+      </section>
+    ` : '';
 
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.openPlayground('${pgId}')">← Back to Lessons</button>
-        <h2>${lesson.title}</h2>
-        <p>Review the unique characters first, then practice the full conversation.</p>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.openBook(${ch.book})">← Back to Chapters</button>
+        <h2 class="font-zh">${ch.title}</h2>
+        <p>${ch.intro}</p>
       </div>
-      
-      <div class="pg-lesson-content" style="max-width:800px;margin:0 auto">
+
+      <div class="lesson-container" style="max-width:900px;margin:0 auto">
         ${vocabHTML}
-        ${dialogueHTML}
-        
-        <div class="text-center mt-32 mb-40">
-          <button class="btn btn-primary btn-lg w-full" style="font-size:1.2rem;padding:20px" onclick="window.PlaygroundModule.markLessonComplete()">Mark Conversation as Completed ✓</button>
+        ${dialoguesHTML}
+        ${readingsHTML}
+        ${listeningHTML}
+        ${quizHTML}
+
+        <div class="text-center mb-60">
+           <button class="btn btn-success btn-lg" style="width:100%;padding:24px;font-size:1.5rem" onclick="window.PlaygroundModule.markChapterComplete()">Finish Chapter & Save Progress 🏆</button>
         </div>
       </div>
     `;
+
+    window.scrollTo(0,0);
   }
 
-  function markLessonComplete() {
-    if (!App.state.progress.playground) App.state.progress.playground = {};
-    App.state.progress.playground[currentLesson.id] = true;
-    App.saveProgress();
-
-    const items = currentLesson.dialogue || currentLesson.vocab || [];
-    if (typeof SRS !== 'undefined') {
-      items.forEach(v => {
-        const targetStr = v.hanzi || v.zh;
-        if (targetStr) SRS.review(targetStr, 'GOOD', 'novice');
-      });
+  function checkAnswer(btn, selected, correct) {
+    if (selected === correct) {
+      btn.className = 'btn btn-success btn-sm';
+      App.logActivity('🎯', `Correct answer in CCC Course!`);
+    } else {
+      btn.className = 'btn btn-error btn-sm';
+      btn.style.animation = 'shake 0.4s';
     }
-
-    App.logActivity('🎯', `Completed Beginner Conversation: ${currentLesson.title}`);
-    
-    // Go back to the chapter view
-    const pgId = currentLesson.id.split('_')[0];
-    openPlayground(pgId);
   }
 
-  // ─── Character Playground ───────────────────────────────────────────────────
+  function checkFill(btn, inputId, correct) {
+    const input = document.getElementById(inputId);
+    if (input.value.trim() === correct) {
+      input.style.borderColor = 'var(--tone2)';
+      btn.className = 'btn btn-success btn-sm';
+    } else {
+      input.style.borderColor = 'var(--red)';
+      btn.style.animation = 'shake 0.4s';
+    }
+  }
+
+  function markChapterComplete() {
+    if (!App.state.progress.ccc_course) App.state.progress.ccc_course = {};
+    App.state.progress.ccc_course[currentChapterId] = true;
+    App.saveProgress();
+    
+    App.logActivity('🏆', `Completed CCC Chapter: ${currentChapterId}`);
+    alert('Congratulations! Chapter progress saved.');
+    openBook(currentBookId);
+  }
+
+  // ── Character Playground ───────────────────────────────────────────────────
   
   async function renderCharPlayground(container) {
     await init();
@@ -232,9 +320,10 @@ window.PlaygroundModule = (() => {
   }
 
   function renderBlocksTab() {
+    if (!currentCharData) return '<div class="spinner"></div>';
     return `
       <div class="cp-blocks-grid">
-        ${charPlaygroundData.map(block => `
+        ${currentCharData.map(block => `
           <div class="cp-block-card" style="border-top: 4px solid ${block.color}" onclick="window.PlaygroundModule.openRadicalBlock('${block.id}')">
             <div class="cp-block-icon">${block.icon}</div>
             <div class="cp-block-info">
@@ -252,7 +341,7 @@ window.PlaygroundModule = (() => {
   }
 
   function openRadicalBlock(id) {
-    const block = charPlaygroundData.find(b => b.id === id);
+    const block = currentCharData.find(b => b.id === id);
     if (!block) return;
 
     const container = document.getElementById('page-content');
@@ -281,18 +370,12 @@ window.PlaygroundModule = (() => {
   }
 
   function startRadicalLesson(blockId, lessonId) {
-    const block = charPlaygroundData.find(b => b.id === blockId);
+    const block = currentCharData.find(b => b.id === blockId);
     const lesson = block.lessons.find(l => l.id === lessonId);
     if (!lesson) return;
 
     currentLesson = lesson;
     currentStep = 0;
-    
-    // Radical lessons follow a different flow:
-    // 1. Radical Card (intro)
-    // 2. Compounds explorer
-    // 3. Drills
-    
     renderRadicalStep();
   }
 
@@ -300,7 +383,6 @@ window.PlaygroundModule = (() => {
     const lesson = currentLesson;
     const container = document.getElementById('page-content');
     
-    // For simplicity, we'll implement a 3-part lesson: Intro -> Compounds -> Quiz
     if (currentStep === 0) {
       container.innerHTML = `
         <div class="cp-lesson-step">
@@ -391,8 +473,6 @@ window.PlaygroundModule = (() => {
     }
   }
 
-  // Helper for multi-select drills
-  window._cpSpotSelected = [];
   function checkSpot(char, btn) {
     if (btn.classList.contains('selected')) {
       btn.classList.remove('selected');
@@ -407,12 +487,8 @@ window.PlaygroundModule = (() => {
     const drill = currentLesson.drills[currentStep - 2];
     const correct = drill.answers.sort().join(',');
     const selected = window._cpSpotSelected.sort().join(',');
-    
-    if (correct === selected) {
-      nextRadicalStep();
-    } else {
-      alert('Keep looking! Find all characters with the radical.');
-    }
+    if (correct === selected) nextRadicalStep();
+    else alert('Keep looking! Find all characters with the radical.');
   }
 
   function checkRadicalAnswer(sel, ans, btn) {
@@ -460,8 +536,6 @@ window.PlaygroundModule = (() => {
     `;
   }
 
-  // ── Legacy / Explorer Support ──────────────────────────────────────────────
-
   function renderDecompTab() {
     return `
       <div class="cp-container">
@@ -496,7 +570,6 @@ window.PlaygroundModule = (() => {
       result: challengeChar.hanzi
     };
 
-    // Generate pool of distractors
     const pool = new Set(challenge.parts);
     while (pool.size < 8) {
       const randChar = FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)];
@@ -556,7 +629,6 @@ window.PlaygroundModule = (() => {
     const content = document.getElementById('cp-tab-content');
     const tabs = document.querySelectorAll('.cp-tab');
     tabs.forEach(t => t.classList.toggle('active', t.textContent.toLowerCase().includes(tab)));
-    
     if (tab === 'blocks') content.innerHTML = renderBlocksTab();
     else if (tab === 'decomp') content.innerHTML = renderDecompTab();
     else content.innerHTML = renderGameTab();
@@ -574,7 +646,6 @@ window.PlaygroundModule = (() => {
       return;
     }
     const parts = charData.components || charData.radicals || [];
-    
     resultArea.innerHTML = `
       <div class="cp-decomp-view">
         <div class="cp-main-char">
@@ -588,12 +659,7 @@ window.PlaygroundModule = (() => {
               <div class="cp-part-char">${c}</div>
               <div class="cp-part-label">${charData.radicals?.includes(c) ? 'Radical' : 'Component'}</div>
             </div>`).join('<div class="cp-part-plus">+</div>') 
-          : `
-            <div class="cp-part-item">
-              <div class="cp-part-char">${char}</div>
-              <div class="cp-part-label">Base Character</div>
-            </div>
-          `}
+          : `<div class="cp-part-item"><div class="cp-part-char">${char}</div><div class="cp-part-label">Base</div></div>`}
         </div>
         ${charData.mnemonic ? `<div class="cp-mnemonic mt-24"><strong>Mnemonic:</strong> ${charData.mnemonic}</div>` : ''}
       </div>`;
@@ -620,9 +686,11 @@ window.PlaygroundModule = (() => {
   return {
     render,
     renderCharPlayground,
-    openPlayground,
-    startLesson,
-    markLessonComplete,
+    openBook,
+    startChapter,
+    markChapterComplete,
+    checkAnswer,
+    checkFill,
     decompose,
     showCombinations,
     switchCPTab,

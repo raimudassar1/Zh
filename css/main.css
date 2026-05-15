@@ -2098,6 +2098,19 @@ kbd {
 .tone-btn.tone4:hover, .tone-btn.tone4.selected { background: var(--tone4); color: white; }
 .tone-score { font-size: 1.2rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
 
+/* ── CCC Course Lesson Styles ──────────────────────────────── */
+.lesson-section { animation: fadeIn 0.4s; border-left: 6px solid var(--accent); }
+.section-title { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.dialogue-block { border-bottom: 1px dashed var(--border); padding-bottom: 24px; }
+.dialogue-block:last-child { border-bottom: none; }
+.dialogue-line { margin-bottom: 4px; padding: 8px; border-radius: var(--radius-sm); transition: background 0.2s; }
+.dialogue-line:hover { background: var(--off-white); }
+.reading-block, .listening-block { border-bottom: 2px solid var(--border); padding-bottom: 40px; }
+.reading-block:last-child, .listening-block:last-child { border-bottom: none; }
+.inline-input { border: none; border-bottom: 2px solid var(--accent); border-radius: 0; background: transparent; text-align: center; font-weight: 700; color: var(--accent); }
+.inline-input:focus { outline: none; border-bottom-color: var(--gold); }
+
+
 
 
 
