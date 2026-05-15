@@ -252,13 +252,36 @@ const PlaygroundModule = (() => {
     App.state.progress.playground[currentLesson.id] = true;
     App.saveProgress();
 
+    const items = currentLesson.dialogue || currentLesson.vocab || [];
+    if (typeof SRS !== 'undefined') {
+      items.forEach(v => {
+        const targetStr = v.hanzi || v.zh;
+        if (targetStr) SRS.review(targetStr, 'GOOD', 'novice');
+      });
+    }
+
     const container = document.getElementById('page-content');
+    let reviewHTML = '';
+    if (currentLesson.dialogue) {
+      reviewHTML = currentLesson.dialogue.map(line => `
+        <div class="card mb-12" style="background:var(--off-white); display:flex; flex-direction:column; gap:8px">
+          <div class="badge badge-primary" style="align-self:flex-start">${line.speaker}</div>
+          <div class="font-zh text-large">${line.zh}</div>
+          <div class="text-muted" style="font-size:0.9rem">${line.pinyin}</div>
+          <div>${line.en}</div>
+        </div>
+      `).join('');
+    }
+
     container.innerHTML = `
-      <div class="pg-completion">
-        <div class="pg-done-icon">🎉</div>
-        <h2>Conversation Mastered!</h2>
-        <p>You've completed this scenario. Keep going to build your real-world fluency.</p>
-        <button class="btn btn-primary mt-24" onclick="PlaygroundModule.render(document.getElementById('page-content'))">Back to Playground</button>
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.render(document.getElementById('page-content'))">← Back to Playground</button>
+        <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px;">🎉 Lesson Mastered!</div>
+      </div>
+      <div class="pg-drill-container" style="max-width:800px; margin: 0 auto; text-align: left;">
+        <h3 class="mb-16">Conversation Review</h3>
+        ${reviewHTML}
+        <button class="btn btn-primary btn-lg mt-24" style="width: 100%" onclick="PlaygroundModule.render(document.getElementById('page-content'))">Continue to Next Lesson →</button>
       </div>
     `;
     App.logActivity('🎯', `Completed Beginner Conversation: ${currentLesson.title}`);
@@ -488,11 +511,29 @@ const PlaygroundModule = (() => {
   function renderRadicalCompletion() {
     const container = document.getElementById('page-content');
     container.innerHTML = `
-      <div class="pg-completion">
-        <div class="pg-done-icon">🌟</div>
-        <h2>Radical Mastered!</h2>
-        <p>You've learned the building blocks of Chinese characters.</p>
-        <button class="btn btn-primary mt-24" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Back to Characters</button>
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back to Character Playground</button>
+        <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px;">🌟 Radical Mastered!</div>
+      </div>
+      <div class="cp-lesson-step" style="max-width:800px; margin: 0 auto; text-align: left;">
+        <div class="cp-radical-intro mb-24">
+          <div class="cp-radical-big text-center">${currentLesson.radical}</div>
+          <div class="cp-radical-meta text-center">${currentLesson.radical_pinyin} • ${currentLesson.radical_meaning}</div>
+        </div>
+        <h3 class="mb-16">Compounds Review</h3>
+        <div class="cp-compounds-grid">
+          ${currentLesson.compounds.map(c => `
+            <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')">
+              <div class="cp-c-hanzi">${c.hanzi}</div>
+              <div class="cp-c-meta">
+                <div class="cp-c-py">${c.pinyin}</div>
+                <div class="cp-c-def">${c.definition}</div>
+              </div>
+              <div class="cp-c-breakdown">${c.breakdown}</div>
+            </div>
+          `).join('')}
+        </div>
+        <button class="btn btn-primary btn-lg mt-32 w-full" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Continue to Next Radical →</button>
       </div>
     `;
   }
