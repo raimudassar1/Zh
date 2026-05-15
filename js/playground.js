@@ -92,18 +92,18 @@ window.PlaygroundModule = (() => {
         <p>Select a chapter to begin your deep-dive practice.</p>
       </div>
       
-      <div class="pg-lessons-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+      <div class="pg-lessons-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px">
         ${currentBookData.map((ch, idx) => {
           const isDone = App.state.progress.ccc_course?.[ch.id];
           return `
-            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto;flex-direction:column;align-items:flex-start;padding:24px" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
-              <div style="display:flex;width:100%;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto; flex-direction:column; align-items:flex-start; padding:24px" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
+              <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:16px">
                 <div class="pg-lesson-num" style="background:${isDone?'var(--tone2)':'var(--accent)'}">${isDone ? '✓' : ch.chapter}</div>
-                <div class="pg-lesson-status" style="font-size:0.8rem;font-weight:700;color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
+                <div class="pg-lesson-status" style="font-size:0.75rem; font-weight:800; letter-spacing:1px; color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
               </div>
               <div class="pg-lesson-info">
-                <h4 class="font-zh" style="font-size:1.2rem;margin-bottom:4px">${ch.title}</h4>
-                <p style="font-size:0.9rem;line-height:1.4">${ch.subtitle}</p>
+                <h4 class="font-zh" style="font-size:1.3rem; margin-bottom:6px; font-weight:800">${ch.title}</h4>
+                <p style="font-size:0.95rem; line-height:1.5; color:var(--text-2)">${ch.subtitle}</p>
               </div>
             </div>
           `;
@@ -122,9 +122,9 @@ window.PlaygroundModule = (() => {
 
     // Section 1: Vocabulary (Premium Grid)
     let vocabHTML = ch.vocab && ch.vocab.length ? `
-      <section class="lesson-section">
+      <section class="lesson-section" id="ls-vocab">
         <h3 class="section-title">1. Vocabulary Focus</h3>
-        <p class="text-muted mb-24">Tap words to see stroke animations, component breakdown, and examples.</p>
+        <p class="text-muted mb-32">Tap words to see stroke animations, component breakdown, and examples.</p>
         <div class="vocab-grid-premium">
           ${ch.vocab.map(v => `
             <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
@@ -139,21 +139,22 @@ window.PlaygroundModule = (() => {
 
     // Section 2: Dialogues (Premium Block)
     let dialoguesHTML = ch.dialogues && ch.dialogues.length ? `
-      <section class="lesson-section">
+      <section class="lesson-section" id="ls-dialogue">
         <h3 class="section-title">2. Situational Dialogues</h3>
-        <p class="text-muted mb-24">Build your conversation stamina. Click a line to hear the pronunciation.</p>
+        <p class="text-muted mb-32">Build your conversation stamina. Click a line to hear the pronunciation.</p>
         ${ch.dialogues.map((d, dIdx) => `
-          <div class="dialogue-block-premium">
-            <h4 class="mb-20" style="color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:10px">Conversation ${dIdx + 1}: ${d.title}</h4>
-            <div style="display:flex;flex-direction:column;gap:4px">
+          <div class="dialogue-block-premium shadow-sm">
+            <h4 class="mb-24" style="color:var(--accent); border-bottom:2px solid var(--border); padding-bottom:12px; font-size:1.3rem">Conversation ${dIdx + 1}: ${d.title}</h4>
+            <div style="display:flex; flex-direction:column; gap:4px">
               ${d.lines.map(line => `
                 <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer">
                   <div class="line-speaker-badge">${line.speaker}</div>
                   <div style="flex:1">
-                    <div class="font-zh" style="font-size:1.3rem;font-weight:700;margin-bottom:4px;color:var(--text)">${line.zh}</div>
-                    <div class="text-muted ${showPinyin ? '' : 'hidden'}" style="font-size:0.95rem;font-weight:600;color:var(--accent)">${line.py}</div>
-                    <div class="color-text-2" style="font-size:0.9rem;margin-top:4px">${line.en}</div>
+                    <div class="font-zh" style="font-size:1.6rem; font-weight:800; margin-bottom:4px; color:var(--text); line-height:1.4">${line.zh}</div>
+                    <div class="text-muted ${showPinyin ? '' : 'hidden'}" style="font-size:1rem; font-weight:600; color:var(--accent)">${line.py}</div>
+                    <div class="color-text-2" style="font-size:0.95rem; margin-top:6px">${line.en}</div>
                   </div>
+                  <div style="font-size:1.2rem; opacity:0.3">🔊</div>
                 </div>
               `).join('')}
             </div>
@@ -164,23 +165,23 @@ window.PlaygroundModule = (() => {
 
     // Section 3: Reading Comprehension
     let readingsHTML = ch.readings && ch.readings.length ? `
-      <section class="lesson-section">
+      <section class="lesson-section" id="ls-reading">
         <h3 class="section-title">3. Reading Mastery</h3>
-        <p class="text-muted mb-24">Contextual repetition using the same characters in new stories.</p>
+        <p class="text-muted mb-32">Contextual repetition using the same characters in new stories.</p>
         ${ch.readings.map((r, rIdx) => `
-          <div class="reading-block-wrapper mb-48">
-            <h4 class="mb-16">Passage ${rIdx + 1}: ${r.title}</h4>
+          <div class="reading-block-wrapper mb-64">
+            <h4 class="mb-20" style="font-size:1.3rem; color:var(--text-2); font-weight:700">Passage ${rIdx + 1}: ${r.title}</h4>
             <div class="reading-passage-premium">
               ${r.text}
             </div>
-            <div class="questions-card card p-24" style="background:var(--off-white)">
-              <h5 class="mb-16" style="text-transform:uppercase;letter-spacing:1px;font-size:0.8rem">Comprehension Check</h5>
+            <div class="questions-card card p-40" style="background:var(--warm-white); border: 1px solid var(--border); box-shadow: var(--shadow-sm)">
+              <h5 class="mb-24" style="text-transform:uppercase; letter-spacing:3px; font-size:0.85rem; color:var(--text-3); font-weight:900; opacity:0.7">Comprehension Check</h5>
               ${r.questions && r.questions.length ? r.questions.map((q, qIdx) => `
-                <div class="q-item mb-20">
-                  <div style="font-weight:700;margin-bottom:12px;font-size:1.1rem">Q: ${q.q}</div>
-                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="q-item mb-32">
+                  <div style="font-weight:800; margin-bottom:18px; font-size:1.2rem; color:var(--text)">${qIdx+1}. ${q.q}</div>
+                  <div class="options-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px">
                     ${q.options.map(opt => `
-                      <button class="btn btn-outline btn-sm" style="text-align:left;padding:12px;height:auto" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                      <button class="btn btn-outline" style="text-align:left; padding:20px; height:auto; font-size:1.1rem; font-weight:600" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
                     `).join('')}
                   </div>
                 </div>
@@ -193,28 +194,28 @@ window.PlaygroundModule = (() => {
 
     // Section 4: Listening Lab
     let listeningHTML = ch.listening && ch.listening.length ? `
-      <section class="lesson-section">
+      <section class="lesson-section" id="ls-listening">
         <h3 class="section-title">4. Listening Challenge</h3>
-        <p class="text-muted mb-24">Listen to the instructor. Try to answer without looking at the transcript!</p>
+        <p class="text-muted mb-32">Listen to the instructor. Try to answer without looking at the transcript!</p>
         ${ch.listening.map((l, lIdx) => `
-          <div class="listening-card-premium">
-            <div style="font-size:3rem;margin-bottom:16px">🎧</div>
-            <h4 class="mb-20" style="color:white">${l.title}</h4>
-            <button class="btn btn-white btn-lg" style="color:var(--gold);font-weight:800;background:white" onclick="TTS.speak(\`${l.text}\`)">▶ Play Listening Session</button>
-            <div class="mt-24">
-               <button class="btn btn-outline btn-sm" style="color:white;border-color:white" onclick="this.nextElementSibling.classList.toggle('hidden')">👁 Toggle Transcript</button>
-               <div class="card p-16 mt-16 hidden font-zh" style="background:rgba(255,255,255,0.1);text-align:left;color:white;line-height:2;border:none">
+          <div class="listening-card-premium shadow-lg">
+            <div style="font-size:5rem; margin-bottom:24px">🎙️</div>
+            <h4 class="mb-24" style="font-size:1.8rem; font-weight:900; color:white">${l.title}</h4>
+            <button class="btn btn-white btn-lg" style="min-width:280px; padding:24px; font-size:1.3rem; border-radius:40px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); background:white; color:#e67e22" onclick="TTS.speak(\`${l.text}\`)">▶ Play Audio Session</button>
+            <div class="mt-40">
+               <button class="btn btn-outline btn-sm" style="color:white; border-color:rgba(255,255,255,0.4); opacity:0.8" onclick="this.nextElementSibling.classList.toggle('hidden')">👁 Toggle Transcript</button>
+               <div class="card p-32 mt-24 hidden font-zh shadow-inner" style="background:rgba(255,255,255,0.12); text-align:left; color:white; line-height:2.4; border:none; font-size:1.4rem; border-radius:var(--radius)">
                  ${l.text}
                </div>
             </div>
           </div>
-          <div class="card p-24 mb-48" style="border:1px solid var(--border)">
+          <div class="card p-40 mb-80" style="border:1px solid var(--border); background:var(--card-bg); box-shadow:var(--shadow-md)">
              ${l.questions && l.questions.length ? l.questions.map((q, qIdx) => `
-                <div class="q-item mb-16">
-                  <div style="font-weight:700;margin-bottom:8px">Q: ${q.q}</div>
-                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div class="q-item mb-24">
+                  <div style="font-weight:800; margin-bottom:16px; font-size:1.2rem; color:var(--text)">${qIdx+1}. ${q.q}</div>
+                  <div class="options-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
                     ${q.options.map(opt => `
-                      <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                      <button class="btn btn-outline" style="text-align:left; padding:18px; font-size:1.1rem" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
                     `).join('')}
                   </div>
                 </div>
@@ -226,49 +227,60 @@ window.PlaygroundModule = (() => {
 
     // Section 5: Assessment
     let quizHTML = ch.quizzes && ch.quizzes.length ? `
-      <section class="lesson-section card p-32" style="background:var(--warm-white);border:2px solid var(--accent)">
-        <h3 class="section-title">5. Final Mastery Check</h3>
-        <p class="text-muted mb-32">Complete these challenges to finish the chapter.</p>
-        <div class="quiz-list">
-          ${ch.quizzes.map((q, qIdx) => `
-            <div class="q-item mb-32">
-              <div style="font-weight:800;margin-bottom:16px;font-size:1.1rem;color:var(--text)">${qIdx+1}. ${q.type === 'fill' ? 'Complete the sentence:' : q.question}</div>
-              ${q.type === 'fill' ? `
-                <div class="mb-16 font-zh" style="font-size:1.8rem;line-height:1.5">${q.sentence.replace('___', `<input type="text" class="input inline-input" style="width:120px;font-size:1.6rem" id="quiz-fill-${qIdx}">`)}</div>
-                <button class="btn btn-primary" onclick="window.PlaygroundModule.checkFill(this, 'quiz-fill-${qIdx}', '${q.answer}')">Check Answer</button>
-              ` : `
-                <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                  ${q.options.map(opt => `
-                    <button class="btn btn-outline" style="padding:16px" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
-                  `).join('')}
-                </div>
-              `}
-            </div>
-          `).join('')}
+      <section class="lesson-section" id="ls-quiz">
+        <div class="card p-60" style="background:var(--warm-white); border:4px solid var(--accent); border-radius:var(--radius-lg); box-shadow:var(--shadow-xl)">
+          <h3 class="section-title">5. Final Mastery Check</h3>
+          <p class="text-muted mb-48" style="font-size:1.1rem">Complete these challenges to finish the chapter and save your progress.</p>
+          <div class="quiz-list">
+            ${ch.quizzes.map((q, qIdx) => `
+              <div class="q-item mb-48">
+                <div style="font-weight:900; margin-bottom:24px; font-size:1.3rem; color:var(--text)">${qIdx+1}. ${q.type === 'fill' ? 'Complete the sentence:' : q.question}</div>
+                ${q.type === 'fill' ? `
+                  <div class="mb-24 font-zh" style="font-size:2.2rem; line-height:2">${q.sentence.replace('___', `<input type="text" class="input inline-input" style="width:160px; font-size:2rem; border-bottom-width:4px" id="quiz-fill-${qIdx}">`)}</div>
+                  <button class="btn btn-primary btn-lg" style="padding:16px 40px; font-size:1.1rem" onclick="window.PlaygroundModule.checkFill(this, 'quiz-fill-${qIdx}', '${q.answer}')">Check Answer</button>
+                ` : `
+                  <div class="options-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:20px">
+                    ${q.options.map(opt => `
+                      <button class="btn btn-outline" style="padding:24px; font-size:1.2rem; font-weight:700" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                    `).join('')}
+                  </div>
+                `}
+              </div>
+            `).join('')}
+          </div>
         </div>
       </section>
     ` : '';
 
     container.innerHTML = `
-      <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.openBook(${ch.book})">← Back to Chapters</button>
-        <h2 class="font-zh" style="font-size:2.5rem">${ch.title}</h2>
-        <p style="font-size:1.1rem;margin-top:8px">${ch.intro}</p>
+      <div class="lesson-page-header shadow-lg">
+        <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white; border-color:rgba(255,255,255,0.4); font-weight:800" onclick="window.PlaygroundModule.openBook(${ch.book})">← BACK TO CHAPTERS</button>
+        <div style="font-size:0.9rem; text-transform:uppercase; letter-spacing:6px; margin-bottom:16px; opacity:0.8; font-weight:700">VOLUME ${ch.book} • CHAPTER ${ch.chapter}</div>
+        <h2 class="font-zh" style="font-size:4rem; margin-bottom:20px; font-weight:900; letter-spacing:-1px">${ch.title}</h2>
+        <p style="font-size:1.4rem; max-width:800px; margin:0 auto; opacity:0.95; line-height:1.5; font-weight:500">${ch.intro}</p>
       </div>
 
-      <div class="lesson-container" style="max-width:1000px;margin:0 auto">
+      <nav class="lesson-nav-sticky">
+        <button class="ln-btn active" onclick="window.PlaygroundModule.scrollToSection('ls-vocab', this)">Vocabulary</button>
+        <button class="ln-btn" onclick="window.PlaygroundModule.scrollToSection('ls-dialogue', this)">Dialogues</button>
+        <button class="ln-btn" onclick="window.PlaygroundModule.scrollToSection('ls-reading', this)">Reading</button>
+        <button class="ln-btn" onclick="window.PlaygroundModule.scrollToSection('ls-listening', this)">Listening</button>
+        <button class="ln-btn" onclick="window.PlaygroundModule.scrollToSection('ls-quiz', this)">Mastery Quiz</button>
+      </nav>
+
+      <div class="lesson-container" style="max-width:1100px; margin:0 auto">
         ${vocabHTML}
         ${dialoguesHTML}
         ${readingsHTML}
         ${listeningHTML}
         ${quizHTML}
 
-        <div class="text-center mt-60 mb-60">
-           <div class="card p-40" style="background:var(--off-white);border:2px dashed var(--tone2)">
-             <div style="font-size:4rem;margin-bottom:16px">🏆</div>
-             <h2 class="mb-16">Chapter Mastered?</h2>
-             <p class="mb-32 text-muted">Ready to save your progress and unlock the next challenge?</p>
-             <button class="btn btn-success btn-lg" style="width:100%;max-width:400px;padding:24px;font-size:1.5rem" onclick="window.PlaygroundModule.markChapterComplete()">Finish Chapter ✓</button>
+        <div class="text-center mt-100 mb-100">
+           <div class="card p-80" style="background:var(--off-white); border:6px dashed var(--tone2); border-radius:var(--radius-lg); box-shadow: var(--shadow-xl)">
+             <div style="font-size:6rem; margin-bottom:32px">🏆</div>
+             <h2 class="mb-24" style="font-size:2.5rem; font-weight:900">Chapter Mastered?</h2>
+             <p class="mb-48 text-muted" style="font-size:1.2rem; max-width:600px; margin-left:auto; margin-right:auto">You have completed all sections of this chapter. Click below to permanently save your achievement.</p>
+             <button class="btn btn-success btn-lg" style="width:100%; max-width:600px; padding:32px; font-size:2rem; font-weight:900; border-radius:60px; box-shadow:0 10px 20px rgba(39, 174, 96, 0.3)" onclick="window.PlaygroundModule.markChapterComplete()">FINISH CHAPTER ✓</button>
            </div>
         </div>
       </div>
@@ -277,12 +289,31 @@ window.PlaygroundModule = (() => {
     window.scrollTo(0,0);
   }
 
+  function scrollToSection(id, btn) {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      document.querySelectorAll('.ln-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+
   function checkAnswer(btn, selected, correct) {
     if (selected === correct) {
-      btn.className = 'btn btn-success btn-sm';
+      btn.className = 'btn btn-success';
       App.logActivity('🎯', `Correct answer in CCC Course!`);
     } else {
-      btn.className = 'btn btn-error btn-sm';
+      btn.className = 'btn btn-error';
       btn.style.animation = 'shake 0.4s';
     }
   }
@@ -333,15 +364,22 @@ window.PlaygroundModule = (() => {
     return `
       <div class="cp-blocks-grid">
         ${currentCharData.map(block => `
-          <div class="cp-block-card" style="border-top: 4px solid ${block.color}" onclick="window.PlaygroundModule.openRadicalBlock('${block.id}')">
-            <div class="cp-block-icon">${block.icon}</div>
-            <div class="cp-block-info">
-              <h3>${block.title}</h3>
-              <div class="text-zh">${block.titleZh}</div>
-              <p>${block.subtitle}</p>
-              <div class="cp-lesson-badges">
-                ${block.lessons.map(l => `<span class="badge badge-outline">${l.radical}</span>`).join('')}
+          <div class="cp-block-card" onclick="window.PlaygroundModule.openRadicalBlock('${block.id}')">
+            <div class="cp-block-header" style="background:${block.color}">
+              <div class="cp-block-icon">${block.icon}</div>
+              <div class="cp-block-badges">
+                ${block.lessons.slice(0, 3).map(l => `<span class="cp-r-badge">${l.radical}</span>`).join('')}
+                ${block.lessons.length > 3 ? `<span class="cp-r-badge">+${block.lessons.length-3}</span>` : ''}
               </div>
+            </div>
+            <div class="cp-block-body">
+              <h3 style="margin-bottom:4px; font-weight:800">${block.title}</h3>
+              <div class="text-zh" style="color:var(--accent); font-weight:700; margin-bottom:12px">${block.titleZh}</div>
+              <p style="font-size:0.9rem; line-height:1.4; color:var(--text-3)">${block.subtitle}</p>
+            </div>
+            <div class="cp-block-footer">
+              <span>${block.lessons.length} Radicals</span>
+              <span class="color-accent" style="font-weight:800">EXPLORE →</span>
             </div>
           </div>
         `).join('')}
@@ -698,6 +736,7 @@ window.PlaygroundModule = (() => {
     renderCharPlayground,
     openBook,
     startChapter,
+    scrollToSection,
     markChapterComplete,
     checkAnswer,
     checkFill,
