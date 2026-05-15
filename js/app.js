@@ -636,6 +636,7 @@ const routes = {
   '/scenarios':           { title: 'Everyday Scenarios', render: renderScenariosPage,     route: 'scenarios' },
   '/library':             { title: 'Character Library',  render: renderLibrary,           route: 'library' },
   '/vocabulary':          { title: 'Vocabulary Library', render: renderVocabLibrary,       route: 'vocabulary' },
+  '/vocabulary-books':    { title: 'Course Books',       render: renderVocabularyBooks,    route: 'vocabulary-books' },
   '/grammar':             { title: 'Grammar Library',    render: renderGrammarLibrary,     route: 'grammar' },
   '/flashcards':          { title: 'Flashcards',         render: renderFlashcardsPage,    route: 'flashcards' },
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
@@ -1284,6 +1285,11 @@ function renderToneGame(container) {
 function renderVocabLibrary(container) {
   if (window.VocabularyModule) return window.VocabularyModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Vocabulary Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+}
+
+function renderVocabularyBooks(container) {
+  if (window.VocabularyBooksModule) return window.VocabularyBooksModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Course Books Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderGrammarLibrary(container) {
