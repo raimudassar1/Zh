@@ -2075,6 +2075,29 @@ kbd {
 .ge-py { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-top: 4px; }
 .ge-en { font-size: 0.95rem; color: var(--text-2); margin-top: 4px; }
 
+/* Tone Game Styles */
+.tone-game-container { max-width: 600px; margin: 0 auto; }
+.tone-guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tone-guide-card { padding: 12px; border-radius: var(--radius); text-align: center; color: white; }
+.tone-guide-card.tone1 { background: var(--tone1); }
+.tone-guide-card.tone2 { background: var(--tone2); }
+.tone-guide-card.tone3 { background: var(--tone3); }
+.tone-guide-card.tone4 { background: var(--tone4); }
+.tg-num { font-size: 0.8rem; opacity: 0.8; font-weight: 700; margin-bottom: 4px; }
+.tg-sym { font-size: 2.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+.tg-name { font-size: 0.75rem; line-height: 1.2; }
+.tone-options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.tone-btn { font-size: 1.2rem; padding: 20px; font-weight: 700; border-width: 2px; }
+.tone-btn.tone1 { border-color: var(--tone1); color: var(--tone1); }
+.tone-btn.tone2 { border-color: var(--tone2); color: var(--tone2); }
+.tone-btn.tone3 { border-color: var(--tone3); color: var(--tone3); }
+.tone-btn.tone4 { border-color: var(--tone4); color: var(--tone4); }
+.tone-btn.tone1:hover, .tone-btn.tone1.selected { background: var(--tone1); color: white; }
+.tone-btn.tone2:hover, .tone-btn.tone2.selected { background: var(--tone2); color: white; }
+.tone-btn.tone3:hover, .tone-btn.tone3.selected { background: var(--tone3); color: white; }
+.tone-btn.tone4:hover, .tone-btn.tone4.selected { background: var(--tone4); color: white; }
+.tone-score { font-size: 1.2rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
+
 
 
 

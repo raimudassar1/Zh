@@ -60,11 +60,11 @@ const PlaygroundModule = (() => {
               ${stages[sKey].groups.map(pg => {
                 const completedCount = pg.lessons.filter(l => App.state.progress.playground?.[l.id]).length;
                 const isDone = completedCount === pg.lessons.length;
-                const isLocked = pg.prerequisite && !App.state.progress.playground?.[playgroundData.find(p => p.id === pg.prerequisite)?.lessons[0]?.id]; // Simple lock check
+                const isLocked = false; // All content unlocked for static page
 
                 return `
-                  <div class="pg-card ${isDone ? 'pg-complete' : ''} ${isLocked ? 'locked' : ''}" onclick="${isLocked ? '' : `PlaygroundModule.openPlayground('${pg.id}')`}">
-                    <div class="pg-card-icon">${isLocked ? '🔒' : (isDone ? '🏆' : '🎠')}</div>
+                  <div class="pg-card ${isDone ? 'pg-complete' : ''}" onclick="PlaygroundModule.openPlayground('${pg.id}')">
+                    <div class="pg-card-icon">${isDone ? '🏆' : '🎠'}</div>
                     <div class="pg-card-content">
                       <h3>${pg.title}</h3>
                       <p>${pg.entry_description || pg.subtitle}</p>
@@ -101,7 +101,7 @@ const PlaygroundModule = (() => {
               <div class="pg-lesson-num">${isDone ? '✓' : idx + 1}</div>
               <div class="pg-lesson-info">
                 <h4>${lesson.title}</h4>
-                <p>${lesson.vocab.length} Words • 10x Repetition</p>
+                <p>${lesson.dialogue ? lesson.dialogue.length : 0} Lines • Conversation Simulator</p>
               </div>
               <div class="pg-lesson-status">${isDone ? 'Completed' : '➡️'}</div>
             </div>
@@ -119,24 +119,18 @@ const PlaygroundModule = (() => {
     currentLesson = lesson;
     currentStep = 0;
     sessionVocab = [];
-    const baseVocab = lesson.vocab;
-    const reps = lesson.repetition_factor || 10;
+    
+    // Conversation format
+    const dialogue = lesson.dialogue || [];
+    
+    // Phase 1: Listen and Read
+    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'learn' }));
+    
+    // Phase 2: Translation Match
+    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'quiz_en' }));
 
-    baseVocab.forEach(v => sessionVocab.push({ ...v, mode: 'learn' }));
-
-    for (let i = 0; i < reps; i++) {
-      const shuffled = [...baseVocab].sort(() => Math.random() - 0.5);
-      shuffled.forEach(v => {
-        const mode = Math.random() > 0.5 ? 'recog' : 'audio';
-        sessionVocab.push({ ...v, mode });
-      });
-    }
-
-    const quizCount = 10;
-    for (let i = 0; i < quizCount; i++) {
-      const v = baseVocab[Math.floor(Math.random() * baseVocab.length)];
-      sessionVocab.push({ ...v, mode: 'quiz' });
-    }
+    // Phase 3: Listening Comprehension
+    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'quiz_audio' }));
 
     renderLessonStep();
   }
@@ -168,15 +162,15 @@ const PlaygroundModule = (() => {
       </div>
     `;
 
-    if (item.mode === 'learn') {
-      setTimeout(() => TTS.speak(item.hanzi), 500);
+    if (item.mode === 'learn' || item.mode === 'quiz_audio') {
+      setTimeout(() => TTS.speak(item.zh), 500);
     }
   }
 
   function getPhaseLabel(mode) {
-    if (mode === 'learn') return '🌱 Phase 1: Learning';
-    if (mode === 'quiz') return '🔥 Phase 3: Challenge';
-    return '🔄 Phase 2: Repetition';
+    if (mode === 'learn') return '🌱 Phase 1: Listen & Read';
+    if (mode === 'quiz_en') return '🧠 Phase 2: Translation';
+    return '🎧 Phase 3: Listening';
   }
 
   function renderDrill(item) {
@@ -184,82 +178,49 @@ const PlaygroundModule = (() => {
       case 'learn':
         return `
           <div class="pg-drill-learn">
-            <div class="pg-big-hanzi" onclick="TTS.speak('${item.hanzi}')">${item.hanzi}</div>
-            <div class="pg-big-pinyin">${item.pinyin}</div>
-            <div class="pg-big-def">${item.definition}</div>
-            <button class="btn btn-primary btn-lg mt-24" onclick="PlaygroundModule.nextStep()">Next Word</button>
+            <div class="badge badge-primary mb-12">${item.speaker}</div>
+            <div class="pg-big-hanzi" style="font-size:3rem;line-height:1.4" onclick="TTS.speak('${item.zh}')">${item.zh}</div>
+            <div class="pg-big-pinyin" style="font-size:1.5rem">${item.pinyin}</div>
+            <div class="pg-big-def" style="font-size:1.2rem">${item.en}</div>
+            <button class="btn btn-primary btn-lg mt-24" onclick="PlaygroundModule.nextStep()">Next Line</button>
           </div>
         `;
-      case 'recog':
-        const recogOpts = generateOptions(item);
+      case 'quiz_en':
+        const enOpts = generateDialogueOptions(item);
         return `
           <div class="pg-drill-quiz">
-            <div class="pg-quiz-q">What is the meaning?</div>
-            <div class="pg-big-hanzi mb-24">${item.hanzi}</div>
-            <div class="pg-options-grid">
-              ${recogOpts.map(opt => `
-                <button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkAnswer('${opt.definition}', '${item.definition}', this)">
-                  ${opt.definition}
+            <div class="pg-quiz-q">What does this mean?</div>
+            <div class="pg-big-hanzi mb-24" style="font-size:2.5rem">${item.zh}</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              ${enOpts.map(opt => `
+                <button class="btn btn-outline" style="white-space:normal;height:auto;padding:16px;font-size:1.1rem" onclick="PlaygroundModule.checkAnswer('${opt.en}', '${item.en}', this)">
+                  ${opt.en}
                 </button>
               `).join('')}
             </div>
           </div>
         `;
-      case 'audio':
-        const audioOpts = generateOptions(item);
+      case 'quiz_audio':
+        const zhOpts = generateDialogueOptions(item);
         return `
           <div class="pg-drill-quiz">
-            <div class="pg-quiz-q">Select the character you hear:</div>
-            <div class="pg-audio-trigger mb-24" onclick="TTS.speak('${item.hanzi}')">🔊 Replay</div>
-            <div class="pg-options-grid">
-              ${audioOpts.map(opt => `
-                <button class="btn btn-outline pg-opt-btn pg-hanzi-opt" onclick="PlaygroundModule.checkAnswer('${opt.hanzi}', '${item.hanzi}', this)">
-                  ${opt.hanzi}
+            <div class="pg-quiz-q">Select the correct line you hear:</div>
+            <div class="pg-audio-trigger mb-24" onclick="TTS.speak('${item.zh}')">🔊 Replay</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              ${zhOpts.map(opt => `
+                <button class="btn btn-outline" style="white-space:normal;height:auto;padding:16px;font-size:1.5rem;font-family:var(--font-zh)" onclick="PlaygroundModule.checkAnswer('${opt.zh}', '${item.zh}', this)">
+                  ${opt.zh}
                 </button>
               `).join('')}
             </div>
           </div>
         `;
-      case 'quiz':
-        const quizType = Math.random() > 0.5 ? 'mc' : 'trans';
-        if (quizType === 'mc') {
-          const mcOpts = generateOptions(item);
-          return `
-            <div class="pg-drill-quiz challenge">
-              <div class="pg-quiz-label">Challenge: Multiple Choice</div>
-              <div class="pg-big-hanzi mb-12">${item.hanzi}</div>
-              <div class="pg-big-pinyin mb-24">${item.pinyin}</div>
-              <div class="pg-options-grid">
-                ${mcOpts.map(opt => `
-                  <button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkAnswer('${opt.definition}', '${item.definition}', this)">
-                    ${opt.definition}
-                  </button>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else {
-          return `
-            <div class="pg-drill-quiz challenge">
-              <div class="pg-quiz-label">Challenge: Recognition</div>
-              <div class="pg-big-pinyin mb-24">${item.pinyin}</div>
-              <p class="mb-12">Meaning: <strong>${item.definition}</strong></p>
-              <div class="pg-options-grid">
-                ${generateOptions(item).map(opt => `
-                  <button class="btn btn-outline pg-opt-btn pg-hanzi-opt" onclick="PlaygroundModule.checkAnswer('${opt.hanzi}', '${item.hanzi}', this)">
-                    ${opt.hanzi}
-                  </button>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        }
     }
   }
 
-  function generateOptions(correctItem) {
-    const others = currentLesson.vocab.filter(v => v.hanzi !== correctItem.hanzi);
-    const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
+  function generateDialogueOptions(correctItem) {
+    const others = currentLesson.dialogue.filter(l => l.zh !== correctItem.zh);
+    const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 2);
     shuffled.push(correctItem);
     return shuffled.sort(() => Math.random() - 0.5);
   }
@@ -291,20 +252,16 @@ const PlaygroundModule = (() => {
     App.state.progress.playground[currentLesson.id] = true;
     App.saveProgress();
 
-    if (typeof SRS !== 'undefined') {
-      currentLesson.vocab.forEach(v => SRS.review(v.hanzi, 'GOOD', 'novice'));
-    }
-
     const container = document.getElementById('page-content');
     container.innerHTML = `
       <div class="pg-completion">
         <div class="pg-done-icon">🎉</div>
-        <h2>Lesson Complete!</h2>
-        <p>You've repeated these characters enough to start building permanent memory.</p>
+        <h2>Conversation Mastered!</h2>
+        <p>You've completed this scenario. Keep going to build your real-world fluency.</p>
         <button class="btn btn-primary mt-24" onclick="PlaygroundModule.render(document.getElementById('page-content'))">Back to Playground</button>
       </div>
     `;
-    App.logActivity('🎯', `Completed Beginner Playground lesson: ${currentLesson.title}`);
+    App.logActivity('🎯', `Completed Beginner Conversation: ${currentLesson.title}`);
   }
 
   // ─── Character Playground ───────────────────────────────────────────────────
@@ -610,6 +567,8 @@ const PlaygroundModule = (() => {
       resultArea.innerHTML = `<div class="empty-state"><p>Character not found in library.</p></div>`;
       return;
     }
+    const parts = charData.components || charData.radicals || [];
+    
     resultArea.innerHTML = `
       <div class="cp-decomp-view">
         <div class="cp-main-char">
@@ -618,11 +577,17 @@ const PlaygroundModule = (() => {
         </div>
         <div class="cp-arrow">⬇️ decomposes into</div>
         <div class="cp-parts">
-          ${(charData.components || charData.radicals || []).map(c => `
+          ${parts.length > 0 ? parts.map(c => `
             <div class="cp-part-item">
               <div class="cp-part-char">${c}</div>
               <div class="cp-part-label">${charData.radicals?.includes(c) ? 'Radical' : 'Component'}</div>
-            </div>`).join('<div class="cp-part-plus">+</div>')}
+            </div>`).join('<div class="cp-part-plus">+</div>') 
+          : `
+            <div class="cp-part-item">
+              <div class="cp-part-char">${char}</div>
+              <div class="cp-part-label">Base Character</div>
+            </div>
+          `}
         </div>
         ${charData.mnemonic ? `<div class="cp-mnemonic mt-24"><strong>Mnemonic:</strong> ${charData.mnemonic}</div>` : ''}
       </div>`;

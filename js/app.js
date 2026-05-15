@@ -631,6 +631,7 @@ const routes = {
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
   '/quiz/pronunciation':  { title: 'Pronunciation Quiz', render: renderPronunciationQuiz, route: 'quiz-pronunciation' },
   '/quiz/vocabulary':     { title: 'Vocabulary Quiz',    render: renderVocabQuiz,         route: 'quiz-vocabulary' },
+  '/quiz/tones':          { title: 'Tone Training',      render: renderToneGame,          route: 'quiz-tones' },
   '/reading':             { title: 'Reading',            render: renderReadingPage,       route: 'reading' },
   '/mock-test/reading':   { title: 'Reading Mock Test',  render: renderMockReadingPage,   route: 'mock-reading' },
   '/mock-test/listening': { title: 'Listening Mock Test',render: renderMockListeningPage, route: 'mock-listening' },
@@ -1252,6 +1253,11 @@ function renderPronunciationQuiz(container) {
 function renderVocabQuiz(container) {
   if (window.QuizModule) return window.QuizModule.renderVocabulary(container);
   container.innerHTML = '<div class="empty-state"><h3>Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+}
+
+function renderToneGame(container) {
+  if (typeof ToneGame !== 'undefined') return ToneGame.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Tone Game Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderVocabLibrary(container) {

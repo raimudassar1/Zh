@@ -43,6 +43,15 @@ const LearnModule = (() => {
   }
 
   function renderPath(container, chars, prog, srsStats, levels, playgroundData) {
+    // Calculate per-level mastery
+    const byLevel = {};
+    LEVEL_ORDER.forEach(lvl => {
+      const total = chars.filter(c => c.level === lvl).length;
+      const learned = chars.filter(c => c.level === lvl && prog.learnedChars.includes(c.hanzi)).length;
+      const pct = total > 0 ? Math.round((learned / total) * 100) : 0;
+      byLevel[lvl] = { total, learned, pct };
+    });
+
     // Playground stats
     const totalPgLessons = (playgroundData || []).reduce((acc, pg) => acc + pg.lessons.length, 0);
     const donePgLessons = Object.keys(prog.playground || {}).length;
