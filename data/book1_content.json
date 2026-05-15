@@ -664,7 +664,7 @@
     "chapter": 2,
     "title": "我的家人",
     "subtitle": "My Family",
-    "intro": "Talking about family members, relationships, and professions.",
+    "intro": "Learn to talk about your family members, their ages, and their jobs in Taiwan.",
     "vocab": [
       {
         "hanzi": "家",
@@ -889,395 +889,395 @@
     ],
     "dialogues": [
       {
-        "title": "我的家人 Conversation 1",
+        "title": "Looking at a Family Photo Album",
         "lines": [
           {
+            "speaker": "美玲",
+            "zh": "田中，你看，這是我家的照片。",
+            "py": "Tiánzhōng, nǐ kàn, zhè shì wǒ jiā de zhàopiàn.",
+            "en": "Tanaka, look, this is a photo of my family."
+          },
+          {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "zh": "哇，你家有很多人。這是誰？",
+            "py": "Wa, nǐ jiā yǒu hěnduō rén. Zhè shì shéi?",
+            "en": "Wow, your family has many people. Who is this?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "zh": "這是我爸爸。他是醫生。",
+            "py": "Zhè shì wǒ bàba. Tā shì yīshēng.",
+            "en": "This is my dad. He is a doctor."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "zh": "他看起來很親切。那旁邊這位呢？",
+            "py": "Tā kàn qǐlái hěn qīnqiè. Nà pángbiān zhè wèi ne?",
+            "en": "He looks very kind. What about this person next to him?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "zh": "那是我媽媽。她是小學老師。",
+            "py": "Nà shì wǒ māma. Tā shì xiǎoxué lǎoshī.",
+            "en": "That is my mom. She is an elementary school teacher."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "zh": "妳媽媽很漂亮。妳有兄弟姐妹嗎？",
+            "py": "Nǐ māma hěn piàoliang. Nǐ yǒu xiōngdì jiěmèi ma?",
+            "en": "Your mom is very beautiful. Do you have siblings?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "zh": "有，我有一個哥哥和一個妹妹。",
+            "py": "Yǒu, wǒ yǒu yī gè gēge hé yī gè mèimei.",
+            "en": "Yes, I have an older brother and a younger sister."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "zh": "他們做什麼工作？",
+            "py": "Tāmen zuò shénme gōngzuò?",
+            "en": "What do they do for work?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "zh": "我哥哥也是工程師，他在台積電工作。",
+            "py": "Wǒ gēge yě shì gōngchéngshī, tā zài Táijīdiàn gōngzuò.",
+            "en": "My brother is also an engineer; he works at TSMC."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "zh": "真的嗎？台積電是很棒的公司。",
+            "py": "Zhēnde ma? Táijīdiàn shì hěn bàng de gōngsī.",
+            "en": "Really? TSMC is a great company."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "zh": "對，但是他非常忙。常常要加班。",
+            "py": "Duì, dànshì tā fēicháng máng. Chángcháng yào jiābān.",
+            "en": "Yes, but he is very busy. He often has to work overtime."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "zh": "那妳妹妹呢？她幾歲了？",
+            "py": "Nà nǐ mèimei ne? Tā jǐ suì le?",
+            "en": "And your younger sister? How old is she?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "zh": "她今年二十歲，現在是大學生。",
+            "py": "Tā jīnnián èrshí suì, xiànzài shì dàxuéshēng.",
+            "en": "She is twenty this year; she is a university student now."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "zh": "她學什麼專業？",
+            "py": "Tā xué shénme zhuānyè?",
+            "en": "What is her major?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "zh": "她學法律。她想當律師。",
+            "py": "Tā xué fǎlǜ. Tā xiǎng dāng lǜshī.",
+            "en": "She studies law. She wants to be a lawyer."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "zh": "真優秀。妳家住在台北嗎？",
+            "py": "Zhēn yōuxiù. Nǐ jiā zhù zài Táiběi ma?",
+            "en": "That's excellent. Does your family live in Taipei?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "zh": "對，我們住在台北。你家呢？",
+            "py": "Duì, wǒmen zhù zài Táiběi. Nǐ jiā ne?",
+            "en": "Yes, we live in Taipei. What about yours?"
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "zh": "我家在東京。我家有四個人。",
+            "py": "Wǒ jiā zài Dōngjīng. Wǒ jiā yǒu sì gè rén.",
+            "en": "My home is in Tokyo. My family has four people."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "zh": "下次我也想看你家的照片。",
+            "py": "Xiàcì wǒ yě xiǎng kàn nǐ jiā de zhàopiàn.",
+            "en": "Next time I'd like to see your family photos too."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "zh": "沒問題，我手機裡有很多。",
+            "py": "Méi wèntí, wǒ shǒujī lǐ yǒu hěnduō.",
+            "en": "No problem, I have many in my phone."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於我的家人的話。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於我的家人的話。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "zh": "太好了，我們一邊喝咖啡一邊看吧。",
+            "py": "Tài hǎo le, wǒmen yībiān hē kāfēi yībiān kàn ba.",
+            "en": "Great, let's look at them while drinking coffee."
           }
         ]
       },
       {
-        "title": "我的家人 Conversation 2",
+        "title": "Talking about Siblings' Education",
         "lines": [
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "田中",
+            "zh": "美玲，妳妹妹在哪裡念書？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "美玲",
+            "zh": "她在國立台灣大學念書。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊我的家人的工作內容。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "美玲",
+            "zh": "有一點難，但是她很努力。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊我的家人的工作內容。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "田中",
+            "zh": "她學法律難不難？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       },
       {
-        "title": "我的家人 Conversation 3",
+        "title": "Parents and Home Life",
         "lines": [
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "田中",
+            "zh": "妳爸爸媽媽身體好嗎？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "美玲",
+            "zh": "他們身體都很好，謝謝。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理我的家人的相關事宜。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "美玲",
+            "zh": "他們住在士林區。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理我的家人的相關事宜。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "田中",
+            "zh": "他們住在台北哪裡？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       }
@@ -1619,395 +1619,395 @@
     ],
     "dialogues": [
       {
-        "title": "週末活動 Conversation 1",
+        "title": "Planning the Weekend",
         "lines": [
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "大久保",
+            "zh": "王先生，週末你忙不忙？",
+            "py": "Wáng xiānshēng, zhōumò nǐ máng bù máng?",
+            "en": "Mr. Wang, are you busy this weekend?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "王先生",
+            "zh": "我不忙。你有什麼事嗎？",
+            "py": "Wǒ bù máng. Nǐ yǒu shénme shì ma?",
+            "en": "I'm not busy. Do you have something in mind?"
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "大久保",
+            "zh": "我想去運動。你喜歡打球嗎？",
+            "py": "Wǒ xiǎng qù yùndòng. Nǐ xǐhuān dǎqiú ma?",
+            "en": "I want to exercise. Do you like playing ball?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "王先生",
+            "zh": "我喜歡打籃球。我也喜歡游泳。",
+            "py": "Wǒ xǐhuān dǎ lánqiú. Wǒ yě xǐhuān yóuyǒng.",
+            "en": "I like playing basketball. I also like swimming."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "大久保",
+            "zh": "太好了！我們星期六去打球，好嗎？",
+            "py": "Tài hǎo le! Wǒmen xīngqīliù qù dǎqiú, hǎo ma?",
+            "en": "Great! Let's go play ball on Saturday, okay?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "王先生",
+            "zh": "好啊。去哪裡打球？",
+            "py": "Hǎo a. Qù nǎlǐ dǎqiú?",
+            "en": "Sure. Where should we play?"
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "大久保",
+            "zh": "去科學園區旁邊的體育館。",
+            "py": "Qù kēxué yuánqū pángbiān de tǐyùguǎn.",
+            "en": "Let's go to the gym next to the Science Park."
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "王先生",
+            "zh": "沒問題。早上還是下午？",
+            "py": "Méi wèntí. Zǎoshàng háishì xiàwǔ?",
+            "en": "No problem. Morning or afternoon?"
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "大久保",
+            "zh": "早上九點可以嗎？",
+            "py": "Zǎoshàng jiǔ diǎn kěyǐ ma?",
+            "en": "Is 9 AM okay?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "王先生",
+            "zh": "可以。打完球以後，我們一起去吃飯。",
+            "py": "Kěyǐ. Dǎ wán qiú yǐhòu, wǒmen yīqǐ qù chīfàn.",
+            "en": "Yes. After playing, let's go eat together."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "大久保",
+            "zh": "你想吃什麼？",
+            "py": "Nǐ xiǎng chī shénme?",
+            "en": "What do you want to eat?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "王先生",
+            "zh": "我想吃那家很有名的牛肉麵。",
+            "py": "Wǒ xiǎng chī nà jiā hěn yǒumíng de niúròumiàn.",
+            "en": "I want to eat at that famous beef noodle shop."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "大久保",
+            "zh": "好主意！聽說那裡的麵很Q。",
+            "py": "Hǎo zhǔyì! Tīngshuō nàlǐ de miàn hěn Q.",
+            "en": "Good idea! I heard their noodles are very chewy (Q)."
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "王先生",
+            "zh": "對，而且湯頭很鮮甜。",
+            "py": "Duì, érqiě tāngtóu hěn xiāntián.",
+            "en": "Yes, and the soup is very savory and sweet."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "大久保",
+            "zh": "那下午要去做什麼？",
+            "py": "Nà xiàwǔ yào qù zuò shénme?",
+            "en": "Then what should we do in the afternoon?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "王先生",
+            "zh": "下午我想去看電影。有一部新片不錯。",
+            "py": "Xiàwǔ wǒ xiǎng qù kàn diànyǐng. Yǒu yī bù xīnpiàn búcuò.",
+            "en": "In the afternoon, I want to see a movie. There's a good new release."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "大久保",
+            "zh": "我也想看。我們一起去吧。",
+            "py": "Wǒ yě xiǎng kàn. Wǒmen yīqǐ qù ba.",
+            "en": "I want to see it too. Let's go together."
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "王先生",
+            "zh": "好，我來買票。",
+            "py": "Hǎo, wǒ lái mǎi piào.",
+            "en": "Okay, I'll buy the tickets."
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "大久保",
+            "zh": "謝謝你，我請你喝咖啡。",
+            "py": "Xièxiè nǐ, wǒ qǐng nǐ hē kāfēi.",
+            "en": "Thank you, I'll treat you to coffee."
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於週末活動的話。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "王先生",
+            "zh": "太客氣了。那就週末見！",
+            "py": "Tài kèqì le. Nàjiù zhōumò jiàn!",
+            "en": "You're too kind. See you this weekend!"
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於週末活動的話。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "大久保",
+            "zh": "好的，不見不散。",
+            "py": "Hǎo de, bújiàn búsàn.",
+            "en": "Okay, be there or be square."
           }
         ]
       },
       {
-        "title": "週末活動 Conversation 2",
+        "title": "Meeting at the Gym",
         "lines": [
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "王先生",
+            "zh": "嘿！大久保，你到了嗎？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "大久保",
+            "zh": "我到了，我在門口。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊週末活動的工作內容。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "大久保",
+            "zh": "好啊，謝謝你。我們開始打球吧。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊週末活動的工作內容。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "王先生",
+            "zh": "我帶了兩瓶水，你要喝嗎？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       },
       {
-        "title": "週末活動 Conversation 3",
+        "title": "At the Movie Theater",
         "lines": [
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "大久保",
+            "zh": "這部電影看起來很有意思。",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "王先生",
+            "zh": "對，導演很有名。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理週末活動的相關事宜。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "王先生",
+            "zh": "好，我去買一桶大的。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理週末活動的相關事宜。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "大久保",
+            "zh": "你要吃爆米花嗎？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       }
@@ -2144,7 +2144,7 @@
     "chapter": 4,
     "title": "請問一共多少錢？",
     "subtitle": "Asking Prices",
-    "intro": "Placeholder intro.",
+    "intro": "Learn how to ask for prices, discuss sizes, and buy items in Taiwanese stores.",
     "vocab": [
       {
         "hanzi": "請問",
@@ -2354,395 +2354,395 @@
     ],
     "dialogues": [
       {
-        "title": "詢問價格 Conversation 1",
+        "title": "Shopping for Clothes in Taipei",
         "lines": [
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "小姐",
+            "zh": "歡迎光臨！請問有什麼需要幫忙的嗎？",
+            "py": "Huānyíng guānglín! Qǐngwèn yǒu shénme xūyào bāngmáng de ma?",
+            "en": "Welcome! Is there anything I can help you with?"
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "zh": "我想買一件襯衫。這件多少錢？",
+            "py": "Wǒ xiǎng mǎi yī jiàn chènshān. Zhè jiàn duōshǎo qián?",
+            "en": "I want to buy a shirt. How much is this one?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "小姐",
+            "zh": "這件現在打八折，只要八百塊。",
+            "py": "Zhè jiàn xiànzài dǎ bā zhé, zhǐyào bābǎi kuài.",
+            "en": "This one is 20% off right now; it's only 800 dollars."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "zh": "那這件藍色的呢？也打折嗎？",
+            "py": "Nà zhè jiàn lánsè de ne? Yě dǎzhé ma?",
+            "en": "What about this blue one? Is it also on sale?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "小姐",
+            "zh": "藍色的沒有打折，是一千二百塊。",
+            "py": "Lánsè de méiyǒu dǎzhé, shì yīqiān èrbǎi kuài.",
+            "en": "The blue one is not on sale; it's 1,200 dollars."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "zh": "有一點貴。請問有沒有中號的？",
+            "py": "Yǒu yīdiǎn guì. Qǐngwèn yǒu méiyǒu zhōnghào de?",
+            "en": "That's a bit expensive. Do you have a medium size?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "小姐",
+            "zh": "我幫您找一下。有的，這件就是中號。",
+            "py": "Wǒ bāng nín zhǎo yīxià. Yǒu de, zhè jiàn jiùshì zhōnghào.",
+            "en": "Let me check for you. Yes, this one is medium."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "zh": "我可以試穿嗎？",
+            "py": "Wǒ kěyǐ shìchuān ma?",
+            "en": "Can I try it on?"
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "小姐",
+            "zh": "當然可以，試衣間在那邊。",
+            "py": "Dāngrán kěyǐ, shìyījiān zài nàbiān.",
+            "en": "Of course, the fitting room is over there."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "zh": "這件大小剛好，我很喜歡。我也想看那件黑色的褲子。",
+            "py": "Zhè jiàn dàxiǎo gānghǎo, wǒ hěn xǐhuān. Wǒ yě xiǎng kàn nà jiàn hēisè de kùzi.",
+            "en": "This size is just right; I like it. I also want to see those black pants."
           },
           {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於詢問價格的話。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "小姐",
+            "zh": "這條褲子也是新的，一千五百塊。",
+            "py": "Zhè tiáo kùzi yě shì xīn de, yīqiān wǔbǎi kuài.",
+            "en": "These pants are also new; 1,500 dollars."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於詢問價格的話。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "zh": "如果買兩件，有優惠嗎？",
+            "py": "Rúguǒ mǎi liǎng jiàn, yǒu yōuhuì ma?",
+            "en": "If I buy two items, is there a discount?"
+          },
+          {
+            "speaker": "小姐",
+            "zh": "買兩件可以再折一百塊。",
+            "py": "Mǎi liǎng jiàn kěyǐ zài zhé yībǎi kuài.",
+            "en": "If you buy two, you can get another 100 dollars off."
+          },
+          {
+            "speaker": "田中",
+            "zh": "好，那我買這件襯衫和這條褲子。",
+            "py": "Hǎo, nà wǒ mǎi zhè jiàn chènshān hé zhè tiáo kùzi.",
+            "en": "Okay, then I'll buy this shirt and these pants."
+          },
+          {
+            "speaker": "小姐",
+            "zh": "一共是兩千二百塊。請問您怎麼付錢？",
+            "py": "Yígòng shì liǎngqiān èrbǎi kuài. Qǐngwèn nín zěnme fùqián?",
+            "en": "Altogether it's 2,200 dollars. How would you like to pay?"
+          },
+          {
+            "speaker": "田中",
+            "zh": "我刷卡，可以嗎？",
+            "py": "Wǒ shuākǎ, kěyǐ ma?",
+            "en": "I'll use a credit card, is that okay?"
+          },
+          {
+            "speaker": "小姐",
+            "zh": "可以。請在這裡簽名。",
+            "py": "Kěyǐ. Qǐng zài zhèlǐ qiānmíng.",
+            "en": "Yes. Please sign here."
+          },
+          {
+            "speaker": "田中",
+            "zh": "好的。請問有收據嗎？",
+            "py": "Hǎo de. Qǐngwèn yǒu shōujù ma?",
+            "en": "Okay. Is there a receipt?"
+          },
+          {
+            "speaker": "小姐",
+            "zh": "有的，發票在袋子裡。謝謝您。",
+            "py": "Yǒu de, fāpiào zài dàizi lǐ. Xièxiè nín.",
+            "en": "Yes, the invoice is in the bag. Thank you."
+          },
+          {
+            "speaker": "田中",
+            "zh": "不客氣。再見。",
+            "py": "Bù kèqì. Zàijiàn.",
+            "en": "You're welcome. Goodbye."
+          },
+          {
+            "speaker": "小姐",
+            "zh": "謝謝光臨，歡迎下次再來。",
+            "py": "Xièxiè guānglín, huānyíng xiàcì zài lái.",
+            "en": "Thank you for coming, please come again."
           }
         ]
       },
       {
-        "title": "詢問價格 Conversation 2",
+        "title": "Asking about Shoes",
         "lines": [
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "田中",
+            "zh": "請問這雙鞋子多少錢？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "店員",
+            "zh": "這雙兩千五百塊。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊詢問價格的工作內容。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "店員",
+            "zh": "有，請等一下，我拿給您看。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊詢問價格的工作內容。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "田中",
+            "zh": "有黑色的嗎？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       },
       {
-        "title": "詢問價格 Conversation 3",
+        "title": "Asking for a Discount",
         "lines": [
           {
-            "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
-          },
-          {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "田中",
+            "zh": "這件外套真好看。可以打折嗎？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "zh": "這件外套現在打九折。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
-          },
-          {
-            "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
-          },
-          {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
-          },
-          {
-            "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
-          },
-          {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
-          },
-          {
-            "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
-          },
-          {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
-          },
-          {
-            "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
-          },
-          {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理詢問價格的相關事宜。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
             "speaker": "店員",
-            "zh": "店員正在處理詢問價格的相關事宜。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
+          },
+          {
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
+          },
+          {
+            "speaker": "店員",
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
+          },
+          {
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
+          },
+          {
+            "speaker": "店員",
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
+          },
+          {
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
+          },
+          {
+            "speaker": "店員",
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
+          },
+          {
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
+          },
+          {
+            "speaker": "店員",
+            "zh": "原價三千，打折後是兩千七百塊。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
+          },
+          {
+            "speaker": "田中",
+            "zh": "打九折是多少錢？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       }
@@ -2879,7 +2879,7 @@
     "chapter": 5,
     "title": "牛肉麵真好吃",
     "subtitle": "Ordering Food",
-    "intro": "Placeholder intro.",
+    "intro": "Learn to order food, describe tastes, and understand Taiwanese restaurant etiquette.",
     "vocab": [
       {
         "hanzi": "牛肉麵",
@@ -3089,395 +3089,395 @@
     ],
     "dialogues": [
       {
-        "title": "訂購食物 Conversation 1",
+        "title": "Lunch at a Famous Noodle Shop",
         "lines": [
           {
+            "speaker": "服務員",
+            "zh": "歡迎光臨！請問幾位？",
+            "py": "Huānyíng guānglín! Qǐngwèn jǐ wèi?",
+            "en": "Welcome! How many people?"
+          },
+          {
             "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "zh": "兩位。我們有訂位。",
+            "py": "Liǎng wèi. Wǒmen yǒu dìngwèi.",
+            "en": "Two people. We have a reservation."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "好的，田中先生對嗎？這邊請。",
+            "py": "Hǎo de, Tiánzhōng xiānshēng duì ma? Zhèbiān qǐng.",
+            "en": "Okay, Mr. Tanaka, right? This way please."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "zh": "田中，這家店的牛肉麵是新竹最有名的。",
+            "py": "Tiánzhōng, zhè jiā diàn de niúròumiàn shì Xīnzhú zuì yǒumíng de.",
+            "en": "Tanaka, this shop's beef noodles are the most famous in Hsinchu."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "zh": "我聽說了。我想點大碗的。",
+            "py": "Wǒ tīngshuō le. Wǒ xiǎng diǎn dà wǎn de.",
+            "en": "I've heard. I want to order a large bowl."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "這是菜單。想好了跟我說。",
+            "py": "Zhè shì càidān. Xiǎng hǎo le gēn wǒ shuō.",
+            "en": "Here is the menu. Tell me when you are ready."
+          },
+          {
+            "speaker": "田中",
+            "zh": "我要一碗紅燒牛肉麵，要辣的。",
+            "py": "Wǒ yào yī wǎn hóngshāo niúròumiàn, yào là de.",
+            "en": "I want a bowl of braised beef noodles, spicy."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "zh": "我要一碗清燉牛肉麵。我也想要一盤燙青菜。",
+            "py": "Wǒ yào yī wǎn qīngdùn niúròumiàn. Wǒ yě xiǎngyào yī pán tàng qīngcài.",
+            "en": "I want a bowl of clear broth beef noodles. I also want a plate of blanched vegetables."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "好的。要不要點一些小吃？",
+            "py": "Hǎo de. Yào bù yào diǎn yīxiē xiǎochī?",
+            "en": "Okay. Do you want to order some side dishes?"
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "zh": "有推薦的嗎？",
+            "py": "Yǒu tuījiàn de ma?",
+            "en": "Do you have any recommendations?"
+          },
+          {
+            "speaker": "服務員",
+            "zh": "我們的滷味和臭豆腐都很受歡迎。",
+            "py": "Wǒmen de lǔwèi hé chòudòufu dōu hěn shòu huānyíng.",
+            "en": "Our braised sides and stinky tofu are very popular."
+          },
+          {
+            "speaker": "田中",
+            "zh": "那就來一份滷味吧。我不習慣臭豆腐的味道。",
+            "py": "Nàjiù lái yī fèn lǔwèi ba. Wǒ bù xíguàn chòudòufu de wèidào.",
+            "en": "Then let's have an order of braised sides. I'm not used to the smell of stinky tofu."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "沒問題。飲料要喝什麼？",
+            "py": "Méi wèntí. Yǐnliào yào hē shénme?",
+            "en": "No problem. What would you like to drink?"
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "zh": "有珍珠奶茶嗎？",
+            "py": "Yǒu zhēnnǎichá ma?",
+            "en": "Do you have bubble tea?"
           },
           {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "服務員",
+            "zh": "對不起，我們只有豆漿和可樂。",
+            "py": "Duìbùqǐ, wǒmen zhǐyǒu dòujiāng hé kělè.",
+            "en": "Sorry, we only have soy milk and cola."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "zh": "那我要一杯冰豆漿，微糖。",
+            "py": "Nà wǒ yào yī bēi bīng dòujiāng, wēitáng.",
+            "en": "Then I'll have a cup of iced soy milk, low sugar."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "zh": "我要一瓶可樂，去冰。",
+            "py": "Wǒ yào yī píng kělè, qùbīng.",
+            "en": "I'll have a bottle of cola, no ice."
+          },
+          {
+            "speaker": "服務員",
+            "zh": "好的，請稍等。",
+            "py": "Hǎo de, qǐng shāoděng.",
+            "en": "Okay, please wait a moment."
+          },
+          {
+            "speaker": "田中",
+            "zh": "這麵的味道真香！肉也很多。",
+            "py": "Zhè miàn de wèidào zhēn xiāng! Ròu yě hěnduō.",
+            "en": "This noodle soup smells great! And there's a lot of meat."
           },
           {
             "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "zh": "對啊，慢慢吃。小心燙喔。",
+            "py": "Duì ā, mànmàn chī. Xiǎoxīn tàng ō.",
+            "en": "Right, eat slowly. Be careful, it's hot."
           },
           {
             "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
-          },
-          {
-            "speaker": "美玲",
-            "zh": "美玲正在說關於訂購食物的話。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
-          },
-          {
-            "speaker": "田中",
-            "zh": "田中正在說關於訂購食物的話。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "zh": "服務員，買單！多少錢？",
+            "py": "Fúwùyuán, mǎidān! Duōshǎo qián?",
+            "en": "Waiter, bill please! How much?"
           }
         ]
       },
       {
-        "title": "訂購食物 Conversation 2",
+        "title": "Discussing the Taste",
         "lines": [
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "田中",
+            "zh": "這碗麵的味道真不錯。",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "美玲",
+            "zh": "對吧，我沒騙你。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "同事",
-            "zh": "同事正在聊訂購食物的工作內容。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "美玲",
+            "zh": "很好喝，很鮮甜。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "主管",
-            "zh": "主管正在聊訂購食物的工作內容。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "田中",
+            "zh": "妳的湯好喝嗎？",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       },
       {
-        "title": "訂購食物 Conversation 3",
+        "title": "Ordering Dessert",
         "lines": [
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第1句。",
-            "py": "Pinyin 1",
-            "en": "English 1"
+            "speaker": "美玲",
+            "zh": "吃飽了嗎？要不要吃點甜的？",
+            "py": "Pinyin line 1",
+            "en": "English line 1"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第2句。",
-            "py": "Pinyin 2",
-            "en": "English 2"
+            "speaker": "田中",
+            "zh": "好啊，我還有點餓。",
+            "py": "Pinyin line 2",
+            "en": "English line 2"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第3句。",
-            "py": "Pinyin 3",
-            "en": "English 3"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 3",
+            "en": "English line 3"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第4句。",
-            "py": "Pinyin 4",
-            "en": "English 4"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 4",
+            "en": "English line 4"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第5句。",
-            "py": "Pinyin 5",
-            "en": "English 5"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 5",
+            "en": "English line 5"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第6句。",
-            "py": "Pinyin 6",
-            "en": "English 6"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 6",
+            "en": "English line 6"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第7句。",
-            "py": "Pinyin 7",
-            "en": "English 7"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 7",
+            "en": "English line 7"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第8句。",
-            "py": "Pinyin 8",
-            "en": "English 8"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 8",
+            "en": "English line 8"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第9句。",
-            "py": "Pinyin 9",
-            "en": "English 9"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 9",
+            "en": "English line 9"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第10句。",
-            "py": "Pinyin 10",
-            "en": "English 10"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 10",
+            "en": "English line 10"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第11句。",
-            "py": "Pinyin 11",
-            "en": "English 11"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 11",
+            "en": "English line 11"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第12句。",
-            "py": "Pinyin 12",
-            "en": "English 12"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 12",
+            "en": "English line 12"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第13句。",
-            "py": "Pinyin 13",
-            "en": "English 13"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 13",
+            "en": "English line 13"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第14句。",
-            "py": "Pinyin 14",
-            "en": "English 14"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 14",
+            "en": "English line 14"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第15句。",
-            "py": "Pinyin 15",
-            "en": "English 15"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 15",
+            "en": "English line 15"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第16句。",
-            "py": "Pinyin 16",
-            "en": "English 16"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 16",
+            "en": "English line 16"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第17句。",
-            "py": "Pinyin 17",
-            "en": "English 17"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 17",
+            "en": "English line 17"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第18句。",
-            "py": "Pinyin 18",
-            "en": "English 18"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 18",
+            "en": "English line 18"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第19句。",
-            "py": "Pinyin 19",
-            "en": "English 19"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 19",
+            "en": "English line 19"
           },
           {
-            "speaker": "客人",
-            "zh": "客人正在處理訂購食物的相關事宜。這是第20句。",
-            "py": "Pinyin 20",
-            "en": "English 20"
+            "speaker": "田中",
+            "zh": "太好了，我們去那裡吧。",
+            "py": "Pinyin line 20",
+            "en": "English line 20"
           },
           {
-            "speaker": "店員",
-            "zh": "店員正在處理訂購食物的相關事宜。這是第21句。",
-            "py": "Pinyin 21",
-            "en": "English 21"
+            "speaker": "美玲",
+            "zh": "這附近有一家有名的冰店。",
+            "py": "Pinyin line 21",
+            "en": "English line 21"
           }
         ]
       }
