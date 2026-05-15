@@ -210,7 +210,14 @@ const TTS = {
 
     // Try to get a high-quality Chinese voice
     const voices = window.speechSynthesis.getVoices();
-    const preferred = ['Xiaoxiao', 'Yating', 'Hanhan', 'Zhiwei', 'Google 國語', 'Google 普通话', 'Google Mandarin', 'Mei-Jia'];
+    const preferred = [
+      'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
+      'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
+      'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
+      'Microsoft Yating Online (Natural) - Chinese (Taiwan)',
+      'Google 國語', 'Google 普通话', 'Google Mandarin',
+      'Xiaoxiao', 'Yating', 'Hanhan', 'Zhiwei', 'Mei-Jia'
+    ];
     let bestVoice = null;
     
     for (const name of preferred) {

@@ -10,10 +10,12 @@ window.QuizModule = (() => {
   let quizState = {
     mode: 'A',          // Pronunciation mode (A-E)
     submode: 'hanzi-to-def', // Vocab submode
-    source: 'level',    // level | category | chapter
+    source: 'level',    // level | category | chapter | book
     level: 'a2',
     category: '',
     chapterId: '',
+    book: 1,
+    bookChapter: '01',
     questionCount: 20,
     questions: [],
     current: 0,
@@ -93,6 +95,20 @@ window.QuizModule = (() => {
             zhuyin: w.zhuyin || charMeta?.zhuyin || ''
           };
         });
+      }
+    }
+    else if (quizState.source === 'book') {
+      // Pull from Course Book vocabulary
+      if (quizState.bookData) {
+        pool = quizState.bookData.filter(item => item.vocab_id.includes(`L${quizState.bookChapter}`)).map(item => ({
+          hanzi: item.traditional,
+          traditional: item.traditional,
+          pinyin: item.pinyin,
+          definition: item.english,
+          level: `Book ${quizState.book}`,
+          category: `Lesson ${parseInt(quizState.bookChapter)}`,
+          audio_file: item.audio_file
+        }));
       }
     }
 
@@ -274,6 +290,7 @@ window.QuizModule = (() => {
           <button class="tab-btn ${quizState.source === 'level' ? 'active' : ''}" id="btn-src-level" onclick="QuizModule.setSource('level')">Levels (A1/A2)</button>
           <button class="tab-btn ${quizState.source === 'category' ? 'active' : ''}" id="btn-src-category" onclick="QuizModule.setSource('category')">Thematic Groups</button>
           <button class="tab-btn ${quizState.source === 'chapter' ? 'active' : ''}" id="btn-src-chapter" onclick="QuizModule.setSource('chapter')">Curriculum Chapters</button>
+          <button class="tab-btn ${quizState.source === 'book' ? 'active' : ''}" id="btn-src-book" onclick="QuizModule.setSource('book')">Course Books</button>
         </div>
 
         <div id="source-config" class="mb-20">
@@ -304,6 +321,26 @@ window.QuizModule = (() => {
             <select class="input" onchange="window.QuizModule.state.chapterId = this.value">
               ${sets.map(s => `<option value="${s.id}" ${quizState.chapterId === s.id ? 'selected' : ''}>${s.name}</option>`).join('')}
             </select>
+          </div>
+
+          <!-- Book Config -->
+          <div id="config-book" class="quiz-config-panel ${quizState.source === 'book' ? '' : 'hidden'}">
+            <div class="flex gap-12 mb-12">
+              <div style="flex:1">
+                <div class="text-small text-muted mb-4">Book</div>
+                <select class="input" onchange="QuizModule.switchBook(this.value)">
+                  <option value="1" ${quizState.book === 1 ? 'selected' : ''}>Book 1</option>
+                  <option value="2" ${quizState.book === 2 ? 'selected' : ''}>Book 2</option>
+                  <option value="3" ${quizState.book === 3 ? 'selected' : ''}>Book 3</option>
+                </select>
+              </div>
+              <div style="flex:2">
+                <div class="text-small text-muted mb-4">Lesson</div>
+                <select class="input" id="quiz-book-chapter" onchange="window.QuizModule.state.bookChapter = this.value">
+                  <option value="01">Lesson 1</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -379,6 +416,32 @@ window.QuizModule = (() => {
       
       document.querySelectorAll('.quiz-config-panel').forEach(p => p.classList.add('hidden'));
       document.getElementById(`config-${src}`).classList.remove('hidden');
+
+      if (src === 'book' && !quizState.bookData) {
+        this.switchBook(quizState.book);
+      }
+    },
+
+    async switchBook(bookNum) {
+      quizState.book = parseInt(bookNum);
+      const data = await this.loadBookData(bookNum);
+      quizState.bookData = data;
+      
+      const chapters = [...new Set(data.map(item => {
+        const match = item.vocab_id.match(/L(\d+)/);
+        return match ? match[1] : null;
+      }))].filter(Boolean).sort();
+      
+      const select = document.getElementById('quiz-book-chapter');
+      if (select) {
+        select.innerHTML = chapters.map(ch => `<option value="${ch}" ${quizState.bookChapter === ch ? 'selected' : ''}>Lesson ${parseInt(ch)}</option>`).join('');
+        quizState.bookChapter = select.value;
+      }
+    },
+
+    async loadBookData(bookNum) {
+      const resp = await fetch(`books/book${bookNum}/vocabulary_b${bookNum}.json`);
+      return resp.json();
     },
 
     setLevel(lvl, el) {
@@ -424,6 +487,21 @@ window.QuizModule = (() => {
       document.getElementById('quiz-setup').style.display = 'none';
       document.getElementById('quiz-area').style.display = 'block';
       showQuestion();
+    },
+
+    playQuestionAudio() {
+      const q = quizState.questions[quizState.current];
+      if (q && q.correct && q.correct.audio_file) {
+        this.playAudio(q.correct.audio_file);
+      } else {
+        TTS.speak(q.audio_text || q.question_hanzi || q.correct.hanzi);
+      }
+    },
+
+    playAudio(filename) {
+      if (!filename) return;
+      const path = `books/book${quizState.book}/audio_b${quizState.book}/${filename}`;
+      new Audio(path).play().catch(err => console.error("Quiz Audio Error:", err));
     }
   };
 
@@ -447,13 +525,13 @@ window.QuizModule = (() => {
       questionHTML = `<div class="pinyin-display">${q.question_pinyin}</div>`;
     } else if (q.type === 'audio-hanzi') {
       questionHTML = `
-        <button class="play-btn-large" onclick="TTS.speak('${q.audio_text}')">▶</button>
+        <button class="play-btn-large" onclick="QuizModule.playQuestionAudio()">▶</button>
         <div class="text-muted mt-8">Click to listen</div>`;
     } else if (q.type === 'hanzi-to-def') {
       questionHTML = `
         <div class="hanzi-xl mb-8">${q.question_hanzi}</div>
         <div class="pinyin-display-sm ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${Pinyin.colorize(q.question_pinyin || '')}</div>
-        <button class="btn btn-sm btn-ghost mt-8" onclick="TTS.speak('${q.question_hanzi}')">🔊</button>`;
+        <button class="btn btn-sm btn-ghost mt-8" onclick="QuizModule.playQuestionAudio()">🔊</button>`;
     } else if (q.type === 'def-to-hanzi') {
       questionHTML = `
         <div class="definition-display">"${q.question_def}"</div>`;
@@ -495,7 +573,7 @@ window.QuizModule = (() => {
     `;
 
     if (q.type === 'audio-hanzi') {
-      setTimeout(() => TTS.speak(q.audio_text), 400);
+      setTimeout(() => QuizModule.playQuestionAudio(), 400);
     }
   }
 
@@ -519,7 +597,7 @@ window.QuizModule = (() => {
     feedback.innerHTML = `
       <div class="flex-center gap-12">
         <span>${isCorrect ? '✓' : '✗'} <strong>${item.traditional || item.hanzi}</strong> [${Pinyin.colorize(item.pinyin)}] - ${item.definition}</span>
-        <button class="btn btn-sm btn-ghost" onclick="TTS.speak('${item.traditional || item.hanzi}')">🔊</button>
+        <button class="btn btn-sm btn-ghost" onclick="QuizModule.playQuestionAudio()">🔊</button>
       </div>
     `;
 
