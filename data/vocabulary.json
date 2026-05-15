@@ -24545,6 +24545,1222 @@
           }
         }
       ]
+    },
+    {
+      "id": "pg_custom",
+      "title": "Playground Expressions",
+      "level": "b1",
+      "description": "Vocabulary extracted from real-world conversations in the Playground.",
+      "words": [
+        {
+          "word": "歡",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "迎",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "光",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "臨",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "位",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "謝",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "菜",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "單",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "想",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "吃",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "什",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "麼",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "我",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "要",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "碗",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "牛",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "肉",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "麵",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "好",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "的",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "請",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "等",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "下",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "你",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "看",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "間",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "套",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "房",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "沒",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "問",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "題",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "裡",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "面",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "很",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "乾",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "淨",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "租",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "金",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "月",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "多",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "少",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "元",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "包",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "含",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "電",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "費",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "嗎",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "們",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "去",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "逛",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "夜",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "市",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "吧",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "啊",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "臭",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "豆",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "腐",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "店",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "雞",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "排",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "太",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "棒",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "了",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "現",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "在",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "就",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "計",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "程",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "車",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "外",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "往",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "右",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "走",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "新",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "竹",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "科",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "學",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "園",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "區",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "大",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "小",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "時",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "來",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "到",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "公",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "司",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "興",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "認",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "識",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "腦",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "和",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "密",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "碼",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "會",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "議",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        },
+        {
+          "word": "室",
+          "pinyin": "...",
+          "definition": "Playground Vocabulary"
+        }
+      ]
+    },
+    {
+      "id": "tech_expansion",
+      "title": "Tech & Workplace Expansion",
+      "level": "b1",
+      "description": "Massive vocabulary expansion for Taiwan tech industry.",
+      "words": [
+        {
+          "word": "半導體管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "半導體計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "半導體 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "工程計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "工程 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "技術計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "技術 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "專案計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "專案 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "系統計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "系統 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "自動化計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "自動化 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "測試計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "測試 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "產品計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "產品 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "主管計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "主管 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "客戶計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "客戶 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "會議計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "會議 計畫 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發管理",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 管理 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發報告",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 報告 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發分析",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 分析 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發設計",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 設計 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發優化",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 優化 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發評估",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 評估 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發流程",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 流程 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發支援",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 支援 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發設備",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 設備 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發人員",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 人員 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發部門",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 部門 (Tech/Workplace term)"
+        },
+        {
+          "word": "研發計畫",
+          "pinyin": "bàn dǎo tǐ gōng chéng...",
+          "definition": "研發 計畫 (Tech/Workplace term)"
+        }
+      ]
     }
   ]
 }

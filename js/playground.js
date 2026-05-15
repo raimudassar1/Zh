@@ -117,137 +117,79 @@ const PlaygroundModule = (() => {
     if (!lesson) return;
 
     currentLesson = lesson;
-    currentStep = 0;
-    sessionVocab = [];
-    
-    // Conversation format
+    const container = document.getElementById('page-content');
+
     const dialogue = lesson.dialogue || [];
     
-    // Phase 1: Listen and Read
-    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'learn' }));
-    
-    // Phase 2: Translation Match
-    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'quiz_en' }));
+    // Dynamically extract all unique characters from the conversation
+    const uniqueChars = new Set();
+    dialogue.forEach(line => {
+      const chars = line.zh.match(/[\u4e00-\u9fa5]/g) || [];
+      chars.forEach(c => uniqueChars.add(c));
+    });
 
-    // Phase 3: Listening Comprehension
-    dialogue.forEach(line => sessionVocab.push({ ...line, mode: 'quiz_audio' }));
+    const vocabList = Array.from(uniqueChars).map(char => {
+      const charData = App.state.characters.find(c => c.hanzi === char) || { hanzi: char, pinyin: '' };
+      return charData;
+    });
 
-    renderLessonStep();
-  }
-
-  function renderLessonStep() {
-    if (currentStep >= sessionVocab.length) {
-      renderCompletion();
-      return;
+    let vocabHTML = '';
+    if (vocabList.length > 0) {
+      vocabHTML = `
+        <div class="mb-32">
+          <h3 class="mb-16">Vocabulary Focus (Unique Characters)</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px">
+            ${vocabList.map(v => `
+              <div class="card text-center p-12" style="background:var(--off-white);cursor:pointer;border:1px solid var(--border);transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'" onclick="showCharModal('${v.hanzi}')">
+                <div class="font-zh color-accent" style="font-size:2.5rem;font-weight:900;line-height:1.2">${v.hanzi}</div>
+                <div class="text-muted text-small mt-4">${v.pinyin}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
     }
 
-    const item = sessionVocab[currentStep];
-    const container = document.getElementById('page-content');
-    const progress = Math.round((currentStep / sessionVocab.length) * 100);
+    let dialogueHTML = '';
+    if (dialogue.length > 0) {
+      dialogueHTML = `
+        <div class="mb-32">
+          <h3 class="mb-16">Conversation Script</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            ${dialogue.map((line, idx) => `
+              <div class="card p-16" style="background:var(--card-bg);display:flex;gap:16px;align-items:flex-start;border-left:4px solid var(--accent)">
+                <div class="badge badge-primary flex-shrink-0 mt-4" style="min-width:40px;text-align:center">${line.speaker}</div>
+                <div style="flex:1">
+                  <div class="font-zh" style="font-size:1.8rem;font-weight:700;cursor:pointer;margin-bottom:8px;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color=''" onclick="TTS.speak('${line.zh}')">🔊 ${line.zh}</div>
+                  <div class="text-muted" style="font-size:1.1rem;margin-bottom:4px">${line.pinyin}</div>
+                  <div class="color-text-2">${line.en}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
 
     container.innerHTML = `
-      <div class="pg-lesson-header">
-        <div class="pg-progress-container">
-          <div class="pg-progress-bar" style="width: ${progress}%"></div>
-        </div>
-        <div class="pg-step-meta">
-          <span>${getPhaseLabel(item.mode)}</span>
-          <span>Step ${currentStep + 1} / ${sessionVocab.length}</span>
-        </div>
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.openPlayground('${pgId}')">← Back to Lessons</button>
+        <h2>${lesson.title}</h2>
+        <p>Review the unique characters first, then practice the full conversation.</p>
       </div>
-
-      <div class="pg-drill-container">
-        ${renderDrill(item)}
-        ${item.mode === 'learn' ? VoicePractice.renderVoiceModule('pg-voice') : ''}
+      
+      <div class="pg-lesson-content" style="max-width:800px;margin:0 auto">
+        ${vocabHTML}
+        ${dialogueHTML}
+        
+        <div class="text-center mt-32 mb-40">
+          <button class="btn btn-primary btn-lg w-full" style="font-size:1.2rem;padding:20px" onclick="PlaygroundModule.markLessonComplete()">Mark Conversation as Completed ✓</button>
+        </div>
       </div>
     `;
-
-    if (item.mode === 'learn' || item.mode === 'quiz_audio') {
-      setTimeout(() => TTS.speak(item.zh), 500);
-    }
   }
 
-  function getPhaseLabel(mode) {
-    if (mode === 'learn') return '🌱 Phase 1: Listen & Read';
-    if (mode === 'quiz_en') return '🧠 Phase 2: Translation';
-    return '🎧 Phase 3: Listening';
-  }
-
-  function renderDrill(item) {
-    switch (item.mode) {
-      case 'learn':
-        return `
-          <div class="pg-drill-learn">
-            <div class="badge badge-primary mb-12">${item.speaker}</div>
-            <div class="pg-big-hanzi" style="font-size:3rem;line-height:1.4" onclick="TTS.speak('${item.zh}')">${item.zh}</div>
-            <div class="pg-big-pinyin" style="font-size:1.5rem">${item.pinyin}</div>
-            <div class="pg-big-def" style="font-size:1.2rem">${item.en}</div>
-            <button class="btn btn-primary btn-lg mt-24" onclick="PlaygroundModule.nextStep()">Next Line</button>
-          </div>
-        `;
-      case 'quiz_en':
-        const enOpts = generateDialogueOptions(item);
-        return `
-          <div class="pg-drill-quiz">
-            <div class="pg-quiz-q">What does this mean?</div>
-            <div class="pg-big-hanzi mb-24" style="font-size:2.5rem">${item.zh}</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              ${enOpts.map(opt => `
-                <button class="btn btn-outline" style="white-space:normal;height:auto;padding:16px;font-size:1.1rem" onclick="PlaygroundModule.checkAnswer('${opt.en}', '${item.en}', this)">
-                  ${opt.en}
-                </button>
-              `).join('')}
-            </div>
-          </div>
-        `;
-      case 'quiz_audio':
-        const zhOpts = generateDialogueOptions(item);
-        return `
-          <div class="pg-drill-quiz">
-            <div class="pg-quiz-q">Select the correct line you hear:</div>
-            <div class="pg-audio-trigger mb-24" onclick="TTS.speak('${item.zh}')">🔊 Replay</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              ${zhOpts.map(opt => `
-                <button class="btn btn-outline" style="white-space:normal;height:auto;padding:16px;font-size:1.5rem;font-family:var(--font-zh)" onclick="PlaygroundModule.checkAnswer('${opt.zh}', '${item.zh}', this)">
-                  ${opt.zh}
-                </button>
-              `).join('')}
-            </div>
-          </div>
-        `;
-    }
-  }
-
-  function generateDialogueOptions(correctItem) {
-    const others = currentLesson.dialogue.filter(l => l.zh !== correctItem.zh);
-    const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 2);
-    shuffled.push(correctItem);
-    return shuffled.sort(() => Math.random() - 0.5);
-  }
-
-  function checkAnswer(selected, correct, btn) {
-    if (selected === correct) {
-      btn.classList.remove('btn-outline');
-      btn.classList.add('btn-success');
-      setTimeout(() => nextStep(), 600);
-    } else {
-      btn.classList.remove('btn-outline');
-      btn.classList.add('btn-error');
-      btn.style.animation = 'shake 0.4s';
-      setTimeout(() => {
-        btn.style.animation = '';
-        btn.classList.remove('btn-error');
-        btn.classList.add('btn-outline');
-      }, 400);
-    }
-  }
-
-  function nextStep() {
-    currentStep++;
-    renderLessonStep();
-  }
-
-  function renderCompletion() {
+  function markLessonComplete() {
     if (!App.state.progress.playground) App.state.progress.playground = {};
     App.state.progress.playground[currentLesson.id] = true;
     App.saveProgress();
@@ -260,31 +202,11 @@ const PlaygroundModule = (() => {
       });
     }
 
-    const container = document.getElementById('page-content');
-    let reviewHTML = '';
-    if (currentLesson.dialogue) {
-      reviewHTML = currentLesson.dialogue.map(line => `
-        <div class="card mb-12" style="background:var(--off-white); display:flex; flex-direction:column; gap:8px">
-          <div class="badge badge-primary" style="align-self:flex-start">${line.speaker}</div>
-          <div class="font-zh text-large">${line.zh}</div>
-          <div class="text-muted" style="font-size:0.9rem">${line.pinyin}</div>
-          <div>${line.en}</div>
-        </div>
-      `).join('');
-    }
-
-    container.innerHTML = `
-      <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.render(document.getElementById('page-content'))">← Back to Playground</button>
-        <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px;">🎉 Lesson Mastered!</div>
-      </div>
-      <div class="pg-drill-container" style="max-width:800px; margin: 0 auto; text-align: left;">
-        <h3 class="mb-16">Conversation Review</h3>
-        ${reviewHTML}
-        <button class="btn btn-primary btn-lg mt-24" style="width: 100%" onclick="PlaygroundModule.render(document.getElementById('page-content'))">Continue to Next Lesson →</button>
-      </div>
-    `;
     App.logActivity('🎯', `Completed Beginner Conversation: ${currentLesson.title}`);
+    
+    // Go back to the chapter view
+    const pgId = currentLesson.id.split('_')[0];
+    openPlayground(pgId);
   }
 
   // ─── Character Playground ───────────────────────────────────────────────────
@@ -563,11 +485,25 @@ const PlaygroundModule = (() => {
   }
 
   function renderGameTab() {
-    // We'll use the first block for the game for now
-    const FORMATIONS = charPlaygroundData[0]?.lessons[0]?.compounds || [];
+    const FORMATIONS = App.state.characters.filter(c => c.components && c.components.length > 1 && c.components.join('') !== c.hanzi);
     if (!FORMATIONS.length) return `<div class="empty-state">No formation data available.</div>`;
 
-    const challenge = FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)];
+    const challengeChar = FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)];
+    const challenge = {
+      hanzi: challengeChar.hanzi,
+      definition: challengeChar.definition,
+      parts: challengeChar.components,
+      result: challengeChar.hanzi
+    };
+
+    // Generate pool of distractors
+    const pool = new Set(challenge.parts);
+    while (pool.size < 8) {
+      const randChar = FORMATIONS[Math.floor(Math.random() * FORMATIONS.length)];
+      pool.add(randChar.components[0]);
+    }
+    const shuffledPool = Array.from(pool).sort(() => Math.random() - 0.5);
+
     window._cpGameTarget = challenge;
     window._cpGameSelected = [];
 
@@ -579,9 +515,13 @@ const PlaygroundModule = (() => {
           <div class="text-muted text-small">Meaning: ${challenge.definition}</div>
         </div>
         <div class="cp-built-area" id="cp-game-built">Select components...</div>
+        <div class="cp-game-pool">
+          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" onclick="PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
+        </div>
         <div id="cp-game-feedback" class="quiz-feedback"></div>
         <div class="flex gap-12 justify-center mt-24">
-          <button class="btn btn-primary" onclick="PlaygroundModule.switchCPTab('game')">Next Character 🔄</button>
+          <button class="btn btn-primary" onclick="PlaygroundModule.cpGameCheck()">Check Formation</button>
+          <button class="btn btn-ghost" onclick="PlaygroundModule.switchCPTab('game')">Next Character 🔄</button>
         </div>
       </div>
     `;
