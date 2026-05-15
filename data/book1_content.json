@@ -111,6 +111,101 @@
         "hanzi": "認識",
         "pinyin": "rènshì",
         "definition": "to know / recognize"
+      },
+      {
+        "hanzi": "早上",
+        "pinyin": "zǎoshàng",
+        "definition": "morning"
+      },
+      {
+        "hanzi": "下午",
+        "pinyin": "xiàwǔ",
+        "definition": "afternoon"
+      },
+      {
+        "hanzi": "晚上",
+        "pinyin": "wǎnshàng",
+        "definition": "evening"
+      },
+      {
+        "hanzi": "今天",
+        "pinyin": "jīntiān",
+        "definition": "today"
+      },
+      {
+        "hanzi": "明天",
+        "pinyin": "míngtiān",
+        "definition": "tomorrow"
+      },
+      {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "definition": "to go"
+      },
+      {
+        "hanzi": "回",
+        "pinyin": "huí",
+        "definition": "to return"
+      },
+      {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "definition": "not"
+      },
+      {
+        "hanzi": "多",
+        "pinyin": "duō",
+        "definition": "many/much"
+      },
+      {
+        "hanzi": "少",
+        "pinyin": "shǎo",
+        "definition": "few/little"
+      },
+      {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "definition": "good"
+      },
+      {
+        "hanzi": "忙",
+        "pinyin": "máng",
+        "definition": "busy"
+      },
+      {
+        "hanzi": "累",
+        "pinyin": "lèi",
+        "definition": "tired"
+      },
+      {
+        "hanzi": "餓",
+        "pinyin": "è",
+        "definition": "hungry"
+      },
+      {
+        "hanzi": "渴",
+        "pinyin": "kě",
+        "definition": "thirsty"
+      },
+      {
+        "hanzi": "這裡",
+        "pinyin": "zhèlǐ",
+        "definition": "here"
+      },
+      {
+        "hanzi": "那邊",
+        "pinyin": "nàbiān",
+        "definition": "there"
+      },
+      {
+        "hanzi": "請",
+        "pinyin": "qǐng",
+        "definition": "please"
+      },
+      {
+        "hanzi": "謝謝",
+        "pinyin": "xièxiè",
+        "definition": "thank you"
       }
     ],
     "dialogues": [
@@ -894,7 +989,7 @@
           {
             "speaker": "美玲",
             "zh": "田中，你看，這是我家的照片。",
-            "py": "Tiánzhōng, nǐ kàn, zhè shì wǒ jiā de zhàopiàn.",
+            "py": "Měilíng, nǐ kàn, zhè shì wǒ jiā de zhàopiàn.",
             "en": "Tanaka, look, this is a photo of my family."
           },
           {
@@ -1025,127 +1120,127 @@
           {
             "speaker": "田中",
             "zh": "美玲，妳妹妹在哪裡念書？",
-            "py": "Pinyin line 1",
+            "py": "Měilíng, nǐ mèimei zài nǎlǐ niànshū?",
             "en": "English line 1"
           },
           {
             "speaker": "美玲",
             "zh": "她在國立台灣大學念書。",
-            "py": "Pinyin line 2",
+            "py": "Tā zài Guólì Táiwān Dàxué niànshū.",
             "en": "English line 2"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 3",
+            "py": "Tā xué fǎlǜ nán bù nán?",
             "en": "English line 3"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 4",
+            "py": "Yǒu yīdiǎn nán, dànshì tā hěn nǔlì.",
             "en": "English line 4"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 5",
+            "py": "Táiwān Dàxué shì hěn hǎo de xuéxiào.",
             "en": "English line 5"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 6",
+            "py": "Duì ā, tā hěn h喜歡 nàlǐ de huánjìng.",
             "en": "English line 6"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 7",
+            "py": "Tā měitiān dōu hěn máng ma?",
             "en": "English line 7"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 8",
+            "py": "Tā tōngcháng zài túshūguǎn kànshū dào hěn wǎn.",
             "en": "English line 8"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 9",
+            "py": "Nǐ ne? Nǐ yě hěn nǔlì xuéxí ma?",
             "en": "English line 9"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 10",
+            "py": "Wǒ zài kējì gōngsī gōngzuò, yě hěn máng.",
             "en": "English line 10"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 11",
+            "py": "Wǒmen dōu yào jiāyóu!",
             "en": "English line 11"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 12",
+            "py": "Hǎo de, jiāyóu!",
             "en": "English line 12"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 13",
+            "py": "田中，你覺得台灣的學生怎麼樣？",
             "en": "English line 13"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 14",
+            "py": "Tāmen hěn nǔlì, yě hěn qīnyè.",
             "en": "English line 14"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 15",
+            "py": "Shì ā, Táiwān de jìngzhēng hěn dà.",
             "en": "English line 15"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 16",
+            "py": "Tokyo yě shì yīyàng de.",
             "en": "English line 16"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 17",
+            "py": "Wǒmen dōu yào nǔlì gōngzuò hé xuéxí.",
             "en": "English line 17"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 18",
+            "py": "Duì, wèile wèilái.",
             "en": "English line 18"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 19",
+            "py": "Nà nǐ bàba māma ne?",
             "en": "English line 19"
           },
           {
             "speaker": "美玲",
             "zh": "有一點難，但是她很努力。",
-            "py": "Pinyin line 20",
+            "py": "Tāmen zài Dōngjīng guò de hěn hǎo.",
             "en": "English line 20"
           },
           {
             "speaker": "田中",
             "zh": "她學法律難不難？",
-            "py": "Pinyin line 21",
+            "py": "Tài hǎo le.",
             "en": "English line 21"
           }
         ]
@@ -1156,127 +1251,127 @@
           {
             "speaker": "田中",
             "zh": "妳爸爸媽媽身體好嗎？",
-            "py": "Pinyin line 1",
+            "py": "Nǐ bàba māma shēntǐ hǎo ma?",
             "en": "English line 1"
           },
           {
             "speaker": "美玲",
             "zh": "他們身體都很好，謝謝。",
-            "py": "Pinyin line 2",
+            "py": "Tāmen shēntǐ dōu hěn hǎo, xièxiè.",
             "en": "English line 2"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 3",
+            "py": "Tāmen zhù zài Táiběi nǎlǐ?",
             "en": "English line 3"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 4",
+            "py": "Tāmen zhù zài Shìlín Qū.",
             "en": "English line 4"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 5",
+            "py": "Shìlín Qū hěn rènào, duì bù duì?",
             "en": "English line 5"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 6",
+            "py": "Duì, nàlǐ yǒu yèshì, hěn fāngbiàn.",
             "en": "English line 6"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 7",
+            "py": "Wǒ h喜歡 guàng yèshì.",
             "en": "English line 7"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 8",
+            "py": "下次我們一起去吧。",
             "en": "English line 8"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 9",
+            "py": "Tài hǎo le.",
             "en": "English line 9"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 10",
+            "py": "Nǐ jiā fùjìn yǒu gōngyuán ma?",
             "en": "English line 10"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 11",
+            "py": "Yǒu, wǒmen chángcháng qù sànbù.",
             "en": "English line 11"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 12",
+            "py": "Zhēn xiàngshì yī gè wēnuǎn de jiā.",
             "en": "English line 12"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 13",
+            "py": "Xièxiè, wǒ hěn ài wǒ de jiā.",
             "en": "English line 13"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 14",
+            "py": "Wǒ yě hěn ài wǒ de jiā.",
             "en": "English line 14"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 15",
+            "py": "Wǒmen dōu hěn xìngfú.",
             "en": "English line 15"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 16",
+            "py": "Shì de, xìngfú hěn zhòngyào.",
             "en": "English line 16"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 17",
+            "py": "Nǐ jīnnián jǐ suì?",
             "en": "English line 17"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 18",
+            "py": "Wǒ jīnnián èrshíwǔ suì.",
             "en": "English line 18"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 19",
+            "py": "Nǐ hěn niánqīng.",
             "en": "English line 19"
           },
           {
             "speaker": "美玲",
             "zh": "他們住在士林區。",
-            "py": "Pinyin line 20",
+            "py": "Nǐ yě shì ā.",
             "en": "English line 20"
           },
           {
             "speaker": "田中",
             "zh": "他們住在台北哪裡？",
-            "py": "Pinyin line 21",
+            "py": "哈哈，謝謝。",
             "en": "English line 21"
           }
         ]
@@ -1755,127 +1850,127 @@
           {
             "speaker": "王先生",
             "zh": "嘿！大久保，你到了嗎？",
-            "py": "Pinyin line 1",
+            "py": "Hēi! Dàjiǔbǎo, nǐ dào le ma?",
             "en": "English line 1"
           },
           {
             "speaker": "大久保",
             "zh": "我到了，我在門口。",
-            "py": "Pinyin line 2",
+            "py": "Wǒ dào le, wǒ zài ménkǒu.",
             "en": "English line 2"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 3",
+            "py": "Wǒ dài le liǎng píng shuǐ, nǐ yào hē ma?",
             "en": "English line 3"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 4",
+            "py": "Hǎo a, xièxiè nǐ. Wǒmen kāishǐ dǎqiú ba.",
             "en": "English line 4"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 5",
+            "py": "Nǐ lánqiú dǎ de hěn hǎo ma?",
             "en": "English line 5"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 6",
+            "py": "Hái kěyǐ, wǒ chángcháng l 연습.",
             "en": "English line 6"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 7",
+            "py": "Wǒ yě shì, yùndòng zhēn shūfú.",
             "en": "English line 7"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 8",
+            "py": "Nǐ kàn, nàbiān hěnduō rén.",
             "en": "English line 8"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 9",
+            "py": "Duì ā, zhōumò tǐyùguǎn hěn rènào.",
             "en": "English line 9"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 10",
+            "py": "Wǒmen qù nàge kòngdì ba.",
             "en": "English line 10"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 11",
+            "py": "Hǎo de.",
             "en": "English line 11"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 12",
+            "py": "Zhè cì nǐ shū le!",
             "en": "English line 12"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 13",
+            "py": "Hāhā, nǐ zhēn lìhài.",
             "en": "English line 13"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 14",
+            "py": "Wǒmen xiūxi yīxià ba.",
             "en": "English line 14"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 15",
+            "py": "Hǎo, hē diǎn shuǐ.",
             "en": "English line 15"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 16",
+            "py": "Táiwān de xiàtiān zhēn rè.",
             "en": "English line 16"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 17",
+            "py": "Shì ā, suǒyǐ yào duō hē shuǐ.",
             "en": "English line 17"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 18",
+            "py": "Nǐ děng yīxià xiǎng chī shénme?",
             "en": "English line 18"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 19",
+            "py": "Wǒmen qù chī niúròumiàn ba.",
             "en": "English line 19"
           },
           {
             "speaker": "大久保",
             "zh": "好啊，謝謝你。我們開始打球吧。",
-            "py": "Pinyin line 20",
+            "py": "Hǎo, wǒ dōu tīng nǐ de.",
             "en": "English line 20"
           },
           {
             "speaker": "王先生",
             "zh": "我帶了兩瓶水，你要喝嗎？",
-            "py": "Pinyin line 21",
+            "py": "Zǒu ba!",
             "en": "English line 21"
           }
         ]
@@ -1886,127 +1981,127 @@
           {
             "speaker": "大久保",
             "zh": "這部電影看起來很有意思。",
-            "py": "Pinyin line 1",
+            "py": "Zhè bù diànyǐng kàn qǐlái hěn yǒuyìsi.",
             "en": "English line 1"
           },
           {
             "speaker": "王先生",
             "zh": "對，導演很有名。",
-            "py": "Pinyin line 2",
+            "py": "Duì, dǎoyǎn hěn yǒumíng.",
             "en": "English line 2"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 3",
+            "py": "Nǐ yào chī bàomǐhuā ma?",
             "en": "English line 3"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 4",
+            "py": "Hǎo, wǒ qù mǎi yī tǒng dà de.",
             "en": "English line 4"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 5",
+            "py": "Wǒ mǎi le liǎng bēi kělè.",
             "en": "English line 5"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 6",
+            "py": "Xièxiè nǐ, nǐ zhēn zhōudào.",
             "en": "English line 6"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 7",
+            "py": "Diànyǐng kuài yào kāishǐ le.",
             "en": "English line 7"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 8",
+            "py": "Wǒmen jìnqù ba.",
             "en": "English line 8"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 9",
+            "py": "Zhè ge kàn qǐlái hěn jǐngzhāng.",
             "en": "English line 9"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 10",
+            "py": "Shì ā, wǒ hěn xǐhuān zhèzhǒng diànyǐng.",
             "en": "English line 10"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 11",
+            "py": "Nǐ juédé nàge nán zhǔjué shuài ma?",
             "en": "English line 11"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 12",
+            "py": "Hěn shuài, tā yǎnjì yě hěn hǎo.",
             "en": "English line 12"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 13",
+            "py": "Wǒ yě zhèyàng juédé.",
             "en": "English line 13"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 14",
+            "py": "Diànyǐng jiéshù le, nǐ juédé zěnmeyàng?",
             "en": "English line 14"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 15",
+            "py": "Fēicháng hǎo kàn!",
             "en": "English line 15"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 16",
+            "py": "Wǒ yě juédé hěn gǎndòng.",
             "en": "English line 16"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 17",
+            "py": "Xiàcì wǒmen zài yīqǐ lái kàn.",
             "en": "English line 17"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 18",
+            "py": "Hǎo ā, méi wèntí.",
             "en": "English line 18"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 19",
+            "py": "Tiānshè yǐjīng hēi le.",
             "en": "English line 19"
           },
           {
             "speaker": "王先生",
             "zh": "好，我去買一桶大的。",
-            "py": "Pinyin line 20",
+            "py": "Wǒmen huíjiā ba.",
             "en": "English line 20"
           },
           {
             "speaker": "大久保",
             "zh": "你要吃爆米花嗎？",
-            "py": "Pinyin line 21",
+            "py": "Wǎn'ān, zhōumò yúkuài.",
             "en": "English line 21"
           }
         ]

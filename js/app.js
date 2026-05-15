@@ -447,6 +447,15 @@ const Modal = {
   },
 };
 
+// ─── Word/Character Detail Bridge ───────────────────────────────────────────
+function showWordDetail(word) {
+  if (window.VocabularyModule) {
+    window.VocabularyModule.showDetail(word);
+  } else {
+    showCharModal(word[0]); // Fallback to first character if module missing
+  }
+}
+
 // ─── Character Detail Modal ───────────────────────────────────────────────────
 async function showCharModal(hanziOrObj) {
   let char;

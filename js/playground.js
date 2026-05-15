@@ -79,8 +79,6 @@ window.PlaygroundModule = (() => {
     await loadBook(bookId);
     const container = document.getElementById('page-content');
     
-    // The user provided specific names for the chapters. 
-    // If the JSON doesn't have them all yet, we'll list the expected ones.
     const bookTitles = {
       1: "A Course in Contemporary Chinese 1",
       2: "A Course in Contemporary Chinese 2",
@@ -94,17 +92,22 @@ window.PlaygroundModule = (() => {
         <p>Select a chapter to begin your deep-dive practice.</p>
       </div>
       
-      <div class="pg-lessons-list">
-        ${currentBookData.map((ch, idx) => `
-          <div class="pg-lesson-item" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
-            <div class="pg-lesson-num">${ch.chapter}</div>
-            <div class="pg-lesson-info">
-              <h4 class="font-zh">${ch.title}</h4>
-              <p>${ch.subtitle}</p>
+      <div class="pg-lessons-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+        ${currentBookData.map((ch, idx) => {
+          const isDone = App.state.progress.ccc_course?.[ch.id];
+          return `
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto;flex-direction:column;align-items:flex-start;padding:24px" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
+              <div style="display:flex;width:100%;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <div class="pg-lesson-num" style="background:${isDone?'var(--tone2)':'var(--accent)'}">${isDone ? '✓' : ch.chapter}</div>
+                <div class="pg-lesson-status" style="font-size:0.8rem;font-weight:700;color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
+              </div>
+              <div class="pg-lesson-info">
+                <h4 class="font-zh" style="font-size:1.2rem;margin-bottom:4px">${ch.title}</h4>
+                <p style="font-size:0.9rem;line-height:1.4">${ch.subtitle}</p>
+              </div>
             </div>
-            <div class="pg-lesson-status">➡️</div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
   }
@@ -115,40 +118,41 @@ window.PlaygroundModule = (() => {
 
     currentChapterId = chId;
     const container = document.getElementById('page-content');
+    const showPinyin = App.state.settings.showQuizPinyin !== false;
 
-    // Section 1: Vocabulary
+    // Section 1: Vocabulary (Premium Grid)
     let vocabHTML = ch.vocab && ch.vocab.length ? `
-      <section class="lesson-section card mb-32 p-24">
+      <section class="lesson-section">
         <h3 class="section-title">1. Vocabulary Focus</h3>
-        <p class="text-muted mb-16">Unique characters and key terms for this chapter.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px">
+        <p class="text-muted mb-24">Tap words to see stroke animations, component breakdown, and examples.</p>
+        <div class="vocab-grid-premium">
           ${ch.vocab.map(v => `
-            <div class="card text-center p-12" style="background:var(--off-white);cursor:pointer;border:1px solid var(--border)" onclick="showCharModal('${v.hanzi}')">
-              <div class="font-zh color-accent" style="font-size:2rem;font-weight:900">${v.hanzi}</div>
-              <div class="text-muted text-small mt-4">${v.pinyin}</div>
-              <div class="text-tiny" style="font-size:0.75rem">${v.definition}</div>
+            <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
+              <div class="v-hanzi">${v.hanzi}</div>
+              <div class="v-pinyin ${showPinyin ? '' : 'hidden'}">${v.pinyin}</div>
+              <div class="v-def">${v.definition}</div>
             </div>
           `).join('')}
         </div>
       </section>
     ` : '';
 
-    // Section 2: Dialogues (min 3, min 20 lines)
+    // Section 2: Dialogues (Premium Block)
     let dialoguesHTML = ch.dialogues && ch.dialogues.length ? `
-      <section class="lesson-section card mb-32 p-24">
+      <section class="lesson-section">
         <h3 class="section-title">2. Situational Dialogues</h3>
-        <p class="text-muted mb-24">Practice these conversations aloud to build natural flow.</p>
+        <p class="text-muted mb-24">Build your conversation stamina. Click a line to hear the pronunciation.</p>
         ${ch.dialogues.map((d, dIdx) => `
-          <div class="dialogue-block mb-32">
-            <h4 class="mb-12">Conversation ${dIdx + 1}: ${d.title}</h4>
-            <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="dialogue-block-premium">
+            <h4 class="mb-20" style="color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:10px">Conversation ${dIdx + 1}: ${d.title}</h4>
+            <div style="display:flex;flex-direction:column;gap:4px">
               ${d.lines.map(line => `
-                <div class="dialogue-line" style="display:flex;gap:12px;align-items:flex-start">
-                  <div class="badge badge-outline flex-shrink-0" style="min-width:60px;text-align:center">${line.speaker}</div>
+                <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer">
+                  <div class="line-speaker-badge">${line.speaker}</div>
                   <div style="flex:1">
-                    <div class="font-zh" style="font-size:1.4rem;cursor:pointer" onclick="TTS.speak('${line.zh}')">🔊 ${line.zh}</div>
-                    <div class="text-muted ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}" style="font-size:0.9rem">${line.py}</div>
-                    <div class="color-text-2" style="font-size:0.95rem">${line.en}</div>
+                    <div class="font-zh" style="font-size:1.3rem;font-weight:700;margin-bottom:4px;color:var(--text)">${line.zh}</div>
+                    <div class="text-muted ${showPinyin ? '' : 'hidden'}" style="font-size:0.95rem;font-weight:600;color:var(--accent)">${line.py}</div>
+                    <div class="color-text-2" style="font-size:0.9rem;margin-top:4px">${line.en}</div>
                   </div>
                 </div>
               `).join('')}
@@ -158,82 +162,84 @@ window.PlaygroundModule = (() => {
       </section>
     ` : '';
 
-    // Section 3: Readings (min 3, min 10 lines)
+    // Section 3: Reading Comprehension
     let readingsHTML = ch.readings && ch.readings.length ? `
-      <section class="lesson-section card mb-32 p-24">
-        <h3 class="section-title">3. Reading Comprehension</h3>
-        <p class="text-muted mb-24">Read the following passages and test your understanding.</p>
+      <section class="lesson-section">
+        <h3 class="section-title">3. Reading Mastery</h3>
+        <p class="text-muted mb-24">Contextual repetition using the same characters in new stories.</p>
         ${ch.readings.map((r, rIdx) => `
-          <div class="reading-block mb-40">
-            <h4 class="mb-12">Passage ${rIdx + 1}: ${r.title}</h4>
-            <div class="card p-20 mb-20 font-zh" style="background:var(--off-white);line-height:2.2;font-size:1.2rem">
+          <div class="reading-block-wrapper mb-48">
+            <h4 class="mb-16">Passage ${rIdx + 1}: ${r.title}</h4>
+            <div class="reading-passage-premium">
               ${r.text}
             </div>
-            <div class="questions-list">
-              ${r.questions.map((q, qIdx) => `
-                <div class="q-item mb-16">
-                  <div style="font-weight:600;margin-bottom:8px">${qIdx+1}. ${q.q}</div>
-                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="questions-card card p-24" style="background:var(--off-white)">
+              <h5 class="mb-16" style="text-transform:uppercase;letter-spacing:1px;font-size:0.8rem">Comprehension Check</h5>
+              ${r.questions && r.questions.length ? r.questions.map((q, qIdx) => `
+                <div class="q-item mb-20">
+                  <div style="font-weight:700;margin-bottom:12px;font-size:1.1rem">Q: ${q.q}</div>
+                  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                     ${q.options.map(opt => `
-                      <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                      <button class="btn btn-outline btn-sm" style="text-align:left;padding:12px;height:auto" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
                     `).join('')}
                   </div>
                 </div>
-              `).join('')}
+              `).join('') : '<p class="text-muted italic">No questions for this passage.</p>'}
             </div>
           </div>
         `).join('')}
       </section>
     ` : '';
 
-    // Section 4: Listening (min 3, min 10 lines)
+    // Section 4: Listening Lab
     let listeningHTML = ch.listening && ch.listening.length ? `
-      <section class="lesson-section card mb-32 p-24">
-        <h3 class="section-title">4. Listening Lab</h3>
-        <p class="text-muted mb-24">Listen to the audio and answer the questions. Do not read the text until finished!</p>
+      <section class="lesson-section">
+        <h3 class="section-title">4. Listening Challenge</h3>
+        <p class="text-muted mb-24">Listen to the instructor. Try to answer without looking at the transcript!</p>
         ${ch.listening.map((l, lIdx) => `
-          <div class="listening-block mb-40">
-            <h4 class="mb-16">Listening Challenge ${lIdx + 1}: ${l.title}</h4>
-            <div class="text-center mb-20">
-              <button class="btn btn-gold btn-lg pulse-animation" onclick="TTS.speak(\`${l.text}\`)">🔊 Play Listening Audio</button>
+          <div class="listening-card-premium">
+            <div style="font-size:3rem;margin-bottom:16px">🎧</div>
+            <h4 class="mb-20" style="color:white">${l.title}</h4>
+            <button class="btn btn-white btn-lg" style="color:var(--gold);font-weight:800;background:white" onclick="TTS.speak(\`${l.text}\`)">▶ Play Listening Session</button>
+            <div class="mt-24">
+               <button class="btn btn-outline btn-sm" style="color:white;border-color:white" onclick="this.nextElementSibling.classList.toggle('hidden')">👁 Toggle Transcript</button>
+               <div class="card p-16 mt-16 hidden font-zh" style="background:rgba(255,255,255,0.1);text-align:left;color:white;line-height:2;border:none">
+                 ${l.text}
+               </div>
             </div>
-            <div class="text-center mb-20">
-              <button class="btn btn-ghost btn-sm" onclick="this.nextElementSibling.classList.toggle('hidden')">Show/Hide Transcript</button>
-              <div class="card p-16 mt-12 hidden font-zh" style="background:var(--off-white);text-align:left;line-height:2">${l.text}</div>
-            </div>
-            <div class="questions-list">
-              ${l.questions.map((q, qIdx) => `
+          </div>
+          <div class="card p-24 mb-48" style="border:1px solid var(--border)">
+             ${l.questions && l.questions.length ? l.questions.map((q, qIdx) => `
                 <div class="q-item mb-16">
-                  <div style="font-weight:600;margin-bottom:8px">${qIdx+1}. ${q.q}</div>
+                  <div style="font-weight:700;margin-bottom:8px">Q: ${q.q}</div>
                   <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
                     ${q.options.map(opt => `
                       <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
                     `).join('')}
                   </div>
                 </div>
-              `).join('')}
-            </div>
+              `).join('') : ''}
           </div>
         `).join('')}
       </section>
     ` : '';
 
-    // Section 5: Quizzes
+    // Section 5: Assessment
     let quizHTML = ch.quizzes && ch.quizzes.length ? `
-      <section class="lesson-section card mb-40 p-24" style="border:2px solid var(--accent)">
-        <h3 class="section-title">5. Final Assessment</h3>
-        <p class="text-muted mb-24">Test your mastery of this chapter's characters and grammar.</p>
+      <section class="lesson-section card p-32" style="background:var(--warm-white);border:2px solid var(--accent)">
+        <h3 class="section-title">5. Final Mastery Check</h3>
+        <p class="text-muted mb-32">Complete these challenges to finish the chapter.</p>
         <div class="quiz-list">
           ${ch.quizzes.map((q, qIdx) => `
-            <div class="q-item mb-24">
-              <div style="font-weight:700;margin-bottom:12px">Q${qIdx+1}: ${q.type === 'fill' ? 'Fill in the blank' : q.question}</div>
+            <div class="q-item mb-32">
+              <div style="font-weight:800;margin-bottom:16px;font-size:1.1rem;color:var(--text)">${qIdx+1}. ${q.type === 'fill' ? 'Complete the sentence:' : q.question}</div>
               ${q.type === 'fill' ? `
-                <div class="mb-12 font-zh" style="font-size:1.5rem">${q.sentence.replace('___', `<input type="text" class="input inline-input" style="width:100px" id="quiz-fill-${qIdx}">`)}</div>
-                <button class="btn btn-primary btn-sm" onclick="window.PlaygroundModule.checkFill(this, 'quiz-fill-${qIdx}', '${q.answer}')">Check Answer</button>
+                <div class="mb-16 font-zh" style="font-size:1.8rem;line-height:1.5">${q.sentence.replace('___', `<input type="text" class="input inline-input" style="width:120px;font-size:1.6rem" id="quiz-fill-${qIdx}">`)}</div>
+                <button class="btn btn-primary" onclick="window.PlaygroundModule.checkFill(this, 'quiz-fill-${qIdx}', '${q.answer}')">Check Answer</button>
               ` : `
                 <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                   ${q.options.map(opt => `
-                    <button class="btn btn-outline" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
+                    <button class="btn btn-outline" style="padding:16px" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
                   `).join('')}
                 </div>
               `}
@@ -246,19 +252,24 @@ window.PlaygroundModule = (() => {
     container.innerHTML = `
       <div class="page-header">
         <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.openBook(${ch.book})">← Back to Chapters</button>
-        <h2 class="font-zh">${ch.title}</h2>
-        <p>${ch.intro}</p>
+        <h2 class="font-zh" style="font-size:2.5rem">${ch.title}</h2>
+        <p style="font-size:1.1rem;margin-top:8px">${ch.intro}</p>
       </div>
 
-      <div class="lesson-container" style="max-width:900px;margin:0 auto">
+      <div class="lesson-container" style="max-width:1000px;margin:0 auto">
         ${vocabHTML}
         ${dialoguesHTML}
         ${readingsHTML}
         ${listeningHTML}
         ${quizHTML}
 
-        <div class="text-center mb-60">
-           <button class="btn btn-success btn-lg" style="width:100%;padding:24px;font-size:1.5rem" onclick="window.PlaygroundModule.markChapterComplete()">Finish Chapter & Save Progress 🏆</button>
+        <div class="text-center mt-60 mb-60">
+           <div class="card p-40" style="background:var(--off-white);border:2px dashed var(--tone2)">
+             <div style="font-size:4rem;margin-bottom:16px">🏆</div>
+             <h2 class="mb-16">Chapter Mastered?</h2>
+             <p class="mb-32 text-muted">Ready to save your progress and unlock the next challenge?</p>
+             <button class="btn btn-success btn-lg" style="width:100%;max-width:400px;padding:24px;font-size:1.5rem" onclick="window.PlaygroundModule.markChapterComplete()">Finish Chapter ✓</button>
+           </div>
         </div>
       </div>
     `;
@@ -280,7 +291,7 @@ window.PlaygroundModule = (() => {
     const input = document.getElementById(inputId);
     if (input.value.trim() === correct) {
       input.style.borderColor = 'var(--tone2)';
-      btn.className = 'btn btn-success btn-sm';
+      btn.className = 'btn btn-success';
     } else {
       input.style.borderColor = 'var(--red)';
       btn.style.animation = 'shake 0.4s';
@@ -291,9 +302,7 @@ window.PlaygroundModule = (() => {
     if (!App.state.progress.ccc_course) App.state.progress.ccc_course = {};
     App.state.progress.ccc_course[currentChapterId] = true;
     App.saveProgress();
-    
     App.logActivity('🏆', `Completed CCC Chapter: ${currentChapterId}`);
-    alert('Congratulations! Chapter progress saved.');
     openBook(currentBookId);
   }
 
@@ -473,6 +482,7 @@ window.PlaygroundModule = (() => {
     }
   }
 
+  window._cpSpotSelected = [];
   function checkSpot(char, btn) {
     if (btn.classList.contains('selected')) {
       btn.classList.remove('selected');

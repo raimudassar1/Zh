@@ -2098,17 +2098,35 @@ kbd {
 .tone-btn.tone4:hover, .tone-btn.tone4.selected { background: var(--tone4); color: white; }
 .tone-score { font-size: 1.2rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
 
-/* ── CCC Course Lesson Styles ──────────────────────────────── */
-.lesson-section { animation: fadeIn 0.4s; border-left: 6px solid var(--accent); }
-.section-title { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-.dialogue-block { border-bottom: 1px dashed var(--border); padding-bottom: 24px; }
-.dialogue-block:last-child { border-bottom: none; }
-.dialogue-line { margin-bottom: 4px; padding: 8px; border-radius: var(--radius-sm); transition: background 0.2s; }
-.dialogue-line:hover { background: var(--off-white); }
-.reading-block, .listening-block { border-bottom: 2px solid var(--border); padding-bottom: 40px; }
-.reading-block:last-child, .listening-block:last-child { border-bottom: none; }
-.inline-input { border: none; border-bottom: 2px solid var(--accent); border-radius: 0; background: transparent; text-align: center; font-weight: 700; color: var(--accent); }
-.inline-input:focus { outline: none; border-bottom-color: var(--gold); }
+/* ── CCC Course Premium UI ─────────────────────────────────── */
+.lesson-container { background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); padding: 40px; margin-top: 24px !important; border: 1px solid var(--border); }
+.lesson-section { margin-bottom: 48px; border-left: none; padding-left: 0; }
+.section-title { font-size: 1.6rem; font-weight: 900; color: var(--text); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.section-title::before { content: ''; width: 6px; height: 1.6rem; background: var(--accent); border-radius: 3px; }
+
+.vocab-grid-premium { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.vocab-card-premium { background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; cursor: pointer; transition: all 0.2s; text-align: center; position: relative; overflow: hidden; }
+.vocab-card-premium:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-md); }
+.vocab-card-premium .v-hanzi { font-family: var(--font-zh); font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+.vocab-card-premium .v-pinyin { color: var(--text-2); font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.vocab-card-premium .v-def { font-size: 0.85rem; color: var(--text-3); line-height: 1.2; }
+
+.dialogue-block-premium { background: var(--warm-white); border-radius: var(--radius); padding: 24px; margin-bottom: 32px; border: 1px solid var(--border-light); }
+.dialogue-line-premium { display: flex; gap: 16px; margin-bottom: 12px; padding: 12px; border-radius: var(--radius-sm); border-bottom: 1px solid rgba(0,0,0,0.03); }
+.dialogue-line-premium:last-child { border-bottom: none; }
+.line-speaker-badge { background: var(--accent); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; align-self: flex-start; min-width: 70px; text-align: center; }
+
+.reading-passage-premium { font-family: var(--font-zh); font-size: 1.3rem; line-height: 2.4; color: var(--text); background: #fdfdfd; padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 24px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+
+.listening-card-premium { background: linear-gradient(135deg, var(--gold) 0%, #d48e00 100%); color: white; padding: 32px; border-radius: var(--radius-lg); text-align: center; margin-bottom: 32px; box-shadow: var(--shadow-lg); }
+.listening-card-premium .btn-outline { border-color: rgba(255,255,255,0.4); color: white; }
+.listening-card-premium .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+@media (max-width: 600px) {
+  .lesson-container { padding: 20px; }
+  .vocab-grid-premium { grid-template-columns: 1fr 1fr; }
+}
+
 
 
 
