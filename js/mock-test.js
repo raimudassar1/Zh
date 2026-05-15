@@ -180,7 +180,7 @@ const MockTestModule = (() => {
     } else if (q.type === 'cloze') {
       questionHTML = `
         <div style="font-family:var(--font-zh);font-size:1.2rem;margin-bottom:12px;line-height:2">${q.sentence}</div>
-        ${q.pinyin_hint ? `<div class="text-small text-muted mb-8">(Pinyin hint: ${q.pinyin_hint})</div>` : ''}
+        ${q.pinyin_hint ? `<div class="text-small text-muted mb-8 ${typeof App !== 'undefined' && App.state && App.state.settings && App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">(Pinyin hint: ${q.pinyin_hint})</div>` : ''}
         <div style="font-weight:600;margin-bottom:12px">${idx+1}. Choose the correct character for the blank:</div>`;
     } else if (q.type === 'ordering') {
       questionHTML = `

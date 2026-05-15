@@ -6,7 +6,7 @@
 
 const ChapterModule = (() => {
 
-  let showPinyin = true;
+  let showPinyin = typeof App !== 'undefined' && App.state && App.state.settings && App.state.settings.showQuizPinyin !== undefined ? App.state.settings.showQuizPinyin : true;
 
   const CHAPTERS = [
   {

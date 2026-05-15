@@ -22,6 +22,7 @@ const App = {
       toneColors: true,
       dailyGoal: 10,
       quizDifficulty: 'A2',
+      showQuizPinyin: true,
       displayName: 'Learner',
       showZhuyinDefault: false,
       unlockAll: true,
@@ -1162,6 +1163,16 @@ function renderSettings(container) {
           </div>
           <div class="setting-row">
             <div class="setting-info">
+              <div class="setting-label">Show Pinyin in Quizzes</div>
+              <div class="setting-desc">Display pinyin hints in audio/recognition quizzes</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="set-show-quiz-pinyin" ${s.showQuizPinyin !== false ? 'checked' : ''}>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
               <div class="setting-label">Unlock All Content</div>
               <div class="setting-desc">Bypass level locks for testing</div>
             </div>
@@ -1221,6 +1232,7 @@ function renderSettings(container) {
     App.state.settings.toneColors = document.getElementById('set-tones').checked;
     App.state.settings.annotation = document.querySelector('input[name="annotation"]:checked')?.value || 'pinyin';
     App.state.settings.quizDifficulty = document.querySelector('input[name="difficulty"]:checked')?.value || 'A2';
+    App.state.settings.showQuizPinyin = document.getElementById('set-show-quiz-pinyin').checked;
     App.state.settings.unlockAll = document.getElementById('set-unlock-all').checked;
     App.saveSettings();
     App.applyTheme(App.state.settings.theme);

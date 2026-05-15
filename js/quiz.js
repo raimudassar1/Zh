@@ -445,7 +445,7 @@ window.QuizModule = (() => {
     } else if (q.type === 'hanzi-to-def') {
       questionHTML = `
         <div class="hanzi-xl mb-8">${q.question_hanzi}</div>
-        <div class="pinyin-display-sm">${Pinyin.colorize(q.question_pinyin || '')}</div>
+        <div class="pinyin-display-sm ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${Pinyin.colorize(q.question_pinyin || '')}</div>
         <button class="btn btn-sm btn-ghost mt-8" onclick="TTS.speak('${q.question_hanzi}')">🔊</button>`;
     } else if (q.type === 'def-to-hanzi') {
       questionHTML = `
@@ -453,7 +453,7 @@ window.QuizModule = (() => {
     } else if (q.type === 'cloze') {
       questionHTML = `
         <div class="sentence-display mb-12">${q.sentence}</div>
-        <div class="text-muted small">${q.sentence_pinyin || ''}</div>
+        <div class="text-muted small ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${q.sentence_pinyin || ''}</div>
         <div class="text-italic mt-4">${q.english || ''}</div>`;
     }
 
@@ -462,7 +462,7 @@ window.QuizModule = (() => {
       if (q.type === 'hanzi-to-def') content = opt.definition;
       else if (q.type === 'tone-choice') content = opt.label;
       else if (q.type === 'pinyin-choice') content = `<span style="color:var(--tone${Pinyin.getTone(opt.pinyin)||1})">${opt.pinyin}</span>`;
-      else content = `<span class="qo-hanzi">${opt.hanzi}</span><span class="qo-pinyin">${opt.pinyin || ''}</span>`;
+      else content = `<span class="qo-hanzi">${opt.hanzi}</span><span class="qo-pinyin ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${opt.pinyin || ''}</span>`;
 
       return `<button class="quiz-option" data-correct="${opt.isCorrect}" onclick="handleAnswer(this)">${content}</button>`;
     }).join('');

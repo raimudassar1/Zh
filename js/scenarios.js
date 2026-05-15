@@ -12,7 +12,7 @@ window.ScenarioModule = (() => {
   let currentModuleTab = 'vocab'; // 'vocab' or 'scenarios'
   let currentTab = 'dialogue';
   let currentSubConvIndex = 0;
-  let showPinyin = true;
+  let showPinyin = typeof App !== 'undefined' && App.state && App.state.settings && App.state.settings.showQuizPinyin !== undefined ? App.state.settings.showQuizPinyin : true;
   let vocabSearch = '';
 
   async function loadData() {
