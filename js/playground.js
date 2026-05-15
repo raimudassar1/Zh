@@ -527,6 +527,31 @@ window.PlaygroundModule = (() => {
     `;
   }
 
+  function cpGameSelect(part, btn) {
+    if (btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      window._cpGameSelected = window._cpGameSelected.filter(p => p !== part);
+    } else {
+      btn.classList.add('selected');
+      window._cpGameSelected.push(part);
+    }
+    const area = document.getElementById('cp-game-built');
+    if (area) {
+      area.innerHTML = window._cpGameSelected.map(p => `<span class="cp-built-part">${p}</span>`).join(' + ') || '<span class="text-muted">Select components below...</span>';
+    }
+  }
+
+  function cpGameCheck() {
+    const target = window._cpGameTarget;
+    const selected = [...window._cpGameSelected].sort();
+    const correct = [...target.parts].sort();
+    const feedback = document.getElementById('cp-game-feedback');
+    const isCorrect = JSON.stringify(selected) === JSON.stringify(correct);
+    feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
+    feedback.innerHTML = isCorrect ? `✓ Perfect! <strong>${target.parts.join(' + ')} = ${target.result}</strong>` : `✗ Not quite. Try again!`;
+    if (isCorrect) App.logActivity('🧩', `Solved character puzzle: ${target.result}`);
+  }
+
   function switchCPTab(tab) {
     const content = document.getElementById('cp-tab-content');
     const tabs = document.querySelectorAll('.cp-tab');
@@ -597,8 +622,7 @@ window.PlaygroundModule = (() => {
     renderCharPlayground,
     openPlayground,
     startLesson,
-    nextStep,
-    checkAnswer,
+    markLessonComplete,
     decompose,
     showCombinations,
     switchCPTab,
@@ -607,6 +631,8 @@ window.PlaygroundModule = (() => {
     nextRadicalStep,
     checkSpot,
     verifySpot,
-    checkRadicalAnswer
+    checkRadicalAnswer,
+    cpGameSelect,
+    cpGameCheck
   };
 })();
