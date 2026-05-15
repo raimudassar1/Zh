@@ -335,15 +335,22 @@ window.QuizModule = (() => {
           `}
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center">
-           <div>
-             <span class="text-small text-muted">Question Count:</span>
-             <select class="input" style="width:80px; margin-left:8px" onchange="window.QuizModule.state.questionCount = parseInt(this.value)">
-               <option value="10" ${quizState.questionCount === 10 ? 'selected' : ''}>10</option>
-               <option value="20" ${quizState.questionCount === 20 ? 'selected' : ''}>20</option>
-               <option value="50" ${quizState.questionCount === 50 ? 'selected' : ''}>50</option>
-               <option value="999999" ${quizState.questionCount === 999999 ? 'selected' : ''}>All</option>
-             </select>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 16px;">
+           <div style="display:flex; align-items:center; gap: 16px;">
+             <div>
+               <span class="text-small text-muted">Question Count:</span>
+               <select class="input" style="width:80px; margin-left:8px" onchange="window.QuizModule.state.questionCount = parseInt(this.value)">
+                 <option value="10" ${quizState.questionCount === 10 ? 'selected' : ''}>10</option>
+                 <option value="20" ${quizState.questionCount === 20 ? 'selected' : ''}>20</option>
+                 <option value="50" ${quizState.questionCount === 50 ? 'selected' : ''}>50</option>
+                 <option value="999999" ${quizState.questionCount === 999999 ? 'selected' : ''}>All</option>
+               </select>
+             </div>
+             <label class="toggle" style="display:flex; align-items:center; gap:8px">
+               <input type="checkbox" onchange="App.state.settings.showQuizPinyin = this.checked; if(App.saveSettings) App.saveSettings()" ${App.state.settings.showQuizPinyin !== false ? 'checked' : ''}>
+               <span class="toggle-slider"></span>
+               <span class="text-small text-muted" style="margin-left: 40px;">Show Pinyin Hints</span>
+             </label>
            </div>
            <button class="btn btn-primary btn-lg" onclick="window.QuizModule.startQuiz('${type}')">Start Quiz ✨</button>
         </div>

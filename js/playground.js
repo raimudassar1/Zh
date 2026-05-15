@@ -4,7 +4,7 @@
 
 'use strict';
 
-const PlaygroundModule = (() => {
+window.PlaygroundModule = (() => {
 
   let playgroundData = null;
   let charPlaygroundData = null;
@@ -63,7 +63,7 @@ const PlaygroundModule = (() => {
                 const isLocked = false; // All content unlocked for static page
 
                 return `
-                  <div class="pg-card ${isDone ? 'pg-complete' : ''}" onclick="PlaygroundModule.openPlayground('${pg.id}')">
+                  <div class="pg-card ${isDone ? 'pg-complete' : ''}" onclick="window.PlaygroundModule.openPlayground('${pg.id}')">
                     <div class="pg-card-icon">${isDone ? '🏆' : '🎠'}</div>
                     <div class="pg-card-content">
                       <h3>${pg.title}</h3>
@@ -87,7 +87,7 @@ const PlaygroundModule = (() => {
     const container = document.getElementById('page-content');
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.render(document.getElementById('page-content'))">← Back</button>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.render(document.getElementById('page-content'))">← Back</button>
         <h2>${pg.title}</h2>
         <p>${pg.subtitle}</p>
         ${pg.chapter_links && pg.chapter_links.length ? `<div class="text-small text-muted mt-4">Reinforces Chapters: ${pg.chapter_links.join(', ')}</div>` : ''}
@@ -97,7 +97,7 @@ const PlaygroundModule = (() => {
         ${pg.lessons.map((lesson, idx) => {
           const isDone = App.state.progress.playground?.[lesson.id];
           return `
-            <div class="pg-lesson-item ${isDone ? 'done' : ''}" onclick="PlaygroundModule.startLesson('${pg.id}', '${lesson.id}')">
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.startLesson('${pg.id}', '${lesson.id}')">
               <div class="pg-lesson-num">${isDone ? '✓' : idx + 1}</div>
               <div class="pg-lesson-info">
                 <h4>${lesson.title}</h4>
@@ -173,7 +173,7 @@ const PlaygroundModule = (() => {
 
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.openPlayground('${pgId}')">← Back to Lessons</button>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.openPlayground('${pgId}')">← Back to Lessons</button>
         <h2>${lesson.title}</h2>
         <p>Review the unique characters first, then practice the full conversation.</p>
       </div>
@@ -183,7 +183,7 @@ const PlaygroundModule = (() => {
         ${dialogueHTML}
         
         <div class="text-center mt-32 mb-40">
-          <button class="btn btn-primary btn-lg w-full" style="font-size:1.2rem;padding:20px" onclick="PlaygroundModule.markLessonComplete()">Mark Conversation as Completed ✓</button>
+          <button class="btn btn-primary btn-lg w-full" style="font-size:1.2rem;padding:20px" onclick="window.PlaygroundModule.markLessonComplete()">Mark Conversation as Completed ✓</button>
         </div>
       </div>
     `;
@@ -220,9 +220,9 @@ const PlaygroundModule = (() => {
       </div>
 
       <div class="cp-tabs">
-        <button class="cp-tab active" onclick="PlaygroundModule.switchCPTab('blocks')">Radical Blocks</button>
-        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('decomp')">Explorer</button>
-        <button class="cp-tab" onclick="PlaygroundModule.switchCPTab('game')">Game</button>
+        <button class="cp-tab active" onclick="window.PlaygroundModule.switchCPTab('blocks')">Radical Blocks</button>
+        <button class="cp-tab" onclick="window.PlaygroundModule.switchCPTab('decomp')">Explorer</button>
+        <button class="cp-tab" onclick="window.PlaygroundModule.switchCPTab('game')">Game</button>
       </div>
 
       <div id="cp-tab-content">
@@ -235,7 +235,7 @@ const PlaygroundModule = (() => {
     return `
       <div class="cp-blocks-grid">
         ${charPlaygroundData.map(block => `
-          <div class="cp-block-card" style="border-top: 4px solid ${block.color}" onclick="PlaygroundModule.openRadicalBlock('${block.id}')">
+          <div class="cp-block-card" style="border-top: 4px solid ${block.color}" onclick="window.PlaygroundModule.openRadicalBlock('${block.id}')">
             <div class="cp-block-icon">${block.icon}</div>
             <div class="cp-block-info">
               <h3>${block.title}</h3>
@@ -258,14 +258,14 @@ const PlaygroundModule = (() => {
     const container = document.getElementById('page-content');
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back</button>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back</button>
         <h2>${block.title}</h2>
         <p>${block.subtitle}</p>
       </div>
       
       <div class="cp-lessons-list">
         ${block.lessons.map((lesson, idx) => `
-          <div class="cp-lesson-card" onclick="PlaygroundModule.startRadicalLesson('${block.id}', '${lesson.id}')">
+          <div class="cp-lesson-card" onclick="window.PlaygroundModule.startRadicalLesson('${block.id}', '${lesson.id}')">
             <div class="cp-lesson-radical">${lesson.radical}</div>
             <div class="cp-lesson-info">
               <h4>${lesson.radical_meaning}</h4>
@@ -311,7 +311,7 @@ const PlaygroundModule = (() => {
             <div class="cp-mnemonic card mt-24">
               <strong>Mnemonic:</strong> ${lesson.mnemonic}
             </div>
-            <button class="btn btn-primary btn-lg mt-32" onclick="PlaygroundModule.nextRadicalStep()">Explore Compounds →</button>
+            <button class="btn btn-primary btn-lg mt-32" onclick="window.PlaygroundModule.nextRadicalStep()">Explore Compounds →</button>
           </div>
         </div>
       `;
@@ -332,7 +332,7 @@ const PlaygroundModule = (() => {
               </div>
             `).join('')}
           </div>
-          <button class="btn btn-primary btn-lg mt-32" onclick="PlaygroundModule.nextRadicalStep()">Start Drills →</button>
+          <button class="btn btn-primary btn-lg mt-32" onclick="window.PlaygroundModule.nextRadicalStep()">Start Drills →</button>
         </div>
       `;
     } else if (currentStep <= lesson.drills.length + 1) {
@@ -363,29 +363,29 @@ const PlaygroundModule = (() => {
       case 'spot_radical':
         return `
           <div class="cp-spot-grid">
-            ${drill.chars.map(c => `<button class="cp-block" onclick="PlaygroundModule.checkSpot('${c}', this)">${c}</button>`).join('')}
+            ${drill.chars.map(c => `<button class="cp-block" onclick="window.PlaygroundModule.checkSpot('${c}', this)">${c}</button>`).join('')}
           </div>
-          <button class="btn btn-primary mt-24" onclick="PlaygroundModule.verifySpot()">Check Answers</button>
+          <button class="btn btn-primary mt-24" onclick="window.PlaygroundModule.verifySpot()">Check Answers</button>
         `;
       case 'meaning_match':
         return `
           <div class="pg-big-hanzi">${drill.hanzi}</div>
           <div class="pg-options-grid">
-            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="window.PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
           </div>
         `;
       case 'build_recognition':
         return `
           <div class="pg-quiz-q mb-24">${drill.prompt}</div>
           <div class="pg-options-grid">
-            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn pg-hanzi-opt" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn pg-hanzi-opt" onclick="window.PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
           </div>
         `;
       case 'sentence_fill':
         return `
           <div class="cp-sentence-q mb-24">${drill.sentence.replace('___', '<span class="blank">?</span>')}</div>
           <div class="pg-options-grid">
-            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
+            ${drill.options.map(opt => `<button class="btn btn-outline pg-opt-btn" onclick="window.PlaygroundModule.checkRadicalAnswer('${opt}', '${drill.answer}', this)">${opt}</button>`).join('')}
           </div>
         `;
     }
@@ -434,7 +434,7 @@ const PlaygroundModule = (() => {
     const container = document.getElementById('page-content');
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back to Character Playground</button>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back to Character Playground</button>
         <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px;">🌟 Radical Mastered!</div>
       </div>
       <div class="cp-lesson-step" style="max-width:800px; margin: 0 auto; text-align: left;">
@@ -455,7 +455,7 @@ const PlaygroundModule = (() => {
             </div>
           `).join('')}
         </div>
-        <button class="btn btn-primary btn-lg mt-32 w-full" onclick="PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Continue to Next Radical →</button>
+        <button class="btn btn-primary btn-lg mt-32 w-full" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Continue to Next Radical →</button>
       </div>
     `;
   }
@@ -467,7 +467,7 @@ const PlaygroundModule = (() => {
       <div class="cp-container">
         <div class="cp-search">
           <input type="text" class="input" id="cp-input" placeholder="Enter a character (e.g. 森, 好, 媽)...">
-          <button class="btn btn-primary" onclick="PlaygroundModule.decompose()">Decompose</button>
+          <button class="btn btn-primary" onclick="window.PlaygroundModule.decompose()">Decompose</button>
         </div>
         <div id="cp-result" class="cp-result-area">
           <div class="empty-state"><p>Enter a character above to see its "building blocks".</p></div>
@@ -476,7 +476,7 @@ const PlaygroundModule = (() => {
           <h3>Common Building Blocks</h3>
           <div class="cp-block-grid">
             ${['人','口','木','水','火','土','日','月','心','手','女','子','門','纟'].map(c => `
-              <div class="cp-block" onclick="PlaygroundModule.showCombinations('${c}')">${c}</div>
+              <div class="cp-block" onclick="window.PlaygroundModule.showCombinations('${c}')">${c}</div>
             `).join('')}
           </div>
         </div>
@@ -516,12 +516,12 @@ const PlaygroundModule = (() => {
         </div>
         <div class="cp-built-area" id="cp-game-built">Select components...</div>
         <div class="cp-game-pool">
-          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" onclick="PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
+          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" onclick="window.PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
         </div>
         <div id="cp-game-feedback" class="quiz-feedback"></div>
         <div class="flex gap-12 justify-center mt-24">
-          <button class="btn btn-primary" onclick="PlaygroundModule.cpGameCheck()">Check Formation</button>
-          <button class="btn btn-ghost" onclick="PlaygroundModule.switchCPTab('game')">Next Character 🔄</button>
+          <button class="btn btn-primary" onclick="window.PlaygroundModule.cpGameCheck()">Check Formation</button>
+          <button class="btn btn-ghost" onclick="window.PlaygroundModule.switchCPTab('game')">Next Character 🔄</button>
         </div>
       </div>
     `;

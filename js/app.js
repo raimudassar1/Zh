@@ -1337,13 +1337,13 @@ function renderChaptersPage(container) {
 }
 
 function renderPlayground(container) {
-  if (typeof PlaygroundModule !== 'undefined') return PlaygroundModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  if (window.PlaygroundModule) return window.PlaygroundModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Playground Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderCharPlayground(container) {
-  if (typeof PlaygroundModule !== 'undefined') return PlaygroundModule.renderCharPlayground(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  if (window.PlaygroundModule) return window.PlaygroundModule.renderCharPlayground(container);
+  container.innerHTML = '<div class="empty-state"><h3>Character Playground Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderScenariosPage(container) {
