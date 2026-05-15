@@ -10,12 +10,13 @@ window.QuizModule = (() => {
   let quizState = {
     mode: 'A',          // Pronunciation mode (A-E)
     submode: 'hanzi-to-def', // Vocab submode
-    source: 'level',    // level | category | chapter | book
+    source: 'level',    // level | category | chapter | book | radical
     level: 'a2',
     category: '',
     chapterId: '',
     book: 1,
     bookChapter: '01',
+    radicalPhase: 1,
     questionCount: 20,
     questions: [],
     current: 0,
@@ -108,6 +109,20 @@ window.QuizModule = (() => {
           level: `Book ${quizState.book}`,
           category: `Lesson ${parseInt(quizState.bookChapter)}`,
           audio_file: item.audio_file
+        }));
+      }
+    }
+
+    else if (quizState.source === 'radical') {
+      // Pull from Radical Masterclass
+      if (quizState.radicalData) {
+        pool = quizState.radicalData.filter(r => r.phase === quizState.radicalPhase).map(r => ({
+          hanzi: r.component,
+          traditional: r.component,
+          pinyin: r.pinyin,
+          definition: r.coreMeaning,
+          level: `Phase ${r.phase}`,
+          category: 'Radical'
         }));
       }
     }
@@ -291,9 +306,23 @@ window.QuizModule = (() => {
           <button class="tab-btn ${quizState.source === 'category' ? 'active' : ''}" id="btn-src-category" onclick="QuizModule.setSource('category')">Thematic Groups</button>
           <button class="tab-btn ${quizState.source === 'chapter' ? 'active' : ''}" id="btn-src-chapter" onclick="QuizModule.setSource('chapter')">Curriculum Chapters</button>
           <button class="tab-btn ${quizState.source === 'book' ? 'active' : ''}" id="btn-src-book" onclick="QuizModule.setSource('book')">Course Books</button>
+          <button class="tab-btn ${quizState.source === 'radical' ? 'active' : ''}" id="btn-src-radical" onclick="QuizModule.setSource('radical')">Radicals Masterclass</button>
         </div>
 
         <div id="source-config" class="mb-20">
+          <!-- Radical Config -->
+          <div id="config-radical" class="quiz-config-panel ${quizState.source === 'radical' ? '' : 'hidden'}">
+            <div class="text-small text-muted mb-8">Select Radical Phase</div>
+            <div class="selection-grid">
+              ${[1, 2, 3].map(p => `
+                <div class="select-tile ${quizState.radicalPhase === p ? 'active' : ''}" onclick="QuizModule.setRadicalPhase(${p}, this)">
+                  <div class="tile-title">PHASE ${p}</div>
+                  <div class="tile-sub">${p === 1 ? 'Novice' : p === 2 ? 'Mastery' : 'Advanced'}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
           <!-- Level Config -->
           <div id="config-level" class="quiz-config-panel ${quizState.source === 'level' ? '' : 'hidden'}">
             <div class="text-small text-muted mb-8">Select TOCFL Level</div>
@@ -409,7 +438,7 @@ window.QuizModule = (() => {
       renderSetup(container, 'vocab');
     },
 
-    setSource(src) {
+    async setSource(src) {
       quizState.source = src;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(`btn-src-${src}`).classList.add('active');
@@ -418,8 +447,19 @@ window.QuizModule = (() => {
       document.getElementById(`config-${src}`).classList.remove('hidden');
 
       if (src === 'book' && !quizState.bookData) {
-        this.switchBook(quizState.book);
+        await this.switchBook(quizState.book);
       }
+      if (src === 'radical' && !quizState.radicalData) {
+        const resp = await fetch('traditional_chinese_radicals_120_learning_set.json');
+        const json = await resp.json();
+        quizState.radicalData = json.radicals;
+      }
+    },
+
+    setRadicalPhase(p, el) {
+      quizState.radicalPhase = parseInt(p);
+      el.parentElement.querySelectorAll('.select-tile').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
     },
 
     async switchBook(bookNum) {
