@@ -6,7 +6,7 @@
     "sources": {
       "books": { "id": 1, "chapters": [1, 2, 3, 4] },
       "playground": ["pg1", "pg2", "pg3", "pg4", "pg5"],
-      "radicals": [1, 2, 3, 4]
+      "radicals": ["cpg1"]
     }
   },
   {
@@ -16,7 +16,7 @@
     "sources": {
       "books": { "id": 1, "chapters": [5, 6, 7, 8] },
       "playground": ["pg6", "pg7", "pg8", "pg9"],
-      "radicals": [5, 6]
+      "radicals": ["cpg2"]
     }
   },
   {
@@ -26,7 +26,7 @@
     "sources": {
       "books": { "id": 1, "chapters": [9, 10, 11, 12, 13, 14, 15] },
       "playground": ["pg10", "pg11", "pg12", "pg13"],
-      "radicals": [7, 8]
+      "radicals": ["cpg3"]
     }
   },
   {
@@ -35,7 +35,8 @@
     "description": "Interviews, Workplace, and Education.",
     "sources": {
       "books": { "id": 2, "chapters": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
-      "playground": ["pg14", "pg15", "pg16", "pg17"]
+      "playground": ["pg14", "pg15", "pg16", "pg17"],
+      "radicals": ["cpg4", "cpg5"]
     }
   },
   {
@@ -44,7 +45,8 @@
     "description": "Hobbies, Relationships, and Opinions.",
     "sources": {
       "books": { "id": 3, "chapters": [1, 2, 3, 4, 5, 6, 7, 8] },
-      "playground": ["pg18", "pg19", "pg20"]
+      "playground": ["pg18", "pg19", "pg20"],
+      "radicals": ["cpg6", "cpg7"]
     }
   },
   {
@@ -53,7 +55,8 @@
     "description": "Comprehensive Final Exam for B1 Level.",
     "sources": {
       "books": { "id": 3, "chapters": [9, 10, 11, 12] },
-      "full_review": true
+      "full_review": true,
+      "radicals": ["cpg8"]
     }
   }
 ]

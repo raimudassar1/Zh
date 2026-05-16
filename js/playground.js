@@ -595,42 +595,87 @@ window.PlaygroundModule = (() => {
   }
 
   function renderBlocksTab() {
-    if (!currentRadicalData) return '<div class="spinner"></div>';
+    if (!currentCharData || !currentCharData.length) return '<div class="spinner"></div>';
     
-    // Group radicals by phase
+    // Group blocks by "phase" (using ID or index as proxy)
+    // Block 1-3 = Phase 1, 4-6 = Phase 2, 7-8 = Phase 3
     const phases = [
-      { id: 1, title: 'Phase 1: Novice (40)', color: '#3498db' },
-      { id: 2, title: 'Phase 2: A1 Mastery (40)', color: '#2ecc71' },
-      { id: 3, title: 'Phase 3: A2/B1 Bridge (40)', color: '#e67e22' }
+      { id: 1, title: 'Phase 1: Novice (Weeks 1-8)', color: '#3498db', range: [1, 3] },
+      { id: 2, title: 'Phase 2: A1 Mastery (Weeks 9-16)', color: '#2ecc71', range: [4, 6] },
+      { id: 3, title: 'Phase 3: A2/B1 Bridge (Weeks 17-24)', color: '#e67e22', range: [7, 8] }
     ];
 
     return `
       <div class="cp-phases">
-        ${phases.map(p => `
-          <div class="cp-phase-section mb-40">
-            <h3 class="mb-20" style="border-left: 4px solid ${p.color}; padding-left: 12px;">${p.title}</h3>
-            <div class="cp-blocks-grid">
-              ${currentRadicalData.filter(r => r.phase === p.id).map(rad => `
-                <div class="cp-block-card" onclick="window.PlaygroundModule.openRadicalDetail('${rad.id}')" style="background: white;">
-                  <div class="cp-block-header" style="background:${p.color}">
-                    <div class="cp-block-icon" style="font-size: 2.5rem; color: white !important;">${rad.component}</div>
+        ${phases.map(p => {
+          const blocks = currentCharData.filter(block => {
+            const num = parseInt(block.id.replace('cpg', ''));
+            return num >= p.range[0] && num <= p.range[1];
+          });
+          if (!blocks.length) return '';
+
+          return `
+            <div class="cp-phase-section mb-40">
+              <h3 class="mb-20" style="border-left: 4px solid ${p.color}; padding-left: 12px; color: var(--text);">${p.title}</h3>
+              <div class="cp-blocks-grid">
+                ${blocks.map(block => `
+                  <div class="cp-block-card" style="background: white;" onclick="window.PlaygroundModule.openBlockLessons('${block.id}')">
+                    <div class="cp-block-header" style="background:${block.color || p.color}">
+                      <div class="cp-block-icon" style="font-size: 2.5rem; color: white !important;">${block.icon || '🧩'}</div>
+                    </div>
+                    <div class="cp-block-body">
+                      <h3 style="margin-bottom:4px; font-weight:800; color: var(--text)">${block.title}</h3>
+                      <p style="font-size:0.85rem; line-height:1.4; color:var(--text-3); height: 3em; overflow: hidden;">${block.subtitle}</p>
+                    </div>
+                    <div class="cp-block-footer">
+                      <span style="color: var(--text-2)">${block.lessons.length} Radicals</span>
+                      <span class="color-accent" style="font-weight:800">EXPLORE →</span>
+                    </div>
                   </div>
-                  <div class="cp-block-body">
-                    <h3 style="margin-bottom:4px; font-weight:800; color: var(--text)">${rad.coreMeaning}</h3>
-                    <div class="text-zh" style="color:var(--accent); font-weight:700; margin-bottom:12px">${rad.pinyin}</div>
-                    <p style="font-size:0.85rem; line-height:1.4; color:var(--text-3); height: 3em; overflow: hidden;">${rad.learningRole}</p>
-                  </div>
-                  <div class="cp-block-footer">
-                    <span style="color: var(--text-2)">${rad.examples.length} Examples</span>
-                    <span class="color-accent" style="font-weight:800">TEACH →</span>
-                  </div>
-                </div>
-              `).join('')}
+                `).join('')}
+              </div>
             </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
+  }
+
+  function openBlockLessons(blockId) {
+    const block = currentCharData.find(b => b.id === blockId);
+    if (!block) return;
+
+    const container = document.getElementById('page-content');
+    container.innerHTML = `
+      <div class="lesson-page-header" style="background: linear-gradient(135deg, ${block.color}, #34495e); color: white !important;">
+        <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white !important; border-color:rgba(255,255,255,0.4);" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← BACK TO PHASES</button>
+        <div style="font-size:0.9rem; text-transform:uppercase; letter-spacing:4px; margin-bottom:16px; opacity:0.8; font-weight:700; color: white !important;">BLOCK ${block.id.replace('cpg', '')}</div>
+        <h2 style="color:white !important; font-size: 2.5rem;">${block.title}</h2>
+        <p style="font-size:1.2rem; max-width:800px; margin:20px auto 0; opacity:0.9; line-height:1.6; color: white !important;">${block.subtitle}</p>
+      </div>
+
+      <div class="lesson-container" style="max-width:1100px; margin: 0 auto; padding: 40px 20px;">
+        <div class="cp-lessons-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+          ${block.lessons.map(l => `
+            <div class="card p-24 shadow-hover" style="cursor: pointer; background: white;" onclick="window.PlaygroundModule.startRadicalLesson('${block.id}', '${l.id}')">
+              <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 16px;">
+                <div class="font-zh" style="font-size: 3rem; font-weight: 900; color: var(--text);">${l.radical}</div>
+                <div>
+                  <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent);">${l.radical_pinyin}</div>
+                  <div style="color: var(--text-2); font-weight: 600;">${l.radical_meaning}</div>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-3); margin-bottom: 16px;">${l.mnemonic.slice(0, 80)}...</p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--text-3);">${l.compounds.length} COMPOUNDS</span>
+                <span class="badge badge-primary">START</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    window.scrollTo(0,0);
   }
 
   function openRadicalDetail(id) {
@@ -1062,6 +1107,7 @@ window.PlaygroundModule = (() => {
     switchView,
     openPlaygroundGroup,
     startPlaygroundLesson,
-    markLessonComplete
+    markLessonComplete,
+    openBlockLessons
   };
 })();
