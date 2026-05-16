@@ -69,31 +69,6 @@ const App = {
     // Load from local storage or use defaults
     this.state.progress = saved ? { ...defaults, ...JSON.parse(saved) } : { ...defaults };
     
-    // For testing/demonstration purposes, if "unlockAll" is set in settings, we fill progress
-    if (this.state.settings.unlockAll) {
-      // Fill all 30 chapters as complete
-      for (let i = 1; i <= 30; i++) {
-          if (!this.state.progress.chapters[i]) {
-            this.state.progress.chapters[i] = {
-                vocabDone: true,
-                dialogueDone: true,
-                readingDone: true,
-                exercisesDone: true,
-                score: 100
-            };
-          }
-      }
-
-      // Initialize scenarios progress
-      const scenarioModules = ['m1','m2','m3','m4','m5','m6','m7'];
-      scenarioModules.forEach(mId => {
-        if (!this.state.progress.scenarios[mId]) this.state.progress.scenarios[mId] = { done: true };
-      });
-      
-      this.state.progress.onboardingComplete = true;
-      this.state.progress.streak = Math.max(this.state.progress.streak, 99);
-    }
-    
     this.updateStreak();
   },
 
@@ -1235,9 +1210,21 @@ function renderSettings(container) {
         </div>
       </div>
 
+      <div class="card mb-16">
+        <div class="settings-section">
+          <h3>Data Management</h3>
+          <p class="setting-desc mb-16">Since this app runs locally in your browser, you can export your progress to a file to use on another device.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-outline" onclick="exportProgress()">📤 Export Progress</button>
+            <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">📥 Import Progress</button>
+            <input type="file" id="import-file" style="display:none" onchange="importProgress(this)">
+          </div>
+        </div>
+      </div>
+
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn btn-primary" id="set-save-btn">Save Settings</button>
-        <button class="btn btn-ghost" id="set-reset-btn">Reset All Progress</button>
+        <button class="btn btn-ghost btn-error" id="set-reset-btn">Reset All Progress</button>
       </div>
       <div id="set-saved-msg" class="hidden" style="margin-top:10px;color:var(--tone2);font-weight:600">✓ Settings saved!</div>
     </div>
@@ -1266,6 +1253,41 @@ function renderSettings(container) {
       navigate('/');
     }
   });
+}
+
+// ─── Progress Management Utilities ───────────────────────────────────────────
+function exportProgress() {
+  const data = localStorage.getItem('tocfl_progress');
+  if (!data) return alert("No progress data to export.");
+  
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `mandarin_progress_${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importProgress(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (confirm('Importing progress will overwrite your current progress. Continue?')) {
+        localStorage.setItem('tocfl_progress', JSON.stringify(data));
+        window.location.reload();
+      }
+    } catch (err) {
+      alert("Invalid progress file.");
+    }
+  };
+  reader.readAsText(file);
 }
 
 // ─── Stub renders (implemented in other JS files) ─────────────────────────────

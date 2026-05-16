@@ -456,7 +456,6 @@ window.ExamModule = {
                 border: 1px solid var(--border);
             }
             .month-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
-            .month-card.locked { opacity: 0.6; filter: grayscale(0.5); cursor: not-allowed; }
             .month-card.completed { border-left: 5px solid #27ae60; }
             
             .card-status { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; color: var(--text-3); display: flex; align-items: center; gap: 8px; }

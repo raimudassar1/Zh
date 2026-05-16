@@ -57,13 +57,9 @@ const LearnModule = (() => {
     const donePgLessons = Object.keys(prog.playground || {}).length;
     const pgPct = totalPgLessons > 0 ? Math.round((donePgLessons / totalPgLessons) * 100) : 0;
 
-    // Determine which levels are unlocked
+    // Determine which levels are unlocked (All unlocked for static version)
     function isUnlocked(lvl) {
-      if (App.state.settings.unlockAll) return true;
-      const idx = LEVEL_ORDER.indexOf(lvl);
-      if (idx === 0) return true;
-      const prev = LEVEL_ORDER[idx - 1];
-      return byLevel[prev].pct >= LEVEL_META[lvl].unlock;
+      return true;
     }
 
     // SRS due cards
@@ -127,22 +123,19 @@ const LearnModule = (() => {
         ${levels.map((lvl, idx) => {
           const meta   = LEVEL_META[lvl.id] || { color:'#888', icon:'📚', name: lvl.id };
           const stats  = byLevel[lvl.id] || { total: lvl.total||0, learned: 0, pct: 0 };
-          const locked = !isUnlocked(lvl.id);
-          const active = !locked && stats.pct < 100;
-          const prevPct = idx > 0 ? byLevel[LEVEL_ORDER[idx-1]].pct : 100;
+          const active = stats.pct < 100;
 
           return `
-          <div class="card level-card ${locked ? 'locked' : ''}" style="border-left:4px solid ${locked ? 'var(--border)' : meta.color};${locked?'opacity:0.6':''}">
+          <div class="card level-card" style="border-left:4px solid ${meta.color}">
             <div style="display:flex;align-items:center;gap:14px;margin-bottom:${active?'14px':'0'}">
               <!-- Icon -->
-              <div style="width:52px;height:52px;border-radius:50%;background:${locked?'var(--off-white)':meta.color+'22'};border:2px solid ${locked?'var(--border)':meta.color};display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">
-                ${locked ? '🔒' : meta.icon}
+              <div style="width:52px;height:52px;border-radius:50%;background:${meta.color+'22'};border:2px solid ${meta.color};display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">
+                ${meta.icon}
               </div>
               <!-- Info -->
               <div style="flex:1">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">
                   <div style="font-weight:700;font-size:1rem">${meta.name}</div>
-                  ${locked ? `<span class="badge badge-gray">Locked — reach ${LEVEL_META[lvl.id].unlock}% in previous level</span>` : ''}
                   ${stats.pct === 100 ? '<span class="badge" style="background:rgba(39,174,96,0.1);color:#27ae60">✓ Complete</span>' : ''}
                 </div>
                 <div style="font-size:0.82rem;color:var(--text-3)">${meta.desc}</div>
@@ -150,16 +143,14 @@ const LearnModule = (() => {
               </div>
               <!-- Percent -->
               <div style="text-align:center;flex-shrink:0">
-                <div style="font-size:1.6rem;font-weight:900;color:${locked?'var(--text-3)':meta.color}">${stats.pct}%</div>
+                <div style="font-size:1.6rem;font-weight:900;color:${meta.color}">${stats.pct}%</div>
                 <div style="font-size:0.68rem;color:var(--text-3)">mastered</div>
               </div>
             </div>
 
-            ${!locked ? `
             <!-- Progress bar -->
             <div style="margin-bottom:14px">
               <div class="progress-bar"><div class="progress-fill" style="width:${stats.pct}%;background:${meta.color}"></div></div>
-              ${stats.pct < 100 && idx > 0 ? `<div class="text-small text-muted" style="margin-top:4px">Need ${LEVEL_META[lvl.id]?.unlock||80}% to unlock next level</div>` : ''}
             </div>
 
             <!-- Action buttons -->
@@ -178,12 +169,7 @@ const LearnModule = (() => {
                 return `<span onclick="showCharModal(${JSON.stringify(c).replace(/"/g,'&quot;')})" style="font-family:var(--font-zh);font-size:1.3rem;cursor:pointer;padding:4px;border-radius:4px;color:${isLearned?meta.color:'var(--text)'};background:${isLearned?meta.color+'15':'var(--off-white)'};transition:all 0.1s" title="${c.pinyin} — ${c.definition}">${c.traditional||c.hanzi}</span>`;
               }).join('')}
               ${stats.total > 12 ? `<span style="font-size:0.75rem;color:var(--text-3);align-self:center">+${stats.total - 12} more</span>` : ''}
-            </div>` : `
-            <!-- Locked state -->
-            <div style="font-size:0.82rem;color:var(--text-3);padding:4px 0">
-              Complete ${LEVEL_META[LEVEL_ORDER[idx-1]].name} at ${LEVEL_META[lvl.id].unlock}% to unlock (currently ${prevPct}%)
             </div>
-            `}
           </div>`;
         }).join('')}
       </div>
