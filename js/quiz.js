@@ -548,6 +548,7 @@ window.QuizModule = (() => {
   // ── Quiz Execution ──────────────────────────────────────────
   function showQuestion() {
     const area = document.getElementById('quiz-area');
+    quizState.questionStarted = Date.now();
     const q = quizState.questions[quizState.current];
     
     if (!q) {
@@ -641,13 +642,17 @@ window.QuizModule = (() => {
       </div>
     `;
 
+    const elapsed = Date.now() - (quizState.questionStarted || Date.now());
     if (isCorrect) {
       quizState.score++;
       App.unmarkWeak(item.hanzi);
     } else {
       quizState.wrong.push(item);
       App.markWeak(item.hanzi);
+      const area = q.type === 'tone-choice' ? 'tone' : (q.type && q.type.includes('pinyin') ? 'pinyin' : 'vocabulary');
+      if (window.WeaknessEngine) WeaknessEngine.record(area, { hanzi: item.hanzi, label: item.traditional || item.hanzi, type: 'quiz-wrong', ms: elapsed });
     }
+    if (elapsed > 9000 && window.WeaknessEngine) WeaknessEngine.record('slow', { hanzi: item.hanzi, label: item.traditional || item.hanzi, type: 'quiz-slow', ms: elapsed });
 
     document.getElementById('next-btn').classList.remove('hidden');
   };

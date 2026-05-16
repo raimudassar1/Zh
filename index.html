@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>æ¼¢èªžå­¸ç¿’ â€” Beginner to TOCFL B1</title>
-  <link rel="stylesheet" href="css/main.css?v=17">
+  <title>Zhongwen Learning - Beginner to TOCFL B1</title>
+  <link rel="stylesheet" href="css/main.css?v=23">
   <link rel="icon" href="logo.png">
   <link rel="manifest" href="manifest.json">
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
@@ -32,12 +32,16 @@
       <a class="nav-item" data-route="vocabulary"  href="#/vocabulary"><span class="nav-icon">ðŸ–¼ï¸</span><span class="nav-label">Vocabulary Library</span></a>
       <a class="nav-item" data-route="vocabulary-books" href="#/vocabulary-books"><span class="nav-icon">ðŸ“’</span><span class="nav-label">Course Books</span></a>
       <a class="nav-item" data-route="grammar"     href="#/grammar"><span class="nav-icon">ðŸ§¬</span><span class="nav-label">Grammar Library</span></a>
+      <a class="nav-item" data-route="mixed-recall" href="#/mixed-recall"><span class="nav-icon">MR</span><span class="nav-label">Mixed Recall</span></a>
+      <a class="nav-item" data-route="sentence-builder" href="#/sentence-builder"><span class="nav-icon">SB</span><span class="nav-label">Sentence Builder</span></a>
       <a class="nav-item" data-route="flashcards"  href="#/flashcards"><span class="nav-icon">ðŸƒ</span><span class="nav-label">Flashcards</span></a>
       <a class="nav-item" data-route="dialogue"    href="#/dialogue"><span class="nav-icon">ðŸ’¬</span><span class="nav-label">Dialogue Practice</span></a>
+      <a class="nav-item" href="javascript:void(0)" onclick="AIChat.open({title:'Free Chat', scene:'A friendly conversation about anything.'})"><span class="nav-icon">ðŸ¤–</span><span class="nav-label">AI Partner</span></a>
       <div class="nav-section-label">Quiz</div>
       <a class="nav-item" data-route="quiz-pronunciation" href="#/quiz/pronunciation"><span class="nav-icon">ðŸ”¤</span><span class="nav-label">Pronunciation Quiz</span></a>
-      <a class="nav-item" data-route="quiz-vocabulary"    href="#/quiz/vocabulary"><span class="nav-icon">ðŸŽ¯</span><span class="nav-label">Vocabulary Quiz</span></a>
-      <a class="nav-item" data-route="quiz-tones"         href="#/quiz/tones"><span class="nav-icon">ðŸŽµ</span><span class="nav-label">Tone Training</span></a>
+      <a class="nav-item" data-route="quiz-vocabulary"    href="#/quiz/vocabulary"><span class="nav-icon">🎯</span><span class="nav-label">Vocabulary Quiz</span></a>
+      <a class="nav-item" data-route="quiz-flash"         href="#/quiz/flash"><span class="nav-icon">🖼️</span><span class="nav-label">Picture Flash Quiz</span></a>
+      <a class="nav-item" data-route="quiz-tones"         href="#/quiz/tones"><span class="nav-icon">🎵</span><span class="nav-label">Tone Training</span></a>
       <div class="nav-section-label">Practice</div>
       <a class="nav-item" data-route="reading"     href="#/reading"><span class="nav-icon">ðŸ“–</span><span class="nav-label">Reading</span></a>
       <div class="nav-section-label">Mock Test</div>
@@ -93,26 +97,32 @@
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="js/icons.js?v=17"></script>
-<script src="js/voice.js?v=2"></script>
-<script src="js/grammar.js?v=2"></script>
-<script src="js/tone-game.js?v=2"></script>
-<script src="js/playground.js?v=2"></script>
-<script src="js/exam.js?v=2"></script>
+<script src="js/icons.js?v=21"></script>
 <script src="js/drawing-board.js?v=2"></script>
-<script src="js/chapters.js?v=2"></script>
-<script src="js/scenarios.js?v=2"></script>
+<script src="js/weakness-engine.js?v=21"></script>
 <script src="js/vocabulary.js?v=2"></script>
-<script src="js/vocabulary_books.js?v=2"></script>
-<script src="js/srs.js?v=2"></script>
+<script src="js/vocabulary_books.js?v=5"></script>
+<script src="js/srs.js?v=21"></script>
 <script src="js/onboarding.js?v=2"></script>
 <script src="js/learn.js?v=2"></script>
-<script src="js/dialogue.js?v=2"></script>
+<script src="js/chapters.js?v=2"></script>
+<script src="js/playground.js?v=2"></script>
+<script src="js/scenarios.js?v=2"></script>
+<script src="js/study-plan.js?v=21"></script>
+<script src="js/mixed-recall.js?v=21"></script>
+<script src="js/sentence-builder.js?v=24"></script>
+<script src="js/dialogue.js?v=21"></script>
+<script src="js/ai-chat.js?v=5"></script>
 <script src="js/flashcards.js?v=2"></script>
+<script src="js/flash-quiz.js?v=1"></script>
 <script src="js/quiz.js?v=2"></script>
+<script src="js/tone-game.js?v=21"></script>
+<script src="js/grammar.js?v=2"></script>
 <script src="js/reader.js?v=2"></script>
 <script src="js/mock-test.js?v=2"></script>
-<script src="js/app.js?v=2"></script>
+<script src="js/exam.js?v=2"></script>
+<script src="js/voice.js?v=2"></script>
+<script src="js/app.js?v=22"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -122,6 +132,9 @@
 </script>
 </body>
 </html>
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'tocfl-cache-v17';
+﻿const CACHE_NAME = 'tocfl-cache-v27';
 const ASSETS = [
   './',
   './index.html',
@@ -13,6 +13,10 @@ const ASSETS = [
   './js/srs.js',
   './js/onboarding.js',
   './js/learn.js',
+  './js/study-plan.js',
+  './js/sentence-builder.js',
+  './js/mixed-recall.js',
+  './js/weakness-engine.js',
   './js/dialogue.js',
   './js/flashcards.js',
   './js/quiz.js',
@@ -22,7 +26,10 @@ const ASSETS = [
   './data/characters_all.json',
   './data/vocabulary.json',
   './data/levels.json',
-  './data/playground_content.json'
+  './data/playground_content.json',
+  './data/sentence_builder_levels.json',
+  './data/book1_dialogues.json',
+  './data/book1_exercises.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -46,6 +53,8 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
+
 
 
 

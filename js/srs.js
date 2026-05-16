@@ -57,6 +57,7 @@ const SRS = (() => {
     let card = cards[hanzi] || initCard(hanzi, level);
 
     const q = { AGAIN: 0, HARD: 2, GOOD: 4, EASY: 5 }[qualityLabel] ?? 4;
+    if (q < 3 && window.WeaknessEngine) WeaknessEngine.record('srs', { hanzi, label: hanzi, type: qualityLabel });
 
     // SM-2 core
     if (q >= 3) {

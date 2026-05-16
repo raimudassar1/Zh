@@ -140,7 +140,15 @@ const App = {
 
 // ─── TTS Utility ──────────────────────────────────────────────────────────────
 const TTS = {
-  speak(text, lang = 'zh-TW', rate = 0.85) {
+  speak(text, lang = 'zh-TW', rate = 0.85, options = {}) {
+    if (typeof lang === 'object') {
+      options = lang;
+      lang = options.lang || 'zh-TW';
+      rate = options.rate || 0.85;
+    } else if (typeof rate === 'object') {
+      options = rate;
+      rate = options.rate || 0.85;
+    }
     if (!window.speechSynthesis) return;
     window.speechSynthesis.cancel();
 
@@ -207,27 +215,39 @@ const TTS = {
     const utt = new SpeechSynthesisUtterance(processedText);
     utt.lang = lang;
     utt.rate = rate;
-    utt.pitch = 1.0;
+    const gender = options.gender || null;
+    utt.pitch = options.pitch || (gender === 'male' ? 0.88 : gender === 'female' ? 1.08 : 1.0);
 
-    // Try to get a high-quality Chinese voice
+    // Try to get a high-quality Chinese voice. Gender is best-effort because browsers expose different voice lists.
     const voices = window.speechSynthesis.getVoices();
+    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google 國語'];
+    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google 普通话', 'Google Mandarin'];
     const preferred = [
-      'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
-      'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
-      'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
       'Microsoft Yating Online (Natural) - Chinese (Taiwan)',
+      'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
+      'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
+      'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
       'Google 國語', 'Google 普通话', 'Google Mandarin',
-      'Xiaoxiao', 'Yating', 'Hanhan', 'Zhiwei', 'Mei-Jia'
+      'Xiaoxiao', 'Yating', 'Hanhan', 'Yunxi', 'Zhiwei', 'Mei-Jia'
     ];
+    const zhVoices = voices.filter(v => v.lang && v.lang.startsWith('zh'));
+    const genderNames = gender === 'male' ? preferredMale : gender === 'female' ? preferredFemale : [];
     let bestVoice = null;
-    
-    for (const name of preferred) {
-      bestVoice = voices.find(v => v.name.includes(name) && v.lang.startsWith('zh'));
+
+    for (const name of genderNames) {
+      bestVoice = zhVoices.find(v => v.name.includes(name));
       if (bestVoice) break;
+    }
+
+    if (!bestVoice) {
+      for (const name of preferred) {
+        bestVoice = zhVoices.find(v => v.name.includes(name));
+        if (bestVoice) break;
+      }
     }
     
     if (!bestVoice) {
-      bestVoice = voices.find(v => v.lang === 'zh-TW') || voices.find(v => v.lang.startsWith('zh'));
+      bestVoice = voices.find(v => v.lang === lang) || voices.find(v => v.lang === 'zh-TW') || zhVoices[0];
     }
     
     if (bestVoice) utt.voice = bestVoice;
@@ -640,6 +660,9 @@ const routes = {
   '/':                    { title: 'Dashboard',          render: renderDashboard,         route: 'dashboard' },
   '/onboarding':          { title: 'Pinyin & Tones',     render: renderOnboarding,        route: 'onboarding' },
   '/learn':               { title: 'Learning Path',      render: renderLearnPath,         route: 'learn' },
+  '/study-plan':         { title: 'Study Today',        render: renderStudyPlanPage,    route: 'study-plan' },
+  '/mixed-recall':       { title: 'Mixed Recall',       render: renderMixedRecallPage,  route: 'mixed-recall' },
+  '/sentence-builder':   { title: 'Sentence Builder',   render: renderSentenceBuilderPage, route: 'sentence-builder' },
   '/chapters':            { title: 'Chapters',           render: renderChaptersPage,      route: 'chapters' },
   '/playground':          { title: 'Beginner Playground', render: renderPlayground,       route: 'playground' },
   '/char-playground':     { title: 'Character Playground',render: renderCharPlayground,   route: 'char-playground' },
@@ -652,6 +675,7 @@ const routes = {
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
   '/quiz/pronunciation':  { title: 'Pronunciation Quiz', render: renderPronunciationQuiz, route: 'quiz-pronunciation' },
   '/quiz/vocabulary':     { title: 'Vocabulary Quiz',    render: renderVocabQuiz,         route: 'quiz-vocabulary' },
+  '/quiz/flash':          { title: 'Picture Flash Quiz', render: renderFlashQuizPage,     route: 'quiz-flash' },
   '/quiz/tones':          { title: 'Tone Training',      render: renderToneGame,          route: 'quiz-tones' },
   '/reading':             { title: 'Reading',            render: renderReadingPage,       route: 'reading' },
   '/mock-test/reading':   { title: 'Reading Mock Test',  render: renderMockReadingPage,   route: 'mock-reading' },
@@ -723,6 +747,22 @@ function toggleMobileNav() {
 }
 
 // ─── Dashboard ────────────────────────────────────────────────────────────────
+async function renderMixedRecallPage(container) {
+  return MixedRecallModule.render(container);
+}
+
+async function renderSentenceBuilderPage(container) {
+  return SentenceBuilderModule.render(container);
+}
+
+async function renderStudyPlanPage(container) {
+  if (!window.StudyPlanModule) {
+    container.innerHTML = '<div class="empty-state"><h3>Study Plan is not loaded</h3></div>';
+    return;
+  }
+  return StudyPlanModule.render(container);
+}
+
 async function renderDashboard(container) {
   const prog  = App.state.progress;
   const chars = App.state.characters;
@@ -783,6 +823,17 @@ async function renderDashboard(container) {
       <h2>歡迎回來，${App.state.settings.displayName}！</h2>
       <p>${isFirstTime ? '👋 New here? Start with <a href="#/onboarding" style="color:var(--red);font-weight:600">Pinyin & Tones</a> to build your foundation.' : 'Keep up your daily practice. Consistency is everything.'}</p>
     </div>
+
+    ${window.WeaknessEngine ? WeaknessEngine.renderSummaryCard() : ''}
+
+    <section class="study-today-card">
+      <div class="study-today-copy">
+        <div class="study-today-kicker">Smart plan</div>
+        <h3>Study Today</h3>
+        <p>Reviews, weak words, listening, speaking, and recall in one focused session.</p>
+      </div>
+      <a class="btn btn-primary" href="#/study-plan">Start Study Plan</a>
+    </section>
 
     ${recommendation ? `
     <div class="card mb-24" style="border-left: 4px solid var(--accent); background: var(--off-white);">
@@ -847,6 +898,13 @@ async function renderDashboard(container) {
     <!-- Quick Access Section -->
     <div class="section-title">Quick Access</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-bottom:32px">
+      <a href="javascript:void(0)" onclick="AIChat.open({title:'Free Chat', scene:'A friendly conversation about anything.'})" class="card animate-fade-in" style="text-decoration:none; display:flex; gap:16px; align-items:center; border-left:4px solid var(--gold)">
+        <div style="font-size:2rem">🤖</div>
+        <div>
+          <div style="font-weight:700; color:var(--text)">AI Partner (Free Chat)</div>
+          <div style="font-size:0.8rem; color:var(--text-muted)">Practice anything with a smart AI</div>
+        </div>
+      </a>
       <a href="#/scenarios" class="card animate-fade-in" style="text-decoration:none; display:flex; gap:16px; align-items:center; border-left:4px solid var(--accent)">
         <div style="font-size:2rem">🎭</div>
         <div>
@@ -903,6 +961,7 @@ async function renderDashboard(container) {
       <a class="quick-tile" href="#/chapters"><span class="tile-icon">📖</span><span class="tile-name">Chapters</span><span class="tile-desc">Structured lessons</span></a>
       <a class="quick-tile" href="#/dialogue"><span class="tile-icon">💬</span><span class="tile-name">Dialogues</span><span class="tile-desc">Real conversations</span></a>
       <a class="quick-tile" href="#/flashcards"><span class="tile-icon">🃏</span><span class="tile-name">Flashcards</span><span class="tile-desc">Study & review</span></a>
+      <a class="quick-tile" href="#/quiz/flash"><span class="tile-icon">🖼️</span><span class="tile-name">Picture Quiz</span><span class="tile-desc">Visual learning</span></a>
       <a class="quick-tile" href="#/quiz/pronunciation"><span class="tile-icon">🔤</span><span class="tile-name">Pinyin Quiz</span><span class="tile-desc">Practice tones</span></a>
     </div>
 
@@ -1229,6 +1288,19 @@ function renderSettings(container) {
 
       <div class="card mb-16">
         <div class="settings-section">
+          <h3>AI Chat (Beta)</h3>
+          <p class="setting-desc mb-12">To use the Smart AI Chat, you need a free API key from <a href="https://aistudio.google.com/" target="_blank" style="color:var(--accent)">Google AI Studio</a>. This key is stored only in your browser.</p>
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-label">Gemini API Key</div>
+            </div>
+            <input type="password" class="input" id="set-gemini-key" value="${s.geminiKey || ''}" placeholder="Paste AI Key here..." style="width:220px">
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-16">
+        <div class="settings-section">
           <h3>Progress</h3>
           <div class="setting-row">
             <div class="setting-info">
@@ -1289,6 +1361,7 @@ function renderSettings(container) {
     App.state.settings.quizDifficulty = document.querySelector('input[name="difficulty"]:checked')?.value || 'A2';
     App.state.settings.showQuizPinyin = document.getElementById('set-show-quiz-pinyin').checked;
     App.state.settings.unlockAll = document.getElementById('set-unlock-all').checked;
+    App.state.settings.geminiKey = document.getElementById('set-gemini-key').value || '';
     App.saveSettings();
     App.applyTheme(App.state.settings.theme);
     const msg = document.getElementById('set-saved-msg');
@@ -1355,6 +1428,11 @@ function renderPronunciationQuiz(container) {
 function renderVocabQuiz(container) {
   if (window.QuizModule) return window.QuizModule.renderVocabulary(container);
   container.innerHTML = '<div class="empty-state"><h3>Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+}
+
+function renderFlashQuizPage(container) {
+  if (window.FlashQuizModule) return window.FlashQuizModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Flash Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
 }
 
 function renderToneGame(container) {

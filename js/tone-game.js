@@ -7,17 +7,17 @@
 const ToneGame = (() => {
 
   const TONES = [
-    { num: 1, name: 'First Tone (High Level)', symbol: '?', desc: 'Flat, high pitch like a robot.' },
-    { num: 2, name: 'Second Tone (Rising)', symbol: '?', desc: 'Starts mid, rises high like a question.' },
-    { num: 3, name: 'Third Tone (Falling-Rising)', symbol: '?', desc: 'Starts mid, dips low, then rises.' },
-    { num: 4, name: 'Fourth Tone (Falling)', symbol: '?', desc: 'Starts high, drops sharply like a command.' }
+    { num: 1, name: 'First Tone (High Level)', symbol: '\u0101', desc: 'Flat, high pitch like a robot.' },
+    { num: 2, name: 'Second Tone (Rising)', symbol: '\u00e1', desc: 'Starts mid, rises high like a question.' },
+    { num: 3, name: 'Third Tone (Falling-Rising)', symbol: '\u01ce', desc: 'Starts mid, dips low, then rises.' },
+    { num: 4, name: 'Fourth Tone (Falling)', symbol: '\u00e0', desc: 'Starts high, drops sharply like a command.' }
   ];
 
   const GAME_DATA = [
-    { syllable: 'm?', tone: 1, char: '?' }, { syllable: 'm?', tone: 2, char: '?' }, { syllable: 'm?', tone: 3, char: '?' }, { syllable: 'm?', tone: 4, char: '?' },
-    { syllable: 'b?', tone: 1, char: '?' }, { syllable: 'b?', tone: 2, char: '?' }, { syllable: 'b?', tone: 3, char: '?' }, { syllable: 'b?', tone: 4, char: '?' },
-    { syllable: 't?ng', tone: 1, char: '?' }, { syllable: 't?ng', tone: 2, char: '?' }, { syllable: 't?ng', tone: 3, char: '?' }, { syllable: 't?ng', tone: 4, char: '?' },
-    { syllable: 'sh?', tone: 1, char: '?' }, { syllable: 'sh?', tone: 2, char: '?' }, { syllable: 'sh?', tone: 3, char: '?' }, { syllable: 'sh?', tone: 4, char: '?' }
+    { syllable: 'm\u0101', tone: 1, char: '\u5abd' }, { syllable: 'm\u00e1', tone: 2, char: '\u9ebb' }, { syllable: 'm\u01ce', tone: 3, char: '\u99ac' }, { syllable: 'm\u00e0', tone: 4, char: '\u7f75' },
+    { syllable: 'b\u0101', tone: 1, char: '\u516b' }, { syllable: 'b\u00e1', tone: 2, char: '\u62d4' }, { syllable: 'b\u01ce', tone: 3, char: '\u628a' }, { syllable: 'b\u00e0', tone: 4, char: '\u7238' },
+    { syllable: 't\u0101ng', tone: 1, char: '\u6e6f' }, { syllable: 't\u00e1ng', tone: 2, char: '\u7cd6' }, { syllable: 't\u01ceng', tone: 3, char: '\u8eba' }, { syllable: 't\u00e0ng', tone: 4, char: '\u71d9' },
+    { syllable: 'sh\u016b', tone: 1, char: '\u66f8' }, { syllable: 'sh\u00fa', tone: 2, char: '\u719f' }, { syllable: 'sh\u01d4', tone: 3, char: '\u6578' }, { syllable: 'sh\u00f9', tone: 4, char: '\u6a39' }
   ];
 
   let currentState = {
@@ -105,6 +105,7 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
       btn.classList.add('btn-error');
       feedback.className = 'quiz-feedback wrong show';
       feedback.innerHTML = `Incorrect. Try listening again.`;
+      if (window.WeaknessEngine) WeaknessEngine.record('tone', { item: currentState.currentTarget.syllable, label: 'Tone ' + currentState.currentTarget.tone, type: 'tone-miss' });
     }
 
     document.querySelectorAll('.tone-btn').forEach(b => b.disabled = true);

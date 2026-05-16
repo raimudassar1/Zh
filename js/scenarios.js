@@ -186,6 +186,7 @@ window.ScenarioModule = (() => {
           <h2 style="margin:0">${scenario.title}</h2>
           <div class="text-small text-muted">${scenario.titleZh}</div>
         </div>
+        <button class="btn btn-accent btn-sm" onclick="AIChat.open({title: '${scenario.title.replace(/'/g, "\\'")}', scene: '${scenario.description.replace(/'/g, "\\'")}'})">💬 AI Chat</button>
         <label class="ch-pinyin-toggle">
           <input type="checkbox" id="sc-pinyin-toggle" ${showPinyin ? 'checked' : ''}>
           <span>Pinyin</span>
