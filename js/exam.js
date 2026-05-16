@@ -46,36 +46,58 @@ window.ExamModule = {
 
         this.state.currentMonth = null;
         
+        const levels = [
+            { id: 'novice', title: '🟢 Novice Level', desc: 'Laying the foundation (Month 1-3)' },
+            { id: 'a1',     title: '🔵 A1 Mastery',  desc: 'Daily life & social survival (Month 4-6)' },
+            { id: 'a2',     title: '🟣 A2 Proficiency', desc: 'Fluent interaction & professional basics (Month 7-9)' },
+            { id: 'b1',     title: '🔴 B1 Independent', desc: 'Complex discussion & academic bridge (Month 10-12)' }
+        ];
+
         let html = `
             <div class="exam-hub">
                 <header class="hub-header">
                     <div style="font-size: 4rem; margin-bottom: 20px;">🎓</div>
-                    <h1 style="color: var(--text)">Professional Certification</h1>
-                    <p style="color: var(--text-2)">Rigorous 1-hour comprehensive assessments for TOCFL B1 mastery.</p>
+                    <h1 style="color: var(--text)">Certification Center</h1>
+                    <p style="color: var(--text-2)">Official proficiency milestones from Novice to TOCFL B1.</p>
                 </header>
-                <div class="month-grid">
+                
+                <div class="levels-container">
         `;
 
-        this.state.examData.forEach(exam => {
-            const isCompleted = App.state.progress.exams && App.state.progress.exams[exam.month];
-            
+        levels.forEach(lvl => {
+            const levelExams = this.state.examData.filter(e => e.level === lvl.id);
+            if (!levelExams.length) return;
+
             html += `
-                <div class="month-card ${isCompleted ? 'completed' : ''}" 
-                     onclick="ExamModule.startExam(${exam.month})" style="background: var(--card-bg, white); border: 1px solid var(--border);">
-                    <div class="card-status">
-                        ${isCompleted ? '<span class="status-icon">🏆</span> CERTIFIED' : '<span class="status-icon">📝</span> OPEN'}
+                <div class="level-section mb-60">
+                    <div class="level-header-row mb-32">
+                        <h2 style="color: var(--text); border-left: 6px solid var(--accent); padding-left: 20px;">${lvl.title}</h2>
+                        <p style="color: var(--text-3); margin-left: 26px;">${lvl.desc}</p>
                     </div>
-                    <div class="card-month" style="color: var(--accent)">CERTIFICATION EXAM ${exam.month}</div>
-                    <h3 class="card-title" style="color: var(--text)">${exam.title}</h3>
-                    <p class="card-desc" style="color: var(--text-2)">${exam.description}</p>
-                    <div class="card-footer">
-                        <div class="exam-meta" style="color: var(--text-3)">
-                            <span>⏱ 60 Min</span>
-                            <span>📊 100 Questions</span>
-                        </div>
-                        <button class="start-btn">
-                            ${isCompleted ? 'Recertify' : 'Begin Assessment'}
-                        </button>
+                    <div class="month-grid">
+                        ${levelExams.map(exam => {
+                            const isCompleted = App.state.progress.exams && App.state.progress.exams[exam.id];
+                            return `
+                                <div class="month-card ${isCompleted ? 'completed' : ''}" 
+                                     onclick="ExamModule.startExam(${exam.id})" style="background: var(--card-bg, white); border: 1px solid var(--border);">
+                                    <div class="card-status">
+                                        ${isCompleted ? '<span class="status-icon">🏆</span> CERTIFIED' : '<span class="status-icon">📝</span> OPEN'}
+                                    </div>
+                                    <div class="card-month" style="color: var(--accent)">ASSESSMENT ${exam.month}</div>
+                                    <h3 class="card-title" style="color: var(--text)">${exam.title}</h3>
+                                    <p class="card-desc" style="color: var(--text-2)">${exam.description}</p>
+                                    <div class="card-footer">
+                                        <div class="exam-meta" style="color: var(--text-3)">
+                                            <span>⏱ 60 Min</span>
+                                            <span>📊 100 Qs</span>
+                                        </div>
+                                        <button class="start-btn">
+                                            ${isCompleted ? 'Recertify' : 'Start'}
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
                 </div>
             `;
@@ -84,8 +106,8 @@ window.ExamModule = {
         html += `
                 </div>
                 <div class="exam-info-box card mt-40" style="background: var(--off-white); border: 1px solid var(--border);">
-                    <h3 style="color: var(--text)">About Monthly Exams</h3>
-                    <p style="color: var(--text-2)">These exams are designed to simulate official TOCFL B1 conditions. They test across 4 skills: Reading, Listening, Writing, and Grammatical Structure. A score of <strong>80%</strong> or higher is required for certification.</p>
+                    <h3 style="color: var(--text)">Certification Requirements</h3>
+                    <p style="color: var(--text-2)">All exams are randomized and timed. To receive a level certificate, you must pass all three sub-exams for that level with a score of <strong>80%</strong> or higher.</p>
                 </div>
             </div>
         `;
@@ -98,12 +120,12 @@ window.ExamModule = {
     /**
      * Start a comprehensive exam
      */
-    async startExam(monthId) {
-        const examDef = this.state.examData.find(e => e.month === monthId);
+    async startExam(id) {
+        const examDef = this.state.examData.find(e => e.id === id);
         if (!examDef) return;
 
         App.state.loading = true;
-        this.state.currentMonth = monthId;
+        this.state.currentMonth = id; // id is the unique key now
         this.state.userAnswers = {};
         this.state.showPinyin = false;
 
@@ -121,7 +143,7 @@ window.ExamModule = {
             this.renderExam();
         } catch (error) {
             console.error("Error starting exam:", error);
-            alert("Critical: Failed to load exam content. Please check your data folder.");
+            alert("Critical: Failed to load exam content. Ensure data/book[1-3]_content.json exist.");
         } finally {
             App.state.loading = false;
         }
@@ -137,11 +159,20 @@ window.ExamModule = {
         };
 
         const relevantChapters = bookData.filter(c => def.sources.books.chapters.includes(c.chapter));
-        const relevantPG = playgroundData.filter(p => def.sources.playground.includes(p.id));
+        const pgIds = def.sources.playground || [];
+        const relevantPG = playgroundData.filter(p => pgIds.includes(p.id));
         
         // Build exhaustive vocab pool
         const vocabPool = [];
-        relevantChapters.forEach(c => vocabPool.push(...c.vocab));
+        relevantChapters.forEach(c => {
+            if (c.vocab && c.vocab.length) vocabPool.push(...c.vocab);
+        });
+        
+        // Safety: fallback to global vocab if pool is too small for randomization
+        if (vocabPool.length < 50) {
+            bookData.forEach(c => vocabPool.push(...(c.vocab || [])));
+        }
+
         this.state.sourceVocab = vocabPool;
 
         // --- Section 1: Tone & Phonetic Analysis (20 Qs) ---
@@ -172,6 +203,8 @@ window.ExamModule = {
         // --- Section 3: Contextual Logic (10 Qs) ---
         const dialoguePool = [];
         relevantChapters.forEach(c => { if (c.dialogues) dialoguePool.push(...c.dialogues); });
+        if (dialoguePool.length === 0) bookData.forEach(c => { if (c.dialogues) dialoguePool.push(...c.dialogues); });
+
         const dialogueQs = this.getRandom(dialoguePool, 10).map((d, dIdx) => {
             const line = this.getRandom(d.lines, 1)[0];
             const distractors = this.getRandom(vocabPool.map(x => x.hanzi), 3);
@@ -188,6 +221,8 @@ window.ExamModule = {
         // --- Section 4: Particle & Grammar Mastery (20 Qs) ---
         const grammarPool = [];
         relevantChapters.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
+        if (grammarPool.length < 20) bookData.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
+
         const grammarQs = this.getRandom(grammarPool, 20).map((q, idx) => ({
             id: `g_${idx}`,
             type: 'grammar',
@@ -198,7 +233,7 @@ window.ExamModule = {
         test.sections.push({ title: "IV. Syntactic Structure & Particles", questions: grammarQs });
 
         // --- Section 5: Orthographic Writing (10 Qs) ---
-        const writingQs = this.getRandom(vocabPool.filter(v => v.hanzi.length === 1), 10).map((v, idx) => ({
+        const writingQs = this.getRandom(vocabPool.filter(v => v.hanzi && v.hanzi.length === 1), 10).map((v, idx) => ({
             id: `w_${idx}`,
             type: 'writing',
             targetChar: v.hanzi,
@@ -210,6 +245,10 @@ window.ExamModule = {
         // --- Section 6: Auditory Comprehension (5 Qs) ---
         const listenPassages = [];
         relevantPG.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPassages.push(l.listening); }));
+        if (!listenPassages.length) {
+            playgroundData.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPassages.push(l.listening); }));
+        }
+
         const selectedListen = this.getRandom(listenPassages, 1)[0];
         if (selectedListen) {
             const qs = selectedListen.questions.slice(0, 5).map((q, qIdx) => ({
@@ -225,6 +264,8 @@ window.ExamModule = {
         // --- Section 7: Reading Proficiency (5 Qs) ---
         const readPassages = [];
         relevantChapters.forEach(c => { if (c.readings) readPassages.push(...c.readings); });
+        if (!readPassages.length) bookData.forEach(c => { if (c.readings) readPassages.push(...c.readings); });
+
         const selectedRead = this.getRandom(readPassages, 1)[0];
         if (selectedRead) {
             const qs = selectedRead.questions.slice(0, 5).map((q, qIdx) => ({
