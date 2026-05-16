@@ -1,0 +1,59 @@
+[
+  {
+    "month": 1,
+    "title": "Month 1: The Foundation",
+    "description": "Greetings, Directions, Shopping, and Food.",
+    "sources": {
+      "books": { "id": 1, "chapters": [1, 2, 3, 4] },
+      "playground": ["pg1", "pg2", "pg3", "pg4", "pg5"],
+      "radicals": [1, 2, 3, 4]
+    }
+  },
+  {
+    "month": 2,
+    "title": "Month 2: Daily World",
+    "description": "Routines, Appointments, Weather, and Plans.",
+    "sources": {
+      "books": { "id": 1, "chapters": [5, 6, 7, 8] },
+      "playground": ["pg6", "pg7", "pg8", "pg9"],
+      "radicals": [5, 6]
+    }
+  },
+  {
+    "month": 3,
+    "title": "Month 3: Public Life",
+    "description": "Services, Banking, Health, and Housing.",
+    "sources": {
+      "books": { "id": 1, "chapters": [9, 10, 11, 12, 13, 14, 15] },
+      "playground": ["pg10", "pg11", "pg12", "pg13"],
+      "radicals": [7, 8]
+    }
+  },
+  {
+    "month": 4,
+    "title": "Month 4: Professional Skills",
+    "description": "Interviews, Workplace, and Education.",
+    "sources": {
+      "books": { "id": 2, "chapters": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+      "playground": ["pg14", "pg15", "pg16", "pg17"]
+    }
+  },
+  {
+    "month": 5,
+    "title": "Month 5: Advanced Communication",
+    "description": "Hobbies, Relationships, and Opinions.",
+    "sources": {
+      "books": { "id": 3, "chapters": [1, 2, 3, 4, 5, 6, 7, 8] },
+      "playground": ["pg18", "pg19", "pg20"]
+    }
+  },
+  {
+    "month": 6,
+    "title": "Month 6: B1 Mastery",
+    "description": "Comprehensive Final Exam for B1 Level.",
+    "sources": {
+      "books": { "id": 3, "chapters": [9, 10, 11, 12] },
+      "full_review": true
+    }
+  }
+]

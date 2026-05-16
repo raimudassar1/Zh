@@ -653,6 +653,7 @@ const routes = {
   '/reading':             { title: 'Reading',            render: renderReadingPage,       route: 'reading' },
   '/mock-test/reading':   { title: 'Reading Mock Test',  render: renderMockReadingPage,   route: 'mock-reading' },
   '/mock-test/listening': { title: 'Listening Mock Test',render: renderMockListeningPage, route: 'mock-listening' },
+  '/exams':               { title: 'Monthly Exams',      render: renderExamsPage,         route: 'exams' },
   '/settings':            { title: 'Settings',           render: renderSettings,          route: 'settings' },
 };
 
@@ -1316,6 +1317,11 @@ function renderMockListeningPage(container) {
   if (typeof MockTestModule !== 'undefined') return MockTestModule.renderListening(container);
 }
 
+function renderExamsPage(container) {
+  if (window.ExamModule) return ExamModule.renderHub(container);
+  container.innerHTML = '<div class="spinner"></div>';
+}
+
 // ─── Topbar level badge ──────────────────────────────────────────────────────
 function updateTopbarBadge() {
   const chars = App.state.characters;
@@ -1404,6 +1410,8 @@ async function boot() {
     const vocabResult = await API.get('vocabulary');
     App.state.vocabulary = vocabResult.sets || [];
     
+    if (window.ExamModule) ExamModule.init();
+
     updateTopbarBadge();
   } catch (err) {
     console.warn('Could not preload curriculum data:', err.message);
