@@ -42,6 +42,7 @@
   --nav-width:  240px;
   --top-bar:    56px;
   --accent:     #C0392B;
+  --accent-hover: #E74C3C;
 }
 
 /* Dark mode */
@@ -63,6 +64,7 @@
   --tone4: #e74c3c;
   --tone5: #95a5a6;
   --accent: #e74c3c;
+  --accent-hover: #C0392B;
 }
 
 /* ── Reset & Base ──────────────────────────────────────────── */
@@ -1282,13 +1284,16 @@ ruby rb, ruby > :not(rt) {
   text-align: center;
   color: #fff;
   position: relative;
-  background: var(--accent); /* Fallback */
+  background: var(--accent);
 }
 
 .lesson-page-header h2, 
-.lesson-page-header p,
-.lesson-page-header div {
+.lesson-page-header p {
   color: #fff !important;
+}
+
+.lesson-page-header div {
+  color: #fff;
 }
 
 .vocab-card-premium, .vocab-card {

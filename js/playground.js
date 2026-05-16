@@ -230,7 +230,7 @@ window.PlaygroundModule = (() => {
         <section class="lesson-section">
           <h3 class="section-title">Real-World Dialogues</h3>
           ${dialogueList.map((d, idx) => `
-            <div class="dialogue-block-premium shadow-sm mb-32" style="background: white; border-radius: 12px; padding: 24px;">
+            <div class="dialogue-block-premium shadow-sm mb-32" style="background: var(--card-bg); border-radius: 12px; padding: 24px;">
               ${d.title ? `<h4 class="mb-16" style="color:var(--accent); font-size:1.2rem; font-weight:800; border-bottom: 2px solid var(--off-white); padding-bottom: 12px;">${d.title}</h4>` : ''}
               <div style="display:flex; flex-direction:column; gap:16px">
                 ${(d.lines || []).map(line => `
@@ -260,7 +260,7 @@ window.PlaygroundModule = (() => {
           <h3 class="section-title">Listening Challenge</h3>
           <div class="listening-card-premium shadow-lg mb-24" style="background:var(--charcoal); padding:40px; border-radius:var(--radius); text-align:center">
              <div style="font-size:4rem; margin-bottom:16px">🎙️</div>
-             <button class="btn btn-white btn-lg" style="background:white; color:var(--charcoal)" onclick="TTS.speak(\`${listeningData.text.replace(/'/g, "\\'")}\`)">▶ Play Audio</button>
+             <button class="btn btn-white btn-lg" style="background:var(--card-bg); color:var(--charcoal)" onclick="TTS.speak(\`${listeningData.text.replace(/'/g, "\\'")}\`)">▶ Play Audio</button>
              <div class="mt-24">
                 <button class="btn btn-outline btn-sm" style="color:white; border-color:white" onclick="this.nextElementSibling.classList.toggle('hidden')">Show Transcript</button>
                 <div class="hidden mt-16 p-16 font-zh" style="background:rgba(255,255,255,0.1); color:white; border-radius:8px; text-align:left">
@@ -268,7 +268,7 @@ window.PlaygroundModule = (() => {
                 </div>
              </div>
           </div>
-          <div class="card p-24" style="background: white;">
+          <div class="card p-24" style="background: var(--card-bg);">
              ${listeningData.questions.map((q, qIdx) => `
                <div class="mb-24">
                  <div style="font-weight:700; margin-bottom:12px; color: var(--text)">${qIdx+1}. ${q.q}</div>
@@ -294,7 +294,7 @@ window.PlaygroundModule = (() => {
           <div class="card p-32 mb-24 font-zh" style="font-size:1.3rem; line-height:1.8; background:var(--off-white); color: var(--text)">
              ${readingData.text}
           </div>
-          <div class="card p-24" style="background: white;">
+          <div class="card p-24" style="background: var(--card-bg);">
              ${readingData.questions.map((q, qIdx) => `
                <div class="mb-24">
                  <div style="font-weight:700; margin-bottom:12px; color: var(--text)">${qIdx+1}. ${q.q}</div>
@@ -391,7 +391,7 @@ window.PlaygroundModule = (() => {
       <section class="lesson-section" id="ls-dialogue">
         <h3 class="section-title">2. Contextual Dialogues</h3>
         ${ch.dialogues.map((d, idx) => `
-          <div class="dialogue-block-premium shadow-sm mb-40" style="background: white; border-radius: 12px; padding: 24px;">
+          <div class="dialogue-block-premium shadow-sm mb-40" style="background: var(--card-bg); border-radius: 12px; padding: 24px;">
             <h4 class="mb-16" style="color:var(--accent); font-weight:800">Part ${idx+1}: ${d.title}</h4>
             <div style="display:flex; flex-direction:column; gap:12px">
               ${d.lines.map(line => `
@@ -443,7 +443,7 @@ window.PlaygroundModule = (() => {
         ${ch.listening.map((l, idx) => `
           <div class="card p-48 mb-40 shadow-sm" style="background:var(--charcoal); color:white; text-align:center">
              <div style="font-size:4rem; margin-bottom:24px">🎙️</div>
-             <button class="btn btn-white btn-lg" style="background:white; color:var(--charcoal); font-weight:900" onclick="TTS.speak(\`${l.text}\`)">▶ PLAY AUDIO SEGMENT</button>
+             <button class="btn btn-white btn-lg" style="background:var(--card-bg); color:var(--charcoal); font-weight:900" onclick="TTS.speak(\`${l.text}\`)">▶ PLAY AUDIO SEGMENT</button>
              <div class="mt-40 text-left" style="max-width:600px; margin:40px auto 0; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1)">
                 ${l.questions.map((q, qIdx) => `
                   <div class="q-item mb-32">
@@ -488,7 +488,7 @@ window.PlaygroundModule = (() => {
     ` : '';
 
     container.innerHTML = `
-      <div class="lesson-page-header shadow-lg" style="color: white !important;">
+      <div class="lesson-page-header shadow-lg" style="background: var(--charcoal); background: linear-gradient(135deg, var(--charcoal), var(--charcoal-2)); color: white !important;">
         <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white !important; border-color:rgba(255,255,255,0.4); font-weight:800" onclick="window.PlaygroundModule.openBook(${ch.book})">← BACK TO CHAPTERS</button>
         <div style="font-size:0.9rem; text-transform:uppercase; letter-spacing:6px; margin-bottom:16px; opacity:0.8; font-weight:700; color: white !important;">VOLUME ${ch.book} • CHAPTER ${ch.chapter}</div>
         <h2 class="font-zh" style="font-size:4rem; margin-bottom:20px; font-weight:900; letter-spacing:-1px; color: white !important;">${ch.title}</h2>
@@ -643,7 +643,7 @@ window.PlaygroundModule = (() => {
 
     const container = document.getElementById('page-content');
     container.innerHTML = `
-      <div class="lesson-page-header" style="background: linear-gradient(135deg, ${block.color}, #34495e); color: white !important;">
+      <div class="lesson-page-header" style="background: var(--charcoal); background: linear-gradient(135deg, var(--charcoal), var(--charcoal-2)); color: white !important;">
         <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white !important; border-color:rgba(255,255,255,0.4);" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← BACK TO PHASES</button>
         <div style="font-size:0.9rem; text-transform:uppercase; letter-spacing:4px; margin-bottom:16px; opacity:0.8; font-weight:700; color: white !important;">BLOCK ${block.id.replace('cpg', '')}</div>
         <h2 style="color:white !important; font-size: 2.5rem;">${block.title}</h2>
@@ -653,7 +653,7 @@ window.PlaygroundModule = (() => {
       <div class="lesson-container" style="max-width:1100px; margin: 0 auto; padding: 40px 20px;">
         <div class="cp-lessons-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
           ${block.lessons.map(l => `
-            <div class="card p-24 shadow-hover" style="cursor: pointer; background: white;" onclick="window.PlaygroundModule.startRadicalLesson('${block.id}', '${l.id}')">
+            <div class="card p-24 shadow-hover" style="cursor: pointer; background: var(--card-bg);" onclick="window.PlaygroundModule.startRadicalLesson('${block.id}', '${l.id}')">
               <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 16px;">
                 <div class="font-zh" style="font-size: 3rem; font-weight: 900; color: var(--text);">${l.radical}</div>
                 <div>
@@ -695,7 +695,7 @@ window.PlaygroundModule = (() => {
 
     const container = document.getElementById('page-content');
     container.innerHTML = `
-      <div class="lesson-page-header" style="background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white !important;">
+      <div class="lesson-page-header" style="background: var(--charcoal); background: linear-gradient(135deg, var(--charcoal), var(--charcoal-2)); color: white !important;">
         <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white !important; border-color:rgba(255,255,255,0.4);" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← BACK TO RADICALS</button>
         <div style="font-size:0.9rem; text-transform:uppercase; letter-spacing:4px; margin-bottom:16px; opacity:0.8; font-weight:700; color: white !important;">${rad.phaseName}</div>
         <div class="font-zh" style="font-size:6rem; margin-bottom:10px; font-weight:900; color:white !important;">${rad.component}</div>
@@ -704,13 +704,13 @@ window.PlaygroundModule = (() => {
       </div>
 
       <div class="lesson-container" style="max-width:900px; margin: 0 auto; padding-top: 40px;">
-        <div class="card p-40 mb-40 shadow-sm" style="border-left: 6px solid var(--accent); background: white;">
+        <div class="card p-40 mb-40 shadow-sm" style="border-left: 6px solid var(--accent); background: var(--card-bg); color: var(--text);">
           <h3 class="mb-20" style="color: var(--text)">The Rule of Character Formation</h3>
           <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-2);">${rad.meaningChangeRule}</p>
           <div class="mt-24 p-20" style="background: var(--off-white); border-radius: 8px;">
             <strong style="color: var(--accent); display: block; margin-bottom: 8px;">TEACHING STEPS:</strong>
             <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-2)">
-              ${rad.howToTeach.map(step => `<li>${step}</li>`).join('')}
+              ${rad.howToTeach.map(step => `<li style="color: var(--text-2)">${step}</li>`).join('')}
             </ul>
           </div>
         </div>
@@ -720,7 +720,7 @@ window.PlaygroundModule = (() => {
         
         <div class="cp-compounds-grid-detailed">
           ${rad.examples.map(ex => `
-            <div class="card p-32 mb-24 shadow-hover" style="display: flex; gap: 32px; align-items: center; cursor: pointer; background: white;" onclick="showWordDetail('${ex.character}')">
+            <div class="card p-32 mb-24 shadow-hover" style="display: flex; gap: 32px; align-items: center; cursor: pointer; background: var(--card-bg);" onclick="showWordDetail('${ex.character}')">
               <div class="font-zh" style="font-size: 4rem; font-weight: 900; min-width: 100px; text-align: center; color: var(--text);">${ex.character}</div>
               <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
@@ -769,7 +769,7 @@ window.PlaygroundModule = (() => {
             <div class="cp-radical-big" style="color: var(--text)">${lesson.radical}</div>
             <div class="cp-radical-meta" style="color: var(--accent)">${lesson.radical_pinyin} • ${lesson.radical_meaning}</div>
             ${lesson.variant_forms.length ? `<div class="cp-variants" style="color: var(--text-2)">Variants: ${lesson.variant_forms.join(', ')}</div>` : ''}
-            <div class="cp-mnemonic card mt-24" style="background: white; color: var(--text-2)">
+            <div class="cp-mnemonic card mt-24" style="background: var(--card-bg); color: var(--text-2)">
               <strong style="color: var(--text)">Mnemonic:</strong> ${lesson.mnemonic}
             </div>
             <button class="btn btn-primary btn-lg mt-32" onclick="window.PlaygroundModule.nextRadicalStep()">Explore Compounds →</button>
@@ -783,7 +783,7 @@ window.PlaygroundModule = (() => {
           <p class="mb-24" style="color: var(--text-2)">See how the radical gives meaning to these characters.</p>
           <div class="cp-compounds-grid">
             ${lesson.compounds.map(c => `
-              <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')" style="background: white;">
+              <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')" style="background: var(--card-bg);">
                 <div class="cp-c-hanzi" style="color: var(--text)">${c.hanzi}</div>
                 <div class="cp-c-meta">
                   <div class="cp-c-py" style="color: var(--accent)">${c.pinyin}</div>
@@ -824,7 +824,7 @@ window.PlaygroundModule = (() => {
       case 'spot_radical':
         return `
           <div class="cp-spot-grid">
-            ${drill.chars.map(c => `<button class="cp-block" style="color: var(--text); background: white;" onclick="window.PlaygroundModule.checkSpot('${c}', this)">${c}</button>`).join('')}
+            ${drill.chars.map(c => `<button class="cp-block" style="color: var(--text); background: var(--card-bg);" onclick="window.PlaygroundModule.checkSpot('${c}', this)">${c}</button>`).join('')}
           </div>
           <button class="btn btn-primary mt-24" onclick="window.PlaygroundModule.verifySpot()">Check Answers</button>
         `;
@@ -891,7 +891,7 @@ window.PlaygroundModule = (() => {
     container.innerHTML = `
       <div class="page-header">
         <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">← Back to Character Playground</button>
-        <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px;">🌟 Radical Mastered!</div>
+        <div class="pg-done-icon text-center" style="font-size:3rem; margin-bottom: 20px; color: var(--text);">🌟 Radical Mastered!</div>
       </div>
       <div class="cp-lesson-step" style="max-width:800px; margin: 0 auto; text-align: left;">
         <div class="cp-radical-intro mb-24">
@@ -901,7 +901,7 @@ window.PlaygroundModule = (() => {
         <h3 class="mb-16" style="color: var(--text)">Compounds Review</h3>
         <div class="cp-compounds-grid">
           ${currentLesson.compounds.map(c => `
-            <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')" style="background: white;">
+            <div class="cp-compound-item card" onclick="showCharModal('${c.hanzi}')" style="background: var(--card-bg);">
               <div class="cp-c-hanzi" style="color: var(--text)">${c.hanzi}</div>
               <div class="cp-c-meta">
                 <div class="cp-c-py" style="color: var(--accent)">${c.pinyin}</div>
@@ -930,7 +930,7 @@ window.PlaygroundModule = (() => {
           <h3 style="color: var(--text)">Common Building Blocks</h3>
           <div class="cp-block-grid">
             ${['人','口','木','水','火','土','日','月','心','手','女','子','門','纟'].map(c => `
-              <div class="cp-block" style="color: var(--text); background: white;" onclick="window.PlaygroundModule.showCombinations('${c}')">${c}</div>
+              <div class="cp-block" style="color: var(--text); background: var(--card-bg);" onclick="window.PlaygroundModule.showCombinations('${c}')">${c}</div>
             `).join('')}
           </div>
         </div>
@@ -969,7 +969,7 @@ window.PlaygroundModule = (() => {
         </div>
         <div class="cp-built-area" id="cp-game-built" style="color: var(--text-3)">Select components...</div>
         <div class="cp-game-pool">
-          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" style="color: var(--text); background: white;" onclick="window.PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
+          ${shuffledPool.map(p => `<button class="cp-block cp-game-block" style="color: var(--text); background: var(--card-bg);" onclick="window.PlaygroundModule.cpGameSelect('${p}', this)">${p}</button>`).join('')}
         </div>
         <div id="cp-game-feedback" class="quiz-feedback"></div>
         <div class="flex gap-12 justify-center mt-24">
@@ -1055,7 +1055,7 @@ window.PlaygroundModule = (() => {
         <h3 style="color: var(--text)">Characters containing 「${block}」</h3>
         <div class="cp-combo-grid">
           ${combinations.slice(0, 24).map(c => `
-            <div class="cp-combo-item" style="background: white;" onclick="showCharModal('${c.hanzi}')">
+            <div class="cp-combo-item" style="background: var(--card-bg);" onclick="showCharModal('${c.hanzi}')">
               <div class="cp-combo-hanzi" style="color: var(--text)">${c.hanzi}</div>
               <div class="cp-combo-pinyin" style="color: var(--accent)">${c.pinyin}</div>
             </div>`).join('')}
