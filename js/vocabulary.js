@@ -201,25 +201,24 @@ window.VocabularyModule = (() => {
   let currentCharIndex = 0;
 
   function showDetail(wordStr) {
-    if (!wordStr) return;
+    if (!wordStr) return false;
     const targetWord = wordStr.trim();
     
     const allVocab = getUniqueVocab();
     const vocab = allVocab.find(v => v.word === targetWord);
     
     if (!vocab) {
-      console.warn(`[Vocabulary] No detail found for: ${targetWord}`);
-      return;
+      return false;
     }
 
     currentWordChars = Array.from(vocab.word).filter(c => /[\u4e00-\u9fa5]/.test(c));
-    if (currentWordChars.length === 0) return;
+    if (currentWordChars.length === 0) return false;
     
     currentCharIndex = 0;
 
     const modal = document.getElementById('modal-overlay');
     const content = document.getElementById('modal-content');
-    if (!modal || !content) return;
+    if (!modal || !content) return false;
     
     content.style.maxWidth = '800px';
 
@@ -317,6 +316,8 @@ window.VocabularyModule = (() => {
         const char = currentWordChars[currentCharIndex];
         DrawingBoard.init('vocab-hanzi-writer', 'vocab-freehand-canvas', char);
     }, 50);
+
+    return true;
   }
 
   return {

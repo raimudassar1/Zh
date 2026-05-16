@@ -1277,9 +1277,28 @@ ruby rb, ruby > :not(rt) {
   margin-bottom: 4px;
 }
 
-.page-header p {
-  font-size: 0.88rem;
-  color: var(--text-3);
+.lesson-page-header {
+  padding: 80px 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  background: var(--accent); /* Fallback */
+}
+
+.lesson-page-header h2, 
+.lesson-page-header p,
+.lesson-page-header div {
+  color: #fff !important;
+}
+
+.vocab-card-premium, .vocab-card {
+  cursor: pointer;
+}
+
+.vocab-card-premium:hover, .vocab-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
 }
 
 /* Activity log */

@@ -217,54 +217,106 @@ window.PlaygroundModule = (() => {
 
     const container = document.getElementById('page-content');
     
-    // Section 1: Vocabulary
-    let vocabHTML = lesson.vocab && lesson.vocab.length ? `
-      <section class="lesson-section">
-        <h3 class="section-title">Essential Vocabulary</h3>
-        <div class="vocab-grid-premium">
-          ${lesson.vocab.map(v => `
-            <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
-              <div class="v-hanzi">${v.hanzi}</div>
-              <div class="v-pinyin">${v.pinyin || ''}</div>
-              <div class="v-def">${v.definition}</div>
+    // Section 1: Dialogues (Allow multiple if array)
+    let dialoguesHTML = '';
+    const dialogueList = Array.isArray(lesson.dialogue) ? lesson.dialogue : (lesson.dialogue ? [lesson.dialogue] : []);
+    
+    if (dialogueList.length) {
+      dialoguesHTML = `
+        <section class="lesson-section">
+          <h3 class="section-title">Real-World Dialogues</h3>
+          ${dialogueList.map((d, idx) => `
+            <div class="dialogue-block-premium shadow-sm mb-32">
+              ${d.title ? `<h4 class="mb-16" style="color:var(--accent); font-size:1.1rem">Part ${idx+1}: ${d.title}</h4>` : ''}
+              <div style="display:flex; flex-direction:column; gap:8px">
+                ${(Array.isArray(d) ? d : d.lines || []).map(line => `
+                  <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer">
+                    <div class="line-speaker-badge">${line.speaker}</div>
+                    <div style="flex:1">
+                      <div class="font-zh" style="font-size:1.5rem; font-weight:800; margin-bottom:4px">${line.zh}</div>
+                      <div class="text-muted" style="font-size:0.95rem; font-weight:600; color:var(--accent)">${line.pinyin}</div>
+                      <div class="color-text-2" style="font-size:0.9rem; margin-top:4px">${line.en}</div>
+                    </div>
+                    <div style="font-size:1.2rem; opacity:0.3">🔊</div>
+                  </div>
+                `).join('')}
+              </div>
             </div>
           `).join('')}
-        </div>
-      </section>
-    ` : '';
+        </section>
+      `;
+    }
 
-    // Section 2: Dialogue
-    let dialogueHTML = lesson.dialogue && lesson.dialogue.length ? `
-      <section class="lesson-section">
-        <h3 class="section-title">Real-World Dialogue</h3>
-        <div class="dialogue-block-premium shadow-sm">
-          <div style="display:flex; flex-direction:column; gap:8px">
-            ${lesson.dialogue.map(line => `
-              <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer">
-                <div class="line-speaker-badge">${line.speaker}</div>
-                <div style="flex:1">
-                  <div class="font-zh" style="font-size:1.5rem; font-weight:800; margin-bottom:4px">${line.zh}</div>
-                  <div class="text-muted" style="font-size:0.95rem; font-weight:600; color:var(--accent)">${line.pinyin}</div>
-                  <div class="color-text-2" style="font-size:0.9rem; margin-top:4px">${line.en}</div>
+    // Section 2: Listening Comprehension
+    let listeningHTML = '';
+    const listeningData = lesson.listening;
+    if (listeningData) {
+      listeningHTML = `
+        <section class="lesson-section">
+          <h3 class="section-title">Listening Challenge</h3>
+          <div class="listening-card-premium shadow-lg mb-24" style="background:var(--charcoal); padding:40px; border-radius:var(--radius); text-align:center">
+             <div style="font-size:4rem; margin-bottom:16px">🎙️</div>
+             <button class="btn btn-white btn-lg" style="background:white; color:var(--charcoal)" onclick="TTS.speak(\`${listeningData.text}\`)">▶ Play Audio</button>
+             <div class="mt-24">
+                <button class="btn btn-outline btn-sm" style="color:white; border-color:white" onclick="this.nextElementSibling.classList.toggle('hidden')">Show Transcript</button>
+                <div class="hidden mt-16 p-16 font-zh" style="background:rgba(255,255,255,0.1); color:white; border-radius:8px; text-align:left">
+                   ${listeningData.text}
                 </div>
-                <div style="font-size:1.2rem; opacity:0.3">🔊</div>
-              </div>
-            `).join('')}
+             </div>
           </div>
-        </div>
-      </section>
-    ` : '';
+          <div class="card p-24">
+             ${listeningData.questions.map((q, qIdx) => `
+               <div class="mb-24">
+                 <div style="font-weight:700; margin-bottom:12px">${qIdx+1}. ${q.q}</div>
+                 <div class="options-grid" style="display:grid; grid-template-columns:1fr; gap:8px">
+                   ${q.options.map(opt => `
+                     <button class="btn btn-outline" style="text-align:left; justify-content:flex-start" onclick="window.PlaygroundModule.checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</button>
+                   `).join('')}
+                 </div>
+               </div>
+             `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    // Section 3: Reading Comprehension
+    let readingHTML = '';
+    const readingData = lesson.reading;
+    if (readingData) {
+      readingHTML = `
+        <section class="lesson-section">
+          <h3 class="section-title">Reading Mastery</h3>
+          <div class="card p-32 mb-24 font-zh" style="font-size:1.3rem; line-height:1.8; background:var(--off-white)">
+             ${readingData.text}
+          </div>
+          <div class="card p-24">
+             ${readingData.questions.map((q, qIdx) => `
+               <div class="mb-24">
+                 <div style="font-weight:700; margin-bottom:12px">${qIdx+1}. ${q.q}</div>
+                 <div class="options-grid" style="display:grid; grid-template-columns:1fr; gap:8px">
+                   ${q.options.map(opt => `
+                     <button class="btn btn-outline" style="text-align:left; justify-content:flex-start" onclick="window.PlaygroundModule.checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</button>
+                   `).join('')}
+                 </div>
+               </div>
+             `).join('')}
+          </div>
+        </section>
+      `;
+    }
 
     container.innerHTML = `
-      <div class="lesson-page-header shadow-lg" style="background: var(--charcoal); min-height: 250px; padding: 60px 20px;">
+      <div class="lesson-page-header shadow-lg" style="background: linear-gradient(135deg, var(--charcoal), var(--charcoal-2));">
         <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white; border-color:rgba(255,255,255,0.4);" onclick="window.PlaygroundModule.openPlaygroundGroup('${pgId}')">← BACK TO LESSONS</button>
         <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:4px; margin-bottom:12px; opacity:0.7; font-weight:700">${pg.title.toUpperCase()}</div>
         <h2 style="font-size:2.5rem; color: white;">${lesson.title}</h2>
       </div>
 
-      <div class="lesson-container" style="max-width:1000px; margin:0 auto; padding: 40px 20px;">
-        ${vocabHTML}
-        ${dialogueHTML}
+      <div class="lesson-container" style="max-width:900px; margin:0 auto; padding: 40px 20px;">
+        ${dialoguesHTML}
+        ${listeningHTML}
+        ${readingHTML}
 
         <div class="text-center mt-60 mb-100">
            <button class="btn btn-success btn-lg" style="padding: 24px 60px; font-size: 1.4rem; border-radius: 50px;" onclick="window.PlaygroundModule.markLessonComplete('${pgId}', '${lessonId}')">Finish Lesson ✓</button>
