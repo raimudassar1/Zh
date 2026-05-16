@@ -1,7 +1,8 @@
-const CACHE_NAME = 'tocfl-cache-v2';
+﻿const CACHE_NAME = 'tocfl-cache-v17';
 const ASSETS = [
   './',
   './index.html',
+  './js/icons.js',
   './css/main.css',
   './js/app.js',
   './js/playground.js',
@@ -30,6 +31,14 @@ self.addEventListener('install', (event) => {
   );
 });
 
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+    )
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
@@ -37,3 +46,12 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
+
+
+
+
+
+
+
+

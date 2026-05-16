@@ -77,7 +77,7 @@ const GrammarModule = (() => {
           <h3 class="modal-title">${p.pattern}</h3>
           <div class="modal-subtitle">${p.english_name}</div>
         </div>
-        <button class="modal-close" onclick="closeModal()">×</button>
+        <button class="modal-close" onclick="Modal.hide()">×</button>
       </div>
       
       <div class="modal-body">

@@ -18,11 +18,12 @@ window.VocabularyBooksModule = (() => {
     style.id = 'vocabulary-books-styles';
     style.textContent = `
       .vocab-row:hover { background-color: var(--off-white); cursor: pointer; }
-      .vocab-table th { position: sticky; top: 0; z-index: 10; background: var(--off-white); box-shadow: 0 1px 0 var(--border); }
+      .vocab-table th { position: sticky; top: 0; z-index: 10; background: var(--off-white); box-shadow: 0 1px 0 var(--border); color: var(--text-3); }
       .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; margin-bottom: 24px; }
       .chapter-btn { 
-        padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: white; 
+        padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); 
         text-align: center; cursor: pointer; transition: all 0.2s; font-weight: 600; font-size: 0.9rem;
+        color: var(--text);
       }
       .chapter-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--off-white); }
       .chapter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
@@ -30,15 +31,31 @@ window.VocabularyBooksModule = (() => {
       .play-btn-circle {
         width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
         background: var(--off-white); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+        color: var(--text);
       }
       .play-btn-circle:hover { background: var(--accent); color: white; border-color: var(--accent); }
     `;
     document.head.appendChild(style);
   }
 
+  function updateTabs() {
+    const tabs = document.querySelectorAll('.book-tab');
+    tabs.forEach((tab, i) => {
+      const bookNum = i + 1;
+      if (state.book === bookNum) {
+        tab.classList.remove('btn-ghost');
+        tab.classList.add('btn-primary');
+      } else {
+        tab.classList.remove('btn-primary');
+        tab.classList.add('btn-ghost');
+      }
+    });
+  }
+
   async function loadBook(bookNum) {
     state.loading = true;
     injectStyles();
+    updateTabs();
     const content = document.getElementById('vocabulary-books-content');
     if (content) content.innerHTML = '<div class="spinner"></div>';
 
@@ -59,6 +76,7 @@ window.VocabularyBooksModule = (() => {
       }
 
       state.loading = false;
+      updateTabs(); // Update again in case state.book changed during load
       renderContent();
     } catch (err) {
       console.error(err);
@@ -162,23 +180,17 @@ window.VocabularyBooksModule = (() => {
     currentWordChars = Array.from(vocab.traditional).filter(c => /[\u4e00-\u9fa5]/.test(c));
     currentCharIndex = 0;
 
-    const modal = document.getElementById('modal-overlay');
-    const content = document.getElementById('modal-content');
-    if (!modal || !content) return;
-    
-    content.style.maxWidth = '850px';
-
-    content.innerHTML = `
+    const modalContent = `
       <div class="vocab-detail-modal">
-        <button class="modal-close" onclick="VocabularyBooksModule.closeModal()">✕</button>
+        <button class="modal-close" onclick="Modal.hide()">✕</button>
         
         <div class="vd-layout">
           <div class="vd-left" style="text-align:left">
             <div class="vd-word-header" onclick="VocabularyBooksModule.play('${vocab.audio_file}')" style="cursor:pointer; display:inline-block; margin-bottom:16px">
-              <div class="vd-hanzi" style="text-align:left; line-height:1; font-size: 3.5rem;">${vocab.traditional}</div>
+              <div class="vd-hanzi" style="text-align:left; line-height:1; font-size: 3.5rem; color: var(--text);">${vocab.traditional}</div>
               <div style="display:flex; align-items:center; gap:8px; margin-top:12px">
                 <span class="vd-pinyin tone-colors" style="margin-top:0; font-size: 1.2rem;">${Pinyin.colorize(vocab.pinyin)}</span>
-                <span class="vd-audio-icon" style="font-size: 1.2rem;">🔊</span>
+                <span class="vd-audio-icon" style="font-size: 1.2rem; color: var(--accent);">🔊</span>
               </div>
             </div>
 
@@ -213,7 +225,7 @@ window.VocabularyBooksModule = (() => {
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px">
                 <div class="flex items-center gap-8">
-                  <select class="input input-sm" style="width:auto; padding:2px 8px; height:28px; font-size:0.75rem" onchange="DrawingBoard.setMode(this.value)">
+                  <select class="input input-sm" style="width:auto; padding:2px 8px; height:28px; font-size:0.75rem; background: var(--card-bg); color: var(--text); border-color: var(--border);" onchange="DrawingBoard.setMode(this.value)">
                     <option value="guided">Guided</option>
                     <option value="freehand">Freehand</option>
                   </select>
@@ -233,13 +245,14 @@ window.VocabularyBooksModule = (() => {
       </div>
     `;
 
-    modal.classList.remove('hidden');
-    modal.onclick = (e) => { if (e.target === modal) VocabularyBooksModule.closeModal(); };
+    const mc = document.getElementById('modal-content');
+    if (mc) mc.style.maxWidth = '850px';
+    Modal.show(modalContent);
 
     setTimeout(() => {
         const char = currentWordChars[currentCharIndex];
         DrawingBoard.init('book-hanzi-writer', 'book-freehand-canvas', char);
-    }, 50);
+    }, 100);
   }
 
   return {
@@ -270,16 +283,21 @@ window.VocabularyBooksModule = (() => {
     },
     showDetail,
     selectCanvasChar(idx, btn) {
-      document.querySelectorAll('.char-select-btn').forEach(b => b.classList.replace('btn-primary', 'btn-outline'));
-      btn.classList.replace('btn-outline', 'btn-primary');
+      document.querySelectorAll('.char-select-btn').forEach(b => {
+        b.classList.remove('btn-primary');
+        b.classList.add('btn-outline');
+      });
+      btn.classList.remove('btn-outline');
+      btn.classList.add('btn-primary');
       currentCharIndex = idx;
       DrawingBoard.init('book-hanzi-writer', 'book-freehand-canvas', currentWordChars[currentCharIndex]);
     },
     animateStrokes: () => DrawingBoard.animate(),
     clearCanvas: () => DrawingBoard.reset(),
     closeModal() {
-      document.getElementById('modal-overlay').classList.add('hidden');
-      document.getElementById('modal-content').style.maxWidth = '';
+      Modal.hide();
+      const mc = document.getElementById('modal-content');
+      if (mc) mc.style.maxWidth = '';
     }
   };
 })();

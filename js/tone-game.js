@@ -7,17 +7,17 @@
 const ToneGame = (() => {
 
   const TONES = [
-    { num: 1, name: 'First Tone (High Level)', symbol: 'ā', desc: 'Flat, high pitch like a robot.' },
-    { num: 2, name: 'Second Tone (Rising)', symbol: 'á', desc: 'Starts mid, rises high like a question.' },
-    { num: 3, name: 'Third Tone (Falling-Rising)', symbol: 'ǎ', desc: 'Starts mid, dips low, then rises.' },
-    { num: 4, name: 'Fourth Tone (Falling)', symbol: 'à', desc: 'Starts high, drops sharply like a command.' }
+    { num: 1, name: 'First Tone (High Level)', symbol: '?', desc: 'Flat, high pitch like a robot.' },
+    { num: 2, name: 'Second Tone (Rising)', symbol: '?', desc: 'Starts mid, rises high like a question.' },
+    { num: 3, name: 'Third Tone (Falling-Rising)', symbol: '?', desc: 'Starts mid, dips low, then rises.' },
+    { num: 4, name: 'Fourth Tone (Falling)', symbol: '?', desc: 'Starts high, drops sharply like a command.' }
   ];
 
   const GAME_DATA = [
-    { syllable: 'mā', tone: 1, char: '媽' }, { syllable: 'má', tone: 2, char: '麻' }, { syllable: 'mǎ', tone: 3, char: '馬' }, { syllable: 'mà', tone: 4, char: '罵' },
-    { syllable: 'bā', tone: 1, char: '八' }, { syllable: 'bá', tone: 2, char: '拔' }, { syllable: 'bǎ', tone: 3, char: '把' }, { syllable: 'bà', tone: 4, char: '爸' },
-    { syllable: 'tāng', tone: 1, char: '湯' }, { syllable: 'táng', tone: 2, char: '糖' }, { syllable: 'tǎng', tone: 3, char: '躺' }, { syllable: 'tàng', tone: 4, char: '燙' },
-    { syllable: 'shū', tone: 1, char: '書' }, { syllable: 'shú', tone: 2, char: '熟' }, { syllable: 'shǔ', tone: 3, char: '數' }, { syllable: 'shù', tone: 4, char: '樹' }
+    { syllable: 'm?', tone: 1, char: '?' }, { syllable: 'm?', tone: 2, char: '?' }, { syllable: 'm?', tone: 3, char: '?' }, { syllable: 'm?', tone: 4, char: '?' },
+    { syllable: 'b?', tone: 1, char: '?' }, { syllable: 'b?', tone: 2, char: '?' }, { syllable: 'b?', tone: 3, char: '?' }, { syllable: 'b?', tone: 4, char: '?' },
+    { syllable: 't?ng', tone: 1, char: '?' }, { syllable: 't?ng', tone: 2, char: '?' }, { syllable: 't?ng', tone: 3, char: '?' }, { syllable: 't?ng', tone: 4, char: '?' },
+    { syllable: 'sh?', tone: 1, char: '?' }, { syllable: 'sh?', tone: 2, char: '?' }, { syllable: 'sh?', tone: 3, char: '?' }, { syllable: 'sh?', tone: 4, char: '?' }
   ];
 
   let currentState = {
@@ -49,7 +49,7 @@ const ToneGame = (() => {
           <h3 class="mb-24">Listen and Identify the Tone</h3>
           
           <button class="btn btn-gold btn-lg pulse-animation" id="tone-play-btn" onclick="ToneGame.playTarget()">
-            🔊 Play Sound
+${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</span>
           </button>
 
           <div class="tone-options-grid mt-32">
@@ -63,8 +63,7 @@ const ToneGame = (() => {
           <div id="tone-feedback" class="quiz-feedback mt-24"></div>
           
           <button class="btn btn-primary mt-24 hidden" id="tone-next-btn" onclick="ToneGame.nextRound()">
-            Next Round →
-          </button>
+            Next Round</button>
         </div>
       </div>
     `;
@@ -99,13 +98,13 @@ const ToneGame = (() => {
       btn.classList.remove('btn-outline');
       btn.classList.add('btn-success');
       feedback.className = 'quiz-feedback correct show';
-      feedback.innerHTML = `✓ Correct! 「${currentState.currentTarget.char}」 is <strong>Tone ${num}</strong> (${currentState.currentTarget.syllable})`;
-      App.logActivity('🎵', `Mastered tone ${num} for ${currentState.currentTarget.syllable}`);
+      feedback.innerHTML = `Correct. ${currentState.currentTarget.char} is <strong>Tone ${num}</strong> (${currentState.currentTarget.syllable})`;
+      App.logActivity('Tone', `Mastered tone ${num} for ${currentState.currentTarget.syllable}`);
     } else {
       btn.classList.remove('btn-outline');
       btn.classList.add('btn-error');
       feedback.className = 'quiz-feedback wrong show';
-      feedback.innerHTML = `✗ Incorrect. Try listening again.`;
+      feedback.innerHTML = `Incorrect. Try listening again.`;
     }
 
     document.querySelectorAll('.tone-btn').forEach(b => b.disabled = true);

@@ -140,39 +140,51 @@ const App = {
 
 // ─── TTS Utility ──────────────────────────────────────────────────────────────
 const TTS = {
-  // Voice cache
-  _voice: null,
-
-  async getBestVoice() {
-    if (this._voice) return this._voice;
-    const voices = window.speechSynthesis.getVoices();
-    // Prioritize high-quality Taiwanese/Chinese voices
-    this._voice = voices.find(v => v.lang === 'zh-TW' && (v.name.includes('Google') || v.name.includes('Microsoft'))) || 
-                  voices.find(v => v.lang.startsWith('zh')) || 
-                  voices[0];
-    return this._voice;
-  },
-
-  async speak(text, lang = 'zh-TW', rate = 0.85, forceTTS = false) {
+  speak(text, lang = 'zh-TW', rate = 0.85) {
     if (!window.speechSynthesis) return;
-    
-    // Safety: If it's a book audio call, skip TTS if forceTTS is false
-    // (This is a conceptual hook, actual implementation is in components)
-    
     window.speechSynthesis.cancel();
 
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.voice = await this.getBestVoice();
-    utter.lang = lang;
-    utter.rate = rate;
-    utter.pitch = 1.0;
+    // Normalization for Pinyin-only inputs or problematic characters
+    let processedText = text.toLowerCase().trim();
     
-    window.speechSynthesis.speak(utter);
-  }
-};
+    // Check if input is mostly pinyin (latin chars). If so, it reads disjointedly.
+    // Try to strip tone marks and spaces to see if it's purely pinyin
+    const isPinyin = /^[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]+$/.test(processedText);
+
+    // Map common standalone pinyin examples from onboarding to Hanzi
+    const exactPinyinMap = {
+      'mā': '媽', 'má': '麻', 'mǎ': '馬', 'mà': '罵',
+      'bā': '八', 'bá': '拔', 'bǎ': '把', 'bà': '爸',
+      'bō': '波', 'bó': '伯', 'bǐ': '比', 'bù': '不',
+      'pā': '趴', 'pá': '爬', 'pó': '婆', 'pǐ': '匹',
+      'wū': '屋', 'wú': '無', 'wǔ': '五', 'wù': '物',
+      'hú': '胡', 'hé': '河', 'hē': '喝', 'hǎo': '好', 'hòu': '後',
       'yī': '一', 'yí': '疑', 'yǐ': '以', 'yì': '意',
       'nǚ': '女', 'lǚ': '旅行', 'qù': '去', 'jū': '居', 'xū': '需',
       'yǔ': '語', 'yú': '魚', 'hǎo': '好', 'nǐ hǎo': '你好',
+      'nǐ': '你', 'nán': '南', 'nǎi': '奶', 'niú': '牛',
+      'lǐ': '裡', 'lán': '藍', 'lái': '來', 'liù': '六',
+      'jiā': '家', 'jiē': '街', 'jiù': '舊',
+      'qī': '七', 'qù': '去', 'qǐ': '起',
+      'xī': '西', 'xiā': '蝦', 'xiǎo': '小', 'xīn': '心', 'xiū': '修', 'xiē': '些',
+      'zhī': '知', 'zhǐ': '紙', 'zhù': '住', 'zhǎo': '找', 'zhā': '渣', 'zhài': '債', 'zhōng': '中',
+      'zī': '資', 'zǐ': '子', 'zù': '租', 'zǎo': '早', 'zài': '在',
+      'chī': '吃', 'chū': '出', 'shā': '沙', 'shēn': '身', 'shī': '詩',
+      'shū': '書', 'shú': '熟', 'shǔ': '鼠', 'shù': '樹', 'shōu': '收',
+      'rén': '人',
+      'māo': '貓', 'máo': '毛', 'mǎo': '卯', 'mào': '帽',
+      'tāng': '湯', 'táng': '糖', 'tǎng': '躺', 'tàng': '燙',
+      'mái': '埋', 'mài': '賣', 'mǎi': '買',
+      'wén': '聞', 'wèn': '問',
+      'sǐ': '死', 'sì': '四',
+      'tiān': '天', 'tī': '梯', 'tài': '太', 'tóu': '頭',
+      'dà': '大', 'dài': '帶', 'diào': '掉',
+      'fàn': '飯', 'fēi': '飛', 'fān': '翻', 'fāng': '方', 'fēng': '風',
+      'gē': '哥', 'gǒu': '狗', 'gōu': '溝', 'gěi': '給', 'gōng': '工',
+      'kāi': '開',
+      'mén': '門', 'mán': '蠻', 'màn': '慢', 'máng': '忙', 'míng': '明', 'mēng': '蒙',
+      'bēi': '杯', 'bào': '報', 'biàn': '變', 'biē': '憋',
+      'piào': '票',
       'b': '玻', 'p': '坡', 'm': '摸', 'f': '佛',
       'd': '得', 't': '特', 'n': '訥', 'l': '勒',
       'g': '哥', 'k': '科', 'h': '喝',
@@ -424,7 +436,7 @@ const API = {
 };
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
-const Modal = {
+window.Modal = {
   show(html) {
     const overlay = document.getElementById('modal-overlay');
     const content = document.getElementById('modal-content');
@@ -442,6 +454,8 @@ const Modal = {
     document.getElementById('modal-overlay').classList.add('hidden');
   },
 };
+
+const Modal = window.Modal;
 
 // ─── Word/Character Detail Bridge ───────────────────────────────────────────
 function showWordDetail(word) {
@@ -659,6 +673,7 @@ function getPath() {
 async function router() {
   const path = getPath();
   const route = routes[path] || routes['/'];
+  closeMobileNav();
 
   // Update nav active state
   document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(el => {
@@ -685,6 +700,27 @@ async function router() {
 }
 
 window.addEventListener('hashchange', router);
+
+function closeMobileNav() {
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('nav-scrim');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  sidebar?.classList.remove('open');
+  document.body.classList.remove('nav-open');
+  if (scrim) scrim.hidden = true;
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+}
+
+function toggleMobileNav() {
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('nav-scrim');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const isOpen = !sidebar?.classList.contains('open');
+  sidebar?.classList.toggle('open', isOpen);
+  document.body.classList.toggle('nav-open', isOpen);
+  if (scrim) scrim.hidden = !isOpen;
+  if (toggle) toggle.setAttribute('aria-expanded', String(isOpen));
+}
 
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 async function renderDashboard(container) {
@@ -1436,6 +1472,15 @@ async function boot() {
   // TTS test
   document.getElementById('tts-test-btn')?.addEventListener('click', () => {
     TTS.speak('你好，歡迎使用漢語學習應用程式。');
+  });
+
+  document.getElementById('mobile-menu-toggle')?.addEventListener('click', toggleMobileNav);
+  document.getElementById('nav-scrim')?.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('#sidebar .nav-item').forEach(item => {
+    item.addEventListener('click', closeMobileNav);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMobileNav();
   });
 
   // Preload characters into memory for client-side operations

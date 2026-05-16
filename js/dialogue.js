@@ -135,7 +135,7 @@ const DialogueModule = (() => {
         <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:12px">Key Vocabulary</h4>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
           ${(dialogue.vocabulary||[]).map(v => `
-            <button onclick="TTS.speak('${v}')" style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;cursor:pointer;font-family:var(--font-zh);font-size:1rem;transition:all 0.1s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">${v} 🔊</button>`).join('')}
+            <button class="dialogue-vocab-chip" onclick="TTS.speak('${v}')"><span>${v}</span>${window.IconSystem ? window.IconSystem.svg('volume') : ''}</button>`).join('')}
         </div>
       </div>
 
