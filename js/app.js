@@ -140,22 +140,36 @@ const App = {
 
 // ─── TTS Utility ──────────────────────────────────────────────────────────────
 const TTS = {
-  speak(text, lang = 'zh-TW', rate = 0.85) {
+  // Voice cache
+  _voice: null,
+
+  async getBestVoice() {
+    if (this._voice) return this._voice;
+    const voices = window.speechSynthesis.getVoices();
+    // Prioritize high-quality Taiwanese/Chinese voices
+    this._voice = voices.find(v => v.lang === 'zh-TW' && (v.name.includes('Google') || v.name.includes('Microsoft'))) || 
+                  voices.find(v => v.lang.startsWith('zh')) || 
+                  voices[0];
+    return this._voice;
+  },
+
+  async speak(text, lang = 'zh-TW', rate = 0.85, forceTTS = false) {
     if (!window.speechSynthesis) return;
+    
+    // Safety: If it's a book audio call, skip TTS if forceTTS is false
+    // (This is a conceptual hook, actual implementation is in components)
+    
     window.speechSynthesis.cancel();
 
-    // Normalization for Pinyin-only inputs or problematic characters
-    let processedText = text.toLowerCase().trim();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.voice = await this.getBestVoice();
+    utter.lang = lang;
+    utter.rate = rate;
+    utter.pitch = 1.0;
     
-    // Check if input is mostly pinyin (latin chars). If so, it reads disjointedly.
-    // Try to strip tone marks and spaces to see if it's purely pinyin
-    const isPinyin = /^[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]+$/.test(processedText);
-
-    // Map common standalone pinyin examples from onboarding to Hanzi
-    const exactPinyinMap = {
-      'mā': '媽', 'má': '麻', 'mǎ': '馬', 'mà': '罵',
-      'bā': '八', 'bá': '拔', 'bǎ': '把', 'bà': '爸',
-      'wū': '屋', 'wú': '無', 'wǔ': '五', 'wù': '物',
+    window.speechSynthesis.speak(utter);
+  }
+};
       'yī': '一', 'yí': '疑', 'yǐ': '以', 'yì': '意',
       'nǚ': '女', 'lǚ': '旅行', 'qù': '去', 'jū': '居', 'xū': '需',
       'yǔ': '語', 'yú': '魚', 'hǎo': '好', 'nǐ hǎo': '你好',

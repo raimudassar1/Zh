@@ -142,25 +142,31 @@ const OnboardingModule = (() => {
 
   // ── Tones Panel ──────────────────────────────────────────────
   function renderTones(data) {
-    const tones = data.tones || [];
+    const vowels = [
+      { char: 'a', tones: ['ā', 'á', 'ǎ', 'à'] },
+      { char: 'e', tones: ['ē', 'é', 'ě', 'è'] },
+      { char: 'i', tones: ['ī', 'í', 'ǐ', 'ì'] },
+      { char: 'o', tones: ['ō', 'ó', 'ǒ', 'ò'] },
+      { char: 'u', tones: ['ū', 'ú', 'ǔ', 'ù'] },
+      { char: 'ü', tones: ['ǖ', 'ǘ', 'ǚ', 'ǜ'] }
+    ];
+
     return `
       <div style="max-width:720px">
         <div class="card mb-16" style="background:var(--off-white)">
-          <p style="font-size:0.9rem;color:var(--text-2)">
-            🎵 <strong>Mandarin has 4 tones + 1 neutral tone.</strong> The same syllable spoken with a different tone is a completely different word. This is the #1 thing beginners must master.
+          <p style="font-size:0.9rem; color:var(--text-2)">
+            🎵 <strong>Mandarin has 4 tones.</strong> The pitch of your voice changes the meaning. Master these individual vowel sounds first.
           </p>
         </div>
 
         <!-- Tone pitch diagram -->
         <div class="card mb-16">
-          <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:16px">Pitch Contour Diagram</h4>
           <div style="display:flex;align-items:flex-end;justify-content:center;gap:32px;height:120px;padding:0 20px">
             ${[
               ['1st','ā','var(--tone1)','M1,100 L60,0','Flat high'],
               ['2nd','á','var(--tone2)','M1,80 L60,0','Rising'],
               ['3rd','ǎ','var(--tone3)','M1,60 L30,100 L60,20','Dip-rise'],
               ['4th','à','var(--tone4)','M1,0 L60,100','Falling'],
-              ['Neutral','a','var(--tone5)','M1,60 L30,60','Short'],
             ].map(([name,sym,color,path,label]) => `
               <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
                 <svg width="62" height="100" viewBox="0 0 62 100" style="overflow:visible">
@@ -172,51 +178,35 @@ const OnboardingModule = (() => {
           </div>
         </div>
 
-        <!-- Individual tone cards -->
-        ${tones.map(tone => `
-          <div class="card mb-12" style="border-left:4px solid ${tone.color}">
-            <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
-              <div style="font-size:2.2rem;font-weight:900;color:${tone.color};font-family:var(--font-pinyin);width:48px;text-align:center">${tone.symbol}</div>
-              <div>
-                <div style="font-weight:700;font-size:1rem">${tone.name}</div>
-                <div style="font-size:0.85rem;color:var(--text-2)">${tone.description}</div>
-              </div>
-            </div>
-            <div style="background:var(--off-white);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:12px;font-size:0.85rem;color:var(--text-2)">
-              💡 <strong>Tip:</strong> ${tone.tip}
-            </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              ${(tone.examples || []).map(ex => `
-                <button onclick="TTS.speak('${ex.hanzi}')" style="display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.borderColor='${tone.color}'" onmouseout="this.style.borderColor='var(--border)'">
-                  <span style="font-family:var(--font-zh);font-size:1.4rem;font-weight:700">${ex.hanzi}</span>
-                  <span>
-                    <span style="display:block;font-size:0.85rem;font-weight:600;color:${tone.color}">${ex.pinyin}</span>
-                    <span style="display:block;font-size:0.72rem;color:var(--text-3)">${ex.meaning}</span>
-                  </span>
-                  <span style="font-size:0.9rem;color:var(--text-3)">🔊</span>
-                </button>`).join('')}
-            </div>
-          </div>`).join('')}
-
-        <!-- Tone pair comparisons -->
+        <!-- Vowel-Tone Practice Grid -->
         <div class="card mb-16">
-          <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:12px">Critical Tone Pairs</h4>
-          <p class="text-small text-muted mb-12">These pairs are commonly confused. Click to hear the difference.</p>
-          ${(data.tone_pairs || []).map(pair => `
-            <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
-              <button onclick="TTS.speak('${pair.a.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
-                <div style="font-family:var(--font-zh);font-size:1.6rem;font-weight:700">${pair.a.hanzi}</div>
-                <div style="font-size:0.8rem;color:var(--tone${Pinyin.getTone(pair.a.pinyin)||1})">${pair.a.pinyin}</div>
-                <div style="font-size:0.72rem;color:var(--text-3)">${pair.a.meaning}</div>
+          <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:16px">Individual Vowel Practice</h4>
+          <div style="display:flex; flex-direction:column; gap:20px">
+            ${vowels.map(v => `
+              <div style="display:grid; grid-template-columns: 40px repeat(4, 1fr); gap:12px; align-items:center">
+                <div style="font-size:1.4rem; font-weight:900; color:var(--charcoal); text-transform:uppercase">${v.char}</div>
+                ${v.tones.map((t, idx) => `
+                  <button onclick="TTS.speak('${t}')" class="tone-btn" style="background:var(--off-white); border:2px solid var(--tone${idx+1}); border-radius:8px; padding:12px 4px; cursor:pointer; transition:all 0.2s">
+                    <div style="font-size:1.6rem; font-weight:700; color:var(--tone${idx+1}); font-family:var(--font-pinyin)">${t}</div>
+                    <div style="font-size:0.6rem; color:var(--text-3); margin-top:4px">Tone ${idx+1}</div>
+                  </button>
+                `).join('')}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Simple Syllables -->
+        <div class="card mb-16">
+          <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:12px">Common Syllable: "ma"</h4>
+          <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px">
+            ${['mā', 'má', 'mǎ', 'mà'].map((py, i) => `
+              <button onclick="TTS.speak('${py}')" style="background:var(--off-white); border:2px solid var(--tone${i+1}); border-radius:8px; padding:16px 8px; cursor:pointer">
+                <div style="font-size:1.6rem; font-weight:700; color:var(--tone${i+1})">${py}</div>
+                <div style="font-size:0.7rem; color:var(--text-3); margin-top:4px">🔊 Listen</div>
               </button>
-              <div style="color:var(--text-3);font-size:1.2rem">vs</div>
-              <button onclick="TTS.speak('${pair.b.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
-                <div style="font-family:var(--font-zh);font-size:1.6rem;font-weight:700">${pair.b.hanzi}</div>
-                <div style="font-size:0.8rem;color:var(--tone${Pinyin.getTone(pair.b.pinyin)||1})">${pair.b.pinyin}</div>
-                <div style="font-size:0.72rem;color:var(--text-3)">${pair.b.meaning}</div>
-              </button>
-              <div style="flex:1.2;font-size:0.72rem;color:var(--text-3);padding-left:4px">${pair.note}</div>
-            </div>`).join('')}
+            `).join('')}
+          </div>
         </div>
 
         <button class="btn btn-primary" onclick="obTab('sounds')">Next: Sounds & Initials →</button>
@@ -225,6 +215,7 @@ const OnboardingModule = (() => {
   }
 
   // ── Sounds Panel ─────────────────────────────────────────────
+
   function renderSounds(data) {
     const initials = data.initials || [];
     const finals   = data.finals   || [];
@@ -304,66 +295,78 @@ const OnboardingModule = (() => {
 
   // ── Ear Training Panel ───────────────────────────────────────
   function renderEarTraining(data) {
+    const vowelDrills = [
+      { display: 'a', options: ['ā', 'á', 'ǎ', 'à'], correct: 'á' },
+      { display: 'e', options: ['ē', 'é', 'ě', 'è'], correct: 'è' },
+      { display: 'i', options: ['ī', 'í', 'ǐ', 'ì'], correct: 'ǐ' },
+      { display: 'o', options: ['ō', 'ó', 'ǒ', 'ò'], correct: 'ō' },
+      { display: 'u', options: ['ū', 'ú', 'ǔ', 'ù'], correct: 'ú' },
+      { display: 'ü', options: ['ǖ', 'ǘ', 'ǚ', 'ǜ'], correct: 'ǜ' }
+    ];
+
     return `
       <div style="max-width:640px">
         <div class="card mb-16" style="background:var(--off-white)">
-          <p class="text-small">🎧 <strong>Ear training</strong> teaches you to <em>hear</em> tone differences — not just see them. Listen carefully, then choose. Correct answers show instantly.</p>
+          <p class="text-small">🎧 <strong>Ear training:</strong> Listen to the vowel and identify which tone was used. Correct answers show instantly.</p>
         </div>
+        
         <div id="ear-sets">
-          ${(data.ear_training_sets||[]).map((set,si) => `
-            <div class="card mb-16" id="ear-set-${si}">
-              <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:4px">${set.title}</h4>
-              <p class="text-small text-muted mb-14">${set.instruction}</p>
-              <div id="ear-items-${si}">
-                ${(set.items||[]).map((item,ii) => renderEarItem(item, si, ii)).join('')}
-              </div>
-            </div>`).join('')}
+          <div class="card mb-16">
+            <h4 style="font-size:0.9rem;font-weight:700;margin-bottom:12px">Tone Identification (Vowels)</h4>
+            <div style="display:flex; flex-direction:column; gap:16px">
+              ${vowelDrills.map((drill, i) => `
+                <div class="ear-item" style="padding:16px; background:var(--off-white); border-radius:12px; border:1px solid var(--border)">
+                  <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px">
+                    <button class="btn btn-primary btn-sm" onclick="TTS.speak('${drill.correct}')">▶ Play Audio</button>
+                    <span style="font-weight:700; color:var(--text-3)">Vowel: ${drill.display}</span>
+                  </div>
+                  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px">
+                    ${drill.options.map(opt => `
+                      <button class="ear-opt" 
+                        onclick="checkVowelEar(this, '${opt}', '${drill.correct}', ${i})"
+                        style="background:var(--card-bg); border:1.5px solid var(--border); border-radius:8px; padding:10px; cursor:pointer; font-family:var(--font-pinyin); font-size:1.2rem; font-weight:700">
+                        ${opt}
+                      </button>
+                    `).join('')}
+                  </div>
+                  <div id="ear-fb-v-${i}" class="hidden" style="margin-top:10px; font-size:0.85rem; font-weight:600"></div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
         </div>
         <button class="btn btn-primary" onclick="obTab('rules')">Next: Tone Rules →</button>
       </div>
     `;
   }
 
-  function renderEarItem(item, si, ii) {
-    const hasOpts = Array.isArray(item.options);
-    if (hasOpts) {
-      return `
-        <div class="ear-item" id="ear-${si}-${ii}" style="margin-bottom:14px;padding:14px;background:var(--off-white);border-radius:var(--radius-sm)">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-            <button class="btn btn-primary btn-sm" onclick="playEar('${item.audio_text}',${si},${ii})">▶ Play</button>
-            <span class="text-small text-muted">${item.display || item.audio_text}</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-            ${item.options.map((opt,oi) => `
-              <button class="ear-opt" data-si="${si}" data-ii="${ii}" data-oi="${oi}" data-correct="${oi===item.correct_index}"
-                onclick="checkEar(this,${si},${ii})"
-                style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;cursor:pointer;font-family:var(--font-ui);font-size:0.85rem;text-align:left;transition:all 0.15s">
-                ${String.fromCharCode(65+oi)}. ${opt}
-              </button>`).join('')}
-          </div>
-          <div class="ear-feedback hidden" id="ear-fb-${si}-${ii}" style="margin-top:8px;font-size:0.82rem;padding:6px 10px;border-radius:4px"></div>
-        </div>`;
-    }
-    // Tone number items
-    return `
-      <div class="ear-item" id="ear-${si}-${ii}" style="margin-bottom:14px;padding:14px;background:var(--off-white);border-radius:var(--radius-sm)">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <button class="btn btn-primary btn-sm" onclick="playEar('${item.audio_text}',${si},${ii})">▶ Play</button>
-          <span style="font-size:1.2rem;font-weight:600;font-family:var(--font-pinyin)">${item.display||item.audio_text}</span>
-        </div>
-        <div style="display:flex;gap:8px">
-          ${[1,2,3,4].map(t => `
-            <button data-si="${si}" data-ii="${ii}" data-correct="${t===item.correct_tone}"
-              onclick="checkEarTone(this,${si},${ii},${t})"
-              style="flex:1;background:var(--card-bg);border:2px solid var(--tone${t});border-radius:var(--radius-sm);padding:8px 4px;cursor:pointer;color:var(--tone${t});font-weight:700;font-size:0.9rem">
-              ${t}${t===1?'st':t===2?'nd':t===3?'rd':'th'}
-            </button>`).join('')}
-        </div>
-        <div class="ear-feedback hidden" id="ear-fb-${si}-${ii}" style="margin-top:8px;font-size:0.82rem;padding:6px 10px;border-radius:4px"></div>
-      </div>`;
-  }
-
   function wireEarTraining(data) {
+    window.checkVowelEar = (btn, selected, correct, idx) => {
+      const isCorrect = selected === correct;
+      const fb = document.getElementById(`ear-fb-v-${idx}`);
+      
+      // Disable all buttons in this set
+      const container = btn.parentElement;
+      container.querySelectorAll('button').forEach(b => {
+        b.disabled = true;
+        if (b.textContent.trim() === correct) {
+          b.style.borderColor = '#27ae60';
+          b.style.color = '#27ae60';
+          b.style.background = 'rgba(39,174,96,0.1)';
+        }
+      });
+
+      if (!isCorrect) {
+        btn.style.borderColor = 'var(--red)';
+        btn.style.color = 'var(--red)';
+        btn.style.background = 'rgba(192,57,43,0.1)';
+      }
+
+      fb.classList.remove('hidden');
+      fb.style.color = isCorrect ? '#27ae60' : 'var(--red)';
+      fb.textContent = isCorrect ? '✓ Correct!' : `✗ Incorrect. It was the ${Pinyin.getTone(correct)}th tone.`;
+    };
+
     window.playEar = (text, si, ii) => {
       TTS.speak(text, 'zh-TW', 0.75);
     };

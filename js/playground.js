@@ -332,6 +332,39 @@ window.PlaygroundModule = (() => {
 
   // ── CCC Academic Book Actions ────────────────────────────────────────
 
+  function playBookVocab(bookId, chapterId, vocabIndex) {
+    const bookPrefix = `B${bookId}`;
+    const lessonStr = chapterId.toString().padStart(2, '0');
+    
+    // Split points mapping for Part I vs Part II vocab
+    const splits = {
+      1: [24, 22, 23, 19, 21, 23, 17, 20, 14, 15, 23, 22, 23, 18, 21],
+      2: [23, 21, 24, 27, 17, 29, 19, 21, 20, 29, 24, 29, 23, 22, 18],
+      3: [35, 32, 37, 35, 33, 32, 40, 36, 30, 33, 42, 42]
+    };
+    
+    const bookSplits = splits[bookId];
+    let part = "I";
+    let indexInPart = vocabIndex + 1;
+    
+    if (bookSplits && bookSplits[chapterId - 1]) {
+      const splitPoint = bookSplits[chapterId - 1];
+      if (vocabIndex >= splitPoint) {
+        part = "II";
+        indexInPart = vocabIndex - splitPoint + 1;
+      }
+    }
+    
+    const fileIndex = indexInPart.toString().padStart(2, '0');
+    const path = `books/book${bookId}/audio_b${bookId}/dangdai-${bookPrefix}L${lessonStr}-${part}-${fileIndex}.mp3`;
+    
+    const audio = new Audio(path);
+    audio.play().catch(err => {
+      console.log("Local audio not found:", path);
+      // Fallback: User requested NO TTS for academic book vocab cards
+    });
+  }
+
   async function openBook(bookId) {
     await init();
     await loadBook(bookId);
@@ -375,9 +408,12 @@ window.PlaygroundModule = (() => {
       <section class="lesson-section" id="ls-vocab">
         <h3 class="section-title">1. Essential Vocabulary</h3>
         <div class="vocab-grid-premium">
-          ${ch.vocab.map(v => `
-            <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
-              <div class="v-hanzi">${v.hanzi}</div>
+          ${ch.vocab.map((v, idx) => `
+            <div class="vocab-card-premium" onclick="window.PlaygroundModule.playBookVocab(${ch.book}, ${ch.chapter}, ${idx})">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start">
+                <div class="v-hanzi">${v.hanzi}</div>
+                <div style="font-size:1.2rem; opacity:0.3">🔊</div>
+              </div>
               <div class="v-pinyin">${v.pinyin || ''}</div>
               <div class="v-def">${v.definition}</div>
             </div>
