@@ -36,16 +36,22 @@ window.ExamModule = {
     /**
      * Render the Exam Hub
      */
-    renderHub(container) {
+    async renderHub(container) {
         if (!container) return;
+        
+        // Ensure data is loaded
+        if (this.state.examData.length === 0) {
+            await this.init();
+        }
+
         this.state.currentMonth = null;
         
         let html = `
             <div class="exam-hub">
                 <header class="hub-header">
                     <div style="font-size: 4rem; margin-bottom: 20px;">🎓</div>
-                    <h1>Professional Certification</h1>
-                    <p>Rigorous 1-hour comprehensive assessments for TOCFL B1 mastery.</p>
+                    <h1 style="color: var(--text)">Professional Certification</h1>
+                    <p style="color: var(--text-2)">Rigorous 1-hour comprehensive assessments for TOCFL B1 mastery.</p>
                 </header>
                 <div class="month-grid">
         `;
@@ -55,17 +61,17 @@ window.ExamModule = {
             
             html += `
                 <div class="month-card ${isCompleted ? 'completed' : ''}" 
-                     onclick="ExamModule.startExam(${exam.month})">
+                     onclick="ExamModule.startExam(${exam.month})" style="background: var(--card-bg, white); border: 1px solid var(--border);">
                     <div class="card-status">
                         ${isCompleted ? '<span class="status-icon">🏆</span> CERTIFIED' : '<span class="status-icon">📝</span> OPEN'}
                     </div>
-                    <div class="card-month">CERTIFICATION EXAM ${exam.month}</div>
-                    <h3 class="card-title">${exam.title}</h3>
-                    <p class="card-desc">${exam.description}</p>
+                    <div class="card-month" style="color: var(--accent)">CERTIFICATION EXAM ${exam.month}</div>
+                    <h3 class="card-title" style="color: var(--text)">${exam.title}</h3>
+                    <p class="card-desc" style="color: var(--text-2)">${exam.description}</p>
                     <div class="card-footer">
-                        <div class="exam-meta">
+                        <div class="exam-meta" style="color: var(--text-3)">
                             <span>⏱ 60 Min</span>
-                            <span>📊 65 Questions</span>
+                            <span>📊 100 Questions</span>
                         </div>
                         <button class="start-btn">
                             ${isCompleted ? 'Recertify' : 'Begin Assessment'}
@@ -77,9 +83,9 @@ window.ExamModule = {
 
         html += `
                 </div>
-                <div class="exam-info-box card mt-40">
-                    <h3>About Monthly Exams</h3>
-                    <p>These exams are designed to simulate official TOCFL B1 conditions. They test across 4 skills: Reading, Listening, Writing, and Grammatical Structure. A score of <strong>80%</strong> or higher is required for certification.</p>
+                <div class="exam-info-box card mt-40" style="background: var(--off-white); border: 1px solid var(--border);">
+                    <h3 style="color: var(--text)">About Monthly Exams</h3>
+                    <p style="color: var(--text-2)">These exams are designed to simulate official TOCFL B1 conditions. They test across 4 skills: Reading, Listening, Writing, and Grammatical Structure. A score of <strong>80%</strong> or higher is required for certification.</p>
                 </div>
             </div>
         `;
@@ -115,14 +121,14 @@ window.ExamModule = {
             this.renderExam();
         } catch (error) {
             console.error("Error starting exam:", error);
-            alert("Critical: Failed to load exam content. Please check your connection.");
+            alert("Critical: Failed to load exam content. Please check your data folder.");
         } finally {
             App.state.loading = false;
         }
     },
 
     /**
-     * Generate a massive comprehensive test
+     * Compile a 100-question massive comprehensive test
      */
     generateTest(def, bookData, playgroundData, charPlaygroundData) {
         const test = {
@@ -133,119 +139,103 @@ window.ExamModule = {
         const relevantChapters = bookData.filter(c => def.sources.books.chapters.includes(c.chapter));
         const relevantPG = playgroundData.filter(p => def.sources.playground.includes(p.id));
         
-        // Build vocab pool
+        // Build exhaustive vocab pool
         const vocabPool = [];
         relevantChapters.forEach(c => vocabPool.push(...c.vocab));
         this.state.sourceVocab = vocabPool;
 
-        // --- Section 1: Phonetic & Tone Mastery (10 Qs) ---
-        const tonePool = this.getRandom(vocabPool, 10);
-        const toneQs = tonePool.map((v, idx) => {
-            const correctPinyin = v.pinyin;
-            // Create distractors by changing tone or vowel
-            const distractors = [
-                correctPinyin.replace(/[āáǎà]/g, 'a').replace(/[ēéěè]/g, 'e'),
-                correctPinyin.replace(/1/g, '2').replace(/2/g, '3').replace(/3/g, '4') // Mock logic
-            ];
-            // Simple distractor generation for demo
-            const options = this.shuffle([correctPinyin, correctPinyin + " (distractor)", "pinyin mock"]); 
-            // Better: just pick random pinyin from pool
-            const randDistractors = this.getRandom(vocabPool.filter(x => x.pinyin !== correctPinyin), 3).map(x => x.pinyin);
-            
-            return {
-                id: `t_${idx}`,
-                type: 'tone',
-                question: `Select the correct Pinyin and Tone for: <span class="font-zh" style="font-size:2rem">「${v.hanzi}」</span>`,
-                options: this.shuffle([correctPinyin, ...randDistractors]),
-                answer: correctPinyin
-            };
-        });
-        test.sections.push({ title: "I. Phonetic & Tone Mastery", questions: toneQs });
+        // --- Section 1: Tone & Phonetic Analysis (20 Qs) ---
+        const toneQs = this.getRandom(vocabPool, 20).map((v, idx) => ({
+            id: `t_${idx}`,
+            type: 'tone',
+            question: `Identify correct tone for: <span class="font-zh" style="font-size:2.2rem">「${v.hanzi}」</span>`,
+            options: this.shuffle([v.pinyin, ...this.getRandom(vocabPool.filter(x => x.pinyin !== v.pinyin), 3).map(x => x.pinyin)]),
+            answer: v.pinyin
+        }));
+        test.sections.push({ title: "I. Phonetic & Tone Discrimination", questions: toneQs });
 
-        // --- Section 2: Vocabulary Depth (20 Qs) ---
-        const vPool = this.getRandom(vocabPool, 20);
-        const vocabQs = vPool.map((v, idx) => {
-            const isHanziToDef = idx % 2 === 0;
-            const distractors = this.getRandom(vocabPool.filter(x => x.hanzi !== v.hanzi), 3);
-            
+        // --- Section 2: Character ↔ Definition Match (30 Qs) ---
+        const vocabQs = this.getRandom(vocabPool, 30).map((v, idx) => {
+            const isReverse = idx % 2 === 0;
+            const pool = isReverse ? vocabPool.map(x => x.hanzi) : vocabPool.map(x => x.definition);
+            const distractors = this.getRandom(pool.filter(x => x !== (isReverse ? v.hanzi : v.definition)), 3);
             return {
                 id: `v_${idx}`,
                 type: 'vocab',
-                question: isHanziToDef ? 
-                    `Define this word: <span class="font-zh"><strong>${v.hanzi}</strong></span>` : 
-                    `Which word means: "<strong>${v.definition}</strong>"?`,
-                options: isHanziToDef ? 
-                    this.shuffle([v.definition, ...distractors.map(d => d.definition)]) : 
-                    this.shuffle([v.hanzi, ...distractors.map(d => d.hanzi)]),
-                answer: isHanziToDef ? v.definition : v.hanzi
+                question: isReverse ? `Select Hanzi for: "<strong>${v.definition}</strong>"` : `Define: <span class="font-zh" style="font-size:1.5rem">「${v.hanzi}」</span>`,
+                options: this.shuffle([(isReverse ? v.hanzi : v.definition), ...distractors]),
+                answer: (isReverse ? v.hanzi : v.definition)
             };
         });
-        test.sections.push({ title: "II. Vocabulary Expansion", questions: vocabQs });
+        test.sections.push({ title: "II. Vocabulary & Semantic Recall", questions: vocabQs });
 
-        // --- Section 3: Writing Proficiency (5 Qs) ---
-        const writingPool = this.getRandom(vocabPool.filter(v => v.hanzi.length === 1), 5);
-        const writingQs = writingPool.map((v, idx) => ({
+        // --- Section 3: Contextual Logic (10 Qs) ---
+        const dialoguePool = [];
+        relevantChapters.forEach(c => { if (c.dialogues) dialoguePool.push(...c.dialogues); });
+        const dialogueQs = this.getRandom(dialoguePool, 10).map((d, dIdx) => {
+            const line = this.getRandom(d.lines, 1)[0];
+            const distractors = this.getRandom(vocabPool.map(x => x.hanzi), 3);
+            return {
+                id: `d_${dIdx}`,
+                type: 'logic',
+                question: `Complete the conversation logically: <br><strong>A: </strong> (Previous context unavailable)<br><strong>B: </strong> ______`,
+                options: this.shuffle([line.zh, ...distractors]),
+                answer: line.zh
+            };
+        });
+        test.sections.push({ title: "III. Contextual Conversational Logic", questions: dialogueQs });
+
+        // --- Section 4: Particle & Grammar Mastery (20 Qs) ---
+        const grammarPool = [];
+        relevantChapters.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
+        const grammarQs = this.getRandom(grammarPool, 20).map((q, idx) => ({
+            id: `g_${idx}`,
+            type: 'grammar',
+            question: q.type === 'fill' ? `Complete correctly: <br><span class="font-zh" style="font-size:1.4rem">${q.sentence.replace('___', '______')}</span>` : q.question,
+            options: q.options || ['Correct', 'Wrong 1', 'Wrong 2', 'Wrong 3'],
+            answer: q.answer
+        }));
+        test.sections.push({ title: "IV. Syntactic Structure & Particles", questions: grammarQs });
+
+        // --- Section 5: Orthographic Writing (10 Qs) ---
+        const writingQs = this.getRandom(vocabPool.filter(v => v.hanzi.length === 1), 10).map((v, idx) => ({
             id: `w_${idx}`,
             type: 'writing',
             targetChar: v.hanzi,
-            question: `Write the character for <strong>${v.definition}</strong> (${v.pinyin}):`,
+            question: `Write character from memory: <strong>${v.definition}</strong>`,
             answer: v.hanzi
         }));
-        test.sections.push({ title: "III. Writing & Stroke Accuracy", questions: writingQs });
+        test.sections.push({ title: "V. Orthographic Writing Mastery", questions: writingQs });
 
-        // --- Section 4: Listening Analysis (2 Modules, 10 Qs) ---
-        const listenPool = [];
-        relevantPG.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPool.push(l.listening); }));
-        relevantChapters.forEach(c => { if (c.listening) listenPool.push(...c.listening); });
-
-        const selectedListen = this.getRandom(listenPool, 2);
-        selectedListen.forEach((l, idx) => {
-            const qs = l.questions.slice(0, 5).map((q, qIdx) => ({
-                id: `l_${idx}_${qIdx}`,
+        // --- Section 6: Auditory Comprehension (5 Qs) ---
+        const listenPassages = [];
+        relevantPG.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPassages.push(l.listening); }));
+        const selectedListen = this.getRandom(listenPassages, 1)[0];
+        if (selectedListen) {
+            const qs = selectedListen.questions.slice(0, 5).map((q, qIdx) => ({
+                id: `l_final_${qIdx}`,
                 type: 'listening',
                 question: q.q,
                 options: q.options,
                 answer: q.answer
             }));
-            test.sections.push({ 
-                title: `IV. Listening Analysis - Part ${idx+1}`, 
-                context: l.text, 
-                isAudio: true, 
-                questions: qs 
-            });
-        });
+            test.sections.push({ title: "VI. Auditory Comprehension", context: selectedListen.text, isAudio: true, questions: qs });
+        }
 
-        // --- Section 5: Reading Analysis (2 Modules, 10 Qs) ---
-        const readPool = [];
-        relevantChapters.forEach(c => { if (c.readings) readPool.push(...c.readings); });
-        
-        const selectedRead = this.getRandom(readPool, 2);
-        selectedRead.forEach((r, idx) => {
-            const qs = r.questions.slice(0, 5).map((q, qIdx) => ({
-                id: `r_${idx}_${qIdx}`,
+        // --- Section 7: Reading Proficiency (5 Qs) ---
+        const readPassages = [];
+        relevantChapters.forEach(c => { if (c.readings) readPassages.push(...c.readings); });
+        const selectedRead = this.getRandom(readPassages, 1)[0];
+        if (selectedRead) {
+            const qs = selectedRead.questions.slice(0, 5).map((q, qIdx) => ({
+                id: `r_final_${qIdx}`,
                 type: 'reading',
                 question: q.q,
                 options: q.options,
                 answer: q.answer
             }));
-            test.sections.push({ 
-                title: `V. Reading Comprehension - Part ${idx+1}`, 
-                context: r.text, 
-                questions: qs 
-            });
-        });
-
-        // --- Section 6: Structural Mastery (10 Qs) ---
-        const quizPool = [];
-        relevantChapters.forEach(c => { if (c.quizzes) quizPool.push(...c.quizzes); });
-        const grammarQs = this.getRandom(quizPool, 10).map((q, idx) => ({
-            id: `g_${idx}`,
-            type: 'grammar',
-            question: q.type === 'fill' ? `Complete the sentence: <br><span class="font-zh">${q.sentence.replace('___', '______')}</span>` : q.question,
-            options: q.options || [],
-            answer: q.answer
-        }));
-        test.sections.push({ title: "VI. Grammatical Structure", questions: grammarQs });
+            test.sections.push({ title: "VII. Reading Proficiency", context: selectedRead.text, questions: qs });
+        }
 
         this.state.generatedTest = test;
     },
@@ -261,18 +251,18 @@ window.ExamModule = {
         this.state.generatedTest.sections.forEach(s => totalQuestions += s.questions.length);
 
         let html = `
-            <div class="exam-app-container">
+            <div class="exam-app-container" style="background: var(--bg);">
                 <!-- Exam Sticky Header -->
-                <header class="exam-top-nav">
+                <header class="exam-top-nav" style="background: var(--card-bg); border-bottom: 2px solid var(--accent);">
                     <div class="etn-left">
-                        <button class="exit-btn" onclick="ExamModule.confirmExit()">EXIT</button>
+                        <button class="exit-btn" onclick="ExamModule.confirmExit()" style="background: var(--off-white); color: var(--text);">EXIT</button>
                         <div class="exam-title-group">
                             <span class="exam-label">B1 CERTIFICATION</span>
-                            <h2>${this.state.generatedTest.title}</h2>
+                            <h2 style="color: var(--text)">${this.state.generatedTest.title}</h2>
                         </div>
                     </div>
                     <div class="etn-center">
-                        <div class="pinyin-toggle-box">
+                        <div class="pinyin-toggle-box" style="color: var(--text)">
                             <label class="toggle">
                                 <input type="checkbox" id="global-pinyin-toggle" onchange="ExamModule.togglePinyin(this.checked)">
                                 <span class="toggle-slider"></span>
@@ -282,10 +272,10 @@ window.ExamModule = {
                     </div>
                     <div class="etn-right">
                         <div class="exam-progress-stats">
-                            <div class="prog-bar-container">
+                            <div class="prog-bar-container" style="background: var(--border);">
                                 <div class="prog-bar-fill" id="exam-prog-fill" style="width: 0%"></div>
                             </div>
-                            <span id="exam-prog-text">0 / ${totalQuestions}</span>
+                            <span id="exam-prog-text" style="color: var(--text-3)">0 / ${totalQuestions}</span>
                         </div>
                     </div>
                 </header>
@@ -298,20 +288,20 @@ window.ExamModule = {
                 <section class="exam-mega-section">
                     <div class="ems-header">
                         <span class="ems-num">${sIdx + 1}</span>
-                        <h3>${section.title}</h3>
+                        <h3 style="color: var(--text)">${section.title}</h3>
                     </div>
                     
                     ${section.context ? `
-                        <div class="ems-context card shadow-sm">
+                        <div class="ems-context card shadow-sm" style="background: var(--card-bg); border-left: 8px solid var(--accent);">
                             ${section.isAudio ? `
                                 <div class="audio-instruction">
                                     <button class="btn btn-primary audio-play-btn" onclick="ExamModule.playText(\`${section.context.replace(/'/g, "\\'")}\`)">
                                         🔊 PLAY AUDIO PASSAGE
                                     </button>
-                                    <p>Listen to the passage carefully before answering the questions below.</p>
+                                    <p style="color: var(--text-2); margin-top: 16px;">Listen to the passage carefully before answering the questions below.</p>
                                 </div>
                             ` : `
-                                <div class="reading-passage font-zh">
+                                <div class="reading-passage font-zh" style="color: var(--text)">
                                     ${this.annotateText(section.context)}
                                 </div>
                             `}
@@ -323,13 +313,13 @@ window.ExamModule = {
 
             section.questions.forEach((q) => {
                 html += `
-                    <div class="exam-question-item card" id="q-item-${q.id}">
+                    <div class="exam-question-item card" id="q-item-${q.id}" style="background: var(--card-bg); border: 1px solid var(--border);">
                         <div class="eq-body">
-                            <p class="eq-text">${this.annotateText(q.question)}</p>
+                            <p class="eq-text" style="color: var(--text)">${this.annotateText(q.question)}</p>
                             
                             ${q.type === 'writing' ? `
                                 <div class="writing-task">
-                                    <div class="writing-canvas-box">
+                                    <div class="writing-canvas-box" style="background: white; border: 2px dashed var(--border);">
                                         <div id="writing-hanzi-${q.id}" class="canvas-writer"></div>
                                         <canvas id="writing-canvas-${q.id}" class="canvas-freehand"></canvas>
                                     </div>
@@ -341,7 +331,7 @@ window.ExamModule = {
                             ` : `
                                 <div class="options-grid-premium">
                                     ${q.options.map(opt => `
-                                        <button class="eq-option" onclick="ExamModule.answerQuestion(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}', '${q.id}')">
+                                        <button class="eq-option" style="background: var(--card-bg); border: 2px solid var(--border); color: var(--text);" onclick="ExamModule.answerQuestion(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}', '${q.id}')">
                                             ${this.annotateText(opt)}
                                         </button>
                                     `).join('')}
@@ -357,7 +347,7 @@ window.ExamModule = {
 
         html += `
                 </div>
-                <footer class="exam-footer">
+                <footer class="exam-footer" style="background: var(--card-bg); border-top: 1px solid var(--border);">
                     <button class="btn btn-success btn-huge" onclick="ExamModule.submitFinal()">SUBMIT COMPLETED EXAM</button>
                 </footer>
             </div>
@@ -384,18 +374,15 @@ window.ExamModule = {
      */
     annotateText(text) {
         if (!text) return '';
-        // Simple regex to find Chinese characters
         const regex = /[\u4e00-\u9fa5]+/g;
         
         return text.replace(regex, (match) => {
             const charData = App.state.characters.find(c => c.hanzi === match || c.traditional === match);
             const pinyin = charData ? charData.pinyin : '';
-            
-            // "Complex" logic: if it's not a common character or if showPinyin is on
             const isComplex = charData && (charData.frequency_rank > 500 || this.state.showPinyin);
             
             if (isComplex && pinyin) {
-                return `<ruby>${match}<rt class="exam-rt ${this.state.showPinyin ? 'show' : ''}">${pinyin}</rt></ruby>`;
+                return `<ruby>${match}<rt class="exam-rt ${this.state.showPinyin ? 'show' : ''}" style="color: var(--accent)">${pinyin}</rt></ruby>`;
             }
             return match;
         });
@@ -409,7 +396,9 @@ window.ExamModule = {
     },
 
     playText(text) {
-        window.TTS.speak(text, 'zh-TW', 0.75);
+        if (typeof TTS !== 'undefined') {
+            TTS.speak(text, 'zh-TW', 0.75);
+        }
     },
 
     answerQuestion(btn, selected, correct, qId) {
@@ -434,8 +423,7 @@ window.ExamModule = {
 
     markWritingDone(id) {
         if (this.state.userAnswers[id]) return;
-        this.state.userAnswers[id] = { isCorrect: true }; // Assume correct for now as auto-grading writing is hard
-        alert("Writing saved for evaluation.");
+        this.state.userAnswers[id] = { isCorrect: true }; 
         this.updateProgress();
     },
 
@@ -445,8 +433,10 @@ window.ExamModule = {
         this.state.generatedTest.sections.forEach(s => total += s.questions.length);
         
         const percent = (answered / total) * 100;
-        document.getElementById('exam-prog-fill').style.width = `${percent}%`;
-        document.getElementById('exam-prog-text').textContent = `${answered} / ${total}`;
+        const fill = document.getElementById('exam-prog-fill');
+        const text = document.getElementById('exam-prog-text');
+        if (fill) fill.style.width = `${percent}%`;
+        if (text) text.textContent = `${answered} / ${total}`;
     },
 
     confirmExit() {
@@ -458,10 +448,17 @@ window.ExamModule = {
     submitFinal() {
         let total = 0;
         this.state.generatedTest.sections.forEach(s => total += s.questions.length);
+        let answered = Object.keys(this.state.userAnswers).length;
+
+        if (answered < total) {
+            if (!confirm(`You have only answered ${answered} out of ${total} questions. Submit anyway?`)) return;
+        }
+
         let correct = Object.values(this.state.userAnswers).filter(a => a.isCorrect).length;
         const score = Math.round((correct / total) * 100);
         
         if (score >= 80) {
+            if (!App.state.progress.exams) App.state.progress.exams = {};
             App.state.progress.exams[this.state.currentMonth] = true;
             App.saveProgress();
             this.showResult(score, true);
@@ -474,20 +471,20 @@ window.ExamModule = {
         const modal = document.createElement('div');
         modal.className = 'exam-result-overlay';
         modal.innerHTML = `
-            <div class="exam-result-card ${passed ? 'pass' : 'fail'}">
+            <div class="exam-result-card ${passed ? 'pass' : 'fail'}" style="background: var(--card-bg); border: 2px solid ${passed ? '#27ae60' : '#e74c3c'};">
                 <div class="result-badge">${passed ? '🏅' : '📚'}</div>
-                <h2>${passed ? 'CERTIFICATION GRANTED' : 'CERTIFICATION DENIED'}</h2>
+                <h2 style="color: var(--text)">${passed ? 'CERTIFICATION GRANTED' : 'CERTIFICATION DENIED'}</h2>
                 <div class="score-grid">
                     <div class="score-item">
-                        <span class="sv">${score}%</span>
-                        <span class="sl">YOUR SCORE</span>
+                        <span class="sv" style="color: var(--text)">${score}%</span>
+                        <span class="sl" style="color: var(--text-3)">YOUR SCORE</span>
                     </div>
                     <div class="score-item">
-                        <span class="sv">80%</span>
-                        <span class="sl">REQUIRED</span>
+                        <span class="sv" style="color: var(--text)">80%</span>
+                        <span class="sl" style="color: var(--text-3)">REQUIRED</span>
                     </div>
                 </div>
-                <p class="result-msg">${passed ? 'Outstanding. You have officially demonstrated B1 level proficiency for this milestone.' : 'You are close. Review your weak characters and retake the exam to receive your certification.'}</p>
+                <p class="result-msg" style="color: var(--text-2)">${passed ? 'Outstanding. You have officially demonstrated B1 level proficiency for this milestone.' : 'You are close. Review your study materials and retake the exam to receive your certification.'}</p>
                 <button class="btn btn-primary btn-lg" onclick="this.closest('.exam-result-overlay').remove(); ExamModule.renderHub(document.getElementById('page-content'))">RETURN TO HUB</button>
             </div>
         `;
@@ -508,24 +505,22 @@ window.ExamModule = {
         const style = document.createElement('style');
         style.id = 'exam-pro-styles';
         style.textContent = `
-            .exam-app-container { background: #f8f9fa; min-height: 100vh; padding-bottom: 120px; }
+            .exam-app-container { min-height: 100vh; padding-bottom: 120px; }
             .exam-top-nav { 
-                position: sticky; top: 0; background: white; z-index: 1000; 
+                position: sticky; top: 0; z-index: 1000; 
                 display: flex; justify-content: space-between; align-items: center;
-                padding: 15px 40px; border-bottom: 2px solid var(--accent);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                padding: 15px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             }
             .etn-left { display: flex; align-items: center; gap: 30px; }
-            .exit-btn { background: #eee; border: none; padding: 10px 20px; font-weight: 800; cursor: pointer; border-radius: 5px; }
+            .exit-btn { border: none; padding: 10px 20px; font-weight: 800; cursor: pointer; border-radius: 5px; }
             .exam-title-group h2 { margin: 0; font-size: 1.2rem; }
             .exam-label { font-size: 0.7rem; font-weight: 900; color: var(--accent); letter-spacing: 2px; }
             
             .pinyin-toggle-box { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 0.8rem; }
             
             .exam-progress-stats { min-width: 200px; }
-            .prog-bar-container { height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 5px; }
-            .prog-bar-fill { height: 100%; background: var(--tone2); transition: width 0.3s; }
-            #exam-prog-text { font-size: 0.8rem; font-weight: 700; color: var(--text-3); }
+            .prog-bar-container { height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 5px; }
+            .prog-bar-fill { height: 100%; background: #27ae60; transition: width 0.3s; }
 
             .exam-main-body { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
             .exam-mega-section { margin-bottom: 80px; }
@@ -533,8 +528,8 @@ window.ExamModule = {
             .ems-num { width: 40px; height: 40px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; font-size: 1.2rem; }
             .ems-header h3 { font-size: 1.8rem; font-family: var(--font-zh); border-bottom: 4px solid var(--accent); }
 
-            .ems-context { padding: 40px; background: white; margin-bottom: 40px; border-left: 8px solid var(--accent); }
-            .reading-passage { font-size: 1.4rem; line-height: 2.2; color: var(--text); }
+            .ems-context { padding: 40px; margin-bottom: 40px; }
+            .reading-passage { font-size: 1.4rem; line-height: 2.2; }
             
             .exam-rt { display: none; color: var(--accent); font-weight: 600; font-size: 0.8rem; }
             .exam-rt.show { display: block; }
@@ -544,23 +539,23 @@ window.ExamModule = {
             
             .options-grid-premium { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
             .eq-option { 
-                padding: 20px; border: 2px solid #eee; background: #fff; border-radius: 12px;
+                padding: 20px; border-radius: 12px;
                 text-align: left; cursor: pointer; transition: all 0.2s; font-size: 1.1rem;
             }
-            .eq-option:hover:not(:disabled) { border-color: var(--accent); background: #fff8f8; }
-            .eq-option.correct { background: #e6fffa; border-color: #38b2ac; color: #234e52; font-weight: 800; }
-            .eq-option.incorrect { background: #fff5f5; border-color: #f56565; color: #742a2a; }
+            .eq-option:hover:not(:disabled) { border-color: var(--accent); opacity: 0.8; }
+            .eq-option.correct { background: #e6fffa !important; border-color: #38b2ac !important; color: #234e52 !important; font-weight: 800; }
+            .eq-option.incorrect { background: #fff5f5 !important; border-color: #f56565 !important; color: #742a2a !important; }
 
             .writing-canvas-box { 
-                width: 300px; height: 300px; background: #fff; border: 2px dashed #ccc; 
+                width: 300px; height: 300px; 
                 margin: 0 auto 20px; position: relative; 
             }
             .canvas-writer, .canvas-freehand { position: absolute; inset: 0; width: 100%; height: 100%; }
             .canvas-controls { text-align: center; display: flex; justify-content: center; gap: 10px; }
 
             .exam-footer { 
-                position: fixed; bottom: 0; left: 0; right: 0; background: white;
-                padding: 25px; border-top: 1px solid #ddd; text-align: center;
+                position: fixed; bottom: 0; left: 0; right: 0; 
+                padding: 25px; text-align: center;
                 box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
             }
             .btn-huge { padding: 20px 80px; font-size: 1.5rem; font-weight: 900; border-radius: 40px; }
@@ -568,7 +563,10 @@ window.ExamModule = {
             .score-grid { display: flex; justify-content: center; gap: 40px; margin: 30px 0; }
             .score-item { text-align: center; }
             .score-item .sv { font-size: 3.5rem; font-weight: 900; display: block; }
-            .score-item .sl { font-size: 0.8rem; font-weight: 800; color: #888; letter-spacing: 1px; }
+            .score-item .sl { font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; }
+
+            .exam-result-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+            .exam-result-card { max-width: 500px; width: 100%; padding: 40px; border-radius: 20px; text-align: center; }
 
             @media (max-width: 768px) {
                 .options-grid-premium { grid-template-columns: 1fr; }

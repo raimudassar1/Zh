@@ -27,7 +27,7 @@ window.PlaygroundModule = (() => {
     }
     if (!currentRadicalData) {
       try {
-        const res = await fetch('traditional_chinese_radicals_120_learning_set.json');
+        const res = await fetch('data/radicals_set.json');
         const json = await res.json();
         currentRadicalData = json.radicals;
       } catch (e) {
@@ -595,41 +595,37 @@ window.PlaygroundModule = (() => {
   }
 
   function renderBlocksTab() {
-    if (!currentCharData || !currentCharData.length) return '<div class="spinner"></div>';
+    if (!currentRadicalData || !currentRadicalData.length) return '<div class="spinner"></div>';
     
-    // Group blocks by "phase" (using ID or index as proxy)
-    // Block 1-3 = Phase 1, 4-6 = Phase 2, 7-8 = Phase 3
     const phases = [
-      { id: 1, title: 'Phase 1: Novice (Weeks 1-8)', color: '#3498db', range: [1, 3] },
-      { id: 2, title: 'Phase 2: A1 Mastery (Weeks 9-16)', color: '#2ecc71', range: [4, 6] },
-      { id: 3, title: 'Phase 3: A2/B1 Bridge (Weeks 17-24)', color: '#e67e22', range: [7, 8] }
+      { id: 1, title: 'Phase 1: Novice (Essential 40)', color: '#3498db' },
+      { id: 2, title: 'Phase 2: A1 Mastery (Intermediate 40)', color: '#2ecc71' },
+      { id: 3, title: 'Phase 3: A2/B1 Bridge (Advanced 40)', color: '#e67e22' }
     ];
 
     return `
       <div class="cp-phases">
         ${phases.map(p => {
-          const blocks = currentCharData.filter(block => {
-            const num = parseInt(block.id.replace('cpg', ''));
-            return num >= p.range[0] && num <= p.range[1];
-          });
-          if (!blocks.length) return '';
+          const radicals = currentRadicalData.filter(r => r.phase === p.id);
+          if (!radicals.length) return '';
 
           return `
             <div class="cp-phase-section mb-40">
               <h3 class="mb-20" style="border-left: 4px solid ${p.color}; padding-left: 12px; color: var(--text);">${p.title}</h3>
               <div class="cp-blocks-grid">
-                ${blocks.map(block => `
-                  <div class="cp-block-card" style="background: white;" onclick="window.PlaygroundModule.openBlockLessons('${block.id}')">
-                    <div class="cp-block-header" style="background:${block.color || p.color}">
-                      <div class="cp-block-icon" style="font-size: 2.5rem; color: white !important;">${block.icon || '🧩'}</div>
+                ${radicals.map(rad => `
+                  <div class="cp-block-card" style="background: var(--card-bg); border: 1px solid var(--border);" onclick="window.PlaygroundModule.openRadicalDetail('${rad.id}')">
+                    <div class="cp-block-header" style="background:${p.color}">
+                      <div class="cp-block-icon" style="font-size: 2.5rem; color: white !important;">${rad.component}</div>
                     </div>
                     <div class="cp-block-body">
-                      <h3 style="margin-bottom:4px; font-weight:800; color: var(--text)">${block.title}</h3>
-                      <p style="font-size:0.85rem; line-height:1.4; color:var(--text-3); height: 3em; overflow: hidden;">${block.subtitle}</p>
+                      <h3 style="margin-bottom:4px; font-weight:800; color: var(--text)">${rad.coreMeaning}</h3>
+                      <div class="text-zh" style="color:var(--accent); font-weight:700; margin-bottom:12px">${rad.pinyin}</div>
+                      <p style="font-size:0.85rem; line-height:1.4; color:var(--text-3); height: 3em; overflow: hidden;">${rad.learningRole}</p>
                     </div>
-                    <div class="cp-block-footer">
-                      <span style="color: var(--text-2)">${block.lessons.length} Radicals</span>
-                      <span class="color-accent" style="font-weight:800">EXPLORE →</span>
+                    <div class="cp-block-footer" style="border-top: 1px solid var(--border)">
+                      <span style="color: var(--text-2)">${rad.examples.length} Examples</span>
+                      <span class="color-accent" style="font-weight:800">TEACH →</span>
                     </div>
                   </div>
                 `).join('')}
