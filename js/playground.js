@@ -9,8 +9,11 @@ window.PlaygroundModule = (() => {
   let currentBookData = null;
   let currentCharData = null;
   let currentRadicalData = null;
+  let currentPlaygroundData = null;
   let currentBookId = 1;
   let currentChapterId = null;
+  let currentLesson = null;
+  let currentStep = 0;
 
   async function init() {
     if (!currentCharData) {
@@ -32,6 +35,15 @@ window.PlaygroundModule = (() => {
         currentRadicalData = [];
       }
     }
+    if (!currentPlaygroundData) {
+      try {
+        const res = await fetch('data/playground_content.json');
+        currentPlaygroundData = await res.json();
+      } catch (e) {
+        console.error("Failed to load playground content", e);
+        currentPlaygroundData = [];
+      }
+    }
   }
 
   async function loadBook(bookId) {
@@ -45,46 +57,241 @@ window.PlaygroundModule = (() => {
     }
   }
 
-  // ── Main Entry (Book Selection) ──────────────────────────────────────────
+  // ── Main Entry (Path & Books) ──────────────────────────────────────────
 
   async function render(container) {
     await init();
+    
+    // Check if user has selected a view (default to path)
+    const view = App.state._pgView || 'path';
+
+    if (view === 'books') {
+      return renderBooksView(container);
+    }
+
+    // Group playground groups by stage
+    const stages = [
+      { id: 'start-here', title: '🟢 Start Here', color: '#27ae60', desc: 'Survival Mandarin for your first weeks in Taiwan.' },
+      { id: 'daily-life', title: '🔵 Daily Life', color: '#2980b9', desc: 'Navigating transport, food, and errands.' },
+      { id: 'people-places', title: '🟣 People & Places', color: '#8e44ad', desc: 'Talking about yourself and exploring Taiwan.' },
+      { id: 'work-study', title: '🟠 Work & Study', color: '#f39c12', desc: 'Office etiquette and educational terms.' },
+      { id: 'social', title: '🔴 Social Communication', color: '#c0392b', desc: 'Making friends and deeper conversations.' },
+      { id: 'grammar-review', title: '⚪ Grammar & Review', color: '#7f8c8d', desc: 'Polishing your structure and foundations.' }
+    ];
+
     container.innerHTML = `
       <div class="page-header">
-        <h2>A Course in Contemporary Chinese</h2>
-        <p>A comprehensive 3-volume curriculum for mastering Mandarin in Taiwan.</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+          <div>
+            <h2>Beginner Learning Path</h2>
+            <p>A structured journey from Absolute Beginner to Survival Mandarin.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.switchView('books')">Switch to CCC Books →</button>
+        </div>
       </div>
       
-      <div class="pg-stages">
-        <div class="pg-grid">
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(1)">
-            <div class="pg-card-icon">📘</div>
+      <div class="pg-stages-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        ${stages.map(stage => {
+          const items = currentPlaygroundData.filter(pg => pg.stage === stage.id);
+          if (!items.length) return '';
+          return `
+            <div class="pg-stage-section mb-60">
+              <div class="mb-24" style="border-left: 6px solid ${stage.color}; padding-left: 20px;">
+                <h3 class="stage-title" style="font-size: 1.8rem; margin-bottom: 4px;">${stage.title}</h3>
+                <p class="text-muted" style="font-size: 1rem;">${stage.desc}</p>
+              </div>
+              <div class="pg-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+                ${items.map(pg => {
+                  const isDone = App.state.progress.playground?.[pg.id];
+                  return `
+                    <div class="pg-card ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.openPlaygroundGroup('${pg.id}')" style="cursor: pointer; position: relative;">
+                      <div class="pg-card-icon" style="background:${stage.color}15; color:${stage.color}; font-size: 2rem; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-bottom: 20px;">📖</div>
+                      <div class="pg-card-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                          <div class="pg-card-meta" style="font-size: 0.75rem; font-weight: 800; color: ${stage.color}; letter-spacing: 1px;">WEEK ${pg.recommended_week || '?'}</div>
+                          ${isDone ? '<span style="color: #27ae60; font-weight: 900;">✓</span>' : ''}
+                        </div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">${pg.title}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">${pg.subtitle}</p>
+                        <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">${pg.lessons.length} Practice Sets</div>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  function switchView(view) {
+    App.state._pgView = view;
+    render(document.getElementById('page-content'));
+  }
+
+  function renderBooksView(container) {
+    container.innerHTML = `
+      <div class="page-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
+          <div>
+            <h2>Comprehensive Curriculum</h2>
+            <p>A full 3-volume series "A Course in Contemporary Chinese" for academic mastery.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="window.PlaygroundModule.switchView('path')">Switch to Learning Path →</button>
+        </div>
+      </div>
+      
+      <div class="pg-stages" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="pg-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(1)" style="cursor: pointer;">
+            <div class="pg-card-icon" style="font-size: 3rem; margin-bottom: 20px;">📘</div>
             <div class="pg-card-content">
-              <h3>Book 1: Foundations</h3>
-              <p>Survival greetings, family, shopping, and arrival in Taiwan.</p>
-              <div class="pg-lesson-count">15 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 1: Foundations</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Survival greetings, family, shopping, and arrival in Taiwan.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">15 Chapters</div>
             </div>
           </div>
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(2)">
-            <div class="pg-card-icon">📗</div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(2)" style="cursor: pointer;">
+            <div class="pg-card-icon" style="font-size: 3rem; margin-bottom: 20px;">📗</div>
             <div class="pg-card-content">
-              <h3>Book 2: Daily Life</h3>
-              <p>Directions, transportation, work, and local customs.</p>
-              <div class="pg-lesson-count">15 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 2: Daily Life</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Directions, transportation, work, and local customs.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">15 Chapters</div>
             </div>
           </div>
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(3)">
-            <div class="pg-card-icon">📙</div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(3)" style="cursor: pointer;">
+            <div class="pg-card-icon" style="font-size: 3rem; margin-bottom: 20px;">📙</div>
             <div class="pg-card-content">
-              <h3>Book 3: Advanced Social</h3>
-              <p>Culture, trends, society, and professional fluency.</p>
-              <div class="pg-lesson-count">12 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 3: Advanced Social</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Culture, trends, society, and professional fluency.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">12 Chapters</div>
             </div>
           </div>
         </div>
       </div>
     `;
   }
+
+  // ── Playground Learning Path Actions ──────────────────────────────────
+
+  function openPlaygroundGroup(id) {
+    const pg = currentPlaygroundData.find(p => p.id === id);
+    if (!pg) return;
+
+    const container = document.getElementById('page-content');
+    container.innerHTML = `
+      <div class="page-header">
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.render(document.getElementById('page-content'))">← Back to Path</button>
+        <h2>${pg.title}</h2>
+        <p>${pg.subtitle}</p>
+      </div>
+      
+      <div class="pg-lessons-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
+        ${pg.lessons.map((lesson, idx) => {
+          const isDone = App.state.progress.playground_lessons?.[lesson.id];
+          return `
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto; flex-direction:column; align-items:flex-start; padding:24px; cursor: pointer;" onclick="window.PlaygroundModule.startPlaygroundLesson('${pg.id}', '${lesson.id}')">
+              <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:16px">
+                <div class="pg-lesson-num" style="background:${isDone?'var(--tone2)':'var(--accent)'}">${isDone ? '✓' : idx + 1}</div>
+                <div class="pg-lesson-status" style="font-size:0.75rem; font-weight:800; letter-spacing:1px; color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
+              </div>
+              <div class="pg-lesson-info">
+                <h4 style="font-size:1.2rem; margin-bottom:6px; font-weight:800">${lesson.title}</h4>
+                <p style="font-size:0.9rem; line-height:1.5; color:var(--text-2)">Practice real-world dialogue and key vocabulary.</p>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+    window.scrollTo(0,0);
+  }
+
+  function startPlaygroundLesson(pgId, lessonId) {
+    const pg = currentPlaygroundData.find(p => p.id === pgId);
+    if (!pg) return;
+    const lesson = pg.lessons.find(l => l.id === lessonId);
+    if (!lesson) return;
+
+    const container = document.getElementById('page-content');
+    
+    // Section 1: Vocabulary
+    let vocabHTML = lesson.vocab && lesson.vocab.length ? `
+      <section class="lesson-section">
+        <h3 class="section-title">Essential Vocabulary</h3>
+        <div class="vocab-grid-premium">
+          ${lesson.vocab.map(v => `
+            <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
+              <div class="v-hanzi">${v.hanzi}</div>
+              <div class="v-pinyin">${v.pinyin || ''}</div>
+              <div class="v-def">${v.definition}</div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    ` : '';
+
+    // Section 2: Dialogue
+    let dialogueHTML = lesson.dialogue && lesson.dialogue.length ? `
+      <section class="lesson-section">
+        <h3 class="section-title">Real-World Dialogue</h3>
+        <div class="dialogue-block-premium shadow-sm">
+          <div style="display:flex; flex-direction:column; gap:8px">
+            ${lesson.dialogue.map(line => `
+              <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer">
+                <div class="line-speaker-badge">${line.speaker}</div>
+                <div style="flex:1">
+                  <div class="font-zh" style="font-size:1.5rem; font-weight:800; margin-bottom:4px">${line.zh}</div>
+                  <div class="text-muted" style="font-size:0.95rem; font-weight:600; color:var(--accent)">${line.pinyin}</div>
+                  <div class="color-text-2" style="font-size:0.9rem; margin-top:4px">${line.en}</div>
+                </div>
+                <div style="font-size:1.2rem; opacity:0.3">🔊</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    ` : '';
+
+    container.innerHTML = `
+      <div class="lesson-page-header shadow-lg" style="background: var(--charcoal); min-height: 250px; padding: 60px 20px;">
+        <button class="btn btn-ghost btn-sm" style="position:absolute; top:30px; left:30px; color:white; border-color:rgba(255,255,255,0.4);" onclick="window.PlaygroundModule.openPlaygroundGroup('${pgId}')">← BACK TO LESSONS</button>
+        <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:4px; margin-bottom:12px; opacity:0.7; font-weight:700">${pg.title.toUpperCase()}</div>
+        <h2 style="font-size:2.5rem; color: white;">${lesson.title}</h2>
+      </div>
+
+      <div class="lesson-container" style="max-width:1000px; margin:0 auto; padding: 40px 20px;">
+        ${vocabHTML}
+        ${dialogueHTML}
+
+        <div class="text-center mt-60 mb-100">
+           <button class="btn btn-success btn-lg" style="padding: 24px 60px; font-size: 1.4rem; border-radius: 50px;" onclick="window.PlaygroundModule.markLessonComplete('${pgId}', '${lessonId}')">Finish Lesson ✓</button>
+        </div>
+      </div>
+    `;
+    window.scrollTo(0,0);
+  }
+
+  function markLessonComplete(pgId, lessonId) {
+    if (!App.state.progress.playground_lessons) App.state.progress.playground_lessons = {};
+    App.state.progress.playground_lessons[lessonId] = true;
+    
+    // Check if group is complete
+    const pg = currentPlaygroundData.find(p => p.id === pgId);
+    const allDone = pg.lessons.every(l => App.state.progress.playground_lessons[l.id]);
+    if (allDone) {
+      if (!App.state.progress.playground) App.state.progress.playground = {};
+      App.state.progress.playground[pgId] = true;
+      App.logActivity('🏆', `Mastered Playground Chapter: ${pg.title}`);
+    }
+
+    App.saveProgress();
+    openPlaygroundGroup(pgId);
+  }
+
+  // ── CCC Course Actions ───────────────────────────────────────────────────
 
   async function openBook(bookId) {
     await loadBook(bookId);
@@ -98,7 +305,7 @@ window.PlaygroundModule = (() => {
 
     container.innerHTML = `
       <div class="page-header">
-        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.render(document.getElementById('page-content'))">← Back to Books</button>
+        <button class="btn btn-ghost btn-sm mb-12" onclick="window.PlaygroundModule.switchView('books')">← Back to Books</button>
         <h2>${bookTitles[bookId]}</h2>
         <p>Select a chapter to begin your deep-dive practice.</p>
       </div>
@@ -107,7 +314,7 @@ window.PlaygroundModule = (() => {
         ${currentBookData.map((ch, idx) => {
           const isDone = App.state.progress.ccc_course?.[ch.id];
           return `
-            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto; flex-direction:column; align-items:flex-start; padding:24px" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto; flex-direction:column; align-items:flex-start; padding:24px; cursor: pointer;" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
               <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:16px">
                 <div class="pg-lesson-num" style="background:${isDone?'var(--tone2)':'var(--accent)'}">${isDone ? '✓' : ch.chapter}</div>
                 <div class="pg-lesson-status" style="font-size:0.75rem; font-weight:800; letter-spacing:1px; color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
@@ -121,6 +328,7 @@ window.PlaygroundModule = (() => {
         }).join('')}
       </div>
     `;
+    window.scrollTo(0,0);
   }
 
   async function startChapter(chId) {
@@ -413,6 +621,21 @@ window.PlaygroundModule = (() => {
     const rad = currentRadicalData.find(r => r.id === id);
     if (!rad) return;
 
+    // Find corresponding lesson in currentCharData
+    let lessonLink = null;
+    if (currentCharData) {
+      for (const block of currentCharData) {
+        const lesson = block.lessons.find(l => 
+          l.radical === rad.component || 
+          (rad.altForms && rad.altForms.includes(l.radical))
+        );
+        if (lesson) {
+          lessonLink = { blockId: block.id, lessonId: lesson.id };
+          break;
+        }
+      }
+    }
+
     const container = document.getElementById('page-content');
     container.innerHTML = `
       <div class="lesson-page-header" style="background: linear-gradient(135deg, var(--accent), var(--accent-hover));">
@@ -457,7 +680,11 @@ window.PlaygroundModule = (() => {
         </div>
 
         <div class="text-center mt-60 mb-100">
-           <button class="btn btn-primary btn-lg" style="padding: 24px 60px; font-size: 1.4rem; border-radius: 50px;" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Mastered this Radical ✓</button>
+           ${lessonLink ? `
+             <button class="btn btn-primary btn-lg" style="padding: 24px 60px; font-size: 1.4rem; border-radius: 50px;" onclick="window.PlaygroundModule.startRadicalLesson('${lessonLink.blockId}', '${lessonLink.lessonId}')">Start Interactive Lesson →</button>
+           ` : `
+             <button class="btn btn-primary btn-lg" style="padding: 24px 60px; font-size: 1.4rem; border-radius: 50px;" onclick="window.PlaygroundModule.renderCharPlayground(document.getElementById('page-content'))">Mastered this Radical ✓</button>
+           `}
         </div>
       </div>
     `;
@@ -791,7 +1018,6 @@ window.PlaygroundModule = (() => {
     decompose,
     showCombinations,
     switchCPTab,
-    openRadicalBlock,
     openRadicalDetail,
     startRadicalLesson,
     nextRadicalStep,
@@ -799,6 +1025,10 @@ window.PlaygroundModule = (() => {
     verifySpot,
     checkRadicalAnswer,
     cpGameSelect,
-    cpGameCheck
+    cpGameCheck,
+    switchView,
+    openPlaygroundGroup,
+    startPlaygroundLesson,
+    markLessonComplete
   };
 })();
