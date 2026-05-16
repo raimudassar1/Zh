@@ -47,54 +47,92 @@ window.ExamModule = {
         this.state.currentMonth = null;
         
         const levels = [
-            { id: 'novice', title: '🟢 Novice Level', desc: 'Laying the foundation (Month 1-3)' },
-            { id: 'a1',     title: '🔵 A1 Mastery',  desc: 'Daily life & social survival (Month 4-6)' },
-            { id: 'a2',     title: '🟣 A2 Proficiency', desc: 'Fluent interaction & professional basics (Month 7-9)' },
-            { id: 'b1',     title: '🔴 B1 Independent', desc: 'Complex discussion & academic bridge (Month 10-12)' }
+            { id: 'novice', title: 'Novice Level', subtitle: 'A1.1', desc: 'Laying the foundation', icon: '🌱', color: '#10b981' },
+            { id: 'a1',     title: 'A1 Mastery', subtitle: 'A1.2', desc: 'Daily life & social survival', icon: '🗣️', color: '#3b82f6' },
+            { id: 'a2',     title: 'A2 Proficiency', subtitle: 'A2', desc: 'Fluent interaction & professional basics', icon: '🚀', color: '#8b5cf6' },
+            { id: 'b1',     title: 'B1 Independent', subtitle: 'B1', desc: 'Complex discussion & academic bridge', icon: '👑', color: '#6366f1' }
         ];
 
+        // Calculate overall progress
+        const completedExams = Object.keys(App.state.progress.exams || {}).filter(k => App.state.progress.exams[k]).length;
+        const totalExams = this.state.examData.length;
+        const progressPct = Math.round((completedExams / totalExams) * 100) || 0;
+
         let html = `
-            <div class="exam-hub">
-                <header class="hub-header">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">🎓</div>
-                    <h1 style="color: var(--text)">Certification Center</h1>
-                    <p style="color: var(--text-2)">Official proficiency milestones from Novice to TOCFL B1.</p>
-                </header>
-                
-                <div class="levels-container">
+            <div class="exam-hub-modern">
+                <!-- Hero Section -->
+                <div class="exam-hero">
+                    <div class="exam-hero-content">
+                        <div class="exam-hero-badge">OFFICIAL CERTIFICATION</div>
+                        <h1 class="exam-hero-title">Certification Center</h1>
+                        <p class="exam-hero-desc">Complete rigorous 100-question assessments to prove your Mandarin proficiency from Novice to TOCFL B1.</p>
+                        
+                        <div class="exam-global-progress">
+                            <div class="egp-info">
+                                <span style="color:white;opacity:0.9">Overall Certification Progress</span>
+                                <span style="color:white"><strong>${completedExams}</strong> / ${totalExams} Mastery Badges</span>
+                            </div>
+                            <div class="egp-bar-bg">
+                                <div class="egp-bar-fill" style="width: ${progressPct}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-levels-wrapper">
         `;
 
         levels.forEach(lvl => {
             const levelExams = this.state.examData.filter(e => e.level === lvl.id);
             if (!levelExams.length) return;
 
+            const lvlCompleted = levelExams.filter(e => App.state.progress.exams && App.state.progress.exams[e.id]).length;
+            const lvlTotal = levelExams.length;
+            const isLvlComplete = lvlCompleted === lvlTotal;
+
             html += `
-                <div class="level-section mb-60">
-                    <div class="level-header-row mb-32">
-                        <h2 style="color: var(--text); border-left: 6px solid var(--accent); padding-left: 20px;">${lvl.title}</h2>
-                        <p style="color: var(--text-3); margin-left: 26px;">${lvl.desc}</p>
+                <div class="exam-level-track">
+                    <div class="level-track-header">
+                        <div class="lth-icon" style="background: ${lvl.color}15; color: ${lvl.color};">${lvl.icon}</div>
+                        <div class="lth-info">
+                            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                                <h2 style="color: var(--text); margin: 0; font-size: 1.6rem; font-weight: 800;">${lvl.title}</h2>
+                                <span class="level-badge" style="background: ${lvl.color};">${lvl.subtitle}</span>
+                                ${isLvlComplete ? '<span class="level-badge" style="background: #fbbf24; color: #78350f;">🏆 MASTERED</span>' : ''}
+                            </div>
+                            <p style="color: var(--text-3); margin: 4px 0 0 0; font-weight: 600;">${lvl.desc}</p>
+                        </div>
+                        <div class="lth-progress">
+                            <span style="font-weight: 800; font-size: 1.2rem; color: ${lvl.color};">${lvlCompleted}/${lvlTotal}</span>
+                        </div>
                     </div>
-                    <div class="month-grid">
+
+                    <div class="exam-cards-grid">
                         ${levelExams.map(exam => {
                             const isCompleted = App.state.progress.exams && App.state.progress.exams[exam.id];
                             return `
-                                <div class="month-card ${isCompleted ? 'completed' : ''}" 
-                                     onclick="ExamModule.startExam(${exam.id})" style="background: var(--card-bg, white); border: 1px solid var(--border);">
-                                    <div class="card-status">
-                                        ${isCompleted ? '<span class="status-icon">🏆</span> CERTIFIED' : '<span class="status-icon">📝</span> OPEN'}
+                                <div class="exam-modern-card ${isCompleted ? 'is-certified' : ''}" onclick="ExamModule.startExam(${exam.id})">
+                                    <div class="emc-header">
+                                        <span class="emc-month">LEVEL ${exam.id}</span>
+                                        ${isCompleted 
+                                            ? '<div class="emc-status certified"><span class="icon">🏆</span> Certified</div>' 
+                                            : '<div class="emc-status open"><span class="icon">📝</span> Available</div>'
+                                        }
                                     </div>
-                                    <div class="card-month" style="color: var(--accent)">ASSESSMENT ${exam.month}</div>
-                                    <h3 class="card-title" style="color: var(--text)">${exam.title}</h3>
-                                    <p class="card-desc" style="color: var(--text-2)">${exam.description}</p>
-                                    <div class="card-footer">
-                                        <div class="exam-meta" style="color: var(--text-3)">
-                                            <span>⏱ 60 Min</span>
+                                    <div class="emc-body">
+                                        <h3 class="emc-title">${exam.title}</h3>
+                                        <p class="emc-desc">${exam.description}</p>
+                                    </div>
+                                    <div class="emc-footer">
+                                        <div class="emc-meta">
+                                            <span>⏱ 60m</span>
                                             <span>📊 100 Qs</span>
                                         </div>
-                                        <button class="start-btn">
-                                            ${isCompleted ? 'Recertify' : 'Start'}
+                                        <button class="emc-btn ${isCompleted ? 'btn-ghost' : 'btn-primary'}">
+                                            ${isCompleted ? 'Recertify' : 'Start Exam'}
                                         </button>
                                     </div>
+                                    ${isCompleted ? `<div class="emc-certified-bg">🏆</div>` : ''}
                                 </div>
                             `;
                         }).join('')}
@@ -105,9 +143,9 @@ window.ExamModule = {
 
         html += `
                 </div>
-                <div class="exam-info-box card mt-40" style="background: var(--off-white); border: 1px solid var(--border);">
+                <div class="exam-info-box card mt-60 mb-100" style="max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; background: var(--off-white); border: 1px dashed var(--border);">
                     <h3 style="color: var(--text)">Certification Requirements</h3>
-                    <p style="color: var(--text-2)">All exams are randomized and timed. To receive a level certificate, you must pass all three sub-exams for that level with a score of <strong>80%</strong> or higher.</p>
+                    <p style="color: var(--text-2); line-height: 1.6;">All exams are randomized and generated from your curriculum data. To receive a proficiency certificate, you must complete the 100-question assessment with a score of <strong>80%</strong> or higher. Take your time; these are professional-grade evaluations.</p>
                 </div>
             </div>
         `;
@@ -546,6 +584,70 @@ window.ExamModule = {
         const style = document.createElement('style');
         style.id = 'exam-pro-styles';
         style.textContent = `
+            /* Modern Exam Hub Styles */
+            .exam-hub-modern { padding-bottom: 80px; background: var(--bg); min-height: 100vh; }
+            
+            .exam-hero {
+                background: linear-gradient(135deg, var(--charcoal), #1a252f);
+                padding: 100px 20px 140px;
+                text-align: center;
+                color: white;
+                margin-bottom: -60px;
+            }
+            .exam-hero-content { max-width: 850px; margin: 0 auto; }
+            .exam-hero-badge { 
+                display: inline-block; padding: 6px 18px; background: rgba(255,255,255,0.1); 
+                border-radius: 30px; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; 
+                margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.15);
+            }
+            .exam-hero-title { font-size: 4rem; font-weight: 900; margin-bottom: 16px; letter-spacing: -1.5px; color: white; }
+            .exam-hero-desc { font-size: 1.25rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 48px; }
+            
+            .exam-global-progress { 
+                max-width: 500px; margin: 0 auto;
+                background: rgba(255,255,255,0.05); padding: 24px; border-radius: 20px; 
+                backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); text-align: left; 
+            }
+            .egp-info { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 0.9rem; font-weight: 700; }
+            .egp-bar-bg { height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; }
+            .egp-bar-fill { height: 100%; background: linear-gradient(90deg, #10b981, #3b82f6); border-radius: 5px; transition: width 1.2s ease-in-out; }
+
+            .exam-levels-wrapper { max-width: 1150px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+            
+            .exam-level-track { background: var(--card-bg); border-radius: 24px; padding: 40px; margin-bottom: 40px; box-shadow: var(--shadow-xl); border: 1px solid var(--border); }
+            .level-track-header { display: flex; align-items: center; gap: 28px; padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+            .lth-icon { width: 72px; height: 72px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; flex-shrink: 0; box-shadow: inset 0 0 20px rgba(0,0,0,0.05); }
+            .lth-info { flex: 1; }
+            .level-badge { padding: 4px 12px; border-radius: 8px; color: white; font-size: 0.75rem; font-weight: 900; letter-spacing: 1px; }
+            .lth-progress { background: var(--off-white); padding: 10px 20px; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+
+            .exam-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+            
+            .exam-modern-card { 
+                background: var(--card-bg); border: 2px solid var(--border); border-radius: 20px; padding: 32px; 
+                cursor: pointer; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
+                display: flex; flex-direction: column;
+            }
+            .exam-modern-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-2xl); border-color: var(--accent); }
+            
+            .emc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; position: relative; z-index: 2; }
+            .emc-month { font-size: 0.7rem; font-weight: 900; color: var(--text-3); letter-spacing: 1.5px; text-transform: uppercase; }
+            .emc-status { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; }
+            .emc-status.open { background: var(--off-white); color: var(--text-2); }
+            .emc-status.certified { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+            
+            .emc-body { margin-bottom: 32px; position: relative; z-index: 2; flex: 1; }
+            .emc-title { font-size: 1.5rem; font-weight: 900; color: var(--text); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.5px; }
+            .emc-desc { font-size: 0.95rem; color: var(--text-2); line-height: 1.6; }
+            
+            .emc-footer { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; padding-top: 20px; border-top: 1px solid var(--border); }
+            .emc-meta { display: flex; gap: 16px; font-size: 0.85rem; font-weight: 700; color: var(--text-3); }
+            .emc-btn { padding: 10px 24px; border-radius: 10px; font-weight: 800; font-size: 0.9rem; transition: all 0.2s; }
+            
+            .exam-modern-card.is-certified { border-color: rgba(16, 185, 129, 0.4); background: linear-gradient(to bottom right, var(--card-bg), rgba(16, 185, 129, 0.03)); }
+            .emc-certified-bg { position: absolute; right: -30px; bottom: -30px; font-size: 10rem; opacity: 0.04; z-index: 1; pointer-events: none; transform: rotate(-15deg); }
+
+            /* Exam UI Styles */
             .exam-app-container { min-height: 100vh; padding-bottom: 120px; }
             .exam-top-nav { 
                 position: sticky; top: 0; z-index: 1000; 
@@ -610,6 +712,10 @@ window.ExamModule = {
             .exam-result-card { max-width: 500px; width: 100%; padding: 40px; border-radius: 20px; text-align: center; }
 
             @media (max-width: 768px) {
+                .exam-hero { padding: 60px 20px 80px 20px; }
+                .exam-hero-title { font-size: 2.8rem; }
+                .level-track-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+                .lth-progress { align-self: flex-start; }
                 .options-grid-premium { grid-template-columns: 1fr; }
                 .exam-top-nav { padding: 15px 20px; }
                 .etn-center { display: none; }
