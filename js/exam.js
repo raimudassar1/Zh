@@ -91,9 +91,18 @@ window.ExamModule = {
             // Fetch required files dynamically
             const bookId = examDef.sources.books.id;
             const resources = await Promise.all([
-                fetch(`data/book${bookId}_content.json`).then(r => r.json()),
-                fetch(`data/playground_content.json`).then(r => r.json()),
-                fetch(`data/char_playground_content.json`).then(r => r.json())
+                fetch(`data/book${bookId}_content.json`).then(r => {
+                    if (!r.ok) throw new Error(`Book ${bookId} not found`);
+                    return r.json();
+                }),
+                fetch('data/playground_content.json').then(r => {
+                    if (!r.ok) throw new Error('Playground data not found');
+                    return r.json();
+                }),
+                fetch('data/char_playground_content.json').then(r => {
+                    if (!r.ok) throw new Error('Character Playground data not found');
+                    return r.json();
+                })
             ]);
 
             const [bookData, playgroundData, charPlaygroundData] = resources;
