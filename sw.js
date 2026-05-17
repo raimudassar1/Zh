@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'tocfl-cache-v70';
+﻿const CACHE_NAME = 'tocfl-cache-v80';
 const ASSETS = [
   './',
   './index.html',
@@ -25,6 +25,7 @@ const ASSETS = [
   './js/tocfl.js',
   './js/tocfl-content.js',
   './js/b1-coach.js',
+  './js/beginner-launchpad.js',
   './logo.png',
   './data/characters_all.json',
   './data/vocabulary.json',
@@ -33,7 +34,11 @@ const ASSETS = [
   './data/sentence_builder_levels.json',
   './data/book1_dialogues.json',
   './data/book1_exercises.json',
-  './data/tocfl_native_bank.json'
+  './data/tocfl_native_bank.json',
+  './data/pinyin_human_manifest.json',
+  './data/pinyin_mastery_drills.json',
+  './data/beginner_launchpad.json',
+  './data/beginner_launchpad_level2.json'
 ];
 
 self.addEventListener('install', (event) => {

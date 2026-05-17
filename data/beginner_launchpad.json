@@ -1,0 +1,1813 @@
+{
+  "version": 1,
+  "title": "Beginner Launchpad",
+  "description": "20 micro-lessons for absolute beginners before advanced study.",
+  "totalWords": 105,
+  "lessons": [
+    {
+      "id": "hello",
+      "number": 1,
+      "title": "Meet Someone",
+      "canDo": "I can greet someone and say who I am.",
+      "pattern": "\u4f60\u597d",
+      "patternPinyin": "n\u01d0 h\u01ceo",
+      "words": [
+        {
+          "zh": "\u4f60\u597d",
+          "pinyin": "n\u01d0 h\u01ceo",
+          "english": "hello"
+        },
+        {
+          "zh": "\u6211",
+          "pinyin": "w\u01d2",
+          "english": "I/me"
+        },
+        {
+          "zh": "\u4f60",
+          "pinyin": "n\u01d0",
+          "english": "you"
+        },
+        {
+          "zh": "\u53eb",
+          "pinyin": "ji\u00e0o",
+          "english": "to be called"
+        },
+        {
+          "zh": "\u540d\u5b57",
+          "pinyin": "m\u00edng zi",
+          "english": "name"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u4f60\u597d",
+          "pinyin": "n\u01d0 h\u01ceo",
+          "english": "Hello."
+        },
+        {
+          "zh": "\u6211\u53eb\u5c0f\u660e",
+          "pinyin": "w\u01d2 ji\u00e0o xi\u01ceo m\u00edng",
+          "english": "My name is Xiaoming."
+        },
+        {
+          "zh": "\u4f60\u53eb\u4ec0\u9ebc\u540d\u5b57",
+          "pinyin": "n\u01d0 ji\u00e0o sh\u00e9n me m\u00edng zi",
+          "english": "What is your name?"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u597d",
+          "pinyin": "n\u01d0 h\u01ceo",
+          "english": "Hello."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u6211\u53eb\u5c0f\u660e",
+          "pinyin": "w\u01d2 ji\u00e0o xi\u01ceo m\u00edng",
+          "english": "My name is Xiaoming."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u53eb\u4ec0\u9ebc\u540d\u5b57",
+          "pinyin": "n\u01d0 ji\u00e0o sh\u00e9n me m\u00edng zi",
+          "english": "What is your name?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "polite",
+      "number": 2,
+      "title": "Polite Greetings",
+      "canDo": "I can greet a teacher politely.",
+      "pattern": "\u60a8\u597d",
+      "patternPinyin": "n\u00edn h\u01ceo",
+      "words": [
+        {
+          "zh": "\u60a8",
+          "pinyin": "n\u00edn",
+          "english": "you polite"
+        },
+        {
+          "zh": "\u8001\u5e2b",
+          "pinyin": "l\u01ceo sh\u012b",
+          "english": "teacher"
+        },
+        {
+          "zh": "\u5b78\u751f",
+          "pinyin": "xu\u00e9 sheng",
+          "english": "student"
+        },
+        {
+          "zh": "\u8acb\u554f",
+          "pinyin": "q\u01d0ng w\u00e8n",
+          "english": "may I ask"
+        },
+        {
+          "zh": "\u8b1d\u8b1d",
+          "pinyin": "xi\u00e8 xi\u00e8",
+          "english": "thank you"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u8001\u5e2b\u60a8\u597d",
+          "pinyin": "l\u01ceo sh\u012b n\u00edn h\u01ceo",
+          "english": "Hello teacher."
+        },
+        {
+          "zh": "\u8acb\u554f\u60a8\u8cb4\u59d3",
+          "pinyin": "q\u01d0ng w\u00e8n N\u00edn gu\u00ecx\u00ecng",
+          "english": "May I ask your surname?"
+        },
+        {
+          "zh": "\u8b1d\u8b1d\u8001\u5e2b",
+          "pinyin": "xi\u00e8 xi\u00e8 l\u01ceo sh\u012b",
+          "english": "Thank you teacher."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u8001\u5e2b\u60a8\u597d",
+          "pinyin": "l\u01ceo sh\u012b n\u00edn h\u01ceo",
+          "english": "Hello teacher."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u8acb\u554f\u60a8\u8cb4\u59d3",
+          "pinyin": "q\u01d0ng w\u00e8n N\u00edn gu\u00ecx\u00ecng",
+          "english": "May I ask your surname?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u8b1d\u8b1d\u8001\u5e2b",
+          "pinyin": "xi\u00e8 xi\u00e8 l\u01ceo sh\u012b",
+          "english": "Thank you teacher."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "nationality",
+      "number": 3,
+      "title": "Where Are You From?",
+      "canDo": "I can say my nationality.",
+      "pattern": "\u6211\u662f",
+      "patternPinyin": "w\u01d2 sh\u00ec",
+      "words": [
+        {
+          "zh": "\u662f",
+          "pinyin": "sh\u00ec",
+          "english": "to be"
+        },
+        {
+          "zh": "\u4eba",
+          "pinyin": "r\u00e9n",
+          "english": "person"
+        },
+        {
+          "zh": "\u53f0\u7063",
+          "pinyin": "t\u00e1i w\u0101n",
+          "english": "Taiwan"
+        },
+        {
+          "zh": "\u7f8e\u570b",
+          "pinyin": "m\u011bi gu\u00f3",
+          "english": "USA"
+        },
+        {
+          "zh": "\u54ea\u570b",
+          "pinyin": "n\u01ce gu\u00f3",
+          "english": "which country"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u662f\u7f8e\u570b\u4eba",
+          "pinyin": "w\u01d2 sh\u00ec m\u011bi gu\u00f3 r\u00e9n",
+          "english": "I am American."
+        },
+        {
+          "zh": "\u4f60\u662f\u54ea\u570b\u4eba",
+          "pinyin": "n\u01d0 sh\u00ec n\u01ce gu\u00f3 r\u00e9n",
+          "english": "What country are you from?"
+        },
+        {
+          "zh": "\u4ed6\u662f\u53f0\u7063\u4eba",
+          "pinyin": "t\u0101 sh\u00ec t\u00e1i w\u0101n r\u00e9n",
+          "english": "He is Taiwanese."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u662f\u7f8e\u570b\u4eba",
+          "pinyin": "w\u01d2 sh\u00ec m\u011bi gu\u00f3 r\u00e9n",
+          "english": "I am American."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u662f\u54ea\u570b\u4eba",
+          "pinyin": "n\u01d0 sh\u00ec n\u01ce gu\u00f3 r\u00e9n",
+          "english": "What country are you from?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4ed6\u662f\u53f0\u7063\u4eba",
+          "pinyin": "t\u0101 sh\u00ec t\u00e1i w\u0101n r\u00e9n",
+          "english": "He is Taiwanese."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "yes-no",
+      "number": 4,
+      "title": "Yes and No",
+      "canDo": "I can answer simple yes/no questions.",
+      "pattern": "\u662f\u7684",
+      "patternPinyin": "sh\u00ec de",
+      "words": [
+        {
+          "zh": "\u662f\u7684",
+          "pinyin": "sh\u00ec de",
+          "english": "yes / that is right"
+        },
+        {
+          "zh": "\u4e0d\u662f",
+          "pinyin": "b\u00f9 sh\u00ec",
+          "english": "no / is not"
+        },
+        {
+          "zh": "\u55ce",
+          "pinyin": "ma",
+          "english": "question particle"
+        },
+        {
+          "zh": "\u4e5f",
+          "pinyin": "y\u011b",
+          "english": "also"
+        },
+        {
+          "zh": "\u90fd",
+          "pinyin": "d\u014du",
+          "english": "all/both"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u4f60\u662f\u5b78\u751f\u55ce",
+          "pinyin": "n\u01d0 sh\u00ec xu\u00e9 sheng ma",
+          "english": "Are you a student?"
+        },
+        {
+          "zh": "\u662f\u7684\u6211\u662f\u5b78\u751f",
+          "pinyin": "sh\u00ec de w\u01d2 sh\u00ec xu\u00e9 sheng",
+          "english": "Yes, I am a student."
+        },
+        {
+          "zh": "\u4e0d\u662f\u6211\u662f\u8001\u5e2b",
+          "pinyin": "b\u00f9 sh\u00ec w\u01d2 sh\u00ec l\u01ceo sh\u012b",
+          "english": "No, I am a teacher."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u662f\u5b78\u751f\u55ce",
+          "pinyin": "n\u01d0 sh\u00ec xu\u00e9 sheng ma",
+          "english": "Are you a student?"
+        },
+        {
+          "speaker": "B",
+          "zh": "\u662f\u7684\u6211\u662f\u5b78\u751f",
+          "pinyin": "sh\u00ec de w\u01d2 sh\u00ec xu\u00e9 sheng",
+          "english": "Yes, I am a student."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4e0d\u662f\u6211\u662f\u8001\u5e2b",
+          "pinyin": "b\u00f9 sh\u00ec w\u01d2 sh\u00ec l\u01ceo sh\u012b",
+          "english": "No, I am a teacher."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "like",
+      "number": 5,
+      "title": "Likes",
+      "canDo": "I can say what I like.",
+      "pattern": "\u559c\u6b61",
+      "patternPinyin": "x\u01d0 huan",
+      "words": [
+        {
+          "zh": "\u559c\u6b61",
+          "pinyin": "x\u01d0 huan",
+          "english": "to like"
+        },
+        {
+          "zh": "\u559d",
+          "pinyin": "h\u0113",
+          "english": "drink"
+        },
+        {
+          "zh": "\u8336",
+          "pinyin": "ch\u00e1",
+          "english": "tea"
+        },
+        {
+          "zh": "\u5496\u5561",
+          "pinyin": "k\u0101 f\u0113i",
+          "english": "coffee"
+        },
+        {
+          "zh": "\u6c34",
+          "pinyin": "shu\u01d0",
+          "english": "water"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u559c\u6b61\u559d\u8336",
+          "pinyin": "w\u01d2 x\u01d0 huan h\u0113 ch\u00e1",
+          "english": "I like drinking tea."
+        },
+        {
+          "zh": "\u4f60\u559c\u6b61\u5496\u5561\u55ce",
+          "pinyin": "n\u01d0 x\u01d0 huan k\u0101 f\u0113i ma",
+          "english": "Do you like coffee?"
+        },
+        {
+          "zh": "\u6211\u4e0d\u559c\u6b61\u5496\u5561",
+          "pinyin": "w\u01d2 b\u00f9 x\u01d0 huan k\u0101 f\u0113i",
+          "english": "I do not like coffee."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u559c\u6b61\u559d\u8336",
+          "pinyin": "w\u01d2 x\u01d0 huan h\u0113 ch\u00e1",
+          "english": "I like drinking tea."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u559c\u6b61\u5496\u5561\u55ce",
+          "pinyin": "n\u01d0 x\u01d0 huan k\u0101 f\u0113i ma",
+          "english": "Do you like coffee?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u6211\u4e0d\u559c\u6b61\u5496\u5561",
+          "pinyin": "w\u01d2 b\u00f9 x\u01d0 huan k\u0101 f\u0113i",
+          "english": "I do not like coffee."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "number": 6,
+      "title": "Food Basics",
+      "canDo": "I can talk about basic food.",
+      "pattern": "\u5403\u98ef",
+      "patternPinyin": "ch\u012b f\u00e0n",
+      "words": [
+        {
+          "zh": "\u5403",
+          "pinyin": "ch\u012b",
+          "english": "eat"
+        },
+        {
+          "zh": "\u98ef",
+          "pinyin": "f\u00e0n",
+          "english": "rice/meal"
+        },
+        {
+          "zh": "\u9eb5",
+          "pinyin": "mi\u00e0n",
+          "english": "noodles"
+        },
+        {
+          "zh": "\u86cb",
+          "pinyin": "d\u00e0n",
+          "english": "egg"
+        },
+        {
+          "zh": "\u6c34\u679c",
+          "pinyin": "shu\u01d0 gu\u01d2",
+          "english": "fruit"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u60f3\u5403\u98ef",
+          "pinyin": "w\u01d2 xi\u01ceng ch\u012b f\u00e0n",
+          "english": "I want to eat."
+        },
+        {
+          "zh": "\u4f60\u5403\u9eb5\u55ce",
+          "pinyin": "n\u01d0 ch\u012b mi\u00e0n ma",
+          "english": "Do you eat noodles?"
+        },
+        {
+          "zh": "\u5979\u559c\u6b61\u6c34\u679c",
+          "pinyin": "t\u0101 x\u01d0 huan shu\u01d0 gu\u01d2",
+          "english": "She likes fruit."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u60f3\u5403\u98ef",
+          "pinyin": "w\u01d2 xi\u01ceng ch\u012b f\u00e0n",
+          "english": "I want to eat."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u5403\u9eb5\u55ce",
+          "pinyin": "n\u01d0 ch\u012b mi\u00e0n ma",
+          "english": "Do you eat noodles?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u5979\u559c\u6b61\u6c34\u679c",
+          "pinyin": "t\u0101 x\u01d0 huan shu\u01d0 gu\u01d2",
+          "english": "She likes fruit."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "want",
+      "number": 7,
+      "title": "Want and Need",
+      "canDo": "I can say what I want.",
+      "pattern": "\u6211\u8981",
+      "patternPinyin": "w\u01d2 y\u00e0o",
+      "words": [
+        {
+          "zh": "\u8981",
+          "pinyin": "y\u00e0o",
+          "english": "want/need"
+        },
+        {
+          "zh": "\u60f3",
+          "pinyin": "xi\u01ceng",
+          "english": "would like"
+        },
+        {
+          "zh": "\u8cb7",
+          "pinyin": "m\u01cei",
+          "english": "buy"
+        },
+        {
+          "zh": "\u4e00\u500b",
+          "pinyin": "y\u012b g\u00e8",
+          "english": "one item"
+        },
+        {
+          "zh": "\u591a\u5c11",
+          "pinyin": "du\u014d sh\u01ceo",
+          "english": "how much"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u8981\u8cb7\u4e00\u500b",
+          "pinyin": "w\u01d2 y\u00e0o m\u01cei y\u012b g\u00e8",
+          "english": "I want to buy one."
+        },
+        {
+          "zh": "\u9019\u500b\u591a\u5c11\u9322",
+          "pinyin": "zh\u00e8ge du\u014dsh\u01ceo qi\u00e1n",
+          "english": "How much is this?"
+        },
+        {
+          "zh": "\u6211\u60f3\u8cb7\u6c34",
+          "pinyin": "w\u01d2 xi\u01ceng m\u01cei shu\u01d0",
+          "english": "I would like to buy water."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u8981\u8cb7\u4e00\u500b",
+          "pinyin": "w\u01d2 y\u00e0o m\u01cei y\u012b g\u00e8",
+          "english": "I want to buy one."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u9019\u500b\u591a\u5c11\u9322",
+          "pinyin": "zh\u00e8ge du\u014dsh\u01ceo qi\u00e1n",
+          "english": "How much is this?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u6211\u60f3\u8cb7\u6c34",
+          "pinyin": "w\u01d2 xi\u01ceng m\u01cei shu\u01d0",
+          "english": "I would like to buy water."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "number": 8,
+      "title": "Numbers 1-10",
+      "canDo": "I can recognize basic numbers.",
+      "pattern": "\u4e00\u4e8c\u4e09",
+      "patternPinyin": "y\u012b \u00e8r s\u0101n",
+      "words": [
+        {
+          "zh": "\u4e00",
+          "pinyin": "y\u012b",
+          "english": "one"
+        },
+        {
+          "zh": "\u4e8c",
+          "pinyin": "\u00e8r",
+          "english": "two"
+        },
+        {
+          "zh": "\u4e09",
+          "pinyin": "s\u0101n",
+          "english": "three"
+        },
+        {
+          "zh": "\u56db",
+          "pinyin": "s\u00ec",
+          "english": "four"
+        },
+        {
+          "zh": "\u4e94",
+          "pinyin": "w\u01d4",
+          "english": "five"
+        },
+        {
+          "zh": "\u516d",
+          "pinyin": "li\u00f9",
+          "english": "six"
+        },
+        {
+          "zh": "\u4e03",
+          "pinyin": "q\u012b",
+          "english": "seven"
+        },
+        {
+          "zh": "\u516b",
+          "pinyin": "b\u0101",
+          "english": "eight"
+        },
+        {
+          "zh": "\u4e5d",
+          "pinyin": "ji\u01d4",
+          "english": "nine"
+        },
+        {
+          "zh": "\u5341",
+          "pinyin": "sh\u00ed",
+          "english": "ten"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u8981\u4e00\u500b",
+          "pinyin": "w\u01d2 y\u00e0o y\u012b g\u00e8",
+          "english": "I want one."
+        },
+        {
+          "zh": "\u4f60\u6709\u4e09\u500b\u55ce",
+          "pinyin": "n\u01d0 y\u01d2u s\u0101n g\u00e8 ma",
+          "english": "Do you have three?"
+        },
+        {
+          "zh": "\u9019\u662f\u5341\u500b",
+          "pinyin": "zh\u00e8 sh\u00ec sh\u00ed g\u00e8",
+          "english": "This is ten."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u8981\u4e00\u500b",
+          "pinyin": "w\u01d2 y\u00e0o y\u012b g\u00e8",
+          "english": "I want one."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u6709\u4e09\u500b\u55ce",
+          "pinyin": "n\u01d0 y\u01d2u s\u0101n g\u00e8 ma",
+          "english": "Do you have three?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u9019\u662f\u5341\u500b",
+          "pinyin": "zh\u00e8 sh\u00ec sh\u00ed g\u00e8",
+          "english": "This is ten."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "number": 9,
+      "title": "Family",
+      "canDo": "I can name family members.",
+      "pattern": "\u5bb6\u4eba",
+      "patternPinyin": "ji\u0101 r\u00e9n",
+      "words": [
+        {
+          "zh": "\u5bb6\u4eba",
+          "pinyin": "ji\u0101 r\u00e9n",
+          "english": "family"
+        },
+        {
+          "zh": "\u7238\u7238",
+          "pinyin": "b\u00e0 ba",
+          "english": "dad"
+        },
+        {
+          "zh": "\u5abd\u5abd",
+          "pinyin": "m\u0101 ma",
+          "english": "mom"
+        },
+        {
+          "zh": "\u54e5\u54e5",
+          "pinyin": "g\u0113 ge",
+          "english": "older brother"
+        },
+        {
+          "zh": "\u59d0\u59d0",
+          "pinyin": "ji\u011b ji\u011b",
+          "english": "older sister"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u9019\u662f\u6211\u5abd\u5abd",
+          "pinyin": "zh\u00e8 sh\u00ec w\u01d2 m\u0101 ma",
+          "english": "This is my mom."
+        },
+        {
+          "zh": "\u6211\u6709\u54e5\u54e5",
+          "pinyin": "w\u01d2 y\u01d2u g\u0113 ge",
+          "english": "I have an older brother."
+        },
+        {
+          "zh": "\u4f60\u6709\u5bb6\u4eba\u55ce",
+          "pinyin": "n\u01d0 y\u01d2u ji\u0101 r\u00e9n ma",
+          "english": "Do you have family?"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u9019\u662f\u6211\u5abd\u5abd",
+          "pinyin": "zh\u00e8 sh\u00ec w\u01d2 m\u0101 ma",
+          "english": "This is my mom."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u6211\u6709\u54e5\u54e5",
+          "pinyin": "w\u01d2 y\u01d2u g\u0113 ge",
+          "english": "I have an older brother."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u6709\u5bb6\u4eba\u55ce",
+          "pinyin": "n\u01d0 y\u01d2u ji\u0101 r\u00e9n ma",
+          "english": "Do you have family?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "number": 10,
+      "title": "Today and Tomorrow",
+      "canDo": "I can talk about simple time.",
+      "pattern": "\u4eca\u5929",
+      "patternPinyin": "j\u012bn ti\u0101n",
+      "words": [
+        {
+          "zh": "\u4eca\u5929",
+          "pinyin": "j\u012bn ti\u0101n",
+          "english": "today"
+        },
+        {
+          "zh": "\u660e\u5929",
+          "pinyin": "m\u00edng ti\u0101n",
+          "english": "tomorrow"
+        },
+        {
+          "zh": "\u6628\u5929",
+          "pinyin": "zu\u00f3 ti\u0101n",
+          "english": "yesterday"
+        },
+        {
+          "zh": "\u73fe\u5728",
+          "pinyin": "xi\u00e0n z\u00e0i",
+          "english": "now"
+        },
+        {
+          "zh": "\u9ede",
+          "pinyin": "di\u01cen",
+          "english": "o?clock"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u4eca\u5929\u6211\u4e0a\u8ab2",
+          "pinyin": "j\u012bn ti\u0101n w\u01d2 sh\u00e0ngk\u00e8",
+          "english": "Today I go to class."
+        },
+        {
+          "zh": "\u660e\u5929\u4f60\u4f86\u55ce",
+          "pinyin": "m\u00edng ti\u0101n n\u01d0 l\u00e1i ma",
+          "english": "Are you coming tomorrow?"
+        },
+        {
+          "zh": "\u73fe\u5728\u5e7e\u9ede",
+          "pinyin": "xi\u00e0n z\u00e0i j\u01d0 di\u01cen",
+          "english": "What time is it now?"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u4eca\u5929\u6211\u4e0a\u8ab2",
+          "pinyin": "j\u012bn ti\u0101n w\u01d2 sh\u00e0ngk\u00e8",
+          "english": "Today I go to class."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u660e\u5929\u4f60\u4f86\u55ce",
+          "pinyin": "m\u00edng ti\u0101n n\u01d0 l\u00e1i ma",
+          "english": "Are you coming tomorrow?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u73fe\u5728\u5e7e\u9ede",
+          "pinyin": "xi\u00e0n z\u00e0i j\u01d0 di\u01cen",
+          "english": "What time is it now?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "places",
+      "number": 11,
+      "title": "Places",
+      "canDo": "I can name basic places.",
+      "pattern": "\u5b78\u6821",
+      "patternPinyin": "xu\u00e9xi\u00e0o",
+      "words": [
+        {
+          "zh": "\u5b78\u6821",
+          "pinyin": "xu\u00e9xi\u00e0o",
+          "english": "school"
+        },
+        {
+          "zh": "\u5bb6",
+          "pinyin": "ji\u0101",
+          "english": "home"
+        },
+        {
+          "zh": "\u9910\u5ef3",
+          "pinyin": "c\u0101nt\u012bng",
+          "english": "restaurant"
+        },
+        {
+          "zh": "\u5546\u5e97",
+          "pinyin": "Sh\u0101ngdi\u00e0n",
+          "english": "shop"
+        },
+        {
+          "zh": "\u516c\u5712",
+          "pinyin": "g\u014dng yu\u00e1n",
+          "english": "park"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u53bb\u5b78\u6821",
+          "pinyin": "w\u01d2 q\u00f9 xu\u00e9xi\u00e0o",
+          "english": "I go to school."
+        },
+        {
+          "zh": "\u5979\u5728\u9910\u5ef3",
+          "pinyin": "t\u0101 z\u00e0i c\u0101nt\u012bng",
+          "english": "She is at the restaurant."
+        },
+        {
+          "zh": "\u4f60\u5bb6\u5728\u54ea\u88e1",
+          "pinyin": "n\u01d0 ji\u0101 z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is your home?"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u53bb\u5b78\u6821",
+          "pinyin": "w\u01d2 q\u00f9 xu\u00e9xi\u00e0o",
+          "english": "I go to school."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u5979\u5728\u9910\u5ef3",
+          "pinyin": "t\u0101 z\u00e0i c\u0101nt\u012bng",
+          "english": "She is at the restaurant."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u5bb6\u5728\u54ea\u88e1",
+          "pinyin": "n\u01d0 ji\u0101 z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is your home?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "directions",
+      "number": 12,
+      "title": "Where Is It?",
+      "canDo": "I can ask where something is.",
+      "pattern": "\u5728\u54ea\u88e1",
+      "patternPinyin": "z\u00e0i n\u01ce l\u01d0",
+      "words": [
+        {
+          "zh": "\u5728",
+          "pinyin": "z\u00e0i",
+          "english": "at/in"
+        },
+        {
+          "zh": "\u54ea\u88e1",
+          "pinyin": "n\u01ce l\u01d0",
+          "english": "where"
+        },
+        {
+          "zh": "\u9019\u88e1",
+          "pinyin": "zh\u00e8 l\u01d0",
+          "english": "here"
+        },
+        {
+          "zh": "\u90a3\u88e1",
+          "pinyin": "n\u00e0 l\u01d0",
+          "english": "there"
+        },
+        {
+          "zh": "\u65c1\u908a",
+          "pinyin": "p\u00e1ng bi\u0101n",
+          "english": "beside"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u5546\u5e97\u5728\u54ea\u88e1",
+          "pinyin": "Sh\u0101ngdi\u00e0n z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is the shop?"
+        },
+        {
+          "zh": "\u6211\u5728\u9019\u88e1",
+          "pinyin": "w\u01d2 z\u00e0i zh\u00e8 l\u01d0",
+          "english": "I am here."
+        },
+        {
+          "zh": "\u5b78\u6821\u5728\u516c\u5712\u65c1\u908a",
+          "pinyin": "xu\u00e9xi\u00e0o z\u00e0i g\u014dng yu\u00e1n p\u00e1ng bi\u0101n",
+          "english": "The school is beside the park."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u5546\u5e97\u5728\u54ea\u88e1",
+          "pinyin": "Sh\u0101ngdi\u00e0n z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is the shop?"
+        },
+        {
+          "speaker": "B",
+          "zh": "\u6211\u5728\u9019\u88e1",
+          "pinyin": "w\u01d2 z\u00e0i zh\u00e8 l\u01d0",
+          "english": "I am here."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u5b78\u6821\u5728\u516c\u5712\u65c1\u908a",
+          "pinyin": "xu\u00e9xi\u00e0o z\u00e0i g\u014dng yu\u00e1n p\u00e1ng bi\u0101n",
+          "english": "The school is beside the park."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "actions",
+      "number": 13,
+      "title": "Daily Actions",
+      "canDo": "I can describe simple actions.",
+      "pattern": "\u6211\u770b\u66f8",
+      "patternPinyin": "w\u01d2 k\u00e0n sh\u016b",
+      "words": [
+        {
+          "zh": "\u770b",
+          "pinyin": "k\u00e0n",
+          "english": "look/read"
+        },
+        {
+          "zh": "\u807d",
+          "pinyin": "t\u012bng",
+          "english": "listen"
+        },
+        {
+          "zh": "\u8aaa",
+          "pinyin": "shu\u014d",
+          "english": "speak"
+        },
+        {
+          "zh": "\u5beb",
+          "pinyin": "xi\u011b",
+          "english": "write"
+        },
+        {
+          "zh": "\u8b80",
+          "pinyin": "d\u00fa",
+          "english": "read aloud"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u770b\u66f8",
+          "pinyin": "w\u01d2 k\u00e0n sh\u016b",
+          "english": "I read a book."
+        },
+        {
+          "zh": "\u4f60\u807d\u97f3\u6a02\u55ce",
+          "pinyin": "n\u01d0 t\u012bng y\u012bn yu\u00e8 ma",
+          "english": "Do you listen to music?"
+        },
+        {
+          "zh": "\u4ed6\u5beb\u5b57",
+          "pinyin": "t\u0101 xi\u011b z\u00ec",
+          "english": "He writes characters."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u770b\u66f8",
+          "pinyin": "w\u01d2 k\u00e0n sh\u016b",
+          "english": "I read a book."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u807d\u97f3\u6a02\u55ce",
+          "pinyin": "n\u01d0 t\u012bng y\u012bn yu\u00e8 ma",
+          "english": "Do you listen to music?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4ed6\u5beb\u5b57",
+          "pinyin": "t\u0101 xi\u011b z\u00ec",
+          "english": "He writes characters."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "school",
+      "number": 14,
+      "title": "Classroom",
+      "canDo": "I can talk about class.",
+      "pattern": "\u4e0a\u8ab2",
+      "patternPinyin": "sh\u00e0ngk\u00e8",
+      "words": [
+        {
+          "zh": "\u4e0a\u8ab2",
+          "pinyin": "sh\u00e0ngk\u00e8",
+          "english": "attend class"
+        },
+        {
+          "zh": "\u4e0b\u8ab2",
+          "pinyin": "xi\u00e0 k\u00e8",
+          "english": "finish class"
+        },
+        {
+          "zh": "\u66f8",
+          "pinyin": "sh\u016b",
+          "english": "book"
+        },
+        {
+          "zh": "\u7b46",
+          "pinyin": "b\u01d0",
+          "english": "pen"
+        },
+        {
+          "zh": "\u684c\u5b50",
+          "pinyin": "zhu\u014d zi",
+          "english": "table"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u4eca\u5929\u4e0a\u8ab2",
+          "pinyin": "w\u01d2 j\u012bn ti\u0101n sh\u00e0ngk\u00e8",
+          "english": "I have class today."
+        },
+        {
+          "zh": "\u8001\u5e2b\u6709\u66f8",
+          "pinyin": "l\u01ceo sh\u012b y\u01d2u sh\u016b",
+          "english": "The teacher has a book."
+        },
+        {
+          "zh": "\u7b46\u5728\u684c\u5b50\u4e0a",
+          "pinyin": "b\u01d0 z\u00e0i zhu\u014d zi sh\u00e0ng",
+          "english": "The pen is on the table."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u4eca\u5929\u4e0a\u8ab2",
+          "pinyin": "w\u01d2 j\u012bn ti\u0101n sh\u00e0ngk\u00e8",
+          "english": "I have class today."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u8001\u5e2b\u6709\u66f8",
+          "pinyin": "l\u01ceo sh\u012b y\u01d2u sh\u016b",
+          "english": "The teacher has a book."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u7b46\u5728\u684c\u5b50\u4e0a",
+          "pinyin": "b\u01d0 z\u00e0i zhu\u014d zi sh\u00e0ng",
+          "english": "The pen is on the table."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "weather",
+      "number": 15,
+      "title": "Weather",
+      "canDo": "I can talk about weather.",
+      "pattern": "\u5929\u6c23",
+      "patternPinyin": "ti\u0101n q\u00ec",
+      "words": [
+        {
+          "zh": "\u5929\u6c23",
+          "pinyin": "ti\u0101n q\u00ec",
+          "english": "weather"
+        },
+        {
+          "zh": "\u71b1",
+          "pinyin": "r\u00e8",
+          "english": "hot"
+        },
+        {
+          "zh": "\u51b7",
+          "pinyin": "l\u011bng",
+          "english": "cold"
+        },
+        {
+          "zh": "\u4e0b\u96e8",
+          "pinyin": "xi\u00e0 y\u01d4",
+          "english": "rain"
+        },
+        {
+          "zh": "\u592a",
+          "pinyin": "t\u00e0i",
+          "english": "too"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u4eca\u5929\u5929\u6c23\u5f88\u71b1",
+          "pinyin": "j\u012bn ti\u0101n ti\u0101n q\u00ec h\u011bn r\u00e8",
+          "english": "Today the weather is hot."
+        },
+        {
+          "zh": "\u660e\u5929\u4e0b\u96e8\u55ce",
+          "pinyin": "m\u00edng ti\u0101n xi\u00e0 y\u01d4 ma",
+          "english": "Will it rain tomorrow?"
+        },
+        {
+          "zh": "\u592a\u51b7\u4e86",
+          "pinyin": "t\u00e0i l\u011bng le",
+          "english": "It is too cold."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u4eca\u5929\u5929\u6c23\u5f88\u71b1",
+          "pinyin": "j\u012bn ti\u0101n ti\u0101n q\u00ec h\u011bn r\u00e8",
+          "english": "Today the weather is hot."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u660e\u5929\u4e0b\u96e8\u55ce",
+          "pinyin": "m\u00edng ti\u0101n xi\u00e0 y\u01d4 ma",
+          "english": "Will it rain tomorrow?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u592a\u51b7\u4e86",
+          "pinyin": "t\u00e0i l\u011bng le",
+          "english": "It is too cold."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "transport",
+      "number": 16,
+      "title": "Getting Around",
+      "canDo": "I can talk about transport.",
+      "pattern": "\u5750\u8eca",
+      "patternPinyin": "zu\u00f2 ch\u0113",
+      "words": [
+        {
+          "zh": "\u5750",
+          "pinyin": "zu\u00f2",
+          "english": "ride/sit"
+        },
+        {
+          "zh": "\u8eca",
+          "pinyin": "ch\u0113",
+          "english": "car/bus"
+        },
+        {
+          "zh": "\u706b\u8eca",
+          "pinyin": "hu\u01d2 ch\u0113",
+          "english": "train"
+        },
+        {
+          "zh": "\u6377\u904b",
+          "pinyin": "ji\u00e9y\u00f9n",
+          "english": "MRT"
+        },
+        {
+          "zh": "\u8eca\u7ad9",
+          "pinyin": "ch\u0113 zh\u00e0n",
+          "english": "station"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u5750\u6377\u904b",
+          "pinyin": "w\u01d2 zu\u00f2 ji\u00e9y\u00f9n",
+          "english": "I take the MRT."
+        },
+        {
+          "zh": "\u8eca\u7ad9\u5728\u54ea\u88e1",
+          "pinyin": "ch\u0113 zh\u00e0n z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is the station?"
+        },
+        {
+          "zh": "\u4ed6\u5750\u706b\u8eca\u53bb\u53f0\u7063",
+          "pinyin": "t\u0101 zu\u00f2 hu\u01d2 ch\u0113 q\u00f9 t\u00e1i w\u0101n",
+          "english": "He takes the train to Taiwan."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u5750\u6377\u904b",
+          "pinyin": "w\u01d2 zu\u00f2 ji\u00e9y\u00f9n",
+          "english": "I take the MRT."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u8eca\u7ad9\u5728\u54ea\u88e1",
+          "pinyin": "ch\u0113 zh\u00e0n z\u00e0i n\u01ce l\u01d0",
+          "english": "Where is the station?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4ed6\u5750\u706b\u8eca\u53bb\u53f0\u7063",
+          "pinyin": "t\u0101 zu\u00f2 hu\u01d2 ch\u0113 q\u00f9 t\u00e1i w\u0101n",
+          "english": "He takes the train to Taiwan."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "shopping",
+      "number": 17,
+      "title": "Shopping",
+      "canDo": "I can ask price and buy things.",
+      "pattern": "\u591a\u5c11\u9322",
+      "patternPinyin": "du\u014d sh\u01ceo qi\u00e1n",
+      "words": [
+        {
+          "zh": "\u9322",
+          "pinyin": "qi\u00e1n",
+          "english": "money"
+        },
+        {
+          "zh": "\u8cb4",
+          "pinyin": "gu\u00ec",
+          "english": "expensive"
+        },
+        {
+          "zh": "\u4fbf\u5b9c",
+          "pinyin": "pi\u00e1ny\u00ed",
+          "english": "cheap"
+        },
+        {
+          "zh": "\u9019\u500b",
+          "pinyin": "zh\u00e8 g\u00e8",
+          "english": "this one"
+        },
+        {
+          "zh": "\u90a3\u500b",
+          "pinyin": "n\u00e0ge",
+          "english": "that one"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u9019\u500b\u591a\u5c11\u9322",
+          "pinyin": "zh\u00e8ge du\u014dsh\u01ceo qi\u00e1n",
+          "english": "How much is this?"
+        },
+        {
+          "zh": "\u592a\u8cb4\u4e86",
+          "pinyin": "t\u00e0i gu\u00ec le",
+          "english": "Too expensive."
+        },
+        {
+          "zh": "\u6211\u8981\u90a3\u500b",
+          "pinyin": "w\u01d2 y\u00e0o n\u00e0ge",
+          "english": "I want that one."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u9019\u500b\u591a\u5c11\u9322",
+          "pinyin": "zh\u00e8ge du\u014dsh\u01ceo qi\u00e1n",
+          "english": "How much is this?"
+        },
+        {
+          "speaker": "B",
+          "zh": "\u592a\u8cb4\u4e86",
+          "pinyin": "t\u00e0i gu\u00ec le",
+          "english": "Too expensive."
+        },
+        {
+          "speaker": "A",
+          "zh": "\u6211\u8981\u90a3\u500b",
+          "pinyin": "w\u01d2 y\u00e0o n\u00e0ge",
+          "english": "I want that one."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "questions",
+      "number": 18,
+      "title": "Question Words",
+      "canDo": "I can ask beginner questions.",
+      "pattern": "\u4ec0\u9ebc",
+      "patternPinyin": "sh\u00e9n me",
+      "words": [
+        {
+          "zh": "\u4ec0\u9ebc",
+          "pinyin": "sh\u00e9n me",
+          "english": "what"
+        },
+        {
+          "zh": "\u8ab0",
+          "pinyin": "sh\u00e9i",
+          "english": "who"
+        },
+        {
+          "zh": "\u54ea",
+          "pinyin": "n\u01ce",
+          "english": "which"
+        },
+        {
+          "zh": "\u70ba\u4ec0\u9ebc",
+          "pinyin": "W\u00e8ish\u00e9nme",
+          "english": "why"
+        },
+        {
+          "zh": "\u600e\u9ebc",
+          "pinyin": "z\u011bn me",
+          "english": "how"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u9019\u662f\u4ec0\u9ebc",
+          "pinyin": "zh\u00e8 sh\u00ec sh\u00e9n me",
+          "english": "What is this?"
+        },
+        {
+          "zh": "\u4ed6\u662f\u8ab0",
+          "pinyin": "t\u0101 sh\u00ec sh\u00e9i",
+          "english": "Who is he?"
+        },
+        {
+          "zh": "\u4f60\u600e\u9ebc\u53bb",
+          "pinyin": "n\u01d0 z\u011bn me q\u00f9",
+          "english": "How do you go?"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u9019\u662f\u4ec0\u9ebc",
+          "pinyin": "zh\u00e8 sh\u00ec sh\u00e9n me",
+          "english": "What is this?"
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4ed6\u662f\u8ab0",
+          "pinyin": "t\u0101 sh\u00ec sh\u00e9i",
+          "english": "Who is he?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u4f60\u600e\u9ebc\u53bb",
+          "pinyin": "n\u01d0 z\u011bn me q\u00f9",
+          "english": "How do you go?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "feelings",
+      "number": 19,
+      "title": "Feelings",
+      "canDo": "I can say how I feel.",
+      "pattern": "\u6211\u5f88\u5fd9",
+      "patternPinyin": "w\u01d2 h\u011bn m\u00e1ng",
+      "words": [
+        {
+          "zh": "\u5f88",
+          "pinyin": "h\u011bn",
+          "english": "very"
+        },
+        {
+          "zh": "\u5fd9",
+          "pinyin": "m\u00e1ng",
+          "english": "busy"
+        },
+        {
+          "zh": "\u7d2f",
+          "pinyin": "l\u00e8i",
+          "english": "tired"
+        },
+        {
+          "zh": "\u9ad8\u8208",
+          "pinyin": "g\u0101o x\u00ecng",
+          "english": "happy"
+        },
+        {
+          "zh": "\u597d\u5403",
+          "pinyin": "h\u01ceo ch\u012b",
+          "english": "tasty"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u6211\u5f88\u5fd9",
+          "pinyin": "w\u01d2 h\u011bn m\u00e1ng",
+          "english": "I am busy."
+        },
+        {
+          "zh": "\u4f60\u7d2f\u55ce",
+          "pinyin": "n\u01d0 l\u00e8i ma",
+          "english": "Are you tired?"
+        },
+        {
+          "zh": "\u9019\u500b\u5f88\u597d\u5403",
+          "pinyin": "zh\u00e8 g\u00e8 h\u011bn h\u01ceo ch\u012b",
+          "english": "This is tasty."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u6211\u5f88\u5fd9",
+          "pinyin": "w\u01d2 h\u011bn m\u00e1ng",
+          "english": "I am busy."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u4f60\u7d2f\u55ce",
+          "pinyin": "n\u01d0 l\u00e8i ma",
+          "english": "Are you tired?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u9019\u500b\u5f88\u597d\u5403",
+          "pinyin": "zh\u00e8 g\u00e8 h\u011bn h\u01ceo ch\u012b",
+          "english": "This is tasty."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "mini-dialogue",
+      "number": 20,
+      "title": "Mini Conversation",
+      "canDo": "I can handle a tiny conversation.",
+      "pattern": "\u6211\u53ef\u4ee5",
+      "patternPinyin": "w\u01d2 k\u011b y\u01d0",
+      "words": [
+        {
+          "zh": "\u53ef\u4ee5",
+          "pinyin": "k\u011b y\u01d0",
+          "english": "can/may"
+        },
+        {
+          "zh": "\u6c92\u95dc\u4fc2",
+          "pinyin": "m\u00e9i gu\u0101n x\u00ec",
+          "english": "no problem"
+        },
+        {
+          "zh": "\u5c0d\u4e0d\u8d77",
+          "pinyin": "du\u00ec b\u00f9 q\u01d0",
+          "english": "sorry"
+        },
+        {
+          "zh": "\u518d\u4e00\u6b21",
+          "pinyin": "z\u00e0i y\u012b c\u00ec",
+          "english": "one more time"
+        },
+        {
+          "zh": "\u6162\u4e00\u9ede",
+          "pinyin": "m\u00e0n y\u012bdi\u01cen",
+          "english": "slower"
+        }
+      ],
+      "story": [
+        {
+          "zh": "\u5c0d\u4e0d\u8d77\u8acb\u518d\u8aaa\u4e00\u6b21",
+          "pinyin": "du\u00ec b\u00f9 q\u01d0 q\u01d0ng z\u00e0i shu\u014d y\u012b c\u00ec",
+          "english": "Sorry, please say it again."
+        },
+        {
+          "zh": "\u53ef\u4ee5\u6162\u4e00\u9ede\u55ce",
+          "pinyin": "k\u011b y\u01d0 m\u00e0n y\u012bdi\u01cen ma",
+          "english": "Can you slow down?"
+        },
+        {
+          "zh": "\u6c92\u95dc\u4fc2",
+          "pinyin": "m\u00e9i gu\u0101n x\u00ec",
+          "english": "No problem."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "\u5c0d\u4e0d\u8d77\u8acb\u518d\u8aaa\u4e00\u6b21",
+          "pinyin": "du\u00ec b\u00f9 q\u01d0 q\u01d0ng z\u00e0i shu\u014d y\u012b c\u00ec",
+          "english": "Sorry, please say it again."
+        },
+        {
+          "speaker": "B",
+          "zh": "\u53ef\u4ee5\u6162\u4e00\u9ede\u55ce",
+          "pinyin": "k\u011b y\u01d0 m\u00e0n y\u012bdi\u01cen ma",
+          "english": "Can you slow down?"
+        },
+        {
+          "speaker": "A",
+          "zh": "\u6c92\u95dc\u4fc2",
+          "pinyin": "m\u00e9i gu\u0101n x\u00ec",
+          "english": "No problem."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "Choose the English meaning",
+          "wordIndex": 0
+        },
+        {
+          "type": "listen",
+          "prompt": "Listen and choose the matching Chinese",
+          "wordIndex": 2
+        },
+        {
+          "type": "sentence",
+          "prompt": "Choose the sentence meaning",
+          "sentenceIndex": 0
+        }
+      ]
+    }
+  ]
+}

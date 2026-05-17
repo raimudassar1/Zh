@@ -66,10 +66,10 @@ const TOCFLModule = (() => {
         </section>
 
         <div class="tocfl-mode-bar tocfl-mode-bar-pro" role="tablist" aria-label="TOCFL mode">
-          <button class="tocfl-mode active" data-mode="plan">Study Plan</button>
-          <button class="tocfl-mode" data-mode="practice">Practice Parts</button>
-          <button class="tocfl-mode" data-mode="exams">Mock Exams</button>
-          <button class="tocfl-mode" data-mode="review">Review</button>
+          <button type="button" class="tocfl-mode active" data-mode="plan">Study Plan</button>
+          <button type="button" class="tocfl-mode" data-mode="practice">Practice Parts</button>
+          <button type="button" class="tocfl-mode" data-mode="exams">Mock Exams</button>
+          <button type="button" class="tocfl-mode" data-mode="review">Review</button>
         </div>
 
         <div class="tocfl-band-grid tocfl-band-grid-pro">
@@ -86,7 +86,7 @@ const TOCFLModule = (() => {
 
   function bandCard(key, band) {
     return `
-      <button class="tocfl-band-card ${key === state.band ? 'active' : ''}" data-band="${key}">
+      <button type="button" class="tocfl-band-card ${key === state.band ? 'active' : ''}" data-band="${key}">
         <span>${band.label}</span>
         <strong>${band.chinese}</strong>
         <small>${band.cefr} · ${band.vocab}</small>
@@ -96,7 +96,8 @@ const TOCFLModule = (() => {
 
   function bindShell(container) {
     container.querySelectorAll('.tocfl-mode').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
         clearTimer();
         state.mode = btn.dataset.mode;
         state.questions = [];
@@ -106,7 +107,8 @@ const TOCFLModule = (() => {
       });
     });
     container.querySelectorAll('.tocfl-band-card').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
         clearTimer();
         state.band = btn.dataset.band;
         state.questions = [];
@@ -209,8 +211,8 @@ const TOCFLModule = (() => {
             <li>Review misses and vocabulary gaps.</li>
             <li>Run full Listening + Reading simulation.</li>
           </ol>
-          <button class="btn btn-primary w-full" data-jump-mode="practice">Start part practice</button>
-          <button class="btn btn-outline w-full" data-jump-mode="exams">Go to mock exams</button>
+          <button type="button" class="btn btn-primary w-full" data-jump-mode="practice">Start part practice</button>
+          <button type="button" class="btn btn-outline w-full" data-jump-mode="exams">Go to mock exams</button>
         </aside>
       </div>
       ${sourceNote()}`;
@@ -234,7 +236,7 @@ const TOCFLModule = (() => {
         ${skillCard('writing', band, false)}
         ${skillCard('mixed', band, false)}
       </div>`;
-    area.querySelectorAll('[data-start-skill]').forEach(btn => btn.addEventListener('click', () => startSession(btn.dataset.startSkill, false)));
+    area.querySelectorAll('[data-start-skill]').forEach(btn => btn.addEventListener('click', (event) => { event.preventDefault(); startSession(btn.dataset.startSkill, false); }));
   }
 
   function skillCard(skill, band, examMode) {
@@ -248,7 +250,7 @@ const TOCFLModule = (() => {
         <div class="tocfl-skill-top"><strong>${meta.title}</strong><span>${examMode ? meta.count : skill === 'writing' ? 6 : 10}</span></div>
         <p>${meta.desc}</p>
         <div class="tocfl-part-list">${meta.parts.slice(0, 5).map(p => `<span>${p}</span>`).join('')}</div>
-        <button class="btn btn-primary w-full" data-start-skill="${skill}">${examMode ? 'Start exam block' : 'Practice this part'}</button>
+        <button type="button" class="btn btn-primary w-full" data-start-skill="${skill}">${examMode ? 'Start exam block' : 'Practice this part'}</button>
       </article>`;
   }
 
@@ -267,7 +269,7 @@ const TOCFLModule = (() => {
         ${sets.map(set => examSetCard(set, band)).join('')}
       </div>
       ${sourceNote()}`;
-    area.querySelectorAll('[data-exam-skill]').forEach(btn => btn.addEventListener('click', () => startExam(btn.dataset.examId, btn.dataset.examSkill)));
+    area.querySelectorAll('[data-exam-skill]').forEach(btn => btn.addEventListener('click', (event) => { event.preventDefault(); startExam(btn.dataset.examId, btn.dataset.examSkill); }));
   }
 
   function makeExamSets(bandKey) {
@@ -280,9 +282,9 @@ const TOCFLModule = (() => {
         <div class="tocfl-exam-card-head"><span>Mock ${set.number}</span><strong>${band.label}</strong></div>
         <p>Official-style section order with fixed generated questions. Use this like a real pre-test before exam day.</p>
         <div class="tocfl-exam-actions">
-          <button class="btn btn-outline btn-sm" data-exam-id="${set.id}" data-exam-skill="listening">Listening</button>
-          <button class="btn btn-outline btn-sm" data-exam-id="${set.id}" data-exam-skill="reading">Reading</button>
-          <button class="btn btn-primary btn-sm" data-exam-id="${set.id}" data-exam-skill="mixed">Full L+R</button>
+          <button type="button" class="btn btn-outline btn-sm" data-exam-id="${set.id}" data-exam-skill="listening">Listening</button>
+          <button type="button" class="btn btn-outline btn-sm" data-exam-id="${set.id}" data-exam-skill="reading">Reading</button>
+          <button type="button" class="btn btn-primary btn-sm" data-exam-id="${set.id}" data-exam-skill="mixed">Full L+R</button>
         </div>
       </article>`;
   }
@@ -297,7 +299,8 @@ const TOCFLModule = (() => {
   }
 
   function bindJumpButtons(area) {
-    area.querySelectorAll('[data-jump-mode]').forEach(btn => btn.addEventListener('click', () => {
+    area.querySelectorAll('[data-jump-mode]').forEach(btn => btn.addEventListener('click', (event) => {
+      event.preventDefault();
       state.mode = btn.dataset.jumpMode;
       document.querySelectorAll('.tocfl-mode').forEach(b => b.classList.toggle('active', b.dataset.mode === state.mode));
       renderWorkspace();
@@ -430,7 +433,7 @@ const TOCFLModule = (() => {
     area.innerHTML = `
       <div class="tocfl-test-shell tocfl-exam-room">
         <div class="tocfl-test-top tocfl-exam-top">
-          <button class="btn btn-ghost btn-sm" id="tocfl-exit">Exit</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="tocfl-exit">Exit</button>
           <div><strong>${bands[state.band].label}</strong><span>${titleCase(state.skill)} · ${q.section}</span></div>
           <div class="tocfl-timer">${state.timeLeft ? formatTime(state.timeLeft) : `${state.current + 1} / ${state.questions.length}`}</div>
         </div>
@@ -444,8 +447,8 @@ const TOCFLModule = (() => {
             ${q.tokens?.length ? `<div class="tocfl-token-bank">${q.tokens.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>` : ''}
             ${q.type === 'writing' ? `<textarea class="tocfl-writing-input" id="tocfl-writing-answer" placeholder="Type your Chinese answer here">${escapeHtml(answered || '')}</textarea>` : optionsHtml(q, answered)}
             <div class="tocfl-question-actions">
-              <button class="btn btn-ghost" id="tocfl-prev" ${state.current === 0 ? 'disabled' : ''}>Previous</button>
-              <button class="btn btn-primary" id="tocfl-next">${state.current === state.questions.length - 1 ? 'Finish' : 'Next'}</button>
+              <button type="button" class="btn btn-ghost" id="tocfl-prev" ${state.current === 0 ? 'disabled' : ''}>Previous</button>
+              <button type="button" class="btn btn-primary" id="tocfl-next">${state.current === state.questions.length - 1 ? 'Finish' : 'Next'}</button>
             </div>
           </div>
         </div>
@@ -455,14 +458,14 @@ const TOCFLModule = (() => {
 
   function optionsHtml(q, answered) {
     return `<div class="tocfl-options">${q.options.map(opt => `
-      <button class="tocfl-option ${answered === opt.text ? 'selected' : ''}" data-answer="${escapeAttr(opt.text)}">
+      <button type="button" class="tocfl-option ${answered === opt.text ? 'selected' : ''}" data-answer="${escapeAttr(opt.text)}">
         <span>${opt.id}</span><strong>${escapeHtml(opt.text)}</strong>
       </button>`).join('')}</div>`;
   }
 
   function bindQuestion(area, q) {
     area.querySelector('#tocfl-exit')?.addEventListener('click', () => { clearTimer(); state.questions = []; renderWorkspace(); });
-    area.querySelector('#tocfl-play-audio')?.addEventListener('click', () => TTS?.speak(q.audioText));
+    area.querySelector('#tocfl-play-audio')?.addEventListener('click', (event) => { event.preventDefault(); TTS?.speak(q.audioText); });
     area.querySelectorAll('.tocfl-option').forEach(btn => btn.addEventListener('click', () => {
       state.answers[state.current] = btn.dataset.answer;
       area.querySelectorAll('.tocfl-option').forEach(b => b.classList.toggle('selected', b === btn));
@@ -497,7 +500,7 @@ const TOCFLModule = (() => {
       <div class="tocfl-result-card">
         <h3>${objective.length ? `${pct}%` : 'Writing practice complete'}</h3>
         <p>${objective.length ? `${correct} of ${objective.length} objective questions correct · ${result}` : 'Review your writing against the model answers below.'}</p>
-        <div class="tocfl-result-actions"><button class="btn btn-primary" id="tocfl-back-home">Back to TOCFL Center</button><button class="btn btn-outline" id="tocfl-review-mode">Open Review</button></div>
+        <div class="tocfl-result-actions"><button type="button" class="btn btn-primary" id="tocfl-back-home">Back to TOCFL Center</button><button type="button" class="btn btn-outline" id="tocfl-review-mode">Open Review</button></div>
         <div class="tocfl-review-list">${state.questions.slice(0, 30).map((q, idx) => reviewRow(q, idx)).join('')}</div>
       </div>`;
     area.querySelector('#tocfl-back-home')?.addEventListener('click', () => { state.questions = []; state.submitted = false; renderWorkspace(); });

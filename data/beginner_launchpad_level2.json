@@ -1,0 +1,1933 @@
+{
+  "version": 2,
+  "title": "Beginner Launchpad Level 2",
+  "description": "20 slightly harder beginner bridge lessons generated from the clean Level 1 Traditional Chinese content.",
+  "totalWords": 145,
+  "lessons": [
+    {
+      "id": "hello-level-2",
+      "number": 1,
+      "title": "Meet Someone Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "我叫小明, 你叫什麼名字",
+      "patternPinyin": "wǒ jiào xiǎo míng, nǐ jiào shén me míng zi",
+      "words": [
+        {
+          "zh": "你好",
+          "pinyin": "nǐ hǎo",
+          "english": "hello"
+        },
+        {
+          "zh": "我",
+          "pinyin": "wǒ",
+          "english": "I/me"
+        },
+        {
+          "zh": "你",
+          "pinyin": "nǐ",
+          "english": "you"
+        },
+        {
+          "zh": "叫",
+          "pinyin": "jiào",
+          "english": "to be called"
+        },
+        {
+          "zh": "名字",
+          "pinyin": "míng zi",
+          "english": "name"
+        },
+        {
+          "zh": "學生",
+          "pinyin": "xué sheng",
+          "english": "student"
+        },
+        {
+          "zh": "請問",
+          "pinyin": "qǐng wèn",
+          "english": "may I ask"
+        }
+      ],
+      "story": [
+        {
+          "zh": "你好, 我叫小明",
+          "pinyin": "nǐ hǎo, wǒ jiào xiǎo míng",
+          "english": "Hello, and my name is Xiaoming."
+        },
+        {
+          "zh": "我叫小明, 你叫什麼名字",
+          "pinyin": "wǒ jiào xiǎo míng, nǐ jiào shén me míng zi",
+          "english": "My name is Xiaoming, and what is your name?"
+        },
+        {
+          "zh": "你好, 我叫小明, 你叫什麼名字",
+          "pinyin": "nǐ hǎo, wǒ jiào xiǎo míng, nǐ jiào shén me míng zi",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "你好",
+          "pinyin": "nǐ hǎo",
+          "english": "Hello."
+        },
+        {
+          "speaker": "B",
+          "zh": "我叫小明",
+          "pinyin": "wǒ jiào xiǎo míng",
+          "english": "My name is Xiaoming."
+        },
+        {
+          "speaker": "A",
+          "zh": "你叫什麼名字",
+          "pinyin": "nǐ jiào shén me míng zi",
+          "english": "What is your name?"
+        },
+        {
+          "speaker": "B",
+          "zh": "我叫小明, 你叫什麼名字",
+          "pinyin": "wǒ jiào xiǎo míng, nǐ jiào shén me míng zi",
+          "english": "My name is Xiaoming, and what is your name?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "你好",
+          "answer": "hello"
+        }
+      ]
+    },
+    {
+      "id": "polite-level-2",
+      "number": 2,
+      "title": "Polite Greetings Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "請問您貴姓, 謝謝老師",
+      "patternPinyin": "qǐng wèn Nín guìxìng, xiè xiè lǎo shī",
+      "words": [
+        {
+          "zh": "您",
+          "pinyin": "nín",
+          "english": "you polite"
+        },
+        {
+          "zh": "老師",
+          "pinyin": "lǎo shī",
+          "english": "teacher"
+        },
+        {
+          "zh": "學生",
+          "pinyin": "xué sheng",
+          "english": "student"
+        },
+        {
+          "zh": "請問",
+          "pinyin": "qǐng wèn",
+          "english": "may I ask"
+        },
+        {
+          "zh": "謝謝",
+          "pinyin": "xiè xiè",
+          "english": "thank you"
+        },
+        {
+          "zh": "是",
+          "pinyin": "shì",
+          "english": "to be"
+        },
+        {
+          "zh": "人",
+          "pinyin": "rén",
+          "english": "person"
+        }
+      ],
+      "story": [
+        {
+          "zh": "老師您好, 請問您貴姓",
+          "pinyin": "lǎo shī nín hǎo, qǐng wèn Nín guìxìng",
+          "english": "Hello teacher, and may I ask your surname?"
+        },
+        {
+          "zh": "請問您貴姓, 謝謝老師",
+          "pinyin": "qǐng wèn Nín guìxìng, xiè xiè lǎo shī",
+          "english": "May I ask your surname?, and thank you teacher."
+        },
+        {
+          "zh": "您好, 請問您貴姓, 謝謝老師",
+          "pinyin": "nín hǎo, qǐng wèn Nín guìxìng, xiè xiè lǎo shī",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "老師您好",
+          "pinyin": "lǎo shī nín hǎo",
+          "english": "Hello teacher."
+        },
+        {
+          "speaker": "B",
+          "zh": "請問您貴姓",
+          "pinyin": "qǐng wèn Nín guìxìng",
+          "english": "May I ask your surname?"
+        },
+        {
+          "speaker": "A",
+          "zh": "謝謝老師",
+          "pinyin": "xiè xiè lǎo shī",
+          "english": "Thank you teacher."
+        },
+        {
+          "speaker": "B",
+          "zh": "請問您貴姓, 謝謝老師",
+          "pinyin": "qǐng wèn Nín guìxìng, xiè xiè lǎo shī",
+          "english": "May I ask your surname?, and thank you teacher."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "您",
+          "answer": "you polite"
+        }
+      ]
+    },
+    {
+      "id": "nationality-level-2",
+      "number": 3,
+      "title": "Where Are You From? Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你是哪國人, 他是台灣人",
+      "patternPinyin": "nǐ shì nǎ guó rén, tā shì tái wān rén",
+      "words": [
+        {
+          "zh": "是",
+          "pinyin": "shì",
+          "english": "to be"
+        },
+        {
+          "zh": "人",
+          "pinyin": "rén",
+          "english": "person"
+        },
+        {
+          "zh": "台灣",
+          "pinyin": "tái wān",
+          "english": "Taiwan"
+        },
+        {
+          "zh": "美國",
+          "pinyin": "měi guó",
+          "english": "USA"
+        },
+        {
+          "zh": "哪國",
+          "pinyin": "nǎ guó",
+          "english": "which country"
+        },
+        {
+          "zh": "是的",
+          "pinyin": "shì de",
+          "english": "yes / that is right"
+        },
+        {
+          "zh": "不是",
+          "pinyin": "bù shì",
+          "english": "no / is not"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我是美國人, 你是哪國人",
+          "pinyin": "wǒ shì měi guó rén, nǐ shì nǎ guó rén",
+          "english": "I am American, and what country are you from?"
+        },
+        {
+          "zh": "你是哪國人, 他是台灣人",
+          "pinyin": "nǐ shì nǎ guó rén, tā shì tái wān rén",
+          "english": "What country are you from?, and he is Taiwanese."
+        },
+        {
+          "zh": "我是, 你是哪國人, 他是台灣人",
+          "pinyin": "wǒ shì, nǐ shì nǎ guó rén, tā shì tái wān rén",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我是美國人",
+          "pinyin": "wǒ shì měi guó rén",
+          "english": "I am American."
+        },
+        {
+          "speaker": "B",
+          "zh": "你是哪國人",
+          "pinyin": "nǐ shì nǎ guó rén",
+          "english": "What country are you from?"
+        },
+        {
+          "speaker": "A",
+          "zh": "他是台灣人",
+          "pinyin": "tā shì tái wān rén",
+          "english": "He is Taiwanese."
+        },
+        {
+          "speaker": "B",
+          "zh": "你是哪國人, 他是台灣人",
+          "pinyin": "nǐ shì nǎ guó rén, tā shì tái wān rén",
+          "english": "What country are you from?, and he is Taiwanese."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "是",
+          "answer": "to be"
+        }
+      ]
+    },
+    {
+      "id": "yes-no-level-2",
+      "number": 4,
+      "title": "Yes and No Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "是的我是學生, 不是我是老師",
+      "patternPinyin": "shì de wǒ shì xué sheng, bù shì wǒ shì lǎo shī",
+      "words": [
+        {
+          "zh": "是的",
+          "pinyin": "shì de",
+          "english": "yes / that is right"
+        },
+        {
+          "zh": "不是",
+          "pinyin": "bù shì",
+          "english": "no / is not"
+        },
+        {
+          "zh": "嗎",
+          "pinyin": "ma",
+          "english": "question particle"
+        },
+        {
+          "zh": "也",
+          "pinyin": "yě",
+          "english": "also"
+        },
+        {
+          "zh": "都",
+          "pinyin": "dōu",
+          "english": "all/both"
+        },
+        {
+          "zh": "喜歡",
+          "pinyin": "xǐ huan",
+          "english": "to like"
+        },
+        {
+          "zh": "喝",
+          "pinyin": "hē",
+          "english": "drink"
+        }
+      ],
+      "story": [
+        {
+          "zh": "你是學生嗎, 是的我是學生",
+          "pinyin": "nǐ shì xué sheng ma, shì de wǒ shì xué sheng",
+          "english": "Are you a student?, and yes, I am a student."
+        },
+        {
+          "zh": "是的我是學生, 不是我是老師",
+          "pinyin": "shì de wǒ shì xué sheng, bù shì wǒ shì lǎo shī",
+          "english": "Yes, I am a student, and no, I am a teacher."
+        },
+        {
+          "zh": "是的, 是的我是學生, 不是我是老師",
+          "pinyin": "shì de, shì de wǒ shì xué sheng, bù shì wǒ shì lǎo shī",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "你是學生嗎",
+          "pinyin": "nǐ shì xué sheng ma",
+          "english": "Are you a student?"
+        },
+        {
+          "speaker": "B",
+          "zh": "是的我是學生",
+          "pinyin": "shì de wǒ shì xué sheng",
+          "english": "Yes, I am a student."
+        },
+        {
+          "speaker": "A",
+          "zh": "不是我是老師",
+          "pinyin": "bù shì wǒ shì lǎo shī",
+          "english": "No, I am a teacher."
+        },
+        {
+          "speaker": "B",
+          "zh": "是的我是學生, 不是我是老師",
+          "pinyin": "shì de wǒ shì xué sheng, bù shì wǒ shì lǎo shī",
+          "english": "Yes, I am a student, and no, I am a teacher."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "是的",
+          "answer": "yes / that is right"
+        }
+      ]
+    },
+    {
+      "id": "like-level-2",
+      "number": 5,
+      "title": "Likes Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你喜歡咖啡嗎, 我不喜歡咖啡",
+      "patternPinyin": "nǐ xǐ huan kā fēi ma, wǒ bù xǐ huan kā fēi",
+      "words": [
+        {
+          "zh": "喜歡",
+          "pinyin": "xǐ huan",
+          "english": "to like"
+        },
+        {
+          "zh": "喝",
+          "pinyin": "hē",
+          "english": "drink"
+        },
+        {
+          "zh": "茶",
+          "pinyin": "chá",
+          "english": "tea"
+        },
+        {
+          "zh": "咖啡",
+          "pinyin": "kā fēi",
+          "english": "coffee"
+        },
+        {
+          "zh": "水",
+          "pinyin": "shuǐ",
+          "english": "water"
+        },
+        {
+          "zh": "都",
+          "pinyin": "dōu",
+          "english": "all/both"
+        },
+        {
+          "zh": "吃",
+          "pinyin": "chī",
+          "english": "eat"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我喜歡喝茶, 你喜歡咖啡嗎",
+          "pinyin": "wǒ xǐ huan hē chá, nǐ xǐ huan kā fēi ma",
+          "english": "I like drinking tea, and do you like coffee?"
+        },
+        {
+          "zh": "你喜歡咖啡嗎, 我不喜歡咖啡",
+          "pinyin": "nǐ xǐ huan kā fēi ma, wǒ bù xǐ huan kā fēi",
+          "english": "Do you like coffee?, and i do not like coffee."
+        },
+        {
+          "zh": "喜歡, 你喜歡咖啡嗎, 我不喜歡咖啡",
+          "pinyin": "xǐ huan, nǐ xǐ huan kā fēi ma, wǒ bù xǐ huan kā fēi",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我喜歡喝茶",
+          "pinyin": "wǒ xǐ huan hē chá",
+          "english": "I like drinking tea."
+        },
+        {
+          "speaker": "B",
+          "zh": "你喜歡咖啡嗎",
+          "pinyin": "nǐ xǐ huan kā fēi ma",
+          "english": "Do you like coffee?"
+        },
+        {
+          "speaker": "A",
+          "zh": "我不喜歡咖啡",
+          "pinyin": "wǒ bù xǐ huan kā fēi",
+          "english": "I do not like coffee."
+        },
+        {
+          "speaker": "B",
+          "zh": "你喜歡咖啡嗎, 我不喜歡咖啡",
+          "pinyin": "nǐ xǐ huan kā fēi ma, wǒ bù xǐ huan kā fēi",
+          "english": "Do you like coffee?, and i do not like coffee."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "喜歡",
+          "answer": "to like"
+        }
+      ]
+    },
+    {
+      "id": "food-level-2",
+      "number": 6,
+      "title": "Food Basics Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你吃麵嗎, 她喜歡水果",
+      "patternPinyin": "nǐ chī miàn ma, tā xǐ huan shuǐ guǒ",
+      "words": [
+        {
+          "zh": "吃",
+          "pinyin": "chī",
+          "english": "eat"
+        },
+        {
+          "zh": "飯",
+          "pinyin": "fàn",
+          "english": "rice/meal"
+        },
+        {
+          "zh": "麵",
+          "pinyin": "miàn",
+          "english": "noodles"
+        },
+        {
+          "zh": "蛋",
+          "pinyin": "dàn",
+          "english": "egg"
+        },
+        {
+          "zh": "水果",
+          "pinyin": "shuǐ guǒ",
+          "english": "fruit"
+        },
+        {
+          "zh": "茶",
+          "pinyin": "chá",
+          "english": "tea"
+        },
+        {
+          "zh": "咖啡",
+          "pinyin": "kā fēi",
+          "english": "coffee"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我想吃飯, 你吃麵嗎",
+          "pinyin": "wǒ xiǎng chī fàn, nǐ chī miàn ma",
+          "english": "I want to eat, and do you eat noodles?"
+        },
+        {
+          "zh": "你吃麵嗎, 她喜歡水果",
+          "pinyin": "nǐ chī miàn ma, tā xǐ huan shuǐ guǒ",
+          "english": "Do you eat noodles?, and she likes fruit."
+        },
+        {
+          "zh": "吃飯, 你吃麵嗎, 她喜歡水果",
+          "pinyin": "chī fàn, nǐ chī miàn ma, tā xǐ huan shuǐ guǒ",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我想吃飯",
+          "pinyin": "wǒ xiǎng chī fàn",
+          "english": "I want to eat."
+        },
+        {
+          "speaker": "B",
+          "zh": "你吃麵嗎",
+          "pinyin": "nǐ chī miàn ma",
+          "english": "Do you eat noodles?"
+        },
+        {
+          "speaker": "A",
+          "zh": "她喜歡水果",
+          "pinyin": "tā xǐ huan shuǐ guǒ",
+          "english": "She likes fruit."
+        },
+        {
+          "speaker": "B",
+          "zh": "你吃麵嗎, 她喜歡水果",
+          "pinyin": "nǐ chī miàn ma, tā xǐ huan shuǐ guǒ",
+          "english": "Do you eat noodles?, and she likes fruit."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "吃",
+          "answer": "eat"
+        }
+      ]
+    },
+    {
+      "id": "want-level-2",
+      "number": 7,
+      "title": "Want and Need Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "這個多少錢, 我想買水",
+      "patternPinyin": "zhège duōshǎo qián, wǒ xiǎng mǎi shuǐ",
+      "words": [
+        {
+          "zh": "要",
+          "pinyin": "yào",
+          "english": "want/need"
+        },
+        {
+          "zh": "想",
+          "pinyin": "xiǎng",
+          "english": "would like"
+        },
+        {
+          "zh": "買",
+          "pinyin": "mǎi",
+          "english": "buy"
+        },
+        {
+          "zh": "一個",
+          "pinyin": "yī gè",
+          "english": "one item"
+        },
+        {
+          "zh": "多少",
+          "pinyin": "duō shǎo",
+          "english": "how much"
+        },
+        {
+          "zh": "吃",
+          "pinyin": "chī",
+          "english": "eat"
+        },
+        {
+          "zh": "飯",
+          "pinyin": "fàn",
+          "english": "rice/meal"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我要買一個, 這個多少錢",
+          "pinyin": "wǒ yào mǎi yī gè, zhège duōshǎo qián",
+          "english": "I want to buy one, and how much is this?"
+        },
+        {
+          "zh": "這個多少錢, 我想買水",
+          "pinyin": "zhège duōshǎo qián, wǒ xiǎng mǎi shuǐ",
+          "english": "How much is this?, and i would like to buy water."
+        },
+        {
+          "zh": "我要, 這個多少錢, 我想買水",
+          "pinyin": "wǒ yào, zhège duōshǎo qián, wǒ xiǎng mǎi shuǐ",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我要買一個",
+          "pinyin": "wǒ yào mǎi yī gè",
+          "english": "I want to buy one."
+        },
+        {
+          "speaker": "B",
+          "zh": "這個多少錢",
+          "pinyin": "zhège duōshǎo qián",
+          "english": "How much is this?"
+        },
+        {
+          "speaker": "A",
+          "zh": "我想買水",
+          "pinyin": "wǒ xiǎng mǎi shuǐ",
+          "english": "I would like to buy water."
+        },
+        {
+          "speaker": "B",
+          "zh": "這個多少錢, 我想買水",
+          "pinyin": "zhège duōshǎo qián, wǒ xiǎng mǎi shuǐ",
+          "english": "How much is this?, and i would like to buy water."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "要",
+          "answer": "want/need"
+        }
+      ]
+    },
+    {
+      "id": "numbers-level-2",
+      "number": 8,
+      "title": "Numbers 1-10 Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你有三個嗎, 這是十個",
+      "patternPinyin": "nǐ yǒu sān gè ma, zhè shì shí gè",
+      "words": [
+        {
+          "zh": "一",
+          "pinyin": "yī",
+          "english": "one"
+        },
+        {
+          "zh": "二",
+          "pinyin": "èr",
+          "english": "two"
+        },
+        {
+          "zh": "三",
+          "pinyin": "sān",
+          "english": "three"
+        },
+        {
+          "zh": "四",
+          "pinyin": "sì",
+          "english": "four"
+        },
+        {
+          "zh": "五",
+          "pinyin": "wǔ",
+          "english": "five"
+        },
+        {
+          "zh": "六",
+          "pinyin": "liù",
+          "english": "six"
+        },
+        {
+          "zh": "七",
+          "pinyin": "qī",
+          "english": "seven"
+        },
+        {
+          "zh": "八",
+          "pinyin": "bā",
+          "english": "eight"
+        },
+        {
+          "zh": "九",
+          "pinyin": "jiǔ",
+          "english": "nine"
+        },
+        {
+          "zh": "十",
+          "pinyin": "shí",
+          "english": "ten"
+        },
+        {
+          "zh": "蛋",
+          "pinyin": "dàn",
+          "english": "egg"
+        },
+        {
+          "zh": "水果",
+          "pinyin": "shuǐ guǒ",
+          "english": "fruit"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我要一個, 你有三個嗎",
+          "pinyin": "wǒ yào yī gè, nǐ yǒu sān gè ma",
+          "english": "I want one, and do you have three?"
+        },
+        {
+          "zh": "你有三個嗎, 這是十個",
+          "pinyin": "nǐ yǒu sān gè ma, zhè shì shí gè",
+          "english": "Do you have three?, and this is ten."
+        },
+        {
+          "zh": "一二三, 你有三個嗎, 這是十個",
+          "pinyin": "yī èr sān, nǐ yǒu sān gè ma, zhè shì shí gè",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我要一個",
+          "pinyin": "wǒ yào yī gè",
+          "english": "I want one."
+        },
+        {
+          "speaker": "B",
+          "zh": "你有三個嗎",
+          "pinyin": "nǐ yǒu sān gè ma",
+          "english": "Do you have three?"
+        },
+        {
+          "speaker": "A",
+          "zh": "這是十個",
+          "pinyin": "zhè shì shí gè",
+          "english": "This is ten."
+        },
+        {
+          "speaker": "B",
+          "zh": "你有三個嗎, 這是十個",
+          "pinyin": "nǐ yǒu sān gè ma, zhè shì shí gè",
+          "english": "Do you have three?, and this is ten."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "一",
+          "answer": "one"
+        }
+      ]
+    },
+    {
+      "id": "family-level-2",
+      "number": 9,
+      "title": "Family Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "我有哥哥, 你有家人嗎",
+      "patternPinyin": "wǒ yǒu gē ge, nǐ yǒu jiā rén ma",
+      "words": [
+        {
+          "zh": "家人",
+          "pinyin": "jiā rén",
+          "english": "family"
+        },
+        {
+          "zh": "爸爸",
+          "pinyin": "bà ba",
+          "english": "dad"
+        },
+        {
+          "zh": "媽媽",
+          "pinyin": "mā ma",
+          "english": "mom"
+        },
+        {
+          "zh": "哥哥",
+          "pinyin": "gē ge",
+          "english": "older brother"
+        },
+        {
+          "zh": "姐姐",
+          "pinyin": "jiě jiě",
+          "english": "older sister"
+        },
+        {
+          "zh": "想",
+          "pinyin": "xiǎng",
+          "english": "would like"
+        },
+        {
+          "zh": "買",
+          "pinyin": "mǎi",
+          "english": "buy"
+        }
+      ],
+      "story": [
+        {
+          "zh": "這是我媽媽, 我有哥哥",
+          "pinyin": "zhè shì wǒ mā ma, wǒ yǒu gē ge",
+          "english": "This is my mom, and i have an older brother."
+        },
+        {
+          "zh": "我有哥哥, 你有家人嗎",
+          "pinyin": "wǒ yǒu gē ge, nǐ yǒu jiā rén ma",
+          "english": "I have an older brother, and do you have family?"
+        },
+        {
+          "zh": "家人, 我有哥哥, 你有家人嗎",
+          "pinyin": "jiā rén, wǒ yǒu gē ge, nǐ yǒu jiā rén ma",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "這是我媽媽",
+          "pinyin": "zhè shì wǒ mā ma",
+          "english": "This is my mom."
+        },
+        {
+          "speaker": "B",
+          "zh": "我有哥哥",
+          "pinyin": "wǒ yǒu gē ge",
+          "english": "I have an older brother."
+        },
+        {
+          "speaker": "A",
+          "zh": "你有家人嗎",
+          "pinyin": "nǐ yǒu jiā rén ma",
+          "english": "Do you have family?"
+        },
+        {
+          "speaker": "B",
+          "zh": "我有哥哥, 你有家人嗎",
+          "pinyin": "wǒ yǒu gē ge, nǐ yǒu jiā rén ma",
+          "english": "I have an older brother, and do you have family?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "家人",
+          "answer": "family"
+        }
+      ]
+    },
+    {
+      "id": "time-level-2",
+      "number": 10,
+      "title": "Today and Tomorrow Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "明天你來嗎, 現在幾點",
+      "patternPinyin": "míng tiān nǐ lái ma, xiàn zài jǐ diǎn",
+      "words": [
+        {
+          "zh": "今天",
+          "pinyin": "jīn tiān",
+          "english": "today"
+        },
+        {
+          "zh": "明天",
+          "pinyin": "míng tiān",
+          "english": "tomorrow"
+        },
+        {
+          "zh": "昨天",
+          "pinyin": "zuó tiān",
+          "english": "yesterday"
+        },
+        {
+          "zh": "現在",
+          "pinyin": "xiàn zài",
+          "english": "now"
+        },
+        {
+          "zh": "點",
+          "pinyin": "diǎn",
+          "english": "o?clock"
+        },
+        {
+          "zh": "多少",
+          "pinyin": "duō shǎo",
+          "english": "how much"
+        },
+        {
+          "zh": "一",
+          "pinyin": "yī",
+          "english": "one"
+        }
+      ],
+      "story": [
+        {
+          "zh": "今天我上課, 明天你來嗎",
+          "pinyin": "jīn tiān wǒ shàngkè, míng tiān nǐ lái ma",
+          "english": "Today I go to class, and are you coming tomorrow?"
+        },
+        {
+          "zh": "明天你來嗎, 現在幾點",
+          "pinyin": "míng tiān nǐ lái ma, xiàn zài jǐ diǎn",
+          "english": "Are you coming tomorrow?, and what time is it now?"
+        },
+        {
+          "zh": "今天, 明天你來嗎, 現在幾點",
+          "pinyin": "jīn tiān, míng tiān nǐ lái ma, xiàn zài jǐ diǎn",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "今天我上課",
+          "pinyin": "jīn tiān wǒ shàngkè",
+          "english": "Today I go to class."
+        },
+        {
+          "speaker": "B",
+          "zh": "明天你來嗎",
+          "pinyin": "míng tiān nǐ lái ma",
+          "english": "Are you coming tomorrow?"
+        },
+        {
+          "speaker": "A",
+          "zh": "現在幾點",
+          "pinyin": "xiàn zài jǐ diǎn",
+          "english": "What time is it now?"
+        },
+        {
+          "speaker": "B",
+          "zh": "明天你來嗎, 現在幾點",
+          "pinyin": "míng tiān nǐ lái ma, xiàn zài jǐ diǎn",
+          "english": "Are you coming tomorrow?, and what time is it now?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "今天",
+          "answer": "today"
+        }
+      ]
+    },
+    {
+      "id": "places-level-2",
+      "number": 11,
+      "title": "Places Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "她在餐廳, 你家在哪裡",
+      "patternPinyin": "tā zài cāntīng, nǐ jiā zài nǎ lǐ",
+      "words": [
+        {
+          "zh": "學校",
+          "pinyin": "xuéxiào",
+          "english": "school"
+        },
+        {
+          "zh": "家",
+          "pinyin": "jiā",
+          "english": "home"
+        },
+        {
+          "zh": "餐廳",
+          "pinyin": "cāntīng",
+          "english": "restaurant"
+        },
+        {
+          "zh": "商店",
+          "pinyin": "Shāngdiàn",
+          "english": "shop"
+        },
+        {
+          "zh": "公園",
+          "pinyin": "gōng yuán",
+          "english": "park"
+        },
+        {
+          "zh": "三",
+          "pinyin": "sān",
+          "english": "three"
+        },
+        {
+          "zh": "四",
+          "pinyin": "sì",
+          "english": "four"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我去學校, 她在餐廳",
+          "pinyin": "wǒ qù xuéxiào, tā zài cāntīng",
+          "english": "I go to school, and she is at the restaurant."
+        },
+        {
+          "zh": "她在餐廳, 你家在哪裡",
+          "pinyin": "tā zài cāntīng, nǐ jiā zài nǎ lǐ",
+          "english": "She is at the restaurant, and where is your home?"
+        },
+        {
+          "zh": "學校, 她在餐廳, 你家在哪裡",
+          "pinyin": "xuéxiào, tā zài cāntīng, nǐ jiā zài nǎ lǐ",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我去學校",
+          "pinyin": "wǒ qù xuéxiào",
+          "english": "I go to school."
+        },
+        {
+          "speaker": "B",
+          "zh": "她在餐廳",
+          "pinyin": "tā zài cāntīng",
+          "english": "She is at the restaurant."
+        },
+        {
+          "speaker": "A",
+          "zh": "你家在哪裡",
+          "pinyin": "nǐ jiā zài nǎ lǐ",
+          "english": "Where is your home?"
+        },
+        {
+          "speaker": "B",
+          "zh": "她在餐廳, 你家在哪裡",
+          "pinyin": "tā zài cāntīng, nǐ jiā zài nǎ lǐ",
+          "english": "She is at the restaurant, and where is your home?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "學校",
+          "answer": "school"
+        }
+      ]
+    },
+    {
+      "id": "directions-level-2",
+      "number": 12,
+      "title": "Where Is It? Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "我在這裡, 學校在公園旁邊",
+      "patternPinyin": "wǒ zài zhè lǐ, xuéxiào zài gōng yuán páng biān",
+      "words": [
+        {
+          "zh": "在",
+          "pinyin": "zài",
+          "english": "at/in"
+        },
+        {
+          "zh": "哪裡",
+          "pinyin": "nǎ lǐ",
+          "english": "where"
+        },
+        {
+          "zh": "這裡",
+          "pinyin": "zhè lǐ",
+          "english": "here"
+        },
+        {
+          "zh": "那裡",
+          "pinyin": "nà lǐ",
+          "english": "there"
+        },
+        {
+          "zh": "旁邊",
+          "pinyin": "páng biān",
+          "english": "beside"
+        },
+        {
+          "zh": "六",
+          "pinyin": "liù",
+          "english": "six"
+        },
+        {
+          "zh": "七",
+          "pinyin": "qī",
+          "english": "seven"
+        }
+      ],
+      "story": [
+        {
+          "zh": "商店在哪裡, 我在這裡",
+          "pinyin": "Shāngdiàn zài nǎ lǐ, wǒ zài zhè lǐ",
+          "english": "Where is the shop?, and i am here."
+        },
+        {
+          "zh": "我在這裡, 學校在公園旁邊",
+          "pinyin": "wǒ zài zhè lǐ, xuéxiào zài gōng yuán páng biān",
+          "english": "I am here, and the school is beside the park."
+        },
+        {
+          "zh": "在哪裡, 我在這裡, 學校在公園旁邊",
+          "pinyin": "zài nǎ lǐ, wǒ zài zhè lǐ, xuéxiào zài gōng yuán páng biān",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "商店在哪裡",
+          "pinyin": "Shāngdiàn zài nǎ lǐ",
+          "english": "Where is the shop?"
+        },
+        {
+          "speaker": "B",
+          "zh": "我在這裡",
+          "pinyin": "wǒ zài zhè lǐ",
+          "english": "I am here."
+        },
+        {
+          "speaker": "A",
+          "zh": "學校在公園旁邊",
+          "pinyin": "xuéxiào zài gōng yuán páng biān",
+          "english": "The school is beside the park."
+        },
+        {
+          "speaker": "B",
+          "zh": "我在這裡, 學校在公園旁邊",
+          "pinyin": "wǒ zài zhè lǐ, xuéxiào zài gōng yuán páng biān",
+          "english": "I am here, and the school is beside the park."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "在",
+          "answer": "at/in"
+        }
+      ]
+    },
+    {
+      "id": "actions-level-2",
+      "number": 13,
+      "title": "Daily Actions Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你聽音樂嗎, 他寫字",
+      "patternPinyin": "nǐ tīng yīn yuè ma, tā xiě zì",
+      "words": [
+        {
+          "zh": "看",
+          "pinyin": "kàn",
+          "english": "look/read"
+        },
+        {
+          "zh": "聽",
+          "pinyin": "tīng",
+          "english": "listen"
+        },
+        {
+          "zh": "說",
+          "pinyin": "shuō",
+          "english": "speak"
+        },
+        {
+          "zh": "寫",
+          "pinyin": "xiě",
+          "english": "write"
+        },
+        {
+          "zh": "讀",
+          "pinyin": "dú",
+          "english": "read aloud"
+        },
+        {
+          "zh": "九",
+          "pinyin": "jiǔ",
+          "english": "nine"
+        },
+        {
+          "zh": "十",
+          "pinyin": "shí",
+          "english": "ten"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我看書, 你聽音樂嗎",
+          "pinyin": "wǒ kàn shū, nǐ tīng yīn yuè ma",
+          "english": "I read a book, and do you listen to music?"
+        },
+        {
+          "zh": "你聽音樂嗎, 他寫字",
+          "pinyin": "nǐ tīng yīn yuè ma, tā xiě zì",
+          "english": "Do you listen to music?, and he writes characters."
+        },
+        {
+          "zh": "我看書, 你聽音樂嗎, 他寫字",
+          "pinyin": "wǒ kàn shū, nǐ tīng yīn yuè ma, tā xiě zì",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我看書",
+          "pinyin": "wǒ kàn shū",
+          "english": "I read a book."
+        },
+        {
+          "speaker": "B",
+          "zh": "你聽音樂嗎",
+          "pinyin": "nǐ tīng yīn yuè ma",
+          "english": "Do you listen to music?"
+        },
+        {
+          "speaker": "A",
+          "zh": "他寫字",
+          "pinyin": "tā xiě zì",
+          "english": "He writes characters."
+        },
+        {
+          "speaker": "B",
+          "zh": "你聽音樂嗎, 他寫字",
+          "pinyin": "nǐ tīng yīn yuè ma, tā xiě zì",
+          "english": "Do you listen to music?, and he writes characters."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "看",
+          "answer": "look/read"
+        }
+      ]
+    },
+    {
+      "id": "school-level-2",
+      "number": 14,
+      "title": "Classroom Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "老師有書, 筆在桌子上",
+      "patternPinyin": "lǎo shī yǒu shū, bǐ zài zhuō zi shàng",
+      "words": [
+        {
+          "zh": "上課",
+          "pinyin": "shàngkè",
+          "english": "attend class"
+        },
+        {
+          "zh": "下課",
+          "pinyin": "xià kè",
+          "english": "finish class"
+        },
+        {
+          "zh": "書",
+          "pinyin": "shū",
+          "english": "book"
+        },
+        {
+          "zh": "筆",
+          "pinyin": "bǐ",
+          "english": "pen"
+        },
+        {
+          "zh": "桌子",
+          "pinyin": "zhuō zi",
+          "english": "table"
+        },
+        {
+          "zh": "爸爸",
+          "pinyin": "bà ba",
+          "english": "dad"
+        },
+        {
+          "zh": "媽媽",
+          "pinyin": "mā ma",
+          "english": "mom"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我今天上課, 老師有書",
+          "pinyin": "wǒ jīn tiān shàngkè, lǎo shī yǒu shū",
+          "english": "I have class today, and the teacher has a book."
+        },
+        {
+          "zh": "老師有書, 筆在桌子上",
+          "pinyin": "lǎo shī yǒu shū, bǐ zài zhuō zi shàng",
+          "english": "The teacher has a book, and the pen is on the table."
+        },
+        {
+          "zh": "上課, 老師有書, 筆在桌子上",
+          "pinyin": "shàngkè, lǎo shī yǒu shū, bǐ zài zhuō zi shàng",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我今天上課",
+          "pinyin": "wǒ jīn tiān shàngkè",
+          "english": "I have class today."
+        },
+        {
+          "speaker": "B",
+          "zh": "老師有書",
+          "pinyin": "lǎo shī yǒu shū",
+          "english": "The teacher has a book."
+        },
+        {
+          "speaker": "A",
+          "zh": "筆在桌子上",
+          "pinyin": "bǐ zài zhuō zi shàng",
+          "english": "The pen is on the table."
+        },
+        {
+          "speaker": "B",
+          "zh": "老師有書, 筆在桌子上",
+          "pinyin": "lǎo shī yǒu shū, bǐ zài zhuō zi shàng",
+          "english": "The teacher has a book, and the pen is on the table."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "上課",
+          "answer": "attend class"
+        }
+      ]
+    },
+    {
+      "id": "weather-level-2",
+      "number": 15,
+      "title": "Weather Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "明天下雨嗎, 太冷了",
+      "patternPinyin": "míng tiān xià yǔ ma, tài lěng le",
+      "words": [
+        {
+          "zh": "天氣",
+          "pinyin": "tiān qì",
+          "english": "weather"
+        },
+        {
+          "zh": "熱",
+          "pinyin": "rè",
+          "english": "hot"
+        },
+        {
+          "zh": "冷",
+          "pinyin": "lěng",
+          "english": "cold"
+        },
+        {
+          "zh": "下雨",
+          "pinyin": "xià yǔ",
+          "english": "rain"
+        },
+        {
+          "zh": "太",
+          "pinyin": "tài",
+          "english": "too"
+        },
+        {
+          "zh": "姐姐",
+          "pinyin": "jiě jiě",
+          "english": "older sister"
+        },
+        {
+          "zh": "今天",
+          "pinyin": "jīn tiān",
+          "english": "today"
+        }
+      ],
+      "story": [
+        {
+          "zh": "今天天氣很熱, 明天下雨嗎",
+          "pinyin": "jīn tiān tiān qì hěn rè, míng tiān xià yǔ ma",
+          "english": "Today the weather is hot, and will it rain tomorrow?"
+        },
+        {
+          "zh": "明天下雨嗎, 太冷了",
+          "pinyin": "míng tiān xià yǔ ma, tài lěng le",
+          "english": "Will it rain tomorrow?, and it is too cold."
+        },
+        {
+          "zh": "天氣, 明天下雨嗎, 太冷了",
+          "pinyin": "tiān qì, míng tiān xià yǔ ma, tài lěng le",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "今天天氣很熱",
+          "pinyin": "jīn tiān tiān qì hěn rè",
+          "english": "Today the weather is hot."
+        },
+        {
+          "speaker": "B",
+          "zh": "明天下雨嗎",
+          "pinyin": "míng tiān xià yǔ ma",
+          "english": "Will it rain tomorrow?"
+        },
+        {
+          "speaker": "A",
+          "zh": "太冷了",
+          "pinyin": "tài lěng le",
+          "english": "It is too cold."
+        },
+        {
+          "speaker": "B",
+          "zh": "明天下雨嗎, 太冷了",
+          "pinyin": "míng tiān xià yǔ ma, tài lěng le",
+          "english": "Will it rain tomorrow?, and it is too cold."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "天氣",
+          "answer": "weather"
+        }
+      ]
+    },
+    {
+      "id": "transport-level-2",
+      "number": 16,
+      "title": "Getting Around Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "車站在哪裡, 他坐火車去台灣",
+      "patternPinyin": "chē zhàn zài nǎ lǐ, tā zuò huǒ chē qù tái wān",
+      "words": [
+        {
+          "zh": "坐",
+          "pinyin": "zuò",
+          "english": "ride/sit"
+        },
+        {
+          "zh": "車",
+          "pinyin": "chē",
+          "english": "car/bus"
+        },
+        {
+          "zh": "火車",
+          "pinyin": "huǒ chē",
+          "english": "train"
+        },
+        {
+          "zh": "捷運",
+          "pinyin": "jiéyùn",
+          "english": "MRT"
+        },
+        {
+          "zh": "車站",
+          "pinyin": "chē zhàn",
+          "english": "station"
+        },
+        {
+          "zh": "昨天",
+          "pinyin": "zuó tiān",
+          "english": "yesterday"
+        },
+        {
+          "zh": "現在",
+          "pinyin": "xiàn zài",
+          "english": "now"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我坐捷運, 車站在哪裡",
+          "pinyin": "wǒ zuò jiéyùn, chē zhàn zài nǎ lǐ",
+          "english": "I take the MRT, and where is the station?"
+        },
+        {
+          "zh": "車站在哪裡, 他坐火車去台灣",
+          "pinyin": "chē zhàn zài nǎ lǐ, tā zuò huǒ chē qù tái wān",
+          "english": "Where is the station?, and he takes the train to Taiwan."
+        },
+        {
+          "zh": "坐車, 車站在哪裡, 他坐火車去台灣",
+          "pinyin": "zuò chē, chē zhàn zài nǎ lǐ, tā zuò huǒ chē qù tái wān",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我坐捷運",
+          "pinyin": "wǒ zuò jiéyùn",
+          "english": "I take the MRT."
+        },
+        {
+          "speaker": "B",
+          "zh": "車站在哪裡",
+          "pinyin": "chē zhàn zài nǎ lǐ",
+          "english": "Where is the station?"
+        },
+        {
+          "speaker": "A",
+          "zh": "他坐火車去台灣",
+          "pinyin": "tā zuò huǒ chē qù tái wān",
+          "english": "He takes the train to Taiwan."
+        },
+        {
+          "speaker": "B",
+          "zh": "車站在哪裡, 他坐火車去台灣",
+          "pinyin": "chē zhàn zài nǎ lǐ, tā zuò huǒ chē qù tái wān",
+          "english": "Where is the station?, and he takes the train to Taiwan."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "坐",
+          "answer": "ride/sit"
+        }
+      ]
+    },
+    {
+      "id": "shopping-level-2",
+      "number": 17,
+      "title": "Shopping Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "太貴了, 我要那個",
+      "patternPinyin": "tài guì le, wǒ yào nàge",
+      "words": [
+        {
+          "zh": "錢",
+          "pinyin": "qián",
+          "english": "money"
+        },
+        {
+          "zh": "貴",
+          "pinyin": "guì",
+          "english": "expensive"
+        },
+        {
+          "zh": "便宜",
+          "pinyin": "piányí",
+          "english": "cheap"
+        },
+        {
+          "zh": "這個",
+          "pinyin": "zhè gè",
+          "english": "this one"
+        },
+        {
+          "zh": "那個",
+          "pinyin": "nàge",
+          "english": "that one"
+        },
+        {
+          "zh": "學校",
+          "pinyin": "xuéxiào",
+          "english": "school"
+        },
+        {
+          "zh": "家",
+          "pinyin": "jiā",
+          "english": "home"
+        }
+      ],
+      "story": [
+        {
+          "zh": "這個多少錢, 太貴了",
+          "pinyin": "zhège duōshǎo qián, tài guì le",
+          "english": "How much is this?, and too expensive."
+        },
+        {
+          "zh": "太貴了, 我要那個",
+          "pinyin": "tài guì le, wǒ yào nàge",
+          "english": "Too expensive, and i want that one."
+        },
+        {
+          "zh": "多少錢, 太貴了, 我要那個",
+          "pinyin": "duō shǎo qián, tài guì le, wǒ yào nàge",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "這個多少錢",
+          "pinyin": "zhège duōshǎo qián",
+          "english": "How much is this?"
+        },
+        {
+          "speaker": "B",
+          "zh": "太貴了",
+          "pinyin": "tài guì le",
+          "english": "Too expensive."
+        },
+        {
+          "speaker": "A",
+          "zh": "我要那個",
+          "pinyin": "wǒ yào nàge",
+          "english": "I want that one."
+        },
+        {
+          "speaker": "B",
+          "zh": "太貴了, 我要那個",
+          "pinyin": "tài guì le, wǒ yào nàge",
+          "english": "Too expensive, and i want that one."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "錢",
+          "answer": "money"
+        }
+      ]
+    },
+    {
+      "id": "questions-level-2",
+      "number": 18,
+      "title": "Question Words Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "他是誰, 你怎麼去",
+      "patternPinyin": "tā shì shéi, nǐ zěn me qù",
+      "words": [
+        {
+          "zh": "什麼",
+          "pinyin": "shén me",
+          "english": "what"
+        },
+        {
+          "zh": "誰",
+          "pinyin": "shéi",
+          "english": "who"
+        },
+        {
+          "zh": "哪",
+          "pinyin": "nǎ",
+          "english": "which"
+        },
+        {
+          "zh": "為什麼",
+          "pinyin": "Wèishénme",
+          "english": "why"
+        },
+        {
+          "zh": "怎麼",
+          "pinyin": "zěn me",
+          "english": "how"
+        },
+        {
+          "zh": "商店",
+          "pinyin": "Shāngdiàn",
+          "english": "shop"
+        },
+        {
+          "zh": "公園",
+          "pinyin": "gōng yuán",
+          "english": "park"
+        }
+      ],
+      "story": [
+        {
+          "zh": "這是什麼, 他是誰",
+          "pinyin": "zhè shì shén me, tā shì shéi",
+          "english": "What is this?, and who is he?"
+        },
+        {
+          "zh": "他是誰, 你怎麼去",
+          "pinyin": "tā shì shéi, nǐ zěn me qù",
+          "english": "Who is he?, and how do you go?"
+        },
+        {
+          "zh": "什麼, 他是誰, 你怎麼去",
+          "pinyin": "shén me, tā shì shéi, nǐ zěn me qù",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "這是什麼",
+          "pinyin": "zhè shì shén me",
+          "english": "What is this?"
+        },
+        {
+          "speaker": "B",
+          "zh": "他是誰",
+          "pinyin": "tā shì shéi",
+          "english": "Who is he?"
+        },
+        {
+          "speaker": "A",
+          "zh": "你怎麼去",
+          "pinyin": "nǐ zěn me qù",
+          "english": "How do you go?"
+        },
+        {
+          "speaker": "B",
+          "zh": "他是誰, 你怎麼去",
+          "pinyin": "tā shì shéi, nǐ zěn me qù",
+          "english": "Who is he?, and how do you go?"
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "什麼",
+          "answer": "what"
+        }
+      ]
+    },
+    {
+      "id": "feelings-level-2",
+      "number": 19,
+      "title": "Feelings Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "你累嗎, 這個很好吃",
+      "patternPinyin": "nǐ lèi ma, zhè gè hěn hǎo chī",
+      "words": [
+        {
+          "zh": "很",
+          "pinyin": "hěn",
+          "english": "very"
+        },
+        {
+          "zh": "忙",
+          "pinyin": "máng",
+          "english": "busy"
+        },
+        {
+          "zh": "累",
+          "pinyin": "lèi",
+          "english": "tired"
+        },
+        {
+          "zh": "高興",
+          "pinyin": "gāo xìng",
+          "english": "happy"
+        },
+        {
+          "zh": "好吃",
+          "pinyin": "hǎo chī",
+          "english": "tasty"
+        },
+        {
+          "zh": "哪裡",
+          "pinyin": "nǎ lǐ",
+          "english": "where"
+        },
+        {
+          "zh": "這裡",
+          "pinyin": "zhè lǐ",
+          "english": "here"
+        }
+      ],
+      "story": [
+        {
+          "zh": "我很忙, 你累嗎",
+          "pinyin": "wǒ hěn máng, nǐ lèi ma",
+          "english": "I am busy, and are you tired?"
+        },
+        {
+          "zh": "你累嗎, 這個很好吃",
+          "pinyin": "nǐ lèi ma, zhè gè hěn hǎo chī",
+          "english": "Are you tired?, and this is tasty."
+        },
+        {
+          "zh": "我很忙, 你累嗎, 這個很好吃",
+          "pinyin": "wǒ hěn máng, nǐ lèi ma, zhè gè hěn hǎo chī",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "我很忙",
+          "pinyin": "wǒ hěn máng",
+          "english": "I am busy."
+        },
+        {
+          "speaker": "B",
+          "zh": "你累嗎",
+          "pinyin": "nǐ lèi ma",
+          "english": "Are you tired?"
+        },
+        {
+          "speaker": "A",
+          "zh": "這個很好吃",
+          "pinyin": "zhè gè hěn hǎo chī",
+          "english": "This is tasty."
+        },
+        {
+          "speaker": "B",
+          "zh": "你累嗎, 這個很好吃",
+          "pinyin": "nǐ lèi ma, zhè gè hěn hǎo chī",
+          "english": "Are you tired?, and this is tasty."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "很",
+          "answer": "very"
+        }
+      ]
+    },
+    {
+      "id": "mini-dialogue-level-2",
+      "number": 20,
+      "title": "Mini Conversation Plus",
+      "canDo": "I can use this topic in a longer beginner sentence before starting course books.",
+      "pattern": "可以慢一點嗎, 沒關係",
+      "patternPinyin": "kě yǐ màn yīdiǎn ma, méi guān xì",
+      "words": [
+        {
+          "zh": "可以",
+          "pinyin": "kě yǐ",
+          "english": "can/may"
+        },
+        {
+          "zh": "沒關係",
+          "pinyin": "méi guān xì",
+          "english": "no problem"
+        },
+        {
+          "zh": "對不起",
+          "pinyin": "duì bù qǐ",
+          "english": "sorry"
+        },
+        {
+          "zh": "再一次",
+          "pinyin": "zài yī cì",
+          "english": "one more time"
+        },
+        {
+          "zh": "慢一點",
+          "pinyin": "màn yīdiǎn",
+          "english": "slower"
+        },
+        {
+          "zh": "旁邊",
+          "pinyin": "páng biān",
+          "english": "beside"
+        },
+        {
+          "zh": "看",
+          "pinyin": "kàn",
+          "english": "look/read"
+        }
+      ],
+      "story": [
+        {
+          "zh": "對不起請再說一次, 可以慢一點嗎",
+          "pinyin": "duì bù qǐ qǐng zài shuō yī cì, kě yǐ màn yīdiǎn ma",
+          "english": "Sorry, please say it again, and can you slow down?"
+        },
+        {
+          "zh": "可以慢一點嗎, 沒關係",
+          "pinyin": "kě yǐ màn yīdiǎn ma, méi guān xì",
+          "english": "Can you slow down?, and no problem."
+        },
+        {
+          "zh": "我可以, 可以慢一點嗎, 沒關係",
+          "pinyin": "wǒ kě yǐ, kě yǐ màn yīdiǎn ma, méi guān xì",
+          "english": "Review the key pattern, then understand the longer sentence."
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "A",
+          "zh": "對不起請再說一次",
+          "pinyin": "duì bù qǐ qǐng zài shuō yī cì",
+          "english": "Sorry, please say it again."
+        },
+        {
+          "speaker": "B",
+          "zh": "可以慢一點嗎",
+          "pinyin": "kě yǐ màn yīdiǎn ma",
+          "english": "Can you slow down?"
+        },
+        {
+          "speaker": "A",
+          "zh": "沒關係",
+          "pinyin": "méi guān xì",
+          "english": "No problem."
+        },
+        {
+          "speaker": "B",
+          "zh": "可以慢一點嗎, 沒關係",
+          "pinyin": "kě yǐ màn yīdiǎn ma, méi guān xì",
+          "english": "Can you slow down?, and no problem."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "meaning",
+          "prompt": "可以",
+          "answer": "can/may"
+        }
+      ]
+    }
+  ]
+}

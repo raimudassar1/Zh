@@ -1,6 +1,6 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+﻿/* ═══════════════════════════════════════════════════════════════
    learn.js â€” Guided Learning Path with Level Progression & SRS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ═══════════════════════════════════════════════════════════════ */
 
 'use strict';
 
@@ -69,7 +69,7 @@ const LearnModule = (() => {
 
       <!-- Today's queue -->
       <div class="card mb-20 learn-srs-card" style="position:relative;overflow:hidden">
-        <div style="position:absolute;right:-10px;top:-10px;font-size:8rem;opacity:0.05;font-family:var(--font-zh)">å­¸</div>
+        <div style="position:absolute;right:-10px;top:-10px;font-size:8rem;opacity:0.05;font-family:var(--font-zh)">學</div>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
           <div style="flex:1;min-width:180px">
             <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">Today's SRS Queue</div>
@@ -212,7 +212,7 @@ const LearnModule = (() => {
       if (!area || !content) return;
       area.classList.remove('hidden');
       SRS.renderSRSSession(content, null).catch(e => {
-        content.innerHTML = `<div class="empty-state"><div class="es-icon">âš ï¸</div><h3>${e.message}</h3></div>`;
+        content.innerHTML = `<div class="empty-state"><div class="es-icon">⚠️</div><h3>${e.message}</h3></div>`;
       });
     }
   }
@@ -242,7 +242,7 @@ const LearnModule = (() => {
 
       container.innerHTML = `
         <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
-          <button class="btn btn-ghost btn-sm" onclick="navigate('#/learn')">â† Exit</button>
+          <button class="btn btn-ghost btn-sm" onclick="navigate('#/learn')">← Exit</button>
           <div class="progress-bar" style="flex:1"><div class="progress-fill" style="width:${(idx/batch.length)*100}%"></div></div>
           <span class="text-small text-muted">${idx+1}/${batch.length}</span>
         </div>
@@ -252,7 +252,7 @@ const LearnModule = (() => {
           <div style="font-size:1.6rem;font-weight:700;color:var(--tone${Pinyin.getTone(char.pinyin)||1});margin-bottom:4px">${char.pinyin||''}</div>
           <div style="font-size:1rem;color:var(--text-2);margin-bottom:16px">${char.definition||''}</div>
 
-          ${char.mnemonic ? `<div style="background:rgba(243,156,18,0.08);border-left:3px solid var(--gold);padding:10px 16px;border-radius:var(--radius-sm);font-size:0.85rem;color:var(--text-2);text-align:left;margin-bottom:14px">ðŸ’¡ ${char.mnemonic}</div>` : ''}
+          ${char.mnemonic ? `<div style="background:rgba(243,156,18,0.08);border-left:3px solid var(--gold);padding:10px 16px;border-radius:var(--radius-sm);font-size:0.85rem;color:var(--text-2);text-align:left;margin-bottom:14px">💡 ${char.mnemonic}</div>` : ''}
 
           ${char.example_sentence ? `
           <div class="sentence-block" style="text-align:left;margin-bottom:14px">
@@ -271,7 +271,7 @@ const LearnModule = (() => {
               </div>`).join('')}
           </div>` : ''}
 
-          <button class="btn btn-ghost btn-sm" style="margin-top:12px" onclick="TTS.speak('${char.traditional||char.hanzi}')">ðŸ”Š Hear pronunciation</button>
+          <button class="btn btn-ghost btn-sm" style="margin-top:12px" onclick="TTS.speak('${char.traditional||char.hanzi}')">🔊 Hear pronunciation</button>
         </div>
 
         <div style="display:flex;gap:10px">
@@ -303,7 +303,7 @@ const LearnModule = (() => {
             <button class="btn btn-outline" onclick="navigate('#/quiz/pronunciation')">Quiz Now</button>
           </div>
         </div>`;
-      App.logActivity('ðŸ“–', `Learned ${batch.length} new characters`);
+      App.logActivity('📖', `Learned ${batch.length} new characters`);
     }
 
     showChar(0);
