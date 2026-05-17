@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    onboarding.js — Pinyin Trainer, Tone Ear Training, Start Here
    ═══════════════════════════════════════════════════════════════ */
 
@@ -109,10 +109,10 @@ const OnboardingModule = (() => {
               ['mǎ','3','馬 horse','var(--tone3)'],
               ['mà','4','罵 scold','var(--tone4)'],
             ].map(([py,t,meaning,color]) => `
-              <button onclick="TTS.speak('${meaning.split(' ')[0]}')" style="flex:1;min-width:100px;background:var(--off-white);border:2px solid ${color};border-radius:var(--radius-sm);padding:14px 10px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
-                <div style="font-size:1.6rem;font-weight:700;color:${color}">${py}</div>
-                <div style="font-size:0.72rem;color:var(--text-3);margin-top:3px">${meaning}</div>
-                <div style="font-size:1.1rem;margin-top:4px">🔊</div>
+              <button class="ob-tone-play" onclick="TTS.speak('${meaning.split(' ')[0]}')" style="flex:1;min-width:100px;background:var(--off-white);border:2px solid ${color};border-radius:var(--radius-sm);padding:14px 10px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
+                <div class="ob-tone-pinyin" style="font-size:1.6rem;font-weight:800;color:${color}">${py}</div>
+                <div class="ob-tone-meaning" style="font-size:0.72rem;color:var(--text-3);margin-top:3px">${meaning}</div>
+                <div class="ob-tone-icon" style="font-size:1.1rem;margin-top:4px">🔊</div>
               </button>`).join('')}
           </div>
           <p class="text-small text-muted" style="margin-top:10px">Click each to hear. Four completely different words — just from tone!</p>
@@ -456,7 +456,7 @@ const OnboardingModule = (() => {
             <div style="display:flex;flex-direction:column;gap:8px">
               ${(rule.examples||[]).map(ex => `
                 <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--off-white);border-radius:var(--radius-sm)">
-                  <button onclick="TTS.speak('${ex.written}')" style="background:none;border:none;cursor:pointer;font-family:var(--font-zh);font-size:1.8rem;font-weight:700;padding:0">${ex.written}</button>
+                  <button class="ob-rule-zh-button" onclick="TTS.speak('${ex.written}')" style="background:none;border:none;cursor:pointer;font-family:var(--font-zh);font-size:1.8rem;font-weight:700;padding:0">${ex.written}</button>
                   <div style="flex:1">
                     <div style="font-size:0.85rem;font-weight:600">Spoken: <span style="color:var(--red)">${ex.spoken_pinyin}</span></div>
                     <div style="font-size:0.75rem;color:var(--text-3)">${ex.note}</div>
@@ -498,3 +498,5 @@ const OnboardingModule = (() => {
 
   return { render };
 })();
+
+

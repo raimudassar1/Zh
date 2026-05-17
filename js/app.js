@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    app.js — Core: Router, State, Dashboard, Library, Settings
    ═══════════════════════════════════════════════════════════════ */
 
@@ -679,7 +679,9 @@ const routes = {
   '/quiz/tones':          { title: 'Tone Training',      render: renderToneGame,          route: 'quiz-tones' },
   '/reading':             { title: 'Reading',            render: renderReadingPage,       route: 'reading' },
   '/mock-test/reading':   { title: 'Reading Mock Test',  render: renderMockReadingPage,   route: 'mock-reading' },
-  '/mock-test/listening': { title: 'Listening Mock Test',render: renderMockListeningPage, route: 'mock-listening' },
+
+  '/tocfl':               { title: 'TOCFL Lab',          render: renderTOCFLPage,       route: 'tocfl' },
+  '/tocfl-content':       { title: 'TOCFL Content',      render: renderTOCFLContentPage, route: 'tocfl-content' },
   '/exams':               { title: 'Monthly Exams',      render: renderExamsPage,         route: 'exams' },
   '/settings':            { title: 'Settings',           render: renderSettings,          route: 'settings' },
 };
@@ -700,9 +702,8 @@ async function router() {
   closeMobileNav();
 
   // Update nav active state
-  document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(el => {
-    el.classList.toggle('active', el.dataset.route === route.route);
-  });
+
+  updateMobileSectionState(route.route);
 
   document.getElementById('topbar-title').textContent = route.title;
 
@@ -735,6 +736,47 @@ function closeMobileNav() {
   if (toggle) toggle.setAttribute('aria-expanded', 'false');
 }
 
+function updateMobileSectionState(routeName) {
+  const groups = {
+    start: ['dashboard', 'learn', 'onboarding'],
+    study: ['chapters', 'vocabulary-books', 'library', 'vocabulary', 'grammar', 'flashcards'],
+    quiz: ['quiz-pronunciation', 'quiz-vocabulary', 'quiz-flash', 'quiz-tones', 'tocfl', 'tocfl-content', 'exams'],
+    reading: ['reading', 'dialogue', 'mock-reading', 'mock-listening'],
+    practice: ['playground', 'char-playground', 'scenarios', 'mixed-recall', 'sentence-builder', 'study-plan']
+  };
+  const activeGroup = Object.entries(groups).find(([, routes]) => routes.includes(routeName))?.[0] || 'start';
+  const bar = document.getElementById('mobile-section-bar');
+  const hasCurrentLink = !!bar?.querySelector(`[data-route="${routeName}"]`);
+  if (bar && !hasCurrentLink) {
+    openMobileSection(activeGroup);
+    return;
+  }
+  document.querySelectorAll('.bottom-nav-menu').forEach(btn => btn.classList.toggle('active', btn.dataset.mobileMenu === activeGroup));
+  document.querySelectorAll('.mobile-section-link').forEach(link => link.classList.toggle('active', link.dataset.route === routeName));
+}
+
+function openMobileSection(section) {
+  const bar = document.getElementById('mobile-section-bar');
+  if (!bar) return;
+  const sections = {
+    start: [['/', 'dashboard', 'Home'], ['/learn', 'learn', 'Path'], ['/onboarding', 'onboarding', 'Pinyin']],
+    study: [['/chapters', 'chapters', 'Chapters'], ['/vocabulary-books', 'vocabulary-books', 'Books'], ['/library', 'library', 'Characters'], ['/vocabulary', 'vocabulary', 'Words'], ['/grammar', 'grammar', 'Grammar'], ['/flashcards', 'flashcards', 'Cards']],
+    quiz: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Content'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab'], ['/quiz/flash', 'quiz-flash', 'Picture'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/exams', 'exams', 'Exams']],
+    reading: [['/reading', 'reading', 'Reader'], ['/dialogue', 'dialogue', 'Dialogue'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test']],
+    practice: [['/study-plan', 'study-plan', 'Today'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/playground', 'playground', 'Playground'], ['/char-playground', 'char-playground', 'Blocks'], ['/scenarios', 'scenarios', 'Scenarios']]
+  };
+  bar.innerHTML = (sections[section] || sections.start).map(([href, route, label]) => `<a class="mobile-section-link" data-route="${route}" href="#${href}">${label}</a>`).join('');
+  bar.hidden = false;
+  document.querySelectorAll('.bottom-nav-menu').forEach(btn => btn.classList.toggle('active', btn.dataset.mobileMenu === section));
+  updateMobileSectionState((routes[getPath()] || routes['/']).route);
+}
+
+function setupMobileBottomNav() {
+  document.querySelectorAll('.bottom-nav-menu').forEach(btn => {
+    btn.addEventListener('click', () => openMobileSection(btn.dataset.mobileMenu));
+  });
+  openMobileSection('start');
+}
 function toggleMobileNav() {
   const sidebar = document.getElementById('sidebar');
   const scrim = document.getElementById('nav-scrim');
@@ -753,6 +795,16 @@ async function renderMixedRecallPage(container) {
 
 async function renderSentenceBuilderPage(container) {
   return SentenceBuilderModule.render(container);
+}
+
+async function renderTOCFLPage(container) {
+  if (typeof TOCFLModule !== 'undefined') return TOCFLModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Lab is not loaded</h3></div>';
+}
+
+async function renderTOCFLContentPage(container) {
+  if (typeof TOCFLContentModule !== 'undefined') return TOCFLContentModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Content is not loaded</h3></div>';
 }
 
 async function renderStudyPlanPage(container) {
@@ -1553,6 +1605,7 @@ async function boot() {
   });
 
   document.getElementById('mobile-menu-toggle')?.addEventListener('click', toggleMobileNav);
+  setupMobileBottomNav();
   document.getElementById('nav-scrim')?.addEventListener('click', closeMobileNav);
   document.querySelectorAll('#sidebar .nav-item').forEach(item => {
     item.addEventListener('click', closeMobileNav);
@@ -1560,6 +1613,9 @@ async function boot() {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeMobileNav();
   });
+
+  // Route immediately before heavy curriculum preload so pages never sit on the boot spinner.
+  router();
 
   // Preload characters into memory for client-side operations
   try {
@@ -1576,8 +1632,7 @@ async function boot() {
     console.warn('Could not preload curriculum data:', err.message);
   }
 
-  // Run router
-  router();
+  // Router already ran before preload; data-driven modules refresh themselves as needed.
 }
 
 // Start when DOM is ready
@@ -1586,3 +1641,9 @@ if (document.readyState === 'loading') {
 } else {
   boot();
 }
+
+
+
+
+
+

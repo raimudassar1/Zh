@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    flash-quiz.js — Interactive Emoji-based Vocabulary Quiz & Gallery
    ═══════════════════════════════════════════════════════════════ */
 
@@ -253,17 +253,18 @@ window.FlashQuizModule = (() => {
 
       .quiz-overlay-custom { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; width:100%; max-width:500px; margin:0 auto; }
       .quiz-header-custom { display:flex; justify-content:space-between; align-items:center; width:100%; color:#fff; margin-bottom:20px; }
-      .quiz-card-custom { background:var(--card-bg); border-radius:20px; padding:24px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+      .quiz-card-custom { background:var(--clean-surface, var(--card-bg)); color:var(--clean-text, var(--text)); border:1px solid var(--clean-line, var(--border)); border-radius:20px; padding:24px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
       .quiz-visual { font-size:6rem; text-align:center; margin-bottom:20px; }
-      .quiz-prompt { font-size:0.85rem; color:var(--text-3); text-transform:uppercase; font-weight:700; text-align:center; }
-      .quiz-target { font-size:1.5rem; font-weight:700; text-align:center; margin-bottom:24px; color:var(--text); }
+      .quiz-prompt { font-size:0.85rem; color:var(--clean-muted, var(--text-3)); text-transform:uppercase; font-weight:800; letter-spacing:0.04em; text-align:center; }
+      .quiz-target { font-size:1.5rem; font-weight:800; text-align:center; margin-bottom:24px; color:var(--clean-text, var(--text)); }
       .quiz-options-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
-      .quiz-option-btn { background:var(--off-white); border:1px solid var(--border); border-radius:12px; padding:12px 8px; cursor:pointer; transition:all 0.2s; display:flex; flex-direction:column; align-items:center; gap:4px; }
-      .quiz-option-btn:hover { border-color:var(--accent); background:#fff; }
-      .quiz-option-btn.correct { background:#eafaf1 !important; border-color:#27ae60 !important; color:#1e8449 !important; }
-      .quiz-option-btn.wrong { background:#fdedec !important; border-color:#e74c3c !important; color:#943126 !important; }
-      .opt-hanzi { font-size:1.35rem; font-weight:800; }
-      .opt-pinyin { font-size:0.8rem; opacity:0.7; }
+      .quiz-option-btn { background:var(--clean-surface-2, var(--card-bg)); color:var(--clean-text, var(--text)); border:1px solid var(--clean-line, var(--border)); border-radius:12px; padding:12px 8px; cursor:pointer; transition:all 0.2s; display:flex; flex-direction:column; align-items:center; gap:4px; }
+      .quiz-option-btn:hover { border-color:var(--accent); background:color-mix(in srgb, var(--clean-surface-2, var(--card-bg)) 86%, var(--accent) 14%); }
+      .quiz-option-btn.correct { background:#eafaf1 !important; border-color:#27ae60 !important; color:#14532d !important; }
+      .quiz-option-btn.wrong { background:#fdedec !important; border-color:#e74c3c !important; color:#7f1d1d !important; }
+      .opt-hanzi { font-size:1.35rem; font-weight:800; color:inherit; }
+      .opt-pinyin { font-size:0.8rem; color:var(--clean-muted, var(--text-3)); opacity:1; }
+      .quiz-option-btn.correct .opt-pinyin, .quiz-option-btn.wrong .opt-pinyin { color:inherit; opacity:0.82; }
     `;
     document.head.appendChild(style);
   }
@@ -284,3 +285,5 @@ window.FlashQuizModule = (() => {
     }
   };
 })();
+
+
