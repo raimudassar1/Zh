@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'tocfl-cache-v42';
+﻿const CACHE_NAME = 'tocfl-cache-v70';
 const ASSETS = [
   './',
   './index.html',
@@ -24,6 +24,7 @@ const ASSETS = [
   './js/mock-test.js',
   './js/tocfl.js',
   './js/tocfl-content.js',
+  './js/b1-coach.js',
   './logo.png',
   './data/characters_all.json',
   './data/vocabulary.json',

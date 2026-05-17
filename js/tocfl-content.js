@@ -5,7 +5,7 @@
 'use strict';
 
 const TOCFLContentModule = (() => {
-  const state = { data: null, level: 'novice', sectionId: '', questionIndex: 0, mode: 'browse', answers: {}, finished: false };
+  const state = { data: null, level: 'novice', sectionId: '', questionIndex: 0, mode: 'browse', answers: {}, finished: false, keepQuestionInView: false };
 
   async function render(container) {
     container.innerHTML = '<div class="spinner"></div>';
@@ -41,6 +41,13 @@ const TOCFLContentModule = (() => {
           ${state.data.levels.map(l => `<button class="${l.key === state.level ? 'active' : ''}" data-level="${l.key}" onclick="TOCFLContentModule.selectLevel('${l.key}')">${l.title}</button>`).join('')}
         </div>
 
+        <label class="tocfl-native-section-select-wrap">
+          <span>Section</span>
+          <select class="tocfl-native-section-select" data-section-select>
+            ${level.sections.map(s => `<option value="${s.id}" ${s.id === state.sectionId ? 'selected' : ''}>${labelSection(s)} - ${s.questionCount} questions</option>`).join('')}
+          </select>
+        </label>
+
         <div class="tocfl-native-layout">
           <aside class="tocfl-native-sidebar">
             <div class="tocfl-native-side-title">Sections</div>
@@ -58,6 +65,21 @@ const TOCFLContentModule = (() => {
         </div>
       </div>`;
     bind(container);
+    restoreQuestionView();
+  }
+
+
+  function restoreQuestionView() {
+    if (!state.keepQuestionInView) return;
+    const question = document.querySelector('.tocfl-native-question');
+    if (!question) return;
+    requestAnimationFrame(() => {
+      const topbar = document.getElementById('topbar');
+      const offset = (topbar?.offsetHeight || 0) + 8;
+      const y = question.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+      state.keepQuestionInView = false;
+    });
   }
 
   function topBar(level, section) {
@@ -185,6 +207,17 @@ const TOCFLContentModule = (() => {
   }
 
   function bind(container) {
+    container.onchange = e => {
+      const select = e.target.closest('[data-section-select]');
+      if (!select) return;
+      state.sectionId = select.value;
+      state.questionIndex = 0;
+      state.answers = {};
+      state.finished = false;
+      state.keepQuestionInView = false;
+      draw(container);
+    };
+
     container.onclick = e => {
       const levelBtn = e.target.closest('[data-level]');
       if (levelBtn) {
@@ -193,6 +226,7 @@ const TOCFLContentModule = (() => {
         state.questionIndex = 0;
         state.answers = {};
         state.finished = false;
+        state.keepQuestionInView = false;
         draw(container);
         return;
       }
@@ -203,6 +237,7 @@ const TOCFLContentModule = (() => {
         state.questionIndex = 0;
         state.answers = {};
         state.finished = false;
+        state.keepQuestionInView = false;
         draw(container);
         return;
       }
@@ -212,6 +247,7 @@ const TOCFLContentModule = (() => {
         state.mode = modeBtn.dataset.mode;
         state.answers = {};
         state.finished = false;
+        state.keepQuestionInView = false;
         draw(container);
         return;
       }
@@ -222,6 +258,7 @@ const TOCFLContentModule = (() => {
         const next = state.questionIndex + Number(stepBtn.dataset.step);
         if (next >= section.questions.length) state.finished = true;
         else state.questionIndex = Math.max(0, Math.min(section.questions.length - 1, next));
+        state.keepQuestionInView = true;
         draw(container);
         return;
       }
@@ -230,12 +267,14 @@ const TOCFLContentModule = (() => {
       if (answerBtn) {
         const q = getSection().questions[state.questionIndex];
         state.answers[q.id] = answerBtn.dataset.answer;
+        state.keepQuestionInView = true;
         draw(container);
         return;
       }
 
       if (e.target.closest('[data-finish-test]')) {
         state.finished = true;
+        state.keepQuestionInView = true;
         draw(container);
         return;
       }

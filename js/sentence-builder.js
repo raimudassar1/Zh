@@ -290,18 +290,35 @@ window.SentenceBuilderModule = (() => {
   }
 
   function controlsHtml(level) {
-    const maxHint = state.mode === 'generated' ? 'Generated sessions can go beyond the 100-sentence bank.' : `Curriculum mode uses up to ${level && level.sentences ? level.sentences.length : 100} reviewed prompts per level.`;
+    const maxHint = state.mode === 'generated' ? 'Generated mode can keep creating level-matched prompts when you want longer practice.' : `Curriculum mode draws from ${level && level.sentences ? level.sentences.length : 100} reviewed prompts for this level.`;
     return `
-      <section class="sentence-practice-panel">
-        <div class="sentence-mode-row">
-          ${modeButton('curriculum', 'Curriculum Bank', 'Use the fixed 100-sentence level set')}
-          ${modeButton('generated', 'Generate Practice', 'Create new level-matched sentences')}
+      <section class="sentence-setup-card">
+        <div class="sentence-setup-head">
+          <div>
+            <span>Session setup</span>
+            <h3>Choose your practice</h3>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="SentenceBuilderModule.restart()">Start Session</button>
         </div>
-        <div class="sentence-length-row">
-          <span>Questions</span>
-          ${SESSION_CHOICES.map(lengthButton).join('')}
-          <label class="sentence-custom-count"><span>Custom</span><input type="number" min="1" max="999" value="${state.sessionSize}" onchange="SentenceBuilderModule.setSessionSize(this.value)" /></label>
-          <button class="btn btn-primary btn-sm" onclick="SentenceBuilderModule.restart()">Start</button>
+        <div class="sentence-setup-grid">
+          <div class="sentence-setup-section sentence-setup-levels">
+            <div class="sentence-setup-label">Level</div>
+            ${state.levels.length ? `<div class="sentence-level-panel">${state.levels.map(levelButton).join('')}</div>` : ''}
+          </div>
+          <div class="sentence-setup-section">
+            <div class="sentence-setup-label">Mode</div>
+            <div class="sentence-mode-row">
+              ${modeButton('curriculum', 'Curriculum Bank', 'Fixed reviewed sentence set')}
+              ${modeButton('generated', 'Generate Practice', 'New level-matched sentences')}
+            </div>
+          </div>
+          <div class="sentence-setup-section">
+            <div class="sentence-setup-label">Questions</div>
+            <div class="sentence-length-row">
+              ${SESSION_CHOICES.map(lengthButton).join('')}
+              <label class="sentence-custom-count"><span>Custom</span><input type="number" min="1" max="999" value="${state.sessionSize}" onchange="SentenceBuilderModule.setSessionSize(this.value)" /></label>
+            </div>
+          </div>
         </div>
         <p>${esc(maxHint)}</p>
       </section>`;
@@ -314,27 +331,33 @@ window.SentenceBuilderModule = (() => {
     const sourceLabel = state.mode === 'generated' ? 'generated' : `${levelCount} in ${esc(s.source)}`;
     container.innerHTML = `
       <div class="sentence-builder-page">
-        <section class="study-plan-hero sentence-builder-hero">
-          <div>
+        <section class="sentence-builder-hero">
+          <div class="sentence-hero-copy">
             <div class="study-plan-kicker">Sentence Builder</div>
             <h2>Build the Sentence</h2>
-            <p>Choose a level and practice length, then build sentences from word tiles.</p>
+            <p>Train active recall by arranging Chinese word tiles into complete sentences.</p>
           </div>
-          <div class="study-plan-meter"><strong>${state.idx + 1}/${state.sentences.length}</strong><span>${sourceLabel}</span></div>
+          <div class="sentence-hero-meter"><strong>${state.idx + 1}/${state.sentences.length}</strong><span>${sourceLabel}</span></div>
         </section>
-        ${state.levels.length ? `<section class="sentence-level-panel">${state.levels.map(levelButton).join('')}</section>` : ''}
         ${controlsHtml(level)}
         <section class="builder-card">
           <div class="builder-meta-row">
             <span>${esc(s.generated ? 'Generated Practice' : s.source)}</span>
             ${s.tags && s.tags.length ? `<span>${esc(s.tags.slice(0, 3).join(' / '))}</span>` : ''}
           </div>
-          <div class="builder-meaning">${esc(s.en || 'Build the Chinese sentence.')}</div>
-          <div id="builder-answer" class="builder-answer" aria-label="Your answer">${state.answer.map(tileButton).join('')}</div>
-          <div id="builder-bank" class="builder-bank" aria-label="Available tiles">${state.bank.map(tileButton).join('')}</div>
+          <div class="builder-prompt-block">
+            <span>Meaning</span>
+            <div class="builder-meaning">${esc(s.en || 'Build the Chinese sentence.')}</div>
+          </div>
+          <div class="builder-workspace">
+            <div class="builder-zone-head"><span>Your sentence</span><small>Tap a tile to move it back</small></div>
+            <div id="builder-answer" class="builder-answer" aria-label="Your answer">${state.answer.map(tileButton).join('')}</div>
+            <div class="builder-zone-head"><span>Available tiles</span><small>Tap in the correct order</small></div>
+            <div id="builder-bank" class="builder-bank" aria-label="Available tiles">${state.bank.map(tileButton).join('')}</div>
+          </div>
           <div id="builder-feedback" class="quiz-feedback"></div>
-          <div class="study-task-actions">
-            <button class="btn btn-primary" onclick="SentenceBuilderModule.check()">Check</button>
+          <div class="study-task-actions sentence-builder-actions">
+            <button class="btn btn-primary" onclick="SentenceBuilderModule.check()">Check Answer</button>
             <button class="btn btn-ghost" onclick="SentenceBuilderModule.play()">Play Audio</button>
             <button class="btn btn-ghost" onclick="SentenceBuilderModule.skip()">Skip</button>
           </div>
