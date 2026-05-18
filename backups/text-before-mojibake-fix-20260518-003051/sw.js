@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'tocfl-cache-v86';
+﻿const CACHE_NAME = 'tocfl-cache-v74';
 const ASSETS = [
   './',
   './index.html',
@@ -25,7 +25,6 @@ const ASSETS = [
   './js/tocfl.js',
   './js/tocfl-content.js',
   './js/b1-coach.js',
-  './js/beginner-launchpad.js',
   './logo.png',
   './data/characters_all.json',
   './data/vocabulary.json',
@@ -36,31 +35,7 @@ const ASSETS = [
   './data/book1_exercises.json',
   './data/tocfl_native_bank.json',
   './data/pinyin_human_manifest.json',
-  './data/pinyin_mastery_drills.json',
-  './data/beginner_launchpad.json',
-  './data/beginner_launchpad_level2.json',
-  './data/beginner_launchpad_level3.json',
-  './data/grammar_academy.json',
-  './assets/beginner-launchpad/level3/01-meeting.jpg',
-  './assets/beginner-launchpad/level3/02-classroom.jpg',
-  './assets/beginner-launchpad/level3/03-city.jpg',
-  './assets/beginner-launchpad/level3/04-cafe.jpg',
-  './assets/beginner-launchpad/level3/05-tea.jpg',
-  './assets/beginner-launchpad/level3/06-food.jpg',
-  './assets/beginner-launchpad/level3/07-shopping.jpg',
-  './assets/beginner-launchpad/level3/08-numbers.jpg',
-  './assets/beginner-launchpad/level3/09-family.jpg',
-  './assets/beginner-launchpad/level3/10-calendar.jpg',
-  './assets/beginner-launchpad/level3/11-library.jpg',
-  './assets/beginner-launchpad/level3/12-desk.jpg',
-  './assets/beginner-launchpad/level3/13-writing.jpg',
-  './assets/beginner-launchpad/level3/14-study.jpg',
-  './assets/beginner-launchpad/level3/15-weather.jpg',
-  './assets/beginner-launchpad/level3/16-station.jpg',
-  './assets/beginner-launchpad/level3/17-market.jpg',
-  './assets/beginner-launchpad/level3/18-question.jpg',
-  './assets/beginner-launchpad/level3/19-feelings.jpg',
-  './assets/beginner-launchpad/level3/20-conversation.jpg'
+  './data/pinyin_mastery_drills.json'
 ];
 
 self.addEventListener('install', (event) => {
