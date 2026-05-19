@@ -60,8 +60,33 @@ window.VocabularyModule = (() => {
     return vocabCache;
   }
 
-  function render(container) {
+  async function ensureVocabularyData() {
+    if (!Array.isArray(App.state.vocabulary)) {
+      try {
+        const vocabResult = await API.get('vocabulary');
+        App.state.vocabulary = Array.isArray(vocabResult) ? vocabResult : (vocabResult.sets || []);
+      } catch (err) {
+        console.warn('Could not load vocabulary library data:', err.message);
+        App.state.vocabulary = [];
+      }
+    }
+
+    if (!Array.isArray(App.state.characters) || App.state.characters.length === 0) {
+      try {
+        const charResult = await API.getCharacters({ limit: 9999 });
+        App.state.characters = charResult.data || [];
+      } catch (err) {
+        console.warn('Could not load character metadata for vocabulary library:', err.message);
+        App.state.characters = [];
+      }
+    }
+  }
+
+  async function render(container) {
+    container.innerHTML = '<div class="spinner"></div><p class="text-center text-muted mt-8">Loading vocabulary...</p>';
+    await ensureVocabularyData();
     vocabCache = null; // Clear cache to pick up data changes
+    const vocabSets = Array.isArray(App.state.vocabulary) ? App.state.vocabulary : [];
     const allVocab = getUniqueVocab();
     const categories = ['all', ...new Set(allVocab.map(v => v.category).filter(Boolean))].sort();
     
@@ -80,7 +105,7 @@ window.VocabularyModule = (() => {
         <div class="flex gap-8 flex-wrap">
           <select class="input" id="vocab-set-select" style="width:auto">
             <option value="all">All Sets</option>
-            ${App.state.vocabulary.map(s => `<option value="${s.id}" ${vocabState.currentSet === s.id ? 'selected' : ''}>${s.name}</option>`).join('')}
+            ${vocabSets.map(s => `<option value="${s.id}" ${vocabState.currentSet === s.id ? 'selected' : ''}>${s.name}</option>`).join('')}
           </select>
 
           <select class="input" id="vocab-cat-select" style="width:auto">

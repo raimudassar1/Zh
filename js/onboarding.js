@@ -252,7 +252,8 @@ const OnboardingModule = (() => {
         return;
       } catch {}
     }
-    TTS.speak(item.hanzi, 'zh-TW', 0.68);
+    const spoken = item.audioText || item.hanzi || item.example || item.pinyin;
+    if (spoken) TTS.speak(spoken, 'zh-TW', 0.68);
   }
 
   function shuffledHumanOptions(correct, candidates, size = 4) {
@@ -316,11 +317,15 @@ const OnboardingModule = (() => {
         const feedback = document.getElementById('hpl-feedback');
         const answers = document.getElementById('hpl-answer-grid');
         if (prompt) prompt.innerHTML = `<span>Mode: ${obEsc(humanPinyinState.mode)} - item ${humanPinyinState.sessionDone}/${humanPinyinState.sessionSize}. Listen and identify this target sound.</span>`;
-        if (feedback) feedback.textContent = 'Play the sound, then choose the closest answer.';
+        if (feedback) { feedback.classList.remove('correct', 'wrong'); feedback.textContent = 'Play the sound, then choose the closest answer.'; }
         if (answers) answers.innerHTML = renderHumanAnswers(humanPinyinState.current);
         this.play();
       },
       play() {
+        if (!humanPinyinState.current) {
+          this.next();
+          return;
+        }
         playHumanItem(humanPinyinState.current);
       },
       playItem(id) {
@@ -329,7 +334,7 @@ const OnboardingModule = (() => {
         const answers = document.getElementById('hpl-answer-grid');
         const feedback = document.getElementById('hpl-feedback');
         if (answers && item) answers.innerHTML = renderHumanAnswers(item);
-        if (feedback && item) feedback.textContent = item.coaching;
+        if (feedback && item) { feedback.classList.remove('correct', 'wrong'); feedback.textContent = item.coaching; }
         playHumanItem(item);
       },
       setMode(mode) {
@@ -358,8 +363,22 @@ const OnboardingModule = (() => {
         const prompt = document.getElementById('hpl-prompt');
         if (score) score.textContent = humanPinyinState.score;
         if (total) total.textContent = humanPinyinState.total;
-        if (prompt) prompt.innerHTML = `<strong>${obEsc(item.hanzi)}</strong><span>${obEsc(item.pinyin)} - ${obEsc(item.meaning)}</span>`;
-        if (feedback) feedback.textContent = correct ? `Correct. ${item.coaching}` : `Not quite. Correct answer: ${item.answer}. ${item.coaching}`;
+        document.querySelectorAll('#hpl-answer-grid [data-hpl-action="answer"]').forEach(btn => {
+          const isCorrectButton = btn.dataset.answer === item.answer;
+          const isChosen = btn.dataset.answer === answer;
+          btn.classList.toggle('correct', isCorrectButton);
+          btn.classList.toggle('wrong', isChosen && !correct);
+          btn.disabled = true;
+          btn.setAttribute('aria-pressed', String(isChosen));
+        });
+        if (prompt) prompt.innerHTML = `<strong>${obEsc(item.hanzi || item.audioText || '')}</strong><span>${obEsc(item.pinyin || item.pinyinNumbered || '')} - ${obEsc(item.meaning || '')}</span>`;
+        if (feedback) {
+          feedback.classList.toggle('correct', correct);
+          feedback.classList.toggle('wrong', !correct);
+          feedback.innerHTML = correct
+            ? `<strong>Correct.</strong> ${obEsc(item.coaching || '')}`
+            : `<strong>Not quite.</strong> Correct answer: <b>${obEsc(item.answer)}</b>. ${obEsc(item.coaching || '')}`;
+        }
       }
     };
     bindHumanLabButtons();

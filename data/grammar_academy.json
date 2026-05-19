@@ -12,14 +12,14 @@
         {
           "id": "b_word_order",
           "level": "beginner",
-          "title": "Basic Word Order and ?",
-          "meaning": "Subject + verb/adjective/object. Use ? only for identity, category, or role.",
-          "structure": "S + ? + N / S + V + O",
-          "coreExplanation": "Use this to stop translating English word-for-word. Chinese usually starts with the topic/person, then the action or description. ? is not used before adjectives like busy, tired, good, or expensive.",
+          "title": "Basic Word Order and 是",
+          "meaning": "Subject + verb/adjective/object. Use 是 only for identity, category, or role.",
+          "structure": "S + 是 + N / S + V + O",
+          "coreExplanation": "Use this to stop translating English word-for-word. Chinese usually starts with the topic/person, then the action or description. 是 is not used before adjectives like busy, tired, good, or expensive.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
             "Do not copy English word order when time/place appears.",
-            "Do not use ? before adjectives such as ?, ?, ?.",
+            "Do not use 是 before adjectives such as 忙, 累, 好.",
             "Keep the subject or topic clear before adding details."
           ],
           "examples": [
@@ -62,7 +62,7 @@
                 "是",
                 "朋友"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -132,7 +132,7 @@
                 "是",
                 "店員"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -202,7 +202,7 @@
                 "是",
                 "醫生"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -272,7 +272,7 @@
                 "是",
                 "老師"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -342,7 +342,7 @@
                 "是",
                 "家人"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -409,7 +409,7 @@
                 "我",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -474,7 +474,7 @@
                 "我",
                 "回家"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -539,7 +539,7 @@
                 "你",
                 "聽音樂"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -604,7 +604,7 @@
                 "他",
                 "吃飯"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -669,7 +669,7 @@
                 "他",
                 "去學校"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -737,7 +737,7 @@
                 "是",
                 "朋友"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_word_order_ex04",
@@ -802,7 +802,7 @@
                 "是",
                 "店員"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_word_order_ex09",
@@ -858,7 +858,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: S + ? + N / S + V + O",
+            "Write five sentences using: S + 是 + N / S + V + O",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -870,15 +870,15 @@
         {
           "id": "b_have_measure",
           "level": "beginner",
-          "title": "?, Numbers, and Measure Words",
-          "meaning": "Use ? for possession/existence and place numbers before measure words.",
-          "structure": "S + ? + number + measure + noun",
-          "coreExplanation": "Measure words are not decoration. They are part of the noun phrase. This unit trains ?, ?, ?, ? and basic counting in real sentences.",
+          "title": "有, Numbers, and Measure Words",
+          "meaning": "Use 有 for possession/existence and place numbers before measure words.",
+          "structure": "S + 有 + number + measure + noun",
+          "coreExplanation": "Measure words are not decoration. They are part of the noun phrase. This unit trains 有, 一個, 兩個, 幾個 and basic counting in real sentences.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
             "Do not put the measure word after the noun.",
-            "Use ? before measure words more often than ?.",
-            "? is possession/existence, not a general linking verb."
+            "Use 兩 before measure words more often than 二.",
+            "有 is possession/existence, not a general linking verb."
           ],
           "examples": [
             {
@@ -920,7 +920,7 @@
                 "有",
                 "一支筆"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -990,7 +990,7 @@
                 "有",
                 "一份功課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1060,7 +1060,7 @@
                 "有",
                 "一個問題"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1130,7 +1130,7 @@
                 "有",
                 "一杯水"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1200,7 +1200,7 @@
                 "有",
                 "三本書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1276,7 +1276,7 @@
                 "一瓶",
                 "水"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -1356,7 +1356,7 @@
                 "一支",
                 "筆"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -1436,7 +1436,7 @@
                 "一件",
                 "衣服"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -1516,7 +1516,7 @@
                 "一碗",
                 "飯"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -1596,7 +1596,7 @@
                 "一本",
                 "書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -1670,7 +1670,7 @@
                 "有",
                 "一支筆"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_have_measure_ex04",
@@ -1735,7 +1735,7 @@
                 "有",
                 "一份功課"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_have_measure_ex09",
@@ -1791,7 +1791,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: S + ? + number + measure + noun",
+            "Write five sentences using: S + 有 + number + measure + noun",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -1803,15 +1803,15 @@
         {
           "id": "b_location_time",
           "level": "beginner",
-          "title": "?, Location, and Time Order",
-          "meaning": "Put time before or near the front; use ? for location.",
-          "structure": "Time + S + ?/place + action",
+          "title": "在, Location, and Time Order",
+          "meaning": "Put time before or near the front; use 在 for location.",
+          "structure": "Time + S + 在/place + action",
           "coreExplanation": "Chinese often sets time and place before the action. This helps listening because you know where to expect when and where information.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "Do not place ? after the full English-style sentence.",
+            "Do not place 在 after the full English-style sentence.",
             "Time usually comes before the action.",
-            "Use ?/?/?? when the place needs a position word."
+            "Use 上/下/裡 when the place needs a position word."
           ],
           "examples": [
             {
@@ -1853,7 +1853,7 @@
                 "在",
                 "圖書館"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1923,7 +1923,7 @@
                 "在",
                 "市場"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -1993,7 +1993,7 @@
                 "在",
                 "餐廳"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -2063,7 +2063,7 @@
                 "在",
                 "家"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -2133,7 +2133,7 @@
                 "在",
                 "教室"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 1"
             },
             {
@@ -2203,7 +2203,7 @@
                 "今天",
                 "去圖書館"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2273,7 +2273,7 @@
                 "今天",
                 "去市場"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2343,7 +2343,7 @@
                 "明天",
                 "去餐廳"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2413,7 +2413,7 @@
                 "早上",
                 "回家"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2483,7 +2483,7 @@
                 "早上",
                 "去教室"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2553,7 +2553,7 @@
                 "在",
                 "圖書館"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_location_time_ex04",
@@ -2618,7 +2618,7 @@
                 "在",
                 "市場"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_location_time_ex09",
@@ -2674,7 +2674,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: Time + S + ?/place + action",
+            "Write five sentences using: Time + S + 在/place + action",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -2687,14 +2687,14 @@
           "id": "b_questions_negation",
           "level": "beginner",
           "title": "Questions, Negatives, and Counter-Questions",
-          "meaning": "Use ? for yes/no questions and ?/? for negation.",
-          "structure": "Statement + ? / S + ? + V / ???",
+          "meaning": "Use 嗎 for yes/no questions and 不/沒 for negation.",
+          "structure": "Statement + 嗎 / S + 不 + V / V 不 V",
           "coreExplanation": "This unit trains answer discipline: do not only say yes/no. Give a complete answer and learn to ask the counter-question.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "Do not answer ? questions with only ? if the verb is not ?.",
-            "Use ? for completed/not-happened actions where needed.",
-            "A-not-A questions do not also need ?."
+            "Do not answer 嗎 questions with only 是 if the verb is not 是.",
+            "Use 沒 for completed/not-happened actions where needed.",
+            "A-not-A questions do not also need 嗎."
           ],
           "examples": [
             {
@@ -2736,7 +2736,7 @@
                 "不",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2806,7 +2806,7 @@
                 "不",
                 "回家"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2876,7 +2876,7 @@
                 "不",
                 "聽音樂"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -2946,7 +2946,7 @@
                 "不",
                 "吃飯"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3016,7 +3016,7 @@
                 "不",
                 "去學校"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3086,7 +3086,7 @@
                 "看書",
                 "嗎"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3156,7 +3156,7 @@
                 "回家",
                 "嗎"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3226,7 +3226,7 @@
                 "聽音樂",
                 "嗎"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3296,7 +3296,7 @@
                 "吃飯",
                 "嗎"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3366,7 +3366,7 @@
                 "去學校",
                 "嗎"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3436,7 +3436,7 @@
                 "不",
                 "看書"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_questions_negation_ex04",
@@ -3501,7 +3501,7 @@
                 "不",
                 "回家"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "b_questions_negation_ex09",
@@ -3557,7 +3557,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: Statement + ? / S + ? + V / ???",
+            "Write five sentences using: Statement + 嗎 / S + 不 + V / V 不 V",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -3578,14 +3578,14 @@
           "id": "n_modals_likes",
           "level": "novice",
           "title": "Want, Like, Can, and Need",
-          "meaning": "Use ?, ?, ??, ?, ?? before the main verb.",
+          "meaning": "Use 想, 要, 喜歡, 會, 可以 before the main verb.",
           "structure": "S + modal + V + O",
           "coreExplanation": "These words control intention, ability, permission, and preference. They are essential for real beginner conversation.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "The modal comes before the action verb.",
-            "?? can take a noun or verb phrase.",
-            "?? is permission/possibility, not the same as ?."
+            "Modal verbs usually come before the main action.",
+            "喜歡 can take a noun or verb phrase.",
+            "可以 is permission/possibility, not the same as 會."
           ],
           "examples": [
             {
@@ -3627,7 +3627,7 @@
                 "喜歡",
                 "水果"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3697,7 +3697,7 @@
                 "喜歡",
                 "便當"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3767,7 +3767,7 @@
                 "喜歡",
                 "茶"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3837,7 +3837,7 @@
                 "喜歡",
                 "水餃"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3907,7 +3907,7 @@
                 "喜歡",
                 "晚餐"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "Novice Level 2"
             },
             {
@@ -3989,7 +3989,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -4079,7 +4079,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -4169,7 +4169,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -4259,7 +4259,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -4349,7 +4349,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -4427,7 +4427,7 @@
                 "喜歡",
                 "水果"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_modals_likes_ex04",
@@ -4492,7 +4492,7 @@
                 "喜歡",
                 "便當"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_modals_likes_ex09",
@@ -4561,14 +4561,14 @@
           "id": "n_sequence",
           "level": "novice",
           "title": "Sequencing Actions",
-          "meaning": "Use ?, ?, ?? to build multi-step sentences.",
-          "structure": "?...?... / ??...",
+          "meaning": "Use 先, 再, 然後 to build multi-step sentences.",
+          "structure": "先...再... / 然後...",
           "coreExplanation": "This is the first bridge from isolated sentences into short stories. It teaches ordered actions and daily routines.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "Keep the order of events clear.",
-            "Do not overuse ?? after every clause.",
-            "Use ?/? when two actions are planned together."
+            "Put sequence words before the action they introduce.",
+            "Do not overuse 然後 after every clause.",
+            "Use 跟/一起 when two actions are planned together."
           ],
           "examples": [
             {
@@ -4622,7 +4622,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -4712,7 +4712,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -4802,7 +4802,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -4892,7 +4892,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -4982,7 +4982,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -5072,7 +5072,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -5162,7 +5162,7 @@
                 "去",
                 "上課"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -5262,7 +5262,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -5362,7 +5362,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -5462,7 +5462,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -5556,7 +5556,7 @@
                 "去",
                 "上課"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_sequence_ex04",
@@ -5641,7 +5641,7 @@
                 "去",
                 "上課"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_sequence_ex09",
@@ -5713,7 +5713,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: ?...?... / ??...",
+            "Write five sentences using: 先...再... / 然後...",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -5726,14 +5726,14 @@
           "id": "n_reasons_contrast",
           "level": "novice",
           "title": "Reasons and Soft Contrast",
-          "meaning": "Use ??...?? for reasons and ?? for contrast.",
-          "structure": "?? reason, ?? result / A, ?? B",
+          "meaning": "Use 因為...所以 to explain reasons and use 可是 to add soft contrast.",
+          "structure": "因為 reason, 所以 result / A, 可是 B",
           "coreExplanation": "This unit teaches why something happens and how to disagree or contrast politely.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "Because and so can both appear in Chinese, but keep clauses balanced.",
-            "???? is not the pattern; use ?? before the contrast clause.",
-            "Do not forget the result after ??."
+            "Keep the reason and result logically connected.",
+            "因為可是 is not the pattern; use 可是 before the contrast clause.",
+            "Do not forget the result after 所以."
           ],
           "examples": [
             {
@@ -5778,7 +5778,7 @@
                 "所以",
                 "她不能去"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -5853,7 +5853,7 @@
                 "所以",
                 "他決定坐捷運"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -5928,7 +5928,7 @@
                 "所以",
                 "他需要休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -6003,7 +6003,7 @@
                 "所以",
                 "我們要早一點出門"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -6078,7 +6078,7 @@
                 "所以",
                 "我們改天再去"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -6165,7 +6165,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -6260,7 +6260,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -6355,7 +6355,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -6450,7 +6450,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -6545,7 +6545,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -6628,7 +6628,7 @@
                 "所以",
                 "她不能去"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_reasons_contrast_ex04",
@@ -6698,7 +6698,7 @@
                 "所以",
                 "他決定坐捷運"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_reasons_contrast_ex09",
@@ -6758,7 +6758,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: ?? reason, ?? result / A, ?? B",
+            "Write five sentences using: 因為 reason, 所以 result / A, 可是 B",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -6771,14 +6771,14 @@
           "id": "n_compare_prefer",
           "level": "novice",
           "title": "Compare and Prefer",
-          "meaning": "Use ??, ?, and preference patterns to compare choices.",
-          "structure": "A ? B Adj / S ?? V/N",
+          "meaning": "Use 比 for comparison and 比較 for softer preference or degree.",
+          "structure": "A 比 B Adj / S 比較 V/N",
           "coreExplanation": "Comparison is crucial for shopping, opinions, and choosing study actions.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "? compares two clear things.",
-            "?? can soften a preference without naming the second choice.",
-            "Do not place ? after ?."
+            "比 compares two clear things.",
+            "比較 can soften a preference without naming the second choice.",
+            "Do not place 比 after 比較."
           ],
           "examples": [
             {
@@ -6826,7 +6826,7 @@
                 "一瓶",
                 "水"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -6906,7 +6906,7 @@
                 "一支",
                 "筆"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -6986,7 +6986,7 @@
                 "一件",
                 "衣服"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -7066,7 +7066,7 @@
                 "一碗",
                 "飯"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -7146,7 +7146,7 @@
                 "一本",
                 "書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -7226,7 +7226,7 @@
                 "一張",
                 "票"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -7306,7 +7306,7 @@
                 "一杯",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 1"
             },
             {
@@ -7396,7 +7396,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -7486,7 +7486,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -7576,7 +7576,7 @@
                 "喜歡",
                 "咖啡"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A1 Level 2"
             },
             {
@@ -7660,7 +7660,7 @@
                 "一瓶",
                 "水"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_compare_prefer_ex04",
@@ -7735,7 +7735,7 @@
                 "一支",
                 "筆"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "n_compare_prefer_ex09",
@@ -7799,7 +7799,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: A ? B Adj / S ?? V/N",
+            "Write five sentences using: A 比 B Adj / S 比較 V/N",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -7820,14 +7820,14 @@
           "id": "a_condition",
           "level": "bridge",
           "title": "If and Result",
-          "meaning": "Use ??...? to connect condition and result.",
-          "structure": "?? condition, ? result",
+          "meaning": "Use 如果 to set a condition and 就 to mark the result.",
+          "structure": "如果 condition, 就 result",
           "coreExplanation": "This pattern turns beginner sentences into planning, advice, and test-style logic.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "?? introduces the condition; ? marks the result.",
-            "Do not leave the result clause unfinished.",
-            "Use this for plans, rules, and consequences."
+            "如果 introduces the condition; 就 marks the result.",
+            "The condition usually comes before the result.",
+            "Do not use a result marker without a result clause."
           ],
           "examples": [
             {
@@ -7883,7 +7883,7 @@
                 "圖書館",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -7978,7 +7978,7 @@
                 "市場",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -8072,7 +8072,7 @@
                 "餐廳",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -8166,7 +8166,7 @@
                 "在家",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -8261,7 +8261,7 @@
                 "教室",
                 "看書"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -8362,7 +8362,7 @@
                 "常用的",
                 "說法"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -8467,7 +8467,7 @@
                 "常用的",
                 "說法"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -8572,7 +8572,7 @@
                 "常用的",
                 "說法"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -8677,7 +8677,7 @@
                 "常用的",
                 "說法"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -8782,7 +8782,7 @@
                 "常用的",
                 "說法"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -8880,7 +8880,7 @@
                 "圖書館",
                 "看書"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_condition_ex04",
@@ -8970,7 +8970,7 @@
                 "市場",
                 "看書"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_condition_ex09",
@@ -9045,7 +9045,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: ?? condition, ? result",
+            "Write five sentences using: 如果 condition, 就 result",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -9058,14 +9058,14 @@
           "id": "a_although",
           "level": "bridge",
           "title": "Although and But",
-          "meaning": "Use ??...?? to hold two opposite ideas together.",
-          "structure": "?? A, ?? B",
+          "meaning": "Use 雖然...可是 to show concession: even though A, B is still true.",
+          "structure": "雖然 A, 可是 B",
           "coreExplanation": "This is a key bridge to longer reading passages because it marks contrast across clauses.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "?? needs a real contrast after ??/??.",
-            "Do not translate although-but as an English error; it is normal Chinese.",
-            "Keep both clauses complete enough to understand."
+            "雖然 needs a real contrast after 可是/但是.",
+            "Do not repeat the same idea on both sides.",
+            "Keep the contrast clear and useful."
           ],
           "examples": [
             {
@@ -9122,7 +9122,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9217,7 +9217,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9312,7 +9312,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9407,7 +9407,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9502,7 +9502,7 @@
                 "想",
                 "學中文"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9600,7 +9600,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9700,7 +9700,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9800,7 +9800,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -9900,7 +9900,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10000,7 +10000,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10097,7 +10097,7 @@
                 "想",
                 "學中文"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_although_ex04",
@@ -10187,7 +10187,7 @@
                 "想",
                 "學中文"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_although_ex09",
@@ -10263,7 +10263,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: ?? A, ?? B",
+            "Write five sentences using: 雖然 A, 可是 B",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -10275,15 +10275,15 @@
         {
           "id": "a_ba_structure",
           "level": "bridge",
-          "title": "Intro to ? Structure",
-          "meaning": "Use ? when the object is known and something happens to it.",
-          "structure": "S + ? + object + verb + result/place",
-          "coreExplanation": "Do not overuse ?. Use it when the sentence focuses on what someone does to a specific object.",
+          "title": "Intro to 把 Structure",
+          "meaning": "Use 把 when the sentence focuses on what someone does to a specific object.",
+          "structure": "S + 把 + object + verb + result/place",
+          "coreExplanation": "Do not overuse 把. Use it when the sentence focuses on what someone does to a specific object.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
           "commonMistakes": [
-            "Only use ? with a specific known object.",
+            "Only use 把 with a specific known object.",
             "The verb usually needs a result, direction, or location after it.",
-            "Do not use ? for simple existence or liking."
+            "Do not use 把 for simple existence or liking."
           ],
           "examples": [
             {
@@ -10334,7 +10334,7 @@
                 "放在",
                 "桌子上"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10419,7 +10419,7 @@
                 "放在",
                 "桌子上"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10504,7 +10504,7 @@
                 "放在",
                 "桌子上"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10589,7 +10589,7 @@
                 "放在",
                 "桌子上"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10674,7 +10674,7 @@
                 "放在",
                 "桌子上"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10768,7 +10768,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10868,7 +10868,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -10968,7 +10968,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -11068,7 +11068,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -11168,7 +11168,7 @@
                 "練習",
                 "聽力"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 1"
             },
             {
@@ -11259,7 +11259,7 @@
                 "放在",
                 "桌子上"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_ba_structure_ex04",
@@ -11339,7 +11339,7 @@
                 "放在",
                 "桌子上"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_ba_structure_ex09",
@@ -11407,7 +11407,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: S + ? + object + verb + result/place",
+            "Write five sentences using: S + 把 + object + verb + result/place",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],
@@ -11420,7 +11420,7 @@
           "id": "a_complex_connectors",
           "level": "bridge",
           "title": "Longer Connectors for B1 Bridge",
-          "meaning": "Use ??...??, ??...??, ??, ??...?.",
+          "meaning": "Use 不但...而且, 越來越, 另外, 如果...就.",
           "structure": "Connector + clause, connector + clause",
           "coreExplanation": "These patterns build exam-like reading and writing. They help you explain change, preference, condition, and added information.",
           "whyItMatters": "You will see this in beginner dialogue, sentence builder, listening questions, and TOCFL-style reading. Train it until you can produce it without translating word by word.",
@@ -11490,7 +11490,7 @@
                 "也",
                 "合理"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -11595,7 +11595,7 @@
                 "也",
                 "合理"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -11700,7 +11700,7 @@
                 "也",
                 "合理"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -11805,7 +11805,7 @@
                 "也",
                 "合理"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -11910,7 +11910,7 @@
                 "也",
                 "合理"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12018,7 +12018,7 @@
                 "家裡",
                 "休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12128,7 +12128,7 @@
                 "家裡",
                 "休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12238,7 +12238,7 @@
                 "家裡",
                 "休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12348,7 +12348,7 @@
                 "家裡",
                 "休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12458,7 +12458,7 @@
                 "家裡",
                 "休息"
               ],
-              "note": "Practice where ?, ?, or another negative belongs in the sentence.",
+              "note": "Practice where 不, 沒, or another negative belongs in the sentence.",
               "source": "A2 Level 2"
             },
             {
@@ -12565,7 +12565,7 @@
                 "也",
                 "合理"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_complex_connectors_ex04",
@@ -12665,7 +12665,7 @@
                 "也",
                 "合理"
               ],
-              "hint": "Practice where ?, ?, or another negative belongs in the sentence."
+              "hint": "Practice where 不, 沒, or another negative belongs in the sentence."
             },
             {
               "id": "a_complex_connectors_ex09",
@@ -12749,7 +12749,7 @@
             }
           ],
           "writingPrompts": [
-            "Write five sentences using: Connector + clause, connector + clause",
+            "Write five sentences using: 不但...而且 / 越來越 / 另外 / 如果...就",
             "Write a two-line dialogue using this grammar.",
             "Rewrite three examples as questions and answer them."
           ],

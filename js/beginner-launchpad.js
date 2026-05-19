@@ -226,7 +226,7 @@ window.BeginnerLaunchpadModule = (() => {
   function renderLesson(level, lesson, index) {
     const completeText = level.id === 'level-3' ? 'Complete Level 3 Lesson' : level.id === 'level-2' ? 'Complete Level 2 Lesson' : 'Complete Lesson';
     const display = getDisplay(level.id);
-    const hidePinyin = (level.hidePinyin || lesson.hidePinyin) && !display.pinyin;
+    const hidePinyin = !display.pinyin;
     const showEnglish = display.english;
     return `
       <article class="bl-lesson">
@@ -291,9 +291,13 @@ window.BeginnerLaunchpadModule = (() => {
 
   function renderStory(lesson, hidePinyin = false, showEnglish = true) {
     return `<div class="bl-story-card">
-      <div class="bl-story-toolbar"><strong>Mini Story</strong><button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak-story">Play All</button></div>
-      ${lesson.story.map(line => `
+      <div class="bl-story-toolbar">
+        <div><strong>${esc(lesson.storyTitle || 'Mini Story')}</strong>${lesson.readingGoal ? `<small>${esc(lesson.readingGoal)}</small>` : ''}</div>
+        <button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak-story">Play All</button>
+      </div>
+      ${lesson.story.map((line, lineIndex) => `
         <div class="bl-story-line">
+          <em>${String(lineIndex + 1).padStart(2, '0')}</em>
           <button type="button" data-bl-action="speak" data-text="${esc(line.zh)}">${esc(line.zh)}</button>
           ${hidePinyin || !line.pinyin ? '' : `<span>${esc(line.pinyin)}</span>`}${showEnglish ? `<small>${esc(line.english)}</small>` : ''}
         </div>`).join('')}
@@ -302,6 +306,7 @@ window.BeginnerLaunchpadModule = (() => {
 
   function renderDialogue(lesson, hidePinyin = false, showEnglish = true) {
     return `<div class="bl-dialogue-card">
+      <div class="bl-dialogue-head"><strong>Practice Dialogue</strong>${lesson.dialogueGoal ? `<small>${esc(lesson.dialogueGoal)}</small>` : ''}</div>
       ${lesson.dialogue.map(line => `
         <div class="bl-dialogue-line speaker-${line.speaker}">
           <b>${esc(line.speaker)}</b>
@@ -313,25 +318,42 @@ window.BeginnerLaunchpadModule = (() => {
   }
 
   function renderExercise(level, lesson, index, completeText, hidePinyin = false, showEnglish = true) {
-    const word = lesson.words[0];
-    const distractors = level.lessons.flatMap(l => l.words).filter(w => w.english !== word.english).slice(index + 3, index + 6).map(w => w.english);
-    const options = [word.english, ...distractors].slice(0,4).sort(() => Math.random() - 0.5);
-    const sentence = lesson.story[0];
+    const exercises = Array.isArray(lesson.exercises) && lesson.exercises.length ? lesson.exercises : buildFallbackExercises(level, lesson, index);
     return `<div class="bl-exercise-card">
-      <div class="bl-exercise-head"><span>${level.id === 'level-2' ? 'Bridge Check' : 'Micro Check'}</span><strong>${level.id === 'level-2' ? 'Can you understand the harder sentence?' : "Can you recognize today's key word?"}</strong></div>
-      <button type="button" class="bl-exercise-prompt" data-bl-action="speak" data-text="${esc(word.zh)}">${esc(word.zh)}${hidePinyin || !word.pinyin ? '' : `<small>${esc(word.pinyin)}</small>`}</button>
-      <div class="bl-answer-grid">
-        ${options.map(opt => `<button type="button" data-bl-action="answer" data-answer="${esc(opt)}" data-correct="${esc(word.english)}">${esc(opt)}</button>`).join('')}
+      <div class="bl-exercise-head">
+        <span>${level.id === 'level-3' ? 'Novice Practice Set' : level.id === 'level-2' ? 'Bridge Practice Set' : 'Beginner Practice Set'}</span>
+        <strong>Do five quick checks: meaning, listening, reading, and sentence building.</strong>
       </div>
-      <div class="bl-sentence-check">
-        <strong>Sentence meaning</strong>
-        <p>${esc(sentence.zh)}</p>
-        <small>${esc(sentence.pinyin)}</small>
-        ${showEnglish ? `<em>${esc(sentence.english)}</em>` : ''}
+      <div class="bl-exercise-list">
+        ${exercises.map((exercise, exerciseIndex) => renderExerciseItem(exercise, exerciseIndex, hidePinyin, showEnglish)).join('')}
       </div>
-      <div id="bl-feedback" class="bl-feedback">Answer the word, then mark the lesson complete.</div>
       <button type="button" class="btn btn-primary" data-bl-action="complete" data-level="${level.id}" data-index="${index}">${esc(completeText)}</button>
     </div>`;
+  }
+
+  function buildFallbackExercises(level, lesson, index) {
+    const word = lesson.words[0] || {};
+    const distractors = level.lessons.flatMap(l => l.words).filter(w => w.english !== word.english).slice(index + 3, index + 6).map(w => w.english);
+    return [{ type: 'meaning', prompt: word.zh || lesson.pattern, answer: word.english || lesson.canDo, options: [word.english, ...distractors].filter(Boolean).slice(0, 4), audioText: word.zh || lesson.pattern, hint: 'Choose the English meaning.' }];
+  }
+
+  function renderExerciseItem(exercise, index, hidePinyin = false, showEnglish = true) {
+    const typeLabel = { meaning: 'Meaning', listening: 'Listening', reading: 'Reading', build: 'Build' }[exercise.type] || 'Practice';
+    const prompt = exercise.prompt || exercise.audioText || exercise.answer || '';
+    const hasOptions = Array.isArray(exercise.options) && exercise.options.length;
+    const hasTiles = Array.isArray(exercise.tiles) && exercise.tiles.length;
+    const isChinesePrompt = /[\u3400-\u9fff]/.test(prompt);
+    return `<section class="bl-exercise-item">
+      <div class="bl-exercise-item-head"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(typeLabel)}</strong>${exercise.hint ? `<small>${esc(exercise.hint)}</small>` : ''}</div>
+      <div class="bl-exercise-prompt-row">
+        <button type="button" class="bl-exercise-prompt ${isChinesePrompt ? '' : 'latin'}" data-bl-action="speak" data-text="${esc(exercise.audioText || prompt)}">${esc(prompt)}</button>
+        ${exercise.audioText ? `<button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak" data-text="${esc(exercise.audioText)}">Play</button>` : ''}
+      </div>
+      ${hasTiles ? `<div class="bl-tile-row">${exercise.tiles.map(tile => `<span>${esc(tile)}</span>`).join('')}</div>` : ''}
+      ${hasOptions ? `<div class="bl-answer-grid">${exercise.options.map(opt => `<button type="button" data-bl-action="answer" data-answer="${esc(opt)}" data-correct="${esc(exercise.answer)}">${esc(opt)}</button>`).join('')}</div>` : `<button type="button" class="btn btn-ghost" data-bl-action="show-answer" data-correct="${esc(exercise.answer)}">Show answer</button>`}
+      <div class="bl-feedback" aria-live="polite">${hasOptions ? 'Choose an answer.' : 'Build it from the tiles, then reveal the answer.'}</div>
+      ${showEnglish && exercise.explanation ? `<p class="bl-exercise-note">${esc(exercise.explanation)}</p>` : ''}
+    </section>`;
   }
 
 
@@ -401,9 +423,13 @@ window.BeginnerLaunchpadModule = (() => {
       if (action === 'speak-story') getLevel(state.level).lessons[state.lesson].story.forEach((line, i) => setTimeout(() => speak(line.zh), i * 1300));
       if (action === 'answer' || action === 'test-answer') {
         const ok = btn.dataset.answer === btn.dataset.correct;
-        const fb = action === 'test-answer' ? btn.closest('.bl-test-question')?.querySelector('.bl-test-feedback') : container.querySelector('#bl-feedback');
+        const fb = action === 'test-answer' ? btn.closest('.bl-test-question')?.querySelector('.bl-test-feedback') : btn.closest('.bl-exercise-item')?.querySelector('.bl-feedback');
         if (fb) fb.textContent = ok ? 'Correct.' : `Not yet. Correct answer: ${btn.dataset.correct}`;
         btn.classList.add(ok ? 'correct' : 'wrong');
+      }
+      if (action === 'show-answer') {
+        const fb = btn.closest('.bl-exercise-item')?.querySelector('.bl-feedback');
+        if (fb) fb.textContent = `Answer: ${btn.dataset.correct}`;
       }
       if (action === 'complete') completeLesson(btn.dataset.level || state.level, Number(btn.dataset.index || state.lesson));
     });

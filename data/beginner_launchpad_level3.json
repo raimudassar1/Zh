@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "title": "Beginner Launchpad Level 3",
   "description": "A coherent A1 novice bridge from course vocabulary: scene missions, no-pinyin reading/listening, and test practice before books.",
   "totalWords": 300,
@@ -135,18 +135,106 @@
           "zh": "我們明天下午三點在咖啡廳見面。",
           "pinyin": "",
           "english": "We'll meet at the cafe at 3 PM tomorrow."
+        },
+        {
+          "speaker": "A",
+          "zh": "有問題請隨時跟我聯繫。",
+          "pinyin": "",
+          "english": "If you have questions, please contact me anytime."
+        },
+        {
+          "speaker": "B",
+          "zh": "我剛收到你的訊息。",
+          "pinyin": "",
+          "english": "I just received your message."
+        },
+        {
+          "speaker": "A",
+          "zh": "謝謝你邀請我參加派對。",
+          "pinyin": "",
+          "english": "Thank you for inviting me to the party."
+        },
+        {
+          "speaker": "B",
+          "zh": "請準時參加會議。",
+          "pinyin": "",
+          "english": "Please attend the meeting on time."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "聚會",
-          "answer": "gathering/party"
+          "answer": "gathering/party",
+          "options": [
+            "gathering/party",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "聚會",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "見面",
+          "answer": "to meet",
+          "options": [
+            "to meet",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "見面",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "We have a family gathering this weekend.",
+          "options": [
+            "We have a family gathering this weekend.",
+            "We'll meet at the cafe at 3 PM tomorrow.",
+            "If you have questions, please contact me anytime.",
+            "I just received your message."
+          ],
+          "audioText": "週末我們有個家庭聚會。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "我們明天下午三點在咖啡廳見面。",
+          "answer": "We'll meet at the cafe at 3 PM tomorrow.",
+          "options": [
+            "We'll meet at the cafe at 3 PM tomorrow.",
+            "If you have questions, please contact me anytime.",
+            "I just received your message.",
+            "Thank you for inviting me to the party."
+          ],
+          "audioText": "我們明天下午三點在咖啡廳見面。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "If you have questions, please contact me anytime.",
+          "answer": "有問題請隨時跟我聯繫。",
+          "tiles": [
+            "有問",
+            "題請",
+            "隨時",
+            "跟我",
+            "聯繫",
+            "。"
+          ],
+          "audioText": "有問題請隨時跟我聯繫。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/01-meeting.jpg",
       "imageDescription": "Friends arrange a meeting, send messages, apologize for lateness, and keep the plan.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "inviting-friends",
@@ -278,18 +366,106 @@
           "zh": "最近天氣變熱了。",
           "pinyin": "",
           "english": "The weather has gotten hotter recently."
+        },
+        {
+          "speaker": "A",
+          "zh": "希望你的考試一切順利。",
+          "pinyin": "",
+          "english": "I hope your exam goes smoothly."
+        },
+        {
+          "speaker": "B",
+          "zh": "讓我來介紹一下我的朋友。",
+          "pinyin": "",
+          "english": "Let me introduce my friend."
+        },
+        {
+          "speaker": "A",
+          "zh": "畢業後你打算做什麼？",
+          "pinyin": "",
+          "english": "What do you plan to do after graduation?"
+        },
+        {
+          "speaker": "B",
+          "zh": "這個週末你有什麼安排？",
+          "pinyin": "",
+          "english": "What arrangements do you have for this weekend?"
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "很久不見",
-          "answer": "long time no see"
+          "answer": "long time no see",
+          "options": [
+            "long time no see",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "很久不見",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "最近",
+          "answer": "recently",
+          "options": [
+            "recently",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "最近",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Long time no see, how have you been recently?",
+          "options": [
+            "Long time no see, how have you been recently?",
+            "The weather has gotten hotter recently.",
+            "I hope your exam goes smoothly.",
+            "Let me introduce my friend."
+          ],
+          "audioText": "很久不見，你最近好嗎？",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "最近天氣變熱了。",
+          "answer": "The weather has gotten hotter recently.",
+          "options": [
+            "The weather has gotten hotter recently.",
+            "I hope your exam goes smoothly.",
+            "Let me introduce my friend.",
+            "What do you plan to do after graduation?"
+          ],
+          "audioText": "最近天氣變熱了。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "I hope your exam goes smoothly.",
+          "answer": "希望你的考試一切順利。",
+          "tiles": [
+            "希望",
+            "你的",
+            "考試",
+            "一切",
+            "順利",
+            "。"
+          ],
+          "audioText": "希望你的考試一切順利。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/20-conversation.jpg",
       "imageDescription": "A learner invites a friend and confirms the meeting details.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "restaurant-menu",
@@ -421,18 +597,108 @@
           "zh": "服務員，請給我菜單。",
           "pinyin": "",
           "english": "Waiter, please give me the menu."
+        },
+        {
+          "speaker": "A",
+          "zh": "我們準備點菜了。",
+          "pinyin": "",
+          "english": "We are ready to order."
+        },
+        {
+          "speaker": "B",
+          "zh": "這家餐廳的菜很好吃，我強烈推薦。",
+          "pinyin": "",
+          "english": "The food at this restaurant is delicious, I highly recommend it."
+        },
+        {
+          "speaker": "A",
+          "zh": "這湯的味道有點鹹。",
+          "pinyin": "",
+          "english": "The taste of this soup is a bit salty."
+        },
+        {
+          "speaker": "B",
+          "zh": "甜",
+          "pinyin": "",
+          "english": "sweet"
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "服務員",
-          "answer": "waiter/waitress"
+          "answer": "waiter/waitress",
+          "options": [
+            "waiter/waitress",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "服務員",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "菜單",
+          "answer": "menu",
+          "options": [
+            "menu",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "菜單",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "This waiter has a very good attitude.",
+          "options": [
+            "This waiter has a very good attitude.",
+            "Waiter, please give me the menu.",
+            "We are ready to order.",
+            "The food at this restaurant is delicious, I highly recommend it."
+          ],
+          "audioText": "這位服務員態度很好。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "服務員，請給我菜單。",
+          "answer": "Waiter, please give me the menu.",
+          "options": [
+            "Waiter, please give me the menu.",
+            "We are ready to order.",
+            "The food at this restaurant is delicious, I highly recommend it.",
+            "The taste of this soup is a bit salty."
+          ],
+          "audioText": "服務員，請給我菜單。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "We are ready to order.",
+          "answer": "我們準備點菜了。",
+          "tiles": [
+            "我",
+            "們",
+            "準",
+            "備",
+            "點",
+            "菜",
+            "了",
+            "。"
+          ],
+          "audioText": "我們準備點菜了。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/04-cafe.jpg",
       "imageDescription": "A learner reads a menu, asks for recommendations, and chooses flavors.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "restaurant-service",
@@ -564,18 +830,105 @@
           "zh": "豬肉在市場賣得很便宜。",
           "pinyin": "",
           "english": "Pork is sold very cheaply at the market."
+        },
+        {
+          "speaker": "A",
+          "zh": "這道菜是雞肉做的。",
+          "pinyin": "",
+          "english": "This dish is made of chicken."
+        },
+        {
+          "speaker": "B",
+          "zh": "多吃蔬菜對身體好。",
+          "pinyin": "",
+          "english": "Eating more vegetables is good for your health."
+        },
+        {
+          "speaker": "A",
+          "zh": "中國人喜歡吃米飯。",
+          "pinyin": "",
+          "english": "Chinese people like to eat rice."
+        },
+        {
+          "speaker": "B",
+          "zh": "你想喝什麼飲料？",
+          "pinyin": "",
+          "english": "What beverage would you like to drink?"
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "牛肉",
-          "answer": "beef"
+          "answer": "beef",
+          "options": [
+            "beef",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "牛肉",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "豬肉",
+          "answer": "pork",
+          "options": [
+            "pork",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "豬肉",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I don't eat beef.",
+          "options": [
+            "I don't eat beef.",
+            "Pork is sold very cheaply at the market.",
+            "This dish is made of chicken.",
+            "Eating more vegetables is good for your health."
+          ],
+          "audioText": "我不吃牛肉。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "豬肉在市場賣得很便宜。",
+          "answer": "Pork is sold very cheaply at the market.",
+          "options": [
+            "Pork is sold very cheaply at the market.",
+            "This dish is made of chicken.",
+            "Eating more vegetables is good for your health.",
+            "Chinese people like to eat rice."
+          ],
+          "audioText": "豬肉在市場賣得很便宜。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "This dish is made of chicken.",
+          "answer": "這道菜是雞肉做的。",
+          "tiles": [
+            "這道",
+            "菜是",
+            "雞肉",
+            "做的",
+            "。"
+          ],
+          "audioText": "這道菜是雞肉做的。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/06-food.jpg",
       "imageDescription": "A learner talks with the server and solves a small ordering problem.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "work-interview",
@@ -707,18 +1060,107 @@
           "zh": "請在面試前準備好你的簡歷。",
           "pinyin": "",
           "english": "Please prepare your resume before the interview."
+        },
+        {
+          "speaker": "A",
+          "zh": "我的工作很忙。",
+          "pinyin": "",
+          "english": "My job is very busy."
+        },
+        {
+          "speaker": "B",
+          "zh": "你的職業是什麼？",
+          "pinyin": "",
+          "english": "What is your profession?"
+        },
+        {
+          "speaker": "A",
+          "zh": "這份工作的薪水很高。",
+          "pinyin": "",
+          "english": "The salary for this job is very high."
+        },
+        {
+          "speaker": "B",
+          "zh": "最近公司很忙，我經常需要加班。",
+          "pinyin": "",
+          "english": "The company is very busy recently, I often need to work overtime."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "面試",
-          "answer": "interview"
+          "answer": "interview",
+          "options": [
+            "interview",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "面試",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "簡歷",
+          "answer": "resume/CV",
+          "options": [
+            "resume/CV",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "簡歷",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I have a job interview tomorrow morning.",
+          "options": [
+            "I have a job interview tomorrow morning.",
+            "Please prepare your resume before the interview.",
+            "My job is very busy.",
+            "What is your profession?"
+          ],
+          "audioText": "明天上午我有個工作面試。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "請在面試前準備好你的簡歷。",
+          "answer": "Please prepare your resume before the interview.",
+          "options": [
+            "Please prepare your resume before the interview.",
+            "My job is very busy.",
+            "What is your profession?",
+            "The salary for this job is very high."
+          ],
+          "audioText": "請在面試前準備好你的簡歷。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "My job is very busy.",
+          "answer": "我的工作很忙。",
+          "tiles": [
+            "我",
+            "的",
+            "工",
+            "作",
+            "很",
+            "忙",
+            "。"
+          ],
+          "audioText": "我的工作很忙。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/14-study.jpg",
       "imageDescription": "A learner understands jobs, interviews, salary, and colleagues.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "office-day",
@@ -850,18 +1292,107 @@
           "zh": "恭喜你被我們公司錄用了。",
           "pinyin": "",
           "english": "Congratulations, you have been hired by our company."
+        },
+        {
+          "speaker": "A",
+          "zh": "簽合同之前請仔細閱讀條款。",
+          "pinyin": "",
+          "english": "Please read the terms carefully before signing the contract."
+        },
+        {
+          "speaker": "B",
+          "zh": "出國旅遊最好買一份旅遊保險。",
+          "pinyin": "",
+          "english": "It is best to buy travel insurance when traveling abroad."
+        },
+        {
+          "speaker": "A",
+          "zh": "這家公司的員工福利很好。",
+          "pinyin": "",
+          "english": "This company has great employee benefits."
+        },
+        {
+          "speaker": "B",
+          "zh": "我的辦公室在三樓。",
+          "pinyin": "",
+          "english": "My office is on the third floor."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "招聘",
-          "answer": "recruitment"
+          "answer": "recruitment",
+          "options": [
+            "recruitment",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "招聘",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "錄用",
+          "answer": "to hire",
+          "options": [
+            "to hire",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "錄用",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Our company is currently recruiting new employees.",
+          "options": [
+            "Our company is currently recruiting new employees.",
+            "Congratulations, you have been hired by our company.",
+            "Please read the terms carefully before signing the contract.",
+            "It is best to buy travel insurance when traveling abroad."
+          ],
+          "audioText": "我們公司正在招聘新員工。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "恭喜你被我們公司錄用了。",
+          "answer": "Congratulations, you have been hired by our company.",
+          "options": [
+            "Congratulations, you have been hired by our company.",
+            "Please read the terms carefully before signing the contract.",
+            "It is best to buy travel insurance when traveling abroad.",
+            "This company has great employee benefits."
+          ],
+          "audioText": "恭喜你被我們公司錄用了。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "Please read the terms carefully before signing the contract.",
+          "answer": "簽合同之前請仔細閱讀條款。",
+          "tiles": [
+            "簽合",
+            "同之",
+            "前請",
+            "仔細",
+            "閱讀",
+            "條款",
+            "。"
+          ],
+          "audioText": "簽合同之前請仔細閱讀條款。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/18-question.jpg",
       "imageDescription": "A worker talks about overtime, meetings, and workplace routine.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "bank-account",
@@ -993,18 +1524,105 @@
           "zh": "請把錢匯到這個銀行帳戶。",
           "pinyin": "",
           "english": "Please remit the money to this bank account."
+        },
+        {
+          "speaker": "A",
+          "zh": "我想在你們銀行開戶。",
+          "pinyin": "",
+          "english": "I would like to open an account at your bank."
+        },
+        {
+          "speaker": "B",
+          "zh": "每個月我都會存錢在銀行。",
+          "pinyin": "",
+          "english": "Every month I save money in the bank."
+        },
+        {
+          "speaker": "A",
+          "zh": "我需要去提款機取錢。",
+          "pinyin": "",
+          "english": "I need to go to the ATM to withdraw money."
+        },
+        {
+          "speaker": "B",
+          "zh": "我要給家裡匯款。",
+          "pinyin": "",
+          "english": "I want to remit money to my family."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "銀行",
-          "answer": "bank"
+          "answer": "bank",
+          "options": [
+            "bank",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "銀行",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "帳戶",
+          "answer": "account",
+          "options": [
+            "account",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "帳戶",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I need to go to the bank to exchange money.",
+          "options": [
+            "I need to go to the bank to exchange money.",
+            "Please remit the money to this bank account.",
+            "I would like to open an account at your bank.",
+            "Every month I save money in the bank."
+          ],
+          "audioText": "我要去銀行換錢。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "請把錢匯到這個銀行帳戶。",
+          "answer": "Please remit the money to this bank account.",
+          "options": [
+            "Please remit the money to this bank account.",
+            "I would like to open an account at your bank.",
+            "Every month I save money in the bank.",
+            "I need to go to the ATM to withdraw money."
+          ],
+          "audioText": "請把錢匯到這個銀行帳戶。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "I would like to open an account at your bank.",
+          "answer": "我想在你們銀行開戶。",
+          "tiles": [
+            "我想",
+            "在你",
+            "們銀",
+            "行開",
+            "戶。"
+          ],
+          "audioText": "我想在你們銀行開戶。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/12-desk.jpg",
       "imageDescription": "A learner handles account, deposit, withdrawal, and transfer words.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "money-exchange",
@@ -1136,18 +1754,107 @@
           "zh": "請輸入您的密碼。",
           "pinyin": "",
           "english": "Please enter your password."
+        },
+        {
+          "speaker": "A",
+          "zh": "請在這裡簽名。",
+          "pinyin": "",
+          "english": "Please sign here."
+        },
+        {
+          "speaker": "B",
+          "zh": "請出示您的有效證件。",
+          "pinyin": "",
+          "english": "Please show your valid ID."
+        },
+        {
+          "speaker": "A",
+          "zh": "出國必須攜帶護照。",
+          "pinyin": "",
+          "english": "You must bring your passport when going abroad."
+        },
+        {
+          "speaker": "B",
+          "zh": "請隨身攜帶您的身份證。",
+          "pinyin": "",
+          "english": "Please carry your ID card with you."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "提款機",
-          "answer": "ATM"
+          "answer": "ATM",
+          "options": [
+            "ATM",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "提款機",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "密碼",
+          "answer": "password",
+          "options": [
+            "password",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "密碼",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Is there an ATM nearby?",
+          "options": [
+            "Is there an ATM nearby?",
+            "Please enter your password.",
+            "Please sign here.",
+            "Please show your valid ID."
+          ],
+          "audioText": "附近有提款機嗎？",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "請輸入您的密碼。",
+          "answer": "Please enter your password.",
+          "options": [
+            "Please enter your password.",
+            "Please sign here.",
+            "Please show your valid ID.",
+            "You must bring your passport when going abroad."
+          ],
+          "audioText": "請輸入您的密碼。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "Please sign here.",
+          "answer": "請在這裡簽名。",
+          "tiles": [
+            "請",
+            "在",
+            "這",
+            "裡",
+            "簽",
+            "名",
+            "。"
+          ],
+          "audioText": "請在這裡簽名。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/10-calendar.jpg",
       "imageDescription": "A learner talks about fees, exchange rates, and cash needs.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "travel-booking",
@@ -1279,18 +1986,107 @@
           "zh": "我們明天的行程很滿。",
           "pinyin": "",
           "english": "Our itinerary for tomorrow is very full."
+        },
+        {
+          "speaker": "A",
+          "zh": "這個城市有很多著名的景點。",
+          "pinyin": "",
+          "english": "This city has many famous scenic spots."
+        },
+        {
+          "speaker": "B",
+          "zh": "我已經在網上訂房了。",
+          "pinyin": "",
+          "english": "I have already booked a room online."
+        },
+        {
+          "speaker": "A",
+          "zh": "下午三點可以辦理入住。",
+          "pinyin": "",
+          "english": "You can check in at 3 PM."
+        },
+        {
+          "speaker": "B",
+          "zh": "退房時間是中午十二點。",
+          "pinyin": "",
+          "english": "Check-out time is 12 noon."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "旅遊",
-          "answer": "travel/tourism"
+          "answer": "travel/tourism",
+          "options": [
+            "travel/tourism",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "旅遊",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "行程",
+          "answer": "itinerary",
+          "options": [
+            "itinerary",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "行程",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I plan to travel to Japan.",
+          "options": [
+            "I plan to travel to Japan.",
+            "Our itinerary for tomorrow is very full.",
+            "This city has many famous scenic spots.",
+            "I have already booked a room online."
+          ],
+          "audioText": "我計畫去日本旅遊。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "我們明天的行程很滿。",
+          "answer": "Our itinerary for tomorrow is very full.",
+          "options": [
+            "Our itinerary for tomorrow is very full.",
+            "This city has many famous scenic spots.",
+            "I have already booked a room online.",
+            "You can check in at 3 PM."
+          ],
+          "audioText": "我們明天的行程很滿。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "This city has many famous scenic spots.",
+          "answer": "這個城市有很多著名的景點。",
+          "tiles": [
+            "這個",
+            "城市",
+            "有很",
+            "多著",
+            "名的",
+            "景點",
+            "。"
+          ],
+          "audioText": "這個城市有很多著名的景點。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/03-city.jpg",
       "imageDescription": "A learner books a room and plans check-in/check-out.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "travel-itinerary",
@@ -1422,18 +2218,105 @@
           "zh": "山上的風景真美！",
           "pinyin": "",
           "english": "The scenery on the mountain is so beautiful!"
+        },
+        {
+          "speaker": "A",
+          "zh": "請幫我們拍張照好嗎？",
+          "pinyin": "",
+          "english": "Could you take a picture for us, please?"
+        },
+        {
+          "speaker": "B",
+          "zh": "我預訂了明天的機票。",
+          "pinyin": "",
+          "english": "I reserved a flight ticket for tomorrow."
+        },
+        {
+          "speaker": "A",
+          "zh": "請確認你的個人資料是否正確。",
+          "pinyin": "",
+          "english": "Please confirm if your personal information is correct."
+        },
+        {
+          "speaker": "B",
+          "zh": "會議因為天氣原因取消了。",
+          "pinyin": "",
+          "english": "The meeting was canceled due to the weather."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "名勝古蹟",
-          "answer": "historical site"
+          "answer": "historical site",
+          "options": [
+            "historical site",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "名勝古蹟",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "風景",
+          "answer": "scenery/landscape",
+          "options": [
+            "scenery/landscape",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "風景",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "China has many scenic spots and historical sites.",
+          "options": [
+            "China has many scenic spots and historical sites.",
+            "The scenery on the mountain is so beautiful!",
+            "Could you take a picture for us, please?",
+            "I reserved a flight ticket for tomorrow."
+          ],
+          "audioText": "中國有許多名勝古蹟。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "山上的風景真美！",
+          "answer": "The scenery on the mountain is so beautiful!",
+          "options": [
+            "The scenery on the mountain is so beautiful!",
+            "Could you take a picture for us, please?",
+            "I reserved a flight ticket for tomorrow.",
+            "Please confirm if your personal information is correct."
+          ],
+          "audioText": "山上的風景真美！",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "Could you take a picture for us, please?",
+          "answer": "請幫我們拍張照好嗎？",
+          "tiles": [
+            "請幫",
+            "我們",
+            "拍張",
+            "照好",
+            "嗎？"
+          ],
+          "audioText": "請幫我們拍張照好嗎？",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/16-station.jpg",
       "imageDescription": "A traveler discusses sights, tickets, and route details.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "school-subjects",
@@ -1565,18 +2448,105 @@
           "zh": "我的數學成績一直很好。",
           "pinyin": "",
           "english": "My math grades have always been good."
+        },
+        {
+          "speaker": "A",
+          "zh": "這是一個科學的結論。",
+          "pinyin": "",
+          "english": "This is a scientific conclusion."
+        },
+        {
+          "speaker": "B",
+          "zh": "他對中國歷史很感興趣。",
+          "pinyin": "",
+          "english": "He is very interested in Chinese history."
+        },
+        {
+          "speaker": "A",
+          "zh": "地理課上我們學習了各國的首都。",
+          "pinyin": "",
+          "english": "In geography class, we learned the capitals of various countries."
+        },
+        {
+          "speaker": "B",
+          "zh": "明天有期末考試，我要複習了。",
+          "pinyin": "",
+          "english": "There is a final exam tomorrow, I need to review."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "科目",
-          "answer": "subject"
+          "answer": "subject",
+          "options": [
+            "subject",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "科目",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "數學",
+          "answer": "mathematics",
+          "options": [
+            "mathematics",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "數學",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Which subject do you like the most?",
+          "options": [
+            "Which subject do you like the most?",
+            "My math grades have always been good.",
+            "This is a scientific conclusion.",
+            "He is very interested in Chinese history."
+          ],
+          "audioText": "你最喜歡哪個科目？",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "我的數學成績一直很好。",
+          "answer": "My math grades have always been good.",
+          "options": [
+            "My math grades have always been good.",
+            "This is a scientific conclusion.",
+            "He is very interested in Chinese history.",
+            "In geography class, we learned the capitals of various countries."
+          ],
+          "audioText": "我的數學成績一直很好。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "This is a scientific conclusion.",
+          "answer": "這是一個科學的結論。",
+          "tiles": [
+            "這是",
+            "一個",
+            "科學",
+            "的結",
+            "論。"
+          ],
+          "audioText": "這是一個科學的結論。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/02-classroom.jpg",
       "imageDescription": "A learner talks about subjects, grades, tests, and passing.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "class-performance",
@@ -1708,18 +2678,108 @@
           "zh": "學校週末會舉辦很多活動。",
           "pinyin": "",
           "english": "The school will hold many activities on the weekend."
+        },
+        {
+          "speaker": "A",
+          "zh": "這場比賽很精彩。",
+          "pinyin": "",
+          "english": "This match is very exciting."
+        },
+        {
+          "speaker": "B",
+          "zh": "他因為成績優異獲得了獎學金。",
+          "pinyin": "",
+          "english": "He won a scholarship because of his excellent grades."
+        },
+        {
+          "speaker": "A",
+          "zh": "我明年大學畢業。",
+          "pinyin": "",
+          "english": "I will graduate from college next year."
+        },
+        {
+          "speaker": "B",
+          "zh": "我們的校園非常漂亮。",
+          "pinyin": "",
+          "english": "Our campus is very beautiful."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "社團",
-          "answer": "school club"
+          "answer": "school club",
+          "options": [
+            "school club",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "社團",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "活動",
+          "answer": "activity",
+          "options": [
+            "activity",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "活動",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I joined the school's music club.",
+          "options": [
+            "I joined the school's music club.",
+            "The school will hold many activities on the weekend.",
+            "This match is very exciting.",
+            "He won a scholarship because of his excellent grades."
+          ],
+          "audioText": "我加入了學校的音樂社團。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "學校週末會舉辦很多活動。",
+          "answer": "The school will hold many activities on the weekend.",
+          "options": [
+            "The school will hold many activities on the weekend.",
+            "This match is very exciting.",
+            "He won a scholarship because of his excellent grades.",
+            "I will graduate from college next year."
+          ],
+          "audioText": "學校週末會舉辦很多活動。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "This match is very exciting.",
+          "answer": "這場比賽很精彩。",
+          "tiles": [
+            "這",
+            "場",
+            "比",
+            "賽",
+            "很",
+            "精",
+            "彩",
+            "。"
+          ],
+          "audioText": "這場比賽很精彩。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/08-numbers.jpg",
       "imageDescription": "A student discusses homework, review, and improving grades.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "market-bargain",
@@ -1851,18 +2911,106 @@
           "zh": "這個週末我想去跳蚤市場看看。",
           "pinyin": "",
           "english": "I want to go check out the flea market this weekend."
+        },
+        {
+          "speaker": "A",
+          "zh": "老闆今天心情看起來不錯。",
+          "pinyin": "",
+          "english": "The boss looks to be in a good mood today."
+        },
+        {
+          "speaker": "B",
+          "zh": "這家超市的東西很便宜。",
+          "pinyin": "",
+          "english": "Things in this supermarket are very cheap."
+        },
+        {
+          "speaker": "A",
+          "zh": "貴",
+          "pinyin": "",
+          "english": "expensive"
+        },
+        {
+          "speaker": "B",
+          "zh": "今天所有的衣服都打折。",
+          "pinyin": "",
+          "english": "All clothes are on discount today."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "討價還價",
-          "answer": "to bargain"
+          "answer": "to bargain",
+          "options": [
+            "to bargain",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "討價還價",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "市場",
+          "answer": "market",
+          "options": [
+            "market",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "市場",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "You can bargain when buying vegetables at the market.",
+          "options": [
+            "You can bargain when buying vegetables at the market.",
+            "I want to go check out the flea market this weekend.",
+            "The boss looks to be in a good mood today.",
+            "Things in this supermarket are very cheap."
+          ],
+          "audioText": "在菜市場買菜可以討價還價。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "這個週末我想去跳蚤市場看看。",
+          "answer": "I want to go check out the flea market this weekend.",
+          "options": [
+            "I want to go check out the flea market this weekend.",
+            "The boss looks to be in a good mood today.",
+            "Things in this supermarket are very cheap.",
+            "expensive"
+          ],
+          "audioText": "這個週末我想去跳蚤市場看看。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "The boss looks to be in a good mood today.",
+          "answer": "老闆今天心情看起來不錯。",
+          "tiles": [
+            "老闆",
+            "今天",
+            "心情",
+            "看起",
+            "來不",
+            "錯。"
+          ],
+          "audioText": "老闆今天心情看起來不錯。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/17-market.jpg",
       "imageDescription": "A shopper asks for discounts and compares prices.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "market-problem",
@@ -1994,18 +3142,108 @@
           "zh": "請問可以刷卡嗎？",
           "pinyin": "",
           "english": "Excuse me, can I pay by card?"
+        },
+        {
+          "speaker": "A",
+          "zh": "你可以掃碼支付。",
+          "pinyin": "",
+          "english": "You can scan the QR code to pay."
+        },
+        {
+          "speaker": "B",
+          "zh": "你最喜歡吃什麼水果？",
+          "pinyin": "",
+          "english": "What fruit do you like to eat the most?"
+        },
+        {
+          "speaker": "A",
+          "zh": "天氣冷了，多穿點衣服。",
+          "pinyin": "",
+          "english": "The weather is cold, wear more clothes."
+        },
+        {
+          "speaker": "B",
+          "zh": "這雙鞋子很舒服。",
+          "pinyin": "",
+          "english": "This pair of shoes is very comfortable."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "現金",
-          "answer": "cash"
+          "answer": "cash",
+          "options": [
+            "cash",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "現金",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "刷卡",
+          "answer": "pay by card",
+          "options": [
+            "pay by card",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "刷卡",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "This store only accepts cash.",
+          "options": [
+            "This store only accepts cash.",
+            "Excuse me, can I pay by card?",
+            "You can scan the QR code to pay.",
+            "What fruit do you like to eat the most?"
+          ],
+          "audioText": "這家店只收現金。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "請問可以刷卡嗎？",
+          "answer": "Excuse me, can I pay by card?",
+          "options": [
+            "Excuse me, can I pay by card?",
+            "You can scan the QR code to pay.",
+            "What fruit do you like to eat the most?",
+            "The weather is cold, wear more clothes."
+          ],
+          "audioText": "請問可以刷卡嗎？",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "You can scan the QR code to pay.",
+          "answer": "你可以掃碼支付。",
+          "tiles": [
+            "你",
+            "可",
+            "以",
+            "掃",
+            "碼",
+            "支",
+            "付",
+            "。"
+          ],
+          "audioText": "你可以掃碼支付。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/07-shopping.jpg",
       "imageDescription": "A shopper handles size, price, and payment issues.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "emergency-help",
@@ -2137,18 +3375,107 @@
           "zh": "遇到困難時要勇敢求助。",
           "pinyin": "",
           "english": "Be brave to ask for help when facing difficulties."
+        },
+        {
+          "speaker": "A",
+          "zh": "我需要叫警察。",
+          "pinyin": "",
+          "english": "I need to call the police."
+        },
+        {
+          "speaker": "B",
+          "zh": "我的包被小偷拿走了。",
+          "pinyin": "",
+          "english": "My bag was taken by a thief."
+        },
+        {
+          "speaker": "A",
+          "zh": "我的鑰匙丟了。",
+          "pinyin": "",
+          "english": "I lost my keys."
+        },
+        {
+          "speaker": "B",
+          "zh": "我的錢包不見了。",
+          "pinyin": "",
+          "english": "My wallet is missing."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "緊急",
-          "answer": "urgent/emergency"
+          "answer": "urgent/emergency",
+          "options": [
+            "urgent/emergency",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "緊急",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "求助",
+          "answer": "to seek help",
+          "options": [
+            "to seek help",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "求助",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "An emergency occurred, please come quickly.",
+          "options": [
+            "An emergency occurred, please come quickly.",
+            "Be brave to ask for help when facing difficulties.",
+            "I need to call the police.",
+            "My bag was taken by a thief."
+          ],
+          "audioText": "發生了緊急情況，請快來。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "遇到困難時要勇敢求助。",
+          "answer": "Be brave to ask for help when facing difficulties.",
+          "options": [
+            "Be brave to ask for help when facing difficulties.",
+            "I need to call the police.",
+            "My bag was taken by a thief.",
+            "I lost my keys."
+          ],
+          "audioText": "遇到困難時要勇敢求助。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "I need to call the police.",
+          "answer": "我需要叫警察。",
+          "tiles": [
+            "我",
+            "需",
+            "要",
+            "叫",
+            "警",
+            "察",
+            "。"
+          ],
+          "audioText": "我需要叫警察。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/15-weather.jpg",
       "imageDescription": "A traveler reports a lost wallet/passport and asks police for help.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "health-emergency",
@@ -2280,18 +3607,107 @@
           "zh": "出國旅遊最好買一份旅遊保險。",
           "pinyin": "",
           "english": "It is best to buy travel insurance when traveling abroad."
+        },
+        {
+          "speaker": "A",
+          "zh": "護照遺失了可以去大使館補辦。",
+          "pinyin": "",
+          "english": "If you lose your passport, you can go to the embassy to get it reissued."
+        },
+        {
+          "speaker": "B",
+          "zh": "我需要一份工作證明。",
+          "pinyin": "",
+          "english": "I need an employment certificate."
+        },
+        {
+          "speaker": "A",
+          "zh": "他丟失了一份重要的文件。",
+          "pinyin": "",
+          "english": "He lost an important document."
+        },
+        {
+          "speaker": "B",
+          "zh": "電梯發生故障了。",
+          "pinyin": "",
+          "english": "The elevator has malfunctioned."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "聯繫人",
-          "answer": "contact person"
+          "answer": "contact person",
+          "options": [
+            "contact person",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "聯繫人",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "保險",
+          "answer": "insurance",
+          "options": [
+            "insurance",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "保險",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Please leave your emergency contact number.",
+          "options": [
+            "Please leave your emergency contact number.",
+            "It is best to buy travel insurance when traveling abroad.",
+            "If you lose your passport, you can go to the embassy to get it reissued.",
+            "I need an employment certificate."
+          ],
+          "audioText": "請留下您的緊急聯繫人號碼。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "出國旅遊最好買一份旅遊保險。",
+          "answer": "It is best to buy travel insurance when traveling abroad.",
+          "options": [
+            "It is best to buy travel insurance when traveling abroad.",
+            "If you lose your passport, you can go to the embassy to get it reissued.",
+            "I need an employment certificate.",
+            "He lost an important document."
+          ],
+          "audioText": "出國旅遊最好買一份旅遊保險。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "If you lose your passport, you can go to the embassy to get it reissued.",
+          "answer": "護照遺失了可以去大使館補辦。",
+          "tiles": [
+            "護照",
+            "遺失",
+            "了可",
+            "以去",
+            "大使",
+            "館補",
+            "辦。"
+          ],
+          "audioText": "護照遺失了可以去大使館補辦。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/19-feelings.jpg",
       "imageDescription": "A learner explains a problem clearly in an emergency.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "social-tech",
@@ -2423,18 +3839,106 @@
           "zh": "現代科技改變了我們的生活。",
           "pinyin": "",
           "english": "Modern technology has changed our lives."
+        },
+        {
+          "speaker": "A",
+          "zh": "他買了一支新的智能手機。",
+          "pinyin": "",
+          "english": "He bought a new smartphone."
+        },
+        {
+          "speaker": "B",
+          "zh": "這個應用程式非常實用。",
+          "pinyin": "",
+          "english": "This app is very practical."
+        },
+        {
+          "speaker": "A",
+          "zh": "你可以免費下載這首歌。",
+          "pinyin": "",
+          "english": "You can download this song for free."
+        },
+        {
+          "speaker": "B",
+          "zh": "我剛把照片上傳到網路了。",
+          "pinyin": "",
+          "english": "I just uploaded the photos to the internet."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "社群媒體",
-          "answer": "social media"
+          "answer": "social media",
+          "options": [
+            "social media",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "社群媒體",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "科技",
+          "answer": "technology",
+          "options": [
+            "technology",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "科技",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "Young people like to use social media.",
+          "options": [
+            "Young people like to use social media.",
+            "Modern technology has changed our lives.",
+            "He bought a new smartphone.",
+            "This app is very practical."
+          ],
+          "audioText": "年輕人喜歡使用社群媒體。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "現代科技改變了我們的生活。",
+          "answer": "Modern technology has changed our lives.",
+          "options": [
+            "Modern technology has changed our lives.",
+            "He bought a new smartphone.",
+            "This app is very practical.",
+            "You can download this song for free."
+          ],
+          "audioText": "現代科技改變了我們的生活。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "He bought a new smartphone.",
+          "answer": "他買了一支新的智能手機。",
+          "tiles": [
+            "他買",
+            "了一",
+            "支新",
+            "的智",
+            "能手",
+            "機。"
+          ],
+          "audioText": "他買了一支新的智能手機。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/11-library.jpg",
       "imageDescription": "A learner uses accounts, passwords, upload/download, and messages.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "phone-problem",
@@ -2566,18 +4070,107 @@
           "zh": "我們昨天看了一部好笑的影片。",
           "pinyin": "",
           "english": "We watched a funny video yesterday."
+        },
+        {
+          "speaker": "A",
+          "zh": "今晚八點有足球比賽的直播。",
+          "pinyin": "",
+          "english": "There is a live broadcast of the football match at eight tonight."
+        },
+        {
+          "speaker": "B",
+          "zh": "這裡沒有網路，我無法收信。",
+          "pinyin": "",
+          "english": "There is no internet here, I cannot receive emails."
+        },
+        {
+          "speaker": "A",
+          "zh": "這家咖啡廳的網速很快。",
+          "pinyin": "",
+          "english": "The internet speed in this cafe is very fast."
+        },
+        {
+          "speaker": "B",
+          "zh": "山區的手機訊號很弱。",
+          "pinyin": "",
+          "english": "The cell phone signal in the mountains is very weak."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "照片",
-          "answer": "photo"
+          "answer": "photo",
+          "options": [
+            "photo",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "照片",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "影片",
+          "answer": "video",
+          "options": [
+            "video",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "影片",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "This is a photo of me when I was little.",
+          "options": [
+            "This is a photo of me when I was little.",
+            "We watched a funny video yesterday.",
+            "There is a live broadcast of the football match at eight tonight.",
+            "There is no internet here, I cannot receive emails."
+          ],
+          "audioText": "這是我小時候的照片。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "我們昨天看了一部好笑的影片。",
+          "answer": "We watched a funny video yesterday.",
+          "options": [
+            "We watched a funny video yesterday.",
+            "There is a live broadcast of the football match at eight tonight.",
+            "There is no internet here, I cannot receive emails.",
+            "The internet speed in this cafe is very fast."
+          ],
+          "audioText": "我們昨天看了一部好笑的影片。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "There is a live broadcast of the football match at eight tonight.",
+          "answer": "今晚八點有足球比賽的直播。",
+          "tiles": [
+            "今晚",
+            "八點",
+            "有足",
+            "球比",
+            "賽的",
+            "直播",
+            "。"
+          ],
+          "audioText": "今晚八點有足球比賽的直播。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/13-writing.jpg",
       "imageDescription": "A learner solves a login or app problem.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "home-rooms",
@@ -2709,18 +4302,105 @@
           "zh": "我們在客廳看電視。",
           "pinyin": "",
           "english": "We are watching TV in the living room."
+        },
+        {
+          "speaker": "A",
+          "zh": "我的臥室有一張大床。",
+          "pinyin": "",
+          "english": "My bedroom has a large bed."
+        },
+        {
+          "speaker": "B",
+          "zh": "媽媽正在廚房做飯。",
+          "pinyin": "",
+          "english": "Mom is cooking in the kitchen."
+        },
+        {
+          "speaker": "A",
+          "zh": "我去浴室洗澡。",
+          "pinyin": "",
+          "english": "I am going to the bathroom to take a shower."
+        },
+        {
+          "speaker": "B",
+          "zh": "我們剛買了一些新家具。",
+          "pinyin": "",
+          "english": "We just bought some new furniture."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "家裡",
-          "answer": "at home"
+          "answer": "at home",
+          "options": [
+            "at home",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "家裡",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "客廳",
+          "answer": "living room",
+          "options": [
+            "living room",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "客廳",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "I am staying at home to rest today.",
+          "options": [
+            "I am staying at home to rest today.",
+            "We are watching TV in the living room.",
+            "My bedroom has a large bed.",
+            "Mom is cooking in the kitchen."
+          ],
+          "audioText": "我今天待在家裡休息。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "我們在客廳看電視。",
+          "answer": "We are watching TV in the living room.",
+          "options": [
+            "We are watching TV in the living room.",
+            "My bedroom has a large bed.",
+            "Mom is cooking in the kitchen.",
+            "I am going to the bathroom to take a shower."
+          ],
+          "audioText": "我們在客廳看電視。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "My bedroom has a large bed.",
+          "answer": "我的臥室有一張大床。",
+          "tiles": [
+            "我的",
+            "臥室",
+            "有一",
+            "張大",
+            "床。"
+          ],
+          "audioText": "我的臥室有一張大床。",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/09-family.jpg",
       "imageDescription": "A learner talks about rooms, furniture, and household objects.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     },
     {
       "id": "home-routine",
@@ -2852,18 +4532,101 @@
           "zh": "房間整理得很乾淨。",
           "pinyin": "",
           "english": "The room was tidied up very cleanly."
+        },
+        {
+          "speaker": "A",
+          "zh": "髒",
+          "pinyin": "",
+          "english": "dirty"
+        },
+        {
+          "speaker": "B",
+          "zh": "請把桌上的文件整理好。",
+          "pinyin": "",
+          "english": "Please organize the documents on the desk."
+        },
+        {
+          "speaker": "A",
+          "zh": "出門時順便把垃圾倒了。",
+          "pinyin": "",
+          "english": "Take out the trash when you go out."
+        },
+        {
+          "speaker": "B",
+          "zh": "今晚輪到我做飯了。",
+          "pinyin": "",
+          "english": "It's my turn to cook tonight."
         }
       ],
       "exercises": [
         {
           "type": "meaning",
           "prompt": "打掃",
-          "answer": "to clean"
+          "answer": "to clean",
+          "options": [
+            "to clean",
+            "message",
+            "to invite",
+            "on time"
+          ],
+          "audioText": "打掃",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "meaning",
+          "prompt": "乾淨",
+          "answer": "clean",
+          "options": [
+            "clean",
+            "to invite",
+            "on time",
+            "late"
+          ],
+          "audioText": "乾淨",
+          "hint": "Choose the English meaning."
+        },
+        {
+          "type": "listening",
+          "prompt": "Listen and choose the meaning.",
+          "answer": "We need to clean the room this weekend.",
+          "options": [
+            "We need to clean the room this weekend.",
+            "The room was tidied up very cleanly.",
+            "dirty",
+            "Please organize the documents on the desk."
+          ],
+          "audioText": "我們週末要打掃房間。",
+          "hint": "Do not look for pinyin first; listen for known words."
+        },
+        {
+          "type": "reading",
+          "prompt": "房間整理得很乾淨。",
+          "answer": "The room was tidied up very cleanly.",
+          "options": [
+            "The room was tidied up very cleanly.",
+            "dirty",
+            "Please organize the documents on the desk.",
+            "Take out the trash when you go out."
+          ],
+          "audioText": "房間整理得很乾淨。",
+          "hint": "Read the whole sentence, then choose the meaning."
+        },
+        {
+          "type": "build",
+          "prompt": "dirty",
+          "answer": "髒",
+          "tiles": [
+            "髒"
+          ],
+          "audioText": "髒",
+          "hint": "Build the sentence, then compare with the answer."
         }
       ],
       "image": "assets/beginner-launchpad/level3/05-tea.jpg",
       "imageDescription": "A learner describes home tasks and a quiet review routine.",
-      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has."
+      "pictureTask": "Describe the scene, then read the story without pinyin. Say what problem or plan the person has.",
+      "readingGoal": "Read the story aloud once with support, then once without looking at English.",
+      "dialogueGoal": "Play each line, then role-play A and B aloud."
     }
   ],
   "noviceTest": {

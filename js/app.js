@@ -660,6 +660,7 @@ const routes = {
   '/':                    { title: 'Dashboard',          render: renderDashboard,         route: 'dashboard' },
   '/onboarding':          { title: 'Pinyin & Tones',     render: renderOnboarding,        route: 'onboarding' },
   '/beginner-launchpad':  { title: 'Beginner Launchpad', render: renderBeginnerLaunchpadPage, route: 'beginner-launchpad' },
+  '/beginner-coach':      { title: 'Beginner Coach',     render: renderBeginnerCoachPage, route: 'beginner-coach' },
   '/learn':               { title: 'Learning Path',      render: renderLearnPath,         route: 'learn' },
   '/b1-coach':           { title: 'B1 Coach',           render: renderB1CoachPage,      route: 'b1-coach' },
   '/study-plan':         { title: 'Study Today',        render: renderStudyPlanPage,    route: 'study-plan' },
@@ -672,7 +673,7 @@ const routes = {
   '/library':             { title: 'Character Library',  render: renderLibrary,           route: 'library' },
   '/vocabulary':          { title: 'Vocabulary Library', render: renderVocabLibrary,       route: 'vocabulary' },
   '/vocabulary-books':    { title: 'Course Books',       render: renderVocabularyBooks,    route: 'vocabulary-books' },
-  '/grammar':             { title: 'Grammar Library',    render: renderGrammarLibrary,     route: 'grammar' },
+  '/grammar':             { title: 'Grammar Academy',    render: renderGrammarLibrary,     route: 'grammar' },
   '/flashcards':          { title: 'Flashcards',         render: renderFlashcardsPage,    route: 'flashcards' },
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
   '/quiz/pronunciation':  { title: 'Pronunciation Quiz', render: renderPronunciationQuiz, route: 'quiz-pronunciation' },
@@ -683,19 +684,23 @@ const routes = {
   '/mock-test/reading':   { title: 'Reading Mock Test',  render: renderMockReadingPage,   route: 'mock-reading' },
   '/mock-test/listening': { title: 'Listening Mock Test', render: renderMockListeningPage, route: 'mock-listening' },
 
-  '/tocfl':               { title: 'TOCFL Lab',          render: renderTOCFLPage,       route: 'tocfl' },
+  '/tocfl':               { title: 'TOCFL Exam Center', render: renderTOCFLPage,       route: 'tocfl' },
   '/tocfl-content':       { title: 'TOCFL Content',      render: renderTOCFLContentPage, route: 'tocfl-content' },
   '/exams':               { title: 'Monthly Exams',      render: renderExamsPage,         route: 'exams' },
   '/settings':            { title: 'Settings',           render: renderSettings,          route: 'settings' },
 };
 
 function navigate(path) {
-  window.location.hash = '#' + path;
+  const raw = String(path || '/').trim();
+  const withoutHash = raw.startsWith('#') ? raw.slice(1) : raw;
+  const normalized = withoutHash.startsWith('/') ? withoutHash : `/${withoutHash}`;
+  window.location.hash = '#' + normalized;
 }
 
 function resolveRoute(path) {
   if (routes[path]) return routes[path];
   if (path.startsWith('/beginner-launchpad/')) return routes['/beginner-launchpad'];
+  if (path.startsWith('/beginner-coach/')) return routes['/beginner-coach'];
   return routes['/'];
 }
 
@@ -705,13 +710,16 @@ function getPath() {
   return hash.replace('#', '') || '/';
 }
 
+let routerRenderToken = 0;
+
 async function router() {
+  const token = ++routerRenderToken;
   const path = getPath();
   const route = resolveRoute(path);
   closeMobileNav();
 
   // Update nav active state
-
+  updateSidebarActive(route.route);
   updateMobileSectionState(route.route);
 
   document.getElementById('topbar-title').textContent = route.title;
@@ -721,10 +729,13 @@ async function router() {
 
   try {
     await route.render(content);
+    if (token !== routerRenderToken) { router(); return; }
+    if (resolveRoute(getPath()).route !== route.route) router();
   } catch (err) {
+    if (token !== routerRenderToken) return;
     content.innerHTML = `
       <div class="empty-state">
-        <div class="es-icon">⚠️</div>
+        <div class="es-icon">!</div>
         <h3>Something went wrong</h3>
         <p>${err.message}</p>
         <button class="btn btn-primary mt-8" onclick="location.reload()">Reload</button>
@@ -732,6 +743,7 @@ async function router() {
     console.error('Route error:', err);
   }
 }
+
 
 window.addEventListener('hashchange', router);
 
@@ -745,15 +757,22 @@ function closeMobileNav() {
   if (toggle) toggle.setAttribute('aria-expanded', 'false');
 }
 
+const mobileNavGroups = {
+  start: ['dashboard', 'b1-coach', 'study-plan', 'learn'],
+  beginner: ['beginner-coach', 'beginner-launchpad', 'quiz-flash', 'onboarding', 'quiz-pronunciation', 'quiz-tones', 'playground'],
+  course: ['vocabulary-books', 'chapters', 'grammar', 'dialogue', 'reading', 'scenarios'],
+  practice: ['flashcards', 'mixed-recall', 'sentence-builder', 'char-playground', 'library', 'vocabulary'],
+  exams: ['tocfl', 'tocfl-content', 'exams', 'mock-reading', 'mock-listening', 'quiz-vocabulary']
+};
+
+function updateSidebarActive(routeName) {
+  document.querySelectorAll('#sidebar .nav-item[data-route]').forEach(item => {
+    item.classList.toggle('active', item.dataset.route === routeName);
+  });
+}
+
 function updateMobileSectionState(routeName) {
-  const groups = {
-    start: ['dashboard', 'beginner-launchpad', 'b1-coach', 'learn', 'onboarding'],
-    study: ['chapters', 'vocabulary-books', 'library', 'vocabulary', 'grammar', 'flashcards'],
-    quiz: ['quiz-pronunciation', 'quiz-vocabulary', 'quiz-flash', 'quiz-tones', 'tocfl', 'tocfl-content', 'exams'],
-    reading: ['reading', 'dialogue', 'mock-reading', 'mock-listening'],
-    practice: ['playground', 'char-playground', 'scenarios', 'mixed-recall', 'sentence-builder', 'study-plan']
-  };
-  const activeGroup = Object.entries(groups).find(([, routes]) => routes.includes(routeName))?.[0] || 'start';
+  const activeGroup = Object.entries(mobileNavGroups).find(([, routes]) => routes.includes(routeName))?.[0] || 'start';
   document.querySelectorAll('.bottom-nav-menu').forEach(btn => btn.classList.toggle('active', btn.dataset.mobileMenu === activeGroup));
   document.querySelectorAll('.mobile-section-link').forEach(link => link.classList.toggle('active', link.dataset.route === routeName));
   closeMobileSectionTray();
@@ -771,14 +790,19 @@ function openMobileSection(section) {
   const bar = document.getElementById('mobile-section-bar');
   if (!bar) return;
   const sections = {
-    start: [['/', 'dashboard', 'Home'], ['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/learn', 'learn', 'Path'], ['/onboarding', 'onboarding', 'Pinyin']],
-    study: [['/chapters', 'chapters', 'Chapters'], ['/vocabulary-books', 'vocabulary-books', 'Books'], ['/library', 'library', 'Characters'], ['/vocabulary', 'vocabulary', 'Words'], ['/grammar', 'grammar', 'Grammar'], ['/flashcards', 'flashcards', 'Cards']],
-    quiz: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Content'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab'], ['/quiz/flash', 'quiz-flash', 'Picture'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/exams', 'exams', 'Exams']],
-    reading: [['/reading', 'reading', 'Reader'], ['/dialogue', 'dialogue', 'Dialogue'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test']],
-    practice: [['/study-plan', 'study-plan', 'Today'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/playground', 'playground', 'Playground'], ['/char-playground', 'char-playground', 'Blocks'], ['/scenarios', 'scenarios', 'Scenarios']]
+    start: [['/', 'dashboard', 'Dashboard'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/study-plan', 'study-plan', 'Today'], ['/learn', 'learn', 'Path']],
+    beginner: [['/beginner-coach', 'beginner-coach', 'Coach'], ['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/onboarding', 'onboarding', 'Pinyin'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/playground', 'playground', 'Playground']],
+    course: [['/vocabulary-books', 'vocabulary-books', 'Books'], ['/chapters', 'chapters', 'Chapters'], ['/grammar', 'grammar', 'Grammar'], ['/dialogue', 'dialogue', 'Dialogue'], ['/reading', 'reading', 'Reading'], ['/scenarios', 'scenarios', 'Scenarios']],
+    practice: [['/flashcards', 'flashcards', 'Cards'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/char-playground', 'char-playground', 'Characters'], ['/library', 'library', 'Library'], ['/vocabulary', 'vocabulary', 'Words']],
+    exams: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Native'], ['/exams', 'exams', 'Monthly'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab Quiz']]
   };
   const sectionIcons = {
-    dashboard: 'dashboard', 'beginner-launchpad': 'rocket', 'b1-coach': 'route', learn: 'map', onboarding: 'music', chapters: 'book', 'vocabulary-books': 'notebook', library: 'library', vocabulary: 'vocabulary', grammar: 'grammar', flashcards: 'flashcards', tocfl: 'target', 'tocfl-content': 'file', 'quiz-vocabulary': 'vocabulary', 'quiz-flash': 'flashcards', 'quiz-tones': 'music', 'quiz-pronunciation': 'letters', exams: 'exam', reading: 'reading', dialogue: 'dialogue', 'mock-reading': 'file', 'mock-listening': 'headphones', 'study-plan': 'check', 'mixed-recall': 'brain', 'sentence-builder': 'layers', playground: 'play', 'char-playground': 'puzzle', scenarios: 'scenarios'
+    dashboard: 'dashboard', 'b1-coach': 'route', 'beginner-coach': 'check', learn: 'map', onboarding: 'music', chapters: 'book', 'beginner-launchpad': 'layers',
+    'vocabulary-books': 'notebook', library: 'library', vocabulary: 'vocabulary', grammar: 'grammar', flashcards: 'flashcards',
+    tocfl: 'target', 'tocfl-content': 'file', 'quiz-vocabulary': 'vocabulary', 'quiz-flash': 'flashcards', 'quiz-tones': 'target',
+    'quiz-pronunciation': 'letters', exams: 'exam', reading: 'reading', dialogue: 'dialogue', 'mock-reading': 'file',
+    'mock-listening': 'headphones', 'study-plan': 'check', 'mixed-recall': 'brain', 'sentence-builder': 'layers',
+    playground: 'play', 'char-playground': 'puzzle', scenarios: 'scenarios'
   };
   const renderIcon = route => window.IconSystem?.svg(sectionIcons[route] || 'dashboard') || '';
   const currentRoute = resolveRoute(getPath()).route;
@@ -851,6 +875,12 @@ function toggleMobileNav() {
 function renderBeginnerLaunchpadPage(container) {
   if (window.BeginnerLaunchpadModule) return BeginnerLaunchpadModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad is not loaded</h3></div>';
+}
+
+
+function renderBeginnerCoachPage(container) {
+  if (window.BeginnerCoachModule) return BeginnerCoachModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Beginner Coach is not loaded</h3></div>';
 }
 
 function renderB1CoachPage(container) {
@@ -930,17 +960,20 @@ async function renderDashboard(container) {
   const isFirstTime = learned === 0 && !prog.lastStudyDate;
   const renderIcon = name => window.IconSystem?.svg(name) || '';
   const weakCount = (prog.weakChars || []).length;
-  const nextHref = '#/b1-coach';
-  const nextLabel = 'Open B1 Coach';
-  const nextTitle = "Follow today's B1 mission";
-  const nextDesc = 'Your 180-day roadmap chooses the tasks, exam focus, and weak-area repair for today.';
+  const beginnerGuided = window.BeginnerCoachModule ? BeginnerCoachModule.guidedOn() : true;
+  const nextHref = beginnerGuided && learned < 120 ? '#/beginner-coach' : '#/b1-coach';
+  const nextLabel = beginnerGuided && learned < 120 ? 'Open Beginner Coach' : 'Open B1 Coach';
+  const nextTitle = beginnerGuided && learned < 120 ? "Follow today's beginner mission" : "Follow today's B1 mission";
+  const nextDesc = beginnerGuided && learned < 120
+    ? 'Guided Mode chooses one beginner task, then adds writing and speaking practice without locking the rest of the app.'
+    : 'Your 180-day roadmap chooses the tasks, exam focus, and weak-area repair for today.';
 
   let recommendation = null;
   if (prog.weakChars && prog.weakChars.length > 0) {
     const randomWeak = prog.weakChars[Math.floor(Math.random() * prog.weakChars.length)];
     recommendation = {
       title: 'Targeted Review',
-      desc: `You have repeated misses around ?${randomWeak}?. Give it a short focused pass.`,
+      desc: `You have repeated misses around ${randomWeak}. Give it a short focused pass.`,
       action: `showCharModal('${randomWeak}')`,
       btn: 'Practice Now'
     };
@@ -999,7 +1032,7 @@ async function renderDashboard(container) {
           <div class="dash-card-icon">${renderIcon('brain')}</div>
           <span>SRS Queue</span>
           <strong>${srs.total || 0}</strong>
-          <small>${srs.mature || 0} mature ? ${dueToday} due</small>
+          <small>${srs.mature || 0} mature - ${dueToday} due</small>
         </article>
 
         <article class="dash-metric-card">
@@ -1024,7 +1057,12 @@ async function renderDashboard(container) {
       </section>` : ''}
 
       <section class="dash-action-grid">
-        <a href="#/beginner-launchpad" class="dash-action-card dash-action-card-primary">
+        <a href="#/beginner-coach" class="dash-action-card dash-action-card-primary">
+          ${renderIcon('check')}
+          <strong>Beginner Daily Coach</strong>
+          <span>Do exactly this today</span>
+        </a>
+        <a href="#/beginner-launchpad" class="dash-action-card">
           ${renderIcon('rocket')}
           <strong>Beginner Launchpad</strong>
           <span>First 100 words</span>
@@ -1153,6 +1191,12 @@ let libraryState = {
 };
 
 async function renderLibrary(container) {
+  if (App.state.lastLevelFilter) {
+    libraryState.level = App.state.lastLevelFilter;
+    libraryState.offset = 0;
+    App.state.lastLevelFilter = null;
+  }
+
   // Render skeleton immediately
   container.innerHTML = `
     <div class="page-header">
@@ -1733,6 +1777,8 @@ if (document.readyState === 'loading') {
 } else {
   boot();
 }
+
+
 
 
 

@@ -326,7 +326,7 @@ const SRS = (() => {
 
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
           <button class="btn btn-primary" onclick="navigate('/')">Back to Dashboard</button>
-          <button class="btn btn-outline" onclick="navigate('#/flashcards')">Flashcards</button>
+          <button class="btn btn-outline" onclick="navigate('/flashcards')">Flashcards</button>
         </div>
       </div>
     `;
