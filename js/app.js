@@ -1859,9 +1859,13 @@ async function boot() {
 
   // 3. Deferred background tasks (Low priority)
   requestIdleCallback(() => {
-    // Service worker
+    // Unregister any existing service workers (Kill Switch)
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(console.error);
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister();
+        }
+      }).catch(console.error);
     }
 
     // Delay heavy preloads to prevent saturating network connections
