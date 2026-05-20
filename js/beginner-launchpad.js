@@ -7,6 +7,26 @@ window.BeginnerLaunchpadModule = (() => {
   let state = { lesson: 0, level: 'level-1', tab: 'learn', completed: [], completedByLevel: {}, displayByLevel: {}, score: 0, total: 0 };
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  function hashString(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function shuffleTiles(items, seedText) {
+    const arr = [...items];
+    let seed = hashString(seedText || arr.join('|')) || 1;
+    for (let i = arr.length - 1; i > 0; i--) {
+      seed = Math.imul(seed ^ (seed >>> 15), 2246822507) >>> 0;
+      const j = seed % (i + 1);
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    if (arr.length > 1 && arr.join('|') === items.join('|')) [arr[0], arr[1]] = [arr[1], arr[0]];
+    return arr;
+  }
   function speak(text) {
     const value = String(text || '').trim();
     if (!value) return;
@@ -338,24 +358,38 @@ window.BeginnerLaunchpadModule = (() => {
   }
 
   function renderExerciseItem(exercise, index, hidePinyin = false, showEnglish = true) {
-    const typeLabel = { meaning: 'Meaning', listening: 'Listening', reading: 'Reading', build: 'Build' }[exercise.type] || 'Practice';
-    const prompt = exercise.prompt || exercise.audioText || exercise.answer || '';
-    const hasOptions = Array.isArray(exercise.options) && exercise.options.length;
     const hasTiles = Array.isArray(exercise.tiles) && exercise.tiles.length;
-    const isChinesePrompt = /[\u3400-\u9fff]/.test(prompt);
-    return `<section class="bl-exercise-item">
-      <div class="bl-exercise-item-head"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(typeLabel)}</strong>${exercise.hint ? `<small>${esc(exercise.hint)}</small>` : ''}</div>
-      <div class="bl-exercise-prompt-row">
-        <button type="button" class="bl-exercise-prompt ${isChinesePrompt ? '' : 'latin'}" data-bl-action="speak" data-text="${esc(exercise.audioText || prompt)}">${esc(prompt)}</button>
-        ${exercise.audioText ? `<button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak" data-text="${esc(exercise.audioText)}">Play</button>` : ''}
-      </div>
-      ${hasTiles ? `<div class="bl-tile-row">${exercise.tiles.map(tile => `<span>${esc(tile)}</span>`).join('')}</div>` : ''}
-      ${hasOptions ? `<div class="bl-answer-grid">${exercise.options.map(opt => `<button type="button" data-bl-action="answer" data-answer="${esc(opt)}" data-correct="${esc(exercise.answer)}">${esc(opt)}</button>`).join('')}</div>` : `<button type="button" class="btn btn-ghost" data-bl-action="show-answer" data-correct="${esc(exercise.answer)}">Show answer</button>`}
-      <div class="bl-feedback" aria-live="polite">${hasOptions ? 'Choose an answer.' : 'Build it from the tiles, then reveal the answer.'}</div>
-      ${showEnglish && exercise.explanation ? `<p class="bl-exercise-note">${esc(exercise.explanation)}</p>` : ''}
-    </section>`;
+    const isBuild = exercise.type === 'build' && hasTiles;
+    const shuffledTiles = isBuild ? shuffleTiles(exercise.tiles, `${state.level}-${state.lesson}-${index}-${exercise.answer}`) : (exercise.tiles || []);
+    const promptClass = /[A-Za-z]/.test(exercise.prompt || '') && !/[\u4e00-\u9fff]/.test(exercise.prompt || '') ? 'latin' : '';
+    const options = Array.isArray(exercise.options) ? exercise.options : [];
+    return `
+      <section class="bl-exercise-item" ${isBuild ? `data-build-answer="${esc(exercise.answer || '')}"` : ''}>
+        <div class="bl-exercise-item-head">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <strong>${esc(exercise.label || exercise.type)}</strong>
+          <small>${esc(exercise.instruction)}</small>
+        </div>
+        <div class="bl-exercise-prompt-row">
+          <div class="bl-exercise-prompt ${promptClass}">${esc(exercise.prompt)}</div>
+          ${exercise.zh ? `<button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak" data-text="${esc(exercise.zh)}">Play</button>` : ''}
+        </div>
+        ${isBuild ? `
+          <div class="bl-builder-answer" aria-label="Built sentence"><span>Tap tiles below to build your sentence.</span></div>
+          <div class="bl-tile-row bl-tile-bank" aria-label="Shuffled word tiles">
+            ${shuffledTiles.map((tile, tileIndex) => `<button type="button" data-bl-action="pick-tile" data-tile="${esc(tile)}" data-tile-index="${tileIndex}">${esc(tile)}</button>`).join('')}
+          </div>
+          <div class="bl-builder-actions">
+            <button type="button" class="btn btn-ghost btn-sm" data-bl-action="undo-tile">Undo</button>
+            <button type="button" class="btn btn-ghost btn-sm" data-bl-action="reset-tiles">Reset</button>
+            <button type="button" class="btn btn-primary btn-sm" data-bl-action="check-build">Check</button>
+            <button type="button" class="btn btn-ghost btn-sm" data-bl-action="show-answer" data-answer="${esc(exercise.answer)}">Show answer</button>
+          </div>` : ''}
+        ${!isBuild && hasTiles ? `<div class="bl-tile-row">${exercise.tiles.map(tile => `<span>${esc(tile)}</span>`).join('')}</div>` : ''}
+        ${options.length ? `<div class="bl-answer-grid">${options.map(option => `<button type="button" data-bl-action="answer" data-correct="${option === exercise.answer}">${esc(option)}</button>`).join('')}</div>` : (!isBuild ? `<button type="button" class="btn btn-ghost" data-bl-action="show-answer" data-answer="${esc(exercise.answer)}">Show answer</button>` : '')}
+        <p class="bl-feedback">${isBuild ? 'Build it from the shuffled tiles, then check your order.' : 'Choose an answer.'}</p>
+      </section>`;
   }
-
 
   function renderNoviceTest(level) {
     const test = level.noviceTest || { questions: [] };
@@ -396,6 +430,21 @@ window.BeginnerLaunchpadModule = (() => {
     </section>`;
   }
 
+  function normalizeBuildAnswer(value) {
+    return String(value || '').replace(/[\s\u3000]/g, '').replace(/[\u003f\uff1f\u3002\uff01\u0021\uff0c\u002c]/g, '');
+  }
+
+  function checkBuildAnswer(item) {
+    if (!item) return false;
+    const built = [...item.querySelectorAll('.bl-builder-answer [data-bl-action="return-tile"]')].map(tile => tile.textContent.trim()).join('');
+    const correct = item.dataset.buildAnswer || '';
+    const ok = normalizeBuildAnswer(built) === normalizeBuildAnswer(correct);
+    const fb = item.querySelector('.bl-feedback');
+    item.classList.toggle('build-correct', ok);
+    item.classList.toggle('build-wrong', !ok && Boolean(built));
+    if (fb) fb.textContent = ok ? 'Correct. Great sentence order.' : `Not yet. Your sentence: ${built || 'empty'}`;
+    return ok;
+  }
   function bind(container) {
     container.querySelector('.beginner-launchpad')?.addEventListener('click', event => {
       const btn = event.target.closest('[data-bl-action]');
@@ -427,9 +476,51 @@ window.BeginnerLaunchpadModule = (() => {
         if (fb) fb.textContent = ok ? 'Correct.' : `Not yet. Correct answer: ${btn.dataset.correct}`;
         btn.classList.add(ok ? 'correct' : 'wrong');
       }
+      if (action === 'pick-tile') {
+        const item = btn.closest('.bl-exercise-item');
+        const answer = item?.querySelector('.bl-builder-answer');
+        if (!item || !answer || btn.disabled) return;
+        const placeholder = answer.querySelector('span');
+        if (placeholder) placeholder.remove();
+        const tile = document.createElement('button');
+        tile.type = 'button';
+        tile.dataset.blAction = 'return-tile';
+        tile.dataset.sourceIndex = btn.dataset.tileIndex || '';
+        tile.textContent = btn.dataset.tile || btn.textContent.trim();
+        answer.appendChild(tile);
+        btn.disabled = true;
+        item.classList.remove('build-correct', 'build-wrong');
+        const total = item.querySelectorAll('.bl-tile-bank [data-bl-action="pick-tile"]').length;
+        const picked = answer.querySelectorAll('[data-bl-action="return-tile"]').length;
+        if (picked === total) checkBuildAnswer(item);
+      }
+      if (action === 'return-tile') {
+        const item = btn.closest('.bl-exercise-item');
+        const bankTile = item?.querySelector('[data-bl-action="pick-tile"][data-tile-index="' + btn.dataset.sourceIndex + '"]');
+        if (bankTile) bankTile.disabled = false;
+        btn.remove();
+        const answer = item?.querySelector('.bl-builder-answer');
+        if (answer && !answer.querySelector('[data-bl-action="return-tile"]')) answer.innerHTML = '<span>Tap tiles below to build your sentence.</span>';
+      }
+      if (action === 'undo-tile') {
+        const item = btn.closest('.bl-exercise-item');
+        const answer = item?.querySelector('.bl-builder-answer');
+        const picked = answer ? [...answer.querySelectorAll('[data-bl-action="return-tile"]')] : [];
+        picked[picked.length - 1]?.click();
+      }
+      if (action === 'reset-tiles') {
+        const item = btn.closest('.bl-exercise-item');
+        item?.querySelectorAll('[data-bl-action="return-tile"]').forEach(tile => tile.click());
+        item?.classList.remove('build-correct', 'build-wrong');
+        const fb = item?.querySelector('.bl-feedback');
+        if (fb) fb.textContent = 'Build it from the shuffled tiles, then check your order.';
+      }
+      if (action === 'check-build') {
+        checkBuildAnswer(btn.closest('.bl-exercise-item'));
+      }
       if (action === 'show-answer') {
         const fb = btn.closest('.bl-exercise-item')?.querySelector('.bl-feedback');
-        if (fb) fb.textContent = `Answer: ${btn.dataset.correct}`;
+        if (fb) fb.textContent = `Answer: ${btn.dataset.answer || btn.dataset.correct}`;
       }
       if (action === 'complete') completeLesson(btn.dataset.level || state.level, Number(btn.dataset.index || state.lesson));
     });

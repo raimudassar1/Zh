@@ -28,7 +28,7 @@ const TOCFLContentModule = (() => {
           <div>
             <div class="tocfl-kicker">Native TOCFL Content</div>
             <h2>Official content browser</h2>
-            <p>Browse local TOCFL PDFs, extracted images, audio, scripts, and answer sheets as native study/test content. Chinese text is selectable whenever the source PDF exposes text.</p>
+            <p>Browse local TOCFL question images, audio, scripts, and embedded answer keys as native study/test content. Chinese text is selectable whenever extracted text is available.</p>
           </div>
           <div class="tocfl-native-stats">
             <span>${state.data.stats.questions} questions</span>
@@ -111,11 +111,6 @@ const TOCFLContentModule = (() => {
             <details class="tocfl-native-source-links">
               <summary>Source files and official answer</summary>
               <div class="tocfl-native-answer"><button class="btn btn-outline btn-sm" data-reveal-answer>Show answer</button><strong hidden>${q.answer || 'No answer key'}</strong></div>
-              <div class="tocfl-native-file-links">
-                ${q.questionPdf ? `<a href="${enc(q.questionPdf)}" target="_blank">Original PDF</a>` : ''}
-                ${q.scriptPdf ? `<a href="${enc(q.scriptPdf)}" target="_blank">Script PDF</a>` : ''}
-                ${section.answerSheet ? `<a href="${enc(section.answerSheet)}" target="_blank">Answer sheet</a>` : ''}
-              </div>
             </details>
           </div>
         </div>

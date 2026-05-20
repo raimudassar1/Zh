@@ -580,9 +580,9 @@
           "english": "The taste of this soup is a bit salty."
         },
         {
-          "zh": "甜",
+          "zh": "如果你不喜歡太甜，我推薦清淡一點的湯。",
           "pinyin": "",
-          "english": "sweet"
+          "english": "If you do not like food that is too sweet, I recommend a lighter soup."
         }
       ],
       "dialogue": [
@@ -618,9 +618,9 @@
         },
         {
           "speaker": "B",
-          "zh": "甜",
+          "zh": "如果你不喜歡太甜，我推薦清淡一點的湯。",
           "pinyin": "",
-          "english": "sweet"
+          "english": "If you do not like food that is too sweet, I recommend a lighter soup."
         }
       ],
       "exercises": [
@@ -2889,9 +2889,9 @@
           "english": "Things in this supermarket are very cheap."
         },
         {
-          "zh": "貴",
+          "zh": "如果覺得太貴，可以先問老闆能不能便宜一點。",
           "pinyin": "",
-          "english": "expensive"
+          "english": "If you think it is too expensive, you can first ask the owner whether it can be cheaper."
         },
         {
           "zh": "今天所有的衣服都打折。",
@@ -2926,9 +2926,9 @@
         },
         {
           "speaker": "A",
-          "zh": "貴",
+          "zh": "如果覺得太貴，可以先問老闆能不能便宜一點。",
           "pinyin": "",
-          "english": "expensive"
+          "english": "If you think it is too expensive, you can first ask the owner whether it can be cheaper."
         },
         {
           "speaker": "B",
@@ -4500,9 +4500,9 @@
           "english": "The room was tidied up very cleanly."
         },
         {
-          "zh": "髒",
+          "zh": "廚房有點髒，我們吃完飯以後一起整理。",
           "pinyin": "",
-          "english": "dirty"
+          "english": "The kitchen is a little dirty, so after eating we will clean it together."
         },
         {
           "zh": "請把桌上的文件整理好。",
@@ -4535,9 +4535,9 @@
         },
         {
           "speaker": "A",
-          "zh": "髒",
+          "zh": "廚房有點髒，我們吃完飯以後一起整理。",
           "pinyin": "",
-          "english": "dirty"
+          "english": "The kitchen is a little dirty, so after eating we will clean it together."
         },
         {
           "speaker": "B",

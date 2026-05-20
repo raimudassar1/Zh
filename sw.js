@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'tocfl-cache-v114';
+﻿const CACHE_NAME = 'tocfl-cache-v135';
 const ASSETS = [
   './',
   './index.html',
@@ -101,5 +101,17 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request).then((response) => response || fetch(event.request))
   );
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 

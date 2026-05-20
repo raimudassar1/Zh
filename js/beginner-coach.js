@@ -1,4 +1,4 @@
-/* Beginner Daily Coach - guided beginner training without locking content */
+﻿/* Beginner Daily Coach - guided beginner training without locking content */
 'use strict';
 
 window.BeginnerCoachModule = (() => {
@@ -161,9 +161,22 @@ window.BeginnerCoachModule = (() => {
     setPackCursor(Math.max(0, (state.cursor || 0) - 1));
   }
 
+﻿  function navigatePack(packNumber, remember = true) {
+    const maxPack = STRUCTURED_PACKS || 180;
+    const nextPack = Math.max(1, Math.min(maxPack, parseInt(packNumber, 10) || 1));
+    const state = ensureCoachState();
+    if (remember && nextPack - 1 !== state.cursor) state.previousCursors.push(state.cursor);
+    state.cursor = nextPack - 1;
+    state[todayKey()] = state[todayKey()] || { done: [] };
+    state[todayKey()].manualPack = nextPack;
+    save(state);
+    const target = '#/beginner-coach/pack/' + nextPack;
+    if (window.location.hash !== target) window.location.hash = target;
+    else render(document.getElementById('page-content'));
+  }
+
   function jumpToPack(value) {
-    const packNumber = Math.max(1, Math.min(500, parseInt(value, 10) || 1));
-    setPackCursor(packNumber - 1);
+    navigatePack(value);
   }
 
   function markDone(id) {
@@ -253,12 +266,22 @@ window.BeginnerCoachModule = (() => {
       }
       App.state.beginnerBookWords = all;
     }
+    if (!App.state.beginnerCoachContent) {
+      try {
+        const resp = await fetch('data/beginner_coach_content.json?v=coach-listening-1');
+        if (resp.ok) {
+          App.state.beginnerCoachContent = await resp.json();
+        }
+      } catch (err) {
+        console.warn('Failed to load beginner_coach_content.json:', err);
+      }
+    }
     if (!App.state.beginnerLaunchpadLessons) {
       const allLessons = [];
       const files = ['beginner_launchpad.json', 'beginner_launchpad_level2.json', 'beginner_launchpad_level3.json'];
       for (const file of files) {
         try {
-          const resp = await fetch(`data/${file}`);
+          const resp = await fetch(`data/${file}?v=coach-content-5`);
           if (resp.ok) {
             const json = await resp.json();
             if (json.lessons) {
@@ -271,6 +294,11 @@ window.BeginnerCoachModule = (() => {
       }
       App.state.beginnerLaunchpadLessons = allLessons;
     }
+  }
+
+  function getStructuredPack(cursor) {
+    const packs = App.state.beginnerCoachContent || [];
+    return packs.find(p => p.pack_number === cursor + 1) || null;
   }
 
   function getPackTheme(cursor) {
@@ -286,6 +314,36 @@ window.BeginnerCoachModule = (() => {
 
     const validVocabSets = vocab.filter(v => targetLevels.includes(v.level));
     const vocabSet = validVocabSets.length > 0 ? validVocabSets[cursor % validVocabSets.length] : vocab[cursor % vocab.length];
+
+    const launchpadLessons = App.state.beginnerLaunchpadLessons || [];
+    if (cursor < 40 && launchpadLessons.length) {
+      const lessonOffset = cursor < 20 ? 0 : 20;
+      const lesson = launchpadLessons[lessonOffset + (cursor % 20)] || launchpadLessons[cursor % launchpadLessons.length];
+      const lessonQuiz = (lesson.exercises || [])
+        .filter(ex => Array.isArray(ex.options) && ex.options.length)
+        .slice(0, 3)
+        .map(ex => ({
+          question: ex.type === 'listening' ? ex.prompt : `${ex.prompt}`,
+          options: ex.options,
+          answer: Math.max(0, ex.options.indexOf(ex.answer))
+        }));
+      return {
+        vocabSet,
+        scenarioModule: { title: cursor < 20 ? 'Beginner Launchpad Level 1' : 'Beginner Launchpad Level 2', vocab: lesson.words || [] },
+        scenario: {
+          title: lesson.title,
+          description: lesson.canDo || lesson.pattern || 'Beginner conversation practice.',
+          subConversations: [{ dialogue: (lesson.dialogue || []).map(line => ({
+            speaker: line.speaker || 'A',
+            zh: line.zh,
+            py: line.pinyin || line.py,
+            en: line.english || line.en
+          })) }],
+          quiz: lessonQuiz
+        },
+        stage: vocabSet ? `${vocabSet.name} (${vocabSet.level.toUpperCase()})` : 'Beginner Launchpad'
+      };
+    }
 
     const allScenarios = [];
     scens.forEach(mod => {
@@ -306,12 +364,12 @@ window.BeginnerCoachModule = (() => {
   }
 
   function normalizeWord(raw) {
-    const hanzi = raw.traditional || raw.hanzi || raw.word || '';
-    const definition = raw.definition || raw.english || raw.meaning || '';
+    const hanzi = raw.traditional || raw.hanzi || raw.word || raw.zh || '';
+    const definition = raw.definition || raw.english || raw.en || raw.meaning || '';
     if (!hanzi || !definition) return null;
     return {
       hanzi,
-      pinyin: raw.pinyin || '',
+      pinyin: raw.pinyin || raw.py || '',
       definition,
       level: String(raw.level || '').toLowerCase(),
       category: raw.category || raw.source || 'Core',
@@ -358,6 +416,20 @@ window.BeginnerCoachModule = (() => {
     return out;
   }
 
+  function stagedCharacterPool(chars, cursor) {
+    const ordered = [...chars].sort((a, b) => easyScore(a) - easyScore(b));
+    if (cursor < 20) {
+      return ordered.filter(item => String(item.hanzi || '').length <= 3 && easyScore(item) <= 36);
+    }
+    if (cursor < 40) {
+      return ordered.filter(item => String(item.hanzi || '').length <= 4 && easyScore(item) <= 48);
+    }
+    if (cursor < 80) {
+      return ordered.filter(item => easyScore(item) <= 62);
+    }
+    return ordered;
+  }
+
   function combinePacks(parts, fallback, cursor) {
     const seen = new Set();
     const out = [];
@@ -379,6 +451,32 @@ window.BeginnerCoachModule = (() => {
     return out.slice(0, WORDS_PER_PACK);
   }
 
+  function dialogueVocabulary(theme, cursor) {
+    const text = (theme.scenario?.subConversations?.[0]?.dialogue || []).map(line => line.zh || '').join('');
+    if (!text) return [];
+    const candidates = [];
+    const addCandidate = (raw, source, level) => {
+      const item = normalizeWord({ ...raw, source, level: level || raw.level || '' });
+      if (item && item.hanzi && String(item.hanzi).length >= 2 && text.includes(item.hanzi)) candidates.push(item);
+    };
+    (theme.scenarioModule?.vocab || []).forEach(w => addCandidate(w, theme.scenarioModule?.title || 'Dialogue vocabulary', cursor < 40 ? 'novice' : 'a1'));
+    (App.state.beginnerCoachVocab || []).forEach(set => {
+      (set.words || []).forEach(w => addCandidate(w, set.name || 'Vocabulary library', set.level || ''));
+    });
+    (App.state.beginnerBookWords || []).forEach(w => addCandidate(w, w.source || 'Course book', w.level || ''));
+    (App.state.beginnerLaunchpadLessons || []).forEach(lesson => {
+      (lesson.words || []).forEach(w => addCandidate(w, `Launchpad: ${lesson.title || ''}`, cursor < 20 ? 'novice' : 'novice-plus'));
+    });
+    const seen = new Set();
+    return candidates
+      .filter(item => {
+        if (seen.has(item.hanzi)) return false;
+        seen.add(item.hanzi);
+        return true;
+      })
+      .sort((a, b) => String(b.hanzi).length - String(a.hanzi).length || easyScore(a) - easyScore(b));
+  }
+
   function buildWordBank(cursor) {
     const theme = getPackTheme(cursor);
     const vocabSet = theme.vocabSet;
@@ -386,7 +484,7 @@ window.BeginnerCoachModule = (() => {
       hanzi: c.traditional || c.hanzi || '',
       pinyin: c.pinyin || '',
       definition: c.english || c.definition || '',
-      level: 'novice',
+      level: String(c.level || c.cefr || c.category || '').toLowerCase() || 'character',
       source: 'Characters'
     })).filter(c => c.hanzi);
 
@@ -394,6 +492,7 @@ window.BeginnerCoachModule = (() => {
     const seen = new Set();
 
     const add = (item) => {
+      if (!item || !item.hanzi || !item.definition) return false;
       const key = item.hanzi;
       if (!seen.has(key)) {
         seen.add(key);
@@ -403,11 +502,26 @@ window.BeginnerCoachModule = (() => {
       return false;
     };
 
-    // 1. 60% Target Words from Theme (18 words)
+    // 1. Active lesson/dialogue vocabulary first so the pack matches today's content.
+    const activeVocab = [
+      ...dialogueVocabulary(theme, cursor),
+      ...(theme.scenarioModule?.vocab || [])
+    ]
+      .map(w => normalizeWord({
+        ...w,
+        source: theme.scenarioModule?.title || 'Daily conversation',
+        level: vocabSet?.level || (cursor < 20 ? 'novice' : cursor < 40 ? 'novice-plus' : 'a1')
+      }))
+      .filter(Boolean);
+    activeVocab.forEach(w => {
+      if (pack.length < 12) add(w);
+    });
+
+    // 2. Target words from the main vocabulary theme.
     if (vocabSet && vocabSet.words) {
       const pool = deterministicShuffle(vocabSet.words, `theme-words-${cursor}`);
       pool.forEach(w => {
-        if (pack.length < 18) {
+        if (pack.length < 22) {
           add({
             hanzi: w.word || w.hanzi,
             pinyin: w.pinyin,
@@ -419,14 +533,14 @@ window.BeginnerCoachModule = (() => {
       });
     }
 
-    // 2. 30% Characters (9 chars)
-    const charPool = deterministicShuffle(allChars, `theme-chars-${cursor}`);
+    // 3. Characters are staged by difficulty; harder fillers move into later packs.
+    const charPool = deterministicShuffle(stagedCharacterPool(allChars, cursor), `theme-chars-${cursor}`);
     charPool.forEach(c => {
       if (pack.length < 27) add(c);
     });
 
-    // 3. 10% Mixed/Review (3 items)
-    const reviewPool = deterministicShuffle([...(App.state.beginnerBookWords || []), ...allChars], `review-${cursor}`);
+    // 4. Mixed/Review fill keeps the 30-item daily load.
+    const reviewPool = deterministicShuffle([...activeVocab, ...(App.state.beginnerBookWords || []), ...stagedCharacterPool(allChars, cursor)], `review-${cursor}`);
     reviewPool.forEach(r => {
       if (pack.length < 30) add(r);
     });
@@ -584,14 +698,14 @@ window.BeginnerCoachModule = (() => {
       <div class="bc-section-head"><span>TOCFL Reading & Listening Practice</span><strong>${esc(scen.title)}</strong></div>
       <div class="bc-scenario-content">
         <div class="bc-scenario-visual">
-          <div class="bc-scenario-placeholder" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); width: 100%; height: 160px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🖼️</div>
+          <div class="bc-scenario-placeholder" aria-hidden="true">Scene</div>
         </div>
         <div class="bc-scenario-details">
           <p class="bc-scenario-desc"><strong>Background:</strong> ${esc(scen.description)}</p>
           <div class="bc-scenario-dialogue">
             <strong>Dialogue:</strong>
             <ul class="bc-dialogue-list">
-              ${dialogue.map(d => `<li><strong>${d.speaker}:</strong> ${esc(d.zh)} <small>(${esc(d.en)})</small></li>`).join('')}
+              ${dialogue.map((d, i) => `<li><button type="button" class="bc-line-audio" onclick="BeginnerCoachModule.playPrompt('${jsString(d.zh)}', 'dialogue-line-${i}')">Hear</button><div><strong>${esc(d.speaker)}:</strong> <span class="bc-dialogue-zh">${esc(d.zh)}</span>${(d.py || d.pinyin) ? `<em>${esc(d.py || d.pinyin)}</em>` : ''}<small>(${esc(d.en || d.english)})</small></div></li>`).join('')}
             </ul>
           </div>
         </div>
@@ -681,24 +795,39 @@ window.BeginnerCoachModule = (() => {
     }).join('');
   }
 
-  function renderDailyPack(pack, state, stage) {
+﻿  function renderPackNavigator(state) {
     const hasPrevious = state.previousCursors?.length > 0;
-    const display = packDisplay();
-    return `<section class="bc-panel bc-daily-pack">
-      <div class="bc-section-head bc-pack-head">
-        <div><span>Today\'s content pack</span><strong>${WORDS_PER_PACK} words - ${esc(stage)}</strong></div>
-        <div class="bc-pack-actions">
-          <a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/1">First Pack</a>
-          <a class="btn btn-outline btn-sm ${state.cursor <= 0 ? 'disabled' : ''}" href="#/beginner-coach/pack/${Math.max(1, state.cursor)}">Back One</a>
-          ${hasPrevious ? `<a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/${state.previousCursors[state.previousCursors.length - 1] + 1}">Previous Content</a>` : `<button class="btn btn-outline btn-sm" type="button" disabled>Previous Content</button>`}
-          <a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/${state.cursor + 2}">Next Pack</a>
-          <a class="btn btn-primary btn-sm" href="#/beginner-coach/pack/${state.cursor + 2}">Refresh Content</a>
+    const maxPack = STRUCTURED_PACKS || 180;
+    const currentPack = Math.min(maxPack, state.cursor + 1);
+    const previousPack = hasPrevious ? state.previousCursors[state.previousCursors.length - 1] + 1 : currentPack;
+    return `<section class="bc-panel bc-pack-nav">
+      <div class="bc-pack-nav-top">
+        <div class="bc-pack-title">
+          <span>Pack controls</span>
+          <strong>Pack ${currentPack} / ${maxPack}</strong>
+        </div>
+        <div class="bc-pack-actions" aria-label="Pack navigation controls">
+          <a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/1">First</a>
+          <a class="btn btn-outline btn-sm ${currentPack <= 1 ? 'disabled' : ''}" href="#/beginner-coach/pack/${Math.max(1, currentPack - 1)}">Back</a>
+          ${hasPrevious ? `<a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/${previousPack}">Previous</a>` : `<button class="btn btn-outline btn-sm" type="button" disabled>Previous</button>`}
+          <a class="btn btn-outline btn-sm" href="#/beginner-coach/pack/${Math.min(maxPack, currentPack + 1)}">Next</a>
+          <a class="btn btn-primary btn-sm" href="#/beginner-coach/pack/${Math.min(maxPack, currentPack + 1)}">Refresh</a>
         </div>
       </div>
       <div class="bc-pack-jump">
         <label for="bc-pack-jump-input">Browse pack</label>
-        <input id="bc-pack-jump-input" type="number" min="1" max="500" value="${state.cursor + 1}" inputmode="numeric">
+        <input id="bc-pack-jump-input" type="number" min="1" max="${maxPack}" value="${currentPack}" inputmode="numeric" data-pack-jump-input>
         <button class="btn btn-outline btn-sm" type="button" data-pack-action="jump">Go</button>
+      </div>
+      <p class="bc-pack-note">Jump to any structured pack. The current pack stays stable until you choose another one.</p>
+    </section>`;
+  }
+
+  function renderDailyPack(pack, state, stage) {
+    const display = packDisplay();
+    return `<section class="bc-panel bc-daily-pack">
+      <div class="bc-section-head bc-pack-head">
+        <div><span>Today\'s content pack</span><strong>${WORDS_PER_PACK} words - ${esc(stage)}</strong></div>
       </div>
       <div class="bc-pack-display-controls">
         <span>Show</span>
@@ -732,6 +861,13 @@ window.BeginnerCoachModule = (() => {
     </article>`).join('');
   }
 
+  function renderCollapse(id, title, meta, content, open = true) {
+    return `<details class="bc-collapse" data-section="${esc(id)}" ${open ? 'open' : ''}>
+      <summary><span>${esc(title)}</span><strong>${esc(meta)}</strong></summary>
+      <div class="bc-collapse-body">${content}</div>
+    </details>`;
+  }
+
 
 
   function wirePackControls(container) {
@@ -748,6 +884,285 @@ window.BeginnerCoachModule = (() => {
     bind('next', nextPack);
     bind('refresh', refreshContent);
     bind('jump', () => jumpToPack(container.querySelector('#bc-pack-jump-input')?.value));
+    const jumpInput = container.querySelector('#bc-pack-jump-input');
+    jumpInput?.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        jumpToPack(jumpInput.value);
+      }
+    });
+    jumpInput?.addEventListener('change', () => {
+      const maxPack = STRUCTURED_PACKS || 180;
+      const normalized = Math.max(1, Math.min(maxPack, parseInt(jumpInput.value, 10) || 1));
+      jumpInput.value = normalized;
+    });
+  }
+
+  function renderStoryIntro(pack) {
+    if (!pack.story_intro || !pack.story_intro.length) return '';
+    return `<section class="bc-panel bc-story-intro">
+      <div class="bc-section-head"><span>Story Introduction</span><strong>Setting the Scene</strong></div>
+      <p class="bc-scenario-desc"><strong>Background:</strong> ${esc(pack.story_description)}</p>
+      <ul class="bc-story-points">
+        ${pack.story_intro.map(point => `<li>${esc(point)}</li>`).join('')}
+      </ul>
+    </section>`;
+  }
+
+  function renderMainDialogue(pack) {
+    if (!pack.dialogue || !pack.dialogue.length) return '';
+    const display = packDisplay();
+    return `<section class="bc-panel bc-scenario">
+      <div class="bc-section-head"><span>Main Dialogue</span><strong>${esc(pack.title)}</strong></div>
+      <div class="bc-scenario-dialogue">
+        <ul class="bc-dialogue-list">
+          ${pack.dialogue.map((d, i) => `<li>
+            <button type="button" class="bc-line-audio" onclick="BeginnerCoachModule.playPrompt('${jsString(d.zh)}', 'p${pack.id}-d-${i}')">Hear</button>
+            <div class="bc-dialogue-lines">
+              <strong>${esc(d.speaker)}:</strong>
+              <div class="bc-dialogue-zh">${esc(d.zh)}</div>
+              ${display.showPinyin ? `<div class="bc-dialogue-py">${esc(d.py)}</div>` : ''}
+              ${display.showEnglish ? `<div class="bc-dialogue-en">${esc(d.en)}</div>` : ''}
+            </div>
+          </li>`).join('')}
+        </ul>
+      </div>
+    </section>`;
+  }
+
+  function renderKeySentences(pack) {
+    if (!pack.key_sentences || !pack.key_sentences.length) return '';
+    const display = packDisplay();
+    return `<section class="bc-panel">
+      <div class="bc-section-head"><span>Key Sentences</span><strong>Useful Patterns</strong></div>
+      <div class="bc-context-list">
+        ${pack.key_sentences.map((s, i) => `
+          <div class="bc-context-card">
+            <button type="button" onclick="BeginnerCoachModule.playPrompt('${jsString(s.zh)}', 'p${pack.id}-ks-${i}')">Hear</button>
+            <div>
+              <strong>${esc(s.zh)}</strong>
+              ${display.showEnglish ? `<small>${esc(s.en)}</small>` : ''}
+              <p>Example: ${esc(s.example)}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>`;
+  }
+
+  function renderVocabPractice(pack) {
+    if (!pack.vocabulary || !pack.vocabulary.length) return '';
+    const display = packDisplay();
+    return `<section class="bc-panel">
+      <div class="bc-section-head"><span>Vocabulary Practice</span><strong>Key Words & Phrases</strong></div>
+      <div class="bc-word-grid">
+        ${pack.vocabulary.map((v, i) => `
+          <div class="bc-word-card">
+            <button type="button" class="bc-word-main" onclick="BeginnerCoachModule.playPrompt('${jsString(v.word)}', 'p${pack.id}-v-${i}')">
+              <span>${String(i + 1).padStart(2, '0')}</span>
+              <strong>${esc(v.word)}</strong>
+              ${display.showEnglish ? `<em>${esc(v.meaning)}</em>` : ''}
+              <small>${esc(v.pos)}</small>
+            </button>
+            <button type="button" class="bc-word-write" onclick="DrawingBoard.open('${jsString(v.word)}')" title="Practice Writing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </button>
+            <p hidden>${esc(v.example)}</p>
+          </div>
+        `).join('')}
+      </div>
+    </section>`;
+  }
+
+﻿  function renderMiniQuiz(pack) {
+    if (!pack.listening) return '';
+    const display = packDisplay();
+    const passage = pack.listening.passage || null;
+    const comprehension = pack.listening.comprehension || [];
+    const trueFalse = pack.listening.true_false || [];
+    const fillBlank = pack.listening.fill_blank || [];
+    return `<section class="bc-panel bc-scenario-questions bc-listening-practice">
+      <div class="bc-section-head"><span>Listening Practice</span><strong>Passage + 15-question check</strong></div>
+      ${passage ? `
+        <div class="bc-listening-passage">
+          <div class="bc-listening-passage-head">
+            <div>
+              <span>Short listening passage</span>
+              <strong>${esc(passage.title || pack.title)}</strong>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" onclick="BeginnerCoachModule.playPrompt('${jsString(passage.zh)}', 'p${pack.id}-listening-passage')">Play Passage</button>
+          </div>
+          <p class="bc-pack-note">${esc(passage.instruction || 'Listen first, then answer from memory.')}</p>
+          <div class="bc-listening-text">
+            <button type="button" class="bc-line-audio" onclick="BeginnerCoachModule.playPrompt('${jsString(passage.zh)}', 'p${pack.id}-listening-passage-repeat')">Hear again</button>
+            <div>
+              <strong>${esc(passage.zh)}</strong>
+              ${display.showEnglish && passage.en ? `<small>${esc(passage.en)}</small>` : ''}
+            </div>
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="bc-question-header">Comprehension Questions</div>
+      ${comprehension.slice(0, 5).map((q, i) => `
+        <div class="bc-scenario-q">
+          <strong>Q${i+1}: ${esc(q.q)}</strong>
+          ${q.options ? `
+            <div class="bc-scenario-options-grid">
+              ${q.options.map((opt, optIdx) => `<button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkCompAnswer('${jsString(q.a)}', '${esc(opt.charAt(0))}', 'bc-comp-res-${i}', true)">${esc(opt)}</button>`).join('')}
+            </div>
+          ` : `
+            <div class="bc-scenario-options">
+               <input type="text" class="form-input" id="bc-comp-ans-${i}" placeholder="Your answer...">
+               <button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkCompAnswer('${jsString(q.a)}', 'bc-comp-ans-${i}', 'bc-comp-res-${i}')">Check</button>
+            </div>
+          `}
+          <div id="bc-comp-res-${i}"></div>
+        </div>
+      `).join('')}
+      
+      <div class="bc-question-header">True or False</div>
+      ${trueFalse.slice(0, 5).map((q, i) => `
+        <div class="bc-scenario-q">
+          <strong>Q${i+6}: ${esc(q.q)}</strong>
+          <div class="bc-scenario-options">
+            <button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkTFAnswer(${q.a}, true, 'bc-tf-res-${i}')">True</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkTFAnswer(${q.a}, false, 'bc-tf-res-${i}')">False</button>
+          </div>
+          <div id="bc-tf-res-${i}"></div>
+        </div>
+      `).join('')}
+
+      <div class="bc-question-header">Fill in the Blank</div>
+      ${fillBlank.slice(0, 5).map((q, i) => `
+        <div class="bc-scenario-q">
+          <strong>Q${i+11}: ${esc(q.q)}</strong>
+          <div class="bc-scenario-options">
+             <input type="text" class="form-input" id="bc-fill-ans-${i}" placeholder="Type the missing Chinese word...">
+             <button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkCompAnswer('${jsString(q.a)}', 'bc-fill-ans-${i}', 'bc-fill-res-${i}')">Check</button>
+          </div>
+          <div id="bc-fill-res-${i}"></div>
+        </div>
+      `).join('')}
+    </section>`;
+  }
+
+  function renderGrammarSection(pack) {
+    if (!pack.grammar) return '';
+    const display = packDisplay();
+    return `<section class="bc-panel">
+      <div class="bc-section-head"><span>Mini Grammar Section</span><strong>${esc(pack.grammar.focus || 'Grammar Focus')}</strong></div>
+      <div class="bc-pattern-strip">
+        <p>${esc(pack.grammar.explanation)}</p>
+      </div>
+      <div class="bc-lesson-block">
+        <strong>Examples:</strong>
+        <ul class="bc-story-points">
+          ${pack.grammar.examples.map(ex => `<li>${esc(ex)}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="bc-scenario-questions">
+        <strong>Practice:</strong>
+        ${pack.grammar.practice.map((p, i) => `
+          <div class="bc-scenario-q">
+            <strong>${i+1}. ${esc(p.q)}</strong>
+            <input type="text" class="form-input" id="bc-gram-ans-${i}" placeholder="Type here...">
+            <button type="button" class="btn btn-outline btn-sm" onclick="BeginnerCoachModule.checkCompAnswer('${jsString(p.a)}', 'bc-gram-ans-${i}', 'bc-gram-res-${i}')">Check</button>
+            <div id="bc-gram-res-${i}"></div>
+          </div>
+        `).join('')}
+      </div>
+    </section>`;
+  }
+
+  function renderExpansionDialogue(pack) {
+    if (!pack.expansion_dialogue || !pack.expansion_dialogue.length) return '';
+    const display = packDisplay();
+    return `<section class="bc-panel bc-scenario">
+      <div class="bc-section-head"><span>Expansion Dialogue</span><strong>Scenario 2</strong></div>
+      <div class="bc-scenario-dialogue">
+        <ul class="bc-dialogue-list">
+          ${pack.expansion_dialogue.map((d, i) => `<li>
+            <button type="button" class="bc-line-audio" onclick="BeginnerCoachModule.playPrompt('${jsString(d.zh)}', 'p${pack.id}-exp-${i}')">Hear</button>
+            <div class="bc-dialogue-lines">
+              <strong>${esc(d.speaker)}:</strong>
+              <div class="bc-dialogue-zh">${esc(d.zh)}</div>
+              ${display.showPinyin ? `<div class="bc-dialogue-py">${esc(d.py)}</div>` : ''}
+              ${display.showEnglish ? `<div class="bc-dialogue-en">${esc(d.en)}</div>` : ''}
+            </div>
+          </li>`).join('')}
+        </ul>
+      </div>
+    </section>`;
+  }
+
+  function saveUserWriting(packId, text) {
+    const state = ensureCoachState();
+    state.userWriting = state.userWriting || {};
+    state.userWriting[packId] = text;
+    save(state);
+  }
+
+  function renderReviewSection(pack) {
+    if (!pack.review) return '';
+    const state = ensureCoachState();
+    const writingValue = state.userWriting?.[pack.id] || '';
+    
+    return `<section class="bc-panel">
+      <div class="bc-section-head"><span>Review Task</span><strong>Wrap Up</strong></div>
+      <div class="bc-two-col">
+        <div>
+          <strong>Speaking Task:</strong>
+          <p>${esc(pack.review.speaking)}</p>
+        </div>
+        <div>
+          <strong>Writing Task:</strong>
+          <p>${esc(pack.review.writing)}</p>
+        </div>
+      </div>
+      <div class="bc-writing-area" style="margin-top: 20px;">
+        <strong>Your Writing (Supports Pinyin input):</strong>
+        <textarea id="bc-user-writing-${pack.id}" class="form-input" style="width: 100%; min-height: 100px; margin-top: 10px;" placeholder="Type your response here..." oninput="BeginnerCoachModule.saveUserWriting(${pack.id}, this.value)">${esc(writingValue)}</textarea>
+        <p class="bc-pack-note" style="margin-top: 5px;">Your writing is automatically saved to local progress and will be included in exports.</p>
+      </div>
+      <div class="bc-pattern-strip" style="margin-top: 15px;">
+        <strong>Self-Check:</strong>
+        <p>${esc(pack.review.self_check)}</p>
+        <button type="button" class="btn btn-primary btn-sm" onclick="BeginnerCoachModule.markDone('review-${pack.id}')">I can do this!</button>
+      </div>
+    </section>`;
+  }
+
+  function checkCompAnswer(correct, inputId, resId, isMCQ = false) {
+    const input = isMCQ ? inputId : (document.getElementById(inputId)?.value || '');
+    const res = document.getElementById(resId);
+    if (!res) return;
+    const cleanInput = input.trim().toUpperCase();
+    const cleanCorrect = correct.trim().toUpperCase();
+    const isCorrect = cleanInput === cleanCorrect;
+    res.innerHTML = `<div class="bc-scenario-feedback ${isCorrect ? 'good' : 'review'}">${isCorrect ? 'Correct!' : 'Try: ' + esc(correct)}</div>`;
+  }
+
+  function checkTFAnswer(correct, selected, resId) {
+    const res = document.getElementById(resId);
+    if (!res) return;
+    const isCorrect = correct === selected;
+    res.innerHTML = `<div class="bc-scenario-feedback ${isCorrect ? 'good' : 'review'}">${isCorrect ? 'Correct!' : 'Incorrect.'}</div>`;
+  }
+
+  function renderGlobalToggles() {
+    const display = packDisplay();
+    return `<div class="bc-global-toggles">
+      <span>Display Settings</span>
+      <label title="Show or hide Pinyin for all sections">
+        <input type="checkbox" ${display.showPinyin ? 'checked' : ''} onchange="BeginnerCoachModule.setPackDisplay('showPinyin', this.checked)">
+        Pinyin
+      </label>
+      <label title="Show or hide English translations for all sections">
+        <input type="checkbox" ${display.showEnglish ? 'checked' : ''} onchange="BeginnerCoachModule.setPackDisplay('showEnglish', this.checked)">
+        English
+      </label>
+    </div>`;
   }
 
   async function render(container) {
@@ -757,16 +1172,19 @@ window.BeginnerCoachModule = (() => {
     const dayKey = todayKey();
     const doneCount = state[dayKey]?.done?.length || 0;
     const mission = MISSIONS[todayIndex()];
+    
+    const structuredPack = getStructuredPack(state.cursor);
     const theme = getPackTheme(state.cursor);
     const { pack, stage } = buildWordBank(state.cursor);
     const writingTasks = dailyWritingTasks(pack, state.cursor);
     const speakingTasks = dailySpeakingTasks(pack, state.cursor);
+
     container.innerHTML = `<div class="beginner-coach-page">
       <section class="bc-hero">
         <div>
           <div class="bc-kicker">Beginner Daily Coach</div>
-          <h2>Do exactly this today</h2>
-          <p>A guided beginner path with a fresh 30-word daily pack, writing, speaking, and review. All app content stays open; the coach only tells you what to do next.</p>
+          <h2>${structuredPack ? esc(structuredPack.title) : 'Do exactly this today'}</h2>
+          <p>${structuredPack ? esc(structuredPack.story_description) : 'A guided beginner path with a fresh 30-word daily pack, writing, speaking, and review. All app content stays open; the coach only tells you what to do next.'}</p>
           <div class="bc-hero-actions">
             <a class="btn btn-primary" href="${mission.route}">Start Today: ${esc(mission.title)}</a>
             <button class="btn btn-outline" type="button" onclick="BeginnerCoachModule.exportState()">Export Progress</button>
@@ -782,34 +1200,45 @@ window.BeginnerCoachModule = (() => {
 
       <section class="bc-status-row">
         <article><span>Today</span><strong>${doneCount}</strong><small>items checked off</small></article>
-        <article><span>Daily word load</span><strong>${pack.length}</strong><small>new/review words in this pack</small></article>
+        <article><span>Daily word load</span><strong>${structuredPack ? structuredPack.vocabulary.length : pack.length}</strong><small>new/review words in this pack</small></article>
         <article><span>Pack number</span><strong>${state.cursor + 1}${state.cursor < STRUCTURED_PACKS ? ` / ${STRUCTURED_PACKS}` : ''}</strong><small>${state.cursor < STRUCTURED_PACKS ? 'structured path' : 'random mixed review'}</small></article>
       </section>
 
-      ${renderDailyPack(pack, state, stage)}
+      ${renderPackNavigator(state)}
 
-      <section class="bc-panel">
-        <div class="bc-section-head"><span>7-day beginner loop</span><strong>${esc(mission.title)}</strong></div>
-        <div class="bc-mission-list">${renderMissionCards(state, dayKey)}</div>
-      </section>
-
-      ${renderScenario(theme)}
-
-      <section class="bc-two-col">
-        <div class="bc-panel">
-          <div class="bc-section-head"><span>Writing</span><strong>Daily self-check tasks</strong></div>
-          <div class="bc-practice-list">${renderWriting(writingTasks)}</div>
-        </div>
-        <div class="bc-panel">
-          <div class="bc-section-head"><span>Speaking</span><strong>Pack repeat mode</strong></div>
-          <div class="bc-practice-list">${renderSpeaking(speakingTasks)}</div>
-        </div>
-      </section>
-
-      ${renderSurvival(theme)}
+      ${structuredPack ? `
+        ${renderGlobalToggles()}
+        ${renderCollapse('story', '1. Story Introduction', 'The Situation', renderStoryIntro(structuredPack), true)}
+        ${renderCollapse('dialogue', '2. Main Dialogue', 'Reading & Listening', renderMainDialogue(structuredPack), true)}
+        ${renderCollapse('key_sentences', '3. Key Sentences', 'Useful Patterns', renderKeySentences(structuredPack), true)}
+        ${renderCollapse('vocabulary_practice', '4. Vocabulary Practice', 'Key Words', renderVocabPractice(structuredPack), true)}
+        ${renderCollapse('listening_practice', '5. Listening Practice', 'Quiz', renderMiniQuiz(structuredPack), true)}
+        ${renderCollapse('grammar', '6. Mini Grammar', 'Rules & Examples', renderGrammarSection(structuredPack), true)}
+        ${renderCollapse('expansion', '7. Expansion Dialogue', 'Scenario 2', renderExpansionDialogue(structuredPack), true)}
+        ${renderCollapse('review_task', '8. Review Task', 'Final Wrap Up', renderReviewSection(structuredPack), true)}
+      ` : `
+        ${renderCollapse('vocabulary', 'Vocabulary', `${pack.length} words in this pack`, renderDailyPack(pack, state, stage), true)}
+        ${renderCollapse('loop', 'Daily loop', mission.title, `<section class="bc-panel">
+          <div class="bc-section-head"><span>7-day beginner loop</span><strong>${esc(mission.title)}</strong></div>
+          <div class="bc-mission-list">${renderMissionCards(state, dayKey)}</div>
+        </section>`, false)}
+        ${renderCollapse('dialogue', 'Dialogue & comprehension', theme.scenario?.title || 'Practice', renderScenario(theme), true)}
+        ${renderCollapse('practice', 'Writing & speaking', 'Self-check and repeat mode', `<section class="bc-two-col">
+          <div class="bc-panel">
+            <div class="bc-section-head"><span>Writing</span><strong>Daily self-check tasks</strong></div>
+            <div class="bc-practice-list">${renderWriting(writingTasks)}</div>
+          </div>
+          <div class="bc-panel">
+            <div class="bc-section-head"><span>Speaking</span><strong>Pack repeat mode</strong></div>
+            <div class="bc-practice-list">${renderSpeaking(speakingTasks)}</div>
+          </div>
+        </section>`, true)}
+        ${renderCollapse('survival', 'Survival phrases', 'Tap to hear', renderSurvival(theme), false)}
+      `}
     </div>`;
     wirePackControls(container);
   }
 
-  return { render, setGuided, markDone, checkWriting, startSpeechCheck, playPrompt, exportState, guidedOn, refreshContent, previousContent, firstPack, nextPack, backOnePack, jumpToPack, setPackDisplay, checkScenarioAnswer };
+  return { render, setGuided, markDone, checkWriting, startSpeechCheck, playPrompt, exportState, guidedOn, refreshContent, previousContent, firstPack, nextPack, backOnePack, jumpToPack, setPackDisplay, checkScenarioAnswer, checkCompAnswer, checkTFAnswer, saveUserWriting };
 })();
+
