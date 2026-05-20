@@ -160,13 +160,18 @@ window.DrawingBoard = (() => {
 
     function handlePointerDown(e) {
         if (state.mode !== 'freehand') return;
-        if (state.penOnly && e.pointerType !== 'pen') return;
+
+        // Pen-only check: if penOnly is enabled, only allow 'pen' pointer types
+        if (state.penOnly && e.pointerType !== 'pen') {
+            return;
+        }
+
         state.isDrawing = true;
         state.lastPos = getPos(e);
         state.canvas.setPointerCapture(e.pointerId);
-        
+
         points = [state.lastPos];
-        
+
         state.ctx.beginPath();
         state.ctx.lineCap = 'round';
         state.ctx.lineJoin = 'round';
@@ -177,12 +182,15 @@ window.DrawingBoard = (() => {
         if (!frameId) {
             frameId = requestAnimationFrame(drawFrame);
         }
+
+        // Prevent default touch behaviors like scrolling when drawing
+        if (e.cancelable) e.preventDefault();
     }
 
     function handlePointerMove(e) {
         if (!state.isDrawing) return;
         if (state.penOnly && e.pointerType !== 'pen') return;
-        
+
         // Use coalesced events for highest possible fidelity (sampling between frames)
         if (e.getCoalescedEvents) {
             const events = e.getCoalescedEvents();
@@ -283,14 +291,25 @@ window.DrawingBoard = (() => {
                     </div>
                     
                     <div style="display:flex; flex-direction:column; align-items:center; gap:20px">
-                        <div style="display:flex; justify-content:space-between; width:100%; max-width:320px; gap:10px">
-                            <select class="input input-sm" style="width:auto; height:36px; background:var(--card-bg); color:var(--text); border-color:var(--border)" onchange="DrawingBoard.setMode(this.value)">
-                                <option value="guided">Guided</option>
-                                <option value="freehand">Freehand</option>
-                            </select>
-                            <div class="flex gap-8">
-                                <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.animate()">Animate</button>
-                                <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.reset()">Reset</button>
+                        <div style="display:flex; flex-direction:column; width:100%; max-width:320px; gap:10px">
+                            <div style="display:flex; justify-content:space-between; width:100%; gap:10px">
+                                <select class="input input-sm" style="width:auto; height:36px; background:var(--card-bg); color:var(--text); border-color:var(--border)" onchange="DrawingBoard.setMode(this.value)">
+                                    <option value="guided">Guided</option>
+                                    <option value="freehand">Freehand</option>
+                                </select>
+                                <div class="flex gap-8">
+                                    <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.animate()">Animate</button>
+                                    <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.reset()">Reset</button>
+                                </div>
+                            </div>
+                            <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px">
+                                <label style="font-size:0.85rem; display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-2)" title="Ignore hand/finger touch, only draw with pen/stylus">
+                                    <input type="checkbox" onchange="DrawingBoard.setPenOnly(this.checked)" ${state.penOnly ? 'checked' : ''}> Pen Only
+                                </label>
+                                <div style="flex:1; display:flex; align-items:center; gap:8px">
+                                    <span style="font-size:0.7rem; color:var(--text-3)">Size</span>
+                                    <input type="range" min="1" max="15" value="${state.strokeWidth}" oninput="DrawingBoard.setPenWidth(this.value)" style="flex:1; height:4px">
+                                </div>
                             </div>
                         </div>
                         

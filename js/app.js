@@ -339,9 +339,13 @@ const API = {
   },
 
   async getCharacters(params = {}) {
-    // For static, we always load characters_all.json and filter in-memory if needed
-    // However, App.boot already preloads App.state.characters
-    if (App.state.characters && App.state.characters.length > 0 && Object.keys(params).length > 0) {
+    // 1. If we have characters in state and no specific filters/search, return them
+    if (App.state.characters && App.state.characters.length > 0) {
+        if (Object.keys(params).length === 0 || (params.limit === 9999 && !params.search && !params.level)) {
+            return { total: App.state.characters.length, data: App.state.characters };
+        }
+        
+        // 2. Local filtering if characters are already preloaded
         let results = [...App.state.characters];
         const { level, category, search, limit = 50, offset = 0 } = params;
         if (level) results = results.filter(c => c.level === level.toLowerCase());
@@ -357,6 +361,8 @@ const API = {
         }
         return { total: results.length, data: results.slice(offset, offset + limit) };
     }
+
+    // 3. Fallback to fetch if not preloaded (usually only on first visit/hard refresh)
     const result = await this.get('characters_all');
     return result;
   },
@@ -734,20 +740,36 @@ async function router() {
   const route = resolveRoute(path);
   closeMobileNav();
 
-  // Update nav active state
-  updateSidebarActive(route.route);
-  updateMobileSectionState(route.route);
-
-  document.getElementById('topbar-title').textContent = route.title;
+  // 1. Instant UI update (Top bar and active state)
+  requestAnimationFrame(() => {
+    if (token !== routerRenderToken) return;
+    document.getElementById('topbar-title').textContent = route.title;
+    updateSidebarActive(route.route);
+    updateMobileSectionState(route.route);
+  });
 
   const content = document.getElementById('page-content');
-  content.innerHTML = '<div class="spinner"></div>';
+  
+  // Show spinner only if it takes more than 100ms (avoids flicker on fast loads)
+  const spinnerTimeout = setTimeout(() => {
+    if (token === routerRenderToken && content.innerHTML !== route.renderResult) {
+      content.innerHTML = '<div class="spinner"></div>';
+    }
+  }, 100);
 
   try {
+    // 2. Render the page
     await route.render(content);
-    if (token !== routerRenderToken) { router(); return; }
-    if (resolveRoute(getPath()).route !== route.route) router();
+    clearTimeout(spinnerTimeout);
+
+    if (token !== routerRenderToken) return;
+    
+    // Double check path hasn't changed during async render
+    if (resolveRoute(getPath()).route !== route.route) {
+        router();
+    }
   } catch (err) {
+    clearTimeout(spinnerTimeout);
     if (token !== routerRenderToken) return;
     content.innerHTML = `
       <div class="empty-state">
@@ -1804,7 +1826,7 @@ async function boot() {
   App.loadSettings();
   App.loadProgress();
 
-  // Dark mode toggle
+  // 1. Core UI setup (Sync tasks)
   document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
     const dark = App.state.settings.theme !== 'dark';
     App.state.settings.theme = dark ? 'dark' : 'light';
@@ -1812,42 +1834,47 @@ async function boot() {
     App.applyTheme(App.state.settings.theme);
   });
 
-  // TTS test
-  document.getElementById('tts-test-btn')?.addEventListener('click', () => {
-    TTS.speak('你好，歡迎使用漢語學習應用程式。');
-  });
-
   document.getElementById('mobile-menu-toggle')?.addEventListener('click', toggleMobileNav);
   setupMobileBottomNav();
   document.getElementById('nav-scrim')?.addEventListener('click', closeMobileNav);
-  document.querySelectorAll('#sidebar .nav-item').forEach(item => {
-    item.addEventListener('click', closeMobileNav);
+  
+  // Use event delegation for sidebar to avoid many listeners
+  document.getElementById('sidebar')?.addEventListener('click', e => {
+    if (e.target.closest('.nav-item')) closeMobileNav();
   });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeMobileNav();
   });
 
-  // Start routing immediately
+  // 2. Initial route - Render ASAP
   router();
 
-  // Heavy curriculum preload in background
-  (async () => {
-    try {
-      const charResult = await API.getCharacters({ limit: 9999 });
-      App.state.characters = charResult.data || [];
-      
-      const vocabResult = await API.get('vocabulary');
-      App.state.vocabulary = vocabResult.sets || [];
-      
-      if (window.ExamModule) ExamModule.init();
-
-      updateTopbarBadge();
-      // If we're on dashboard, refresh it with the newly loaded data
-      if (getPath() === '/') router();
-    } catch (err) {
-      console.warn('Could not preload curriculum data:', err.message);
+  // 3. Deferred background tasks (Low priority)
+  requestIdleCallback(() => {
+    // Service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(console.error);
     }
-  })();
+
+    // Heavy preloads
+    (async () => {
+      try {
+        const charResult = await API.getCharacters({ limit: 9999 });
+        App.state.characters = charResult.data || [];
+        
+        const vocabResult = await API.get('vocabulary');
+        App.state.vocabulary = vocabResult.sets || [];
+        
+        if (window.ExamModule) ExamModule.init();
+
+        updateTopbarBadge();
+        if (getPath() === '/') router();
+      } catch (err) {
+        console.warn('Background preload failed:', err.message);
+      }
+    })();
+  });
 }
 
 // Start when DOM is ready
