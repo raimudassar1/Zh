@@ -757,12 +757,15 @@ async function router() {
 
   const content = document.getElementById('page-content');
   
-  // Show spinner only if it takes more than 100ms (avoids flicker on fast loads)
+  // Clear previous page immediately for instant visual feedback
+  content.innerHTML = '';
+  
+  // Show spinner only if the module takes more than 150ms to render *anything*
   const spinnerTimeout = setTimeout(() => {
-    if (token === routerRenderToken && content.innerHTML !== route.renderResult) {
+    if (token === routerRenderToken && !content.innerHTML.trim()) {
       content.innerHTML = '<div class="spinner"></div>';
     }
-  }, 100);
+  }, 150);
 
   try {
     // 2. Render the page
@@ -1844,41 +1847,14 @@ async function boot() {
       }).catch(console.error);
     }
 
-    // Delay heavy preloads to prevent saturating network connections
-    // and blocking lightweight page JSON requests.
+    // Only preload the core character library needed for the dashboard stats.
+    // We explicitly AVOID preloading the 1MB vocabulary file and 18 other JSON files here.
+    // Loading 3MB of JSON in the background was freezing iPads and saturating mobile network connections,
+    // which caused massive lag when users tried to navigate to lightweight pages like the Picture Quiz.
     setTimeout(async () => {
       try {
-        // 1. Silent Preload of lightweight JSONs into memory cache
-        const backgroundFiles = [
-            'picture_flashcards',
-            'playground_content',
-            'char_playground_content',
-            'radicals_set',
-            'scenarios_content',
-            'grammar_academy',
-            'mock-tests',
-            'monthly_exams',
-            'beginner_coach_content_p1',
-            'beginner_coach_content_p2',
-            'beginner_coach_content_p3',
-            'beginner_coach_content_p4',
-            'beginner_coach_content_p5',
-            'readings',
-            'b1_grammar',
-            'book1_content',
-            'book2_content',
-            'book3_content'
-        ];
-        
-        // Fire them off in the background, ignoring errors
-        backgroundFiles.forEach(file => API.get(file).catch(() => {}));
-
-        // 2. Load heavy curriculum required by the Dashboard and topbar
-        const charResult = await API.getCharacters({ limit: 9999 });
+        const charResult = await API.getCharacters({ limit: 9999 }).catch(() => ({ data: [] }));
         App.state.characters = charResult.data || [];
-        
-        const vocabResult = await API.get('vocabulary');
-        App.state.vocabulary = vocabResult.sets || [];
         
         if (window.ExamModule) ExamModule.init();
 
@@ -1891,9 +1867,9 @@ async function boot() {
           }
         }
       } catch (err) {
-        console.warn('Background preload failed:', err.message);
+        console.warn('Dashboard background load failed:', err.message);
       }
-    }, 2500); // 2.5 second delay allows user to navigate freely first
+    }, 1000); // 1 second delay so initial navigation is strictly prioritized
   });
 }
 

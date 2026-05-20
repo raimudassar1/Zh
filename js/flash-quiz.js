@@ -29,15 +29,9 @@ window.FlashQuizModule = (() => {
     state.loading = false;
   }
 
-  function render(container) {
-    if (state.loading) {
-      container.innerHTML = '<div class="spinner"></div>';
-      return;
-    }
-
+  async function render(container) {
     if (!state.data) {
-      loadData().then(() => render(container));
-      return;
+      await loadData();
     }
 
     container.innerHTML = `

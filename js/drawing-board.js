@@ -19,41 +19,6 @@ window.DrawingBoard = (() => {
         theme: 'light'
     };
 
-    function init(writerTargetId, canvasId, hanzi) {
-        state.writerTarget = document.getElementById(writerTargetId);
-        state.canvas = document.getElementById(canvasId);
-        if (!state.writerTarget || !state.canvas) return;
-
-        state.hanzi = hanzi;
-        state.theme = document.documentElement.getAttribute('data-theme') || 'light';
-        state.strokeColor = state.theme === 'dark' ? '#e8e4df' : '#2C3E50';
-        state.outlineColor = state.theme === 'dark' ? '#333333' : '#EAEAEA';
-
-        state.ctx = state.canvas.getContext('2d');
-        
-        // Ensure canvas is correctly sized
-        resizeCanvas();
-
-        // Initialize HanziWriter
-        initHanziWriter();
-
-        // Canvas events
-        state.canvas.onpointerdown = handlePointerDown;
-        state.canvas.onpointermove = handlePointerMove;
-        state.canvas.onpointerup = handlePointerUp;
-        state.canvas.onpointercancel = handlePointerUp;
-
-        // Auto-resize handling
-        window.removeEventListener('resize', resizeCanvas);
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Synchronize UI
-        syncUI();
-        
-        // Initial visibility
-        setMode(state.mode);
-    }
-
     function togglePenOnly() {
         state.penOnly = !state.penOnly;
         syncUI();
