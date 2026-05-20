@@ -309,18 +309,27 @@ const Pinyin = {
 const API = {
   base: 'data', // Relative to public/
   version: '83', // Match index.html version for consistency
+  _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
     // Determine the base path: default to 'data' unless explicitly pointing elsewhere
     let url = (path.startsWith('books/') || path.startsWith('assets/')) ? path : `${this.base}/${path}`;
     if (!url.endsWith('.json')) url += '.json';
     
-    // Use fixed version for caching performance
-    url += `?v=${this.version}`;
+    // Check in-memory cache first (Lightning fast, zero parsing)
+    if (this._cache[url]) {
+        return this._cache[url];
+    }
+
+    // Use fixed version for SW caching performance
+    const fetchUrl = `${url}?v=${this.version}`;
     
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Fetch ${url} failed: ${res.status}`);
-    return res.json();
+    const res = await fetch(fetchUrl);
+    if (!res.ok) throw new Error(`Fetch ${fetchUrl} failed: ${res.status}`);
+    
+    const data = await res.json();
+    this._cache[url] = data; // Store parsed object
+    return data;
   },
 
   // Helper to load scripts on demand
@@ -604,11 +613,9 @@ async function showCharModal(hanziOrObj) {
                 <option value="guided">Guided</option>
                 <option value="freehand">Freehand</option>
               </select>
-              <div id="app-pen-controls" style="display:none; align-items:center; gap:8px">
+              <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
-                <label style="font-size:0.7rem; display:flex; align-items:center; gap:4px; user-select:none; cursor:pointer">
-                    <input type="checkbox" onchange="DrawingBoard.setPenOnly(this.checked)"> Pen Only
-                </label>
+                <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">🖋️ Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
               </div>
             </div>
             <div class="flex gap-8">
@@ -1857,8 +1864,9 @@ async function boot() {
       navigator.serviceWorker.register('./sw.js').catch(console.error);
     }
 
-    // Heavy preloads
-    (async () => {
+    // Delay heavy preloads to prevent saturating network connections
+    // and blocking lightweight page JSON requests.
+    setTimeout(async () => {
       try {
         const charResult = await API.getCharacters({ limit: 9999 });
         App.state.characters = charResult.data || [];
@@ -1869,11 +1877,17 @@ async function boot() {
         if (window.ExamModule) ExamModule.init();
 
         updateTopbarBadge();
-        if (getPath() === '/') router();
+        // If we are still on the dashboard, gracefully update it
+        if (getPath() === '/') {
+          const orbit = document.querySelector('.dash-progress-ring');
+          if (orbit && orbit.classList.contains('skeleton')) {
+              renderDashboard(document.getElementById('page-content'));
+          }
+        }
       } catch (err) {
         console.warn('Background preload failed:', err.message);
       }
-    })();
+    }, 2500); // 2.5 second delay allows user to navigate freely first
   });
 }
 

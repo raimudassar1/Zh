@@ -54,20 +54,81 @@ window.DrawingBoard = (() => {
         setMode(state.mode);
     }
 
+    function togglePenOnly() {
+        state.penOnly = !state.penOnly;
+        syncUI();
+    }
+
     function syncUI() {
         const modeSelects = document.querySelectorAll('select[onchange*="DrawingBoard.setMode"]');
         modeSelects.forEach(s => s.value = state.mode);
 
         const penControls = [document.getElementById('pen-controls'), document.getElementById('app-pen-controls')];
         penControls.forEach(c => {
-            if (c) c.style.display = state.mode === 'freehand' ? 'flex' : 'none';
+            if (c) c.style.display = 'flex'; // Always show pen controls now
         });
 
-        const penOnlyChecks = document.querySelectorAll('input[onchange*="DrawingBoard.setPenOnly"]');
-        penOnlyChecks.forEach(c => c.checked = state.penOnly);
+        // Update all Pen Only buttons
+        const penButtons = document.querySelectorAll('.pen-toggle-btn');
+        penButtons.forEach(btn => {
+            btn.className = state.penOnly ? 'btn btn-sm btn-primary pen-toggle-btn' : 'btn btn-sm btn-outline pen-toggle-btn';
+            btn.textContent = state.penOnly ? '🖋️ Pen Only: ON' : '🖋️ Pen Only: OFF';
+        });
 
         const widthSliders = document.querySelectorAll('input[oninput*="DrawingBoard.setPenWidth"]');
         widthSliders.forEach(s => s.value = state.strokeWidth);
+    }
+
+    // Capture-phase event handler to block non-pen inputs before HanziWriter gets them
+    function handleCaptureEvent(e) {
+        if (state.penOnly && e.pointerType !== 'pen') {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+
+    function init(writerTargetId, canvasId, hanzi) {
+        state.writerTarget = document.getElementById(writerTargetId);
+        state.canvas = document.getElementById(canvasId);
+        if (!state.writerTarget || !state.canvas) return;
+
+        state.hanzi = hanzi;
+        state.theme = document.documentElement.getAttribute('data-theme') || 'light';
+        state.strokeColor = state.theme === 'dark' ? '#e8e4df' : '#2C3E50';
+        state.outlineColor = state.theme === 'dark' ? '#333333' : '#EAEAEA';
+
+        state.ctx = state.canvas.getContext('2d');
+        
+        // Ensure canvas is correctly sized
+        resizeCanvas();
+
+        // Initialize HanziWriter
+        initHanziWriter();
+
+        // Canvas events (Freehand)
+        state.canvas.onpointerdown = handlePointerDown;
+        state.canvas.onpointermove = handlePointerMove;
+        state.canvas.onpointerup = handlePointerUp;
+        state.canvas.onpointercancel = handlePointerUp;
+
+        // Block touch events for Guided mode when Pen Only is enabled
+        const container = state.writerTarget.parentElement;
+        if (container) {
+            container.removeEventListener('pointerdown', handleCaptureEvent, true);
+            container.removeEventListener('pointermove', handleCaptureEvent, true);
+            container.addEventListener('pointerdown', handleCaptureEvent, true);
+            container.addEventListener('pointermove', handleCaptureEvent, true);
+        }
+
+        // Auto-resize handling
+        window.removeEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Synchronize UI
+        syncUI();
+        
+        // Initial visibility
+        setMode(state.mode);
     }
 
     function initHanziWriter() {
@@ -303,9 +364,9 @@ window.DrawingBoard = (() => {
                                 </div>
                             </div>
                             <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px">
-                                <label style="font-size:0.85rem; display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-2)" title="Ignore hand/finger touch, only draw with pen/stylus">
-                                    <input type="checkbox" onchange="DrawingBoard.setPenOnly(this.checked)" ${state.penOnly ? 'checked' : ''}> Pen Only
-                                </label>
+                                <button class="btn btn-sm ${state.penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">
+                                    ${state.penOnly ? '🖋️ Pen Only: ON' : '🖋️ Pen Only: OFF'}
+                                </button>
                                 <div style="flex:1; display:flex; align-items:center; gap:8px">
                                     <span style="font-size:0.7rem; color:var(--text-3)">Size</span>
                                     <input type="range" min="1" max="15" value="${state.strokeWidth}" oninput="DrawingBoard.setPenWidth(this.value)" style="flex:1; height:4px">
@@ -345,6 +406,7 @@ window.DrawingBoard = (() => {
         setMode,
         open,
         setPenOnly: (v) => { state.penOnly = v; },
+        togglePenOnly,
         setPenWidth: (v) => { state.strokeWidth = parseInt(v); },
         getState: () => state
     };
