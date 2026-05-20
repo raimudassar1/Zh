@@ -1,0 +1,3723 @@
+[
+  {
+    "id": 1,
+    "title": "Hello, My Name Is…",
+    "level": "Novice",
+    "pack_number": 1,
+    "topic": "Greetings and Names",
+    "story_description": "Two students meet for the first time outside a classroom. They ask names, say hello, and introduce themselves politely.",
+    "story_intro": [
+      "This is a new semester.",
+      "Two students meet outside the classroom.",
+      "They meet for the first time and want to know each other.",
+      "They greet each other very politely.",
+      "They ask each other's names."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "你好！",
+        "py": "nǐ hǎo!",
+        "en": "Hello!"
+      },
+      {
+        "speaker": "B",
+        "zh": "你好！",
+        "py": "nǐ hǎo!",
+        "en": "Hello!"
+      },
+      {
+        "speaker": "A",
+        "zh": "請問，你叫什麼名字？",
+        "py": "qǐng wèn, nǐ jiào shén me míng zi?",
+        "en": "Excuse me, what is your name?"
+      },
+      {
+        "speaker": "B",
+        "zh": "我叫王小明。你呢？",
+        "py": "wǒ jiào wáng xiǎo míng. nǐ ne?",
+        "en": "My name is Wang Xiaoming. How about you?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我叫李華。",
+        "py": "wǒ jiào lǐ huá.",
+        "en": "My name is Li Hua."
+      },
+      {
+        "speaker": "B",
+        "zh": "很高興認識你！",
+        "py": "hěn gāo xìng rèn shi nǐ!",
+        "en": "Nice to meet you!"
+      },
+      {
+        "speaker": "A",
+        "zh": "我也很高興認識你。",
+        "py": "wǒ yě hěn gāo xìng rèn shi nǐ.",
+        "en": "Nice to meet you too."
+      },
+      {
+        "speaker": "B",
+        "zh": "你是學生嗎？",
+        "py": "nǐ shì xué sheng ma?",
+        "en": "Are you a student?"
+      },
+      {
+        "speaker": "A",
+        "zh": "是的，我是學生。你也是學生嗎？",
+        "py": "shì de, wǒ shì xué sheng. nǐ yě shì xué sheng ma?",
+        "en": "Yes, I am a student. Are you also a student?"
+      },
+      {
+        "speaker": "B",
+        "zh": "對，我們都是學生。",
+        "py": "duì, wǒ men dōu shì xué sheng.",
+        "en": "Right, we are both students."
+      },
+      {
+        "speaker": "A",
+        "zh": "太好了。",
+        "py": "tài hǎo le.",
+        "en": "Great."
+      },
+      {
+        "speaker": "B",
+        "zh": "再見！",
+        "py": "zài jiàn!",
+        "en": "Goodbye!"
+      },
+      {
+        "speaker": "A",
+        "zh": "再見！",
+        "py": "zài jiàn!",
+        "en": "Goodbye!"
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "你叫什麼名字？",
+        "en": "What is your name?",
+        "example": "請問，你叫什麼名字？"
+      },
+      {
+        "zh": "我叫王小明。",
+        "en": "My name is Wang Xiaoming.",
+        "example": "我叫李華。"
+      },
+      {
+        "zh": "很高興認識你！",
+        "en": "Nice to meet you!",
+        "example": "認識你很高興。"
+      },
+      {
+        "zh": "你是學生嗎？",
+        "en": "Are you a student?",
+        "example": "他是老師嗎？"
+      },
+      {
+        "zh": "我是學生。",
+        "en": "I am a student.",
+        "example": "她是醫生。"
+      },
+      {
+        "zh": "你呢？",
+        "en": "How about you?",
+        "example": "我很好，你呢？"
+      },
+      {
+        "zh": "我們都是學生。",
+        "en": "We are all students.",
+        "example": "他們都是中國人。"
+      },
+      {
+        "zh": "再見！",
+        "en": "Goodbye!",
+        "example": "老師，再見！"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "你好",
+        "meaning": "Hello",
+        "pos": "phrase",
+        "example": "你好，老師！"
+      },
+      {
+        "word": "請問",
+        "meaning": "Excuse me / May I ask",
+        "pos": "phrase",
+        "example": "請問，洗手間在哪裡？"
+      },
+      {
+        "word": "叫",
+        "meaning": "to be called",
+        "pos": "verb",
+        "example": "他叫大衛。"
+      },
+      {
+        "word": "什麼",
+        "meaning": "what",
+        "pos": "pronoun",
+        "example": "這是什麼？"
+      },
+      {
+        "word": "名字",
+        "meaning": "name",
+        "pos": "noun",
+        "example": "我的名字叫馬克。"
+      },
+      {
+        "word": "很高興",
+        "meaning": "very happy",
+        "pos": "adjective",
+        "example": "我今天很高興。"
+      },
+      {
+        "word": "認識",
+        "meaning": "to know / to meet",
+        "pos": "verb",
+        "example": "我不認識他。"
+      },
+      {
+        "word": "也",
+        "meaning": "also",
+        "pos": "adverb",
+        "example": "我也是美國人。"
+      },
+      {
+        "word": "學生",
+        "meaning": "student",
+        "pos": "noun",
+        "example": "他是大學生。"
+      },
+      {
+        "word": "嗎",
+        "meaning": "question particle",
+        "pos": "particle",
+        "example": "你好嗎？"
+      },
+      {
+        "word": "對",
+        "meaning": "correct / right",
+        "pos": "adjective",
+        "example": "你說得對。"
+      },
+      {
+        "word": "都",
+        "meaning": "all / both",
+        "pos": "adverb",
+        "example": "我們都喜歡喝茶。"
+      },
+      {
+        "word": "再見",
+        "meaning": "Goodbye",
+        "pos": "phrase",
+        "example": "明天見！"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "你好。",
+        "你叫什麼名字？",
+        "我是學生。",
+        "很高興認識你。"
+      ],
+      "part_b": "Role-play: You meet a classmate. Greet them and ask their name. Answer when they ask yours.",
+      "part_c": [
+        "你叫什麼名字？",
+        "你是學生嗎？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What is the second speaker's name?",
+          "a": "Wang Xiaoming"
+        },
+        {
+          "q": "Are they both students?",
+          "a": "Yes"
+        },
+        {
+          "q": "Where are they?",
+          "a": "Outside a classroom"
+        },
+        {
+          "q": "How does A feel about meeting B?",
+          "a": "Happy"
+        },
+        {
+          "q": "What is the first speaker's name?",
+          "a": "Li Hua"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "A and B have met before.",
+          "a": false
+        },
+        {
+          "q": "B is a teacher.",
+          "a": false
+        },
+        {
+          "q": "A is a student.",
+          "a": true
+        },
+        {
+          "q": "They are saying goodbye at the end.",
+          "a": true
+        },
+        {
+          "q": "Wang Xiaoming is a student.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "你叫____名字？",
+          "a": "什麼"
+        },
+        {
+          "q": "我很____認識你。",
+          "a": "高興"
+        },
+        {
+          "q": "我____是學生。",
+          "a": "也"
+        },
+        {
+          "q": "我們____是學生。",
+          "a": "都"
+        },
+        {
+          "q": "請問，你____什麼名字？",
+          "a": "叫"
+        }
+      ],
+      "passage": {
+        "title": "Hello, My Name Is… Listening Passage",
+        "zh": "你好！請問，你叫什麼名字？我叫王小明。你呢？我叫李華。很高興認識你！",
+        "en": "This is a new semester. Two students meet outside the classroom. They meet for the first time and want to know each other. They greet each other very politely. They ask each other's names.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Introduce yourself in 3 sentences: say hello, your name, and your identity (student).",
+    "grammar": {
+      "explanation": "Simple 'Subject + Verb + Object' structure and the question particle '嗎'. To ask a yes/no question, add '嗎' at the end of a statement.",
+      "examples": [
+        "我是學生。 (I am a student.)",
+        "你是學生嗎？ (Are you a student?)",
+        "我叫李華。 (My name is Li Hua.)",
+        "他叫什麼名字？ (What is his name?)",
+        "我也很高興。 (I am also very happy.)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: Are you a student?",
+          "a": "你是學生嗎？"
+        },
+        {
+          "q": "Complete: 我___王小明。 (My name is...)",
+          "a": "叫"
+        },
+        {
+          "q": "Complete: 他___是學生嗎？ (Is he also...)",
+          "a": "也"
+        },
+        {
+          "q": "Translate: Hello!",
+          "a": "你好！"
+        },
+        {
+          "q": "Complete: ___很高興認識你。 (Very happy...)",
+          "a": "我"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "你好，我是老師。",
+        "py": "nǐ hǎo, wǒ shì lǎo shī.",
+        "en": "Hello, I am the teacher."
+      },
+      {
+        "speaker": "B",
+        "zh": "老師好！我叫大衛。",
+        "py": "lǎo shī hǎo! wǒ jiào dà wèi.",
+        "en": "Hello teacher! My name is David."
+      },
+      {
+        "speaker": "A",
+        "zh": "大衛，你是美國人嗎？",
+        "py": "dà wèi, nǐ shì měi guó rén ma?",
+        "en": "David, are you American?"
+      },
+      {
+        "speaker": "B",
+        "zh": "是的，我是美國人。",
+        "py": "shì de, wǒ shì měi guó rén.",
+        "en": "Yes, I am American."
+      }
+    ],
+    "review": {
+      "speaking": "Introduce yourself to a friend: '你好，我叫[Name]，我是學生。'",
+      "writing": "Write your name, your country, and one greeting in Chinese.",
+      "self_check": "Can you say hello and tell someone your name?"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Nice to Meet You",
+    "level": "Novice",
+    "pack_number": 2,
+    "topic": "Introductions and 'This is...'",
+    "story_description": "A new student joins the class. The teacher introduces the student to two classmates.",
+    "story_intro": [
+      "A new student is here today.",
+      "The teacher is in the classroom.",
+      "The teacher introduces the new student to others.",
+      "Everyone says 'Nice to meet you'.",
+      "They are all friendly."
+    ],
+    "dialogue": [
+      {
+        "speaker": "Teacher",
+        "zh": "各位同學，大家好！",
+        "py": "gè wèi tóng xué, dà jiā hǎo!",
+        "en": "Hello class, everyone!"
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "這是一位新學生。",
+        "py": "zhè shì yī wèi xīn xué sheng.",
+        "en": "This is a new student."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "他叫馬克。",
+        "py": "tā jiào mǎ kè.",
+        "en": "His name is Mark."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "大家好，我叫馬克。",
+        "py": "dà jiā hǎo, wǒ jiào mǎ kè.",
+        "en": "Hello everyone, my name is Mark."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "很高興認識大家。",
+        "py": "hěn gāo xìng rèn shi dà jiā.",
+        "en": "Nice to meet you all."
+      },
+      {
+        "speaker": "A",
+        "zh": "馬克，你好！我叫小麗。",
+        "py": "mǎ kè, nǐ hǎo! wǒ jiào xiǎo lì.",
+        "en": "Mark, hello! My name is Xiaoli."
+      },
+      {
+        "speaker": "B",
+        "zh": "我叫大明。歡迎你！",
+        "py": "wǒ jiào dà míng. huān yíng nǐ!",
+        "en": "My name is Daming. Welcome!"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "謝謝你們。",
+        "py": "xiè xie nǐ men.",
+        "en": "Thank you (all)."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "馬克，這是你的課本。",
+        "py": "mǎ kè, zhè shì nǐ de kè běn.",
+        "en": "Mark, this is your textbook."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "謝謝老師。",
+        "py": "xiè xie lǎo shī.",
+        "en": "Thank you, teacher."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "請坐吧。",
+        "py": "qǐng zuò ba.",
+        "en": "Please take a seat."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "好的。",
+        "py": "hǎo de.",
+        "en": "Okay."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "這是一位新學生。",
+        "en": "This is a new student.",
+        "example": "這是我爸爸。"
+      },
+      {
+        "zh": "很高興認識大家。",
+        "en": "Nice to meet you all.",
+        "example": "很高興認識你。"
+      },
+      {
+        "zh": "歡迎你！",
+        "en": "Welcome!",
+        "example": "歡迎來到台灣！"
+      },
+      {
+        "zh": "謝謝你們。",
+        "en": "Thank you all.",
+        "example": "謝謝大家。"
+      },
+      {
+        "zh": "這是你的課本。",
+        "en": "This is your textbook.",
+        "example": "這是我的筆。"
+      },
+      {
+        "zh": "謝謝老師。",
+        "en": "Thank you, teacher.",
+        "example": "不客氣。"
+      },
+      {
+        "zh": "請坐吧。",
+        "en": "Please take a seat.",
+        "example": "請喝茶。"
+      },
+      {
+        "zh": "好的。",
+        "en": "Okay.",
+        "example": "沒問題，好的。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "大家",
+        "meaning": "everyone",
+        "pos": "pronoun",
+        "example": "大家好！"
+      },
+      {
+        "word": "這",
+        "meaning": "this",
+        "pos": "pronoun",
+        "example": "這是什麼？"
+      },
+      {
+        "word": "位",
+        "meaning": "measure word for people (polite)",
+        "pos": "measure word",
+        "example": "三位老師"
+      },
+      {
+        "word": "新",
+        "meaning": "new",
+        "pos": "adjective",
+        "example": "這是我的新手機。"
+      },
+      {
+        "word": "他",
+        "meaning": "he / him",
+        "pos": "pronoun",
+        "example": "他是我的朋友。"
+      },
+      {
+        "word": "歡迎",
+        "meaning": "to welcome",
+        "pos": "verb",
+        "example": "歡迎回家！"
+      },
+      {
+        "word": "謝謝",
+        "meaning": "thank you",
+        "pos": "verb",
+        "example": "謝謝你的幫助。"
+      },
+      {
+        "word": "你們",
+        "meaning": "you (plural)",
+        "pos": "pronoun",
+        "example": "你們是哪國人？"
+      },
+      {
+        "word": "老師",
+        "meaning": "teacher",
+        "pos": "noun",
+        "example": "王老師在那裡。"
+      },
+      {
+        "word": "課本",
+        "meaning": "textbook",
+        "pos": "noun",
+        "example": "請打開課本。"
+      },
+      {
+        "word": "請",
+        "meaning": "please",
+        "pos": "verb",
+        "example": "請進。"
+      },
+      {
+        "word": "坐",
+        "meaning": "to sit",
+        "pos": "verb",
+        "example": "請坐在這裡。"
+      },
+      {
+        "word": "吧",
+        "meaning": "particle for suggestion",
+        "pos": "particle",
+        "example": "我們走吧。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "這是一張照片。",
+        "很高興認識大家。",
+        "謝謝老師。",
+        "請坐吧。"
+      ],
+      "part_b": "Role-play: You are a teacher. Introduce a new friend to your classmates. Use 'This is...' and their name.",
+      "part_c": [
+        "他是誰？",
+        "這是什麼？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "Who is the new student?",
+          "a": "Mark"
+        },
+        {
+          "zh": "誰是新學生？",
+          "q": "Who is the new student?",
+          "a": "Mark"
+        },
+        {
+          "q": "What did the teacher give to Mark?",
+          "a": "A textbook"
+        },
+        {
+          "q": "What is the name of the girl classmate?",
+          "a": "Xiaoli"
+        },
+        {
+          "q": "What did Mark say to his classmates?",
+          "a": "Nice to meet you all / Thank you"
+        },
+        {
+          "q": "Did the teacher ask Mark to stand up or sit down?",
+          "a": "Sit down"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "Mark is a teacher.",
+          "a": false
+        },
+        {
+          "q": "Xiaoli and Daming are Mark's classmates.",
+          "a": true
+        },
+        {
+          "q": "The teacher gave Mark a pen.",
+          "a": false
+        },
+        {
+          "q": "Mark is a new student.",
+          "a": true
+        },
+        {
+          "q": "Everyone is in a classroom.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "____是一位新學生。",
+          "a": "這"
+        },
+        {
+          "q": "很高興認識____。",
+          "a": "大家"
+        },
+        {
+          "q": "這是你的____。",
+          "a": "課本"
+        },
+        {
+          "q": "____老師。",
+          "a": "謝謝"
+        },
+        {
+          "q": "請____吧。",
+          "a": "坐"
+        }
+      ],
+      "passage": {
+        "title": "Nice to Meet You Listening Passage",
+        "zh": "各位同學，大家好！這是一位新學生。他叫馬克。大家好，我叫馬克。很高興認識大家。",
+        "en": "A new student is here today. The teacher is in the classroom. The teacher introduces the new student to others. Everyone says 'Nice to meet you'. They are all friendly.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write 3 sentences about a classmate: their name, if they are a student, and 'Nice to meet you'.",
+    "grammar": {
+      "explanation": "Using '這 (zhè)' for 'this' and measure words like '位 (wèi)'. Measure words are required between a number/demonstrative and a noun.",
+      "examples": [
+        "這是我。 (This is me.)",
+        "這是一位老師。 (This is a teacher.)",
+        "那是你的課本。 (That is your textbook.)",
+        "兩位學生 (Two students)",
+        "請坐吧。 (Please sit down - 'ba' makes it a suggestion.)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: This is my friend.",
+          "a": "這是我的朋友。"
+        },
+        {
+          "q": "Complete: 這___一___學生。 (This is a student.)",
+          "a": "是, 位"
+        },
+        {
+          "q": "Translate: Nice to meet everyone.",
+          "a": "很高興認識大家。"
+        },
+        {
+          "q": "Complete: 謝謝____。 (Thank you all.)",
+          "a": "你們"
+        },
+        {
+          "q": "Translate: Please drink tea.",
+          "a": "請喝茶。"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "這是誰？",
+        "py": "zhè shì shuí?",
+        "en": "Who is this?"
+      },
+      {
+        "speaker": "B",
+        "zh": "這是我弟弟。",
+        "py": "zhè shì wǒ dì di.",
+        "en": "This is my younger brother."
+      },
+      {
+        "speaker": "A",
+        "zh": "他也是學生嗎？",
+        "py": "tā yě shì xué sheng ma?",
+        "en": "Is he also a student?"
+      },
+      {
+        "speaker": "B",
+        "zh": "不，他是老師。",
+        "py": "bù, tā shì lǎo shī.",
+        "en": "No, he is a teacher."
+      }
+    ],
+    "review": {
+      "speaking": "Introduce a friend: '這是我的朋友，他叫[Name]。'",
+      "writing": "Write 3 sentences about a classmate.",
+      "self_check": "Can you use 'This is...' to introduce someone?"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Where Are You From?",
+    "level": "Novice",
+    "pack_number": 3,
+    "topic": "Countries and Nationalities",
+    "story_description": "Two learners talk after class and ask about countries and cities.",
+    "story_intro": [
+      "Class is over.",
+      "Two students are talking.",
+      "They want to know about their countries.",
+      "They ask 'Where are you from?'.",
+      "They talk about cities too."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "你好，馬克！",
+        "py": "nǐ hǎo, mǎ kè!",
+        "en": "Hello, Mark!"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "你好！",
+        "py": "nǐ hǎo!",
+        "en": "Hello!"
+      },
+      {
+        "speaker": "A",
+        "zh": "你是哪國人？",
+        "py": "nǐ shì nǎ guó rén?",
+        "en": "Which country are you from?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "我是美國人。你呢？",
+        "py": "wǒ shì měi guó rén. nǐ ne?",
+        "en": "I am American. How about you?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我是台灣人。",
+        "py": "wǒ shì tái wān rén.",
+        "en": "I am Taiwanese."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "你是台灣哪裡人？",
+        "py": "nǐ shì tái wān nǎ lǐ rén?",
+        "en": "Where in Taiwan are you from?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我是台北人。你呢？",
+        "py": "wǒ shì tái běi rén. nǐ ne?",
+        "en": "I am from Taipei. How about you?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "我是紐約人。",
+        "py": "wǒ shì niǔ yuē rén.",
+        "en": "I am from New York."
+      },
+      {
+        "speaker": "A",
+        "zh": "紐約很大，對嗎？",
+        "py": "niǔ yuē hěn dà, duì ma?",
+        "en": "New York is very big, right?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "對，紐約很大，也很漂亮。",
+        "py": "duì, niǔ yuē hěn dà, yě hěn piào liang.",
+        "en": "Yes, New York is big and also beautiful."
+      },
+      {
+        "speaker": "A",
+        "zh": "我希望能去紐約。",
+        "py": "wǒ xī wàng néng qù niǔ yuē.",
+        "en": "I hope I can go to New York."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "歡迎你來紐約！",
+        "py": "huān yíng nǐ lái niǔ yuē!",
+        "en": "Welcome to New York!"
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "你是哪國人？",
+        "en": "What is your nationality?",
+        "example": "他是哪國人？"
+      },
+      {
+        "zh": "我是美國人。",
+        "en": "I am American.",
+        "example": "她是英國人。"
+      },
+      {
+        "zh": "你是台灣哪裡人？",
+        "en": "Where in Taiwan are you from?",
+        "example": "你是美國哪裡人？"
+      },
+      {
+        "zh": "我是台北人。",
+        "en": "I am from Taipei.",
+        "example": "我是倫敦人。"
+      },
+      {
+        "zh": "紐約很大。",
+        "en": "New York is very big.",
+        "example": "這個教室很大。"
+      },
+      {
+        "zh": "紐約也很漂亮。",
+        "en": "New York is also beautiful.",
+        "example": "她很漂亮。"
+      },
+      {
+        "zh": "我希望能去紐約。",
+        "en": "I hope to go to New York.",
+        "example": "我希望能學好中文。"
+      },
+      {
+        "zh": "歡迎你來紐約！",
+        "en": "Welcome to New York!",
+        "example": "歡迎你來我家。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "哪",
+        "meaning": "which",
+        "pos": "pronoun",
+        "example": "你是哪國人？"
+      },
+      {
+        "word": "國",
+        "meaning": "country",
+        "pos": "noun",
+        "example": "中國很大。"
+      },
+      {
+        "word": "人",
+        "meaning": "person / people",
+        "pos": "noun",
+        "example": "那個人是誰？"
+      },
+      {
+        "word": "哪裡",
+        "meaning": "where",
+        "pos": "pronoun",
+        "example": "你在哪裡？"
+      },
+      {
+        "word": "台灣",
+        "meaning": "Taiwan",
+        "pos": "noun",
+        "example": "台灣很漂亮。"
+      },
+      {
+        "word": "美國",
+        "meaning": "USA",
+        "pos": "noun",
+        "example": "他在美國工作。"
+      },
+      {
+        "word": "台北",
+        "meaning": "Taipei",
+        "pos": "noun",
+        "example": "台北是台灣的城市。"
+      },
+      {
+        "word": "紐約",
+        "meaning": "New York",
+        "pos": "noun",
+        "example": "紐約有很多大樓。"
+      },
+      {
+        "word": "很大",
+        "meaning": "very big",
+        "pos": "adjective",
+        "example": "這間房子很大。"
+      },
+      {
+        "word": "漂亮",
+        "meaning": "beautiful",
+        "pos": "adjective",
+        "example": "這件衣服很漂亮。"
+      },
+      {
+        "word": "希望",
+        "meaning": "to hope",
+        "pos": "verb",
+        "example": "我希望明天不下雨。"
+      },
+      {
+        "word": "能",
+        "meaning": "can / be able to",
+        "pos": "verb",
+        "example": "我能說中文。"
+      },
+      {
+        "word": "去",
+        "meaning": "to go",
+        "pos": "verb",
+        "example": "我想去圖書館。"
+      },
+      {
+        "word": "來",
+        "meaning": "to come",
+        "pos": "verb",
+        "example": "請來這裡。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "你是哪國人？",
+        "我是美國人。",
+        "台北很漂亮。",
+        "歡迎你來。"
+      ],
+      "part_b": "Role-play: Ask a friend where they are from (country and city). Tell them where you are from.",
+      "part_c": [
+        "你是哪國人？",
+        "你住在哪個城市？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What nationality is Mark?",
+          "a": "American"
+        },
+        {
+          "q": "Where is the other student from?",
+          "a": "Taipei, Taiwan"
+        },
+        {
+          "q": "Which city is described as big and beautiful?",
+          "a": "New York"
+        },
+        {
+          "q": "What does the Taiwanese student hope to do?",
+          "a": "Go to New York"
+        },
+        {
+          "q": "Is Taipei in Taiwan?",
+          "a": "Yes"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "Mark is from Taiwan.",
+          "a": false
+        },
+        {
+          "q": "A is from New York.",
+          "a": false
+        },
+        {
+          "q": "New York is a small city.",
+          "a": false
+        },
+        {
+          "q": "A hopes to visit New York.",
+          "a": true
+        },
+        {
+          "q": "Mark welcomes A to New York.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "你是____國人？",
+          "a": "哪"
+        },
+        {
+          "q": "我是____國人。",
+          "a": "美"
+        },
+        {
+          "q": "紐約很____。",
+          "a": "大"
+        },
+        {
+          "q": "紐約也____漂亮。",
+          "a": "很"
+        },
+        {
+          "q": "歡迎你____紐約！",
+          "a": "來"
+        }
+      ],
+      "passage": {
+        "title": "Where Are You From? Listening Passage",
+        "zh": "你好，馬克！你好！你是哪國人？我是美國人。你呢？我是台灣人。",
+        "en": "Class is over. Two students are talking. They want to know about their countries. They ask 'Where are you from?'. They talk about cities too.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write where you are from and where you live (country and city). Use 3 sentences.",
+    "grammar": {
+      "explanation": "Asking 'Which country' with '哪國 (nǎ guó)' and nationality by adding '人 (rén)' after a country name.",
+      "examples": [
+        "國 + 人 = Nationality (e.g., 美國人)",
+        "哪 + 國 + 人 = Which country's person?",
+        "哪裡 + 人 = Person from where? (usually for cities)",
+        "很 + Adjective (e.g., 很大, 很漂亮)",
+        "也 + 很 + Adjective (e.g., 也很漂亮)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: I am Japanese.",
+          "a": "我是日本人。"
+        },
+        {
+          "q": "Complete: 你是哪___人？",
+          "a": "國"
+        },
+        {
+          "q": "Translate: Where in America are you from?",
+          "a": "你是美國哪裡人？"
+        },
+        {
+          "q": "Complete: 倫敦很____。 (London is very beautiful.)",
+          "a": "漂亮"
+        },
+        {
+          "q": "Translate: Welcome to Taiwan!",
+          "a": "歡迎你來台灣！"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "你是英國人嗎？",
+        "py": "nǐ shì yīng guó rén ma?",
+        "en": "Are you British?"
+      },
+      {
+        "speaker": "B",
+        "zh": "不，我是澳洲人。",
+        "py": "bù, wǒ shì ào zhōu rén.",
+        "en": "No, I am Australian."
+      },
+      {
+        "speaker": "A",
+        "zh": "澳洲漂亮嗎？",
+        "py": "ào zhōu piào liang ma?",
+        "en": "Is Australia beautiful?"
+      },
+      {
+        "speaker": "B",
+        "zh": "澳洲非常漂亮。",
+        "py": "ào zhōu fēi cháng piào liang.",
+        "en": "Australia is extremely beautiful."
+      }
+    ],
+    "review": {
+      "speaking": "Ask someone: '你是哪國人？' and answer.",
+      "writing": "Write: '我是[Country]人，我是[City]人。'",
+      "self_check": "Can you say your country and city in Chinese?"
+    }
+  },
+  {
+    "id": 4,
+    "title": "How Are You Today?",
+    "level": "Novice",
+    "pack_number": 4,
+    "topic": "Feelings and States",
+    "story_description": "A student arrives late and looks tired. A friend asks how they feel.",
+    "story_intro": [
+      "The class is starting.",
+      "One student arrives late.",
+      "He looks very tired.",
+      "His friend asks about his feelings.",
+      "They talk about why he is tired."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "大衛，你來了！",
+        "py": "dà wèi, nǐ lái le!",
+        "en": "David, you're here!"
+      },
+      {
+        "speaker": "David",
+        "zh": "抱歉，我遲到了。",
+        "py": "bào qiàn, wǒ chí dào le.",
+        "en": "Sorry, I'm late."
+      },
+      {
+        "speaker": "A",
+        "zh": "沒關係。你今天怎麼樣？",
+        "py": "méi guān xi. nǐ jīn tiān zěn me yàng?",
+        "en": "No problem. How are you today?"
+      },
+      {
+        "speaker": "David",
+        "zh": "我今天很累。",
+        "py": "wǒ jīn tiān hěn lèi.",
+        "en": "I am very tired today."
+      },
+      {
+        "speaker": "A",
+        "zh": "為什麼？你昨天沒睡好嗎？",
+        "py": "wèi shén me? nǐ zuó tiān méi shuì hǎo ma?",
+        "en": "Why? Did you not sleep well yesterday?"
+      },
+      {
+        "speaker": "David",
+        "zh": "對，我昨晚功課很多。",
+        "py": "duì, wǒ zuó wǎn gōng kè hěn duō.",
+        "en": "Right, I had a lot of homework last night."
+      },
+      {
+        "speaker": "A",
+        "zh": "太辛苦了。",
+        "py": "tài xīn kǔ le.",
+        "en": "That's too hard."
+      },
+      {
+        "speaker": "David",
+        "zh": "我現在想喝咖啡。",
+        "py": "wǒ xiàn zài xiǎng hē kā fēi.",
+        "en": "I want to drink coffee now."
+      },
+      {
+        "speaker": "A",
+        "zh": "我也想喝。我們課後去買吧。",
+        "py": "wǒ yě xiǎng hē. wǒ men kè hòu qù mǎi ba.",
+        "en": "I also want to drink some. Let's go buy some after class."
+      },
+      {
+        "speaker": "David",
+        "zh": "好主意，謝謝你。",
+        "py": "hǎo zhǔ yì, xiè xie nǐ.",
+        "en": "Good idea, thank you."
+      },
+      {
+        "speaker": "A",
+        "zh": "不客氣。現在我們開始上課吧。",
+        "py": "bù kè qì. xiàn zài wǒ men kāi shǐ shàng kè ba.",
+        "en": "You're welcome. Now let's start class."
+      },
+      {
+        "speaker": "David",
+        "zh": "好。",
+        "py": "hǎo.",
+        "en": "Okay."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "你今天怎麼樣？",
+        "en": "How are you today?",
+        "example": "你的功課怎麼樣？"
+      },
+      {
+        "zh": "我今天很累。",
+        "en": "I am very tired today.",
+        "example": "他不累。"
+      },
+      {
+        "zh": "為什麼？",
+        "en": "Why?",
+        "example": "你為什麼不去？"
+      },
+      {
+        "zh": "功課很多。",
+        "en": "A lot of homework.",
+        "example": "這裡的人很多。"
+      },
+      {
+        "zh": "我現在想喝咖啡。",
+        "en": "I want to drink coffee now.",
+        "example": "你想喝什麼？"
+      },
+      {
+        "zh": "好主意！",
+        "en": "Good idea!",
+        "example": "這是一個好主意。"
+      },
+      {
+        "zh": "不客氣。",
+        "en": "You're welcome.",
+        "example": "謝謝你。 - 不客氣。"
+      },
+      {
+        "zh": "我們開始上課吧。",
+        "en": "Let's start class.",
+        "example": "我們吃飯吧。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "遲到",
+        "meaning": "to arrive late",
+        "pos": "verb",
+        "example": "他上班遲到了。"
+      },
+      {
+        "word": "沒關係",
+        "meaning": "it doesn't matter / no problem",
+        "pos": "phrase",
+        "example": "對不起。 - 沒關係。"
+      },
+      {
+        "word": "怎麼樣",
+        "meaning": "how",
+        "pos": "pronoun",
+        "example": "這本書怎麼樣？"
+      },
+      {
+        "word": "累",
+        "meaning": "tired",
+        "pos": "adjective",
+        "example": "我很累，想睡覺。"
+      },
+      {
+        "word": "為什麼",
+        "meaning": "why",
+        "pos": "pronoun",
+        "example": "他為什麼沒來？"
+      },
+      {
+        "word": "昨天",
+        "meaning": "yesterday",
+        "pos": "noun",
+        "example": "昨天是星期一。"
+      },
+      {
+        "word": "睡好",
+        "meaning": "to sleep well",
+        "pos": "verb",
+        "example": "你昨天睡好了嗎？"
+      },
+      {
+        "word": "功課",
+        "meaning": "homework",
+        "pos": "noun",
+        "example": "我的功課還沒寫完。"
+      },
+      {
+        "word": "多",
+        "meaning": "many / much",
+        "pos": "adjective",
+        "example": "這裡的書很多。"
+      },
+      {
+        "word": "現在",
+        "meaning": "now",
+        "pos": "noun",
+        "example": "現在幾點？"
+      },
+      {
+        "word": "想",
+        "meaning": "to want / to think",
+        "pos": "verb",
+        "example": "我想學中文。"
+      },
+      {
+        "word": "喝",
+        "meaning": "to drink",
+        "pos": "verb",
+        "example": "我想喝冷水。"
+      },
+      {
+        "word": "咖啡",
+        "meaning": "coffee",
+        "pos": "noun",
+        "example": "我不喜歡喝咖啡。"
+      },
+      {
+        "word": "主意",
+        "meaning": "idea",
+        "pos": "noun",
+        "example": "你有什麼好主意？"
+      },
+      {
+        "word": "開始",
+        "meaning": "to start",
+        "pos": "verb",
+        "example": "電影什麼時候開始？"
+      },
+      {
+        "word": "上課",
+        "meaning": "to attend class / class starts",
+        "pos": "verb",
+        "example": "我們九點上課。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "你今天怎麼樣？",
+        "我今天很累。",
+        "我現在想喝咖啡。",
+        "沒關係。"
+      ],
+      "part_b": "Role-play: Your friend looks tired. Ask them how they are and why. Suggest a drink.",
+      "part_c": [
+        "你今天累嗎？",
+        "你喜歡喝咖啡嗎？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "Why is David late?",
+          "a": "He is not explicitly told why, but he arrived late."
+        },
+        {
+          "q": "How does David feel?",
+          "a": "Tired"
+        },
+        {
+          "q": "Why is David tired?",
+          "a": "He had a lot of homework last night."
+        },
+        {
+          "q": "What does David want to drink?",
+          "a": "Coffee"
+        },
+        {
+          "q": "When will they buy coffee?",
+          "a": "After class"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "David slept well last night.",
+          "a": false
+        },
+        {
+          "q": "A is angry that David is late.",
+          "a": false
+        },
+        {
+          "q": "David has a lot of homework.",
+          "a": true
+        },
+        {
+          "q": "They will go buy coffee now.",
+          "a": false
+        },
+        {
+          "q": "A also wants to drink coffee.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "你今天____樣？",
+          "a": "怎麼"
+        },
+        {
+          "q": "我今天很____。",
+          "a": "累"
+        },
+        {
+          "q": "你昨天____睡好嗎？",
+          "a": "沒"
+        },
+        {
+          "q": "我現在____喝咖啡。",
+          "a": "想"
+        },
+        {
+          "q": "好____！",
+          "a": "主意"
+        }
+      ],
+      "passage": {
+        "title": "How Are You Today? Listening Passage",
+        "zh": "大衛，你來了！抱歉，我遲到了。沒關係。你今天怎麼樣？我今天很累。為什麼？你昨天沒睡好嗎？",
+        "en": "The class is starting. One student arrives late. He looks very tired. His friend asks about his feelings. They talk about why he is tired.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write 4 sentences about how you feel today and why (e.g., happy because it's sunny, or tired because of work).",
+    "grammar": {
+      "explanation": "Asking 'How' with '怎麼樣 (zěn me yàng)' and 'Why' with '為什麼 (wèi shén me)'. Using '想 (xiǎng)' for 'want to do something'.",
+      "examples": [
+        "你今天怎麼樣？ (How are you today?)",
+        "他為什麼不來？ (Why is he not coming?)",
+        "我想喝茶。 (I want to drink tea.)",
+        "我不想去。 (I don't want to go.)",
+        "開始上課吧。 (Let's start class - 'ba' for suggestion.)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: How is your friend?",
+          "a": "你的朋友怎麼樣？"
+        },
+        {
+          "q": "Complete: 他為什麼___高興？ (Why is he happy?)",
+          "a": "很"
+        },
+        {
+          "q": "Translate: I want to go home.",
+          "a": "我想回家。"
+        },
+        {
+          "q": "Complete: 我們___喝咖啡吧。 (Let's drink coffee.)",
+          "a": "去"
+        },
+        {
+          "q": "Translate: Why are you tired?",
+          "a": "你為什麼很累？"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "你今天高興嗎？",
+        "py": "nǐ jīn tiān gāo xìng ma?",
+        "en": "Are you happy today?"
+      },
+      {
+        "speaker": "B",
+        "zh": "我很開心，因為今天是我的生日。",
+        "py": "wǒ hěn kāi xīn, yīn wèi jīn tiān shì wǒ de shēng rì.",
+        "en": "I am very happy because today is my birthday."
+      },
+      {
+        "speaker": "A",
+        "zh": "真的嗎？祝你生日快樂！",
+        "py": "zhēn de ma? zhù nǐ shēng rì kuài lè!",
+        "en": "Really? Happy birthday!"
+      },
+      {
+        "speaker": "B",
+        "zh": "謝謝你！",
+        "py": "xiè xie nǐ!",
+        "en": "Thank you!"
+      }
+    ],
+    "review": {
+      "speaking": "Say how you feel: '我今天很[Feeling]。",
+      "writing": "Write 4 sentences about your feelings.",
+      "self_check": "Can you say how you feel and ask why?"
+    }
+  },
+  {
+    "id": 5,
+    "title": "In the Classroom",
+    "level": "Novice",
+    "pack_number": 5,
+    "topic": "Classroom Instructions",
+    "story_description": "The teacher gives simple classroom instructions. Students ask for help.",
+    "story_intro": [
+      "The teacher is talking.",
+      "The students are listening.",
+      "The teacher gives some commands.",
+      "Students follow the instructions.",
+      "If they don't understand, they ask questions."
+    ],
+    "dialogue": [
+      {
+        "speaker": "Teacher",
+        "zh": "各位學生，請聽我說。",
+        "py": "gè wèi xué sheng, qǐng tīng wǒ shuō.",
+        "en": "Students, please listen to me."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "請打開課本，翻到第十頁。",
+        "py": "qǐng dǎ kāi kè běn, fān dào dì shí yè.",
+        "en": "Please open your textbook to page ten."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "請跟我讀。",
+        "py": "qǐng gēn wǒ dú.",
+        "en": "Please read after me."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "你好。",
+        "py": "nǐ hǎo.",
+        "en": "Hello."
+      },
+      {
+        "speaker": "Students",
+        "zh": "你好。",
+        "py": "nǐ hǎo.",
+        "en": "Hello."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "現在，請大家寫這兩個字。",
+        "py": "xiàn zài, qǐng dà jiā xiě zhè liǎng gè zì.",
+        "en": "Now, please everyone write these two characters."
+      },
+      {
+        "speaker": "A",
+        "zh": "老師，請等一下。",
+        "py": "lǎo shī, qǐng děng yī xià.",
+        "en": "Teacher, please wait a moment."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "什麼事？",
+        "py": "shén me shì?",
+        "en": "What's the matter?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我不明白這句話。",
+        "py": "wǒ bù míng bai zhè jù huà.",
+        "en": "I don't understand this sentence."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "沒關係，我再說一遍。",
+        "py": "méi guān xi, wǒ zài shuō yī biàn.",
+        "en": "No problem, I'll say it again."
+      },
+      {
+        "speaker": "A",
+        "zh": "謝謝老師。",
+        "py": "xiè xie lǎo shī.",
+        "en": "Thank you, teacher."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "大家明白了也？",
+        "py": "dà jiā míng bai le ma?",
+        "en": "Does everyone understand?"
+      },
+      {
+        "speaker": "Students",
+        "zh": "明白了。",
+        "py": "míng bai le.",
+        "en": "Understood."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "請聽我說。",
+        "en": "Please listen to me.",
+        "example": "請聽音樂。"
+      },
+      {
+        "zh": "請打開課本。",
+        "en": "Please open the textbook.",
+        "example": "請打開門。"
+      },
+      {
+        "zh": "翻到第十頁。",
+        "en": "Turn to page ten.",
+        "example": "請翻到第五頁。"
+      },
+      {
+        "zh": "請跟我讀。",
+        "en": "Please read after me.",
+        "example": "請跟他走。"
+      },
+      {
+        "zh": "寫這兩個字。",
+        "en": "Write these two characters.",
+        "example": "他在寫信。"
+      },
+      {
+        "zh": "老師，請等一下。",
+        "en": "Teacher, please wait a moment.",
+        "example": "請等我。"
+      },
+      {
+        "zh": "我不明白這句話。",
+        "en": "I don't understand this sentence.",
+        "example": "你明白嗎？"
+      },
+      {
+        "zh": "我再說一遍。",
+        "en": "I'll say it again.",
+        "example": "請再讀一遍。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "聽",
+        "meaning": "to listen",
+        "pos": "verb",
+        "example": "你聽，這是什麼聲音？"
+      },
+      {
+        "word": "說",
+        "meaning": "to speak / to say",
+        "pos": "verb",
+        "example": "他說中文說得很好。"
+      },
+      {
+        "word": "打開",
+        "meaning": "to open",
+        "pos": "verb",
+        "example": "請打開窗戶。"
+      },
+      {
+        "word": "翻到",
+        "meaning": "to turn to (a page)",
+        "pos": "verb",
+        "example": "翻到第三頁。"
+      },
+      {
+        "word": "第",
+        "meaning": "prefix for ordinal numbers",
+        "pos": "prefix",
+        "example": "第一名"
+      },
+      {
+        "word": "頁",
+        "meaning": "page",
+        "pos": "measure word",
+        "example": "這本書有兩百頁。"
+      },
+      {
+        "word": "跟",
+        "meaning": "with / to follow",
+        "pos": "preposition",
+        "example": "請跟我來。"
+      },
+      {
+        "word": "讀",
+        "meaning": "to read / to study",
+        "pos": "verb",
+        "example": "你在讀什麼書？"
+      },
+      {
+        "word": "寫",
+        "meaning": "to write",
+        "pos": "verb",
+        "example": "我在寫中文作業。"
+      },
+      {
+        "word": "兩",
+        "meaning": "two (of something)",
+        "pos": "number",
+        "example": "我有兩個哥哥。"
+      },
+      {
+        "word": "字",
+        "meaning": "character / word",
+        "pos": "noun",
+        "example": "這個字怎麼讀？"
+      },
+      {
+        "word": "等一下",
+        "meaning": "wait a moment",
+        "pos": "phrase",
+        "example": "等一下，我馬上來。"
+      },
+      {
+        "word": "明白",
+        "meaning": "to understand",
+        "pos": "verb",
+        "example": "我明白了。"
+      },
+      {
+        "word": "句",
+        "meaning": "sentence",
+        "pos": "measure word",
+        "example": "這句話很難。"
+      },
+      {
+        "word": "一遍",
+        "meaning": "one time (from beginning to end)",
+        "pos": "measure word",
+        "example": "請再說一遍。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "請聽我說。",
+        "請跟我讀。",
+        "我不明白。",
+        "請再說一遍。"
+      ],
+      "part_b": "Role-play: You are a student. Tell the teacher you don't understand and ask them to say it again.",
+      "part_c": [
+        "你明白嗎？",
+        "請寫你的名字。"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What should the students open?",
+          "a": "The textbook"
+        },
+        {
+          "q": "What page should they turn to?",
+          "a": "Page ten"
+        },
+        {
+          "q": "What does the teacher want the students to do after her?",
+          "a": "Read after her"
+        },
+        {
+          "q": "How many characters should they write?",
+          "a": "Two"
+        },
+        {
+          "q": "What did the teacher do when the student didn't understand?",
+          "a": "Said it again"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "The students are listening to music.",
+          "a": false
+        },
+        {
+          "q": "They should open their bags.",
+          "a": false
+        },
+        {
+          "q": "A student asks the teacher to wait.",
+          "a": true
+        },
+        {
+          "q": "One student doesn't understand a sentence.",
+          "a": true
+        },
+        {
+          "q": "The teacher refused to say it again.",
+          "a": false
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "請____我說。",
+          "a": "聽"
+        },
+        {
+          "q": "請打開____。",
+          "a": "課本"
+        },
+        {
+          "q": "請跟我____。",
+          "a": "讀"
+        },
+        {
+          "q": "我不想____這兩個字。",
+          "a": "寫"
+        },
+        {
+          "q": "請____說一遍。",
+          "a": "再"
+        }
+      ],
+      "passage": {
+        "title": "In the Classroom Listening Passage",
+        "zh": "各位學生，請聽我說。請打開課本，翻到第十頁。請跟我讀。你好。現在，請大家寫這兩個字。",
+        "en": "The teacher is talking. The students are listening. The teacher gives some commands. Students follow the instructions. If they don't understand, they ask questions.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write 5 classroom commands (e.g., 'Listen to me', 'Open the book').",
+    "grammar": {
+      "explanation": "Giving polite commands using '請 (qǐng)' + Verb. Using '第 (dì)' for ordinal numbers (1st, 2nd, etc.) and '兩 (liǎng)' for the quantity 'two'.",
+      "examples": [
+        "請坐。 (Please sit.)",
+        "第一頁 (The first page)",
+        "兩個學生 (Two students - use 'liǎng' instead of 'èr' with measure words)",
+        "請再說一遍。 (Please say it one more time.)",
+        "我明白了。 (I understand now - 'le' indicates a change of state.)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: Please open the door.",
+          "a": "請打開門。"
+        },
+        {
+          "q": "Complete: ___十頁 (Page 10)",
+          "a": "第"
+        },
+        {
+          "q": "Translate: Two teachers",
+          "a": "兩位老師"
+        },
+        {
+          "q": "Complete: 請再讀___。 (Please read one more time.)",
+          "a": "一遍"
+        },
+        {
+          "q": "Translate: I don't understand.",
+          "a": "我不明白。"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "老師，這個字怎麼讀？",
+        "py": "lǎo shī, zhè ge zì zěn me dú?",
+        "en": "Teacher, how do you read this character?"
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "這個字讀'書'。",
+        "py": "zhè ge zì dú 'shū'.",
+        "en": "This character is read as 'shū'."
+      },
+      {
+        "speaker": "A",
+        "zh": "是什麼意思？",
+        "py": "shì shén me yì si?",
+        "en": "What does it mean?"
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "是'book'的意思。",
+        "py": "shì 'book' de yì si.",
+        "en": "It means 'book'."
+      }
+    ],
+    "review": {
+      "speaking": "Give a command: '請打開課本。'",
+      "writing": "Write 5 classroom commands.",
+      "self_check": "Can you understand and give simple classroom commands?"
+    }
+  },
+  {
+    "id": 6,
+    "title": "What Is This?",
+    "level": "Novice",
+    "pack_number": 6,
+    "topic": "Common Objects and 'This/That'",
+    "story_description": "A student finds objects on a desk and asks what they are.",
+    "story_intro": [
+      "The classroom is quiet.",
+      "A student is looking at a desk.",
+      "There are many things on the desk.",
+      "She asks her friend about the objects.",
+      "They use 'this' and 'that' to identify things."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "小明，這是什麼？",
+        "py": "xiǎo míng, zhè shì shén me?",
+        "en": "Xiaoming, what is this?"
+      },
+      {
+        "speaker": "B",
+        "zh": "這是一支筆。",
+        "py": "zhè shì yī zhī bǐ.",
+        "en": "This is a pen."
+      },
+      {
+        "speaker": "A",
+        "zh": "那是什麼？",
+        "py": "nà shì shén me?",
+        "en": "What is that?"
+      },
+      {
+        "speaker": "B",
+        "zh": "那是我的筆記本。",
+        "py": "nà shì wǒ de bǐ jì běn.",
+        "en": "That is my notebook."
+      },
+      {
+        "speaker": "A",
+        "zh": "這個也是你的嗎？",
+        "py": "zhè ge yě shì nǐ de ma?",
+        "en": "Is this also yours?"
+      },
+      {
+        "speaker": "B",
+        "zh": "不是，那是小華的書。",
+        "py": "bù shì, nà shì xiǎo huá de shū.",
+        "en": "No, that is Xiaohua's book."
+      },
+      {
+        "speaker": "A",
+        "zh": "這本書很大。",
+        "py": "zhè běn shū hěn dà.",
+        "en": "This book is very big."
+      },
+      {
+        "speaker": "B",
+        "zh": "對，那是字典。",
+        "py": "duì, nà shì zì diǎn.",
+        "en": "Right, that is a dictionary."
+      },
+      {
+        "speaker": "A",
+        "zh": "桌子上還有什麼？",
+        "py": "zhuō zi shàng hái yǒu shén me?",
+        "en": "What else is on the table?"
+      },
+      {
+        "speaker": "B",
+        "zh": "還有一張地圖和一個書包。",
+        "py": "hái yǒu yī zhāng dì tú hé yī gè shū bāo.",
+        "en": "There is also a map and a schoolbag."
+      },
+      {
+        "speaker": "A",
+        "zh": "地圖在那裡嗎？",
+        "py": "dì tú zài nà lǐ ma?",
+        "en": "Is the map over there?"
+      },
+      {
+        "speaker": "B",
+        "zh": "對，就在那裡。",
+        "py": "duì, jiù zài nà lǐ.",
+        "en": "Yes, right over there."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "這是什麼？",
+        "en": "What is this?",
+        "example": "這是一個蘋果。"
+      },
+      {
+        "zh": "那是什麼？",
+        "en": "What is that?",
+        "example": "那是一隻貓。"
+      },
+      {
+        "zh": "這是一支筆。",
+        "en": "This is a pen.",
+        "example": "這是一支鉛筆。"
+      },
+      {
+        "zh": "那是我的筆記本。",
+        "en": "That is my notebook.",
+        "example": "這是你的水杯。"
+      },
+      {
+        "zh": "這個也是你的嗎？",
+        "en": "Is this also yours?",
+        "example": "那也是老師的嗎？"
+      },
+      {
+        "zh": "這本書很大。",
+        "en": "This book is very big.",
+        "example": "那個教室很小。"
+      },
+      {
+        "zh": "桌子上還有什麼？",
+        "en": "What else is on the table?",
+        "example": "書包裡還有什麼？"
+      },
+      {
+        "zh": "地圖在那裡。",
+        "en": "The map is over there.",
+        "example": "筆在這裡。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "這",
+        "meaning": "this",
+        "pos": "pronoun",
+        "example": "這是誰的？"
+      },
+      {
+        "word": "那",
+        "meaning": "that",
+        "pos": "pronoun",
+        "example": "那是什麼意思？"
+      },
+      {
+        "word": "筆",
+        "meaning": "pen",
+        "pos": "noun",
+        "example": "我需要一支筆。"
+      },
+      {
+        "word": "筆記本",
+        "meaning": "notebook",
+        "pos": "noun",
+        "example": "筆記本在桌子上。"
+      },
+      {
+        "word": "書",
+        "meaning": "book",
+        "pos": "noun",
+        "example": "我看這本書。"
+      },
+      {
+        "word": "的",
+        "meaning": "possessive particle",
+        "pos": "particle",
+        "example": "這是我的。"
+      },
+      {
+        "word": "字典",
+        "meaning": "dictionary",
+        "pos": "noun",
+        "example": "這本字典很厚。"
+      },
+      {
+        "word": "桌子",
+        "meaning": "table / desk",
+        "pos": "noun",
+        "example": "桌子上有電腦。"
+      },
+      {
+        "word": "地圖",
+        "meaning": "map",
+        "pos": "noun",
+        "example": "地圖在牆上。"
+      },
+      {
+        "word": "書包",
+        "meaning": "schoolbag",
+        "pos": "noun",
+        "example": "我的書包是藍色的。"
+      },
+      {
+        "word": "支",
+        "meaning": "measure word for pens/long objects",
+        "pos": "measure word",
+        "example": "兩支筆"
+      },
+      {
+        "word": "本",
+        "meaning": "measure word for books",
+        "pos": "measure word",
+        "example": "三本書"
+      },
+      {
+        "word": "張",
+        "meaning": "measure word for flat objects (paper, maps, tables)",
+        "pos": "measure word",
+        "example": "一張紙"
+      },
+      {
+        "word": "個",
+        "meaning": "general measure word",
+        "pos": "measure word",
+        "example": "一個學生"
+      },
+      {
+        "word": "和",
+        "meaning": "and",
+        "pos": "conjunction",
+        "example": "我和你。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "這是什麼？",
+        "那是一支筆。",
+        "這本書很大。",
+        "地圖在那裡。"
+      ],
+      "part_b": "Role-play: Point at objects in your room and ask '這是什麼？'. Have your partner answer using '這是...' and a noun.",
+      "part_c": [
+        "這是你的筆嗎？",
+        "桌子上有什麼？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What is the first object identified?",
+          "a": "A pen"
+        },
+        {
+          "q": "Who does the book belong to?",
+          "a": "Xiaohua"
+        },
+        {
+          "q": "What is described as very big?",
+          "a": "The book (dictionary)"
+        },
+        {
+          "q": "Where is the map?",
+          "a": "Over there / On the desk"
+        },
+        {
+          "q": "How many objects are mentioned at the end?",
+          "a": "Two (map and schoolbag)"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "The pen is Xiaoming's.",
+          "a": true
+        },
+        {
+          "q": "The notebook is Xiaoming's.",
+          "a": true
+        },
+        {
+          "q": "The book is Xiaoming's.",
+          "a": false
+        },
+        {
+          "q": "There is a map on the desk.",
+          "a": true
+        },
+        {
+          "q": "The schoolbag is under the desk.",
+          "a": false
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "這是一____筆。",
+          "a": "支"
+        },
+        {
+          "q": "那____什麼？",
+          "a": "是"
+        },
+        {
+          "q": "這____書很大。",
+          "a": "本"
+        },
+        {
+          "q": "桌子____還有什麼？",
+          "a": "上"
+        },
+        {
+          "q": "地圖____那裡。",
+          "a": "在"
+        }
+      ],
+      "passage": {
+        "title": "What Is This? Listening Passage",
+        "zh": "小明，這是什麼？這是一支筆。那是什麼？那是我的筆記本。這個也是你的嗎？",
+        "en": "The classroom is quiet. A student is looking at a desk. There are many things on the desk. She asks her friend about the objects. They use 'this' and 'that' to identify things.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Label 8 objects you might find on a desk in Chinese (e.g., pen, book, notebook, computer, map, etc.).",
+    "grammar": {
+      "explanation": "Using '這 (zhè)' and '那 (nà)' with measure words. Each noun has a specific measure word (e.g., '支' for pens, '本' for books, '張' for flat surfaces).",
+      "examples": [
+        "這一支筆 (This pen)",
+        "那三本書 (Those three books)",
+        "這兩張地圖 (These two maps)",
+        "那個書包 (That schoolbag)",
+        "桌子上 (On the table - 'shàng' comes after the noun)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: This book",
+          "a": "這本書"
+        },
+        {
+          "q": "Complete: 一___筆",
+          "a": "支"
+        },
+        {
+          "q": "Translate: That map",
+          "a": "那張地圖"
+        },
+        {
+          "q": "Complete: 桌子___有書。 (There are books on the table.)",
+          "a": "上"
+        },
+        {
+          "q": "Translate: What is that?",
+          "a": "那是什麼？"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "這是你的電腦嗎？",
+        "py": "zhè shì nǐ de diàn nǎo ma?",
+        "en": "Is this your computer?"
+      },
+      {
+        "speaker": "B",
+        "zh": "對，這是我的電腦。",
+        "py": "duì, zhè shì wǒ de diàn nǎo.",
+        "en": "Yes, this is my computer."
+      },
+      {
+        "speaker": "A",
+        "zh": "你的電腦很新。",
+        "py": "nǐ de diàn nǎo hěn xīn.",
+        "en": "Your computer is very new."
+      },
+      {
+        "speaker": "B",
+        "zh": "謝謝。",
+        "py": "xiè xie.",
+        "en": "Thank you."
+      }
+    ],
+    "review": {
+      "speaking": "Ask '這是什麼？' and answer with '這是一支筆。'",
+      "writing": "Write: '桌子上有書和筆。'",
+      "self_check": "Can you use 'this' and 'that' with correct measure words?"
+    }
+  },
+  {
+    "id": 7,
+    "title": "My Bag Is Missing",
+    "level": "Novice",
+    "pack_number": 7,
+    "topic": "Possessives and Lost Items",
+    "story_description": "A student cannot find their bag. A friend helps search in the classroom.",
+    "story_intro": [
+      "The class is over.",
+      "A student is looking for something.",
+      "She cannot find her bag.",
+      "Her friend helps her search.",
+      "They check the desks and chairs."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "糟糕，我的書包在哪裡？",
+        "py": "zāo gāo, wǒ de shū bāo zài nǎ lǐ?",
+        "en": "Oh no, where is my schoolbag?"
+      },
+      {
+        "speaker": "B",
+        "zh": "你找不到書包了嗎？",
+        "py": "nǐ zhǎo bù dào shū bāo le ma?",
+        "en": "Can't you find your schoolbag?"
+      },
+      {
+        "speaker": "A",
+        "zh": "對，我剛才還在這裡。",
+        "py": "duì, wǒ gāng cái hái zài zhè lǐ.",
+        "en": "Right, I was just here a moment ago."
+      },
+      {
+        "speaker": "B",
+        "zh": "別擔心，我們一起找吧。",
+        "py": "bié dān xīn, wǒ men yī qǐ zhǎo ba.",
+        "en": "Don't worry, let's look together."
+      },
+      {
+        "speaker": "B",
+        "zh": "這是你的嗎？",
+        "py": "zhè shì nǐ de ma?",
+        "en": "Is this yours?"
+      },
+      {
+        "speaker": "A",
+        "zh": "不是，那是小華的。",
+        "py": "bù shì, nà shì xiǎo huá de.",
+        "en": "No, that's Xiaohua's."
+      },
+      {
+        "speaker": "B",
+        "zh": "你的書包是什麼顏色的？",
+        "py": "nǐ de shū bāo shì shén me yán sè de?",
+        "en": "What color is your schoolbag?"
+      },
+      {
+        "speaker": "A",
+        "zh": "是藍色的，很大。",
+        "py": "shì lán sè de, hěn dà.",
+        "en": "It's blue and very big."
+      },
+      {
+        "speaker": "B",
+        "zh": "看！那是你的嗎？在桌子下面。",
+        "py": "kàn! nà shì nǐ de ma? zài zhuō zi xià mian.",
+        "en": "Look! Is that yours? Under the table."
+      },
+      {
+        "speaker": "A",
+        "zh": "對！那是我的書包。太謝謝你了！",
+        "py": "duì! nà shì wǒ de shū bāo. tài xiè xie nǐ le!",
+        "en": "Yes! That is my schoolbag. Thank you so much!"
+      },
+      {
+        "speaker": "B",
+        "zh": "沒關係，找到了就好。",
+        "py": "méi guān xi, zhǎo dào le jiù hǎo.",
+        "en": "No problem, it's good that it's found."
+      },
+      {
+        "speaker": "A",
+        "zh": "我的書和筆都在裡面。",
+        "py": "wǒ de shū hé bǐ dōu zài lǐ miàn.",
+        "en": "My books and pens are all inside."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "我的書包在哪裡？",
+        "en": "Where is my schoolbag?",
+        "example": "你的手機在哪裡？"
+      },
+      {
+        "zh": "你找不到嗎？",
+        "en": "Can't you find it?",
+        "example": "我看不到。"
+      },
+      {
+        "zh": "別擔心。",
+        "en": "Don't worry.",
+        "example": "別走。"
+      },
+      {
+        "zh": "我們一起找吧。",
+        "en": "Let's look together.",
+        "example": "我們一起吃飯吧。"
+      },
+      {
+        "zh": "這是你的嗎？",
+        "en": "Is this yours?",
+        "example": "那是老師的。"
+      },
+      {
+        "zh": "你的書包是什麼顏色的？",
+        "en": "What color is your schoolbag?",
+        "example": "他的衣服是什麼顏色的？"
+      },
+      {
+        "zh": "是藍色的。",
+        "en": "It's blue.",
+        "example": "蘋果是紅色的。"
+      },
+      {
+        "zh": "在桌子下面。",
+        "en": "Under the table.",
+        "example": "在書包裡面。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "糟糕",
+        "meaning": "terrible / oh no",
+        "pos": "phrase",
+        "example": "糟糕，我忘了帶鑰匙。"
+      },
+      {
+        "word": "找不到",
+        "meaning": "cannot find",
+        "pos": "verb",
+        "example": "我找不到我的貓。"
+      },
+      {
+        "word": "剛才",
+        "meaning": "just now",
+        "pos": "adverb",
+        "example": "他剛才在這裡。"
+      },
+      {
+        "word": "別",
+        "meaning": "don't",
+        "pos": "adverb",
+        "example": "別說話。"
+      },
+      {
+        "word": "擔心",
+        "meaning": "to worry",
+        "pos": "verb",
+        "example": "別為我擔心。"
+      },
+      {
+        "word": "一起",
+        "meaning": "together",
+        "pos": "adverb",
+        "example": "我們一起去。"
+      },
+      {
+        "word": "找",
+        "meaning": "to look for",
+        "pos": "verb",
+        "example": "你在找什麼？"
+      },
+      {
+        "word": "顏色",
+        "meaning": "color",
+        "pos": "noun",
+        "example": "你喜歡什麼顏色？"
+      },
+      {
+        "word": "藍色",
+        "meaning": "blue",
+        "pos": "noun / adjective",
+        "example": "藍色的天空。"
+      },
+      {
+        "word": "下面",
+        "meaning": "under / below",
+        "pos": "noun",
+        "example": "貓在椅子下面。"
+      },
+      {
+        "word": "裡面",
+        "meaning": "inside",
+        "pos": "noun",
+        "example": "教室裡面有學生。"
+      },
+      {
+        "word": "找到",
+        "meaning": "to find",
+        "pos": "verb",
+        "example": "我找到我的手機了。"
+      },
+      {
+        "word": "書包",
+        "meaning": "schoolbag",
+        "pos": "noun",
+        "example": "書包很重。"
+      },
+      {
+        "word": "看",
+        "meaning": "to look",
+        "pos": "verb",
+        "example": "看那裡！"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "我的書包在哪裡？",
+        "別擔心。",
+        "這是藍色的。",
+        "在桌子下面。"
+      ],
+      "part_b": "Role-play: You lost your phone. Describe its color to your friend and look for it together. Use '藍色的' or '紅色的'.",
+      "part_c": [
+        "你的書包是什麼顏色的？",
+        "書包裡面有什麼？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What did the student lose?",
+          "a": "Their schoolbag"
+        },
+        {
+          "q": "Where was the student just a moment ago?",
+          "a": "Here (in the classroom)"
+        },
+        {
+          "q": "What color is the schoolbag?",
+          "a": "Blue"
+        },
+        {
+          "q": "Where was the schoolbag found?",
+          "a": "Under the table"
+        },
+        {
+          "q": "What is inside the schoolbag?",
+          "a": "Books and pens"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "The student is not worried about the bag.",
+          "a": false
+        },
+        {
+          "q": "The first bag they found was blue.",
+          "a": false
+        },
+        {
+          "q": "The student's bag is big.",
+          "a": true
+        },
+        {
+          "q": "They found the bag on top of the desk.",
+          "a": false
+        },
+        {
+          "q": "A helped B find the bag.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "我的書包在____？",
+          "a": "哪裡"
+        },
+        {
+          "q": "別____，我幫你找。",
+          "a": "擔心"
+        },
+        {
+          "q": "你是什麼____的？",
+          "a": "顏色"
+        },
+        {
+          "q": "在桌子____。",
+          "a": "下面"
+        },
+        {
+          "q": "書包____有書。",
+          "a": "裡面"
+        }
+      ],
+      "passage": {
+        "title": "My Bag Is Missing Listening Passage",
+        "zh": "糟糕，我的書包在哪裡？你找不到書包了嗎？對，我剛才還在這裡。別擔心，我們一起找吧。這是你的嗎？",
+        "en": "The class is over. A student is looking for something. She cannot find her bag. Her friend helps her search. They check the desks and chairs.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write a short note about a lost item: what it is, its color, and where you last saw it.",
+    "grammar": {
+      "explanation": "Possessive marker '的 (de)' and location words like '裡面 (lǐ miàn)', '下面 (xià miàn)'. Adjectives with '的' (e.g., '藍色的').",
+      "examples": [
+        "我的書 (My book)",
+        "老師的筆 (Teacher's pen)",
+        "藍色的書包 (Blue schoolbag)",
+        "桌子下面 (Under the table)",
+        "書包裡面 (Inside the schoolbag)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: My teacher's book",
+          "a": "我的老師的書"
+        },
+        {
+          "q": "Complete: ___色的 (Blue)",
+          "a": "藍"
+        },
+        {
+          "q": "Translate: Under the chair",
+          "a": "在椅子下面"
+        },
+        {
+          "q": "Complete: 書包___有什麼？ (What is inside the schoolbag?)",
+          "a": "裡面"
+        },
+        {
+          "q": "Translate: Don't worry.",
+          "a": "別擔心。"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "那是你的錢包嗎？",
+        "py": "nà shì nǐ de qián bāo ma?",
+        "en": "Is that your wallet?"
+      },
+      {
+        "speaker": "B",
+        "zh": "在哪裡？",
+        "py": "zài nǎ lǐ?",
+        "en": "Where?"
+      },
+      {
+        "speaker": "A",
+        "zh": "就在椅子下面。",
+        "py": "jiù zài yǐ zi xià mian.",
+        "en": "Right under the chair."
+      },
+      {
+        "speaker": "B",
+        "zh": "喔，對！那是我的。謝謝！",
+        "py": "ō, duì! nà shì wǒ de. xiè xie!",
+        "en": "Oh, right! That's mine. Thanks!"
+      }
+    ],
+    "review": {
+      "speaking": "Ask '這是你的[Item]嗎？' and answer.",
+      "writing": "Write a short lost-item note.",
+      "self_check": "Can you describe a lost item and its location?"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Numbers Around Us",
+    "level": "Novice",
+    "pack_number": 8,
+    "topic": "Numbers 1-100 and Phone Numbers",
+    "story_description": "Two students compare phone numbers, room numbers, and page numbers.",
+    "story_intro": [
+      "Two students are talking after class.",
+      "They want to stay in touch.",
+      "They exchange phone numbers.",
+      "They also talk about their room numbers.",
+      "They use numbers from 1 to 100."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "馬克，你的電話號碼是多少？",
+        "py": "mǎ kè, nǐ de diàn huà hào mǎ shì duō shǎo?",
+        "en": "Mark, what is your phone number?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "我的號碼是 0912-345-678。",
+        "py": "wǒ de hào mǎ shì líng jiǔ yī èr, sān sì wǔ, liù qī bā.",
+        "en": "My number is 0912-345-678."
+      },
+      {
+        "speaker": "A",
+        "zh": "好的，我記下來了。",
+        "py": "hǎo de, wǒ jì xià lái le.",
+        "en": "Okay, I've written it down."
+      },
+      {
+        "speaker": "A",
+        "zh": "你住在哪個房間？",
+        "py": "nǐ zhù zài nǎ gè fáng jiān?",
+        "en": "Which room do you live in?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "我住在 305 號房間。你呢？",
+        "py": "wǒ zhù zài sān líng wǔ hào fáng jiān. nǐ ne?",
+        "en": "I live in room 305. How about you?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我住在 218 號。我們很近。",
+        "py": "wǒ zhù zài èr yī bā hào. wǒ men hěn jìn.",
+        "en": "I live in room 218. We are very close."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "對了，今天的作業在第幾頁？",
+        "py": "duì le, jīn tiān de zuò yè zài dì jǐ yè?",
+        "en": "By the way, what page is today's homework on?"
+      },
+      {
+        "speaker": "A",
+        "zh": "在第五十二頁。",
+        "py": "zài dì wǔ shí èr yè.",
+        "en": "It's on page fifty-two."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "五十二頁？這麼多！",
+        "py": "wǔ shí èr yè? zhè me duō!",
+        "en": "Page fifty-two? So many!"
+      },
+      {
+        "speaker": "A",
+        "zh": "不，是從第四十頁到五十二頁。",
+        "py": "bù, shì cóng dì sì shí yè dào wǔ shí èr yè.",
+        "en": "No, it's from page forty to fifty-two."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "喔，一共十二頁。",
+        "py": "ō, yī gòng shí èr yè.",
+        "en": "Oh, twelve pages in total."
+      },
+      {
+        "speaker": "A",
+        "zh": "對，一共十二頁。",
+        "py": "duì, yī gòng shí èr yè.",
+        "en": "Correct, twelve pages in total."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "你的電話號碼是多少？",
+        "en": "What is your phone number?",
+        "example": "他的手機號碼是多少？"
+      },
+      {
+        "zh": "我住在305號房間。",
+        "en": "I live in room 305.",
+        "example": "她在102號辦公室。"
+      },
+      {
+        "zh": "我們很近。",
+        "en": "We are very close.",
+        "example": "學校很近。"
+      },
+      {
+        "zh": "作業在第幾頁？",
+        "en": "What page is the homework on?",
+        "example": "書在第幾頁？"
+      },
+      {
+        "zh": "在第五十二頁。",
+        "en": "On page fifty-two.",
+        "example": "在第七頁。"
+      },
+      {
+        "zh": "從第四十頁到五十二頁。",
+        "en": "From page forty to fifty-two.",
+        "example": "從週一到週五。"
+      },
+      {
+        "zh": "一共十二頁。",
+        "en": "Twelve pages in total.",
+        "example": "一共二十個人。"
+      },
+      {
+        "zh": "我記下來了。",
+        "en": "I've noted it down.",
+        "example": "請記下來。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "電話",
+        "meaning": "telephone / phone",
+        "pos": "noun",
+        "example": "打電話"
+      },
+      {
+        "word": "號碼",
+        "meaning": "number",
+        "pos": "noun",
+        "example": "你的號碼是多少？"
+      },
+      {
+        "word": "多少",
+        "meaning": "how much / how many",
+        "pos": "pronoun",
+        "example": "多少錢？"
+      },
+      {
+        "word": "房間",
+        "meaning": "room",
+        "pos": "noun",
+        "example": "房間很乾淨。"
+      },
+      {
+        "word": "住",
+        "meaning": "to live / to stay",
+        "pos": "verb",
+        "example": "你住在哪裡？"
+      },
+      {
+        "word": "近",
+        "meaning": "close / near",
+        "pos": "adjective",
+        "example": "我家離這裡很近。"
+      },
+      {
+        "word": "第",
+        "meaning": "ordinal prefix",
+        "pos": "prefix",
+        "example": "第一"
+      },
+      {
+        "word": "幾",
+        "meaning": "how many (small amount) / which",
+        "pos": "pronoun",
+        "example": "你幾歲？"
+      },
+      {
+        "word": "頁",
+        "meaning": "page",
+        "pos": "measure word",
+        "example": "一頁紙"
+      },
+      {
+        "word": "從",
+        "meaning": "from",
+        "pos": "preposition",
+        "example": "我從北京來。"
+      },
+      {
+        "word": "到",
+        "meaning": "to / until",
+        "pos": "preposition",
+        "example": "從九點到五點。"
+      },
+      {
+        "word": "一共",
+        "meaning": "altogether / in total",
+        "pos": "adverb",
+        "example": "一共五塊錢。"
+      },
+      {
+        "word": "十二",
+        "meaning": "twelve",
+        "pos": "number",
+        "example": "十二個月"
+      },
+      {
+        "word": "五十",
+        "meaning": "fifty",
+        "pos": "number",
+        "example": "五十年"
+      },
+      {
+        "word": "號",
+        "meaning": "number (in series)",
+        "pos": "measure word",
+        "example": "五號"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "你的號碼是多少？",
+        "我住在三百零五號。",
+        "作業在第五十二頁。",
+        "一共十二頁。"
+      ],
+      "part_b": "Role-play: Exchange phone numbers and room numbers with a new friend. Use numbers 0-10 and room numbers like 101, 202.",
+      "part_c": [
+        "你的電話號碼是什麼？",
+        "你住在哪裡？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What is Mark's phone number?",
+          "a": "0912-345-678"
+        },
+        {
+          "q": "Which room does Mark live in?",
+          "a": "Room 305"
+        },
+        {
+          "q": "Are the two students living close or far from each other?",
+          "a": "Close"
+        },
+        {
+          "q": "What page is the homework on?",
+          "a": "Page 52 (starting from page 40)"
+        },
+        {
+          "q": "How many pages of homework are there in total?",
+          "a": "Twelve"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "Mark gave his address to A.",
+          "a": false
+        },
+        {
+          "q": "A lives in room 218.",
+          "a": true
+        },
+        {
+          "q": "The homework starts from page 52.",
+          "a": false
+        },
+        {
+          "q": "There are 40 pages of homework.",
+          "a": false
+        },
+        {
+          "q": "Mark thinks there is a lot of homework.",
+          "a": true
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "你的號碼是____？",
+          "a": "多少"
+        },
+        {
+          "q": "我住____305號。",
+          "a": "在"
+        },
+        {
+          "q": "作業在第____頁？",
+          "a": "幾"
+        },
+        {
+          "q": "一共____頁。",
+          "a": "十二"
+        },
+        {
+          "q": "____四十頁到五十二頁。",
+          "a": "從"
+        }
+      ],
+      "passage": {
+        "title": "Numbers Around Us Listening Passage",
+        "zh": "馬克，你的電話號碼是多少？我的號碼是0912-345-678。好的，我記下來了。你住在哪個房間？我住在305號房間。你呢？",
+        "en": "Two students are talking after class. They want to stay in touch. They exchange phone numbers. They also talk about their room numbers. They use numbers from 1 to 100.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write your own (imaginary) phone number, your room number, and a page range (e.g., 'from page 10 to page 20').",
+    "grammar": {
+      "explanation": "Asking for numbers with '多少 (duō shǎo)' (for phone numbers) or '幾 (jǐ)' (for small counts or series). Using '從 (cóng)...到 (dào)...' for ranges.",
+      "examples": [
+        "電話號碼是多少？ (What is the phone number?)",
+        "你有幾個朋友？ (How many friends do you have?)",
+        "第三頁 (The third page)",
+        "從週一到週五 (From Monday to Friday)",
+        "一共一百塊 (One hundred dollars in total)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: What is your number?",
+          "a": "你的號碼是多少？"
+        },
+        {
+          "q": "Complete: 第___頁 (Page 5)",
+          "a": "五"
+        },
+        {
+          "q": "Translate: From room 101 to 105",
+          "a": "從101號到105號"
+        },
+        {
+          "q": "Complete: ____二十人 (20 people in total)",
+          "a": "一共"
+        },
+        {
+          "q": "Translate: Which room?",
+          "a": "哪個房間？"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "老師，作業是一百頁嗎？",
+        "py": "lǎo shī, zuò yè shì yī bǎi yè ma?",
+        "en": "Teacher, is the homework page one hundred?"
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "不是，作業是一百個字。",
+        "py": "bù shì, zuò yè shì yī bǎi gè zì.",
+        "en": "No, the homework is one hundred characters."
+      },
+      {
+        "speaker": "A",
+        "zh": "一百個字？沒問題。",
+        "py": "yī bǎi gè zì? méi wèn tí.",
+        "en": "One hundred characters? No problem."
+      },
+      {
+        "speaker": "Teacher",
+        "zh": "很好。",
+        "py": "hěn hǎo.",
+        "en": "Good."
+      }
+    ],
+    "review": {
+      "speaking": "Say your phone number in Chinese.",
+      "writing": "Write: '號碼是0912345678。'",
+      "self_check": "Can you say and understand numbers up to 100?"
+    }
+  },
+  {
+    "id": 9,
+    "title": "What Time Is It?",
+    "level": "Novice",
+    "pack_number": 9,
+    "topic": "Telling Time",
+    "story_description": "A student asks the time before class starts. Another student checks the clock.",
+    "story_intro": [
+      "The sun is high.",
+      "A student is running to class.",
+      "He asks another student about the time.",
+      "They check the clock.",
+      "They talk about being early or late."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "請問，現在幾點？",
+        "py": "qǐng wèn, xiàn zài jǐ diǎn?",
+        "en": "Excuse me, what time is it now?"
+      },
+      {
+        "speaker": "B",
+        "zh": "現在是早上八點五十分。",
+        "py": "xiàn zài shì zǎo shang bā diǎn wǔ shí fēn.",
+        "en": "It is 8:50 AM now."
+      },
+      {
+        "speaker": "A",
+        "zh": "糟糕，九點上課嗎？",
+        "py": "zāo gāo, jiǔ diǎn shàng kè ma?",
+        "en": "Oh no, does class start at 9:00?"
+      },
+      {
+        "speaker": "B",
+        "zh": "對，九點整開始。",
+        "py": "duì, jiǔ diǎn zhěng kāi shǐ.",
+        "en": "Yes, it starts at 9:00 sharp."
+      },
+      {
+        "speaker": "A",
+        "zh": "我快要遲到了！",
+        "py": "wǒ kuài yào chí dào le!",
+        "en": "I'm about to be late!"
+      },
+      {
+        "speaker": "B",
+        "zh": "沒關係，還有十分鐘。",
+        "py": "méi guān xi, hái yǒu shí fēn zhōng.",
+        "en": "It's okay, there are still ten minutes left."
+      },
+      {
+        "speaker": "A",
+        "zh": "老師到了嗎？",
+        "py": "lǎo shī dào le ma?",
+        "en": "Has the teacher arrived?"
+      },
+      {
+        "speaker": "B",
+        "zh": "老師已經在教室裡了。",
+        "py": "lǎo shī yǐ jīng zài jiào shì lǐ le.",
+        "en": "The teacher is already in the classroom."
+      },
+      {
+        "speaker": "A",
+        "zh": "你為什麼不進去？",
+        "py": "nǐ wèi shén me bù jìn qù?",
+        "en": "Why aren't you going in?"
+      },
+      {
+        "speaker": "B",
+        "zh": "我現在在等朋友。",
+        "py": "wǒ xiàn zài zài děng péng you.",
+        "en": "I'm waiting for a friend right now."
+      },
+      {
+        "speaker": "A",
+        "zh": "喔，好吧。我先进去了。再見！",
+        "py": "ō, hǎo ba. wǒ xiān jìn qù le. zài jiàn!",
+        "en": "Oh, okay. I'm going in first. Goodbye!"
+      },
+      {
+        "speaker": "B",
+        "zh": "好，再見！",
+        "py": "hǎo, zài jiàn!",
+        "en": "Okay, goodbye!"
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "現在幾點？",
+        "en": "What time is it now?",
+        "example": "你的手錶幾點？"
+      },
+      {
+        "zh": "早上八點五十分。",
+        "en": "8:50 AM.",
+        "example": "下午三點。"
+      },
+      {
+        "zh": "九點整開始。",
+        "en": "Starts at 9:00 sharp.",
+        "example": "十點整。"
+      },
+      {
+        "zh": "我快要遲到了！",
+        "en": "I'm about to be late!",
+        "example": "火車快要來了。"
+      },
+      {
+        "zh": "還有十分鐘。",
+        "en": "There are still ten minutes left.",
+        "example": "還有兩天。"
+      },
+      {
+        "zh": "老師已經到了。",
+        "en": "The teacher has already arrived.",
+        "example": "我已經吃了。"
+      },
+      {
+        "zh": "你在等誰？",
+        "en": "Who are you waiting for?",
+        "example": "我在等公車。"
+      },
+      {
+        "zh": "我先進去了。",
+        "en": "I'm going in first.",
+        "example": "我先走了。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "點",
+        "meaning": "hour / o'clock",
+        "pos": "measure word",
+        "example": "下午兩點。"
+      },
+      {
+        "word": "分",
+        "meaning": "minute",
+        "pos": "measure word",
+        "example": "五點十分。"
+      },
+      {
+        "word": "早上",
+        "meaning": "morning",
+        "pos": "noun",
+        "example": "我早上喝茶。"
+      },
+      {
+        "word": "整",
+        "meaning": "exactly / sharp",
+        "pos": "adjective",
+        "example": "六點整。"
+      },
+      {
+        "word": "快要...了",
+        "meaning": "about to",
+        "pos": "phrase",
+        "example": "快要下雨了。"
+      },
+      {
+        "word": "已經",
+        "meaning": "already",
+        "pos": "adverb",
+        "example": "他已經回家了。"
+      },
+      {
+        "word": "等",
+        "meaning": "to wait",
+        "pos": "verb",
+        "example": "請等我一下。"
+      },
+      {
+        "word": "進去",
+        "meaning": "to go in",
+        "pos": "verb",
+        "example": "請進去坐。"
+      },
+      {
+        "word": "先",
+        "meaning": "first",
+        "pos": "adverb",
+        "example": "我先去洗手。"
+      },
+      {
+        "word": "分鐘",
+        "meaning": "minute (duration)",
+        "pos": "noun",
+        "example": "我有十分鐘時間。"
+      },
+      {
+        "word": "下午",
+        "meaning": "afternoon",
+        "pos": "noun",
+        "example": "下午三點見。"
+      },
+      {
+        "word": "晚上",
+        "meaning": "evening",
+        "pos": "noun",
+        "example": "晚上十點睡覺。"
+      },
+      {
+        "word": "半",
+        "meaning": "half",
+        "pos": "number",
+        "example": "三點半。"
+      },
+      {
+        "word": "一刻",
+        "meaning": "quarter (15 mins)",
+        "pos": "noun",
+        "example": "四點一刻。"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "現在幾點？",
+        "早上八點。",
+        "九點整。",
+        "還有十分鐘。"
+      ],
+      "part_b": "Role-play: Ask a passerby for the time. They tell you it's almost 10:00. React if you are early or late for a meeting.",
+      "part_c": [
+        "你早上幾點起床？",
+        "現在幾點？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What is the exact time mentioned?",
+          "a": "8:50 AM"
+        },
+        {
+          "q": "When does the class start?",
+          "a": "9:00 AM"
+        },
+        {
+          "q": "How many minutes until class starts?",
+          "a": "Ten minutes"
+        },
+        {
+          "q": "Where is the teacher?",
+          "a": "Already in the classroom"
+        },
+        {
+          "q": "Why is the second person staying outside?",
+          "a": "Waiting for a friend"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "The first student is early.",
+          "a": false
+        },
+        {
+          "q": "Class starts at 8:50.",
+          "a": false
+        },
+        {
+          "q": "The teacher is late.",
+          "a": false
+        },
+        {
+          "q": "There are 10 minutes left before class.",
+          "a": true
+        },
+        {
+          "q": "Student B is going inside now.",
+          "a": false
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "現在____點？",
+          "a": "幾"
+        },
+        {
+          "q": "早上八點五____。",
+          "a": "分"
+        },
+        {
+          "q": "九點____開始。",
+          "a": "整"
+        },
+        {
+          "q": "我快要____了！",
+          "a": "遲到"
+        },
+        {
+          "q": "我先____了。",
+          "a": "進去"
+        }
+      ],
+      "passage": {
+        "title": "What Time Is It? Listening Passage",
+        "zh": "請問，現在幾點？現在是早上八點五十分。糟糕，九點上課嗎？對，九點整開始。我快要遲到了！",
+        "en": "The sun is high. A student is running to class. He asks another student about the time. They check the clock. They talk about being early or late.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write 5 times of day in Chinese (e.g., 7:30 AM, 12:00 PM, 6:15 PM, 10:45 PM, 1:00 AM).",
+    "grammar": {
+      "explanation": "Telling time with '點 (diǎn)' and '分 (fēn)'. Using '快要...了' for future events and '已經...了' for past actions.",
+      "examples": [
+        "三點 (3:00)",
+        "三點十分 (3:10)",
+        "三點半 (3:30)",
+        "快要十點了 (Almost 10:00)",
+        "已經十點了 (Already 10:00)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: 4:15",
+          "a": "四點一刻 / 四點十五分"
+        },
+        {
+          "q": "Complete: 現在___點？",
+          "a": "幾"
+        },
+        {
+          "q": "Translate: It's about to be 6:00.",
+          "a": "快要六點了。"
+        },
+        {
+          "q": "Complete: 他____來了。 (He has already arrived.)",
+          "a": "已經"
+        },
+        {
+          "q": "Translate: 12:30",
+          "a": "十二點半"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "現在幾點？",
+        "py": "xiàn zài jǐ diǎn?",
+        "en": "What time is it?"
+      },
+      {
+        "speaker": "B",
+        "zh": "差五分十點。",
+        "py": "chā wǔ fēn shí diǎn.",
+        "en": "Five minutes to ten."
+      },
+      {
+        "speaker": "A",
+        "zh": "喔，九點五十五分。",
+        "py": "ō, jiǔ diǎn wǔ shí wǔ fēn.",
+        "en": "Oh, 9:55."
+      },
+      {
+        "speaker": "B",
+        "zh": "對，很晚了。",
+        "py": "duì, hěn wǎn le.",
+        "en": "Yes, it's very late."
+      }
+    ],
+    "review": {
+      "speaking": "Ask '現在幾點？' and tell the time.",
+      "writing": "Write 5 times of day.",
+      "self_check": "Can you tell and understand time in Chinese?"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Days of the Week",
+    "level": "Novice",
+    "pack_number": 10,
+    "topic": "Days and Schedules",
+    "story_description": "Two classmates check their weekly class schedule.",
+    "story_intro": [
+      "The new week is starting.",
+      "Two friends are talking about classes.",
+      "They check which days they have Chinese class.",
+      "They talk about today and tomorrow.",
+      "They plan to meet later this week."
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "zh": "馬克，今天星期幾？",
+        "py": "mǎ kè, jīn tiān xīng qī jǐ?",
+        "en": "Mark, what day of the week is it today?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "今天星期一。",
+        "py": "jīn tian xīng qī yī.",
+        "en": "Today is Monday."
+      },
+      {
+        "speaker": "A",
+        "zh": "我們今天有中文課嗎？",
+        "py": "wǒ men jīn tiān yǒu zhōng wén kè ma?",
+        "en": "Do we have Chinese class today?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "有，星期一、三、五都有中文課。",
+        "py": "yǒu, xīng qī yī, sān, wǔ dōu yǒu zhōng wén kè.",
+        "en": "Yes, we have Chinese class every Monday, Wednesday, and Friday."
+      },
+      {
+        "speaker": "A",
+        "zh": "那明天星期二沒有中文課？",
+        "py": "nà míng tiān xīng qī èr méi yǒu zhōng wén kè?",
+        "en": "So there is no Chinese class tomorrow, Tuesday?"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "對，明天沒有。但是有體育課。",
+        "py": "duì, míng tiān méi yǒu. dàn shì yǒu tǐ yù kè.",
+        "en": "Right, none tomorrow. But we have PE class."
+      },
+      {
+        "speaker": "A",
+        "zh": "太好了，我喜歡體育課。",
+        "py": "tài hǎo le, wǒ xǐ huan tǐ yù kè.",
+        "en": "Great, I like PE class."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "星期六和星期日你做什麼？",
+        "py": "xīng qī liù hé xīng qī rì nǐ zuò shén me?",
+        "en": "What do you do on Saturday and Sunday?"
+      },
+      {
+        "speaker": "A",
+        "zh": "我週末通常休息，或者看電影。",
+        "py": "wǒ zhōu mò tōng cháng xiū xi, huò zhě kàn diàn yǐng.",
+        "en": "I usually rest on weekends, or watch movies."
+      },
+      {
+        "speaker": "Mark",
+        "zh": "這個星期六我們一起看電影吧。",
+        "py": "zhè ge xīng qī liù wǒ men yī qǐ kàn diàn yǐng ba.",
+        "en": "Let's watch a movie together this Saturday."
+      },
+      {
+        "speaker": "A",
+        "zh": "好啊，沒問題！",
+        "py": "hǎo a, méi wèn tí!",
+        "en": "Sure, no problem!"
+      },
+      {
+        "speaker": "Mark",
+        "zh": "那我們星期六見。",
+        "py": "nà wǒ men xīng qī liù jiàn.",
+        "en": "Then I'll see you on Saturday."
+      }
+    ],
+    "key_sentences": [
+      {
+        "zh": "今天星期幾？",
+        "en": "What day is it today?",
+        "example": "明天星期幾？"
+      },
+      {
+        "zh": "今天星期一。",
+        "en": "Today is Monday.",
+        "example": "昨天星期日。"
+      },
+      {
+        "zh": "一、三、五都有課。",
+        "en": "There are classes on Mon, Wed, Fri.",
+        "example": "二、四、六。"
+      },
+      {
+        "zh": "明天沒有課。",
+        "en": "There is no class tomorrow.",
+        "example": "他沒錢。"
+      },
+      {
+        "zh": "我喜歡體育課。",
+        "en": "I like PE class.",
+        "example": "他不喜歡。"
+      },
+      {
+        "zh": "週末你做什麼？",
+        "en": "What do you do on weekends?",
+        "example": "今天你做什麼？"
+      },
+      {
+        "zh": "我們一起看電影吧。",
+        "en": "Let's watch a movie together.",
+        "example": "去玩吧。"
+      },
+      {
+        "zh": "星期六見。",
+        "en": "See you on Saturday.",
+        "example": "明天見。"
+      }
+    ],
+    "vocabulary": [
+      {
+        "word": "星期",
+        "meaning": "week",
+        "pos": "noun",
+        "example": "一個星期有七天。"
+      },
+      {
+        "word": "今天",
+        "meaning": "today",
+        "pos": "noun",
+        "example": "今天天氣很好。"
+      },
+      {
+        "word": "明天",
+        "meaning": "tomorrow",
+        "pos": "noun",
+        "example": "明天是我的生日。"
+      },
+      {
+        "word": "課",
+        "meaning": "class / lesson",
+        "pos": "noun",
+        "example": "英文課。"
+      },
+      {
+        "word": "體育",
+        "meaning": "PE / physical education",
+        "pos": "noun",
+        "example": "體育老師。"
+      },
+      {
+        "word": "喜歡",
+        "meaning": "to like",
+        "pos": "verb",
+        "example": "我喜歡你。"
+      },
+      {
+        "word": "週末",
+        "meaning": "weekend",
+        "pos": "noun",
+        "example": "週末快樂！"
+      },
+      {
+        "word": "通常",
+        "meaning": "usually",
+        "pos": "adverb",
+        "example": "我通常六點起床。"
+      },
+      {
+        "word": "休息",
+        "meaning": "to rest",
+        "pos": "verb",
+        "example": "累了就休息。"
+      },
+      {
+        "word": "或者",
+        "meaning": "or (in statements)",
+        "pos": "conjunction",
+        "example": "喝茶或者咖啡。"
+      },
+      {
+        "word": "看電影",
+        "meaning": "to watch a movie",
+        "pos": "verb phrase",
+        "example": "我們去看電影。"
+      },
+      {
+        "word": "見",
+        "meaning": "to see / to meet",
+        "pos": "verb",
+        "example": "再見！"
+      },
+      {
+        "word": "星期一",
+        "meaning": "Monday",
+        "pos": "noun",
+        "example": "星期一很忙。"
+      },
+      {
+        "word": "星期日",
+        "meaning": "Sunday",
+        "pos": "noun",
+        "example": "星期日放假。"
+      },
+      {
+        "word": "幾",
+        "meaning": "how many / which",
+        "pos": "pronoun",
+        "example": "星期幾？"
+      }
+    ],
+    "speaking": {
+      "part_a": [
+        "今天星期幾？",
+        "今天星期一。",
+        "週末你做什麼？",
+        "星期六見。"
+      ],
+      "part_b": "Role-play: Plan a meeting with your friend. Check their availability on different days of the week and agree on a day.",
+      "part_c": [
+        "你今天有課嗎？",
+        "你週末喜歡做什麼？"
+      ]
+    },
+    "listening": {
+      "comprehension": [
+        {
+          "q": "What day is it today?",
+          "a": "Monday"
+        },
+        {
+          "q": "Which days do they have Chinese class?",
+          "a": "Monday, Wednesday, Friday"
+        },
+        {
+          "q": "Does Student A like PE class?",
+          "a": "Yes"
+        },
+        {
+          "q": "What does Student A usually do on weekends?",
+          "a": "Rest or watch movies"
+        },
+        {
+          "q": "What are they planning to do on Saturday?",
+          "a": "Watch a movie together"
+        }
+      ],
+      "true_false": [
+        {
+          "q": "Tomorrow is Wednesday.",
+          "a": false
+        },
+        {
+          "q": "They have Chinese class on Tuesdays.",
+          "a": false
+        },
+        {
+          "q": "Mark likes PE class.",
+          "a": true
+        },
+        {
+          "q": "A and Mark will meet on Saturday.",
+          "a": true
+        },
+        {
+          "q": "Student A is busy on weekends.",
+          "a": false
+        }
+      ],
+      "fill_blank": [
+        {
+          "q": "今天星期____？",
+          "a": "幾"
+        },
+        {
+          "q": "明天____中文課。",
+          "a": "沒有"
+        },
+        {
+          "q": "我喜歡____課。",
+          "a": "體育"
+        },
+        {
+          "q": "____你做什麼？",
+          "a": "週末"
+        },
+        {
+          "q": "星期六____。",
+          "a": "見"
+        }
+      ],
+      "passage": {
+        "title": "Days of the Week Listening Passage",
+        "zh": "馬克，今天星期幾？今天星期一。我們今天有中文課嗎？有，星期一、三、五都有中文課。那明天星期二沒有中文課？",
+        "en": "The new week is starting. Two friends are talking about classes. They check which days they have Chinese class. They talk about today and tomorrow. They plan to meet later this week.",
+        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+      }
+    },
+    "writing": "Write 5 sentences about your weekly schedule (e.g., 'Monday I have class', 'Sunday I rest').",
+    "grammar": {
+      "explanation": "Days of the week are formed with '星期 (xīng qī)' + Number (1-6). Sunday is '星期日 (rì)' or '星期天 (tiān)'. Use '或者' for 'or' in statements.",
+      "examples": [
+        "星期一 (Monday)",
+        "星期六 (Saturday)",
+        "星期日 (Sunday)",
+        "今天有課。 (Today has class.)",
+        "看書或者聽音樂。 (Read books or listen to music.)"
+      ],
+      "practice": [
+        {
+          "q": "Translate: Wednesday",
+          "a": "星期三"
+        },
+        {
+          "q": "Complete: 今天星期___？",
+          "a": "幾"
+        },
+        {
+          "q": "Translate: Monday and Tuesday",
+          "a": "星期一和星期二"
+        },
+        {
+          "q": "Complete: 我休息___看書。 (I rest or read books.)",
+          "a": "或者"
+        },
+        {
+          "q": "Translate: See you on Friday.",
+          "a": "星期五見。"
+        }
+      ]
+    },
+    "expansion_dialogue": [
+      {
+        "speaker": "A",
+        "zh": "後天是星期幾？",
+        "py": "hòu tiān shì xīng qī jǐ?",
+        "en": "What day is the day after tomorrow?"
+      },
+      {
+        "speaker": "B",
+        "zh": "今天是星期三，後天是星期五。",
+        "py": "jīn tiān shì xīng qī sān, hòu tiān shì xīng qī wǔ.",
+        "en": "Today is Wednesday, the day after tomorrow is Friday."
+      },
+      {
+        "speaker": "A",
+        "zh": "星期五你有空嗎？",
+        "py": "xīng qī wǔ nǐ yǒu kòng ma?",
+        "en": "Are you free on Friday?"
+      },
+      {
+        "speaker": "B",
+        "zh": "有空，怎麼了？",
+        "py": "yǒu kòng, zěn me le?",
+        "en": "Yes, I am. What's up?"
+      }
+    ],
+    "review": {
+      "speaking": "Say your weekly schedule.",
+      "writing": "Write 5 sentences about your week.",
+      "self_check": "Can you say all the days of the week in Chinese?"
+    }
+  }
+]

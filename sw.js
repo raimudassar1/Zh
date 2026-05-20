@@ -40,6 +40,11 @@ const ASSETS = [
   './data/beginner_launchpad.json',
   './data/beginner_launchpad_level2.json',
   './data/beginner_launchpad_level3.json',
+  './data/beginner_coach_content_p1.json',
+  './data/beginner_coach_content_p2.json',
+  './data/beginner_coach_content_p3.json',
+  './data/beginner_coach_content_p4.json',
+  './data/beginner_coach_content_p5.json',
   './data/grammar_academy.json',
   './assets/beginner-launchpad/level3/01-meeting.jpg',
   './assets/beginner-launchpad/level3/02-classroom.jpg',
@@ -96,16 +101,17 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Network-first for data JSON files (ensure latest curriculum)
+  // Stale-while-revalidate for data JSON files (ensure latest curriculum)
   if (url.pathname.includes('/data/') || url.pathname.endsWith('.json')) {
     event.respondWith(
-      fetch(event.request)
-        .then((response) => {
+      caches.match(event.request).then((cached) => {
+        const fetched = fetch(event.request).then((response) => {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
           return response;
-        })
-        .catch(() => caches.match(event.request))
+        });
+        return cached || fetched;
+      })
     );
     return;
   }

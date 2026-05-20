@@ -218,77 +218,75 @@ window.BeginnerCoachModule = (() => {
   }
 
   async function ensureLearningData() {
-    if (!App.state.characters?.length) {
-      try {
-        const result = await API.getCharacters({ limit: 9999 });
-        App.state.characters = result.data || [];
-      } catch (err) {
-        console.warn('Beginner coach character load failed:', err.message);
-      }
-    }
-    if (!App.state.beginnerCoachVocab) {
-      try {
-        const json = await API.get('vocabulary');
-        App.state.beginnerCoachVocab = json.sets || [];
-      } catch (err) {
-        console.warn('Failed to load vocabulary.json:', err);
-      }
-    }
-    if (!App.state.beginnerCoachScenarios) {
-      try {
-        App.state.beginnerCoachScenarios = await API.get('scenarios_content') || [];
-      } catch (err) {
-        console.warn('Failed to load scenarios_content.json:', err);
-      }
-    }
-    if (!App.state.beginnerBookWords) {
-      const all = [];
-      for (const book of [1, 2, 3]) {
-        try {
-          // Note: books are in a different directory structure, but let's see if we can use fetch with version manually
-          const url = `books/book${book}/vocabulary_b${book}.json?v=${API.version}`;
-          const resp = await fetch(url);
-          if (resp.ok) {
-            const json = await resp.json();
-            json.forEach(item => all.push({
-              hanzi: item.traditional || item.hanzi || item.word,
-              pinyin: item.pinyin || '',
-              definition: item.english || item.definition || '',
-              level: book === 1 ? 'novice' : book === 2 ? 'a1' : 'a2',
-              source: `Book ${book}`
-            }));
-          }
-        } catch (_) {}
-      }
-      App.state.beginnerBookWords = all;
-    }
-    if (!App.state.beginnerCoachContent) {
-      try {
-        App.state.beginnerCoachContent = await API.get('beginner_coach_content');
-      } catch (err) {
-        console.warn('Failed to load beginner_coach_content.json:', err);
-      }
-    }
-    if (!App.state.beginnerLaunchpadLessons) {
-      const allLessons = [];
-      const files = ['beginner_launchpad', 'beginner_launchpad_level2', 'beginner_launchpad_level3'];
-      for (const file of files) {
-        try {
-          const json = await API.get(file);
-          if (json.lessons) {
-            allLessons.push(...json.lessons);
-          }
-        } catch (err) {
-          console.warn(`Failed to load ${file}:`, err);
+    // 1. Core data needed for basic UI
+    const coreTasks = [
+      (async () => {
+        if (!App.state.characters?.length) {
+          try {
+            const result = await API.getCharacters({ limit: 9999 });
+            App.state.characters = result.data || [];
+          } catch (err) { console.warn('Coach char load failed:', err.message); }
         }
+      })(),
+      (async () => {
+        if (!App.state.beginnerCoachVocab) {
+          try {
+            const json = await API.get('vocabulary');
+            App.state.beginnerCoachVocab = json.sets || [];
+          } catch (err) { console.warn('Failed to load vocabulary.json:', err); }
+        }
+      })(),
+      (async () => {
+        if (!App.state.beginnerLaunchpadLessons) {
+          const allLessons = [];
+          const files = ['beginner_launchpad', 'beginner_launchpad_level2', 'beginner_launchpad_level3'];
+          for (const file of files) {
+            try {
+              const json = await API.get(file);
+              if (json.lessons) allLessons.push(...json.lessons);
+            } catch (err) { console.warn(`Failed to load ${file}:`, err); }
+          }
+          App.state.beginnerLaunchpadLessons = allLessons;
+        }
+      })()
+    ];
+
+    await Promise.all(coreTasks);
+
+    // 2. Heavy content parts (loaded on demand in render or background)
+    // We don't await beginner_coach_content here anymore to avoid blocking the initial render
+  }
+
+  async function ensureCoachContentPart(cursor) {
+    const packNum = cursor + 1;
+    let partNum = 1;
+    if (packNum > 10) partNum = 2;
+    if (packNum > 30) partNum = 3;
+    if (packNum > 60) partNum = 4;
+    if (packNum > 100) partNum = 5;
+
+    const stateKey = `beginnerCoachContent_p${partNum}`;
+    if (!App.state[stateKey]) {
+      try {
+        App.state[stateKey] = await API.get(`beginner_coach_content_p${partNum}`);
+      } catch (err) {
+        console.warn(`Failed to load beginner_coach_content_p${partNum}.json:`, err);
+        App.state[stateKey] = [];
       }
-      App.state.beginnerLaunchpadLessons = allLessons;
     }
+    return App.state[stateKey];
   }
 
   function getStructuredPack(cursor) {
-    const packs = App.state.beginnerCoachContent || [];
-    return packs.find(p => p.pack_number === cursor + 1) || null;
+    const packNum = cursor + 1;
+    let partNum = 1;
+    if (packNum > 10) partNum = 2;
+    if (packNum > 30) partNum = 3;
+    if (packNum > 60) partNum = 4;
+    if (packNum > 100) partNum = 5;
+
+    const packs = App.state[`beginnerCoachContent_p${partNum}`] || [];
+    return packs.find(p => p.pack_number === packNum) || null;
   }
 
   function getPackTheme(cursor) {
@@ -1156,25 +1154,25 @@ window.BeginnerCoachModule = (() => {
   }
 
   async function render(container) {
-    container.innerHTML = '<div class="spinner"></div>';
+    // 1. Initial UI setup with core data
     await ensureLearningData();
     const state = applyRoutePack(ensureCoachState());
     const dayKey = todayKey();
     const doneCount = state[dayKey]?.done?.length || 0;
     const mission = MISSIONS[todayIndex()];
     
-    const structuredPack = getStructuredPack(state.cursor);
     const theme = getPackTheme(state.cursor);
     const { pack, stage } = buildWordBank(state.cursor);
     const writingTasks = dailyWritingTasks(pack, state.cursor);
     const speakingTasks = dailySpeakingTasks(pack, state.cursor);
 
+    // 2. Immediate render of the page shell and non-heavy sections
     container.innerHTML = `<div class="beginner-coach-page">
       <section class="bc-hero">
         <div>
           <div class="bc-kicker">Beginner Daily Coach</div>
-          <h2>${structuredPack ? esc(structuredPack.title) : 'Do exactly this today'}</h2>
-          <p>${structuredPack ? esc(structuredPack.story_description) : 'A guided beginner path with a fresh 30-word daily pack, writing, speaking, and review. All app content stays open; the coach only tells you what to do next.'}</p>
+          <h2 id="bc-main-title">Do exactly this today</h2>
+          <p id="bc-main-desc">A guided beginner path with a fresh 30-word daily pack, writing, speaking, and review. All app content stays open; the coach only tells you what to do next.</p>
           <div class="bc-hero-actions">
             <a class="btn btn-primary" href="${mission.route}">Start Today: ${esc(mission.title)}</a>
             <button class="btn btn-outline" type="button" onclick="BeginnerCoachModule.exportState()">Export Progress</button>
@@ -1190,23 +1188,20 @@ window.BeginnerCoachModule = (() => {
 
       <section class="bc-status-row">
         <article><span>Today</span><strong>${doneCount}</strong><small>items checked off</small></article>
-        <article><span>Daily word load</span><strong>${structuredPack ? structuredPack.vocabulary.length : pack.length}</strong><small>new/review words in this pack</small></article>
+        <article><span>Daily word load</span><strong id="bc-word-load-stat">${pack.length}</strong><small>new/review words in this pack</small></article>
         <article><span>Pack number</span><strong>${state.cursor + 1}${state.cursor < STRUCTURED_PACKS ? ` / ${STRUCTURED_PACKS}` : ''}</strong><small>${state.cursor < STRUCTURED_PACKS ? 'structured path' : 'random mixed review'}</small></article>
       </section>
 
       ${renderPackNavigator(state)}
 
-      ${structuredPack ? `
-        ${renderGlobalToggles()}
-        ${renderCollapse('story', '1. Story Introduction', 'The Situation', renderStoryIntro(structuredPack), true)}
-        ${renderCollapse('dialogue', '2. Main Dialogue', 'Reading & Listening', renderMainDialogue(structuredPack), true)}
-        ${renderCollapse('key_sentences', '3. Key Sentences', 'Useful Patterns', renderKeySentences(structuredPack), true)}
-        ${renderCollapse('vocabulary_practice', '4. Vocabulary Practice', 'Key Words', renderVocabPractice(structuredPack), true)}
-        ${renderCollapse('listening_practice', '5. Listening Practice', 'Quiz', renderMiniQuiz(structuredPack), true)}
-        ${renderCollapse('grammar', '6. Mini Grammar', 'Rules & Examples', renderGrammarSection(structuredPack), true)}
-        ${renderCollapse('expansion', '7. Expansion Dialogue', 'Scenario 2', renderExpansionDialogue(structuredPack), true)}
-        ${renderCollapse('review_task', '8. Review Task', 'Final Wrap Up', renderReviewSection(structuredPack), true)}
-      ` : `
+      <div id="bc-pack-container">
+        <div class="bc-pack-loading">
+          <div class="spinner"></div>
+          <p>Loading structured pack content...</p>
+        </div>
+      </div>
+
+      <div id="bc-fallback-sections">
         ${renderCollapse('vocabulary', 'Vocabulary', `${pack.length} words in this pack`, renderDailyPack(pack, state, stage), true)}
         ${renderCollapse('loop', 'Daily loop', mission.title, `<section class="bc-panel">
           <div class="bc-section-head"><span>7-day beginner loop</span><strong>${esc(mission.title)}</strong></div>
@@ -1224,9 +1219,38 @@ window.BeginnerCoachModule = (() => {
           </div>
         </section>`, true)}
         ${renderCollapse('survival', 'Survival phrases', 'Tap to hear', renderSurvival(theme), false)}
-      `}
+      </div>
     </div>`;
+
     wirePackControls(container);
+
+    // 3. Async load of structured content
+    ensureCoachContentPart(state.cursor).then(() => {
+      const structuredPack = getStructuredPack(state.cursor);
+      if (structuredPack) {
+        // Update Hero
+        document.getElementById('bc-main-title').textContent = structuredPack.title;
+        document.getElementById('bc-main-desc').textContent = structuredPack.story_description;
+        document.getElementById('bc-word-load-stat').textContent = structuredPack.vocabulary.length;
+
+        // Hide fallbacks and show structured content
+        document.getElementById('bc-fallback-sections').style.display = 'none';
+        document.getElementById('bc-pack-container').innerHTML = `
+          ${renderGlobalToggles()}
+          ${renderCollapse('story', '1. Story Introduction', 'The Situation', renderStoryIntro(structuredPack), true)}
+          ${renderCollapse('dialogue', '2. Main Dialogue', 'Reading & Listening', renderMainDialogue(structuredPack), true)}
+          ${renderCollapse('key_sentences', '3. Key Sentences', 'Useful Patterns', renderKeySentences(structuredPack), true)}
+          ${renderCollapse('vocabulary_practice', '4. Vocabulary Practice', 'Key Words', renderVocabPractice(structuredPack), true)}
+          ${renderCollapse('listening_practice', '5. Listening Practice', 'Quiz', renderMiniQuiz(structuredPack), true)}
+          ${renderCollapse('grammar', '6. Mini Grammar', 'Rules & Examples', renderGrammarSection(structuredPack), true)}
+          ${renderCollapse('expansion', '7. Expansion Dialogue', 'Scenario 2', renderExpansionDialogue(structuredPack), true)}
+          ${renderCollapse('review_task', '8. Review Task', 'Final Wrap Up', renderReviewSection(structuredPack), true)}
+        `;
+      } else {
+        // Keep fallbacks if no structured pack found for this cursor
+        document.getElementById('bc-pack-container').innerHTML = '';
+      }
+    });
   }
 
   return { render, setGuided, markDone, checkWriting, startSpeechCheck, playPrompt, exportState, guidedOn, refreshContent, previousContent, firstPack, nextPack, backOnePack, jumpToPack, setPackDisplay, checkScenarioAnswer, checkCompAnswer, checkTFAnswer, saveUserWriting };
