@@ -557,25 +557,19 @@ window.QuizModule = (() => {
     },
 
     async loadBookData(bookNum) {
-      const resp = await fetch(`books/book${bookNum}/vocabulary_b${bookNum}.json`);
-      if (!resp.ok) throw new Error(`Book ${bookNum} vocabulary could not load.`);
-      return resp.json();
+      return API.get(`books/book${bookNum}/vocabulary_b${bookNum}.json`);
     },
 
     async loadBookContent(bookNum) {
       try {
-        const resp = await fetch(`data/book${bookNum}_content.json`);
-        if (!resp.ok) return [];
-        return await resp.json();
+        return await API.get(`book${bookNum}_content`) || [];
       } catch (_) {
         return [];
       }
     },
 
     async loadRadicalData() {
-      const resp = await fetch('data/radicals_set.json');
-      if (!resp.ok) throw new Error('Radical Masterclass data could not load.');
-      const json = await resp.json();
+      const json = await API.get('radicals_set');
       quizState.radicalData = json.radicals || [];
       return quizState.radicalData;
     },

@@ -311,8 +311,8 @@ const API = {
   version: '83', // Match index.html version for consistency
 
   async get(path) {
-    // For static files, we just append .json if it's not already there
-    let url = `${this.base}/${path}`;
+    // Determine the base path: default to 'data' unless explicitly pointing elsewhere
+    let url = (path.startsWith('books/') || path.startsWith('assets/')) ? path : `${this.base}/${path}`;
     if (!url.endsWith('.json')) url += '.json';
     
     // Use fixed version for caching performance

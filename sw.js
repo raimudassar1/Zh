@@ -80,11 +80,24 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  const isFreshAsset = /\/(js|css|data)\//.test(url.pathname) || url.pathname.endsWith('/index.html');
-
   if (event.request.method !== 'GET') return;
 
-  if (isFreshAsset) {
+  // Cache-first for images (avatars, scene photos)
+  if (url.pathname.includes('/assets/') && /\.(jpg|jpeg|png|gif|webp|svg)$/.test(url.pathname)) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        return cached || fetch(event.request).then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Network-first for data JSON files (ensure latest curriculum)
+  if (url.pathname.includes('/data/') || url.pathname.endsWith('.json')) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
@@ -97,6 +110,22 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Stale-while-revalidate for core JS/CSS assets
+  if (url.pathname.includes('/js/') || url.pathname.includes('/css/') || url.pathname.endsWith('/index.html') || url.pathname === './') {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        const fetched = fetch(event.request).then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          return response;
+        });
+        return cached || fetched;
+      })
+    );
+    return;
+  }
+
+  // Default: Match cache or fetch
   event.respondWith(
     caches.match(event.request).then((response) => response || fetch(event.request))
   );

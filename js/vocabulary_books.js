@@ -106,18 +106,14 @@ window.VocabularyBooksModule = (() => {
     if (content) content.innerHTML = '<div class="spinner"></div>';
 
     try {
-      const resp = await fetch(`books/book${bookNum}/vocabulary_b${bookNum}.json`);
-      if (!resp.ok) throw new Error(`Failed to load Book ${bookNum} data`);
-      state.data = await resp.json();
+      state.data = await API.get(`books/book${bookNum}/vocabulary_b${bookNum}.json`);
       state.book = bookNum;
       state.dialogues = null;
       state.exercises = null;
       if (bookNum === 1) {
         try {
-          const dialogueResp = await fetch('data/book1_dialogues.json?v=1');
-          if (dialogueResp.ok) state.dialogues = await dialogueResp.json();
-          const exerciseResp = await fetch('data/book1_exercises.json?v=1');
-          if (exerciseResp.ok) state.exercises = await exerciseResp.json();
+          state.dialogues = await API.get('book1_dialogues');
+          state.exercises = await API.get('book1_exercises');
         } catch (dialogueErr) {
           console.warn('Book 1 dialogues unavailable', dialogueErr);
         }

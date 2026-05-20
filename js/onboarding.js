@@ -212,13 +212,11 @@ const OnboardingModule = (() => {
 
   async function loadHumanPinyinManifest() {
     try {
-      const response = await fetch('data/pinyin_human_manifest.json', { cache: 'no-store' });
-      if (response.ok) humanPinyinManifest = await response.json();
+      humanPinyinManifest = await API.get('pinyin_human_manifest');
     } catch {}
     try {
-      const bankResponse = await fetch('data/pinyin_mastery_drills.json', { cache: 'no-store' });
-      if (bankResponse.ok) {
-        const bank = await bankResponse.json();
+      const bank = await API.get('pinyin_mastery_drills');
+      if (bank) {
         const focused = Array.isArray(bank.focused) ? bank.focused : [];
         const tonePairs = Array.isArray(bank.tonePairs) ? bank.tonePairs : [];
         if (focused.length || tonePairs.length) humanPinyinBank = { focused, tonePairs, all: focused.concat(tonePairs) };

@@ -18,8 +18,7 @@ window.PlaygroundModule = (() => {
   async function init() {
     if (!currentCharData) {
       try {
-        const res = await fetch('data/char_playground_content.json');
-        currentCharData = await res.json();
+        currentCharData = await API.get('char_playground_content');
       } catch (e) {
         console.error("Failed to load character playground data", e);
         currentCharData = [];
@@ -27,8 +26,7 @@ window.PlaygroundModule = (() => {
     }
     if (!currentRadicalData) {
       try {
-        const res = await fetch('data/radicals_set.json');
-        const json = await res.json();
+        const json = await API.get('radicals_set');
         currentRadicalData = json.radicals;
       } catch (e) {
         console.error("Failed to load radical learning set", e);
@@ -37,8 +35,7 @@ window.PlaygroundModule = (() => {
     }
     if (!currentPlaygroundData) {
       try {
-        const res = await fetch('data/playground_content.json');
-        currentPlaygroundData = await res.json();
+        currentPlaygroundData = await API.get('playground_content');
       } catch (e) {
         console.error("Failed to load playground content", e);
         currentPlaygroundData = [];
@@ -48,8 +45,7 @@ window.PlaygroundModule = (() => {
 
   async function loadBook(bookId) {
     try {
-      const res = await fetch(`data/book${bookId}_content.json`);
-      currentBookData = await res.json();
+      currentBookData = await API.get(`book${bookId}_content`);
       currentBookId = bookId;
     } catch (e) {
       console.error(`Failed to load Book ${bookId} data`, e);

@@ -26,8 +26,7 @@ const GrammarModule = (() => {
 
   async function init() {
     if (data) return data;
-    const res = await fetch('data/grammar_academy.json', { cache: 'no-store' });
-    data = await res.json();
+    data = await API.get('grammar_academy');
     if (!state.unit) state.unit = data.levels[0]?.units[0]?.id || null;
     return data;
   }

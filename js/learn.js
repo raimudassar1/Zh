@@ -44,8 +44,7 @@ const LearnModule = (() => {
     // Fetch playground data
     let playgroundData = [];
     try {
-      const res = await fetch('data/playground_content.json');
-      playgroundData = await res.json();
+      playgroundData = await API.get('playground_content');
     } catch(e) { console.error(e); }
 
     let levels;

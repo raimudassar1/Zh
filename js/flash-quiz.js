@@ -21,8 +21,7 @@ window.FlashQuizModule = (() => {
     if (state.data) return;
     state.loading = true;
     try {
-      const resp = await fetch('data/picture_flashcards.json');
-      state.data = await resp.json();
+      state.data = await API.get('picture_flashcards');
       state.categories = Object.keys(state.data.categories);
     } catch (err) {
       console.error('Failed to load flashcard data:', err);

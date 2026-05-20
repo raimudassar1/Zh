@@ -22,8 +22,7 @@ window.ExamModule = {
      */
     async init() {
         try {
-            const response = await fetch('data/monthly_exams.json');
-            this.state.examData = await response.json();
+            this.state.examData = await API.get('monthly_exams');
             
             if (!App.state.progress.exams) {
                 App.state.progress.exams = {};
