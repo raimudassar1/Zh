@@ -65,14 +65,11 @@ window.BeginnerLaunchpadModule = (() => {
 
   async function ensureData() {
     if (data) return data;
-    const [levelOneRes, levelTwoRes, levelThreeRes] = await Promise.all([
-      fetch('data/beginner_launchpad.json', { cache: 'no-store' }),
-      fetch('data/beginner_launchpad_level2.json', { cache: 'no-store' }),
-      fetch('data/beginner_launchpad_level3.json', { cache: 'no-store' })
+    const [levelOne, levelTwo, levelThree] = await Promise.all([
+      API.get('beginner_launchpad'),
+      API.get('beginner_launchpad_level2'),
+      API.get('beginner_launchpad_level3')
     ]);
-    const levelOne = await levelOneRes.json();
-    const levelTwo = await levelTwoRes.json();
-    const levelThree = await levelThreeRes.json();
     data = {
       title: 'Beginner Launchpad',
       totalWords: (levelOne.totalWords || 0) + (levelTwo.totalWords || 0) + (levelThree.totalWords || 0),

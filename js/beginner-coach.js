@@ -228,21 +228,15 @@ window.BeginnerCoachModule = (() => {
     }
     if (!App.state.beginnerCoachVocab) {
       try {
-        const resp = await fetch('data/vocabulary.json');
-        if (resp.ok) {
-          const json = await resp.json();
-          App.state.beginnerCoachVocab = json.sets || [];
-        }
+        const json = await API.get('vocabulary');
+        App.state.beginnerCoachVocab = json.sets || [];
       } catch (err) {
         console.warn('Failed to load vocabulary.json:', err);
       }
     }
     if (!App.state.beginnerCoachScenarios) {
       try {
-        const resp = await fetch('data/scenarios_content.json');
-        if (resp.ok) {
-          App.state.beginnerCoachScenarios = await resp.json() || [];
-        }
+        App.state.beginnerCoachScenarios = await API.get('scenarios_content') || [];
       } catch (err) {
         console.warn('Failed to load scenarios_content.json:', err);
       }
@@ -251,7 +245,9 @@ window.BeginnerCoachModule = (() => {
       const all = [];
       for (const book of [1, 2, 3]) {
         try {
-          const resp = await fetch(`books/book${book}/vocabulary_b${book}.json`);
+          // Note: books are in a different directory structure, but let's see if we can use fetch with version manually
+          const url = `books/book${book}/vocabulary_b${book}.json?v=${API.version}`;
+          const resp = await fetch(url);
           if (resp.ok) {
             const json = await resp.json();
             json.forEach(item => all.push({
@@ -268,25 +264,19 @@ window.BeginnerCoachModule = (() => {
     }
     if (!App.state.beginnerCoachContent) {
       try {
-        const resp = await fetch('data/beginner_coach_content.json?v=coach-listening-1');
-        if (resp.ok) {
-          App.state.beginnerCoachContent = await resp.json();
-        }
+        App.state.beginnerCoachContent = await API.get('beginner_coach_content');
       } catch (err) {
         console.warn('Failed to load beginner_coach_content.json:', err);
       }
     }
     if (!App.state.beginnerLaunchpadLessons) {
       const allLessons = [];
-      const files = ['beginner_launchpad.json', 'beginner_launchpad_level2.json', 'beginner_launchpad_level3.json'];
+      const files = ['beginner_launchpad', 'beginner_launchpad_level2', 'beginner_launchpad_level3'];
       for (const file of files) {
         try {
-          const resp = await fetch(`data/${file}?v=coach-content-5`);
-          if (resp.ok) {
-            const json = await resp.json();
-            if (json.lessons) {
-              allLessons.push(...json.lessons);
-            }
+          const json = await API.get(file);
+          if (json.lessons) {
+            allLessons.push(...json.lessons);
           }
         } catch (err) {
           console.warn(`Failed to load ${file}:`, err);

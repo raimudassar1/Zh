@@ -308,18 +308,34 @@ const Pinyin = {
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
+  version: '83', // Match index.html version for consistency
 
   async get(path) {
     // For static files, we just append .json if it's not already there
     let url = `${this.base}/${path}`;
     if (!url.endsWith('.json')) url += '.json';
     
-    // Cache buster for static local files
-    url += `?v=${Date.now()}`;
+    // Use fixed version for caching performance
+    url += `?v=${this.version}`;
     
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Fetch ${url} failed: ${res.status}`);
     return res.json();
+  },
+
+  // Helper to load scripts on demand
+  loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve();
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
   },
 
   async getCharacters(params = {}) {
@@ -872,56 +888,67 @@ function toggleMobileNav() {
 
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 
-function renderBeginnerLaunchpadPage(container) {
+async function renderBeginnerLaunchpadPage(container) {
+  await API.loadScript(`js/beginner-launchpad.js?v=${API.version}`);
   if (window.BeginnerLaunchpadModule) return BeginnerLaunchpadModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad is not loaded</h3></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad Error</h3></div>';
 }
 
-
-function renderBeginnerCoachPage(container) {
+async function renderBeginnerCoachPage(container) {
+  await API.loadScript(`js/beginner-coach.js?v=${API.version}`);
   if (window.BeginnerCoachModule) return BeginnerCoachModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Beginner Coach is not loaded</h3></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Beginner Coach Error</h3></div>';
 }
 
-function renderB1CoachPage(container) {
+async function renderB1CoachPage(container) {
+  await API.loadScript(`js/b1-coach.js?v=${API.version}`);
   if (window.B1CoachModule) return B1CoachModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>B1 Coach is not loaded</h3></div>';
+  container.innerHTML = '<div class="empty-state"><h3>B1 Coach Error</h3></div>';
 }
 
 async function renderMixedRecallPage(container) {
-  return MixedRecallModule.render(container);
+  await API.loadScript(`js/mixed-recall.js?v=${API.version}`);
+  if (window.MixedRecallModule) return MixedRecallModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Mixed Recall Error</h3></div>';
 }
 
 async function renderSentenceBuilderPage(container) {
-  return SentenceBuilderModule.render(container);
+  await API.loadScript(`js/sentence-builder.js?v=${API.version}`);
+  if (window.SentenceBuilderModule) return SentenceBuilderModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Sentence Builder Error</h3></div>';
 }
 
 async function renderTOCFLPage(container) {
+  await API.loadScript(`js/tocfl.js?v=${API.version}`);
   if (typeof TOCFLModule !== 'undefined') return TOCFLModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>TOCFL Lab is not loaded</h3></div>';
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Lab Error</h3></div>';
 }
 
 async function renderTOCFLContentPage(container) {
+  await API.loadScript(`js/tocfl-content.js?v=${API.version}`);
   if (typeof TOCFLContentModule !== 'undefined') return TOCFLContentModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>TOCFL Content is not loaded</h3></div>';
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Content Error</h3></div>';
 }
 
 async function renderStudyPlanPage(container) {
-  if (!window.StudyPlanModule) {
-    container.innerHTML = '<div class="empty-state"><h3>Study Plan is not loaded</h3></div>';
-    return;
-  }
-  return StudyPlanModule.render(container);
+  await API.loadScript(`js/study-plan.js?v=${API.version}`);
+  if (window.StudyPlanModule) return StudyPlanModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Study Plan Error</h3></div>';
 }
 
 async function renderDashboard(container) {
+  // Render layout skeleton immediately if data isn't ready
   if (!App.state.characters.length) {
-    try {
-      const charResult = await API.getCharacters({ limit: 9999 });
+    renderDashboardSkeleton(container);
+    // Load in background and re-render
+    API.getCharacters({ limit: 9999 }).then(charResult => {
       App.state.characters = charResult.data || [];
-    } catch (err) {
+      if (getPath() === '/') renderDashboard(container);
+      updateTopbarBadge();
+    }).catch(err => {
       console.warn('Dashboard character preload failed:', err.message);
-    }
+    });
+    return;
   }
 
   const prog  = App.state.progress;
@@ -1167,6 +1194,36 @@ async function renderDashboard(container) {
 
   updateStreakDisplay();
   updateTopbarBadge();
+}
+
+function renderDashboardSkeleton(container) {
+  const renderIcon = name => window.IconSystem?.svg(name) || '';
+  const displayName = App.state.settings.displayName || 'Learner';
+  container.innerHTML = `
+    <div class="dashboard-modern">
+      <section class="dash-hero-modern">
+        <div class="dash-hero-copy">
+          <div class="dash-kicker"><span>Novice</span><span>A1</span><span>A2</span><span>B1</span></div>
+          <h1>Welcome back, ${displayName}</h1>
+          <p>Loading your learning journey...</p>
+          <div class="dash-hero-actions">
+            <a class="btn btn-primary disabled" href="#">${renderIcon('play')}<span>Loading...</span></a>
+          </div>
+        </div>
+        <div class="dash-progress-orbit">
+          <div class="dash-progress-ring skeleton" style="--dash-pct:0">
+            <strong>...</strong>
+          </div>
+        </div>
+      </section>
+      <section class="dash-main-grid">
+        ${[1,2,3,4].map(() => `<article class="dash-metric-card skeleton-card"></article>`).join('')}
+      </section>
+      <section class="dash-action-grid">
+        ${[1,2,3,4,5,6].map(() => `<div class="dash-action-card skeleton-card"></div>`).join('')}
+      </section>
+    </div>
+  `;
 }
 
 function timeAgo(isoString) {
@@ -1600,63 +1657,77 @@ function importProgress(input) {
   reader.readAsText(file);
 }
 
-// ─── Stub renders (implemented in other JS files) ─────────────────────────────
-// These are defined in their respective files but need to exist at load time
-function renderFlashcardsPage(container) {
+// ─── Stub renders (lazy-loaded) ─────────────────────────────
+async function renderFlashcardsPage(container) {
+  await API.loadScript(`js/flashcards.js?v=${API.version}`);
   if (window.FlashcardsModule) return window.FlashcardsModule.render(container);
-  container.innerHTML = '<div class="spinner"></div><p class="text-center text-muted mt-8">Loading flashcards…</p>';
+  container.innerHTML = '<div class="empty-state"><h3>Flashcards Module Error</h3></div>';
 }
 
-function renderPronunciationQuiz(container) {
+async function renderPronunciationQuiz(container) {
+  await API.loadScript(`js/quiz.js?v=${API.version}`);
   if (window.QuizModule) return window.QuizModule.renderPronunciation(container);
-  container.innerHTML = '<div class="empty-state"><h3>Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Quiz Module Error</h3></div>';
 }
 
-function renderVocabQuiz(container) {
+async function renderVocabQuiz(container) {
+  await API.loadScript(`js/quiz.js?v=${API.version}`);
   if (window.QuizModule) return window.QuizModule.renderVocabulary(container);
-  container.innerHTML = '<div class="empty-state"><h3>Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Quiz Module Error</h3></div>';
 }
 
-function renderFlashQuizPage(container) {
+async function renderFlashQuizPage(container) {
+  await API.loadScript(`js/flash-quiz.js?v=${API.version}`);
   if (window.FlashQuizModule) return window.FlashQuizModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Flash Quiz Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Flash Quiz Module Error</h3></div>';
 }
 
-function renderToneGame(container) {
+async function renderToneGame(container) {
+  await API.loadScript(`js/tone-game.js?v=${API.version}`);
   if (typeof ToneGame !== 'undefined') return ToneGame.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Tone Game Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Tone Game Error</h3></div>';
 }
 
-function renderVocabLibrary(container) {
+async function renderVocabLibrary(container) {
+  await API.loadScript(`js/vocabulary.js?v=${API.version}`);
   if (window.VocabularyModule) return window.VocabularyModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Vocabulary Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Vocabulary Module Error</h3></div>';
 }
 
-function renderVocabularyBooks(container) {
+async function renderVocabularyBooks(container) {
+  await API.loadScript(`js/vocabulary_books.js?v=${API.version}`);
   if (window.VocabularyBooksModule) return window.VocabularyBooksModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Course Books Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Course Books Module Error</h3></div>';
 }
 
-function renderGrammarLibrary(container) {
+async function renderGrammarLibrary(container) {
+  await API.loadScript(`js/grammar.js?v=${API.version}`);
   if (typeof GrammarModule !== 'undefined') return GrammarModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Grammar Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Grammar Module Error</h3></div>';
 }
 
-function renderReadingPage(container) {
+async function renderReadingPage(container) {
+  await API.loadScript(`js/reader.js?v=${API.version}`);
   if (typeof ReaderModule !== 'undefined') return ReaderModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Reader Module Error</h3></div>';
 }
 
-function renderMockReadingPage(container) {
+async function renderMockReadingPage(container) {
+  await API.loadScript(`js/mock-test.js?v=${API.version}`);
   if (typeof MockTestModule !== 'undefined') return MockTestModule.renderReading(container);
+  container.innerHTML = '<div class="empty-state"><h3>Mock Test Module Error</h3></div>';
 }
 
-function renderMockListeningPage(container) {
+async function renderMockListeningPage(container) {
+  await API.loadScript(`js/mock-test.js?v=${API.version}`);
   if (typeof MockTestModule !== 'undefined') return MockTestModule.renderListening(container);
+  container.innerHTML = '<div class="empty-state"><h3>Mock Test Module Error</h3></div>';
 }
 
-function renderExamsPage(container) {
+async function renderExamsPage(container) {
+  await API.loadScript(`js/exam.js?v=${API.version}`);
   if (window.ExamModule) return ExamModule.renderHub(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Exam Module Error</h3></div>';
 }
 
 // ─── Topbar level badge ──────────────────────────────────────────────────────
@@ -1686,39 +1757,46 @@ function updateTopbarBadge() {
 }
 
 // ─── New module stubs ────────────────────────────────────────
-function renderOnboarding(container) {
+async function renderOnboarding(container) {
+  await API.loadScript(`js/onboarding.js?v=${API.version}`);
   if (typeof OnboardingModule !== 'undefined') return OnboardingModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Onboarding Module Error</h3></div>';
 }
 
-function renderLearnPath(container) {
+async function renderLearnPath(container) {
+  await API.loadScript(`js/learn.js?v=${API.version}`);
   if (typeof LearnModule !== 'undefined') return LearnModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Learning Path Module Error</h3></div>';
 }
 
-function renderChaptersPage(container) {
+async function renderChaptersPage(container) {
+  await API.loadScript(`js/chapters.js?v=${API.version}`);
   if (typeof ChapterModule !== 'undefined') return ChapterModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Chapters Module Error</h3></div>';
 }
 
-function renderPlayground(container) {
+async function renderPlayground(container) {
+  await API.loadScript(`js/playground.js?v=${API.version}`);
   if (window.PlaygroundModule) return window.PlaygroundModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Playground Module Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Playground Module Error</h3></div>';
 }
 
-function renderCharPlayground(container) {
+async function renderCharPlayground(container) {
+  await API.loadScript(`js/playground.js?v=${API.version}`);
   if (window.PlaygroundModule) return window.PlaygroundModule.renderCharPlayground(container);
-  container.innerHTML = '<div class="empty-state"><h3>Character Playground Loading Error</h3><p>Please refresh the page to try again.</p></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Playground Module Error</h3></div>';
 }
 
-function renderScenariosPage(container) {
+async function renderScenariosPage(container) {
+  await API.loadScript(`js/scenarios.js?v=${API.version}`);
   if (typeof ScenarioModule !== 'undefined') return ScenarioModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Scenarios Module Error</h3></div>';
 }
 
-function renderDialoguePage(container) {
+async function renderDialoguePage(container) {
+  await API.loadScript(`js/dialogue.js?v=${API.version}`);
   if (typeof DialogueModule !== 'undefined') return DialogueModule.render(container);
-  container.innerHTML = '<div class="spinner"></div>';
+  container.innerHTML = '<div class="empty-state"><h3>Dialogue Module Error</h3></div>';
 }
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
@@ -1749,26 +1827,27 @@ async function boot() {
     if (e.key === 'Escape') closeMobileNav();
   });
 
-  // Route immediately before heavy curriculum preload so pages never sit on the boot spinner.
+  // Start routing immediately
   router();
 
-  // Preload characters into memory for client-side operations
-  try {
-    const charResult = await API.getCharacters({ limit: 9999 });
-    App.state.characters = charResult.data || [];
-    
-    const vocabResult = await API.get('vocabulary');
-    App.state.vocabulary = vocabResult.sets || [];
-    
-    if (window.ExamModule) ExamModule.init();
+  // Heavy curriculum preload in background
+  (async () => {
+    try {
+      const charResult = await API.getCharacters({ limit: 9999 });
+      App.state.characters = charResult.data || [];
+      
+      const vocabResult = await API.get('vocabulary');
+      App.state.vocabulary = vocabResult.sets || [];
+      
+      if (window.ExamModule) ExamModule.init();
 
-    updateTopbarBadge();
-    if (getPath() === '/') router();
-  } catch (err) {
-    console.warn('Could not preload curriculum data:', err.message);
-  }
-
-  // Router already ran before preload; data-driven modules refresh themselves as needed.
+      updateTopbarBadge();
+      // If we're on dashboard, refresh it with the newly loaded data
+      if (getPath() === '/') router();
+    } catch (err) {
+      console.warn('Could not preload curriculum data:', err.message);
+    }
+  })();
 }
 
 // Start when DOM is ready
