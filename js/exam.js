@@ -22,8 +22,7 @@ window.ExamModule = {
      */
     async init() {
         try {
-            const response = await fetch('data/monthly_exams.json');
-            this.state.examData = await response.json();
+            this.state.examData = await API.get('monthly_exams');
             
             if (!App.state.progress.exams) {
                 App.state.progress.exams = {};
@@ -69,8 +68,8 @@ window.ExamModule = {
                         
                         <div class="exam-global-progress">
                             <div class="egp-info">
-                                <span>Overall Certification Progress</span>
-                                <span><strong>${completedExams}</strong> / ${totalExams} Mastery Badges</span>
+                                <span style="color:white;opacity:0.9">Overall Certification Progress</span>
+                                <span style="color:white"><strong>${completedExams}</strong> / ${totalExams} Mastery Badges</span>
                             </div>
                             <div class="egp-bar-bg">
                                 <div class="egp-bar-fill" style="width: ${progressPct}%"></div>
@@ -95,15 +94,15 @@ window.ExamModule = {
                     <div class="level-track-header">
                         <div class="lth-icon" style="background: ${lvl.color}15; color: ${lvl.color};">${lvl.icon}</div>
                         <div class="lth-info">
-                            <div class="flex items-center gap-12 wrap">
-                                <h2 class="m-0 text-1-6rem font-800">${lvl.title}</h2>
+                            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                                <h2 style="color: var(--text); margin: 0; font-size: 1.6rem; font-weight: 800;">${lvl.title}</h2>
                                 <span class="level-badge" style="background: ${lvl.color};">${lvl.subtitle}</span>
                                 ${isLvlComplete ? '<span class="level-badge" style="background: #fbbf24; color: #78350f;">🏆 MASTERED</span>' : ''}
                             </div>
-                            <p class="text-muted m-4-0 font-600">${lvl.desc}</p>
+                            <p style="color: var(--text-3); margin: 4px 0 0 0; font-weight: 600;">${lvl.desc}</p>
                         </div>
                         <div class="lth-progress">
-                            <span class="font-800 text-1-2rem" style="color: ${lvl.color};">${lvlCompleted}/${lvlTotal}</span>
+                            <span style="font-weight: 800; font-size: 1.2rem; color: ${lvl.color};">${lvlCompleted}/${lvlTotal}</span>
                         </div>
                     </div>
 
@@ -143,14 +142,15 @@ window.ExamModule = {
 
         html += `
                 </div>
-                <div class="exam-info-box card mt-60 mb-100 mx-auto text-center bg-off-white border-dashed">
-                    <h3>Certification Requirements</h3>
-                    <p class="text-muted line-height-1-6">All exams are randomized and generated from your curriculum data. To receive a proficiency certificate, you must complete the 100-question assessment with a score of <strong>80%</strong> or higher. Take your time; these are professional-grade evaluations.</p>
+                <div class="exam-info-box card mt-60 mb-100" style="max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; background: var(--off-white); border: 1px dashed var(--border);">
+                    <h3 style="color: var(--text)">Certification Requirements</h3>
+                    <p style="color: var(--text-2); line-height: 1.6;">All exams are randomized and generated from your curriculum data. To receive a proficiency certificate, you must complete the 100-question assessment with a score of <strong>80%</strong> or higher. Take your time; these are professional-grade evaluations.</p>
                 </div>
             </div>
         `;
 
         container.innerHTML = html;
+        this.addStyles();
         window.scrollTo(0, 0);
     },
 

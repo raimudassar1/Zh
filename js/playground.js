@@ -18,8 +18,7 @@ window.PlaygroundModule = (() => {
   async function init() {
     if (!currentCharData) {
       try {
-        const res = await fetch('data/char_playground_content.json');
-        currentCharData = await res.json();
+        currentCharData = await API.get('char_playground_content');
       } catch (e) {
         console.error("Failed to load character playground data", e);
         currentCharData = [];
@@ -27,8 +26,7 @@ window.PlaygroundModule = (() => {
     }
     if (!currentRadicalData) {
       try {
-        const res = await fetch('data/radicals_set.json');
-        const json = await res.json();
+        const json = await API.get('radicals_set');
         currentRadicalData = json.radicals;
       } catch (e) {
         console.error("Failed to load radical learning set", e);
@@ -37,8 +35,7 @@ window.PlaygroundModule = (() => {
     }
     if (!currentPlaygroundData) {
       try {
-        const res = await fetch('data/playground_content.json');
-        currentPlaygroundData = await res.json();
+        currentPlaygroundData = await API.get('playground_content');
       } catch (e) {
         console.error("Failed to load playground content", e);
         currentPlaygroundData = [];
@@ -48,8 +45,7 @@ window.PlaygroundModule = (() => {
 
   async function loadBook(bookId) {
     try {
-      const res = await fetch(`data/book${bookId}_content.json`);
-      currentBookData = await res.json();
+      currentBookData = await API.get(`book${bookId}_content`);
       currentBookId = bookId;
     } catch (e) {
       console.error(`Failed to load Book ${bookId} data`, e);
@@ -81,7 +77,7 @@ window.PlaygroundModule = (() => {
 
     container.innerHTML = `
       <div class="page-header">
-        <div class="flex justify-between items-end w-full">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
           <div>
             <h2>Beginner Learning Path</h2>
             <p>A structured journey from Absolute Beginner to Survival Mandarin.</p>
@@ -90,30 +86,30 @@ window.PlaygroundModule = (() => {
         </div>
       </div>
       
-      <div class="pg-stages-container mx-auto p-24 w-full">
+      <div class="pg-stages-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         ${stages.map(stage => {
           const items = currentPlaygroundData.filter(pg => pg.stage === stage.id);
           if (!items.length) return '';
           return `
             <div class="pg-stage-section mb-60">
-              <div class="mb-24 p-20" style="border-left: 6px solid ${stage.color};">
-                <h3 class="stage-title text-1-8rem mb-4">${stage.title}</h3>
-                <p class="text-muted text-1-2rem">${stage.desc}</p>
+              <div class="mb-24" style="border-left: 6px solid ${stage.color}; padding-left: 20px;">
+                <h3 class="stage-title" style="font-size: 1.8rem; margin-bottom: 4px;">${stage.title}</h3>
+                <p class="text-muted" style="font-size: 1rem;">${stage.desc}</p>
               </div>
-              <div class="pg-grid">
+              <div class="pg-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
                 ${items.map(pg => {
                   const isDone = App.state.progress.playground?.[pg.id];
                   return `
-                    <div class="pg-card ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.openPlaygroundGroup('${pg.id}')">
-                      <div class="pg-card-icon" style="background:${stage.color}15; color:${stage.color};">📖</div>
+                    <div class="pg-card ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.openPlaygroundGroup('${pg.id}')" style="cursor: pointer; position: relative;">
+                      <div class="pg-card-icon pg-illustration" style="--pg-color:${stage.color}" data-icon="book">${window.IconSystem ? window.IconSystem.svg('book') : ''}</div>
                       <div class="pg-card-content">
-                        <div class="flex justify-between items-center mb-8">
-                          <div class="pg-card-meta text-small font-800 uppercase" style="color: ${stage.color}; letter-spacing: 1px;">WEEK ${pg.recommended_week || '?'}</div>
-                          ${isDone ? '<span class="text-success font-900">✓</span>' : ''}
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                          <div class="pg-card-meta" style="font-size: 0.75rem; font-weight: 800; color: ${stage.color}; letter-spacing: 1px;">WEEK ${pg.recommended_week || '?'}</div>
+                          ${isDone ? '<span style="color: #27ae60; font-weight: 900;">✓</span>' : ''}
                         </div>
-                        <h3 class="text-1-25rem mb-8">${pg.title}</h3>
-                        <p class="text-small text-muted line-height-1-6 mb-16">${pg.subtitle}</p>
-                        <div class="pg-lesson-count text-small font-700 text-muted uppercase">${pg.lessons.length} Practice Sets</div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px;">${pg.title}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">${pg.subtitle}</p>
+                        <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">${pg.lessons.length} Practice Sets</div>
                       </div>
                     </div>
                   `;
@@ -134,7 +130,7 @@ window.PlaygroundModule = (() => {
   function renderBooksView(container) {
     container.innerHTML = `
       <div class="page-header">
-        <div class="flex justify-between items-end w-full">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%;">
           <div>
             <h2>Comprehensive Curriculum</h2>
             <p>A full 3-volume series "A Course in Contemporary Chinese" for academic mastery.</p>
@@ -143,30 +139,30 @@ window.PlaygroundModule = (() => {
         </div>
       </div>
       
-      <div class="pg-stages mx-auto p-24 w-full">
-        <div class="pg-grid">
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(1)">
-            <div class="pg-card-icon text-3rem mb-20">📘</div>
+      <div class="pg-stages" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="pg-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(1)" style="cursor: pointer;">
+            <div class="pg-card-icon pg-illustration" data-icon="book">${window.IconSystem ? window.IconSystem.svg('book') : ''}</div>
             <div class="pg-card-content">
-              <h3 class="text-1-25rem mb-8">Book 1: Foundations</h3>
-              <p class="text-small text-muted line-height-1-6 mb-16">Survival greetings, family, shopping, and arrival in Taiwan.</p>
-              <div class="pg-lesson-count text-small font-700 text-muted uppercase">15 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 1: Foundations</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Survival greetings, family, shopping, and arrival in Taiwan.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">15 Chapters</div>
             </div>
           </div>
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(2)">
-            <div class="pg-card-icon text-3rem mb-20">📗</div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(2)" style="cursor: pointer;">
+            <div class="pg-card-icon pg-illustration" data-icon="book">${window.IconSystem ? window.IconSystem.svg('book') : ''}</div>
             <div class="pg-card-content">
-              <h3 class="text-1-25rem mb-8">Book 2: Daily Life</h3>
-              <p class="text-small text-muted line-height-1-6 mb-16">Directions, transportation, work, and local customs.</p>
-              <div class="pg-lesson-count text-small font-700 text-muted uppercase">15 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 2: Daily Life</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Directions, transportation, work, and local customs.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">15 Chapters</div>
             </div>
           </div>
-          <div class="pg-card" onclick="window.PlaygroundModule.openBook(3)">
-            <div class="pg-card-icon text-3rem mb-20">📙</div>
+          <div class="pg-card" onclick="window.PlaygroundModule.openBook(3)" style="cursor: pointer;">
+            <div class="pg-card-icon pg-illustration" data-icon="book">${window.IconSystem ? window.IconSystem.svg('book') : ''}</div>
             <div class="pg-card-content">
-              <h3 class="text-1-25rem mb-8">Book 3: Advanced Social</h3>
-              <p class="text-small text-muted line-height-1-6 mb-16">Culture, trends, society, and professional fluency.</p>
-              <div class="pg-lesson-count text-small font-700 text-muted uppercase">12 Chapters</div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Book 3: Advanced Social</h3>
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5; margin-bottom: 16px;">Culture, trends, society, and professional fluency.</p>
+              <div class="pg-lesson-count" style="font-size: 0.8rem; font-weight: 700; color: var(--text-3); text-transform: uppercase;">12 Chapters</div>
             </div>
           </div>
         </div>
@@ -188,18 +184,18 @@ window.PlaygroundModule = (() => {
         <p>${pg.subtitle}</p>
       </div>
       
-      <div class="pg-lessons-list mx-auto p-24 w-full">
+      <div class="pg-lessons-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
         ${pg.lessons.map((lesson, idx) => {
           const isDone = App.state.progress.playground_lessons?.[lesson.id];
           return `
-            <div class="pg-lesson-item ${isDone ? 'done' : ''} flex-col items-start p-24" onclick="window.PlaygroundModule.startPlaygroundLesson('${pg.id}', '${lesson.id}')">
-              <div class="flex justify-between items-center w-full mb-16">
+            <div class="pg-lesson-item ${isDone ? 'done' : ''}" style="height:auto; flex-direction:column; align-items:flex-start; padding:24px; cursor: pointer;" onclick="window.PlaygroundModule.startPlaygroundLesson('${pg.id}', '${lesson.id}')">
+              <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:16px">
                 <div class="pg-lesson-num" style="background:${isDone?'var(--tone2)':'var(--accent)'}">${isDone ? '✓' : idx + 1}</div>
-                <div class="pg-lesson-status text-small font-800 uppercase" style="color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
+                <div class="pg-lesson-status" style="font-size:0.75rem; font-weight:800; letter-spacing:1px; color:${isDone?'var(--tone2)':'var(--text-3)'}">${isDone ? 'COMPLETED' : 'START →'}</div>
               </div>
               <div class="pg-lesson-info">
-                <h4 class="text-1-2rem mb-8 font-800">${lesson.title}</h4>
-                <p class="text-small text-muted line-height-1-6">Practice real-world dialogue and key vocabulary.</p>
+                <h4 style="font-size:1.2rem; margin-bottom:6px; font-weight:800">${lesson.title}</h4>
+                <p style="font-size:0.9rem; line-height:1.5; color:var(--text-2)">Practice real-world dialogue and key vocabulary.</p>
               </div>
             </div>
           `;
@@ -234,14 +230,14 @@ window.PlaygroundModule = (() => {
               ${d.title ? `<h4 class="mb-16" style="color:var(--accent); font-size:1.2rem; font-weight:800; border-bottom: 2px solid var(--off-white); padding-bottom: 12px;">${d.title}</h4>` : ''}
               <div style="display:flex; flex-direction:column; gap:16px">
                 ${(d.lines || []).map(line => `
-                  <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
+                  <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
                     <div class="line-speaker-badge" style="background: var(--charcoal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; min-width: 80px; text-align: center;">${line.speaker}</div>
                     <div style="flex:1">
                       <div class="font-zh" style="font-size:1.4rem; font-weight:800; margin-bottom:4px; color: var(--text)">${line.zh}</div>
                       <div class="text-muted" style="font-size:1rem; font-weight:600; color:var(--accent)">${line.pinyin}</div>
                       <div style="font-size:0.95rem; margin-top:4px; color: var(--text-2); font-style: italic;">${line.en}</div>
                     </div>
-                    <div style="font-size:1.2rem; opacity:0.3">🔊</div>
+                    <button class="dialogue-audio-btn" type="button" aria-label="Play line" onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
                   </div>
                 `).join('')}
               </div>
@@ -332,39 +328,6 @@ window.PlaygroundModule = (() => {
 
   // ── CCC Academic Book Actions ────────────────────────────────────────
 
-  function playBookVocab(bookId, chapterId, vocabIndex) {
-    const bookPrefix = `B${bookId}`;
-    const lessonStr = chapterId.toString().padStart(2, '0');
-    
-    // Split points mapping for Part I vs Part II vocab
-    const splits = {
-      1: [24, 22, 23, 19, 21, 23, 17, 20, 14, 15, 23, 22, 23, 18, 21],
-      2: [23, 21, 24, 27, 17, 29, 19, 21, 20, 29, 24, 29, 23, 22, 18],
-      3: [35, 32, 37, 35, 33, 32, 40, 36, 30, 33, 42, 42]
-    };
-    
-    const bookSplits = splits[bookId];
-    let part = "I";
-    let indexInPart = vocabIndex + 1;
-    
-    if (bookSplits && bookSplits[chapterId - 1]) {
-      const splitPoint = bookSplits[chapterId - 1];
-      if (vocabIndex >= splitPoint) {
-        part = "II";
-        indexInPart = vocabIndex - splitPoint + 1;
-      }
-    }
-    
-    const fileIndex = indexInPart.toString().padStart(2, '0');
-    const path = `books/book${bookId}/audio_b${bookId}/dangdai-${bookPrefix}L${lessonStr}-${part}-${fileIndex}.mp3`;
-    
-    const audio = new Audio(path);
-    audio.play().catch(err => {
-      console.log("Local audio not found:", path);
-      // Fallback: User requested NO TTS for academic book vocab cards
-    });
-  }
-
   async function openBook(bookId) {
     await init();
     await loadBook(bookId);
@@ -377,17 +340,19 @@ window.PlaygroundModule = (() => {
         <p>A Course in Contemporary Chinese — Official Curriculum.</p>
       </div>
 
-      <div class="pg-lessons-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:24px; max-width: 1200px; margin: 0 auto; padding: 20px;">
+      <div class="pg-lessons-list pg-academic-list">
         ${currentBookData.map((ch, idx) => {
           const isDone = App.state.progress.ccc_course?.[ch.id];
           return `
-            <div class="pg-lesson-item academic ${isDone ? 'done' : ''}" style="cursor: pointer; height: auto; padding: 32px;" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
-              <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:20px">
-                <div class="pg-lesson-num" style="width:40px; height:40px; background:var(--charcoal)">${idx + 1}</div>
-                <div class="pg-lesson-status" style="font-size:0.75rem; font-weight:800; color:var(--text-3)">${isDone ? 'MASTERED ✓' : 'STUDY →'}</div>
+            <div class="pg-lesson-item academic pg-academic-card ${isDone ? 'done' : ''}" onclick="window.PlaygroundModule.startChapter('${ch.id}')">
+              <div class="pg-academic-meta">
+                <div class="pg-lesson-num">${idx + 1}</div>
+                <div class="pg-lesson-status">${isDone ? 'MASTERED' : 'STUDY'}</div>
               </div>
-              <h3 class="font-zh" style="font-size:1.6rem; margin-bottom:12px; font-weight:900">${ch.title}</h3>
-              <p style="font-size:0.95rem; color:var(--text-2); line-height:1.6">Master the specific grammar and vocabulary of this academic unit.</p>
+              <div class="pg-academic-body">
+                <h3 class="font-zh">${ch.title}</h3>
+                <p>Master the specific grammar and vocabulary of this academic unit.</p>
+              </div>
             </div>
           `;
         }).join('')}
@@ -408,12 +373,9 @@ window.PlaygroundModule = (() => {
       <section class="lesson-section" id="ls-vocab">
         <h3 class="section-title">1. Essential Vocabulary</h3>
         <div class="vocab-grid-premium">
-          ${ch.vocab.map((v, idx) => `
-            <div class="vocab-card-premium" onclick="window.PlaygroundModule.playBookVocab(${ch.book}, ${ch.chapter}, ${idx})">
-              <div style="display:flex; justify-content:space-between; align-items:flex-start">
-                <div class="v-hanzi">${v.hanzi}</div>
-                <div style="font-size:1.2rem; opacity:0.3">🔊</div>
-              </div>
+          ${ch.vocab.map(v => `
+            <div class="vocab-card-premium" onclick="showWordDetail('${v.hanzi}')">
+              <div class="v-hanzi">${v.hanzi}</div>
               <div class="v-pinyin">${v.pinyin || ''}</div>
               <div class="v-def">${v.definition}</div>
             </div>
@@ -431,14 +393,14 @@ window.PlaygroundModule = (() => {
             <h4 class="mb-16" style="color:var(--accent); font-weight:800">Part ${idx+1}: ${d.title}</h4>
             <div style="display:flex; flex-direction:column; gap:12px">
               ${d.lines.map(line => `
-                <div class="dialogue-line-premium" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
+                <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
                   <div class="line-speaker-badge" style="background: var(--charcoal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; min-width: 80px; text-align: center;">${line.speaker}</div>
                   <div style="flex:1">
                     <div class="font-zh" style="font-size:1.5rem; font-weight:800; margin-bottom:4px; color: var(--text)">${line.zh}</div>
                     <div class="text-muted" style="font-size:0.95rem; font-weight:600; color:var(--accent)">${line.py}</div>
                     <div class="color-text-2" style="font-size:0.9rem; margin-top:4px">${line.en}</div>
                   </div>
-                  <div style="font-size:1.2rem; opacity:0.3">🔊</div>
+                  <button class="dialogue-audio-btn" type="button" aria-label="Play line" onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
                 </div>
               `).join('')}
             </div>
