@@ -91,7 +91,7 @@ window.B1CoachModule = (() => {
       { id: 'review', title: 'Weekly mistake review', detail: 'Review all wrong items before touching new content.', mins: 20, route: ROUTES.study },
       { id: 'mock', title: 'Strict mini exam', detail: 'Timed, no hints, no multitasking. Record the score.', mins: 30, route: ROUTES.exams },
       { id: 'repair', title: 'Repair the weakest skill', detail: 'Pick the lowest score: tones, listening, vocab, grammar, or reading.', mins: 20, route: ROUTES.mixed },
-      { id: 'plan', title: 'Plan next week', detail: 'Export progress if you will switch devices.', mins: 5, route: '#/b1-coach' }
+      { id: 'plan', title: 'Plan next week', detail: 'Use Settings sync before switching devices.', mins: 5, route: '#/settings' }
     ];
     return base;
   }
@@ -177,11 +177,10 @@ window.B1CoachModule = (() => {
         <div class="coach-hero-copy">
           <div class="coach-kicker">6-Month B1 Coach</div>
           <h1>Day ${stats.day}: ${esc(dayTheme(stats.day))}</h1>
-          <p>A strict static roadmap from under 50 words to B1 exam readiness. Follow today, export progress when switching devices, and keep the exam target visible.</p>
+          <p>A strict static roadmap from under 50 words to B1 exam readiness. Follow today, use Settings sync when switching devices, and keep the exam target visible.</p>
           <div class="coach-hero-actions">
             <button class="btn btn-primary" onclick="B1CoachModule.startPlan()">Start / Reset Start Date</button>
-            <button class="btn btn-outline" onclick="B1CoachModule.exportProgress()">Export Sync File</button>
-            <label class="btn btn-outline coach-import-btn">Import Sync File<input type="file" accept="application/json" onchange="B1CoachModule.importProgress(this.files[0])"></label>
+            <a class="btn btn-outline" href="#/settings">Progress Sync</a>
           </div>
         </div>
         <div class="coach-score-card">
@@ -202,7 +201,7 @@ window.B1CoachModule = (() => {
             <li>Daily work before browsing other pages.</li>
             <li>Weekly strict mini exam, no hints.</li>
             <li>Every wrong answer becomes tomorrow\'s review.</li>
-            <li>Export progress before changing devices.</li>
+            <li>Use Settings > Data Management before changing devices.</li>
           </ul>
         </aside>
       </section>
@@ -218,7 +217,7 @@ window.B1CoachModule = (() => {
       </section>
 
       <section class="coach-sync-card">
-        <div><span>Static app sync</span><h2>Best course of action for 3 devices</h2><p>This app can save progress locally on each device, but static pages cannot automatically sync across devices without a backend/login. Use Export Sync File at the end of study, then import it on the next device. Later, the best upgrade is optional cloud sync through a tiny backend or a private GitHub/Gist-style storage connector.</p></div>
+        <div><span>Static app sync</span><h2>Best course of action for 3 devices</h2><p>This app can save progress locally on each device, but static pages cannot automatically sync across devices without a backend/login. Use Settings > Data Management at the end of study, then import the same all-progress file on the next device. Later, the best upgrade is optional cloud sync through a tiny backend or a private GitHub/Gist-style storage connector.</p></div>
       </section>
     </div>`;
   }

@@ -308,7 +308,7 @@ const Pinyin = {
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
-  version: '85', // Match index.html version for consistency
+  version: '87', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -1611,11 +1611,11 @@ function renderSettings(container) {
       <div class="card mb-16">
         <div class="settings-section">
           <h3>Data Management</h3>
-          <p class="setting-desc mb-16">Since this app runs locally in your browser, you can export your progress to a file to use on another device.</p>
+          <p class="setting-desc mb-16">Use one compact sync file for all progress in this app: main progress, SRS, Beginner Coach, B1 Coach, Launchpad, Grammar, Sentence Builder, and display settings. Private API keys are not exported.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-outline" onclick="exportProgress()">📤 Export Progress</button>
-            <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">📥 Import Progress</button>
-            <input type="file" id="import-file" style="display:none" onchange="importProgress(this)">
+            <button class="btn btn-outline" onclick="exportProgress()">Export All Progress</button>
+            <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">Import All Progress</button>
+            <input type="file" id="import-file" accept=".json,.gz,.json.gz,application/json,application/gzip" style="display:none" onchange="importProgress(this)">
           </div>
         </div>
       </div>
@@ -1655,41 +1655,130 @@ function renderSettings(container) {
 }
 
 // ─── Progress Management Utilities ───────────────────────────────────────────
+// Unified progress sync: one small file for all app progress.
+const ProgressSync = (() => {
+  const VERSION = 1;
+  const KEYS = [
+    'tocfl_progress',
+    'tocfl_srs_cards',
+    'b1CoachProgress',
+    'beginnerCoachState',
+    'beginnerGuidedMode',
+    'beginnerPackDisplay',
+    'beginnerLaunchpadProgress',
+    'grammarAcademyState',
+    'sentenceBuilderLevel',
+    'sentenceBuilderMode',
+    'sentenceBuilderSessionSize'
+  ];
+
+  function empty(value) {
+    if (value == null || value === '') return true;
+    const v = String(value).trim();
+    return v === '{}' || v === '[]' || v === 'null' || v === 'undefined';
+  }
+
+  function cleanSettings() {
+    try {
+      const raw = localStorage.getItem('tocfl_settings');
+      if (!raw) return null;
+      const settings = JSON.parse(raw);
+      delete settings.geminiKey;
+      return JSON.stringify(settings);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function collect() {
+    const data = {};
+    KEYS.forEach(key => {
+      const value = localStorage.getItem(key);
+      if (!empty(value)) data[key] = value;
+    });
+    const settings = cleanSettings();
+    if (!empty(settings)) data.tocfl_settings = settings;
+    return {
+      type: 'zhongwen-all-progress',
+      version: VERSION,
+      appVersion: API.version,
+      exportedAt: new Date().toISOString(),
+      data
+    };
+  }
+
+  function download(blob, name) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function toBlob(json) {
+    if ('CompressionStream' in window) {
+      try {
+        const stream = new Blob([json]).stream().pipeThrough(new CompressionStream('gzip'));
+        return { blob: await new Response(stream).blob(), ext: 'json.gz' };
+      } catch (_) {}
+    }
+    return { blob: new Blob([json], { type: 'application/json' }), ext: 'json' };
+  }
+
+  async function fileText(file) {
+    const buffer = await file.arrayBuffer();
+    const bytes = new Uint8Array(buffer.slice(0, 2));
+    if (bytes[0] === 0x1f && bytes[1] === 0x8b && 'DecompressionStream' in window) {
+      const stream = new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return await new Response(stream).text();
+    }
+    return new TextDecoder().decode(buffer);
+  }
+
+  async function exportAll() {
+    const payload = collect();
+    const count = Object.keys(payload.data).length;
+    if (!count) return alert('No progress data to export yet.');
+    const json = JSON.stringify(payload);
+    const packed = await toBlob(json);
+    download(packed.blob, `zhongwen-all-progress-${new Date().toISOString().slice(0, 10)}.${packed.ext}`);
+  }
+
+  async function importAll(file) {
+    if (!file) return;
+    try {
+      const parsed = JSON.parse(await fileText(file));
+      if (parsed?.type !== 'zhongwen-all-progress' || !parsed.data) {
+        throw new Error('This is not a Zhongwen all-progress file.');
+      }
+      const allowed = new Set([...KEYS, 'tocfl_settings']);
+      const entries = Object.entries(parsed.data).filter(([key, value]) => allowed.has(key) && !empty(value));
+      if (!entries.length) return alert('This progress file is empty.');
+      if (!confirm(`Import ${entries.length} progress sections from this one sync file?`)) return;
+      entries.forEach(([key, value]) => localStorage.setItem(key, String(value)));
+      alert('Progress imported. The app will reload now.');
+      window.location.reload();
+    } catch (err) {
+      alert(`Invalid all-progress file: ${err.message || err}`);
+    }
+  }
+
+  return { collect, exportAll, importAll };
+})();
+
 function exportProgress() {
-  const data = localStorage.getItem('tocfl_progress');
-  if (!data) return alert("No progress data to export.");
-  
-  const blob = new Blob([data], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `mandarin_progress_${new Date().toISOString().slice(0,10)}.json`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  ProgressSync.exportAll();
 }
 
 function importProgress(input) {
-  const file = input.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (confirm('Importing progress will overwrite your current progress. Continue?')) {
-        localStorage.setItem('tocfl_progress', JSON.stringify(data));
-        window.location.reload();
-      }
-    } catch (err) {
-      alert("Invalid progress file.");
-    }
-  };
-  reader.readAsText(file);
+  const file = input?.files?.[0];
+  ProgressSync.importAll(file).finally(() => { if (input) input.value = ''; });
 }
 
-// ─── Stub renders (lazy-loaded) ─────────────────────────────
+// ??? Stub renders (lazy-loaded) ?????????????????????????????
 async function renderFlashcardsPage(container) {
   await API.loadScript(`js/flashcards.js?v=${API.version}`);
   if (window.FlashcardsModule) return window.FlashcardsModule.render(container);

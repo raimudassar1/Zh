@@ -1111,7 +1111,7 @@ window.BeginnerCoachModule = (() => {
       <div class="bc-writing-area" style="margin-top: 20px;">
         <strong>Your Writing (Supports Pinyin input):</strong>
         <textarea id="bc-user-writing-${pack.id}" class="form-input" style="width: 100%; min-height: 100px; margin-top: 10px;" placeholder="Type your response here..." oninput="BeginnerCoachModule.saveUserWriting(${pack.id}, this.value)">${esc(writingValue)}</textarea>
-        <p class="bc-pack-note" style="margin-top: 5px;">Your writing is automatically saved to local progress and will be included in exports.</p>
+        <p class="bc-pack-note" style="margin-top: 5px;">Your writing is automatically saved locally and included in Settings > Data Management sync.</p>
       </div>
       <div class="bc-pattern-strip" style="margin-top: 15px;">
         <strong>Self-Check:</strong>
@@ -1175,7 +1175,7 @@ window.BeginnerCoachModule = (() => {
           <p id="bc-main-desc">A guided beginner path with a fresh 30-word daily pack, writing, speaking, and review. All app content stays open; the coach only tells you what to do next.</p>
           <div class="bc-hero-actions">
             <a class="btn btn-primary" href="${mission.route}">Start Today: ${esc(mission.title)}</a>
-            <button class="btn btn-outline" type="button" onclick="BeginnerCoachModule.exportState()">Export Progress</button>
+            <a class="btn btn-outline" href="#/settings">Progress Sync</a>
           </div>
         </div>
         <aside class="bc-guided-toggle">
