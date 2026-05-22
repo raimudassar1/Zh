@@ -360,6 +360,7 @@ window.BeginnerLaunchpadModule = (() => {
     const shuffledTiles = isBuild ? shuffleTiles(exercise.tiles, `${state.level}-${state.lesson}-${index}-${exercise.answer}`) : (exercise.tiles || []);
     const promptClass = /[A-Za-z]/.test(exercise.prompt || '') && !/[\u4e00-\u9fff]/.test(exercise.prompt || '') ? 'latin' : '';
     const options = Array.isArray(exercise.options) ? exercise.options : [];
+    const playText = exercise.audioText || exercise.zh || exercise.answer || '';
     return `
       <section class="bl-exercise-item" ${isBuild ? `data-build-answer="${esc(exercise.answer || '')}"` : ''}>
         <div class="bl-exercise-item-head">
@@ -369,7 +370,7 @@ window.BeginnerLaunchpadModule = (() => {
         </div>
         <div class="bl-exercise-prompt-row">
           <div class="bl-exercise-prompt ${promptClass}">${esc(exercise.prompt)}</div>
-          ${exercise.zh ? `<button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak" data-text="${esc(exercise.zh)}">Play</button>` : ''}
+          ${playText ? `<button type="button" class="btn btn-ghost btn-sm" data-bl-action="speak" data-text="${esc(playText)}">Play</button>` : ''}
         </div>
         ${isBuild ? `
           <div class="bl-builder-answer" aria-label="Built sentence"><span>Tap tiles below to build your sentence.</span></div>
@@ -383,7 +384,7 @@ window.BeginnerLaunchpadModule = (() => {
             <button type="button" class="btn btn-ghost btn-sm" data-bl-action="show-answer" data-answer="${esc(exercise.answer)}">Show answer</button>
           </div>` : ''}
         ${!isBuild && hasTiles ? `<div class="bl-tile-row">${exercise.tiles.map(tile => `<span>${esc(tile)}</span>`).join('')}</div>` : ''}
-        ${options.length ? `<div class="bl-answer-grid">${options.map(option => `<button type="button" data-bl-action="answer" data-correct="${option === exercise.answer}">${esc(option)}</button>`).join('')}</div>` : (!isBuild ? `<button type="button" class="btn btn-ghost" data-bl-action="show-answer" data-answer="${esc(exercise.answer)}">Show answer</button>` : '')}
+        ${options.length ? `<div class="bl-answer-grid">${options.map(option => `<button type="button" data-bl-action="answer" data-answer="${esc(option)}" data-correct="${esc(exercise.answer)}">${esc(option)}</button>`).join('')}</div>` : (!isBuild ? `<button type="button" class="btn btn-ghost" data-bl-action="show-answer" data-answer="${esc(exercise.answer)}">Show answer</button>` : '')}
         <p class="bl-feedback">${isBuild ? 'Build it from the shuffled tiles, then check your order.' : 'Choose an answer.'}</p>
       </section>`;
   }
@@ -468,10 +469,16 @@ window.BeginnerLaunchpadModule = (() => {
       if (action === 'speak') speak(btn.dataset.text || btn.textContent.trim());
       if (action === 'speak-story') getLevel(state.level).lessons[state.lesson].story.forEach((line, i) => setTimeout(() => speak(line.zh), i * 1300));
       if (action === 'answer' || action === 'test-answer') {
-        const ok = btn.dataset.answer === btn.dataset.correct;
+        const ok = String(btn.dataset.answer || '').trim() === String(btn.dataset.correct || '').trim();
+        const group = btn.closest('.bl-answer-grid');
+        group?.querySelectorAll('button').forEach(option => {
+          option.classList.toggle('correct', String(option.dataset.answer || '').trim() === String(option.dataset.correct || '').trim());
+          if (option !== btn) option.classList.remove('wrong');
+        });
         const fb = action === 'test-answer' ? btn.closest('.bl-test-question')?.querySelector('.bl-test-feedback') : btn.closest('.bl-exercise-item')?.querySelector('.bl-feedback');
         if (fb) fb.textContent = ok ? 'Correct.' : `Not yet. Correct answer: ${btn.dataset.correct}`;
-        btn.classList.add(ok ? 'correct' : 'wrong');
+        btn.classList.toggle('wrong', !ok);
+        if (ok && btn.dataset.text) speak(btn.dataset.text);
       }
       if (action === 'pick-tile') {
         const item = btn.closest('.bl-exercise-item');

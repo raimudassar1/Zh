@@ -1,7 +1,7 @@
 {
-  "name": "漢語學習 — Chinese Playground",
-  "short_name": "Chinese Study",
-  "description": "A comprehensive Chinese learning platform from Beginner to TOCFL B1.",
+  "name": "Zhongwen Learning",
+  "short_name": "Zhongwen",
+  "description": "A comprehensive Chinese learning platform from beginner to TOCFL B1.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#FDFCFA",

@@ -308,7 +308,7 @@ const Pinyin = {
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
-  version: '83', // Match index.html version for consistency
+  version: '85', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -921,26 +921,31 @@ function toggleMobileNav() {
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 
 async function renderBeginnerLaunchpadPage(container) {
+  await API.loadScript(`js/beginner-launchpad.js?v=${API.version}`);
   if (window.BeginnerLaunchpadModule) return BeginnerLaunchpadModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad Error</h3></div>';
 }
 
 async function renderBeginnerCoachPage(container) {
+  await API.loadScript(`js/beginner-coach.js?v=${API.version}`);
   if (window.BeginnerCoachModule) return BeginnerCoachModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Beginner Coach Error</h3></div>';
 }
 
 async function renderB1CoachPage(container) {
+  await API.loadScript(`js/b1-coach.js?v=${API.version}`);
   if (window.B1CoachModule) return B1CoachModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>B1 Coach Error</h3></div>';
 }
 
 async function renderMixedRecallPage(container) {
+  await API.loadScript(`js/mixed-recall.js?v=${API.version}`);
   if (window.MixedRecallModule) return MixedRecallModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Mixed Recall Error</h3></div>';
 }
 
 async function renderSentenceBuilderPage(container) {
+  await API.loadScript(`js/sentence-builder.js?v=${API.version}`);
   if (window.SentenceBuilderModule) return SentenceBuilderModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Sentence Builder Error</h3></div>';
 }
@@ -1686,61 +1691,73 @@ function importProgress(input) {
 
 // ─── Stub renders (lazy-loaded) ─────────────────────────────
 async function renderFlashcardsPage(container) {
+  await API.loadScript(`js/flashcards.js?v=${API.version}`);
   if (window.FlashcardsModule) return window.FlashcardsModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Flashcards Module Error</h3></div>';
 }
 
 async function renderPronunciationQuiz(container) {
+  await API.loadScript(`js/quiz.js?v=${API.version}`);
   if (window.QuizModule) return window.QuizModule.renderPronunciation(container);
   container.innerHTML = '<div class="empty-state"><h3>Quiz Module Error</h3></div>';
 }
 
 async function renderVocabQuiz(container) {
+  await API.loadScript(`js/quiz.js?v=${API.version}`);
   if (window.QuizModule) return window.QuizModule.renderVocabulary(container);
   container.innerHTML = '<div class="empty-state"><h3>Quiz Module Error</h3></div>';
 }
 
 async function renderFlashQuizPage(container) {
+  await API.loadScript(`js/flash-quiz.js?v=${API.version}`);
   if (window.FlashQuizModule) return window.FlashQuizModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Flash Quiz Module Error</h3></div>';
 }
 
 async function renderToneGame(container) {
+  await API.loadScript(`js/tone-game.js?v=${API.version}`);
   if (typeof ToneGame !== 'undefined') return ToneGame.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Tone Game Error</h3></div>';
 }
 
 async function renderVocabLibrary(container) {
+  await API.loadScript(`js/vocabulary.js?v=${API.version}`);
   if (window.VocabularyModule) return window.VocabularyModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Vocabulary Module Error</h3></div>';
 }
 
 async function renderVocabularyBooks(container) {
+  await API.loadScript(`js/vocabulary_books.js?v=${API.version}`);
   if (window.VocabularyBooksModule) return window.VocabularyBooksModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Course Books Module Error</h3></div>';
 }
 
 async function renderGrammarLibrary(container) {
+  await API.loadScript(`js/grammar.js?v=${API.version}`);
   if (typeof GrammarModule !== 'undefined') return GrammarModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Grammar Module Error</h3></div>';
 }
 
 async function renderReadingPage(container) {
+  await API.loadScript(`js/reader.js?v=${API.version}`);
   if (typeof ReaderModule !== 'undefined') return ReaderModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Reader Module Error</h3></div>';
 }
 
 async function renderMockReadingPage(container) {
+  await API.loadScript(`js/mock-test.js?v=${API.version}`);
   if (typeof MockTestModule !== 'undefined') return MockTestModule.renderReading(container);
   container.innerHTML = '<div class="empty-state"><h3>Mock Test Module Error</h3></div>';
 }
 
 async function renderMockListeningPage(container) {
+  await API.loadScript(`js/mock-test.js?v=${API.version}`);
   if (typeof MockTestModule !== 'undefined') return MockTestModule.renderListening(container);
   container.innerHTML = '<div class="empty-state"><h3>Mock Test Module Error</h3></div>';
 }
 
 async function renderExamsPage(container) {
+  await API.loadScript(`js/exam.js?v=${API.version}`);
   if (window.ExamModule) return ExamModule.renderHub(container);
   container.innerHTML = '<div class="empty-state"><h3>Exam Module Error</h3></div>';
 }
@@ -1773,36 +1790,43 @@ function updateTopbarBadge() {
 
 // ─── New module stubs ────────────────────────────────────────
 async function renderOnboarding(container) {
+  await API.loadScript(`js/onboarding.js?v=${API.version}`);
   if (typeof OnboardingModule !== 'undefined') return OnboardingModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Onboarding Module Error</h3></div>';
 }
 
 async function renderLearnPath(container) {
+  await API.loadScript(`js/learn.js?v=${API.version}`);
   if (typeof LearnModule !== 'undefined') return LearnModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Learning Path Module Error</h3></div>';
 }
 
 async function renderChaptersPage(container) {
+  await API.loadScript(`js/chapters.js?v=${API.version}`);
   if (typeof ChapterModule !== 'undefined') return ChapterModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Chapters Module Error</h3></div>';
 }
 
 async function renderPlayground(container) {
+  await API.loadScript(`js/playground.js?v=${API.version}`);
   if (window.PlaygroundModule) return window.PlaygroundModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Playground Module Error</h3></div>';
 }
 
 async function renderCharPlayground(container) {
+  await API.loadScript(`js/playground.js?v=${API.version}`);
   if (window.PlaygroundModule) return window.PlaygroundModule.renderCharPlayground(container);
   container.innerHTML = '<div class="empty-state"><h3>Playground Module Error</h3></div>';
 }
 
 async function renderScenariosPage(container) {
+  await API.loadScript(`js/scenarios.js?v=${API.version}`);
   if (typeof ScenarioModule !== 'undefined') return ScenarioModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Scenarios Module Error</h3></div>';
 }
 
 async function renderDialoguePage(container) {
+  await API.loadScript(`js/dialogue.js?v=${API.version}`);
   if (typeof DialogueModule !== 'undefined') return DialogueModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Dialogue Module Error</h3></div>';
 }
@@ -1837,7 +1861,8 @@ async function boot() {
   router();
 
   // 3. Deferred background tasks (Low priority)
-  requestIdleCallback(() => {
+  const runWhenIdle = window.requestIdleCallback || ((callback) => setTimeout(callback, 1));
+  runWhenIdle(() => {
     // Unregister any existing service workers (Kill Switch)
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(function(registrations) {

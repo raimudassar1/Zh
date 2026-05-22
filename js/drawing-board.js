@@ -16,7 +16,8 @@ window.DrawingBoard = (() => {
         lastPos: null,
         container: null,
         writerTarget: null,
-        theme: 'light'
+        theme: 'light',
+        hwLoading: null
     };
 
     function togglePenOnly() {
@@ -96,8 +97,36 @@ window.DrawingBoard = (() => {
         setMode(state.mode);
     }
 
+    function ensureHanziWriter() {
+        if (typeof HanziWriter !== 'undefined') return Promise.resolve();
+        if (state.hwLoading) return state.hwLoading;
+        state.hwLoading = new Promise((resolve, reject) => {
+            const existing = document.querySelector('script[src*="hanzi-writer"]');
+            if (existing) {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+                setTimeout(resolve, 2500);
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js';
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        }).finally(() => { state.hwLoading = null; });
+        return state.hwLoading;
+    }
+
     function initHanziWriter() {
-        if (typeof HanziWriter === 'undefined' || !state.writerTarget) return;
+        if (!state.writerTarget) return;
+        if (typeof HanziWriter === 'undefined') {
+            state.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Loading writing engine...</div>';
+            ensureHanziWriter().then(() => initHanziWriter()).catch(() => {
+                state.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Writing engine could not load. Freehand mode still works.</div>';
+            });
+            return;
+        }
         state.writerTarget.innerHTML = '';
         
         const rect = state.writerTarget.getBoundingClientRect();
@@ -136,7 +165,7 @@ window.DrawingBoard = (() => {
         state.canvas.height = rect.height * dpr;
         
         // Scale context to match logical coordinates
-        state.ctx.scale(dpr, dpr);
+        state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         
         clearFreehand();
     }
@@ -275,8 +304,11 @@ window.DrawingBoard = (() => {
     function getPos(e) {
         const rect = state.canvas.getBoundingClientRect();
         // Accounting for CSS transforms/scaling to fix the "above the pen" offset
-        const scaleX = state.canvas.offsetWidth / rect.width;
-        const scaleY = state.canvas.offsetHeight / rect.height;
+        const dpr = window.devicePixelRatio || 1;
+        const logicalWidth = state.canvas.width / dpr;
+        const logicalHeight = state.canvas.height / dpr;
+        const scaleX = rect.width ? logicalWidth / rect.width : 1;
+        const scaleY = rect.height ? logicalHeight / rect.height : 1;
         return {
             x: (e.clientX - rect.left) * scaleX,
             y: (e.clientY - rect.top) * scaleY
