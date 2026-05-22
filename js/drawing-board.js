@@ -5,8 +5,9 @@
 
 window.DrawingBoard = (() => {
     let state = {
-        mode: 'guided', // 'guided' or 'freehand'
+        mode: 'guided', // animated | guided | freehand | stroke-order
         penOnly: false,
+        freehandGuide: localStorage.getItem('zhongwen_freehand_guide') !== '0',
         strokeWidth: 4,
         hanzi: '',
         hw: null,
@@ -25,13 +26,30 @@ window.DrawingBoard = (() => {
         syncUI();
     }
 
+    function toggleFreehandGuide() {
+        state.freehandGuide = !state.freehandGuide;
+        localStorage.setItem('zhongwen_freehand_guide', state.freehandGuide ? '1' : '0');
+        applyGuideVisibility();
+        syncUI();
+    }
+
+    function applyGuideVisibility() {
+        if (!state.hw) return;
+        if (state.mode === 'guided' || state.freehandGuide) {
+            if (typeof state.hw.showOutline === 'function') state.hw.showOutline();
+        } else {
+            if (typeof state.hw.hideOutline === 'function') state.hw.hideOutline();
+        }
+        if (typeof state.hw.hideCharacter === 'function') state.hw.hideCharacter();
+    }
+
     function syncUI() {
         const modeSelects = document.querySelectorAll('select[onchange*="DrawingBoard.setMode"]');
         modeSelects.forEach(s => s.value = state.mode);
 
         const penControls = [document.getElementById('pen-controls'), document.getElementById('app-pen-controls')];
         penControls.forEach(c => {
-            if (c) c.style.display = 'flex'; // Always show pen controls now
+            if (c) c.style.display = state.mode === 'freehand' ? 'flex' : 'none';
         });
 
         // Update all Pen Only buttons
@@ -43,6 +61,13 @@ window.DrawingBoard = (() => {
 
         const widthSliders = document.querySelectorAll('input[oninput*="DrawingBoard.setPenWidth"]');
         widthSliders.forEach(s => s.value = state.strokeWidth);
+
+        const guideButtons = document.querySelectorAll('.freehand-guide-toggle-btn');
+        guideButtons.forEach(btn => {
+            btn.className = state.freehandGuide ? 'btn btn-sm btn-outline freehand-guide-toggle-btn' : 'btn btn-sm btn-primary freehand-guide-toggle-btn';
+            btn.textContent = state.freehandGuide ? 'Guide: ON' : 'Guide: OFF';
+            btn.setAttribute('aria-pressed', state.freehandGuide ? 'true' : 'false');
+        });
     }
 
     // Capture-phase event handler to block non-pen inputs before HanziWriter gets them
@@ -146,6 +171,8 @@ window.DrawingBoard = (() => {
             drawingWidth: 15
         });
 
+        applyGuideVisibility();
+
         if (state.mode === 'guided') {
             state.hw.quiz();
         }
@@ -174,29 +201,155 @@ window.DrawingBoard = (() => {
         state.mode = mode;
         if (!state.canvas) return;
 
+        hideStrokeOrderPanel();
+
         if (mode === 'guided') {
             state.canvas.style.display = 'none';
             state.canvas.style.pointerEvents = 'none';
             if (state.hw) {
-                state.hw.showOutline();
+                state.hw.cancelAnimation?.();
+                state.hw.hideCharacter?.();
+                state.hw.showOutline?.();
                 state.hw.quiz();
             }
-        } else {
+        } else if (mode === 'freehand') {
             state.canvas.style.display = 'block';
             state.canvas.style.pointerEvents = 'auto';
-            state.canvas.style.zIndex = '10'; // Ensure it's on top
+            state.canvas.style.zIndex = '10';
             if (state.hw) {
                 state.hw.cancelQuiz();
+                state.hw.cancelAnimation?.();
+                applyGuideVisibility();
             }
+        } else if (mode === 'stroke-order') {
+            state.canvas.style.display = 'none';
+            state.canvas.style.pointerEvents = 'none';
+            if (state.hw) {
+                state.hw.cancelQuiz();
+                state.hw.cancelAnimation?.();
+                state.hw.hideCharacter?.();
+                state.hw.showOutline?.();
+            }
+            showStrokeOrderMode();
+        } else if (mode === 'animated') {
+            state.canvas.style.display = 'none';
+            state.canvas.style.pointerEvents = 'none';
+            playAnimatedCharacter();
         }
         syncUI();
     }
 
-    function animate() {
-        if (state.hw) {
-            state.hw.cancelAnimation();
-            state.hw.animateCharacter();
+    function escapeAttr(value) {
+        return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    }
+
+    function strokeStripHost() {
+        const canvasContainer = state.canvas?.parentElement || state.writerTarget?.parentElement;
+        return canvasContainer?.parentElement || canvasContainer || null;
+    }
+
+    function upsertStrokePanel() {
+        const host = strokeStripHost();
+        if (!host) return null;
+        let panel = Array.from(host.children).find(child => child.classList?.contains('drawing-stroke-strip'));
+        if (!panel) {
+            panel = document.createElement('div');
+            panel.className = 'drawing-stroke-strip';
+            const canvasContainer = state.canvas?.parentElement || state.writerTarget?.parentElement;
+            if (canvasContainer && canvasContainer.parentElement === host) {
+                canvasContainer.insertAdjacentElement('afterend', panel);
+            } else {
+                host.appendChild(panel);
+            }
         }
+        return panel;
+    }
+
+    function hideStrokeOrderPanel() {
+        const host = strokeStripHost();
+        const panel = host ? Array.from(host.children).find(child => child.classList?.contains('drawing-stroke-strip')) : null;
+        if (panel) panel.hidden = true;
+    }
+
+    function strokePreviewSvg(strokes, count) {
+        const strokeColor = state.strokeColor || '#1f2937';
+        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#c0392b';
+        const visible = strokes.slice(0, count);
+        return `
+            <svg viewBox="0 0 1024 1024" role="img" aria-label="${count} strokes shown">
+                <g transform="translate(0,900) scale(1,-1)">
+                    ${visible.map((path, index) => `<path d="${escapeAttr(path)}" fill="${index === count - 1 ? accentColor : strokeColor}" opacity="${index === count - 1 ? '1' : '0.45'}"></path>`).join('')}
+                </g>
+            </svg>`;
+    }
+
+    function renderStrokeOrder(strokes, count = 1) {
+        const panel = upsertStrokePanel();
+        if (!panel) return;
+        panel.hidden = false;
+        if (!strokes.length) {
+            panel.innerHTML = '<div class="drawing-stroke-empty">Stroke data is not available for this character.</div>';
+            return;
+        }
+        const total = strokes.length;
+        const current = Math.max(1, Math.min(Number(count) || 1, total));
+        panel.innerHTML = `
+            <div class="drawing-stroke-title">Stroke order</div>
+            <div class="drawing-stroke-slider-layout">
+                <div class="drawing-stroke-preview">${strokePreviewSvg(strokes, current)}</div>
+                <div class="drawing-stroke-controls">
+                    <div class="drawing-stroke-count"><strong>${current}</strong> / ${total} strokes</div>
+                    <input type="range" min="1" max="${total}" value="${current}" oninput="DrawingBoard.setStrokeOrderStep(this.value)">
+                    <p>Move the slider to reveal the character stroke by stroke.</p>
+                </div>
+            </div>`;
+    }
+
+    async function loadStrokeData() {
+        await ensureHanziWriter();
+        if (!window.HanziWriter?.loadCharacterData) throw new Error('HanziWriter data loader is unavailable.');
+        const charData = await HanziWriter.loadCharacterData(state.hanzi);
+        return charData?.strokes || [];
+    }
+
+    async function showStrokeOrderMode() {
+        try {
+            const strokes = await loadStrokeData();
+            renderStrokeOrder(strokes, strokes.length);
+        } catch (err) {
+            console.warn('Stroke order display failed:', err);
+            const panel = upsertStrokePanel();
+            if (panel) {
+                panel.hidden = false;
+                panel.innerHTML = '<div class="drawing-stroke-empty">Could not load stroke order for this character.</div>';
+            }
+        }
+    }
+
+    async function setStrokeOrderStep(value) {
+        try {
+            const strokes = await loadStrokeData();
+            renderStrokeOrder(strokes, value);
+        } catch (err) {
+            console.warn('Stroke order slider failed:', err);
+        }
+    }
+
+    function playAnimatedCharacter() {
+        if (!state.hw) return;
+        try {
+            state.hw.cancelQuiz();
+            state.hw.cancelAnimation?.();
+            state.hw.hideCharacter?.();
+            state.hw.showOutline?.();
+            state.hw.animateCharacter();
+        } catch (err) {
+            console.warn('Stroke animation failed:', err);
+        }
+    }
+
+    function animate() {
+        setMode('animated');
     }
 
     function reset() {
@@ -351,9 +504,11 @@ window.DrawingBoard = (() => {
                     <div style="display:flex; flex-direction:column; align-items:center; gap:20px">
                         <div style="display:flex; flex-direction:column; width:100%; max-width:320px; gap:10px">
                             <div style="display:flex; justify-content:space-between; width:100%; gap:10px">
-                                <select class="input input-sm" style="width:auto; height:36px; background:var(--card-bg); color:var(--text); border-color:var(--border)" onchange="DrawingBoard.setMode(this.value)">
+                                <select class="input input-sm writing-mode-select" style="width:auto; height:36px; background:var(--card-bg); color:var(--text); border-color:var(--border)" onchange="DrawingBoard.setMode(this.value)">
+                                    <option value="animated">Animated</option>
                                     <option value="guided">Guided</option>
                                     <option value="freehand">Freehand</option>
+                                    <option value="stroke-order">Stroke Order</option>
                                 </select>
                                 <div class="flex gap-8">
                                     <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.animate()">Animate</button>
@@ -364,6 +519,7 @@ window.DrawingBoard = (() => {
                                 <button class="btn btn-sm ${state.penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">
                                     ${state.penOnly ? '🖋️ Pen Only: ON' : '🖋️ Pen Only: OFF'}
                                 </button>
+                                <button class="btn btn-sm ${state.freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${state.freehandGuide ? 'ON' : 'OFF'}</button>
                                 <div style="flex:1; display:flex; align-items:center; gap:8px">
                                     <span style="font-size:0.7rem; color:var(--text-3)">Size</span>
                                     <input type="range" min="1" max="15" value="${state.strokeWidth}" oninput="DrawingBoard.setPenWidth(this.value)" style="flex:1; height:4px">
@@ -404,6 +560,9 @@ window.DrawingBoard = (() => {
         open,
         setPenOnly: (v) => { state.penOnly = v; },
         togglePenOnly,
+        toggleFreehandGuide,
+        setStrokeOrderStep,
+        setFreehandGuide: (v) => { state.freehandGuide = !!v; localStorage.setItem('zhongwen_freehand_guide', state.freehandGuide ? '1' : '0'); applyGuideVisibility(); syncUI(); },
         setPenWidth: (v) => { state.strokeWidth = parseInt(v); },
         getState: () => state
     };

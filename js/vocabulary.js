@@ -301,11 +301,18 @@ window.VocabularyModule = (() => {
               ` : ''}
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px">
-                <div class="flex items-center gap-8">
-                  <select class="input input-sm" style="width:auto; padding:2px 8px; height:28px; font-size:0.75rem; background: var(--card-bg); color: var(--text); border-color: var(--border);" onchange="DrawingBoard.setMode(this.value)">
+                <div class="flex items-center gap-8" style="flex-wrap:wrap">
+                  <select class="input input-sm writing-mode-select" style="width:auto; min-width:132px; padding:2px 8px; height:28px; font-size:0.75rem; background: var(--card-bg); color: var(--text); border-color: var(--border);" onchange="DrawingBoard.setMode(this.value)">
+                    <option value="animated">Animated</option>
                     <option value="guided">Guided</option>
                     <option value="freehand">Freehand</option>
+                    <option value="stroke-order">Stroke Order</option>
                   </select>
+                  <div id="app-pen-controls" class="writing-pen-controls" style="display:none; align-items:center; gap:8px; flex-wrap:wrap">
+                    <input type="range" min="1" max="15" value="${DrawingBoard.getState().strokeWidth || 4}" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
+                    <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                    <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
+                  </div>
                 </div>
                 <div class="flex gap-8">
                   <button class="btn btn-ghost btn-sm" onclick="VocabularyModule.animateStrokes()">Animate</button>

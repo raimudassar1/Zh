@@ -36,9 +36,9 @@
   --tone4: #c0392b;
   --tone5: #7f8c8d;
 
-  --font-zh:    'Noto Serif TC', 'Noto Sans TC', serif;
-  --font-ui:    'DM Sans', sans-serif;
-  --font-pinyin:'DM Sans', sans-serif;
+  --font-zh:    'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', 'Heiti TC', sans-serif;
+  --font-ui:    'DM Sans', 'Noto Sans TC', system-ui, sans-serif;
+  --font-pinyin:'DM Sans', 'Noto Sans TC', system-ui, sans-serif;
 
   --nav-width:  240px;
   --top-bar:    56px;
@@ -205,6 +205,28 @@ body {
 }
 
 #topbar .topbar-actions { display: flex; gap: 8px; align-items: center; }
+
+.topbar-font-select {
+  min-width: 112px;
+  max-width: 150px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--off-white);
+  color: var(--text);
+  padding: 0 30px 0 12px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.topbar-font-select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 
 /* Page content */
 #page-content {
@@ -10450,4 +10472,238 @@ textarea {
   .bc-pack-nav .bc-pack-actions .btn { white-space: normal; }
   .bc-pack-nav .bc-pack-jump { grid-template-columns: 1fr auto; }
   .bc-pack-nav .bc-pack-jump label { grid-column: 1 / -1; }
+}
+
+/* Compact topbar font selector, replacing the old level badge. */
+#topbar .page-title { min-width: 0; }
+
+@media (max-width: 520px) {
+  #topbar {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .topbar-font-select {
+    min-width: 86px;
+    max-width: 86px;
+    height: 34px;
+    padding-left: 9px;
+    padding-right: 22px;
+    font-size: 0.7rem;
+  }
+}
+
+
+/* Static app password gate */
+html[data-locked="true"] #app {
+  display: none !important;
+}
+
+.app-lock[hidden] {
+  display: none !important;
+}
+
+.app-lock {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(239, 68, 68, 0.12), transparent 32%),
+    linear-gradient(135deg, var(--clean-bg), var(--off-white));
+  color: var(--text);
+}
+
+.app-lock-card {
+  width: min(100%, 420px);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  box-shadow: var(--shadow-lg);
+  padding: 30px;
+}
+
+.app-lock-logo {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.app-lock-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.app-lock-card h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.app-lock-copy {
+  margin: 0 0 22px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.app-lock-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-2);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.app-lock-input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--off-white);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0 14px;
+  margin-bottom: 12px;
+}
+
+.app-lock-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.app-lock-submit {
+  width: 100%;
+  min-height: 48px;
+}
+
+.app-lock-error {
+  min-height: 20px;
+  margin: 12px 0 0;
+  color: var(--red);
+  font-weight: 800;
+}
+
+[data-theme="dark"] .app-lock {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(239, 68, 68, 0.12), transparent 32%),
+    linear-gradient(135deg, var(--clean-bg), #101820);
+}
+
+
+/* Writing practice surfaces should follow the selected site-wide Chinese font. */
+.canvas-container,
+#app-hanzi-writer,
+#modal-hanzi-writer,
+#app-freehand-canvas,
+#modal-freehand-canvas {
+  font-family: var(--font-zh);
+}
+
+.freehand-guide-toggle-btn {
+  white-space: nowrap;
+}
+
+
+
+
+/* Compact stroke-order panel shown by Stroke Order mode. */
+.drawing-stroke-strip {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card-bg);
+}
+
+.drawing-stroke-strip[hidden] {
+  display: none !important;
+}
+
+.drawing-stroke-title {
+  margin-bottom: 10px;
+  color: var(--text-2);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.drawing-stroke-slider-layout {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.drawing-stroke-preview {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--off-white);
+  padding: 8px;
+}
+
+.drawing-stroke-preview svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.drawing-stroke-controls input {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.drawing-stroke-count {
+  margin-bottom: 8px;
+  color: var(--text-2);
+  font-weight: 800;
+}
+
+.drawing-stroke-count strong {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.drawing-stroke-controls p {
+  margin: 8px 0 0;
+  color: var(--text-3);
+  font-size: 0.85rem;
+}
+
+.drawing-stroke-empty {
+  color: var(--text-2);
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .drawing-stroke-slider-layout {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 10px;
+  }
+}
+
+
+/* Shared writing controls across library, vocabulary, and books. */
+.writing-mode-select {
+  color: var(--text) !important;
+  background: var(--card-bg) !important;
+  border-color: var(--border) !important;
+}
+
+.writing-mode-select option {
+  color: var(--text);
+  background: var(--card-bg);
+}
+
+.writing-pen-controls {
+  min-height: 30px;
 }

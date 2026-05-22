@@ -1,8 +1,97 @@
-﻿/* ═══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    app.js — Core: Router, State, Dashboard, Library, Settings
    ═══════════════════════════════════════════════════════════════ */
 
 'use strict';
+
+
+// Lightweight static-app lock. This stops casual visitors on public hosting;
+// it is not a substitute for server-side authentication.
+const AppLock = {
+  hash: '44996a8471286fd779ce18692c2cf03779e931e64eb1b8149ecb0d353acaf2cc',
+  sessionKey: 'zhongwen_app_unlocked',
+  booted: false,
+
+  isUnlocked() {
+    return sessionStorage.getItem(this.sessionKey) === '1';
+  },
+
+  async digest(value) {
+    const data = new TextEncoder().encode(value);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    return [...new Uint8Array(hashBuffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  },
+
+  show() {
+    document.documentElement.setAttribute('data-locked', 'true');
+    const lock = document.getElementById('app-lock');
+    if (lock) lock.hidden = false;
+    requestAnimationFrame(() => document.getElementById('app-lock-password')?.focus());
+  },
+
+  hide() {
+    document.documentElement.removeAttribute('data-locked');
+    const lock = document.getElementById('app-lock');
+    if (lock) lock.hidden = true;
+  },
+
+  async unlock(password) {
+    const enteredHash = await this.digest(password || '');
+    if (enteredHash !== this.hash) return false;
+    sessionStorage.setItem(this.sessionKey, '1');
+    this.hide();
+    await this.startApp();
+    return true;
+  },
+
+  lock() {
+    sessionStorage.removeItem(this.sessionKey);
+    this.show();
+  },
+
+  async startApp() {
+    if (this.booted) return;
+    this.booted = true;
+    await boot();
+  },
+
+  init() {
+    const form = document.getElementById('app-lock-form');
+    const error = document.getElementById('app-lock-error');
+    form?.addEventListener('submit', async event => {
+      event.preventDefault();
+      const input = document.getElementById('app-lock-password');
+      const submit = form.querySelector('button[type="submit"]');
+      if (error) error.textContent = '';
+      if (submit) submit.disabled = true;
+      try {
+        const ok = await this.unlock(input?.value || '');
+        if (!ok) {
+          if (error) error.textContent = 'Incorrect password. Try again.';
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+        }
+      } catch (err) {
+        if (error) error.textContent = 'Unlock failed in this browser.';
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+
+    if (this.isUnlocked()) {
+      this.hide();
+      this.startApp();
+    } else {
+      this.show();
+    }
+  }
+};
+
+function lockApp() {
+  AppLock.lock();
+}
 
 // ─── Global State ─────────────────────────────────────────────────────────────
 const App = {
@@ -25,6 +114,7 @@ const App = {
       showQuizPinyin: true,
       displayName: 'Learner',
       showZhuyinDefault: false,
+      fontChoice: 'noto-sans',
       unlockAll: true,
     };
     const saved = localStorage.getItem('tocfl_settings');
@@ -32,6 +122,7 @@ const App = {
     // Force unlockAll to true as requested
     this.state.settings.unlockAll = true;
     this.applyTheme(this.state.settings.theme);
+    this.applyFontPreference(this.state.settings.fontChoice);
   },
 
   saveSettings() {
@@ -43,6 +134,52 @@ const App = {
     const btn = document.getElementById('dark-mode-toggle');
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   },
+
+  fontPresets: {
+    'noto-sans': {
+      label: 'Noto Sans',
+      zh: "'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', 'Heiti TC', sans-serif",
+      ui: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif",
+      pinyin: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif"
+    },
+    'original-serif': {
+      label: 'Original Serif',
+      zh: "'Noto Serif TC', 'Noto Sans TC', serif",
+      ui: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif",
+      pinyin: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif"
+    },
+    'jhenghei': {
+      label: 'JhengHei',
+      zh: "'Microsoft JhengHei', 'Noto Sans TC', 'PingFang TC', sans-serif",
+      ui: "'Microsoft JhengHei', 'DM Sans', system-ui, sans-serif",
+      pinyin: "'DM Sans', 'Microsoft JhengHei', system-ui, sans-serif"
+    },
+    'pingfang': {
+      label: 'PingFang',
+      zh: "'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif",
+      ui: "'PingFang TC', 'DM Sans', system-ui, sans-serif",
+      pinyin: "'DM Sans', 'PingFang TC', system-ui, sans-serif"
+    },
+    'kai': {
+      label: 'Kai Style',
+      zh: "'BiauKai', 'DFKai-SB', 'KaiTi', 'Noto Serif TC', serif",
+      ui: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif",
+      pinyin: "'DM Sans', 'Noto Sans TC', system-ui, sans-serif"
+    }
+  },
+
+  applyFontPreference(choice) {
+    const key = this.fontPresets[choice] ? choice : 'noto-sans';
+    const preset = this.fontPresets[key];
+    const root = document.documentElement;
+    root.style.setProperty('--font-zh', preset.zh);
+    root.style.setProperty('--font-ui', preset.ui);
+    root.style.setProperty('--font-pinyin', preset.pinyin);
+    root.setAttribute('data-font-choice', key);
+    const selector = document.getElementById('topbar-font-select');
+    if (selector) selector.value = key;
+  },
+
 
   // Load progress from localStorage
   loadProgress() {
@@ -308,7 +445,7 @@ const Pinyin = {
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
-  version: '87', // Match index.html version for consistency
+  version: '107', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -609,13 +746,16 @@ async function showCharModal(hanziOrObj) {
         <div class="vd-section" style="flex:1; display:flex; flex-direction:column; margin-bottom:0">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px">
             <div class="flex items-center gap-8">
-              <select class="input input-sm" style="width:auto; padding:2px 8px; height:28px; font-size:0.75rem" onchange="DrawingBoard.setMode(this.value)">
+              <select class="input input-sm writing-mode-select" style="width:auto; padding:2px 8px; height:28px; font-size:0.75rem" onchange="DrawingBoard.setMode(this.value)">
+                <option value="animated">Animated</option>
                 <option value="guided">Guided</option>
                 <option value="freehand">Freehand</option>
+                <option value="stroke-order">Stroke Order</option>
               </select>
               <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
                 <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">🖋️ Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
               </div>
             </div>
             <div class="flex gap-8">
@@ -1500,6 +1640,15 @@ function renderSettings(container) {
           </div>
           <div class="setting-row">
             <div class="setting-info">
+              <div class="setting-label">Chinese Font</div>
+              <div class="setting-desc">Choose the site-wide Chinese reading font</div>
+            </div>
+            <select class="input" id="set-font-choice" style="width:180px">
+              ${Object.entries(App.fontPresets).map(([key, preset]) => `<option value="${key}" ${s.fontChoice === key ? 'selected' : ''}>${preset.label}</option>`).join('')}
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
               <div class="setting-label">Tone Colors</div>
               <div class="setting-desc">Color pinyin by tone: <span style="color:var(--tone1)">1st</span> <span style="color:var(--tone2)">2nd</span> <span style="color:var(--tone3)">3rd</span> <span style="color:var(--tone4)">4th</span></div>
             </div>
@@ -1590,9 +1739,6 @@ function renderSettings(container) {
             </div>
             <span class="font-bold">${p.savedSet.length}</span>
           </div>
-          <button class="btn btn-outline btn-error mt-12" onclick="resetAllProgress()">Delete All Progress</button>
-        </div>
-      </div>
           <div class="setting-row">
             <div class="setting-info">
               <div class="setting-label">Weak Characters</div>
@@ -1605,6 +1751,16 @@ function renderSettings(container) {
             </div>
             <span class="font-bold">${(p.testHistory || []).length}</span>
           </div>
+          <button class="btn btn-outline btn-error mt-12" onclick="resetAllProgress()">Delete All Progress</button>
+        </div>
+      </div>
+
+
+      <div class="card mb-16">
+        <div class="settings-section">
+          <h3>Security</h3>
+          <p class="setting-desc mb-12">This is a lightweight static-site lock for casual privacy. It asks again when the browser session is locked or closed.</p>
+          <button class="btn btn-outline" onclick="lockApp()">Lock App Now</button>
         </div>
       </div>
 
@@ -1632,6 +1788,7 @@ function renderSettings(container) {
     App.state.settings.displayName = document.getElementById('set-name').value || 'Learner';
     App.state.settings.dailyGoal = parseInt(document.getElementById('set-goal').value) || 10;
     App.state.settings.theme = document.getElementById('set-dark').checked ? 'dark' : 'light';
+    App.state.settings.fontChoice = document.getElementById('set-font-choice')?.value || 'noto-sans';
     App.state.settings.toneColors = document.getElementById('set-tones').checked;
     App.state.settings.annotation = document.querySelector('input[name="annotation"]:checked')?.value || 'pinyin';
     App.state.settings.quizDifficulty = document.querySelector('input[name="difficulty"]:checked')?.value || 'A2';
@@ -1640,6 +1797,7 @@ function renderSettings(container) {
     App.state.settings.geminiKey = document.getElementById('set-gemini-key').value || '';
     App.saveSettings();
     App.applyTheme(App.state.settings.theme);
+    App.applyFontPreference(App.state.settings.fontChoice);
     const msg = document.getElementById('set-saved-msg');
     msg.classList.remove('hidden');
     setTimeout(() => msg.classList.add('hidden'), 2000);
@@ -1933,6 +2091,12 @@ async function boot() {
     App.applyTheme(App.state.settings.theme);
   });
 
+  document.getElementById('topbar-font-select')?.addEventListener('change', e => {
+    App.state.settings.fontChoice = e.target.value || 'noto-sans';
+    App.saveSettings();
+    App.applyFontPreference(App.state.settings.fontChoice);
+  });
+
   document.getElementById('mobile-menu-toggle')?.addEventListener('click', toggleMobileNav);
   setupMobileBottomNav();
   document.getElementById('nav-scrim')?.addEventListener('click', closeMobileNav);
@@ -1987,12 +2151,13 @@ async function boot() {
   });
 }
 
-// Start when DOM is ready
+// Start lock gate when DOM is ready. App boot runs only after unlock.
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('DOMContentLoaded', () => AppLock.init());
 } else {
-  boot();
+  AppLock.init();
 }
+
 
 
 

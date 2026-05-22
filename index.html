@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-TW" data-theme="light">
+<html lang="zh-TW" data-theme="light" data-locked="true">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zhongwen Learning - Beginner to TOCFL B1</title>
-  <link rel="stylesheet" href="css/main.css?v=87">
+  <link rel="stylesheet" href="css/main.css?v=107">
   <link rel="icon" href="logo.png">
   <link rel="manifest" href="manifest.json">
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js" async></script>
 </head>
 <body>
+
+<div id="app-lock" class="app-lock" role="dialog" aria-modal="true" aria-labelledby="app-lock-title">
+  <form class="app-lock-card" id="app-lock-form" autocomplete="off">
+    <img src="logo.png" alt="" class="app-lock-logo">
+    <p class="app-lock-kicker">Private Study App</p>
+    <h1 id="app-lock-title">Unlock Zhongwen</h1>
+    <p class="app-lock-copy">Enter your study password to open the learning system on this device session.</p>
+    <label class="app-lock-label" for="app-lock-password">Password</label>
+    <input id="app-lock-password" class="app-lock-input" type="password" inputmode="text" autocomplete="current-password" required>
+    <button class="btn btn-primary app-lock-submit" type="submit">Unlock App</button>
+    <p class="app-lock-error" id="app-lock-error" aria-live="polite"></p>
+  </form>
+</div>
+
 <div id="app">
 
   <nav id="sidebar">
@@ -63,7 +77,7 @@
     </div>
     <div class="sidebar-footer">
       <div class="streak-display">
-        <span class="streak-flame">🔥</span>
+        <span class="streak-flame">ðŸ”¥</span>
         <span class="streak-number" id="streak-count">0</span>
         <span>day streak</span>
       </div>
@@ -76,9 +90,15 @@
       <img src="logo.png" alt="" style="height:24px; width:auto; margin-right:12px; display:none;" id="topbar-logo">
       <span class="page-title" id="topbar-title">Dashboard</span>
       <div class="topbar-actions">
-        <button class="btn btn-ghost btn-sm btn-icon" id="dark-mode-toggle" title="Toggle dark mode">🌙</button>
-        <button class="btn btn-ghost btn-sm btn-icon" id="tts-test-btn" title="Test audio">🔊</button>
-        <span id="topbar-level" class="badge badge-gray">...</span>
+        <button class="btn btn-ghost btn-sm btn-icon" id="dark-mode-toggle" title="Toggle dark mode">ðŸŒ™</button>
+        <button class="btn btn-ghost btn-sm btn-icon" id="tts-test-btn" title="Test audio">ðŸ”Š</button>
+                <select id="topbar-font-select" class="topbar-font-select" title="Chinese font" aria-label="Choose Chinese font">
+          <option value="noto-sans">Noto Sans</option>
+          <option value="original-serif">Original</option>
+          <option value="jhenghei">JhengHei</option>
+          <option value="pingfang">PingFang</option>
+          <option value="kai">Kai</option>
+        </select>
       </div>
     </header>
     <main id="page-content"><div class="spinner"></div></main>
@@ -105,17 +125,18 @@
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script defer src="js/icons.js?v=87"></script>
-<script defer src="js/drawing-board.js?v=87"></script>
-<script defer src="js/weakness-engine.js?v=87"></script>
-<script defer src="js/srs.js?v=87"></script>
-<script defer src="js/voice.js?v=87"></script>
-<script defer src="js/ai-chat.js?v=87"></script>
+<script defer src="js/icons.js?v=107"></script>
+<script defer src="js/drawing-board.js?v=107"></script>
+<script defer src="js/weakness-engine.js?v=107"></script>
+<script defer src="js/srs.js?v=107"></script>
+<script defer src="js/voice.js?v=107"></script>
+<script defer src="js/ai-chat.js?v=107"></script>
 
 <!-- Feature modules are loaded on demand by js/app.js for faster first paint. -->
-<script defer src="js/app.js?v=87"></script>
+<script defer src="js/app.js?v=107"></script>
 </body>
 </html>
+
 
 
 
