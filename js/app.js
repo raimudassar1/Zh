@@ -218,18 +218,28 @@ const App = {
     const last = this.state.progress.lastStudyDate;
     if (last === today) return; // already counted today
 
+    let changed = false;
     const yesterday = new Date(Date.now() - 86400000).toDateString();
     if (last === yesterday) {
       this.state.progress.streak = (this.state.progress.streak || 0) + 1;
+      changed = true;
     } else if (last !== today) {
+      const oldStreak = this.state.progress.streak;
       this.state.progress.streak = last ? 0 : (this.state.progress.streak || 0);
+      if (this.state.progress.streak !== oldStreak) changed = true;
     }
     this.state.progress.lastStudyDate = today;
+    changed = true;
 
     // Reset daily count if new day
     if (this.state.progress.lastDailyDate !== today) {
       this.state.progress.dailyReviewed = 0;
       this.state.progress.lastDailyDate = today;
+      changed = true;
+    }
+
+    if (changed) {
+      this.saveProgress();
     }
   },
 
@@ -476,12 +486,13 @@ const Pinyin = {
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
-  version: '109', // Match index.html version for consistency
+  version: '116', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
     // Determine the base path: default to 'data' unless explicitly pointing elsewhere
-    let url = (path.startsWith('books/') || path.startsWith('assets/')) ? path : `${this.base}/${path}`;
+    const cleanPath = path.replace(/^\/+/, '');
+    let url = (cleanPath.startsWith('books/') || cleanPath.startsWith('assets/')) ? cleanPath : `${this.base}/${cleanPath}`;
     if (!url.endsWith('.json')) url += '.json';
     
     // Check in-memory cache first (Lightning fast, zero parsing)
@@ -1799,10 +1810,18 @@ function renderSettings(container) {
         <div class="settings-section">
           <h3>Data Management</h3>
           <p class="setting-desc mb-16">Use one compact sync file for all progress in this app: main progress, SRS, Beginner Coach, B1 Coach, Launchpad, Grammar, Sentence Builder, and display settings. Private API keys are not exported.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-outline" onclick="exportProgress()">Export All Progress</button>
-            <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">Import All Progress</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+            <button class="btn btn-outline" onclick="exportProgress()">Export to File</button>
+            <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">Import from File</button>
             <input type="file" id="import-file" accept=".json,.gz,.json.gz,application/json,application/gzip" style="display:none" onchange="importProgress(this)">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
+            <div class="setting-label">Manual Text Sync (Best for Mobile/APK)</div>
+            <textarea id="sync-text-box" class="input" style="height:100px;font-family:monospace;font-size:0.75rem;padding:8px;background:var(--off-white);color:var(--text)" placeholder="Paste your exported progress JSON here to import, or click 'Copy JSON' to export..."></textarea>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-outline btn-sm" onclick="copyProgressText()">Copy JSON to Clipboard</button>
+              <button class="btn btn-outline btn-sm" onclick="importProgressText()">Import from Text Box</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1955,7 +1974,26 @@ const ProgressSync = (() => {
     }
   }
 
-  return { collect, exportAll, importAll };
+  async function importAllText(jsonText) {
+    if (!jsonText || !jsonText.trim()) return alert('Please paste progress JSON data first.');
+    try {
+      const parsed = JSON.parse(jsonText.trim());
+      if (parsed?.type !== 'zhongwen-all-progress' || !parsed.data) {
+        throw new Error('This is not a Zhongwen all-progress data structure.');
+      }
+      const allowed = new Set([...KEYS, 'tocfl_settings']);
+      const entries = Object.entries(parsed.data).filter(([key, value]) => allowed.has(key) && !empty(value));
+      if (!entries.length) return alert('This progress data is empty.');
+      if (!confirm(`Import ${entries.length} progress sections from this text?`)) return;
+      entries.forEach(([key, value]) => localStorage.setItem(key, String(value)));
+      alert('Progress imported. The app will reload now.');
+      window.location.reload();
+    } catch (err) {
+      alert(`Invalid progress JSON data: ${err.message || err}`);
+    }
+  }
+
+  return { collect, exportAll, importAll, importAllText };
 })();
 
 function exportProgress() {
@@ -1965,6 +2003,26 @@ function exportProgress() {
 function importProgress(input) {
   const file = input?.files?.[0];
   ProgressSync.importAll(file).finally(() => { if (input) input.value = ''; });
+}
+
+function copyProgressText() {
+  const payload = ProgressSync.collect();
+  const json = JSON.stringify(payload);
+  navigator.clipboard.writeText(json).then(() => {
+    alert('✓ Progress JSON copied to clipboard! You can paste and save it anywhere.');
+  }).catch(() => {
+    const box = document.getElementById('sync-text-box');
+    if (box) {
+      box.value = json;
+      box.select();
+      alert('Could not auto-copy to clipboard. The JSON text is now shown in the text box below. Please select and copy it manually.');
+    }
+  });
+}
+
+function importProgressText() {
+  const text = document.getElementById('sync-text-box')?.value;
+  ProgressSync.importAllText(text);
 }
 
 // ??? Stub renders (lazy-loaded) ?????????????????????????????

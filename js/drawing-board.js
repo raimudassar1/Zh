@@ -168,7 +168,19 @@ window.DrawingBoard = (() => {
             strokeColor: state.strokeColor,
             outlineColor: state.outlineColor,
             highlightColor: '#C0392B',
-            drawingWidth: 15
+            drawingWidth: 15,
+            charDataLoader: function(char, onComplete, onFailure) {
+                fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/' + encodeURIComponent(char) + '.json')
+                    .then(res => {
+                        if (!res.ok) throw new Error('Status ' + res.status);
+                        return res.json();
+                    })
+                    .then(data => onComplete(data))
+                    .catch(err => {
+                        console.error('Failed to load character data for ' + char, err);
+                        if (onFailure) onFailure(err);
+                    });
+            }
         });
 
         applyGuideVisibility();
@@ -306,9 +318,10 @@ window.DrawingBoard = (() => {
     }
 
     async function loadStrokeData() {
-        await ensureHanziWriter();
-        if (!window.HanziWriter?.loadCharacterData) throw new Error('HanziWriter data loader is unavailable.');
-        const charData = await HanziWriter.loadCharacterData(state.hanzi);
+        const url = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/' + encodeURIComponent(state.hanzi) + '.json';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+        const charData = await res.json();
         return charData?.strokes || [];
     }
 

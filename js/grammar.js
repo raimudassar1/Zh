@@ -1,10 +1,11 @@
 
 'use strict';
 
-const GrammarModule = (() => {
+window.GrammarModule = (() => {
   const STORAGE_KEY = 'grammarAcademyState';
   let data = null;
-  let state = { level: 'beginner', unit: null, tab: 'learn', exampleFilter: 'all', showPinyin: false, showEnglish: true, answered: {} };
+  const PRACTICE_VERSION = 3;
+  let state = { level: 'beginner', unit: null, tab: 'learn', exampleFilter: 'all', showPinyin: false, showEnglish: true, answered: {}, builds: {}, practiceVersion: PRACTICE_VERSION };
 
 
 
@@ -71,6 +72,12 @@ const GrammarModule = (() => {
 
   function loadState() {
     try { state = { ...state, ...(JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')) }; } catch {}
+    if (state.practiceVersion !== PRACTICE_VERSION) {
+      state.answered = {};
+      state.builds = {};
+      state.practiceVersion = PRACTICE_VERSION;
+      saveState();
+    }
   }
   function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
@@ -93,27 +100,23 @@ const GrammarModule = (() => {
     const unit = getUnit(state.unit) || level.units[0];
     container.innerHTML = `
       <div class="grammar-academy">
-        <section class="ga-hero ga-hero-minimal">
+        <section class="ga-hero ga-hero-compact">
           <div>
             <span class="ga-kicker">Grammar Academy</span>
-            <h2>Sentence patterns, explained simply.</h2>
-            <p>Pick one grammar pattern, understand the symbols, read natural examples, then build your own sentence.</p>
+            <h2>One pattern at a time</h2>
+            <p>Choose a level, pick a pattern, then study a short focused section.</p>
           </div>
-          <div class="ga-stats ga-stats-minimal">
-            <strong>${data.totals.examples}</strong><span>examples</span>
-            <strong>${data.totals.exercises}</strong><span>drills</span>
-          </div>
+          <div class="ga-stats ga-stats-compact"><strong>${data.totals.examples}</strong><span>examples</span><strong>${data.totals.exercises}</strong><span>drills</span></div>
         </section>
 
-        <section class="ga-layout">
-          <aside class="ga-sidebar">
-            ${renderLevelSelector()}
-            ${renderUnitList(level)}
-          </aside>
-          <main class="ga-main">
-            ${renderUnit(unit)}
-          </main>
+        <section class="ga-course-picker">
+          ${renderLevelSelector()}
+          ${renderUnitRail(level)}
         </section>
+
+        <main class="ga-main">
+          ${renderUnit(unit)}
+        </main>
       </div>`;
     bind(container);
   }
@@ -139,6 +142,17 @@ const GrammarModule = (() => {
           <span>${String(index + 1).padStart(2, '0')}</span>
           <strong>${esc(unit.title)}</strong>
           <small>${esc(unit.structure)}</small>
+        </button>`).join('')}
+    </div>`;
+  }
+
+  function renderUnitRail(level) {
+    return `<div class="ga-unit-rail" aria-label="Grammar units">
+      ${level.units.map((unit, index) => `
+        <button type="button" class="ga-unit-pill ${unit.id === state.unit ? 'active' : ''}" data-ga-action="unit" data-unit="${unit.id}">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <strong>${esc(unit.title.replace(/Basic |and /g, '').slice(0, 34))}</strong>
+          <small>${renderPattern(unit.structure)}</small>
         </button>`).join('')}
     </div>`;
   }
@@ -186,19 +200,26 @@ const GrammarModule = (() => {
   }
 
   function renderLearn(unit) {
-    return `<div class="ga-learn-grid">
-      <section class="ga-card-large">
-        <h4>How it works</h4>
+    return `<div class="ga-focus-stack">
+      <section class="ga-card-large ga-summary-card">
+        <h4>What this pattern does</h4>
         <p>${esc(unit.coreExplanation)}</p>
-        <p>${esc(unit.whyItMatters)}</p>
+      </section>
+      <section class="ga-card-large ga-mini-examples">
+        <h4>Two natural examples</h4>
+        ${unit.examples.slice(0,2).map(renderExample).join('')}
+      </section>
+      <section class="ga-card-large ga-next-actions">
+        <h4>Practice next</h4>
+        <div>
+          <button type="button" data-ga-action="tab" data-tab="examples">See more examples</button>
+          <button type="button" data-ga-action="tab" data-tab="practice">Build sentences</button>
+          <button type="button" data-ga-action="tab" data-tab="writing">Write your own</button>
+        </div>
       </section>
       <section class="ga-card-large">
-        <h4>Common mistakes</h4>
-        ${unit.commonMistakes.map(item => `<div class="ga-mistake">${esc(item)}</div>`).join('')}
-      </section>
-      <section class="ga-card-large ga-wide">
-        <h4>First five examples</h4>
-        ${unit.examples.slice(0,5).map(renderExample).join('')}
+        <h4>Watch out for</h4>
+        ${unit.commonMistakes.slice(0,3).map(item => `<div class="ga-mistake">${esc(item)}</div>`).join('')}
       </section>
     </div>`;
   }
@@ -231,6 +252,24 @@ const GrammarModule = (() => {
     </div>`;
   }
 
+  function getBuildState(ex) {
+    const key = ex.id;
+    if (!state.builds) state.builds = {};
+    if (!state.builds[key]) {
+      const bank = shuffleForExercise(ex.tiles || [], ex.id).map((tile, index) => ({ id: `${key}-tile-${index}`, text: tile }));
+      state.builds[key] = { bank, answer: [], checked: false, correct: false };
+    }
+    return state.builds[key];
+  }
+
+  function builtText(build) {
+    return (build?.answer || []).map(tile => tile.text).join('');
+  }
+
+  function expectedText(ex) {
+    return (ex.tiles || []).join('');
+  }
+
   function shuffleForExercise(tiles, seedText) {
     const arr = [...(tiles || [])];
     let seed = String(seedText || '').split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0) || 1;
@@ -244,13 +283,27 @@ const GrammarModule = (() => {
 
   function renderExercise(ex, index) {
     const answered = state.answered?.[ex.id];
+    const build = ex.tiles?.length ? getBuildState(ex) : null;
+    const built = build ? builtText(build) : '';
+    const correct = build ? built === expectedText(ex) : false;
+    const target = ex.english || ex.prompt || 'Build the Chinese sentence.';
+    const buildInstruction = build ? 'Use the tiles to make this Chinese sentence.' : ex.prompt;
     return `<section class="ga-exercise">
       <div class="ga-ex-head"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(ex.type)}</strong></div>
-      <p>${esc(ex.prompt)}</p>
-      ${ex.tiles?.length ? `<div class="ga-builder-preview"><div class="ga-build-target"><span>Build this order</span><strong>${esc(ex.tiles.join(' + '))}</strong></div><div class="ga-tiles">${shuffleForExercise(ex.tiles, ex.id).map(tile => `<button type="button" data-ga-action="speak" data-text="${esc(tile)}">${esc(tile)}</button>`).join('')}</div></div>` : ''}
+      <div class="ga-practice-target">
+        <span>English prompt</span>
+        <strong>${esc(target)}</strong>
+      </div>
+      <p>${esc(buildInstruction)}</p>
+      ${build ? `<div class="ga-builder-preview ga-builder-live">
+        <div class="ga-build-target"><span>Your Chinese sentence</span><div class="ga-build-answer ${correct ? 'correct' : ''}">${build.answer.length ? build.answer.map(tile => `<button type="button" data-ga-action="build-move" data-exercise="${esc(ex.id)}" data-tile="${esc(tile.id)}" onclick="event.stopPropagation(); GrammarModule.moveBuildTile('${esc(ex.id)}', '${esc(tile.id)}')">${esc(tile.text)}</button>`).join('') : '<em>Tap tiles below to build your answer</em>'}</div></div>
+        <div class="ga-build-target"><span>Available tiles</span><div class="ga-tiles">${build.bank.map(tile => `<button type="button" data-ga-action="build-move" data-exercise="${esc(ex.id)}" data-tile="${esc(tile.id)}" onclick="event.stopPropagation(); GrammarModule.moveBuildTile('${esc(ex.id)}', '${esc(tile.id)}')">${esc(tile.text)}</button>`).join('')}</div></div>
+        ${build.checked ? `<div class="ga-build-feedback ${correct ? 'correct' : 'wrong'}">${correct ? 'Correct.' : `Not yet. Your answer: ${esc(built || 'empty')}`}</div>` : ''}
+      </div>` : ''}
       <div class="ga-answer-row">
         <button type="button" class="btn btn-ghost btn-sm" data-ga-action="speak" data-text="${esc(ex.answer)}">Play Answer</button>
-        <button type="button" class="btn btn-primary btn-sm" data-ga-action="answer" data-exercise="${esc(ex.id)}">Show Answer</button>
+        ${build ? `<button type="button" class="btn btn-primary btn-sm" data-ga-action="build-check" data-exercise="${esc(ex.id)}">Check</button><button type="button" class="btn btn-ghost btn-sm" data-ga-action="build-reset" data-exercise="${esc(ex.id)}">Reset</button>` : ''}
+        <button type="button" class="btn btn-ghost btn-sm" data-ga-action="answer" data-exercise="${esc(ex.id)}">Show Answer</button>
       </div>
       <div class="ga-answer ${answered ? '' : 'hidden'}">
         <strong>${esc(ex.answer)}</strong>
@@ -259,6 +312,7 @@ const GrammarModule = (() => {
       </div>
     </section>`;
   }
+
 
   function renderReading(unit) {
     return `<div class="ga-reading">
@@ -278,6 +332,23 @@ const GrammarModule = (() => {
     </div>`;
   }
 
+  function moveBuildTile(exerciseId, tileId) {
+    const unit = getUnit(state.unit);
+    const ex = unit?.exercises?.find(item => item.id === exerciseId);
+    if (!ex) return;
+    const build = getBuildState(ex);
+    let from = build.bank;
+    let to = build.answer;
+    let idx = from.findIndex(tile => tile.id === tileId);
+    if (idx < 0) { from = build.answer; to = build.bank; idx = from.findIndex(tile => tile.id === tileId); }
+    if (idx >= 0) {
+      to.push(from.splice(idx, 1)[0]);
+      build.checked = false;
+      saveState();
+      render(document.getElementById('page-content'));
+    }
+  }
+
   function bind(container) {
     container.querySelector('.grammar-academy')?.addEventListener('click', event => {
       const btn = event.target.closest('[data-ga-action]');
@@ -287,16 +358,36 @@ const GrammarModule = (() => {
         state.level = btn.dataset.level || 'beginner';
         state.unit = getLevel(state.level).units[0]?.id;
         state.tab = 'learn';
+        state.builds = {};
         saveState(); render(container);
       }
-      if (action === 'unit') { state.unit = btn.dataset.unit; state.tab = 'learn'; saveState(); render(container); }
+      if (action === 'unit') { state.unit = btn.dataset.unit; state.tab = 'learn'; state.builds = {}; saveState(); render(container); }
       if (action === 'tab') { state.tab = btn.dataset.tab || 'learn'; saveState(); render(container); }
       if (action === 'toggle') { state[btn.dataset.key] = !state[btn.dataset.key]; saveState(); render(container); }
       if (action === 'filter') { state.exampleFilter = btn.dataset.filter || 'all'; saveState(); render(container); }
       if (action === 'answer') { state.answered = { ...(state.answered || {}), [btn.dataset.exercise]: true }; saveState(); render(container); }
+      if (action === 'build-move') { moveBuildTile(btn.dataset.exercise, btn.dataset.tile); }
+      if (action === 'build-check') {
+        const unit = getUnit(state.unit);
+        const ex = unit?.exercises?.find(item => item.id === btn.dataset.exercise);
+        if (!ex) return;
+        const build = getBuildState(ex);
+        build.checked = true;
+        build.correct = builtText(build) === expectedText(ex);
+        if (build.correct) state.answered = { ...(state.answered || {}), [ex.id]: true };
+        saveState(); render(container);
+      }
+      if (action === 'build-reset') {
+        const unit = getUnit(state.unit);
+        const ex = unit?.exercises?.find(item => item.id === btn.dataset.exercise);
+        if (!ex) return;
+        state.builds = { ...(state.builds || {}) };
+        delete state.builds[ex.id];
+        saveState(); render(container);
+      }
       if (action === 'speak') speak(btn.dataset.text || btn.textContent.trim());
     });
   }
 
-  return { render };
+  return { render, moveBuildTile };
 })();

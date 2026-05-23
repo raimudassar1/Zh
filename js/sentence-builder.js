@@ -183,6 +183,23 @@ window.SentenceBuilderModule = (() => {
     };
   }
 
+  function naturalizeGeneratedSentence(sentence) {
+    const m = String(sentence.zh || '').match(/^(我|你|他|她|我們|你們)是(朋友|同學|家人)。$/u);
+    if (m) {
+      const subj = m[1];
+      const noun = m[2];
+      const poss = subj === '我' || subj === '我們' ? '你的' : '我的';
+      const pron = { '我': 'I', '你': 'You', '他': 'He', '她': 'She', '我們': 'We', '你們': 'You all' }[subj] || 'He';
+      const be = subj === '他' || subj === '她' ? 'is' : (subj === '我' ? 'am' : 'are');
+      const rel = { '朋友': 'friend', '同學': 'classmate', '家人': 'family member' }[noun] || 'friend';
+      sentence.zh = `${subj}是${poss}${noun}。`;
+      sentence.en = `${pron} ${be} ${poss === '你的' ? 'your' : 'my'} ${rel}.`;
+      sentence.tiles = [subj, '是', poss, noun];
+      sentence.tags = [...(sentence.tags || []), 'relationship'];
+    }
+    return sentence;
+  }
+
   function generatedSentence(levelId, index) {
     const p = GENERATOR_POOLS;
     const s = pick(p.pronouns);
@@ -228,9 +245,9 @@ window.SentenceBuilderModule = (() => {
     };
     const levelTemplates = templates[levelId] || templates.novice_1;
     function make(zh, en, tiles, tags) {
-      return { id: `generated_${levelId}_${Date.now()}_${index}_${Math.random().toString(16).slice(2)}`, zh, pinyin: '', en, tiles, tags, difficulty, generated: true, source };
+      return naturalizeGeneratedSentence({ id: `generated_${levelId}_${Date.now()}_${index}_${Math.random().toString(16).slice(2)}`, zh, pinyin: '', en, tiles, tags, difficulty, generated: true, source });
     }
-    return pick(levelTemplates)();
+    return naturalizeGeneratedSentence(pick(levelTemplates)());
   }
 
   function generatedSession(level, count) {
