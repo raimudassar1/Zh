@@ -246,11 +246,7 @@ window.QuizModule = (() => {
           question_label: 'What is the tone of this character?',
           correct_tone: toneNum,
           correct: item,
-          options: [1,2,3,4].map(t => ({
-            label: `${t}${t===1?' (flat)':t===2?' (rising)':t===3?' (falling-rising)':' (falling)'}`,
-            tone: t,
-            isCorrect: t === toneNum,
-          })),
+          options: Pinyin.toneOptionsFor(item.pinyin, toneNum),
         });
       } else if (mode === 'C') { // Hanzi from Pinyin
         const distractors = pickDistractors(item, pool, 'hanzi', 3);
@@ -678,7 +674,7 @@ window.QuizModule = (() => {
     let optionsHTML = q.options.map((opt, i) => {
       let content = '';
       if (q.type === 'hanzi-to-def') content = opt.definition;
-      else if (q.type === 'tone-choice') content = opt.label;
+      else if (q.type === 'tone-choice') content = `<span class="tone-option-pinyin tone${opt.tone}">${opt.label}</span>`;
       else if (q.type === 'pinyin-choice') content = `<span style="color:var(--tone${Pinyin.getTone(opt.pinyin)||1})">${opt.pinyin}</span>`;
       else content = `<span class="qo-hanzi">${opt.hanzi}</span><span class="qo-pinyin ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${opt.pinyin || ''}</span>`;
 

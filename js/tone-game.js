@@ -52,13 +52,7 @@ const ToneGame = (() => {
 ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</span>
           </button>
 
-          <div class="tone-options-grid mt-32">
-            ${[1, 2, 3, 4].map(num => `
-              <button class="btn btn-outline tone-btn tone${num}" onclick="ToneGame.guess(${num}, this)">
-                Tone ${num}
-              </button>
-            `).join('')}
-          </div>
+          <div class="tone-options-grid mt-32" id="tone-options-grid"></div>
 
           <div id="tone-feedback" class="quiz-feedback mt-24"></div>
           
@@ -70,8 +64,20 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
     nextRound();
   }
 
+  function renderToneOptions() {
+    const grid = document.getElementById('tone-options-grid');
+    if (!grid || !currentState.currentTarget) return;
+    const options = Pinyin.toneOptionsFor(currentState.currentTarget.syllable, currentState.currentTarget.tone);
+    grid.innerHTML = options.map(opt => `
+      <button class="btn btn-outline tone-btn tone${opt.tone}" onclick="ToneGame.guess(${opt.tone}, this)">
+        <span class="tone-option-pinyin">${opt.label}</span>
+      </button>
+    `).join('');
+  }
+
   function nextRound() {
     currentState.currentTarget = GAME_DATA[Math.floor(Math.random() * GAME_DATA.length)];
+    renderToneOptions();
     document.getElementById('tone-next-btn').classList.add('hidden');
     document.getElementById('tone-feedback').classList.remove('show');
     document.querySelectorAll('.tone-btn').forEach(b => {
@@ -98,7 +104,7 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
       btn.classList.remove('btn-outline');
       btn.classList.add('btn-success');
       feedback.className = 'quiz-feedback correct show';
-      feedback.innerHTML = `Correct. ${currentState.currentTarget.char} is <strong>Tone ${num}</strong> (${currentState.currentTarget.syllable})`;
+      feedback.innerHTML = `Correct. ${currentState.currentTarget.char} is <strong>${currentState.currentTarget.syllable}</strong>, tone ${num}.`;
       App.logActivity('Tone', `Mastered tone ${num} for ${currentState.currentTarget.syllable}`);
     } else {
       btn.classList.remove('btn-outline');

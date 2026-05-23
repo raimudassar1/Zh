@@ -151,11 +151,22 @@ window.SentenceBuilderModule = (() => {
         }));
       }));
     } catch (_) {}
-    return out.filter(x => cleanSentence(x.zh).length >= 4 && cleanSentence(x.zh).length <= 18).slice(0, 120);
+    return out.filter(x => isNaturalSentence(x) && cleanSentence(x.zh).length >= 4 && cleanSentence(x.zh).length <= 18).slice(0, 120);
   }
 
   function selectedLevel() {
     return state.levels.find(level => level.id === state.levelId) || state.levels[0] || null;
+  }
+
+  function isNaturalSentence(sentence) {
+    const zh = cleanSentence(sentence?.zh || '');
+    const en = String(sentence?.en || sentence?.english || '').trim();
+    if (zh.length < 3 || zh.length > 36) return false;
+    if (/([㐀-鿿])/.test(zh)) return false;
+    if (/[A-Za-z]{3,}/.test(zh)) return false;
+    if (/placeholder|random|word list|example only/i.test(en)) return false;
+    if ((sentence?.tiles || []).some(tile => String(tile).trim().length === 0)) return false;
+    return true;
   }
 
   function normalizeSentence(sentence, level) {
@@ -249,7 +260,7 @@ window.SentenceBuilderModule = (() => {
     const level = selectedLevel();
     const pool = state.mode === 'generated'
       ? generatedSession(level, state.sessionSize)
-      : level ? shuffle(level.sentences.map(sentence => normalizeSentence(sentence, level))).slice(0, Math.min(state.sessionSize, level.sentences.length)) : await collectFallbackSentences();
+      : level ? shuffle(level.sentences.filter(isNaturalSentence).map(sentence => normalizeSentence(sentence, level))).slice(0, Math.min(state.sessionSize, level.sentences.filter(isNaturalSentence).length)) : (await collectFallbackSentences()).filter(isNaturalSentence);
     state.sentences = pool;
     state.idx = 0;
     state.bank = [];

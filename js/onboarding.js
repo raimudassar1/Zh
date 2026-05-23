@@ -270,7 +270,7 @@ const OnboardingModule = (() => {
   function buildHumanAnswerOptions(item) {
     if (!item) return [];
     if (Array.isArray(item.options) && item.options.length) return item.options;
-    if (item.type === 'tone') return ['tone1', 'tone2', 'tone3', 'tone4'];
+    if (item.type === 'tone') return Pinyin.toneOptionsFor(item.pinyin, Number(String(item.answer || '').replace('tone', ''))).map(opt => ({ value: 'tone' + opt.tone, label: opt.label }));
     if (item.type === 'tonepair') return shuffledHumanOptions(item.answer, ['1+1','1+2','1+3','1+4','2+1','2+2','2+3','2+4','3+1','3+2','3+3','3+4','4+1','4+2','4+3','4+4']);
     if (item.type === 'initial') return shuffledHumanOptions(item.answer, humanPinyinBank.focused.filter(entry => entry.type === 'initial').map(entry => entry.answer), 6);
     if (item.type === 'final') return shuffledHumanOptions(item.answer, humanPinyinBank.focused.filter(entry => entry.type === 'final').map(entry => entry.answer), 6);
@@ -278,7 +278,7 @@ const OnboardingModule = (() => {
   }
 
   function renderHumanAnswers(item) {
-    return buildHumanAnswerOptions(item).map(ans => `<button type="button" data-hpl-action="answer" data-answer="${obEsc(ans)}">${obEsc(ans)}</button>`).join('');
+    return buildHumanAnswerOptions(item).map(ans => { const value = typeof ans === 'object' ? ans.value : ans; const label = typeof ans === 'object' ? ans.label : ans; return `<button type="button" data-hpl-action="answer" data-answer="${obEsc(value)}">${obEsc(label)}</button>`; }).join('');
   }
 
   function bindHumanLabButtons() {

@@ -58,9 +58,9 @@ window.MixedRecallModule = (() => {
       if (kind === 3) {
         const cloze = makeCloze(chars, c);
         if (cloze) qs.push(cloze);
-        else qs.push({ type: 'tone', label: 'Pick the correct tone', prompt: c.pinyin, correct: c, options: [1,2,3,4].map(t => ({ text: 'Tone ' + t, tone: t, correct: Pinyin.getTone(c.pinyin) === t })), area: 'tone' });
+        else qs.push({ type: 'tone', label: 'Pick the correct tone', prompt: c.pinyin, correct: c, options: Pinyin.toneOptionsFor(c.pinyin, Pinyin.getTone(c.pinyin)).map(opt => ({ text: opt.label, tone: opt.tone, correct: opt.isCorrect })), area: 'tone' });
       }
-      if (kind === 4) qs.push({ type: 'tone', label: 'Pick the correct tone', prompt: c.pinyin, correct: c, options: [1,2,3,4].map(t => ({ text: 'Tone ' + t, tone: t, correct: Pinyin.getTone(c.pinyin) === t })), area: 'tone' });
+      if (kind === 4) qs.push({ type: 'tone', label: 'Pick the correct tone', prompt: c.pinyin, correct: c, options: Pinyin.toneOptionsFor(c.pinyin, Pinyin.getTone(c.pinyin)).map(opt => ({ text: opt.label, tone: opt.tone, correct: opt.isCorrect })), area: 'tone' });
     });
     return qs.slice(0, 10);
   }

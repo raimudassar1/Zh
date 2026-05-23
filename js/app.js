@@ -402,23 +402,23 @@ const TTS = {
 // ─── Pinyin Utilities ─────────────────────────────────────────────────────────
 const Pinyin = {
   TONE_MAP: {
-    'a': ['ā','á','ǎ','à','a'], 'e': ['ē','é','ě','è','e'],
-    'i': ['ī','í','ǐ','ì','i'], 'o': ['ō','ó','ǒ','ò','o'],
-    'u': ['ū','ú','ǔ','ù','u'], 'v': ['ǖ','ǘ','ǚ','ǜ','ü'],
+    a: ['\u0101','\u00e1','\u01ce','\u00e0','a'], e: ['\u0113','\u00e9','\u011b','\u00e8','e'],
+    i: ['\u012b','\u00ed','\u01d0','\u00ec','i'], o: ['\u014d','\u00f3','\u01d2','\u00f2','o'],
+    u: ['\u016b','\u00fa','\u01d4','\u00f9','u'], v: ['\u01d6','\u01d8','\u01da','\u01dc','\u00fc']
   },
 
-  // Get tone number from pinyin with diacritics
   getTone(pinyin) {
     if (!pinyin) return 0;
-    const p = pinyin.toLowerCase();
-    if (/[āēīōūǖ]/.test(p)) return 1;
-    if (/[áéíóúǘ]/.test(p)) return 2;
-    if (/[ǎěǐǒǔǚ]/.test(p)) return 3;
-    if (/[àèìòùǜ]/.test(p)) return 4;
-    return 5; // neutral
+    const p = String(pinyin).toLowerCase();
+    if (/[\u0101\u0113\u012b\u014d\u016b\u01d6]/.test(p)) return 1;
+    if (/[\u00e1\u00e9\u00ed\u00f3\u00fa\u01d8]/.test(p)) return 2;
+    if (/[\u01ce\u011b\u01d0\u01d2\u01d4\u01da]/.test(p)) return 3;
+    if (/[\u00e0\u00e8\u00ec\u00f2\u00f9\u01dc]/.test(p)) return 4;
+    const numbered = p.match(/[1-5](?!\d)/);
+    if (numbered) return Number(numbered[0]);
+    return 5;
   },
 
-  // Wrap a pinyin string in a tone-colored span
   colorize(pinyin) {
     if (!App.state.settings.toneColors) return `<span class="pinyin">${pinyin}</span>`;
     const tone = this.getTone(pinyin);
@@ -426,26 +426,57 @@ const Pinyin = {
     return `<span class="pinyin ${cls}">${pinyin}</span>`;
   },
 
-  // Convert numbered pinyin (ni3) → diacritics (nǐ) — simple heuristic
+  toneBase(pinyin) {
+    const first = String(pinyin || '').trim().split(/\s+/)[0] || 'ma';
+    return first.toLowerCase()
+      .replace(/[\u0101\u00e1\u01ce\u00e0]/g, 'a').replace(/[\u0113\u00e9\u011b\u00e8]/g, 'e')
+      .replace(/[\u012b\u00ed\u01d0\u00ec]/g, 'i').replace(/[\u014d\u00f3\u01d2\u00f2]/g, 'o')
+      .replace(/[\u016b\u00fa\u01d4\u00f9]/g, 'u').replace(/[\u01d6\u01d8\u01da\u01dc\u00fc]/g, 'v')
+      .replace(/[^a-zv]/g, '') || 'ma';
+  },
+
+  markSyllable(base, tone) {
+    const raw = String(base || 'ma').toLowerCase().replace(/\u00fc/g, 'v');
+    const t = Math.max(1, Math.min(4, Number(tone) || 1)) - 1;
+    let vowel = '';
+    if (raw.includes('a')) vowel = 'a';
+    else if (raw.includes('e')) vowel = 'e';
+    else if (raw.includes('ou')) vowel = 'o';
+    else {
+      const matches = [...raw.matchAll(/[aeiouv]/g)];
+      vowel = matches.length ? matches[matches.length - 1][0] : '';
+    }
+    if (!vowel) return raw.replace(/v/g, '\u00fc');
+    const idx = raw.indexOf(vowel);
+    return (raw.slice(0, idx) + this.TONE_MAP[vowel][t] + raw.slice(idx + 1)).replace(/v/g, '\u00fc');
+  },
+
+  toneOptionsFor(pinyin, correctTone) {
+    const base = this.toneBase(pinyin);
+    const answerTone = Number(correctTone || this.getTone(pinyin));
+    return [1, 2, 3, 4].map(tone => ({
+      label: this.markSyllable(base, tone),
+      pinyin: this.markSyllable(base, tone),
+      tone,
+      isCorrect: tone === answerTone,
+      correct: tone === answerTone
+    }));
+  },
+
   numberedToMarked(s) {
     if (!s) return '';
-    return s.replace(/([a-zA-ZüÜ]+)([1-5])/g, (_, syl, tone) => {
-      const t = parseInt(tone) - 1;
-      const lower = syl.toLowerCase();
-      for (const [base, marks] of Object.entries(this.TONE_MAP)) {
-        if (lower.includes(base)) {
-          return syl.replace(new RegExp(base, 'i'), marks[t] || base);
-        }
-      }
-      return syl;
+    return String(s).replace(/([a-zA-Z\u00fc\u00dc]+)([1-5])/g, (_, syl, tone) => {
+      const t = parseInt(tone, 10) - 1;
+      if (t < 0 || t > 3) return syl.replace(/v/g, '\u00fc');
+      return this.markSyllable(syl, t + 1);
     });
-  },
+  }
 };
 
 // ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
 const API = {
   base: 'data', // Relative to public/
-  version: '107', // Match index.html version for consistency
+  version: '109', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -947,7 +978,7 @@ function closeMobileNav() {
 
 const mobileNavGroups = {
   start: ['dashboard', 'b1-coach', 'study-plan', 'learn'],
-  beginner: ['beginner-coach', 'beginner-launchpad', 'quiz-flash', 'onboarding', 'quiz-pronunciation', 'quiz-tones', 'playground'],
+  beginner: ['beginner-launchpad', 'playground', 'beginner-coach', 'quiz-flash', 'onboarding', 'quiz-pronunciation', 'quiz-tones'],
   course: ['vocabulary-books', 'chapters', 'grammar', 'dialogue', 'reading', 'scenarios'],
   practice: ['flashcards', 'mixed-recall', 'sentence-builder', 'char-playground', 'library', 'vocabulary'],
   exams: ['tocfl', 'tocfl-content', 'exams', 'mock-reading', 'mock-listening', 'quiz-vocabulary']
@@ -979,7 +1010,7 @@ function openMobileSection(section) {
   if (!bar) return;
   const sections = {
     start: [['/', 'dashboard', 'Dashboard'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/study-plan', 'study-plan', 'Today'], ['/learn', 'learn', 'Path']],
-    beginner: [['/beginner-coach', 'beginner-coach', 'Coach'], ['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/onboarding', 'onboarding', 'Pinyin'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/playground', 'playground', 'Playground']],
+    beginner: [['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/playground', 'playground', 'Playground'], ['/beginner-coach', 'beginner-coach', 'Coach'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/onboarding', 'onboarding', 'Pinyin'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/quiz/tones', 'quiz-tones', 'Tones']],
     course: [['/vocabulary-books', 'vocabulary-books', 'Books'], ['/chapters', 'chapters', 'Chapters'], ['/grammar', 'grammar', 'Grammar'], ['/dialogue', 'dialogue', 'Dialogue'], ['/reading', 'reading', 'Reading'], ['/scenarios', 'scenarios', 'Scenarios']],
     practice: [['/flashcards', 'flashcards', 'Cards'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/char-playground', 'char-playground', 'Characters'], ['/library', 'library', 'Library'], ['/vocabulary', 'vocabulary', 'Words']],
     exams: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Native'], ['/exams', 'exams', 'Monthly'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab Quiz']]

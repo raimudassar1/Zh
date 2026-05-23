@@ -6,6 +6,56 @@ const GrammarModule = (() => {
   let data = null;
   let state = { level: 'beginner', unit: null, tab: 'learn', exampleFilter: 'all', showPinyin: false, showEnglish: true, answered: {} };
 
+
+
+  const PATTERN_TERMS = {
+    S: ['Subject', 'who or what the sentence is about, such as \u6211, \u4f60, \u8001\u5e2b'],
+    V: ['Verb', 'the action, such as \u5403, \u53bb, \u5b78, \u559c\u6b61'],
+    O: ['Object', 'the thing/person receiving the action, such as \u98ef, \u4e2d\u6587, \u670b\u53cb'],
+    N: ['Noun', 'a person, place, thing, role, or category'],
+    Adj: ['Adjective', 'a describing word, such as \u5fd9, \u597d, \u8cb4, \u9ad8\u8208'],
+    Time: ['Time', 'when it happens, such as \u4eca\u5929, \u660e\u5929, \u65e9\u4e0a'],
+    Place: ['Place', 'where it happens, such as \u5b78\u6821, \u5bb6, \u9910\u5ef3'],
+    Topic: ['Topic', 'the thing you are talking about before adding a comment'],
+    Measure: ['Measure word', 'the counter used with numbers, such as \u500b, \u676f, \u672c'],
+    Particle: ['Particle', 'a small grammar word like \u4e86, \u55ce, \u5462, \u7684']
+  };
+
+  function patternTokens(pattern) {
+    const found = [];
+    const raw = String(pattern || '');
+    Object.keys(PATTERN_TERMS).forEach(key => {
+      const re = new RegExp(`(^|[^A-Za-z])${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^A-Za-z]|$)`);
+      if (re.test(raw)) found.push(key);
+    });
+    if (raw.includes('\u662f')) found.push('\u662f');
+    if (raw.includes('\u4e0d') || raw.includes('\u6c92')) found.push('\u4e0d/\u6c92');
+    if (raw.includes('\u55ce') || raw.includes('\u5462')) found.push('\u55ce/\u5462');
+    return [...new Set(found)];
+  }
+
+  function renderPattern(pattern) {
+    const parts = String(pattern || '').split(/(S|V|O|N|Adj|Time|Place|Topic|Measure|Particle)/g);
+    return parts.map(part => PATTERN_TERMS[part] ? `<abbr title="${esc(PATTERN_TERMS[part][0])}">${esc(part)}</abbr>` : esc(part)).join('');
+  }
+
+  function renderPatternKey(pattern) {
+    const tokens = patternTokens(pattern);
+    const extra = {
+      '\u662f': ['\u662f', 'links a subject to identity/category: \u6211\u662f\u5b78\u751f'],
+      '\u4e0d/\u6c92': ['\u4e0d / \u6c92', 'negative markers. \u4e0d for general not, \u6c92 for did not / do not have'],
+      '\u55ce/\u5462': ['\u55ce / \u5462', 'question particles added near the end']
+    };
+    if (!tokens.length) return '';
+    return `<div class="ga-pattern-key" aria-label="Pattern key">
+      ${tokens.map(token => {
+        const item = PATTERN_TERMS[token] || extra[token];
+        if (!item) return '';
+        return `<div class="ga-pattern-term"><b>${esc(token)}</b><span><strong>${esc(item[0])}</strong>${esc(item[1])}</span></div>`;
+      }).join('')}
+    </div>`;
+  }
+
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   function speak(text) {
     const value = String(text || '').trim();
@@ -43,15 +93,15 @@ const GrammarModule = (() => {
     const unit = getUnit(state.unit) || level.units[0];
     container.innerHTML = `
       <div class="grammar-academy">
-        <section class="ga-hero">
+        <section class="ga-hero ga-hero-minimal">
           <div>
             <span class="ga-kicker">Grammar Academy</span>
-            <h2>Build Chinese Sentences on Purpose</h2>
-            <p>Three levels from beginner sentence order to B1 bridge grammar. Each unit includes deep explanation, structured examples, sentence-building drills, reading, and writing prompts.</p>
+            <h2>Sentence patterns, explained simply.</h2>
+            <p>Pick one grammar pattern, understand the symbols, read natural examples, then build your own sentence.</p>
           </div>
-          <div class="ga-stats">
-            <strong>${data.totals.examples}</strong><span>structured examples</span>
-            <strong>${data.totals.exercises}</strong><span>practice tasks</span>
+          <div class="ga-stats ga-stats-minimal">
+            <strong>${data.totals.examples}</strong><span>examples</span>
+            <strong>${data.totals.exercises}</strong><span>drills</span>
           </div>
         </section>
 
@@ -104,9 +154,12 @@ const GrammarModule = (() => {
         <button type="button" class="btn btn-ghost" data-ga-action="speak" data-text="${esc(unit.examples[0]?.zh || unit.structure)}">Hear Example</button>
       </header>
 
-      <div class="ga-structure">
-        <span>Core Pattern</span>
-        <strong>${esc(unit.structure)}</strong>
+      <div class="ga-structure ga-structure-minimal">
+        <div class="ga-pattern-line">
+          <span>Core Pattern</span>
+          <strong>${renderPattern(unit.structure)}</strong>
+        </div>
+        ${renderPatternKey(unit.structure)}
         <p>${esc(unit.coreExplanation)}</p>
       </div>
 
@@ -178,12 +231,23 @@ const GrammarModule = (() => {
     </div>`;
   }
 
+  function shuffleForExercise(tiles, seedText) {
+    const arr = [...(tiles || [])];
+    let seed = String(seedText || '').split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0) || 1;
+    for (let i = arr.length - 1; i > 0; i--) {
+      seed = (seed * 9301 + 49297) % 233280;
+      const j = seed % (i + 1);
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   function renderExercise(ex, index) {
     const answered = state.answered?.[ex.id];
     return `<section class="ga-exercise">
       <div class="ga-ex-head"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(ex.type)}</strong></div>
       <p>${esc(ex.prompt)}</p>
-      ${ex.tiles?.length ? `<div class="ga-tiles">${ex.tiles.map(tile => `<button type="button">${esc(tile)}</button>`).join('')}</div>` : ''}
+      ${ex.tiles?.length ? `<div class="ga-builder-preview"><div class="ga-build-target"><span>Build this order</span><strong>${esc(ex.tiles.join(' + '))}</strong></div><div class="ga-tiles">${shuffleForExercise(ex.tiles, ex.id).map(tile => `<button type="button" data-ga-action="speak" data-text="${esc(tile)}">${esc(tile)}</button>`).join('')}</div></div>` : ''}
       <div class="ga-answer-row">
         <button type="button" class="btn btn-ghost btn-sm" data-ga-action="speak" data-text="${esc(ex.answer)}">Play Answer</button>
         <button type="button" class="btn btn-primary btn-sm" data-ga-action="answer" data-exercise="${esc(ex.id)}">Show Answer</button>
