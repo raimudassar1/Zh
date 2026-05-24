@@ -149,11 +149,13 @@ const App = {
       toneColors: true,
       dailyGoal: 10,
       quizDifficulty: 'A2',
+      defaultQuizCount: 20,
       showQuizPinyin: true,
       displayName: 'Learner',
       showZhuyinDefault: false,
       fontChoice: 'noto-sans',
       unlockAll: true,
+      guidedMode: true,
     };
     const saved = localStorage.getItem('tocfl_settings');
     this.state.settings = saved ? { ...defaults, ...JSON.parse(saved) } : defaults;
@@ -322,6 +324,7 @@ const App = {
     this.saveProgress();
   },
 };
+window.App = App;
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ TTS Utility Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const TTS = {
@@ -334,7 +337,19 @@ const TTS = {
       options = rate;
       rate = options.rate || 0.85;
     }
-    if (!window.speechSynthesis) return;
+    if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
+      try {
+        window.AndroidTTS.speak(String(text || ''), String(lang || 'zh-TW'), Number(rate || 0.85));
+        return { source: 'android', text, lang, rate };
+      } catch (err) {
+        console.warn('Android TTS bridge failed, falling back to browser TTS', err);
+      }
+    }
+    if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) {
+      console.warn('TTS unavailable in this browser/WebView');
+      if (window.showToast) window.showToast('Audio is unavailable in this browser. On Android, enable the native TTS bridge.');
+      return null;
+    }
     window.speechSynthesis.cancel();
 
     // Normalization for Pinyin-only inputs or problematic characters
@@ -342,49 +357,38 @@ const TTS = {
     
     // Check if input is mostly pinyin (latin chars). If so, it reads disjointedly.
     // Try to strip tone marks and spaces to see if it's purely pinyin
-    const isPinyin = /^[a-zÃ„ ÃƒÂ¡Ã‡Å½ÃƒÂ Ã„â€œÃƒÂ©Ã„â€ºÃƒÂ¨Ã„Â«ÃƒÂ­Ã‡ ÃƒÂ¬Ã… ÃƒÂ³Ã‡â€™ÃƒÂ²Ã…Â«ÃƒÂºÃ‡â€ÃƒÂ¹Ã‡â€“Ã‡ËœÃ‡Å¡Ã‡Å“ÃƒÂ¼\s]+$/.test(processedText);
+    const isPinyin = /^[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]+$/i.test(processedText);
 
     // Map common standalone pinyin examples from onboarding to Hanzi
     const exactPinyinMap = {
-      'mÃ„ ': 'Ã¥ÂªÂ½', 'mÃƒÂ¡': 'Ã©ÂºÂ»', 'mÃ‡Å½': 'Ã©Â¦Â¬', 'mÃƒÂ ': 'Ã§Â½Âµ',
-      'bÃ„ ': 'Ã¥â€¦Â«', 'bÃƒÂ¡': 'Ã¦â€¹â€', 'bÃ‡Å½': 'Ã¦Å Å ', 'bÃƒÂ ': 'Ã§Ë†Â¸',
-      'bÃ… ': 'Ã¦Â³Â¢', 'bÃƒÂ³': 'Ã¤Â¼Â¯', 'bÃ‡ ': 'Ã¦Â¯â€', 'bÃƒÂ¹': 'Ã¤Â¸ ',
-      'pÃ„ ': 'Ã¨Â¶Â´', 'pÃƒÂ¡': 'Ã§Ë†Â¬', 'pÃƒÂ³': 'Ã¥Â©â€ ', 'pÃ‡ ': 'Ã¥Å’Â¹',
-      'wÃ…Â«': 'Ã¥Â±â€¹', 'wÃƒÂº': 'Ã§â€žÂ¡', 'wÃ‡â€': 'Ã¤Âºâ€', 'wÃƒÂ¹': 'Ã§â€°Â©',
-      'hÃƒÂº': 'Ã¨Æ’Â¡', 'hÃƒÂ©': 'Ã¦Â²Â³', 'hÃ„â€œ': 'Ã¥â€“ ', 'hÃ‡Å½o': 'Ã¥Â¥Â½', 'hÃƒÂ²u': 'Ã¥Â¾Å’',
-      'yÃ„Â«': 'Ã¤Â¸â‚¬', 'yÃƒÂ­': 'Ã§â€“â€˜', 'yÃ‡ ': 'Ã¤Â»Â¥', 'yÃƒÂ¬': 'Ã¦â€ž ',
-      'nÃ‡Å¡': 'Ã¥Â¥Â³', 'lÃ‡Å¡': 'Ã¦â€”â€¦Ã¨Â¡Å’', 'qÃƒÂ¹': 'Ã¥Å½Â»', 'jÃ…Â«': 'Ã¥Â±â€¦', 'xÃ…Â«': 'Ã©Å“â‚¬',
-      'yÃ‡â€': 'Ã¨ÂªÅ¾', 'yÃƒÂº': 'Ã©Â­Å¡', 'hÃ‡Å½o': 'Ã¥Â¥Â½', 'nÃ‡  hÃ‡Å½o': 'Ã¤Â½Â Ã¥Â¥Â½',
-      'nÃ‡ ': 'Ã¤Â½Â ', 'nÃƒÂ¡n': 'Ã¥ â€”', 'nÃ‡Å½i': 'Ã¥Â¥Â¶', 'niÃƒÂº': 'Ã§â€°â€º',
-      'lÃ‡ ': 'Ã¨Â£Â¡', 'lÃƒÂ¡n': 'Ã¨â€” ', 'lÃƒÂ¡i': 'Ã¤Â¾â€ ', 'liÃƒÂ¹': 'Ã¥â€¦Â­',
-      'jiÃ„ ': 'Ã¥Â®Â¶', 'jiÃ„â€œ': 'Ã¨Â¡â€”', 'jiÃƒÂ¹': 'Ã¨Ë†Å ',
-      'qÃ„Â«': 'Ã¤Â¸Æ’', 'qÃƒÂ¹': 'Ã¥Å½Â»', 'qÃ‡ ': 'Ã¨ÂµÂ·',
-      'xÃ„Â«': 'Ã¨Â¥Â¿', 'xiÃ„ ': 'Ã¨ Â¦', 'xiÃ‡Å½o': 'Ã¥Â° ', 'xÃ„Â«n': 'Ã¥Â¿Æ’', 'xiÃ…Â«': 'Ã¤Â¿Â®', 'xiÃ„â€œ': 'Ã¤Âºâ€º',
-      'zhÃ„Â«': 'Ã§Å¸Â¥', 'zhÃ‡ ': 'Ã§Â´â„¢', 'zhÃƒÂ¹': 'Ã¤Â½ ', 'zhÃ‡Å½o': 'Ã¦â€°Â¾', 'zhÃ„ ': 'Ã¦Â¸Â£', 'zhÃƒÂ i': 'Ã¥â€šÂµ', 'zhÃ… ng': 'Ã¤Â¸Â­',
-      'zÃ„Â«': 'Ã¨Â³â€¡', 'zÃ‡ ': 'Ã¥Â­ ', 'zÃƒÂ¹': 'Ã§Â§Å¸', 'zÃ‡Å½o': 'Ã¦â€”Â©', 'zÃƒÂ i': 'Ã¥Å“Â¨',
-      'chÃ„Â«': 'Ã¥ Æ’', 'chÃ…Â«': 'Ã¥â€¡Âº', 'shÃ„ ': 'Ã¦Â²â„¢', 'shÃ„â€œn': 'Ã¨ÂºÂ«', 'shÃ„Â«': 'Ã¨Â©Â©',
-      'shÃ…Â«': 'Ã¦â€ºÂ¸', 'shÃƒÂº': 'Ã§â€ Å¸', 'shÃ‡â€': 'Ã©Â¼Â ', 'shÃƒÂ¹': 'Ã¦Â¨Â¹', 'shÃ… u': 'Ã¦â€Â¶',
-      'rÃƒÂ©n': 'Ã¤ÂºÂº',
-      'mÃ„ o': 'Ã¨Â²â€œ', 'mÃƒÂ¡o': 'Ã¦Â¯â€º', 'mÃ‡Å½o': 'Ã¥ Â¯', 'mÃƒÂ o': 'Ã¥Â¸Â½',
-      'tÃ„ ng': 'Ã¦Â¹Â¯', 'tÃƒÂ¡ng': 'Ã§Â³â€“', 'tÃ‡Å½ng': 'Ã¨ÂºÂº', 'tÃƒÂ ng': 'Ã§â€¡â„¢',
-      'mÃƒÂ¡i': 'Ã¥Å¸â€¹', 'mÃƒÂ i': 'Ã¨Â³Â£', 'mÃ‡Å½i': 'Ã¨Â²Â·',
-      'wÃƒÂ©n': 'Ã¨ Å¾', 'wÃƒÂ¨n': 'Ã¥â€¢ ',
-      'sÃ‡ ': 'Ã¦Â­Â»', 'sÃƒÂ¬': 'Ã¥â€ºâ€º',
-      'tiÃ„ n': 'Ã¥Â¤Â©', 'tÃ„Â«': 'Ã¦Â¢Â¯', 'tÃƒÂ i': 'Ã¥Â¤Âª', 'tÃƒÂ³u': 'Ã©Â Â­',
-      'dÃƒÂ ': 'Ã¥Â¤Â§', 'dÃƒÂ i': 'Ã¥Â¸Â¶', 'diÃƒÂ o': 'Ã¦Å½â€°',
-      'fÃƒÂ n': 'Ã©Â£Â¯', 'fÃ„â€œi': 'Ã©Â£â€º', 'fÃ„ n': 'Ã§Â¿Â»', 'fÃ„ ng': 'Ã¦â€“Â¹', 'fÃ„â€œng': 'Ã©Â¢Â¨',
-      'gÃ„â€œ': 'Ã¥â€œÂ¥', 'gÃ‡â€™u': 'Ã§â€¹â€”', 'gÃ… u': 'Ã¦Âº ', 'gÃ„â€ºi': 'Ã§ÂµÂ¦', 'gÃ… ng': 'Ã¥Â·Â¥',
-      'kÃ„ i': 'Ã©â€“â€¹',
-      'mÃƒÂ©n': 'Ã©â€“â‚¬', 'mÃƒÂ¡n': 'Ã¨Â Â»', 'mÃƒÂ n': 'Ã¦â€¦Â¢', 'mÃƒÂ¡ng': 'Ã¥Â¿â„¢', 'mÃƒÂ­ng': 'Ã¦ËœÅ½', 'mÃ„â€œng': 'Ã¨â€™â„¢',
-      'bÃ„â€œi': 'Ã¦ Â¯', 'bÃƒÂ o': 'Ã¥Â Â±', 'biÃƒÂ n': 'Ã¨Â®Å ', 'biÃ„â€œ': 'Ã¦â€ â€¹',
-      'piÃƒÂ o': 'Ã§Â¥Â¨',
-      'b': 'Ã§Å½Â»', 'p': 'Ã¥ Â¡', 'm': 'Ã¦â€˜Â¸', 'f': 'Ã¤Â½â€º',
-      'd': 'Ã¥Â¾â€”', 't': 'Ã§â€°Â¹', 'n': 'Ã¨Â¨Â¥', 'l': 'Ã¥â€¹â€™',
-      'g': 'Ã¥â€œÂ¥', 'k': 'Ã§Â§â€˜', 'h': 'Ã¥â€“ ',
-      'j': 'Ã¥Å¸Âº', 'q': 'Ã¦Â¬Âº', 'x': 'Ã¥Â¸Å’',
-      'zh': 'Ã§Å¸Â¥', 'ch': 'Ã¨Å¡Â©', 'sh': 'Ã¨Â©Â©', 'r': 'Ã¦â€”Â¥',
-      'z': 'Ã¨Â³â€¡', 'c': 'Ã©â€ºÅ’', 's': 'Ã¦â‚¬ ',
-      'a': 'Ã¥â€¢Å ', 'o': 'Ã¥â€“â€', 'e': 'Ã©Âµ ', 'i': 'Ã¨Â¡Â£', 'u': 'Ã§Æ’ ', 'ÃƒÂ¼': 'Ã¨Â¿â€š'
+      'mā': '媽', 'má': '麻', 'mǎ': '馬', 'mà': '罵',
+      'bā': '八', 'bá': '拔', 'bǎ': '把', 'bà': '爸',
+      'bō': '波', 'bó': '伯', 'bǐ': '比', 'bù': '不',
+      'pā': '趴', 'pá': '爬', 'pó': '婆', 'pǐ': '匹',
+      'wū': '屋', 'wú': '無', 'wǔ': '五', 'wù': '物',
+      'hú': '胡', 'hé': '河', 'hē': '喝', 'hǎo': '好', 'hòu': '後',
+      'yī': '一', 'yí': '疑', 'yǐ': '以', 'yì': '意',
+      'nǚ': '女', 'lǚ': '旅', 'qù': '去', 'jū': '居', 'xū': '需',
+      'yǔ': '語', 'yú': '魚', 'nǐ hǎo': '你好', 'nǐ': '你',
+      'nán': '男', 'nǎi': '奶', 'niú': '牛',
+      'lǐ': '裡', 'lán': '藍', 'lái': '來', 'liù': '六',
+      'jiā': '家', 'jiē': '街', 'jiù': '舊',
+      'qī': '七', 'qǐ': '起',
+      'xī': '西', 'xiā': '蝦', 'xiǎo': '小', 'xīn': '心', 'xiū': '修', 'xiē': '些',
+      'zhī': '知', 'zhǐ': '紙', 'zhù': '住', 'zhǎo': '找', 'zhā': '渣', 'zhài': '債', 'zhōng': '中',
+      'zī': '資', 'zǐ': '子', 'zū': '租', 'zǎo': '早', 'zài': '在',
+      'chī': '吃', 'chū': '出',
+      'shā': '沙', 'shēn': '身', 'shī': '詩', 'shū': '書', 'shú': '熟', 'shǔ': '鼠', 'shù': '樹', 'shōu': '收',
+      'rén': '人', 'māo': '貓', 'máo': '毛', 'mǎo': '卯', 'mào': '帽',
+      'tāng': '湯', 'táng': '糖', 'tǎng': '躺', 'tàng': '燙',
+      'mái': '埋', 'mài': '賣', 'mǎi': '買', 'wén': '聞', 'wèn': '問',
+      'sǐ': '死', 'sì': '四', 'tiān': '天', 'tī': '梯', 'tài': '太', 'tóu': '頭',
+      'dà': '大', 'dài': '帶', 'diào': '掉',
+      'fàn': '飯', 'fēi': '飛', 'fān': '翻', 'fāng': '方', 'fēng': '風',
+      'gē': '哥', 'gǒu': '狗', 'gōu': '溝', 'gěi': '給', 'gōng': '工',
+      'kāi': '開', 'mén': '門', 'mán': '蠻', 'màn': '慢', 'máng': '忙', 'míng': '明', 'mēng': '蒙',
+      'bēi': '杯', 'bào': '報', 'biàn': '變', 'biē': '憋', 'piào': '票',
+      'a': '啊', 'o': '喔', 'e': '鵝', 'i': '衣', 'u': '屋', 'ü': '魚'
     };
 
     if (exactPinyinMap[processedText]) {
@@ -405,14 +409,14 @@ const TTS = {
 
     // Try to get a high-quality Chinese voice. Gender is best-effort because browsers expose different voice lists.
     const voices = window.speechSynthesis.getVoices();
-    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google Ã¥Å“â€¹Ã¨ÂªÅ¾'];
-    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â¯ ', 'Google Mandarin'];
+    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google 國語'];
+    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google 普通話', 'Google Mandarin'];
     const preferred = [
       'Microsoft Yating Online (Natural) - Chinese (Taiwan)',
       'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
       'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
       'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
-      'Google Ã¥Å“â€¹Ã¨ÂªÅ¾', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â¯ ', 'Google Mandarin',
+      'Google 國語', 'Google 普通話', 'Google Mandarin',
       'Xiaoxiao', 'Yating', 'Hanhan', 'Yunxi', 'Zhiwei', 'Mei-Jia'
     ];
     const zhVoices = voices.filter(v => v.lang && v.lang.startsWith('zh'));
@@ -441,11 +445,39 @@ const TTS = {
     return utt;
   },
 
+  status() {
+    const hasAndroid = !!(window.AndroidTTS && typeof window.AndroidTTS.speak === 'function');
+    const hasBrowser = !!(window.speechSynthesis && window.SpeechSynthesisUtterance);
+    const voices = hasBrowser ? window.speechSynthesis.getVoices() : [];
+    const zhVoices = voices.filter(v => /^(zh|cmn)/i.test(v.lang || '') || /Chinese|Mandarin|Taiwan|Hong Kong/i.test(v.name || ''));
+    return { hasAndroid, hasBrowser, voices: voices.length, zhVoices: zhVoices.length, available: hasAndroid || hasBrowser };
+  },
+
+  test(text = '\u4f60\u597d\uff0c\u6211\u6b63\u5728\u5b78\u4e2d\u6587\u3002') {
+    return this.speak(text, 'zh-TW', 0.78);
+  },
+
   ready(cb) {
+    if (!window.speechSynthesis) { cb(); return; }
     if (window.speechSynthesis.getVoices().length) { cb(); return; }
     window.speechSynthesis.addEventListener('voiceschanged', cb, { once: true });
   },
 };
+window.TTS = TTS;
+function showToast(message, ms = 2600) {
+  let toast = document.getElementById('app-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'app-toast';
+    toast.style.cssText = 'position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:99999;max-width:min(92vw,520px);padding:12px 16px;border-radius:14px;background:var(--text);color:var(--card-bg);box-shadow:var(--shadow-lg);font-weight:800;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s ease';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => { toast.style.opacity = '0'; }, ms);
+}
+window.showToast = showToast;
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Pinyin Utilities Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const Pinyin = {
@@ -520,11 +552,12 @@ const Pinyin = {
     });
   }
 };
+window.Pinyin = Pinyin;
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ API Client (Static Version for GitHub Pages) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const API = {
   base: 'data', // Relative to public/
-  version: '138', // Match index.html version for consistency
+  version: '157', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -768,7 +801,7 @@ async function showCharModal(hanziOrObj) {
   if (modalContent) modalContent.style.maxWidth = '800px';
 
   Modal.show(`
-    <button class="modal-close" onclick="Modal.hide()">Ã¢Å“â€¢</button>
+    <button class="modal-close" onclick="Modal.hide()" aria-label="Close">&times;</button>
 
     <div class="vd-layout" style="margin-top: 10px;">
       <!-- Left: Context & Explanation -->
@@ -777,7 +810,7 @@ async function showCharModal(hanziOrObj) {
           <div class="vd-hanzi" style="text-align:left; line-height:1">${char.traditional || char.hanzi}</div>
           <div style="display:flex; align-items:center; gap:8px; margin-top:8px">
             <span class="vd-pinyin tone-colors" style="margin-top:0">${Pinyin.colorize(char.pinyin || '')}</span>
-            <span class="vd-audio-icon">Ã°Å¸â€Å </span>
+            <span class="vd-audio-icon" aria-label="Audio">Audio</span>
           </div>
         </div>
 
@@ -812,11 +845,11 @@ async function showCharModal(hanziOrObj) {
         <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
           <button class="btn ${isSaved ? 'btn-secondary' : 'btn-outline'}" id="modal-save-btn"
             onclick="toggleSaveChar('${char.hanzi}', this)">
-            ${isSaved ? 'Ã¢Ëœâ€¦ Saved' : 'Ã¢Ëœâ€  Save'}
+            ${isSaved ? 'Saved' : 'Save'}
           </button>
           <button class="btn ${isLearned ? 'btn-secondary' : 'btn-gold'}" id="modal-learn-btn"
             onclick="markLearnedFromModal('${char.hanzi}', this)">
-            ${isLearned ? 'Ã¢Å“â€œ Learned' : 'Mark Learned'}
+            ${isLearned ? 'Learned' : 'Mark Learned'}
           </button>
         </div>
       </div>
@@ -834,13 +867,13 @@ async function showCharModal(hanziOrObj) {
               </select>
               <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
-                <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Ã°Å¸â€“â€¹Ã¯Â¸  Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
                 <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
               </div>
             </div>
             <div class="flex gap-8">
               <button class="btn btn-ghost btn-sm" onclick="App.animateStrokes()">Animate</button>
-              <button class="btn btn-ghost btn-sm" onclick="App.clearCanvas()">Reset Ã°Å¸â€â€ž</button>
+              <button class="btn btn-ghost btn-sm" onclick="App.clearCanvas()">Reset</button>
             </div>
           </div>
           <div class="canvas-container" style="flex:1; min-height:300px; background:var(--off-white); border:2px dashed var(--border); border-radius:var(--radius); position:relative; overflow:hidden; touch-action:none; display:flex; align-items:center; justify-content:center;">
@@ -880,20 +913,20 @@ App.initDrawingPad = function(hanzi) {
 function toggleSaveChar(hanzi, btn) {
   if (App.state.progress.savedSet.includes(hanzi)) {
     App.removeFromSaved(hanzi);
-    btn.textContent = 'Ã¢Ëœâ€  Save';
+    btn.textContent = 'Save';
     btn.className = 'btn btn-outline';
   } else {
     App.addToSaved(hanzi);
-    btn.textContent = 'Ã¢Ëœâ€¦ Saved';
+    btn.textContent = 'Saved';
     btn.className = 'btn btn-secondary';
   }
 }
 
 function markLearnedFromModal(hanzi, btn) {
   App.markLearned(hanzi);
-  btn.textContent = 'Ã¢Å“â€œ Learned';
+  btn.textContent = 'Learned';
   btn.className = 'btn btn-secondary';
-  App.logActivity('Ã¢Å“â€¦', `Marked Ã£â‚¬Å’${hanzi}Ã£â‚¬  as learned`);
+  App.logActivity('Learned', `Marked ${hanzi} as learned`);
   updateStreakDisplay();
 }
 
@@ -1157,6 +1190,9 @@ async function renderDashboard(container) {
   const recentActivity = (prog.activityLog || []).slice(0, 4);
   const todayKeyValue = new Date().toDateString();
   const completedToday = localStorage.getItem('zhongwen_dashboard_done') === todayKeyValue;
+  const lastExportRaw = localStorage.getItem('zhongwen_last_progress_export');
+  const lastExportDays = lastExportRaw ? Math.floor((Date.now() - new Date(lastExportRaw).getTime()) / 86400000) : null;
+  const backupLabel = lastExportDays == null ? 'No backup yet' : (lastExportDays === 0 ? 'Backed up today' : `${lastExportDays}d since backup`);
 
   const levelStats = ['novice','a1','a2','b1'].map(lvl => {
     const meta = { novice:['Novice','#27ae60'], a1:['A1','#2980b9'], a2:['A2','#e67e22'], b1:['B1','#8e44ad'] }[lvl];
@@ -1175,7 +1211,8 @@ async function renderDashboard(container) {
     { n:'01', title: dueToday ? 'Review due cards' : 'Sound warmup', text: dueToday ? `${dueToday} SRS cards due today` : '5 minutes of tones or pronunciation', href: dueToday ? '#/learn' : '#/quiz/tones' },
     { n:'02', title:'Main lesson', text: phase.next, href: phase.href },
     { n:'03', title:'Active recall', text:'Build or recall sentences without looking first', href:'#/sentence-builder' },
-    { n:'04', title:'Output check', text:'Write, speak, or shadow one short answer', href:'#/beginner-coach' }
+    { n:'04', title:'Output check', text:'Write, speak, or shadow one short answer', href:'#/beginner-coach' },
+    { n:'05', title:'Backup progress', text: backupLabel, href:'#/settings' }
   ];
   const browseGroups = [
     ['Beginner', [['Pinyin & Tones','#/onboarding'], ['Beginner Launchpad','#/beginner-launchpad'], ['Beginner Playground','#/playground'], ['Picture Flash Quiz','#/quiz/flash'], ['Beginner Coach','#/beginner-coach']]],
@@ -1185,7 +1222,7 @@ async function renderDashboard(container) {
   ];
 
   container.innerHTML = `
-    <div class="dash-command"><section class="dc-hero"><div class="dc-panel dc-main"><div class="dc-kicker">${phase.label}</div><h1>${phase.title}</h1><p>${phase.copy}</p><div class="dc-actions"><a class="btn btn-primary" href="${phase.href}">${phase.action}</a><a class="btn btn-outline" href="#/masterplan">View Masterplan</a><a class="btn btn-outline" href="#/settings">Sync Progress</a></div></div><aside class="dc-panel dc-focus ${completedToday ? 'dc-done' : ''}"><div class="dc-kicker">Today\'s finish line</div><div class="dc-ring" style="background:conic-gradient(var(--red) ${dailyPct}%, var(--off-white) 0)"><strong>${dailyPct}%</strong></div><p>${completedToday ? 'Marked complete for today. Keep the streak alive tomorrow.' : `${daily}/${goal} review items checked. Finish the four-step plan, then mark today complete.`}</p><button class="btn ${completedToday ? 'btn-outline' : 'btn-primary'}" type="button" onclick="completeDashboardFocus()">${completedToday ? 'Completed Today' : 'Mark Today Complete'}</button></aside></section>
+    <div class="dash-command"><section class="dc-hero"><div class="dc-panel dc-main"><div class="dc-kicker">${phase.label}</div><h1>${phase.title}</h1><p>${phase.copy}</p><div class="dc-actions"><a class="btn btn-primary" href="${phase.href}">${phase.action}</a><a class="btn btn-outline" href="#/masterplan">View Masterplan</a><a class="btn btn-outline" href="#/settings">Sync Progress</a></div></div><aside class="dc-panel dc-focus ${completedToday ? 'dc-done' : ''}"><div class="dc-kicker">Today\'s finish line</div><div class="dc-ring" style="background:conic-gradient(var(--red) ${dailyPct}%, var(--off-white) 0)"><strong>${dailyPct}%</strong></div><p>${completedToday ? 'Marked complete for today. Keep the streak alive tomorrow.' : `${daily}/${goal} review items checked. Finish the five-step plan, then mark today complete.`}</p><button class="btn ${completedToday ? 'btn-outline' : 'btn-primary'}" type="button" onclick="completeDashboardFocus()">${completedToday ? 'Completed Today' : 'Mark Today Complete'}</button></aside></section>
     <section class="dc-grid">${tasks.map(task => `<a class="dc-panel dc-task" href="${task.href}"><span>${task.n}</span><strong>${task.title}</strong><small>${task.text}</small></a>`).join('')}</section>
     <section class="dc-metrics"><article class="dc-panel dc-metric"><strong>${learned}</strong><span>Characters learned</span><small>${pct}% of ${totalChars || 'loading'} total</small></article><article class="dc-panel dc-metric"><strong>${srs.total || 0}</strong><span>SRS queue</span><small>${srs.mature || 0} mature, ${dueToday} due</small></article><article class="dc-panel dc-metric"><strong>${weakCount}</strong><span>Weak areas</span><small>${weakCount ? 'Repair before new tests' : 'No weak areas logged yet'}</small></article><article class="dc-panel dc-metric"><strong>${prog.streak || 0}</strong><span>Day streak</span><small>Consistency beats cramming</small></article></section>
     <section class="dc-two"><article class="dc-panel dc-section"><h2>Learning order</h2><div class="dc-phases"><a class="dc-phase" href="#/onboarding"><b>0</b><span><strong>Sound foundation</strong><small>Pinyin, tones, pronunciation first.</small></span></a><a class="dc-phase" href="#/beginner-launchpad"><b>1</b><span><strong>Beginner Launchpad</strong><small>Survival words and first sentences.</small></span></a><a class="dc-phase" href="#/beginner-coach"><b>2</b><span><strong>Daily Coach packs</strong><small>Words, listening, writing, speaking.</small></span></a><a class="dc-phase" href="#/vocabulary-books"><b>3</b><span><strong>Course books</strong><small>Dialogues, grammar, controlled lessons.</small></span></a><a class="dc-phase" href="#/tocfl"><b>4</b><span><strong>Exam mode</strong><small>Test after input and recall feel stable.</small></span></a></div>${levelStats.length ? `<h2 style="margin-top:18px">Level progress</h2><div class="dc-phases">${levelStats.map(l => `<div class="dc-phase"><b style="color:${l.color}">${l.pct}%</b><span><strong>${l.name}</strong><small>${l.done}/${l.total} characters</small></span></div>`).join('')}</div>` : ''}</article>
@@ -1232,8 +1269,8 @@ async function renderLibrary(container) {
     </div>
     <div class="library-controls">
       <div class="search-box">
-        <span class="search-icon">ðŸ”</span>
-        <input type="text" class="input" id="lib-search" placeholder="Search hanzi, pÄ«nyÄ«n, or Englishâ€¦" value="${libraryState.search}">
+        <span class="search-icon">Search</span>
+        <input type="text" class="input" id="lib-search" placeholder="Search hanzi, pinyin, or English..." value="${libraryState.search}">
       </div>
       <select class="input" id="lib-level" style="width:auto;min-width:100px">
         <option value="">All Levels</option>
@@ -1323,7 +1360,7 @@ async function loadLibraryPage() {
     if (info) info.textContent = `Showing ${result.data.length} of ${result.total} characters`;
 
     if (!result.data.length) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">ðŸ”</div><h3>No characters found</h3><p>Try a different search term or filter.</p></div>`;
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">Search</div><h3>No characters found</h3><p>Try a different search term or filter.</p></div>`;
       renderPagination();
       return;
     }
@@ -1347,7 +1384,7 @@ async function loadLibraryPage() {
 
     renderPagination();
   } catch (err) {
-    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">âš ï¸</div><h3>Failed to load characters</h3><p>${err.message}</p></div>`;
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">Warning</div><h3>Failed to load characters</h3><p>${err.message}</p></div>`;
   }
 }
 
@@ -1361,26 +1398,26 @@ function renderPagination() {
 
   if (totalPages <= 1) { container.innerHTML = ''; return; }
 
-  let html = `<button class="page-btn" onclick="libGoPage(${currentPage - 1})" ${currentPage === 0 ? 'disabled' : ''}>â† Prev</button>`;
+  let html = `<button class="page-btn" onclick="libGoPage(${currentPage - 1})" ${currentPage === 0 ? 'disabled' : ''}>Prev</button>`;
 
   const pages = [];
   for (let i = 0; i < totalPages; i++) {
     if (i === 0 || i === totalPages - 1 || (i >= currentPage - 2 && i <= currentPage + 2)) {
       pages.push(i);
-    } else if (pages[pages.length - 1] !== 'â€¦') {
-      pages.push('â€¦');
+    } else if (pages[pages.length - 1] !== '...') {
+      pages.push('...');
     }
   }
 
   pages.forEach(p => {
-    if (p === 'â€¦') {
-      html += `<span style="padding:6px 4px;color:var(--text-3)">â€¦</span>`;
+    if (p === '...') {
+      html += `<span style="padding:6px 4px;color:var(--text-3)">...</span>`;
     } else {
       html += `<button class="page-btn ${p === currentPage ? 'active' : ''}" onclick="libGoPage(${p})">${p + 1}</button>`;
     }
   });
 
-  html += `<button class="page-btn" onclick="libGoPage(${currentPage + 1})" ${currentPage >= totalPages - 1 ? 'disabled' : ''}>Next â†’</button>`;
+  html += `<button class="page-btn" onclick="libGoPage(${currentPage + 1})" ${currentPage >= totalPages - 1 ? 'disabled' : ''}>Next</button>`;
 
   container.innerHTML = html;
 }
@@ -1405,6 +1442,9 @@ async function renderMasterplanPage(container) {
 function renderSettings(container) {
   const s = App.state.settings;
   const p = App.state.progress;
+  const audio = TTS.status ? TTS.status() : { available:false, hasAndroid:false, hasBrowser:false, voices:0, zhVoices:0 };
+  const lastExportRaw = localStorage.getItem('zhongwen_last_progress_export');
+  const lastExportText = lastExportRaw ? new Date(lastExportRaw).toLocaleString() : 'Never exported on this device';
 
   container.innerHTML = `
     <div class="page-header">
@@ -1481,6 +1521,19 @@ function renderSettings(container) {
 
       <div class="card mb-16">
         <div class="settings-section">
+          <h3>Audio Diagnostics</h3>
+          <p class="setting-desc mb-12">Use this before serious listening practice. Browser TTS varies by device; Android APK builds should use the native TTS bridge when available.</p>
+          <div class="setting-row"><div class="setting-info"><div class="setting-label">Audio Engine</div><div class="setting-desc">${audio.hasAndroid ? 'Android native bridge active' : audio.hasBrowser ? 'Browser speech synthesis active' : 'No TTS engine detected'}</div></div><span class="badge ${audio.available ? 'badge-a2' : 'badge-red'}">${audio.available ? 'Ready' : 'Unavailable'}</span></div>
+          <div class="setting-row"><div class="setting-info"><div class="setting-label">Chinese Voices</div><div class="setting-desc">${audio.zhVoices} Chinese voices found from ${audio.voices} total browser voices.</div></div></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <button class="btn btn-outline" onclick="TTS.test('\u4f60\u597d\uff0c\u6211\u6b63\u5728\u5b78\u4e2d\u6587\u3002')">Test Chinese Voice</button>
+            <button class="btn btn-outline" onclick="TTS.test('\u5abd \u9ebb \u99ac \u7f75')">Test Tone Pair</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-16">
+        <div class="settings-section">
           <h3>Quiz</h3>
           <div class="setting-row">
             <div class="setting-info">
@@ -1506,13 +1559,43 @@ function renderSettings(container) {
           </div>
           <div class="setting-row">
             <div class="setting-info">
+              <div class="setting-label">Default Quiz Length</div>
+              <div class="setting-desc">Used when opening pronunciation and vocabulary quizzes</div>
+            </div>
+            <select class="input" id="set-default-quiz-count" style="width:120px">
+              ${[10,20,50,100].map(n => `<option value="${n}" ${Number(s.defaultQuizCount || 20) === n ? 'selected' : ''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
               <div class="setting-label">Unlock All Content</div>
-              <div class="setting-desc">Bypass level locks for testing</div>
+              <div class="setting-desc">Always on in this static build so nothing is hidden</div>
             </div>
             <label class="toggle">
-              <input type="checkbox" id="set-unlock-all" ${s.unlockAll ? 'checked' : ''}>
+              <input type="checkbox" id="set-unlock-all" ${s.unlockAll ? 'checked' : ''} disabled>
               <span class="toggle-slider"></span>
             </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-16">
+        <div class="settings-section">
+          <h3>Learning Guidance</h3>
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-label">Guided Beginner Mode</div>
+              <div class="setting-desc">Dashboard and coach push you toward the next beginner task while every section remains open</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="set-guided-mode" ${s.guidedMode !== false ? 'checked' : ''}>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <a class="btn btn-outline" href="#/masterplan">Open Masterplan</a>
+            <a class="btn btn-outline" href="#/beginner-coach">Open Daily Coach</a>
+            <button class="btn btn-outline" type="button" onclick="localStorage.removeItem('zhongwen_dashboard_done'); showToast('Today marker cleared.');">Clear Today Marker</button>
           </div>
         </div>
       </div>
@@ -1574,7 +1657,8 @@ function renderSettings(container) {
       <div class="card mb-16">
         <div class="settings-section">
           <h3>Data Management</h3>
-          <p class="setting-desc mb-16">Use one compact sync file for all progress in this app: main progress, SRS, Beginner Coach, B1 Coach, Launchpad, Grammar, Sentence Builder, and display settings. Private API keys are not exported.</p>
+          <p class="setting-desc mb-8">Use one compact sync file for all progress in this app: main progress, SRS, Beginner Coach, B1 Coach, Launchpad, Grammar, Sentence Builder, and display settings. Private API keys are not exported.</p>
+          <p class="setting-desc mb-16"><strong>Last backup:</strong> ${lastExportText}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
             <button class="btn btn-outline" onclick="exportProgress()">Export to File</button>
             <button class="btn btn-outline" onclick="document.getElementById('import-file').click()">Import from File</button>
@@ -1595,7 +1679,7 @@ function renderSettings(container) {
         <button class="btn btn-primary" id="set-save-btn">Save Settings</button>
         <button class="btn btn-ghost btn-error" id="set-reset-btn">Reset All Progress</button>
       </div>
-      <div id="set-saved-msg" class="hidden" style="margin-top:10px;color:var(--tone2);font-weight:600">Ã¢Å“â€œ Settings saved!</div>
+      <div id="set-saved-msg" class="hidden" style="margin-top:10px;color:var(--tone2);font-weight:600">Settings saved and applied.</div>
     </div>
   `;
 
@@ -1608,8 +1692,11 @@ function renderSettings(container) {
     App.state.settings.annotation = document.querySelector('input[name="annotation"]:checked')?.value || 'pinyin';
     App.state.settings.quizDifficulty = document.querySelector('input[name="difficulty"]:checked')?.value || 'A2';
     App.state.settings.showQuizPinyin = document.getElementById('set-show-quiz-pinyin').checked;
-    App.state.settings.unlockAll = document.getElementById('set-unlock-all').checked;
+    App.state.settings.defaultQuizCount = parseInt(document.getElementById('set-default-quiz-count')?.value, 10) || 20;
+    App.state.settings.guidedMode = document.getElementById('set-guided-mode')?.checked !== false;
+    App.state.settings.unlockAll = true;
     App.state.settings.geminiKey = document.getElementById('set-gemini-key').value || '';
+    localStorage.setItem('beginnerGuidedMode', App.state.settings.guidedMode ? '1' : '0');
     App.saveSettings();
     App.applyTheme(App.state.settings.theme);
     App.applyFontPreference(App.state.settings.fontChoice);
@@ -1761,8 +1848,12 @@ const ProgressSync = (() => {
   return { collect, exportAll, importAll, importAllText };
 })();
 
+function markProgressExported() {
+  localStorage.setItem('zhongwen_last_progress_export', new Date().toISOString());
+}
+
 function exportProgress() {
-  ProgressSync.exportAll();
+  ProgressSync.exportAll().then(markProgressExported).catch(err => console.error(err));
 }
 
 function importProgress(input) {
@@ -1774,12 +1865,14 @@ function copyProgressText() {
   const payload = ProgressSync.collect();
   const json = JSON.stringify(payload);
   navigator.clipboard.writeText(json).then(() => {
-    alert('Ã¢Å“â€œ Progress JSON copied to clipboard! You can paste and save it anywhere.');
+    markProgressExported();
+    alert('Progress JSON copied to clipboard. You can paste and save it anywhere.');
   }).catch(() => {
     const box = document.getElementById('sync-text-box');
     if (box) {
       box.value = json;
       box.select();
+      markProgressExported();
       alert('Could not auto-copy to clipboard. The JSON text is now shown in the text box below. Please select and copy it manually.');
     }
   });

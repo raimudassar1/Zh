@@ -13,7 +13,7 @@ const ToneGame = (() => {
     { num: 4, name: 'Fourth Tone (Falling)', symbol: '\u00e0', desc: 'Starts high, drops sharply like a command.' }
   ];
 
-  const GAME_DATA = [
+  const BASE_GAME_DATA = [
     { syllable: 'm\u0101', tone: 1, char: '\u5abd' }, { syllable: 'm\u00e1', tone: 2, char: '\u9ebb' }, { syllable: 'm\u01ce', tone: 3, char: '\u99ac' }, { syllable: 'm\u00e0', tone: 4, char: '\u7f75' },
     { syllable: 'b\u0101', tone: 1, char: '\u516b' }, { syllable: 'b\u00e1', tone: 2, char: '\u62d4' }, { syllable: 'b\u01ce', tone: 3, char: '\u628a' }, { syllable: 'b\u00e0', tone: 4, char: '\u7238' },
     { syllable: 't\u0101ng', tone: 1, char: '\u6e6f' }, { syllable: 't\u00e1ng', tone: 2, char: '\u7cd6' }, { syllable: 't\u01ceng', tone: 3, char: '\u8eba' }, { syllable: 't\u00e0ng', tone: 4, char: '\u71d9' },
@@ -26,7 +26,71 @@ const ToneGame = (() => {
     currentTarget: null
   };
 
-  function render(container) {
+  let cachedGameData = null;
+  let masteryToneSyllables = null;
+
+  async function ensureLibraryData() {
+    if (typeof API !== 'undefined' && API.get && !masteryToneSyllables) {
+      try {
+        const bank = await API.get('pinyin_mastery_full');
+        masteryToneSyllables = Array.isArray(bank?.toneSyllables) ? bank.toneSyllables : [];
+      } catch {}
+    }
+    const hasChars = typeof App !== 'undefined' && App.state && Array.isArray(App.state.characters) && App.state.characters.length > 0;
+    if (hasChars) return;
+    if (typeof API === 'undefined' || !API.get) return;
+    try {
+      const payload = await API.get('characters_all');
+      const rows = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.data) ? payload.data : []);
+      if (rows.length && typeof App !== 'undefined' && App.state) {
+        App.state.characters = rows;
+        cachedGameData = null;
+      }
+    } catch (err) {
+      console.warn('Tone training could not load character library', err);
+    }
+  }
+
+  function charLabel(item) {
+    return item.traditional || item.hanzi || item.char || '';
+  }
+
+  function getGameData() {
+    if (cachedGameData) return cachedGameData;
+    const seen = new Set();
+    const add = (out, item) => {
+      const char = charLabel(item);
+      const syllable = String(item.pinyin || item.syllable || '').trim();
+      if (!char || !syllable || syllable.includes(' ')) return;
+      const tone = item.tone || (typeof Pinyin !== 'undefined' && Pinyin.getTone ? Pinyin.getTone(syllable) : 0);
+      if (!tone || tone === 5) return;
+      const key = `${char}|${syllable}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      out.push({ syllable, tone, char });
+    };
+
+    const out = [];
+    BASE_GAME_DATA.forEach(item => add(out, item));
+    if (Array.isArray(masteryToneSyllables) && masteryToneSyllables.length) {
+      masteryToneSyllables.forEach(item => add(out, {
+        syllable: item.pinyin,
+        tone: item.tone,
+        char: item.hanzi
+      }));
+    }
+    const library = (typeof App !== 'undefined' && App.state && Array.isArray(App.state.characters)) ? App.state.characters : [];
+    library.forEach(item => {
+      const char = charLabel(item);
+      if (char.length === 1) add(out, item);
+    });
+    cachedGameData = out.length ? out : BASE_GAME_DATA;
+    return cachedGameData;
+  }
+
+
+  async function render(container) {
+    await ensureLibraryData();
     container.innerHTML = `
       <div class="page-header">
         <h2>Tone Training Game</h2>
@@ -46,7 +110,8 @@ const ToneGame = (() => {
 
         <div class="card p-32 text-center shadow-lg" style="background:var(--off-white); border:2px solid var(--border)">
           <div class="tone-score mb-16">Score: <strong>${currentState.score} / ${currentState.total}</strong></div>
-          <h3 class="mb-24">Listen and Identify the Tone</h3>
+          <h3 class="mb-8">Listen and Identify the Tone</h3>
+          <div class="text-small text-muted mb-24">Training set: ${getGameData().length} tone items from your character library</div>
           
           <button class="btn btn-gold btn-lg pulse-animation" id="tone-play-btn" onclick="ToneGame.playTarget()">
 ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</span>
@@ -76,7 +141,8 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
   }
 
   function nextRound() {
-    currentState.currentTarget = GAME_DATA[Math.floor(Math.random() * GAME_DATA.length)];
+    const gameData = getGameData();
+    currentState.currentTarget = gameData[Math.floor(Math.random() * gameData.length)];
     renderToneOptions();
     document.getElementById('tone-next-btn').classList.add('hidden');
     document.getElementById('tone-feedback').classList.remove('show');
@@ -99,6 +165,12 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
     const isCorrect = num === currentState.currentTarget.tone;
     const feedback = document.getElementById('tone-feedback');
 
+    const correctTone = currentState.currentTarget.tone;
+    const correctBtn = Array.from(document.querySelectorAll('.tone-btn')).find(b => {
+      const handler = b.getAttribute('onclick') || '';
+      return handler.includes(`guess(${correctTone}`);
+    });
+
     if (isCorrect) {
       currentState.score++;
       btn.classList.remove('btn-outline');
@@ -109,8 +181,12 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
     } else {
       btn.classList.remove('btn-outline');
       btn.classList.add('btn-error');
+      if (correctBtn) {
+        correctBtn.classList.remove('btn-outline');
+        correctBtn.classList.add('btn-success', 'tone-correct-answer');
+      }
       feedback.className = 'quiz-feedback wrong show';
-      feedback.innerHTML = `Incorrect. Try listening again.`;
+      feedback.innerHTML = `Not quite. Correct answer: <strong>${currentState.currentTarget.char}</strong> is <strong>${currentState.currentTarget.syllable}</strong>, tone ${correctTone}. Tap Play Sound again and compare it with your choice.`;
       if (window.WeaknessEngine) WeaknessEngine.record('tone', { item: currentState.currentTarget.syllable, label: 'Tone ' + currentState.currentTarget.tone, type: 'tone-miss' });
     }
 

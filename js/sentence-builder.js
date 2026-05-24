@@ -68,6 +68,12 @@ window.SentenceBuilderModule = (() => {
     return verb + 's';
   }
 
+  function beForm(subjectEn) {
+    if (subjectEn === 'I') return 'am';
+    if (subjectEn === 'you' || subjectEn === 'we' || subjectEn === 'you all') return 'are';
+    return 'is';
+  }
+
   function normalizeSessionSize(value) {
     const n = Math.floor(Number(value));
     if (!Number.isFinite(n)) return DEFAULT_SESSION_SIZE;
@@ -208,10 +214,10 @@ window.SentenceBuilderModule = (() => {
     const difficulty = Math.max(1, ['novice_1','novice_2','a1_1','a1_2','a2_1','a2_2'].indexOf(levelId) + 1);
     const templates = {
       novice_1: [
-        () => { const n = pick(p.people); return make(`${subj}是${n[0]}。`, `${subjEn} ${subjEn === 'I' ? 'am' : 'is'} ${n[1]}.`, [subj, '是', n[0]], ['generated','identity']); },
+        () => { const n = pick(p.people); return make(`${subj}是${n[0]}。`, `${subjEn} ${beForm(subjEn)} ${n[1]}.`, [subj, '是', n[0]], ['generated','identity']); },
         () => { const a = pick(p.actions); return make(`${subj}${a[0]}。`, `${subjEn} ${a[1]}.`, [subj, a[0]], ['generated','action']); },
         () => { const o = pick(p.objects); return make(`${subj}有${o[0]}。`, `${subjEn} ${verbForm(subjEn, 'have')} ${o[1]}.`, [subj, '有', o[0]], ['generated','possession']); },
-        () => { const pl = pick(p.places); return make(`${subj}在${pl[0]}。`, `${subjEn} ${subjEn === 'I' ? 'am' : 'is'} at ${pl[1]}.`, [subj, '在', pl[0]], ['generated','location']); }
+        () => { const pl = pick(p.places); return make(`${subj}在${pl[0]}。`, `${subjEn} ${beForm(subjEn)} at ${pl[1]}.`, [subj, '在', pl[0]], ['generated','location']); }
       ],
       novice_2: [
         () => { const a = pick(p.actions); return make(`${subj}不${a[0]}。`, `${subjEn} ${verbForm(subjEn, 'do')} not ${a[1]}.`, [subj, '不', a[0]], ['generated','negation']); },

@@ -1,6 +1,13 @@
 {
   "version": 1,
-  "description": "Local human pronunciation manifest for the Human Pinyin Lab. Add licensed files under assets/audio/pinyin-human and map each audioKey to a src path here.",
-  "licenseNote": "Use only recordings you own or recordings with compatible licenses, such as properly attributed Wikimedia Commons, Lingua Libre, or Common Voice clips.",
+  "name": "Local Human Pinyin Audio Pack",
+  "status": "tts_fallback_until_files_are_added",
+  "recommendedSource": {
+    "name": "davinfifield/mp3-chinese-pinyin-sound",
+    "url": "https://github.com/davinfifield/mp3-chinese-pinyin-sound",
+    "license": "Unlicense",
+    "note": "Place approved MP3 files under assets/audio/pinyin-human and map each drill audioKey to a local src in items."
+  },
+  "folder": "assets/audio/pinyin-human",
   "items": {}
 }

@@ -94,9 +94,11 @@ const OnboardingModule = (() => {
   let humanPinyinBank = {
     focused: HUMAN_PINYIN_ITEMS.filter(item => item.type !== 'tonepair'),
     tonePairs: HUMAN_PINYIN_ITEMS.filter(item => item.type === 'tonepair'),
-    all: HUMAN_PINYIN_ITEMS.slice()
+    all: HUMAN_PINYIN_ITEMS.slice(),
+    stages: [],
+    counts: {}
   };
-  let humanPinyinState = { current: null, score: 0, total: 0, mode: 'all', sessionSize: 20, sessionDone: 0, pool: [] };
+  let humanPinyinState = { current: null, score: 0, total: 0, mode: 'all', stage: 'core80', sessionSize: 20, sessionDone: 0, pool: [] };
 
   function obEsc(value) {
     return String(value ?? '').replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -129,9 +131,15 @@ const OnboardingModule = (() => {
 
         <div class="hpl-mastery-panel">
           <div>
-            <span class="ob-kicker">Mastery Bank</span>
-            <h4>824 targeted drills loaded for long-term pinyin mastery</h4>
-            <p><strong id="hpl-focused-count">388</strong> pinyin drills ? <strong id="hpl-tonepair-count">436</strong> tone-pair drills ? choose a focused mode before starting.</p>
+            <span class="ob-kicker">Staged Mastery Bank</span>
+            <h4><span id="hpl-total-count">824</span> targeted drills for long-term pinyin mastery</h4>
+            <p><strong id="hpl-focused-count">388</strong> pinyin drills · <strong id="hpl-tonepair-count">436</strong> tone-pair drills · <strong id="hpl-syllable-count">400+</strong> syllable coverage from your app content.</p>
+          </div>
+          <div class="hpl-stage-grid" role="group" aria-label="Pinyin mastery stage">
+            <button type="button" class="active" data-hpl-action="set-stage" data-stage="core80">Core 80</button>
+            <button type="button" data-hpl-action="set-stage" data-stage="core250">Core 250</button>
+            <button type="button" data-hpl-action="set-stage" data-stage="common600">Common 600</button>
+            <button type="button" data-hpl-action="set-stage" data-stage="full">Full Bank</button>
           </div>
           <div class="hpl-mode-grid" role="group" aria-label="Pinyin mastery mode">
             <button type="button" class="active" data-hpl-action="set-mode" data-mode="all">Mixed</button>
@@ -146,7 +154,32 @@ const OnboardingModule = (() => {
             <button type="button" data-hpl-action="set-size" data-size="100">100</button>
             <button type="button" data-hpl-action="set-size" data-size="300">300</button>
           </div>
+          <p class="hpl-stage-note" id="hpl-stage-note">Core 80: most useful beginner syllables first.</p>
         </div>
+
+        <section class="hpl-table-panel" aria-label="Staged pinyin syllable table">
+          <div class="hpl-table-head">
+            <div>
+              <span class="ob-kicker">Pinyin Syllable Table</span>
+              <h4 id="hpl-table-title">Core 80 syllables</h4>
+            </div>
+            <p id="hpl-table-count">Loading staged syllables...</p>
+          </div>
+          <div class="hpl-table-wrap">
+            <table class="hpl-syllable-table">
+              <thead>
+                <tr>
+                  <th>Base</th>
+                  <th>Tones in this stage</th>
+                  <th>Examples</th>
+                </tr>
+              </thead>
+              <tbody id="hpl-syllable-table-body">
+                <tr><td colspan="3">Loading pinyin table...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <div class="hpl-layout">
           <article class="hpl-test-card">
@@ -215,11 +248,21 @@ const OnboardingModule = (() => {
       humanPinyinManifest = await API.get('pinyin_human_manifest');
     } catch {}
     try {
-      const bank = await API.get('pinyin_mastery_drills');
+      let bank = null;
+      try { bank = await API.get('pinyin_mastery_full'); } catch {}
+      if (!bank) bank = await API.get('pinyin_mastery_drills');
       if (bank) {
         const focused = Array.isArray(bank.focused) ? bank.focused : [];
         const tonePairs = Array.isArray(bank.tonePairs) ? bank.tonePairs : [];
-        if (focused.length || tonePairs.length) humanPinyinBank = { focused, tonePairs, all: focused.concat(tonePairs) };
+        if (focused.length || tonePairs.length) {
+          humanPinyinBank = {
+            focused,
+            tonePairs,
+            all: focused.concat(tonePairs),
+            stages: Array.isArray(bank.stages) ? bank.stages : [],
+            counts: bank.counts || {}
+          };
+        }
       }
     } catch {}
     humanPinyinState.pool = [];
@@ -232,8 +275,89 @@ const OnboardingModule = (() => {
   function updateHumanMasteryStats() {
     const focused = document.getElementById('hpl-focused-count');
     const tonePairs = document.getElementById('hpl-tonepair-count');
+    const total = document.getElementById('hpl-total-count');
+    const syllables = document.getElementById('hpl-syllable-count');
+    const stageNote = document.getElementById('hpl-stage-note');
     if (focused) focused.textContent = humanPinyinBank.focused.length;
     if (tonePairs) tonePairs.textContent = humanPinyinBank.tonePairs.length;
+    if (total) total.textContent = humanPinyinBank.all.length;
+    if (syllables) syllables.textContent = humanPinyinBank.counts?.baseSyllables ? `${humanPinyinBank.counts.baseSyllables} base` : '400+';
+    if (stageNote) {
+      const stage = (humanPinyinBank.stages || []).find(item => item.id === humanPinyinState.stage);
+      stageNote.textContent = stage ? `${stage.label}: ${stage.description}` : 'Choose a stage, then choose a drill mode.';
+    }
+    renderHumanSyllableTable();
+  }
+
+  function humanStageLabel(stageId = humanPinyinState.stage) {
+    return (humanPinyinBank.stages || []).find(stage => stage.id === stageId)?.label || stageId;
+  }
+
+  function pinyinBase(item) {
+    const numbered = String(item?.pinyinNumbered || '').trim();
+    if (numbered) return numbered.replace(/[1-5]/g, '').replace(/u:/g, 'ü').replace(/v/g, 'ü');
+    const initial = String(item?.initial || '');
+    const final = String(item?.final || '');
+    if (initial || final) return `${initial}${final}`.replace(/u:/g, 'ü').replace(/v/g, 'ü');
+    return String(item?.pinyin || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/u:/g, 'ü').replace(/v/g, 'ü');
+  }
+
+  function fallbackToneItem(base, tone) {
+    const pinyin = Pinyin.markSyllable(base, tone);
+    return {
+      id: `fallback_${base}_${tone}`,
+      type: 'tone',
+      group: 'Generated syllable table',
+      pinyin,
+      hanzi: '',
+      meaning: 'pinyin-only listening practice',
+      answer: `tone${tone}`,
+      audioText: pinyin,
+      tone,
+      audioKey: `${base}${tone}`,
+      coaching: 'Pinyin-only fallback. Listen for the tone contour and repeat it aloud.'
+    };
+  }
+
+  function humanStageAllows(item) {
+    const stage = humanPinyinState.stage || 'core80';
+    if (!item?.stage) return true;
+    if (stage === 'core80') return item.stage === 'core80';
+    if (stage === 'core250') return item.stage === 'core80' || item.stage === 'core250';
+    if (stage === 'common600') return item.stage === 'core80' || item.stage === 'core250' || item.stage === 'common600';
+    return true;
+  }
+
+  function renderHumanSyllableTable() {
+    const body = document.getElementById('hpl-syllable-table-body');
+    if (!body) return;
+    const title = document.getElementById('hpl-table-title');
+    const count = document.getElementById('hpl-table-count');
+    const rows = new Map();
+    humanPinyinBank.focused.filter(humanStageAllows).forEach(item => {
+      const base = pinyinBase(item);
+      if (!base) return;
+      if (!rows.has(base)) rows.set(base, { base, tones: new Map(), examples: [] });
+      const row = rows.get(base);
+      const tone = Number(item.tone || String(item.answer || '').replace('tone', '')) || Pinyin.getTone(item.pinyin);
+      if (tone) row.tones.set(tone, item);
+      const exampleKey = `${item.hanzi}|${item.pinyin}`;
+      if (row.examples.length < 4 && !row.examples.some(entry => `${entry.hanzi}|${entry.pinyin}` === exampleKey)) row.examples.push(item);
+    });
+    const sorted = [...rows.values()].sort((a, b) => a.base.localeCompare(b.base));
+    if (title) title.textContent = `${humanStageLabel()} syllables`;
+    if (count) count.textContent = `${sorted.length} base syllables · ${humanPinyinBank.focused.filter(humanStageAllows).length} tone items`;
+    body.innerHTML = sorted.length ? sorted.map(row => {
+      const toneCells = [1, 2, 3, 4].map(tone => {
+        const item = row.tones.get(tone);
+        const fallbackId = `fallback_${row.base}_${tone}`;
+        return item
+          ? `<button type="button" class="hpl-tone-chip tone${tone}" data-hpl-action="play-bank-item" data-id="${obEsc(item.id)}">${obEsc(item.pinyin)}</button>`
+          : `<button type="button" class="hpl-tone-chip generated tone${tone}" data-hpl-action="play-generated-tone" data-base="${obEsc(row.base)}" data-tone="${tone}" data-id="${obEsc(fallbackId)}" title="Pinyin-only fallback audio">${obEsc(Pinyin.markSyllable(row.base, tone))}</button>`;
+      }).join('');
+      const examples = row.examples.map(item => `<button type="button" class="hpl-example-chip" data-hpl-action="play-bank-item" data-id="${obEsc(item.id)}"><span>${obEsc(item.hanzi)}</span><small>${obEsc(item.meaning || '')}</small></button>`).join('');
+      return `<tr><td><strong>${obEsc(row.base)}</strong></td><td><div class="hpl-tone-chip-row">${toneCells}</div></td><td><div class="hpl-example-row">${examples}</div></td></tr>`;
+    }).join('') : '<tr><td colspan="3">No syllables found for this stage yet.</td></tr>';
   }
 
   function humanAudioFor(item) {
@@ -262,9 +386,17 @@ const OnboardingModule = (() => {
   }
 
   function humanPoolForMode(mode = humanPinyinState.mode) {
-    if (mode === 'tonepair') return humanPinyinBank.tonePairs.slice();
-    if (mode === 'tone' || mode === 'initial' || mode === 'final') return humanPinyinBank.focused.filter(item => item.type === mode);
-    return humanPinyinBank.all.slice();
+    const stage = humanPinyinState.stage || 'core80';
+    const inStage = (item) => {
+      if (!item.stage) return true;
+      if (stage === 'core80') return item.stage === 'core80';
+      if (stage === 'core250') return item.stage === 'core80' || item.stage === 'core250';
+      if (stage === 'common600') return item.stage === 'core80' || item.stage === 'core250' || item.stage === 'common600';
+      return true;
+    };
+    if (mode === 'tonepair') return humanPinyinBank.tonePairs.filter(inStage);
+    if (mode === 'tone' || mode === 'initial' || mode === 'final') return humanPinyinBank.focused.filter(item => item.type === mode && inStage(item));
+    return humanPinyinBank.all.filter(inStage);
   }
 
   function buildHumanAnswerOptions(item) {
@@ -294,7 +426,10 @@ const OnboardingModule = (() => {
       if (action === 'play') window.HumanPinyinLab.play();
       if (action === 'answer') window.HumanPinyinLab.answer(button.dataset.answer || '');
       if (action === 'play-item') window.HumanPinyinLab.playItem(button.dataset.id || '');
+      if (action === 'play-bank-item') window.HumanPinyinLab.playItem(button.dataset.id || '');
+      if (action === 'play-generated-tone') window.HumanPinyinLab.playGeneratedTone(button.dataset.base || '', Number(button.dataset.tone || 0));
       if (action === 'set-mode') window.HumanPinyinLab.setMode(button.dataset.mode || 'all');
+      if (action === 'set-stage') window.HumanPinyinLab.setStage(button.dataset.stage || 'core80');
       if (action === 'set-size') window.HumanPinyinLab.setSize(Number(button.dataset.size || 20));
     });
   }
@@ -327,12 +462,22 @@ const OnboardingModule = (() => {
         playHumanItem(humanPinyinState.current);
       },
       playItem(id) {
-        const item = HUMAN_PINYIN_ITEMS.find(entry => entry.id === id);
+        const item = HUMAN_PINYIN_ITEMS.find(entry => entry.id === id) || humanPinyinBank.all.find(entry => entry.id === id);
         humanPinyinState.current = item || humanPinyinState.current;
         const answers = document.getElementById('hpl-answer-grid');
         const feedback = document.getElementById('hpl-feedback');
         if (answers && item) answers.innerHTML = renderHumanAnswers(item);
         if (feedback && item) { feedback.classList.remove('correct', 'wrong'); feedback.textContent = item.coaching; }
+        playHumanItem(item);
+      },
+      playGeneratedTone(base, tone) {
+        if (!base || !tone) return;
+        const item = fallbackToneItem(base, tone);
+        humanPinyinState.current = item;
+        const answers = document.getElementById('hpl-answer-grid');
+        const feedback = document.getElementById('hpl-feedback');
+        if (answers) answers.innerHTML = renderHumanAnswers(item);
+        if (feedback) { feedback.classList.remove('correct', 'wrong'); feedback.textContent = item.coaching; }
         playHumanItem(item);
       },
       setMode(mode) {
@@ -341,7 +486,18 @@ const OnboardingModule = (() => {
         humanPinyinState.sessionDone = 0;
         document.querySelectorAll('[data-hpl-action="set-mode"]').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
         const feedback = document.getElementById('hpl-feedback');
-        if (feedback) feedback.textContent = `Mode changed to ${mode}. Press New Question to start a fresh focused set.`;
+        const count = humanPoolForMode(mode).length;
+        if (feedback) feedback.textContent = `Mode changed to ${mode}. ${count} items available in this stage. Press New Question to start.`;
+      },
+      setStage(stage) {
+        humanPinyinState.stage = stage;
+        humanPinyinState.pool = [];
+        humanPinyinState.sessionDone = 0;
+        document.querySelectorAll('[data-hpl-action="set-stage"]').forEach(btn => btn.classList.toggle('active', btn.dataset.stage === stage));
+        updateHumanMasteryStats();
+        const feedback = document.getElementById('hpl-feedback');
+        const count = humanPoolForMode().length;
+        if (feedback) feedback.textContent = `Stage changed. ${count} items available for ${stage}.`;
       },
       setSize(size) {
         humanPinyinState.sessionSize = Number.isFinite(size) ? size : 20;

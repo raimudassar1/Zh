@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════════════════════
    quiz.js — Enhanced Pronunciation & Vocabulary Quiz Modules
    ═══════════════════════════════════════════════════════════════ */
 
@@ -17,7 +17,7 @@ window.QuizModule = (() => {
     book: 1,
     bookChapter: '01',
     radicalPhase: 1,
-    questionCount: 20,
+    questionCount: Number(window.App?.state?.settings?.defaultQuizCount || 20),
     questions: [],
     current: 0,
     score: 0,
@@ -69,6 +69,19 @@ window.QuizModule = (() => {
 
   function firstMeaning(value) {
     return asText(value).split(/[;?,?]/)[0].trim() || asText(value);
+  }
+
+  function getHanzi(item) {
+    return item?.traditional || item?.hanzi || item?.word || item?.char || '';
+  }
+
+  function getPinyin(item) {
+    const primary = asText(item?.pinyin || item?.py || item?.reading || '');
+    const hasHanzi = /[\u3400-\u9fff]/.test(primary);
+    if (primary && !hasHanzi) return primary;
+    const numbered = asText(item?.pinyin_numbered || item?.pinyinNumbered || '');
+    if (numbered && typeof Pinyin !== 'undefined' && Pinyin.numberedToMarked) return Pinyin.numberedToMarked(numbered);
+    return hasHanzi ? '' : primary;
   }
 
   function normalizeBookVocab(item, bookNum) {
@@ -197,8 +210,38 @@ window.QuizModule = (() => {
     return pool;
   }
 
+  async function getPinyinMasteryQuizItems() {
+    const bank = await API.get('pinyin_mastery_full').catch(() => null);
+    const toneSyllables = Array.isArray(bank?.toneSyllables) ? bank.toneSyllables : [];
+    return toneSyllables.map(item => ({
+      hanzi: item.hanzi || item.char || '',
+      traditional: item.hanzi || item.char || '',
+      pinyin: item.pinyin || '',
+      definition: item.meaning || item.definition || '',
+      level: item.level || item.sourceLevel || 'pinyin',
+      category: item.category || 'Pinyin Mastery',
+      source: 'pinyin_mastery_full'
+    })).filter(item => item.hanzi && item.pinyin);
+  }
+
+  function dedupeQuizItems(items) {
+    const seen = new Set();
+    return (items || []).filter(item => {
+      const key = `${getHanzi(item)}|${getPinyin(item) || item.pinyin || ''}`;
+      if (!key.trim() || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
   function getCategories() {
     return [...new Set(App.state.characters.map(c => c.category).filter(Boolean))].sort();
+  }
+
+  async function ensureCharactersLoaded() {
+    if (App.state.characters && App.state.characters.length > 0) return;
+    const result = await API.getCharacters({ limit: 9999 }).catch(() => ({ data: [] }));
+    App.state.characters = Array.isArray(result?.data) ? result.data : (Array.isArray(result) ? result : []);
   }
 
   function getChapterSets() {
@@ -232,10 +275,10 @@ window.QuizModule = (() => {
           question_label: 'Choose the correct pinyin:',
           correct: item,
           options: options.map(o => ({
-            hanzi: o.traditional || o.hanzi,
-            pinyin: o.pinyin,
-            isCorrect: o.hanzi === item.hanzi,
-          })),
+            hanzi: getHanzi(o),
+            pinyin: getPinyin(o) || '[missing pinyin]',
+            isCorrect: getHanzi(o) === getHanzi(item),
+          })).filter(o => o.pinyin && o.pinyin !== '[missing pinyin]'),
         });
       } else if (mode === 'B') { // Tone ID (Only for single characters)
         if (item.hanzi.length > 1) return; 
@@ -590,9 +633,14 @@ window.QuizModule = (() => {
     },
 
     async startQuiz(type) {
+      if ((quizState.source === 'level' || quizState.source === 'category' || quizState.source === 'chapter') && (!App.state.characters || !App.state.characters.length)) await ensureCharactersLoaded();
       if (quizState.source === 'book' && !quizState.bookData) await this.switchBook(quizState.book);
       if (quizState.source === 'radical' && !quizState.radicalData) await this.loadRadicalData();
-      const pool = getQuizPool();
+      let pool = getQuizPool();
+      if (type === 'pron') {
+        const masteryItems = await getPinyinMasteryQuizItems();
+        pool = dedupeQuizItems([...pool, ...masteryItems]);
+      }
       if (pool.length === 0) {
         alert('The selected set is empty. Please choose a different category or chapter.');
         return;
@@ -627,7 +675,20 @@ window.QuizModule = (() => {
         return;
       }
       const spoken = q.audio_text || q.question_hanzi || q.sentence?.replace('___', q.correct?.hanzi || q.correct?.traditional || '') || q.correct?.traditional || q.correct?.hanzi || '';
-      if (spoken && window.TTS && typeof TTS.speak === 'function') TTS.speak(spoken, 'zh-TW', 0.78);
+      if (!spoken) {
+        if (window.showToast) showToast('No audio text is available for this question.');
+        return;
+      }
+      if (typeof TTS !== 'undefined' && TTS && typeof TTS.speak === 'function') {
+        const result = TTS.speak(spoken, 'zh-TW', 0.78);
+        if (!result && window.showToast) showToast('TTS is unavailable on this device. Check Settings > Audio Diagnostics.');
+      } else if (window.speechSynthesis && window.SpeechSynthesisUtterance) {
+        window.speechSynthesis.cancel();
+        const utt = new SpeechSynthesisUtterance(spoken);
+        utt.lang = 'zh-TW';
+        utt.rate = 0.78;
+        window.speechSynthesis.speak(utt);
+      }
     },
 
     playAudio(filename) {
@@ -684,7 +745,7 @@ window.QuizModule = (() => {
       let content = '';
       if (q.type === 'hanzi-to-def') content = opt.definition;
       else if (q.type === 'tone-choice') content = `<span class="tone-option-pinyin tone${opt.tone}">${opt.label}</span>`;
-      else if (q.type === 'pinyin-choice') content = `<span style="color:var(--tone${Pinyin.getTone(opt.pinyin)||1})">${opt.pinyin}</span>`;
+      else if (q.type === 'pinyin-choice') content = `<span class="qo-pinyin" style="color:var(--tone${Pinyin.getTone(opt.pinyin)||1})">${opt.pinyin || '[missing pinyin]'}</span>`;
       else content = `<span class="qo-hanzi">${opt.hanzi}</span><span class="qo-pinyin ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${opt.pinyin || ''}</span>`;
 
       const stateClass = savedAnswer ? (opt.isCorrect ? ' correct' : (savedAnswer.index === i ? ' wrong' : '')) : '';
@@ -719,12 +780,30 @@ window.QuizModule = (() => {
     }
   }
 
+  function feedbackWhy(q) {
+    const map = {
+      'pinyin-choice': 'Read the character, then match it to the marked pinyin. Say the pinyin aloud after checking.',
+      'tone-choice': 'All options use the same syllable. Focus only on the tone contour, not the letters.',
+      'hanzi-from-pinyin': 'Use the pinyin and meaning memory to choose the matching Chinese form.',
+      'audio-hanzi': 'Replay the sound, then connect what you hear to the written character.',
+      'hanzi-to-def': 'Recognize the Chinese first, then confirm the English meaning.',
+      'def-to-hanzi': 'Start from meaning and recall the Chinese shape. This is harder than recognition.',
+      'cloze': 'Use the sentence context to decide which word naturally completes the blank.'
+    };
+    return map[q.type] || 'Compare your answer with the correct item, then replay the sound once.';
+  }
+
   function renderFeedback(q, isCorrect) {
     const item = q.correct || {};
+    const hanzi = getHanzi(item);
+    const pinyin = getPinyin(item) || item.pinyin || '';
+    const meaning = item.definition || item.english || '';
     return `
-      <div class="flex-center gap-12">
-        <span>${isCorrect ? 'Correct' : 'Not quite'} <strong>${item.traditional || item.hanzi || ''}</strong> [${Pinyin.colorize(item.pinyin || '')}] - ${item.definition || ''}</span>
-        <button class="btn btn-sm btn-ghost" onclick="QuizModule.playQuestionAudio()">Hear</button>
+      <div class="quiz-feedback-card">
+        <div class="quiz-feedback-title">${isCorrect ? 'Correct' : 'Not quite'}: <strong>${hanzi}</strong> ${pinyin ? `[${Pinyin.colorize(pinyin)}]` : ''}</div>
+        <div class="quiz-feedback-meaning">${meaning}</div>
+        <div class="quiz-feedback-why"><strong>Study note:</strong> ${feedbackWhy(q)}</div>
+        <button class="btn btn-sm btn-ghost" onclick="QuizModule.playQuestionAudio()">Hear again</button>
       </div>
     `;
   }
@@ -734,6 +813,7 @@ window.QuizModule = (() => {
     quizState.answered = true;
 
     const q = quizState.questions[quizState.current];
+    const item = q.correct || {};
     const isCorrect = btn.dataset.correct === 'true';
     quizState.answers[quizState.current] = { index, isCorrect };
 
