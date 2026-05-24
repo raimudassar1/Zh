@@ -14,6 +14,8 @@ window.DrawingBoard = (() => {
         canvas: null,
         ctx: null,
         isDrawing: false,
+        activePointerId: null,
+        lastPointerEventTime: 0,
         lastPos: null,
         container: null,
         writerTarget: null,
@@ -56,7 +58,7 @@ window.DrawingBoard = (() => {
         const penButtons = document.querySelectorAll('.pen-toggle-btn');
         penButtons.forEach(btn => {
             btn.className = state.penOnly ? 'btn btn-sm btn-primary pen-toggle-btn' : 'btn btn-sm btn-outline pen-toggle-btn';
-            btn.textContent = state.penOnly ? '🖋️ Pen Only: ON' : '🖋️ Pen Only: OFF';
+            btn.textContent = state.penOnly ? '🖊️ Pen Only: ON' : '🖊️ Pen Only: OFF';
         });
 
         const widthSliders = document.querySelectorAll('input[oninput*="DrawingBoard.setPenWidth"]');
@@ -89,6 +91,8 @@ window.DrawingBoard = (() => {
         state.outlineColor = state.theme === 'dark' ? '#333333' : '#EAEAEA';
 
         state.ctx = state.canvas.getContext('2d');
+        state.canvas.style.touchAction = 'none';
+        state.writerTarget.style.touchAction = 'none';
         
         // Ensure canvas is correctly sized
         resizeCanvas();
@@ -101,6 +105,7 @@ window.DrawingBoard = (() => {
         state.canvas.onpointermove = handlePointerMove;
         state.canvas.onpointerup = handlePointerUp;
         state.canvas.onpointercancel = handlePointerUp;
+        state.canvas.addEventListener('lostpointercapture', handleLostPointerCapture);
 
         // Block touch events for Guided mode when Pen Only is enabled
         const container = state.writerTarget.parentElement;
@@ -114,6 +119,10 @@ window.DrawingBoard = (() => {
         // Auto-resize handling
         window.removeEventListener('resize', resizeCanvas);
         window.addEventListener('resize', resizeCanvas);
+        window.removeEventListener('scratchpad:open', resetInteractionState);
+        window.removeEventListener('scratchpad:closed', resetInteractionState);
+        window.addEventListener('scratchpad:open', resetInteractionState);
+        window.addEventListener('scratchpad:closed', resetInteractionState);
         
         // Synchronize UI
         syncUI();
@@ -379,6 +388,35 @@ window.DrawingBoard = (() => {
     let frameId = null;
     let points = [];
 
+    function resetInteractionState() {
+        state.isDrawing = false;
+        state.lastPos = null;
+        const pointerId = state.activePointerId;
+        state.activePointerId = null;
+        points = [];
+        if (frameId) { cancelAnimationFrame(frameId); frameId = null; }
+        if (state.canvas) {
+            if (pointerId != null) { try { state.canvas.releasePointerCapture?.(pointerId); } catch(_) {} }
+        }
+    }
+
+    function handleGlobalPointerUp(e) {
+        if (e.pointerId === state.activePointerId) {
+            handlePointerUp(e);
+            window.removeEventListener('pointerup', handleGlobalPointerUp);
+            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+        }
+    }
+
+    function handleLostPointerCapture(e) {
+        if (e.pointerId === state.activePointerId) {
+            state.isDrawing = false;
+            state.activePointerId = null;
+            window.removeEventListener('pointerup', handleGlobalPointerUp);
+            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+        }
+    }
+
     function handlePointerDown(e) {
         if (state.mode !== 'freehand') return;
 
@@ -387,9 +425,32 @@ window.DrawingBoard = (() => {
             return;
         }
 
+        // Stuck state recovery and multi-touch rejection
+        if (state.isDrawing) {
+            const timeSinceLastEvent = Date.now() - state.lastPointerEventTime;
+            // Recover if:
+            // 1. New stylus down event (only one stylus can draw at a time)
+            // 2. Or same pointer ID is somehow down again
+            // 3. Or last drawing event was more than 500ms ago (abandoned stroke)
+            if (e.pointerType === 'pen' || e.pointerId === state.activePointerId || timeSinceLastEvent > 500) {
+                state.isDrawing = false;
+                state.activePointerId = null;
+                window.removeEventListener('pointerup', handleGlobalPointerUp);
+                window.removeEventListener('pointercancel', handleGlobalPointerUp);
+            } else {
+                // Ignore other concurrent touches (palm rejection / multi-touch block)
+                return;
+            }
+        }
+
         state.isDrawing = true;
+        state.activePointerId = e.pointerId;
+        state.lastPointerEventTime = Date.now();
         state.lastPos = getPos(e);
-        state.canvas.setPointerCapture(e.pointerId);
+        
+        try {
+            state.canvas.setPointerCapture(e.pointerId);
+        } catch (_) {}
 
         points = [state.lastPos];
 
@@ -404,13 +465,33 @@ window.DrawingBoard = (() => {
             frameId = requestAnimationFrame(drawFrame);
         }
 
+        // Bind global listeners to clean up when lifted
+        window.addEventListener('pointerup', handleGlobalPointerUp);
+        window.addEventListener('pointercancel', handleGlobalPointerUp);
+
         // Prevent default touch behaviors like scrolling when drawing
         if (e.cancelable) e.preventDefault();
     }
 
     function handlePointerMove(e) {
+        // Stuck state recovery: if we are supposed to be drawing, but get a hover/lifted event
+        // (no buttons pressed) for the active pointer, clear the drawing state.
+        if (state.isDrawing && e.pointerId === state.activePointerId && (e.buttons & 1) === 0) {
+            state.isDrawing = false;
+            state.activePointerId = null;
+            try {
+                state.canvas.releasePointerCapture(e.pointerId);
+            } catch (_) {}
+            window.removeEventListener('pointerup', handleGlobalPointerUp);
+            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+            return;
+        }
+
         if (!state.isDrawing) return;
+        if (e.pointerId !== state.activePointerId) return;
         if (state.penOnly && e.pointerType !== 'pen') return;
+
+        state.lastPointerEventTime = Date.now();
 
         // Use coalesced events for highest possible fidelity (sampling between frames)
         if (e.getCoalescedEvents) {
@@ -420,12 +501,6 @@ window.DrawingBoard = (() => {
             }
         } else {
             points.push(getPos(e));
-        }
-
-        // Optional: predicted events for "zero" latency feel on tablets
-        if (e.getPredictedEvents) {
-            // We don't push them to 'points' permanently because they change,
-            // but for simple line drawing, just using coalesced is usually enough.
         }
     }
 
@@ -455,15 +530,18 @@ window.DrawingBoard = (() => {
     }
 
     function handlePointerUp(e) {
-        if (state.isDrawing) {
-            // Draw any remaining points
-            const currentPos = getPos(e);
-            points.push(currentPos);
-            drawFrame();
-        }
-        state.isDrawing = false;
-        if (state.canvas && e.pointerId) {
-            try { state.canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+        if (e.pointerId === state.activePointerId) {
+            if (state.isDrawing) {
+                // Draw any remaining points
+                const currentPos = getPos(e);
+                points.push(currentPos);
+                drawFrame();
+            }
+            state.isDrawing = false;
+            state.activePointerId = null;
+            if (state.canvas && e.pointerId) {
+                try { state.canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+            }
         }
     }
 
@@ -504,7 +582,7 @@ window.DrawingBoard = (() => {
             if (!Modal) return;
 
             Modal.show(`
-                <button class="modal-close" onclick="Modal.hide()">✕</button>
+                <button class="modal-close" onclick="Modal.hide()">âœ•</button>
                 <div style="text-align:center; padding:10px">
                     <h3 style="margin-bottom:12px">Writing Practice</h3>
                     <div style="font-size:1.4rem; margin-bottom:24px; color:var(--text); font-family:var(--font-zh); letter-spacing:2px">
@@ -530,7 +608,7 @@ window.DrawingBoard = (() => {
                             </div>
                             <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px">
                                 <button class="btn btn-sm ${state.penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">
-                                    ${state.penOnly ? '🖋️ Pen Only: ON' : '🖋️ Pen Only: OFF'}
+                                    ${state.penOnly ? 'ðŸ–‹ï¸ Pen Only: ON' : 'ðŸ–‹ï¸ Pen Only: OFF'}
                                 </button>
                                 <button class="btn btn-sm ${state.freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${state.freehandGuide ? 'ON' : 'OFF'}</button>
                                 <div style="flex:1; display:flex; align-items:center; gap:8px">
@@ -546,9 +624,9 @@ window.DrawingBoard = (() => {
                         </div>
                         
                         <div style="display:flex; justify-content:space-between; width:100%; max-width:320px; align-items:center">
-                            <button class="btn btn-secondary btn-sm" ${currentIndex === 0 ? 'disabled' : ''} onclick="window._prevChar()">← Previous</button>
+                            <button class="btn btn-secondary btn-sm" ${currentIndex === 0 ? 'disabled' : ''} onclick="window._prevChar()">â† Previous</button>
                             <div style="font-weight:700; color:var(--text-3)">${currentIndex + 1} / ${characters.length}</div>
-                            <button class="btn btn-secondary btn-sm" ${currentIndex === characters.length - 1 ? 'disabled' : ''} onclick="window._nextChar()">Next →</button>
+                            <button class="btn btn-secondary btn-sm" ${currentIndex === characters.length - 1 ? 'disabled' : ''} onclick="window._nextChar()">Next â†’</button>
                         </div>
                     </div>
                 </div>
@@ -565,6 +643,15 @@ window.DrawingBoard = (() => {
         renderModal();
     }
 
+    window.addEventListener('blur', () => {
+        if (state.isDrawing) {
+            state.isDrawing = false;
+            state.activePointerId = null;
+            window.removeEventListener('pointerup', handleGlobalPointerUp);
+            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+        }
+    });
+
     return {
         init,
         reset,
@@ -580,3 +667,5 @@ window.DrawingBoard = (() => {
         getState: () => state
     };
 })();
+
+

@@ -1,11 +1,11 @@
-/* ═══════════════════════════════════════════════════════════════
-   TOCFL Learning App — Main Stylesheet
-   Theme: Deep Red × Charcoal × Warm White × Gold
-   ═══════════════════════════════════════════════════════════════ */
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   TOCFL Learning App â€” Main Stylesheet
+   Theme: Deep Red Ã— Charcoal Ã— Warm White Ã— Gold
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
-/* ── CSS Variables ─────────────────────────────────────────── */
+/* â”€â”€ CSS Variables â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --red:        #C0392B;
   --red-dark:   #962d22;
@@ -47,7 +47,7 @@
 }
 
 
-/* ── Reset & Base ──────────────────────────────────────────── */
+/* â”€â”€ Reset & Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -61,7 +61,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* ── Layout ────────────────────────────────────────────────── */
+/* â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #app { display: flex; width: 100%; min-height: 100vh; }
 
 /* Sidebar */
@@ -278,7 +278,7 @@ body {
 .bottom-nav-item .bn-icon { font-size: 1.3rem; }
 .bottom-nav-item.active { color: var(--red); }
 
-/* ── Typography ────────────────────────────────────────────── */
+/* â”€â”€ Typography â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hanzi { font-family: var(--font-zh); }
 .hanzi-xl { font-family: var(--font-zh); font-size: 4rem; line-height: 1; }
 .hanzi-lg { font-family: var(--font-zh); font-size: 2.5rem; line-height: 1.1; }
@@ -304,7 +304,7 @@ body {
 .tone-colors .tone4 { color: var(--tone4); }
 .tone-colors .tone5 { color: var(--tone5); }
 
-/* ── Cards ─────────────────────────────────────────────────── */
+/* â”€â”€ Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -315,7 +315,7 @@ body {
 
 .card-sm { padding: 14px; border-radius: var(--radius-sm); }
 
-/* ── Buttons ───────────────────────────────────────────────── */
+/* â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -350,7 +350,7 @@ body {
 .btn-sm { padding: 5px 12px; font-size: 0.8rem; }
 .btn-lg { padding: 12px 28px; font-size: 1rem; }
 
-/* ── Form Elements ─────────────────────────────────────────── */
+/* â”€â”€ Form Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .input, select, textarea {
   font-family: var(--font-ui);
   font-size: 0.9rem;
@@ -371,7 +371,7 @@ body {
 
 select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
 
-/* ── Badge / Tags ──────────────────────────────────────────── */
+/* â”€â”€ Badge / Tags â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -391,7 +391,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 [data-theme="dark"] .badge-a2 { background: rgba(39,174,96,0.2); color: #58d68d; }
 [data-theme="dark"] .badge-b1 { background: rgba(41,128,185,0.2); color: #5dade2; }
 
-/* ── Pinyin Ruby ───────────────────────────────────────────── */
+/* â”€â”€ Pinyin Ruby â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ruby {
   display: inline-flex;
   flex-direction: column-reverse;
@@ -424,7 +424,7 @@ ruby rb, ruby > :not(rt) {
 
 .reading-text.with-pinyin { line-height: 4; }
 
-/* ── Dashboard ─────────────────────────────────────────────── */
+/* â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -557,7 +557,7 @@ ruby rb, ruby > :not(rt) {
   transition: width 0.5s ease;
 }
 
-/* ── Library ───────────────────────────────────────────────── */
+/* â”€â”€ Library â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .library-controls {
   display: flex;
   gap: 10px;
@@ -671,7 +671,7 @@ ruby rb, ruby > :not(rt) {
 .page-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
 .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ── Modal ─────────────────────────────────────────────────── */
+/* â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -755,7 +755,7 @@ ruby rb, ruby > :not(rt) {
 .sentence-block .sb-py { font-size: 0.82rem; color: var(--text-2); margin-bottom: 4px; }
 .sentence-block .sb-en { font-size: 0.82rem; color: var(--text-3); font-style: italic; }
 
-/* ── Flashcards ────────────────────────────────────────────── */
+/* â”€â”€ Flashcards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .flashcard-container {
   display: flex;
   flex-direction: column;
@@ -872,7 +872,7 @@ ruby rb, ruby > :not(rt) {
   color: var(--text-3);
 }
 
-/* ── Quiz ──────────────────────────────────────────────────── */
+/* â”€â”€ Quiz â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .quiz-container {
   max-width: 680px;
   margin: 0 auto;
@@ -940,7 +940,7 @@ ruby rb, ruby > :not(rt) {
 .quiz-feedback.correct { background: rgba(39,174,96,0.1); border-left: 3px solid #27ae60; color: #1e8449; }
 .quiz-feedback.wrong { background: rgba(192,57,43,0.08); border-left: 3px solid var(--red); color: var(--red-dark); }
 
-/* ── Reading ───────────────────────────────────────────────── */
+/* â”€â”€ Reading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .reading-passage-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -1015,7 +1015,7 @@ ruby rb, ruby > :not(rt) {
 .word-tooltip .wt-zhuyin { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-family: var(--font-zh); }
 .word-tooltip .wt-def { font-size: 0.82rem; color: rgba(255,255,255,0.75); margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
 
-/* ── Mock Test ─────────────────────────────────────────────── */
+/* â”€â”€ Mock Test â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .test-layout {
   display: grid;
   grid-template-columns: 1fr 240px;
@@ -1100,7 +1100,7 @@ ruby rb, ruby > :not(rt) {
   margin-bottom: 20px;
 }
 
-/* ── Settings ──────────────────────────────────────────────── */
+/* â”€â”€ Settings â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .settings-section {
   margin-bottom: 28px;
 }
@@ -1185,7 +1185,7 @@ ruby rb, ruby > :not(rt) {
   color: var(--red);
 }
 
-/* ── Animations ────────────────────────────────────────────── */
+/* â”€â”€ Animations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
@@ -1204,7 +1204,7 @@ ruby rb, ruby > :not(rt) {
   margin: 40px auto;
 }
 
-/* ── Utility ───────────────────────────────────────────────── */
+/* â”€â”€ Utility â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
 .items-center { align-items: center; }
@@ -1229,7 +1229,7 @@ ruby rb, ruby > :not(rt) {
 .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
-/* ── Responsive ────────────────────────────────────────────── */
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
   :root { --nav-width: 0px; }
 
@@ -1267,13 +1267,13 @@ ruby rb, ruby > :not(rt) {
   .quick-tile .tile-name { font-size: 0.72rem; }
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────── */
+/* â”€â”€ Scrollbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 
-/* ── Section headers ───────────────────────────────────────── */
+/* â”€â”€ Section headers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .page-header {
   margin-bottom: 24px;
 }
@@ -1440,11 +1440,11 @@ kbd {
 
 .replay-count { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 8px; }
 
-/* ═══════════════════════════════════════════════════════════════
-   NEW MODULES — Onboarding, Learn Path, Dialogue, SRS
-   ═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NEW MODULES â€” Onboarding, Learn Path, Dialogue, SRS
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── SRS Rating Buttons ──────────────────────────────────────── */
+/* â”€â”€ SRS Rating Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .srs-session { display: flex; flex-direction: column; gap: 14px; max-width: 580px; margin: 0 auto; }
 
 .srs-rating-grid {
@@ -1471,7 +1471,7 @@ kbd {
 .srs-btn .srs-label { font-size: 0.75rem; font-weight: 700; }
 .srs-btn .srs-interval { font-size: 0.62rem; opacity: 0.6; }
 
-/* ── Onboarding ───────────────────────────────────────────────── */
+/* â”€â”€ Onboarding â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .tone-demo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1520,7 +1520,7 @@ kbd {
 .ear-opt:hover:not(:disabled) { border-color: var(--charcoal) !important; background: var(--off-white) !important; }
 .ear-opt:disabled { cursor: not-allowed; }
 
-/* ── Learning Path ───────────────────────────────────────────── */
+/* â”€â”€ Learning Path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .level-card { transition: all 0.2s; }
 .level-card:not(.locked):hover { box-shadow: var(--shadow-lg); }
 .level-card.locked { cursor: not-allowed; }
@@ -1537,13 +1537,13 @@ kbd {
 
 .lesson-char-display:hover { transform: scale(1.05); }
 
-/* ── Dialogue ────────────────────────────────────────────────── */
+/* â”€â”€ Dialogue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .dlg-line { transition: background 0.2s; border-radius: var(--radius-sm); padding-left: 8px; padding-right: 8px; }
 .dlg-line.active { background: rgba(243,156,18,0.07); }
 
 .dialogue-card { transition: all 0.15s; }
 
-/* ── Pinyin quiz minimal pairs ──────────────────────────────── */
+/* â”€â”€ Pinyin quiz minimal pairs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pair-btn {
   flex: 1;
   background: var(--off-white);
@@ -1557,11 +1557,11 @@ kbd {
 }
 .pair-btn:hover { border-color: var(--charcoal); background: var(--card-bg); }
 
-/* ── Tone pitch SVG diagram ──────────────────────────────────── */
+/* â”€â”€ Tone pitch SVG diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pitch-diagram { display: flex; align-items: flex-end; justify-content: center; gap: 28px; }
 .pitch-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 
-/* ── Responsive adjustments for new modules ─────────────────── */
+/* â”€â”€ Responsive adjustments for new modules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
   .tone-demo-grid { grid-template-columns: repeat(2, 1fr); }
   .srs-rating-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1574,7 +1574,7 @@ kbd {
   .srs-btn .srs-label { font-size: 0.65rem; }
 }
 
-/* ── First-time welcome state ───────────────────────────────── */
+/* â”€â”€ First-time welcome state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .welcome-hero {
   background: linear-gradient(135deg, var(--red), var(--red-dark));
   color: #fff;
@@ -1586,7 +1586,7 @@ kbd {
 }
 
 .welcome-hero::after {
-  content: '你好';
+  content: 'ä½ å¥½';
   position: absolute;
   right: -20px;
   bottom: -20px;
@@ -1598,7 +1598,7 @@ kbd {
   pointer-events: none;
 }
 
-/* ── Grammar point pills ─────────────────────────────────────── */
+/* â”€â”€ Grammar point pills â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .grammar-pill {
   display: inline-flex;
   align-items: center;
@@ -1623,7 +1623,7 @@ kbd {
   justify-content: center;
 }
 
-/* ── Vocabulary highlight chips ─────────────────────────────── */
+/* â”€â”€ Vocabulary highlight chips â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .vocab-chip {
   display: inline-block;
   background: var(--off-white);
@@ -1641,8 +1641,8 @@ kbd {
   background: rgba(192, 57, 43, 0.04);
 }
 
-/* ── Scene tag ──────────────────────────────────────────────── */
-/* ── Vocabulary Library (Interactive Pad) ────────────────────── */
+/* â”€â”€ Scene tag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â”€â”€ Vocabulary Library (Interactive Pad) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .vocab-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1933,7 +1933,7 @@ kbd {
   .selection-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── Playground Styles ─────────────────────────────────────── */
+/* â”€â”€ Playground Styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
 .pg-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; cursor: pointer; transition: all 0.2s; display: flex; gap: 16px; align-items: center; }
 .pg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
@@ -2128,7 +2128,7 @@ kbd {
 .tone-btn.tone4:hover, .tone-btn.tone4.selected { background: var(--tone4); color: var(--clean-surface); }
 .tone-score { font-size: 1.2rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
 
-/* ── CCC Course Premium UI ─────────────────────────────────── */
+/* â”€â”€ CCC Course Premium UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .lesson-page-header { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../logo.png'); background-size: cover; background-position: center; color: white; padding: 60px 20px; text-align: center; border-radius: var(--radius-lg); margin-bottom: 24px; position: relative; }
 .lesson-nav-sticky { position: sticky; top: 0; background: var(--warm-white); z-index: 100; border-bottom: 1px solid var(--border); padding: 12px 0; margin-bottom: 32px; box-shadow: var(--shadow-sm); display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .ln-btn { border: none; background: transparent; color: var(--text-2); font-weight: 700; padding: 8px 16px; cursor: pointer; border-radius: 20px; font-size: 0.9rem; transition: all 0.2s; }
@@ -2155,7 +2155,7 @@ kbd {
 .reading-passage-premium { font-family: var(--font-zh); font-size: 1.5rem; line-height: 2.6; color: var(--text); background: white; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 32px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
 
 .listening-card-premium { background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: white; padding: 48px; border-radius: var(--radius-lg); text-align: center; margin-bottom: 32px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.listening-card-premium::after { content: '🎧'; position: absolute; font-size: 12rem; opacity: 0.1; right: -20px; bottom: -40px; }
+.listening-card-premium::after { content: 'ðŸŽ§'; position: absolute; font-size: 12rem; opacity: 0.1; right: -20px; bottom: -40px; }
 .listening-card-premium .btn-white { background: white; color: #e67e22; border: none; font-weight: 900; }
 .listening-card-premium .btn-white:hover { background: #fdfdfd; transform: scale(1.05); }
 
@@ -2702,7 +2702,7 @@ textarea {
 }
 
 .onboarding-experience .ob-hero::after {
-  content: "拼音";
+  content: "æ‹¼éŸ³";
   position: absolute;
   right: clamp(14px, 4vw, 42px);
   bottom: -26px;
@@ -10825,3 +10825,157 @@ html[data-locked="true"] #app {
 .ga-practice-target span { color: var(--accent); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 950; }
 .ga-practice-target strong { color: var(--text-1); font-size: clamp(1.1rem, 2.6vw, 1.45rem); line-height: 1.3; }
 .ga-answer-row .btn-ghost[data-ga-action="answer"] { background: var(--off-white); }
+
+/* Clear TOCFL learning plan structure */
+.tocfl-learning-plan .tocfl-roadmap-plain {
+  grid-template-columns: 1fr;
+}
+.tocfl-plan-step {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+}
+.tocfl-plan-step > span {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff !important;
+  font-weight: 900;
+}
+.tocfl-plan-step > div {
+  display: grid !important;
+  gap: 4px;
+  justify-content: stretch !important;
+}
+.tocfl-plan-step em {
+  color: var(--clean-muted, var(--text-2));
+  font-style: normal;
+  font-weight: 750;
+}
+.tocfl-plan-step p {
+  margin: 0;
+}
+.tocfl-band-spec {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--clean-line, var(--border));
+}
+
+/* Codex global polish layer: calmer app-like surfaces, denser focus, softer contrast */
+:root {
+  --radius: 16px;
+  --shadow-sm: 0 8px 26px rgba(30, 41, 59, 0.07);
+  --shadow-lg: 0 24px 70px rgba(30, 41, 59, 0.16);
+}
+body {
+  background:
+    radial-gradient(circle at 18% -10%, rgba(192,57,43,0.08), transparent 34rem),
+    radial-gradient(circle at 82% 0%, rgba(41,128,185,0.07), transparent 30rem),
+    var(--warm-white);
+}
+[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 18% -10%, rgba(231,76,60,0.11), transparent 34rem),
+    radial-gradient(circle at 82% 0%, rgba(52,152,219,0.09), transparent 30rem),
+    var(--warm-white);
+}
+#topbar {
+  min-height: 64px;
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+}
+.card, .stat-card, .quick-tile, .lesson-card, .level-card,
+.tocfl-band-card, .tocfl-native-question, .bc-panel, .bl-panel,
+.ga-unit-page, .builder-card {
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.btn, button, .nav-item, .mobile-section-link, .bottom-nav-menu {
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary, .app-lock-submit {
+  box-shadow: 0 10px 22px rgba(192,57,43,0.18);
+}
+.nav-item {
+  margin: 2px 10px;
+  width: calc(100% - 20px);
+  border-radius: 12px;
+}
+.nav-item.active::before { display: none; }
+.nav-section-label { padding-left: 22px; }
+.bottom-nav-inner {
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--card-bg) 90%, transparent);
+}
+#page-content {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 900px) {
+  #page-content { padding: 28px 32px 48px; }
+  #topbar { padding-inline: 30px; }
+}
+@media (max-width: 620px) {
+  #topbar { padding-inline: 14px; gap: 10px; }
+  #topbar .page-title { font-size: .96rem; }
+  .topbar-font-select { max-width: 118px; min-width: 104px; }
+}
+
+/* Dashboard command center */
+.dash-command{max-width:1180px;margin:0 auto;padding:22px}.dc-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:18px;margin-bottom:18px}.dc-panel{background:var(--card-bg);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow-sm)}.dc-main{padding:30px;background:linear-gradient(135deg,rgba(180,35,24,.12),rgba(31,78,121,.08))}.dc-kicker{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:900}.dc-main h1{font-size:clamp(2.1rem,5vw,4.6rem);line-height:.98;margin:10px 0;color:var(--text)}.dc-main p,.dc-focus p{font-size:1.05rem;color:var(--text-2)}.dc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.dc-focus{padding:22px;display:grid;gap:12px;align-content:center}.dc-ring{width:126px;height:126px;border-radius:50%;display:grid;place-items:center;margin:auto;position:relative}.dc-ring:after{content:'';position:absolute;inset:10px;border-radius:50%;background:var(--card-bg)}.dc-ring strong{position:relative;z-index:1;font-size:2rem;color:var(--text)}.dc-grid,.dc-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}.dc-task{display:block;padding:16px;text-decoration:none;color:var(--text);transition:.18s}.dc-task:hover{transform:translateY(-2px);border-color:var(--red)}.dc-task span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:12px;background:rgba(180,35,24,.1);color:var(--red);font-weight:900;margin-bottom:12px}.dc-task strong{display:block;margin-bottom:6px}.dc-task small,.dc-metric small{color:var(--text-2);line-height:1.45}.dc-metric{padding:16px}.dc-metric strong{display:block;font-size:2rem;color:var(--text)}.dc-metric span{display:block;color:var(--text-3);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}.dc-two{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:18px}.dc-section{padding:20px}.dc-section h2{margin:0 0 12px;font-size:1.25rem}.dc-phases{display:grid;gap:10px}.dc-phase{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center;padding:12px;border:1px solid var(--border);border-radius:18px;background:var(--off-white);text-decoration:none;color:var(--text)}.dc-phase b{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--card-bg);color:var(--red)}.dc-phase small{color:var(--text-2)}.dc-browse{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.dc-group{padding:14px;border:1px solid var(--border);border-radius:18px;background:var(--off-white)}.dc-links{display:flex;flex-wrap:wrap;gap:8px}.dc-links a{padding:7px 10px;border-radius:999px;background:var(--card-bg);border:1px solid var(--border);color:var(--text);text-decoration:none;font-weight:800;font-size:.82rem}.dc-activity{margin-top:12px;display:grid;gap:8px}.dc-activity div{display:flex;justify-content:space-between;gap:10px;padding:10px;border-radius:12px;background:var(--off-white);color:var(--text-2);font-size:.9rem}.dc-done{border-color:rgba(39,174,96,.35)!important;background:rgba(39,174,96,.1)!important}@media(max-width:900px){.dash-command{padding:14px}.dc-hero,.dc-two,.dc-grid,.dc-metrics,.dc-browse{grid-template-columns:1fr}.dc-main{padding:22px}.dc-main h1{font-size:2.4rem}}
+
+/* Dashboard command center refinement */
+.dc-main { border-radius: 24px; }
+.dc-focus, .dc-metric, .dc-section { border-radius: 22px; }
+.dc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.dc-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.dc-task { min-height: 138px; }
+.dc-phase {
+  grid-template-columns: 44px minmax(0, 1fr);
+  min-height: 74px;
+  padding: 12px 14px;
+  gap: 12px;
+}
+.dc-phase b {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+.dc-phase span { min-width: 0; }
+.dc-phase strong {
+  display: block;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  overflow-wrap: anywhere;
+}
+.dc-phase small {
+  display: block;
+  line-height: 1.35;
+  font-size: .9rem;
+}
+.dc-section h2 { letter-spacing: -0.02em; }
+.dc-browse { align-items: start; }
+.dc-links a { line-height: 1.2; }
+@media (max-width: 900px) {
+  .dc-hero { gap: 12px; }
+  .dc-main h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .dc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dc-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dc-task { min-height: 118px; padding: 14px; }
+  .dc-metric { padding: 14px; min-height: 112px; }
+  .dc-metric strong { font-size: 1.8rem; }
+  .dc-two { gap: 12px; }
+  .dc-section { padding: 18px; }
+  .dc-phase { min-height: 68px; }
+}
+@media (max-width: 430px) {
+  .dc-grid, .dc-metrics { grid-template-columns: 1fr; }
+  .dc-task, .dc-metric { min-height: auto; }
+  .dc-main, .dc-focus, .dc-section { border-radius: 18px; }
+}

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW" data-theme="light" data-locked="true">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zhongwen Learning - Beginner to TOCFL B1</title>
-  <link rel="stylesheet" href="css/main.css?v=116">
+
+  <link rel="stylesheet" href="css/main.css?v=138">
   <link rel="icon" href="logo.png">
   <link rel="manifest" href="manifest.json">
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js" async></script>
@@ -34,18 +35,19 @@
     <div class="sidebar-nav">
       <div class="nav-section-label">Start</div>
       <a class="nav-item" data-route="dashboard" href="#/"><span class="nav-icon" data-icon="dashboard"></span><span class="nav-label">Dashboard</span></a>
+      <a class="nav-item" data-route="masterplan" href="#/masterplan"><span class="nav-icon" data-icon="route"></span><span class="nav-label">Masterplan</span></a>
       <a class="nav-item" data-route="b1-coach" href="#/b1-coach"><span class="nav-icon" data-icon="route"></span><span class="nav-label">B1 Coach</span><span class="nav-badge">180D</span></a>
       <a class="nav-item" data-route="study-plan" href="#/study-plan"><span class="nav-icon" data-icon="check"></span><span class="nav-label">Study Today</span></a>
       <a class="nav-item" data-route="learn" href="#/learn"><span class="nav-icon" data-icon="map"></span><span class="nav-label">Learning Path</span></a>
 
       <div class="nav-section-label">Beginner</div>
+      <a class="nav-item" data-route="onboarding" href="#/onboarding"><span class="nav-icon" data-icon="music"></span><span class="nav-label">Pinyin &amp; Tones</span><span class="nav-badge">START</span></a>
+      <a class="nav-item" data-route="quiz-tones" href="#/quiz/tones"><span class="nav-icon" data-icon="target"></span><span class="nav-label">Tone Training</span></a>
+      <a class="nav-item" data-route="quiz-pronunciation" href="#/quiz/pronunciation"><span class="nav-icon" data-icon="letters"></span><span class="nav-label">Pronunciation Quiz</span></a>
       <a class="nav-item" data-route="beginner-launchpad" href="#/beginner-launchpad"><span class="nav-icon" data-icon="layers"></span><span class="nav-label">Beginner Launchpad</span><span class="nav-badge">L1-L3</span></a>
       <a class="nav-item" data-route="playground" href="#/playground"><span class="nav-icon" data-icon="play"></span><span class="nav-label">Beginner Playground</span></a>
-      <a class="nav-item" data-route="beginner-coach" href="#/beginner-coach"><span class="nav-icon" data-icon="check"></span><span class="nav-label">Beginner Daily Coach</span><span class="nav-badge">GUIDE</span></a>
       <a class="nav-item" data-route="quiz-flash" href="#/quiz/flash"><span class="nav-icon" data-icon="flashcards"></span><span class="nav-label">Picture Flash Quiz</span></a>
-      <a class="nav-item" data-route="onboarding" href="#/onboarding"><span class="nav-icon" data-icon="music"></span><span class="nav-label">Pinyin &amp; Tones</span></a>
-      <a class="nav-item" data-route="quiz-pronunciation" href="#/quiz/pronunciation"><span class="nav-icon" data-icon="letters"></span><span class="nav-label">Pronunciation Quiz</span></a>
-      <a class="nav-item" data-route="quiz-tones" href="#/quiz/tones"><span class="nav-icon" data-icon="target"></span><span class="nav-label">Tone Training</span></a>
+      <a class="nav-item" data-route="beginner-coach" href="#/beginner-coach"><span class="nav-icon" data-icon="check"></span><span class="nav-label">Beginner Daily Coach</span><span class="nav-badge">GUIDE</span></a>
 
       <div class="nav-section-label">Course</div>
       <a class="nav-item" data-route="vocabulary-books" href="#/vocabulary-books"><span class="nav-icon" data-icon="notebook"></span><span class="nav-label">Course Books</span></a>
@@ -77,7 +79,7 @@
     </div>
     <div class="sidebar-footer">
       <div class="streak-display">
-        <span class="streak-flame">ðŸ”¥</span>
+        <span class="streak-flame">ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥</span>
         <span class="streak-number" id="streak-count">0</span>
         <span>day streak</span>
       </div>
@@ -90,8 +92,8 @@
       <img src="logo.png" alt="" style="height:24px; width:auto; margin-right:12px; display:none;" id="topbar-logo">
       <span class="page-title" id="topbar-title">Dashboard</span>
       <div class="topbar-actions">
-        <button class="btn btn-ghost btn-sm btn-icon" id="dark-mode-toggle" title="Toggle dark mode">ðŸŒ™</button>
-        <button class="btn btn-ghost btn-sm btn-icon" id="tts-test-btn" title="Test audio">ðŸ”Š</button>
+        <button class="btn btn-ghost btn-sm btn-icon" id="dark-mode-toggle" title="Toggle dark mode">&#9790;</button>
+        <button class="btn btn-ghost btn-sm btn-icon" id="tts-test-btn" title="Test audio">&#128266;</button>
                 <select id="topbar-font-select" class="topbar-font-select" title="Chinese font" aria-label="Choose Chinese font">
           <option value="noto-sans">Noto Sans</option>
           <option value="original-serif">Original</option>
@@ -125,18 +127,32 @@
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script defer src="js/icons.js?v=116"></script>
-<script defer src="js/drawing-board.js?v=116"></script>
-<script defer src="js/weakness-engine.js?v=116"></script>
-<script defer src="js/srs.js?v=116"></script>
-<script defer src="js/voice.js?v=116"></script>
-<script defer src="js/ai-chat.js?v=116"></script>
+<script defer src="js/icons.js?v=138"></script>
+<script defer src="js/drawing-board.js?v=138"></script>
+<script defer src="js/weakness-engine.js?v=138"></script>
+<script defer src="js/srs.js?v=138"></script>
+<script defer src="js/voice.js?v=138"></script>
+<script defer src="js/ai-chat.js?v=138"></script>
 
 <!-- Feature modules are loaded on demand by js/app.js for faster first paint. -->
-<script defer src="js/app.js?v=116"></script>
-<script defer src="js/scratchpad.js?v=116"></script>
+<script defer src="js/app.js?v=138"></script>
+<script defer src="js/scratchpad.js?v=138"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

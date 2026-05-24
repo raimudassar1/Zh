@@ -1,8 +1,10 @@
-/* ═══════════════════════════════════════════════════════════════
-   app.js — Core: Router, State, Dashboard, Library, Settings
-   ═══════════════════════════════════════════════════════════════ */
+﻿/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
+   app.js Ã¢â‚¬â€ Core: Router, State, Dashboard, Library, Settings
+   Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
 
 'use strict';
+
+const isApk = typeof window.AndroidStorage !== 'undefined' || typeof window.AndroidTTS !== 'undefined';
 
 
 // Lightweight static-app lock. This stops casual visitors on public hosting;
@@ -13,13 +15,45 @@ const AppLock = {
   booted: false,
 
   isUnlocked() {
-    return sessionStorage.getItem(this.sessionKey) === '1';
+    return sessionStorage.getItem(this.sessionKey) === '1' || localStorage.getItem(this.sessionKey) === '1';
   },
 
   async digest(value) {
-    const data = new TextEncoder().encode(value);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    return [...new Uint8Array(hashBuffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    const clean = String(value || '').trim();
+    const data = new TextEncoder().encode(clean);
+    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return [...new Uint8Array(hashBuffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+    const bytes = Array.from(data);
+    const bitLen = bytes.length * 8;
+    bytes.push(0x80);
+    while ((bytes.length % 64) !== 56) bytes.push(0);
+    for (let i = 7; i >= 0; i--) bytes.push((bitLen / Math.pow(2, i * 8)) & 255);
+    const k = [1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];
+    let h = [1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225];
+    const rotr = (n, x) => (x >>> n) | (x << (32 - n));
+    for (let i = 0; i < bytes.length; i += 64) {
+      const w = new Array(64);
+      for (let j = 0; j < 16; j++) w[j] = ((bytes[i + j*4] << 24) | (bytes[i + j*4 + 1] << 16) | (bytes[i + j*4 + 2] << 8) | bytes[i + j*4 + 3]) >>> 0;
+      for (let j = 16; j < 64; j++) {
+        const s0 = rotr(7,w[j-15]) ^ rotr(18,w[j-15]) ^ (w[j-15] >>> 3);
+        const s1 = rotr(17,w[j-2]) ^ rotr(19,w[j-2]) ^ (w[j-2] >>> 10);
+        w[j] = (w[j-16] + s0 + w[j-7] + s1) >>> 0;
+      }
+      let [a,b,c,d,e,f,g,hh] = h;
+      for (let j = 0; j < 64; j++) {
+        const S1 = rotr(6,e) ^ rotr(11,e) ^ rotr(25,e);
+        const ch = (e & f) ^ (~e & g);
+        const temp1 = (hh + S1 + ch + k[j] + w[j]) >>> 0;
+        const S0 = rotr(2,a) ^ rotr(13,a) ^ rotr(22,a);
+        const maj = (a & b) ^ (a & c) ^ (b & c);
+        const temp2 = (S0 + maj) >>> 0;
+        hh = g; g = f; f = e; e = (d + temp1) >>> 0; d = c; c = b; b = a; a = (temp1 + temp2) >>> 0;
+      }
+      h = h.map((x, j) => (x + [a,b,c,d,e,f,g,hh][j]) >>> 0);
+    }
+    return h.map(x => x.toString(16).padStart(8, '0')).join('');
   },
 
   show() {
@@ -39,13 +73,17 @@ const AppLock = {
     const enteredHash = await this.digest(password || '');
     if (enteredHash !== this.hash) return false;
     sessionStorage.setItem(this.sessionKey, '1');
+    localStorage.setItem(this.sessionKey, '1');
     this.hide();
-    await this.startApp();
+    this.startApp().catch(err => {
+      console.error('App boot failed after unlock:', err);
+    });
     return true;
   },
 
   lock() {
     sessionStorage.removeItem(this.sessionKey);
+    localStorage.removeItem(this.sessionKey);
     this.show();
   },
 
@@ -65,7 +103,7 @@ const AppLock = {
       if (error) error.textContent = '';
       if (submit) submit.disabled = true;
       try {
-        const ok = await this.unlock(input?.value || '');
+        const ok = await this.unlock((input?.value || '').trim());
         if (!ok) {
           if (error) error.textContent = 'Incorrect password. Try again.';
           if (input) {
@@ -93,7 +131,7 @@ function lockApp() {
   AppLock.lock();
 }
 
-// ─── Global State ─────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Global State Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const App = {
   state: {
     characters: [],
@@ -132,7 +170,7 @@ const App = {
   applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     const btn = document.getElementById('dark-mode-toggle');
-    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (btn) btn.innerHTML = theme === 'dark' ? '&#9728;' : '&#9790;'
   },
 
   fontPresets: {
@@ -285,7 +323,7 @@ const App = {
   },
 };
 
-// ─── TTS Utility ──────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ TTS Utility Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const TTS = {
   speak(text, lang = 'zh-TW', rate = 0.85, options = {}) {
     if (typeof lang === 'object') {
@@ -304,49 +342,49 @@ const TTS = {
     
     // Check if input is mostly pinyin (latin chars). If so, it reads disjointedly.
     // Try to strip tone marks and spaces to see if it's purely pinyin
-    const isPinyin = /^[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]+$/.test(processedText);
+    const isPinyin = /^[a-zÃ„ ÃƒÂ¡Ã‡Å½ÃƒÂ Ã„â€œÃƒÂ©Ã„â€ºÃƒÂ¨Ã„Â«ÃƒÂ­Ã‡ ÃƒÂ¬Ã… ÃƒÂ³Ã‡â€™ÃƒÂ²Ã…Â«ÃƒÂºÃ‡â€ÃƒÂ¹Ã‡â€“Ã‡ËœÃ‡Å¡Ã‡Å“ÃƒÂ¼\s]+$/.test(processedText);
 
     // Map common standalone pinyin examples from onboarding to Hanzi
     const exactPinyinMap = {
-      'mā': '媽', 'má': '麻', 'mǎ': '馬', 'mà': '罵',
-      'bā': '八', 'bá': '拔', 'bǎ': '把', 'bà': '爸',
-      'bō': '波', 'bó': '伯', 'bǐ': '比', 'bù': '不',
-      'pā': '趴', 'pá': '爬', 'pó': '婆', 'pǐ': '匹',
-      'wū': '屋', 'wú': '無', 'wǔ': '五', 'wù': '物',
-      'hú': '胡', 'hé': '河', 'hē': '喝', 'hǎo': '好', 'hòu': '後',
-      'yī': '一', 'yí': '疑', 'yǐ': '以', 'yì': '意',
-      'nǚ': '女', 'lǚ': '旅行', 'qù': '去', 'jū': '居', 'xū': '需',
-      'yǔ': '語', 'yú': '魚', 'hǎo': '好', 'nǐ hǎo': '你好',
-      'nǐ': '你', 'nán': '南', 'nǎi': '奶', 'niú': '牛',
-      'lǐ': '裡', 'lán': '藍', 'lái': '來', 'liù': '六',
-      'jiā': '家', 'jiē': '街', 'jiù': '舊',
-      'qī': '七', 'qù': '去', 'qǐ': '起',
-      'xī': '西', 'xiā': '蝦', 'xiǎo': '小', 'xīn': '心', 'xiū': '修', 'xiē': '些',
-      'zhī': '知', 'zhǐ': '紙', 'zhù': '住', 'zhǎo': '找', 'zhā': '渣', 'zhài': '債', 'zhōng': '中',
-      'zī': '資', 'zǐ': '子', 'zù': '租', 'zǎo': '早', 'zài': '在',
-      'chī': '吃', 'chū': '出', 'shā': '沙', 'shēn': '身', 'shī': '詩',
-      'shū': '書', 'shú': '熟', 'shǔ': '鼠', 'shù': '樹', 'shōu': '收',
-      'rén': '人',
-      'māo': '貓', 'máo': '毛', 'mǎo': '卯', 'mào': '帽',
-      'tāng': '湯', 'táng': '糖', 'tǎng': '躺', 'tàng': '燙',
-      'mái': '埋', 'mài': '賣', 'mǎi': '買',
-      'wén': '聞', 'wèn': '問',
-      'sǐ': '死', 'sì': '四',
-      'tiān': '天', 'tī': '梯', 'tài': '太', 'tóu': '頭',
-      'dà': '大', 'dài': '帶', 'diào': '掉',
-      'fàn': '飯', 'fēi': '飛', 'fān': '翻', 'fāng': '方', 'fēng': '風',
-      'gē': '哥', 'gǒu': '狗', 'gōu': '溝', 'gěi': '給', 'gōng': '工',
-      'kāi': '開',
-      'mén': '門', 'mán': '蠻', 'màn': '慢', 'máng': '忙', 'míng': '明', 'mēng': '蒙',
-      'bēi': '杯', 'bào': '報', 'biàn': '變', 'biē': '憋',
-      'piào': '票',
-      'b': '玻', 'p': '坡', 'm': '摸', 'f': '佛',
-      'd': '得', 't': '特', 'n': '訥', 'l': '勒',
-      'g': '哥', 'k': '科', 'h': '喝',
-      'j': '基', 'q': '欺', 'x': '希',
-      'zh': '知', 'ch': '蚩', 'sh': '詩', 'r': '日',
-      'z': '資', 'c': '雌', 's': '思',
-      'a': '啊', 'o': '喔', 'e': '鵝', 'i': '衣', 'u': '烏', 'ü': '迂'
+      'mÃ„ ': 'Ã¥ÂªÂ½', 'mÃƒÂ¡': 'Ã©ÂºÂ»', 'mÃ‡Å½': 'Ã©Â¦Â¬', 'mÃƒÂ ': 'Ã§Â½Âµ',
+      'bÃ„ ': 'Ã¥â€¦Â«', 'bÃƒÂ¡': 'Ã¦â€¹â€', 'bÃ‡Å½': 'Ã¦Å Å ', 'bÃƒÂ ': 'Ã§Ë†Â¸',
+      'bÃ… ': 'Ã¦Â³Â¢', 'bÃƒÂ³': 'Ã¤Â¼Â¯', 'bÃ‡ ': 'Ã¦Â¯â€', 'bÃƒÂ¹': 'Ã¤Â¸ ',
+      'pÃ„ ': 'Ã¨Â¶Â´', 'pÃƒÂ¡': 'Ã§Ë†Â¬', 'pÃƒÂ³': 'Ã¥Â©â€ ', 'pÃ‡ ': 'Ã¥Å’Â¹',
+      'wÃ…Â«': 'Ã¥Â±â€¹', 'wÃƒÂº': 'Ã§â€žÂ¡', 'wÃ‡â€': 'Ã¤Âºâ€', 'wÃƒÂ¹': 'Ã§â€°Â©',
+      'hÃƒÂº': 'Ã¨Æ’Â¡', 'hÃƒÂ©': 'Ã¦Â²Â³', 'hÃ„â€œ': 'Ã¥â€“ ', 'hÃ‡Å½o': 'Ã¥Â¥Â½', 'hÃƒÂ²u': 'Ã¥Â¾Å’',
+      'yÃ„Â«': 'Ã¤Â¸â‚¬', 'yÃƒÂ­': 'Ã§â€“â€˜', 'yÃ‡ ': 'Ã¤Â»Â¥', 'yÃƒÂ¬': 'Ã¦â€ž ',
+      'nÃ‡Å¡': 'Ã¥Â¥Â³', 'lÃ‡Å¡': 'Ã¦â€”â€¦Ã¨Â¡Å’', 'qÃƒÂ¹': 'Ã¥Å½Â»', 'jÃ…Â«': 'Ã¥Â±â€¦', 'xÃ…Â«': 'Ã©Å“â‚¬',
+      'yÃ‡â€': 'Ã¨ÂªÅ¾', 'yÃƒÂº': 'Ã©Â­Å¡', 'hÃ‡Å½o': 'Ã¥Â¥Â½', 'nÃ‡  hÃ‡Å½o': 'Ã¤Â½Â Ã¥Â¥Â½',
+      'nÃ‡ ': 'Ã¤Â½Â ', 'nÃƒÂ¡n': 'Ã¥ â€”', 'nÃ‡Å½i': 'Ã¥Â¥Â¶', 'niÃƒÂº': 'Ã§â€°â€º',
+      'lÃ‡ ': 'Ã¨Â£Â¡', 'lÃƒÂ¡n': 'Ã¨â€” ', 'lÃƒÂ¡i': 'Ã¤Â¾â€ ', 'liÃƒÂ¹': 'Ã¥â€¦Â­',
+      'jiÃ„ ': 'Ã¥Â®Â¶', 'jiÃ„â€œ': 'Ã¨Â¡â€”', 'jiÃƒÂ¹': 'Ã¨Ë†Å ',
+      'qÃ„Â«': 'Ã¤Â¸Æ’', 'qÃƒÂ¹': 'Ã¥Å½Â»', 'qÃ‡ ': 'Ã¨ÂµÂ·',
+      'xÃ„Â«': 'Ã¨Â¥Â¿', 'xiÃ„ ': 'Ã¨ Â¦', 'xiÃ‡Å½o': 'Ã¥Â° ', 'xÃ„Â«n': 'Ã¥Â¿Æ’', 'xiÃ…Â«': 'Ã¤Â¿Â®', 'xiÃ„â€œ': 'Ã¤Âºâ€º',
+      'zhÃ„Â«': 'Ã§Å¸Â¥', 'zhÃ‡ ': 'Ã§Â´â„¢', 'zhÃƒÂ¹': 'Ã¤Â½ ', 'zhÃ‡Å½o': 'Ã¦â€°Â¾', 'zhÃ„ ': 'Ã¦Â¸Â£', 'zhÃƒÂ i': 'Ã¥â€šÂµ', 'zhÃ… ng': 'Ã¤Â¸Â­',
+      'zÃ„Â«': 'Ã¨Â³â€¡', 'zÃ‡ ': 'Ã¥Â­ ', 'zÃƒÂ¹': 'Ã§Â§Å¸', 'zÃ‡Å½o': 'Ã¦â€”Â©', 'zÃƒÂ i': 'Ã¥Å“Â¨',
+      'chÃ„Â«': 'Ã¥ Æ’', 'chÃ…Â«': 'Ã¥â€¡Âº', 'shÃ„ ': 'Ã¦Â²â„¢', 'shÃ„â€œn': 'Ã¨ÂºÂ«', 'shÃ„Â«': 'Ã¨Â©Â©',
+      'shÃ…Â«': 'Ã¦â€ºÂ¸', 'shÃƒÂº': 'Ã§â€ Å¸', 'shÃ‡â€': 'Ã©Â¼Â ', 'shÃƒÂ¹': 'Ã¦Â¨Â¹', 'shÃ… u': 'Ã¦â€Â¶',
+      'rÃƒÂ©n': 'Ã¤ÂºÂº',
+      'mÃ„ o': 'Ã¨Â²â€œ', 'mÃƒÂ¡o': 'Ã¦Â¯â€º', 'mÃ‡Å½o': 'Ã¥ Â¯', 'mÃƒÂ o': 'Ã¥Â¸Â½',
+      'tÃ„ ng': 'Ã¦Â¹Â¯', 'tÃƒÂ¡ng': 'Ã§Â³â€“', 'tÃ‡Å½ng': 'Ã¨ÂºÂº', 'tÃƒÂ ng': 'Ã§â€¡â„¢',
+      'mÃƒÂ¡i': 'Ã¥Å¸â€¹', 'mÃƒÂ i': 'Ã¨Â³Â£', 'mÃ‡Å½i': 'Ã¨Â²Â·',
+      'wÃƒÂ©n': 'Ã¨ Å¾', 'wÃƒÂ¨n': 'Ã¥â€¢ ',
+      'sÃ‡ ': 'Ã¦Â­Â»', 'sÃƒÂ¬': 'Ã¥â€ºâ€º',
+      'tiÃ„ n': 'Ã¥Â¤Â©', 'tÃ„Â«': 'Ã¦Â¢Â¯', 'tÃƒÂ i': 'Ã¥Â¤Âª', 'tÃƒÂ³u': 'Ã©Â Â­',
+      'dÃƒÂ ': 'Ã¥Â¤Â§', 'dÃƒÂ i': 'Ã¥Â¸Â¶', 'diÃƒÂ o': 'Ã¦Å½â€°',
+      'fÃƒÂ n': 'Ã©Â£Â¯', 'fÃ„â€œi': 'Ã©Â£â€º', 'fÃ„ n': 'Ã§Â¿Â»', 'fÃ„ ng': 'Ã¦â€“Â¹', 'fÃ„â€œng': 'Ã©Â¢Â¨',
+      'gÃ„â€œ': 'Ã¥â€œÂ¥', 'gÃ‡â€™u': 'Ã§â€¹â€”', 'gÃ… u': 'Ã¦Âº ', 'gÃ„â€ºi': 'Ã§ÂµÂ¦', 'gÃ… ng': 'Ã¥Â·Â¥',
+      'kÃ„ i': 'Ã©â€“â€¹',
+      'mÃƒÂ©n': 'Ã©â€“â‚¬', 'mÃƒÂ¡n': 'Ã¨Â Â»', 'mÃƒÂ n': 'Ã¦â€¦Â¢', 'mÃƒÂ¡ng': 'Ã¥Â¿â„¢', 'mÃƒÂ­ng': 'Ã¦ËœÅ½', 'mÃ„â€œng': 'Ã¨â€™â„¢',
+      'bÃ„â€œi': 'Ã¦ Â¯', 'bÃƒÂ o': 'Ã¥Â Â±', 'biÃƒÂ n': 'Ã¨Â®Å ', 'biÃ„â€œ': 'Ã¦â€ â€¹',
+      'piÃƒÂ o': 'Ã§Â¥Â¨',
+      'b': 'Ã§Å½Â»', 'p': 'Ã¥ Â¡', 'm': 'Ã¦â€˜Â¸', 'f': 'Ã¤Â½â€º',
+      'd': 'Ã¥Â¾â€”', 't': 'Ã§â€°Â¹', 'n': 'Ã¨Â¨Â¥', 'l': 'Ã¥â€¹â€™',
+      'g': 'Ã¥â€œÂ¥', 'k': 'Ã§Â§â€˜', 'h': 'Ã¥â€“ ',
+      'j': 'Ã¥Å¸Âº', 'q': 'Ã¦Â¬Âº', 'x': 'Ã¥Â¸Å’',
+      'zh': 'Ã§Å¸Â¥', 'ch': 'Ã¨Å¡Â©', 'sh': 'Ã¨Â©Â©', 'r': 'Ã¦â€”Â¥',
+      'z': 'Ã¨Â³â€¡', 'c': 'Ã©â€ºÅ’', 's': 'Ã¦â‚¬ ',
+      'a': 'Ã¥â€¢Å ', 'o': 'Ã¥â€“â€', 'e': 'Ã©Âµ ', 'i': 'Ã¨Â¡Â£', 'u': 'Ã§Æ’ ', 'ÃƒÂ¼': 'Ã¨Â¿â€š'
     };
 
     if (exactPinyinMap[processedText]) {
@@ -367,14 +405,14 @@ const TTS = {
 
     // Try to get a high-quality Chinese voice. Gender is best-effort because browsers expose different voice lists.
     const voices = window.speechSynthesis.getVoices();
-    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google 國語'];
-    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google 普通话', 'Google Mandarin'];
+    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google Ã¥Å“â€¹Ã¨ÂªÅ¾'];
+    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â¯ ', 'Google Mandarin'];
     const preferred = [
       'Microsoft Yating Online (Natural) - Chinese (Taiwan)',
       'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
       'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
       'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
-      'Google 國語', 'Google 普通话', 'Google Mandarin',
+      'Google Ã¥Å“â€¹Ã¨ÂªÅ¾', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â¯ ', 'Google Mandarin',
       'Xiaoxiao', 'Yating', 'Hanhan', 'Yunxi', 'Zhiwei', 'Mei-Jia'
     ];
     const zhVoices = voices.filter(v => v.lang && v.lang.startsWith('zh'));
@@ -409,7 +447,7 @@ const TTS = {
   },
 };
 
-// ─── Pinyin Utilities ─────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Pinyin Utilities Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const Pinyin = {
   TONE_MAP: {
     a: ['\u0101','\u00e1','\u01ce','\u00e0','a'], e: ['\u0113','\u00e9','\u011b','\u00e8','e'],
@@ -483,10 +521,10 @@ const Pinyin = {
   }
 };
 
-// ─── API Client (Static Version for GitHub Pages) ───────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ API Client (Static Version for GitHub Pages) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const API = {
   base: 'data', // Relative to public/
-  version: '116', // Match index.html version for consistency
+  version: '138', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -665,7 +703,7 @@ const API = {
   }
 };
 
-// ─── Modal ────────────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Modal Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 window.Modal = {
   show(html) {
     const overlay = document.getElementById('modal-overlay');
@@ -687,7 +725,7 @@ window.Modal = {
 
 const Modal = window.Modal;
 
-// ─── Word/Character Detail Bridge ───────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Word/Character Detail Bridge Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function showWordDetail(word) {
   if (window.VocabularyModule && window.VocabularyModule.showDetail(word)) {
     // Success
@@ -696,7 +734,7 @@ function showWordDetail(word) {
   }
 }
 
-// ─── Character Detail Modal ───────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Character Detail Modal Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 async function showCharModal(hanziOrObj) {
   let char;
   if (typeof hanziOrObj === 'object') {
@@ -730,7 +768,7 @@ async function showCharModal(hanziOrObj) {
   if (modalContent) modalContent.style.maxWidth = '800px';
 
   Modal.show(`
-    <button class="modal-close" onclick="Modal.hide()">✕</button>
+    <button class="modal-close" onclick="Modal.hide()">Ã¢Å“â€¢</button>
 
     <div class="vd-layout" style="margin-top: 10px;">
       <!-- Left: Context & Explanation -->
@@ -739,7 +777,7 @@ async function showCharModal(hanziOrObj) {
           <div class="vd-hanzi" style="text-align:left; line-height:1">${char.traditional || char.hanzi}</div>
           <div style="display:flex; align-items:center; gap:8px; margin-top:8px">
             <span class="vd-pinyin tone-colors" style="margin-top:0">${Pinyin.colorize(char.pinyin || '')}</span>
-            <span class="vd-audio-icon">🔊</span>
+            <span class="vd-audio-icon">Ã°Å¸â€Å </span>
           </div>
         </div>
 
@@ -774,11 +812,11 @@ async function showCharModal(hanziOrObj) {
         <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
           <button class="btn ${isSaved ? 'btn-secondary' : 'btn-outline'}" id="modal-save-btn"
             onclick="toggleSaveChar('${char.hanzi}', this)">
-            ${isSaved ? '★ Saved' : '☆ Save'}
+            ${isSaved ? 'Ã¢Ëœâ€¦ Saved' : 'Ã¢Ëœâ€  Save'}
           </button>
           <button class="btn ${isLearned ? 'btn-secondary' : 'btn-gold'}" id="modal-learn-btn"
             onclick="markLearnedFromModal('${char.hanzi}', this)">
-            ${isLearned ? '✓ Learned' : 'Mark Learned'}
+            ${isLearned ? 'Ã¢Å“â€œ Learned' : 'Mark Learned'}
           </button>
         </div>
       </div>
@@ -796,13 +834,13 @@ async function showCharModal(hanziOrObj) {
               </select>
               <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
-                <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">🖋️ Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Ã°Å¸â€“â€¹Ã¯Â¸  Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
                 <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
               </div>
             </div>
             <div class="flex gap-8">
               <button class="btn btn-ghost btn-sm" onclick="App.animateStrokes()">Animate</button>
-              <button class="btn btn-ghost btn-sm" onclick="App.clearCanvas()">Reset 🔄</button>
+              <button class="btn btn-ghost btn-sm" onclick="App.clearCanvas()">Reset Ã°Å¸â€â€ž</button>
             </div>
           </div>
           <div class="canvas-container" style="flex:1; min-height:300px; background:var(--off-white); border:2px dashed var(--border); border-radius:var(--radius); position:relative; overflow:hidden; touch-action:none; display:flex; align-items:center; justify-content:center;">
@@ -842,20 +880,20 @@ App.initDrawingPad = function(hanzi) {
 function toggleSaveChar(hanzi, btn) {
   if (App.state.progress.savedSet.includes(hanzi)) {
     App.removeFromSaved(hanzi);
-    btn.textContent = '☆ Save';
+    btn.textContent = 'Ã¢Ëœâ€  Save';
     btn.className = 'btn btn-outline';
   } else {
     App.addToSaved(hanzi);
-    btn.textContent = '★ Saved';
+    btn.textContent = 'Ã¢Ëœâ€¦ Saved';
     btn.className = 'btn btn-secondary';
   }
 }
 
 function markLearnedFromModal(hanzi, btn) {
   App.markLearned(hanzi);
-  btn.textContent = '✓ Learned';
+  btn.textContent = 'Ã¢Å“â€œ Learned';
   btn.className = 'btn btn-secondary';
-  App.logActivity('✅', `Marked 「${hanzi}」 as learned`);
+  App.logActivity('Ã¢Å“â€¦', `Marked Ã£â‚¬Å’${hanzi}Ã£â‚¬  as learned`);
   updateStreakDisplay();
 }
 
@@ -866,9 +904,10 @@ function resetAllProgress() {
   }
 }
 
-// ─── Router ───────────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Router Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const routes = {
   '/':                    { title: 'Dashboard',          render: renderDashboard,         route: 'dashboard' },
+  '/masterplan':           { title: 'Masterplan',         render: renderMasterplanPage,   route: 'masterplan' },
   '/onboarding':          { title: 'Pinyin & Tones',     render: renderOnboarding,        route: 'onboarding' },
   '/beginner-launchpad':  { title: 'Beginner Launchpad', render: renderBeginnerLaunchpadPage, route: 'beginner-launchpad' },
   '/beginner-coach':      { title: 'Beginner Coach',     render: renderBeginnerCoachPage, route: 'beginner-coach' },
@@ -988,8 +1027,8 @@ function closeMobileNav() {
 }
 
 const mobileNavGroups = {
-  start: ['dashboard', 'b1-coach', 'study-plan', 'learn'],
-  beginner: ['beginner-launchpad', 'playground', 'beginner-coach', 'quiz-flash', 'onboarding', 'quiz-pronunciation', 'quiz-tones'],
+  start: ['dashboard', 'masterplan', 'b1-coach', 'study-plan', 'learn'],
+  beginner: ['onboarding', 'quiz-tones', 'quiz-pronunciation', 'beginner-launchpad', 'playground', 'quiz-flash', 'beginner-coach'],
   course: ['vocabulary-books', 'chapters', 'grammar', 'dialogue', 'reading', 'scenarios'],
   practice: ['flashcards', 'mixed-recall', 'sentence-builder', 'char-playground', 'library', 'vocabulary'],
   exams: ['tocfl', 'tocfl-content', 'exams', 'mock-reading', 'mock-listening', 'quiz-vocabulary']
@@ -1020,14 +1059,14 @@ function openMobileSection(section) {
   const bar = document.getElementById('mobile-section-bar');
   if (!bar) return;
   const sections = {
-    start: [['/', 'dashboard', 'Dashboard'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/study-plan', 'study-plan', 'Today'], ['/learn', 'learn', 'Path']],
-    beginner: [['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/playground', 'playground', 'Playground'], ['/beginner-coach', 'beginner-coach', 'Coach'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/onboarding', 'onboarding', 'Pinyin'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/quiz/tones', 'quiz-tones', 'Tones']],
+    start: [['/', 'dashboard', 'Dashboard'], ['/masterplan', 'masterplan', 'Masterplan'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/study-plan', 'study-plan', 'Today'], ['/learn', 'learn', 'Path']],
+    beginner: [['/onboarding', 'onboarding', 'Pinyin'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/playground', 'playground', 'Playground'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/beginner-coach', 'beginner-coach', 'Coach']],
     course: [['/vocabulary-books', 'vocabulary-books', 'Books'], ['/chapters', 'chapters', 'Chapters'], ['/grammar', 'grammar', 'Grammar'], ['/dialogue', 'dialogue', 'Dialogue'], ['/reading', 'reading', 'Reading'], ['/scenarios', 'scenarios', 'Scenarios']],
     practice: [['/flashcards', 'flashcards', 'Cards'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/char-playground', 'char-playground', 'Characters'], ['/library', 'library', 'Library'], ['/vocabulary', 'vocabulary', 'Words']],
     exams: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Native'], ['/exams', 'exams', 'Monthly'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab Quiz']]
   };
   const sectionIcons = {
-    dashboard: 'dashboard', 'b1-coach': 'route', 'beginner-coach': 'check', learn: 'map', onboarding: 'music', chapters: 'book', 'beginner-launchpad': 'layers',
+    dashboard: 'dashboard', masterplan: 'route', 'b1-coach': 'route', 'beginner-coach': 'check', learn: 'map', onboarding: 'music', chapters: 'book', 'beginner-launchpad': 'layers',
     'vocabulary-books': 'notebook', library: 'library', vocabulary: 'vocabulary', grammar: 'grammar', flashcards: 'flashcards',
     tocfl: 'target', 'tocfl-content': 'file', 'quiz-vocabulary': 'vocabulary', 'quiz-flash': 'flashcards', 'quiz-tones': 'target',
     'quiz-pronunciation': 'letters', exams: 'exam', reading: 'reading', dialogue: 'dialogue', 'mock-reading': 'file',
@@ -1100,344 +1139,67 @@ function toggleMobileNav() {
   if (toggle) toggle.setAttribute('aria-expanded', String(isOpen));
 }
 
-// ─── Dashboard ────────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Dashboard Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
-async function renderBeginnerLaunchpadPage(container) {
-  await API.loadScript(`js/beginner-launchpad.js?v=${API.version}`);
-  if (window.BeginnerLaunchpadModule) return BeginnerLaunchpadModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad Error</h3></div>';
-}
-
-async function renderBeginnerCoachPage(container) {
-  await API.loadScript(`js/beginner-coach.js?v=${API.version}`);
-  if (window.BeginnerCoachModule) return BeginnerCoachModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Beginner Coach Error</h3></div>';
-}
-
-async function renderB1CoachPage(container) {
-  await API.loadScript(`js/b1-coach.js?v=${API.version}`);
-  if (window.B1CoachModule) return B1CoachModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>B1 Coach Error</h3></div>';
-}
-
-async function renderMixedRecallPage(container) {
-  await API.loadScript(`js/mixed-recall.js?v=${API.version}`);
-  if (window.MixedRecallModule) return MixedRecallModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Mixed Recall Error</h3></div>';
-}
-
-async function renderSentenceBuilderPage(container) {
-  await API.loadScript(`js/sentence-builder.js?v=${API.version}`);
-  if (window.SentenceBuilderModule) return SentenceBuilderModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Sentence Builder Error</h3></div>';
-}
-
-async function renderTOCFLPage(container) {
-  await API.loadScript(`js/tocfl.js?v=${API.version}`);
-  if (typeof TOCFLModule !== 'undefined') return TOCFLModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>TOCFL Lab Error</h3></div>';
-}
-
-async function renderTOCFLContentPage(container) {
-  await API.loadScript(`js/tocfl-content.js?v=${API.version}`);
-  if (typeof TOCFLContentModule !== 'undefined') return TOCFLContentModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>TOCFL Content Error</h3></div>';
-}
-
-async function renderStudyPlanPage(container) {
-  await API.loadScript(`js/study-plan.js?v=${API.version}`);
-  if (window.StudyPlanModule) return StudyPlanModule.render(container);
-  container.innerHTML = '<div class="empty-state"><h3>Study Plan Error</h3></div>';
-}
-
+// â”€â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function renderDashboard(container) {
-  // Render layout skeleton immediately if data isn't ready
-  if (!App.state.characters.length) {
-    renderDashboardSkeleton(container);
-    // Load in background and re-render
-    API.getCharacters({ limit: 9999 }).then(charResult => {
-      App.state.characters = charResult.data || [];
-      if (getPath() === '/') renderDashboard(container);
-      updateTopbarBadge();
-    }).catch(err => {
-      console.warn('Dashboard character preload failed:', err.message);
-    });
-    return;
-  }
-
-  const prog  = App.state.progress;
-  const chars = App.state.characters;
+  const prog = App.state.progress;
+  const chars = App.state.characters || [];
   const totalChars = chars.length || 0;
-  const learned    = prog.learnedChars.length;
-  const pct        = totalChars > 0 ? Math.round((learned / totalChars) * 100) : 0;
-  const daily      = prog.dailyReviewed || 0;
-  const goal       = App.state.settings.dailyGoal || 10;
-  const dailyPct   = Math.min(100, Math.round((daily / goal) * 100));
-  const displayName = App.state.settings.displayName || 'Learner';
-
+  const learned = (prog.learnedChars || []).length;
+  const pct = totalChars > 0 ? Math.round((learned / totalChars) * 100) : 0;
+  const daily = prog.dailyReviewed || 0;
+  const goal = App.state.settings.dailyGoal || 10;
+  const dailyPct = Math.min(100, Math.round((daily / goal) * 100));
   const srs = SRS.getStats();
   const dueToday = srs.due_today || 0;
-
-  const LEVELS = ['novice','a1','a2','b1'];
-  const LMETA  = {
-    novice:{name:'Novice',color:'#16a34a'},
-    a1:{name:'A1',color:'#2563eb'},
-    a2:{name:'A2',color:'#d97706'},
-    b1:{name:'B1',color:'#7c3aed'}
-  };
-  const levelStats = LEVELS.map(lvl => {
-    const total = chars.filter(c => c.level === lvl).length;
-    const done = chars.filter(c => c.level === lvl && prog.learnedChars.includes(c.hanzi)).length;
-    return { lvl, ...LMETA[lvl], total, done, pct: total > 0 ? Math.round((done / total) * 100) : 0 };
-  }).filter(l => l.total > 0);
-
-  let cotd = null;
-  if (chars.length) {
-    const idx = Math.floor(Date.now() / 86400000) % chars.length;
-    cotd = chars[idx];
-  }
-
-  const recentActivity = (prog.activityLog || []).slice(0, 5);
-  const isFirstTime = learned === 0 && !prog.lastStudyDate;
-  const renderIcon = name => window.IconSystem?.svg(name) || '';
   const weakCount = (prog.weakChars || []).length;
-  const beginnerGuided = window.BeginnerCoachModule ? BeginnerCoachModule.guidedOn() : true;
-  const nextHref = beginnerGuided && learned < 120 ? '#/beginner-coach' : '#/b1-coach';
-  const nextLabel = beginnerGuided && learned < 120 ? 'Open Beginner Coach' : 'Open B1 Coach';
-  const nextTitle = beginnerGuided && learned < 120 ? "Follow today's beginner mission" : "Follow today's B1 mission";
-  const nextDesc = beginnerGuided && learned < 120
-    ? 'Guided Mode chooses one beginner task, then adds writing and speaking practice without locking the rest of the app.'
-    : 'Your 180-day roadmap chooses the tasks, exam focus, and weak-area repair for today.';
+  const recentActivity = (prog.activityLog || []).slice(0, 4);
+  const todayKeyValue = new Date().toDateString();
+  const completedToday = localStorage.getItem('zhongwen_dashboard_done') === todayKeyValue;
 
-  let recommendation = null;
-  if (prog.weakChars && prog.weakChars.length > 0) {
-    const randomWeak = prog.weakChars[Math.floor(Math.random() * prog.weakChars.length)];
-    recommendation = {
-      title: 'Targeted Review',
-      desc: `You have repeated misses around ${randomWeak}. Give it a short focused pass.`,
-      action: `showCharModal('${randomWeak}')`,
-      btn: 'Practice Now'
-    };
-  } else if (learned < 50) {
-    recommendation = {
-      title: 'Beginner Launchpad',
-      desc: 'Start with tiny lessons, first-100 words, mini stories, and no overwhelm.',
-      action: "navigate('/beginner-launchpad')",
-      btn: 'Open Launchpad'
-    };
-  }
+  const levelStats = ['novice','a1','a2','b1'].map(lvl => {
+    const meta = { novice:['Novice','#27ae60'], a1:['A1','#2980b9'], a2:['A2','#e67e22'], b1:['B1','#8e44ad'] }[lvl];
+    const total = chars.filter(c => c.level === lvl).length;
+    const done = chars.filter(c => c.level === lvl && (prog.learnedChars || []).includes(c.hanzi)).length;
+    return { lvl, name: meta[0], color: meta[1], total, done, pct: total ? Math.round((done / total) * 100) : 0 };
+  }).filter(item => item.total > 0);
 
-  const cotdJson = cotd ? JSON.stringify(cotd).replace(/"/g, '&quot;') : '';
+  let phase = { label:'Sound Foundation', title:'Start with sounds, not random tests', copy:'Build pinyin, tones, and listening confidence before you load many characters.', href:'#/onboarding', action:'Open Pinyin & Tones', next:'Then do 10 tone questions.' };
+  if (dueToday > 0) phase = { label:'Review First', title:'Clear due memory before new content', copy:'SRS due cards are the fastest way to stop forgetting yesterday\'s work.', href:'#/learn', action:'Review Due Cards', next:'Then continue your current beginner lesson.' };
+  else if (learned >= 25 && learned < 120) phase = { label:'Beginner Basics', title:'Continue Launchpad in order', copy:'Use Level 1-3 as the first course. Small lessons, real examples, then short checks.', href:'#/beginner-launchpad', action:'Continue Launchpad', next:'Finish one lesson before browsing.' };
+  else if (learned >= 120 && learned < 500) phase = { label:'Daily Training', title:'Use Beginner Coach packs', copy:'Work through one structured pack: words, listening, speaking, writing, and recall.', href:'#/beginner-coach', action:'Open Daily Coach', next:'Complete one full pack.' };
+  else if (learned >= 500) phase = { label:'Course + Exam Prep', title:'Move into books and TOCFL practice', copy:'Use course dialogues for input, active recall for memory, and TOCFL only as a test.', href:'#/vocabulary-books', action:'Open Course Books', next:'Do one book lesson, then mixed recall.' };
+
+  const tasks = [
+    { n:'01', title: dueToday ? 'Review due cards' : 'Sound warmup', text: dueToday ? `${dueToday} SRS cards due today` : '5 minutes of tones or pronunciation', href: dueToday ? '#/learn' : '#/quiz/tones' },
+    { n:'02', title:'Main lesson', text: phase.next, href: phase.href },
+    { n:'03', title:'Active recall', text:'Build or recall sentences without looking first', href:'#/sentence-builder' },
+    { n:'04', title:'Output check', text:'Write, speak, or shadow one short answer', href:'#/beginner-coach' }
+  ];
+  const browseGroups = [
+    ['Beginner', [['Pinyin & Tones','#/onboarding'], ['Beginner Launchpad','#/beginner-launchpad'], ['Beginner Playground','#/playground'], ['Picture Flash Quiz','#/quiz/flash'], ['Beginner Coach','#/beginner-coach']]],
+    ['Course', [['Course Books','#/vocabulary-books'], ['Chapters','#/chapters'], ['Grammar Academy','#/grammar'], ['Dialogues','#/dialogue'], ['Reading','#/reading'], ['Scenarios','#/scenarios']]],
+    ['Practice', [['Learning Path / SRS','#/learn'], ['Flashcards','#/flashcards'], ['Mixed Recall','#/mixed-recall'], ['Sentence Builder','#/sentence-builder'], ['Characters','#/library'], ['Vocabulary','#/vocabulary']]],
+    ['Exams', [['TOCFL Exam Center','#/tocfl'], ['TOCFL Native Content','#/tocfl-content'], ['Monthly Exams','#/exams'], ['Reading Mock','#/mock-test/reading'], ['Listening Mock','#/mock-test/listening']]]
+  ];
 
   container.innerHTML = `
-    <div class="dashboard-modern">
-      <section class="dash-hero-modern">
-        <div class="dash-hero-copy">
-          <div class="dash-kicker"><span>Novice</span><span>A1</span><span>A2</span><span>B1</span></div>
-          <h1>Welcome back, ${displayName}</h1>
-          <p>${isFirstTime ? 'Start with sound and tone control, then move into characters and real dialogue.' : 'Keep today simple: review what is due, then push one small skill forward.'}</p>
-          <div class="dash-hero-actions">
-            <a class="btn btn-primary" href="${nextHref}">${renderIcon('play')}<span>${nextLabel}</span></a>
-            <a class="btn btn-outline" href="#/tocfl-content">${renderIcon('exam')}<span>TOCFL Practice</span></a>
-          </div>
-        </div>
-        <div class="dash-progress-orbit" aria-label="Overall progress">
-          <div class="dash-progress-ring" style="--dash-pct:${pct}">
-            <strong>${pct}%</strong>
-            <span>${totalChars ? `${learned}/${totalChars}` : 'Ready'}</span>
-          </div>
-          <div class="dash-ring-label">${totalChars ? 'characters learned' : 'loading library'}</div>
-        </div>
-      </section>
-
-      <section class="dash-main-grid">
-        <article class="dash-next-card">
-          <div class="dash-card-icon">${renderIcon('check')}</div>
-          <div>
-            <div class="dash-card-label">Next best action</div>
-            <h2>${nextTitle}</h2>
-            <p>${nextDesc}</p>
-          </div>
-          <a class="btn btn-primary" href="${nextHref}">${nextLabel}</a>
-        </article>
-
-        <article class="dash-metric-card">
-          <div class="dash-card-icon">${renderIcon('flame')}</div>
-          <span>Streak</span>
-          <strong>${prog.streak || 0}</strong>
-          <small>${daily}/${goal} reviews today</small>
-          <div class="dash-mini-bar"><span style="width:${dailyPct}%"></span></div>
-        </article>
-
-        <article class="dash-metric-card">
-          <div class="dash-card-icon">${renderIcon('brain')}</div>
-          <span>SRS Queue</span>
-          <strong>${srs.total || 0}</strong>
-          <small>${srs.mature || 0} mature - ${dueToday} due</small>
-        </article>
-
-        <article class="dash-metric-card">
-          <div class="dash-card-icon">${renderIcon('target')}</div>
-          <span>Weak Areas</span>
-          <strong>${weakCount}</strong>
-          <small>${weakCount ? 'Ready for targeted review' : 'No weak areas logged yet'}</small>
-        </article>
-      </section>
-
-      ${window.WeaknessEngine ? `<div class="dash-weakness-wrap">${WeaknessEngine.renderSummaryCard()}</div>` : ''}
-
-      ${recommendation ? `
-      <section class="dash-recommend-card">
-        <div class="dash-card-icon">${renderIcon('lightbulb')}</div>
-        <div>
-          <div class="dash-card-label">Recommended</div>
-          <h2>${recommendation.title}</h2>
-          <p>${recommendation.desc}</p>
-        </div>
-        <button class="btn btn-primary" onclick="${recommendation.action}">${recommendation.btn}</button>
-      </section>` : ''}
-
-      <section class="dash-action-grid">
-        <a href="#/beginner-coach" class="dash-action-card dash-action-card-primary">
-          ${renderIcon('check')}
-          <strong>Beginner Daily Coach</strong>
-          <span>Do exactly this today</span>
-        </a>
-        <a href="#/beginner-launchpad" class="dash-action-card">
-          ${renderIcon('rocket')}
-          <strong>Beginner Launchpad</strong>
-          <span>First 100 words</span>
-        </a>
-        <a href="#/b1-coach" class="dash-action-card">
-          ${renderIcon('route')}
-          <strong>B1 Coach</strong>
-          <span>180-day mission plan</span>
-        </a>
-        <a href="#/study-plan" class="dash-action-card">
-          ${renderIcon('check')}
-          <strong>Study Today</strong>
-          <span>One guided session</span>
-        </a>
-        <a href="#/mixed-recall" class="dash-action-card">
-          ${renderIcon('brain')}
-          <strong>Mixed Recall</strong>
-          <span>Audio, hanzi, pinyin</span>
-        </a>
-        <a href="#/sentence-builder" class="dash-action-card">
-          ${renderIcon('layers')}
-          <strong>Sentence Builder</strong>
-          <span>Active grammar practice</span>
-        </a>
-        <a href="#/dialogue" class="dash-action-card">
-          ${renderIcon('dialogue')}
-          <strong>Dialogues</strong>
-          <span>Real conversation flow</span>
-        </a>
-        <a href="#/scenarios" class="dash-action-card">
-          ${renderIcon('scenarios')}
-          <strong>Scenarios</strong>
-          <span>Daily life situations</span>
-        </a>
-        <a href="#/quiz/pronunciation" class="dash-action-card">
-          ${renderIcon('letters')}
-          <strong>Pronunciation</strong>
-          <span>Tones and pinyin</span>
-        </a>
-      </section>
-
-      ${levelStats.length ? `
-      <section class="dash-panel-modern">
-        <div class="dash-section-head">
-          <div>
-            <span>Level map</span>
-            <h2>Progress by level</h2>
-          </div>
-          <a href="#/learn">Open path</a>
-        </div>
-        <div class="dash-level-grid">
-          ${levelStats.map(l => `
-            <article class="dash-level-card" style="--level-color:${l.color}">
-              <div><strong>${l.name}</strong><span>${l.done}/${l.total}</span></div>
-              <div class="dash-level-bar"><span style="width:${l.pct}%"></span></div>
-              <small>${l.pct}% complete</small>
-            </article>`).join('')}
-        </div>
-      </section>` : ''}
-
-      ${cotd ? `
-      <section class="dash-character-card" data-char="${cotd.traditional || cotd.hanzi}">
-        <button class="dash-character-main" onclick="TTS.speak('${cotd.traditional || cotd.hanzi}')" title="Hear character">
-          ${cotd.traditional || cotd.hanzi}
-        </button>
-        <div class="dash-character-info">
-          <span>Character of the day</span>
-          <h2 class="tone-colors">${Pinyin.colorize(cotd.pinyin || '')}</h2>
-          <p>${cotd.definition || ''}</p>
-          ${cotd.example_sentence ? `<blockquote>${cotd.example_sentence.sentence || ''}<small>${cotd.example_sentence.english || ''}</small></blockquote>` : ''}
-          <div class="dash-character-actions">
-            <button class="btn btn-outline btn-sm" onclick="TTS.speak('${cotd.traditional || cotd.hanzi}')">${renderIcon('volume')}<span>Hear</span></button>
-            <button class="btn btn-primary btn-sm" onclick="showCharModal(${cotdJson})">Details</button>
-          </div>
-        </div>
-      </section>` : ''}
-
-      <section class="dash-panel-modern">
-        <div class="dash-section-head">
-          <div>
-            <span>Activity</span>
-            <h2>Recent learning</h2>
-          </div>
-        </div>
-        ${recentActivity.length ? `
-          <div class="dash-activity-list">
-            ${recentActivity.map(a => `
-              <div class="dash-activity-item">
-                <span class="dash-activity-dot"></span>
-                <strong>${a.text}</strong>
-                <small>${timeAgo(a.time)}</small>
-              </div>`).join('')}
-          </div>` : `
-          <div class="dash-empty-modern">
-            ${renderIcon('route')}
-            <p>No activity yet. Start with Pinyin & Tones and this area will become your learning timeline.</p>
-            <a class="btn btn-primary btn-sm" href="#/onboarding">Start Pinyin</a>
-          </div>`}
-      </section>
-    </div>
-  `;
+    <div class="dash-command"><section class="dc-hero"><div class="dc-panel dc-main"><div class="dc-kicker">${phase.label}</div><h1>${phase.title}</h1><p>${phase.copy}</p><div class="dc-actions"><a class="btn btn-primary" href="${phase.href}">${phase.action}</a><a class="btn btn-outline" href="#/masterplan">View Masterplan</a><a class="btn btn-outline" href="#/settings">Sync Progress</a></div></div><aside class="dc-panel dc-focus ${completedToday ? 'dc-done' : ''}"><div class="dc-kicker">Today\'s finish line</div><div class="dc-ring" style="background:conic-gradient(var(--red) ${dailyPct}%, var(--off-white) 0)"><strong>${dailyPct}%</strong></div><p>${completedToday ? 'Marked complete for today. Keep the streak alive tomorrow.' : `${daily}/${goal} review items checked. Finish the four-step plan, then mark today complete.`}</p><button class="btn ${completedToday ? 'btn-outline' : 'btn-primary'}" type="button" onclick="completeDashboardFocus()">${completedToday ? 'Completed Today' : 'Mark Today Complete'}</button></aside></section>
+    <section class="dc-grid">${tasks.map(task => `<a class="dc-panel dc-task" href="${task.href}"><span>${task.n}</span><strong>${task.title}</strong><small>${task.text}</small></a>`).join('')}</section>
+    <section class="dc-metrics"><article class="dc-panel dc-metric"><strong>${learned}</strong><span>Characters learned</span><small>${pct}% of ${totalChars || 'loading'} total</small></article><article class="dc-panel dc-metric"><strong>${srs.total || 0}</strong><span>SRS queue</span><small>${srs.mature || 0} mature, ${dueToday} due</small></article><article class="dc-panel dc-metric"><strong>${weakCount}</strong><span>Weak areas</span><small>${weakCount ? 'Repair before new tests' : 'No weak areas logged yet'}</small></article><article class="dc-panel dc-metric"><strong>${prog.streak || 0}</strong><span>Day streak</span><small>Consistency beats cramming</small></article></section>
+    <section class="dc-two"><article class="dc-panel dc-section"><h2>Learning order</h2><div class="dc-phases"><a class="dc-phase" href="#/onboarding"><b>0</b><span><strong>Sound foundation</strong><small>Pinyin, tones, pronunciation first.</small></span></a><a class="dc-phase" href="#/beginner-launchpad"><b>1</b><span><strong>Beginner Launchpad</strong><small>Survival words and first sentences.</small></span></a><a class="dc-phase" href="#/beginner-coach"><b>2</b><span><strong>Daily Coach packs</strong><small>Words, listening, writing, speaking.</small></span></a><a class="dc-phase" href="#/vocabulary-books"><b>3</b><span><strong>Course books</strong><small>Dialogues, grammar, controlled lessons.</small></span></a><a class="dc-phase" href="#/tocfl"><b>4</b><span><strong>Exam mode</strong><small>Test after input and recall feel stable.</small></span></a></div>${levelStats.length ? `<h2 style="margin-top:18px">Level progress</h2><div class="dc-phases">${levelStats.map(l => `<div class="dc-phase"><b style="color:${l.color}">${l.pct}%</b><span><strong>${l.name}</strong><small>${l.done}/${l.total} characters</small></span></div>`).join('')}</div>` : ''}</article>
+    <article class="dc-panel dc-section"><h2>Browse without getting lost</h2><div class="dc-browse">${browseGroups.map(group => `<div class="dc-group"><h3>${group[0]}</h3><div class="dc-links">${group[1].map(link => `<a href="${link[1]}">${link[0]}</a>`).join('')}</div></div>`).join('')}</div><h2 style="margin-top:18px">Recent activity</h2><div class="dc-activity">${recentActivity.length ? recentActivity.map(a => `<div><span>${a.text}</span><small>${timeAgo(a.time)}</small></div>`).join('') : '<div><span>No activity yet. Start with the first action above.</span><small>Today</small></div>'}</div></article></section></div>`;
 
   updateStreakDisplay();
   updateTopbarBadge();
 }
 
-function renderDashboardSkeleton(container) {
-  const renderIcon = name => window.IconSystem?.svg(name) || '';
-  const displayName = App.state.settings.displayName || 'Learner';
-  container.innerHTML = `
-    <div class="dashboard-modern">
-      <section class="dash-hero-modern">
-        <div class="dash-hero-copy">
-          <div class="dash-kicker"><span>Novice</span><span>A1</span><span>A2</span><span>B1</span></div>
-          <h1>Welcome back, ${displayName}</h1>
-          <p>Loading your learning journey...</p>
-          <div class="dash-hero-actions">
-            <a class="btn btn-primary disabled" href="#">${renderIcon('play')}<span>Loading...</span></a>
-          </div>
-        </div>
-        <div class="dash-progress-orbit">
-          <div class="dash-progress-ring skeleton" style="--dash-pct:0">
-            <strong>...</strong>
-          </div>
-        </div>
-      </section>
-      <section class="dash-main-grid">
-        ${[1,2,3,4].map(() => `<article class="dash-metric-card skeleton-card"></article>`).join('')}
-      </section>
-      <section class="dash-action-grid">
-        ${[1,2,3,4,5,6].map(() => `<div class="dash-action-card skeleton-card"></div>`).join('')}
-      </section>
-    </div>
-  `;
+function completeDashboardFocus() {
+  const key = new Date().toDateString();
+  localStorage.setItem('zhongwen_dashboard_done', key);
+  App.logActivity('check', 'Completed today\'s focus plan');
+  renderDashboard(document.getElementById('page-content'));
 }
 
 function timeAgo(isoString) {
@@ -1455,19 +1217,13 @@ function updateStreakDisplay() {
   if (el) el.textContent = App.state.progress.streak || 0;
 }
 
-// ─── Library ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Library â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let libraryState = {
   search: '', level: '', category: '', offset: 0, limit: 60,
   total: 0, data: [],
 };
 
 async function renderLibrary(container) {
-  if (App.state.lastLevelFilter) {
-    libraryState.level = App.state.lastLevelFilter;
-    libraryState.offset = 0;
-    App.state.lastLevelFilter = null;
-  }
-
   // Render skeleton immediately
   container.innerHTML = `
     <div class="page-header">
@@ -1476,8 +1232,8 @@ async function renderLibrary(container) {
     </div>
     <div class="library-controls">
       <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" class="input" id="lib-search" placeholder="Search hanzi, pīnyīn, or English…" value="${libraryState.search}">
+        <span class="search-icon">ðŸ”</span>
+        <input type="text" class="input" id="lib-search" placeholder="Search hanzi, pÄ«nyÄ«n, or Englishâ€¦" value="${libraryState.search}">
       </div>
       <select class="input" id="lib-level" style="width:auto;min-width:100px">
         <option value="">All Levels</option>
@@ -1567,7 +1323,7 @@ async function loadLibraryPage() {
     if (info) info.textContent = `Showing ${result.data.length} of ${result.total} characters`;
 
     if (!result.data.length) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">🔍</div><h3>No characters found</h3><p>Try a different search term or filter.</p></div>`;
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">ðŸ”</div><h3>No characters found</h3><p>Try a different search term or filter.</p></div>`;
       renderPagination();
       return;
     }
@@ -1591,7 +1347,7 @@ async function loadLibraryPage() {
 
     renderPagination();
   } catch (err) {
-    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">⚠️</div><h3>Failed to load characters</h3><p>${err.message}</p></div>`;
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">âš ï¸</div><h3>Failed to load characters</h3><p>${err.message}</p></div>`;
   }
 }
 
@@ -1605,26 +1361,26 @@ function renderPagination() {
 
   if (totalPages <= 1) { container.innerHTML = ''; return; }
 
-  let html = `<button class="page-btn" onclick="libGoPage(${currentPage - 1})" ${currentPage === 0 ? 'disabled' : ''}>← Prev</button>`;
+  let html = `<button class="page-btn" onclick="libGoPage(${currentPage - 1})" ${currentPage === 0 ? 'disabled' : ''}>â† Prev</button>`;
 
   const pages = [];
   for (let i = 0; i < totalPages; i++) {
     if (i === 0 || i === totalPages - 1 || (i >= currentPage - 2 && i <= currentPage + 2)) {
       pages.push(i);
-    } else if (pages[pages.length - 1] !== '…') {
-      pages.push('…');
+    } else if (pages[pages.length - 1] !== 'â€¦') {
+      pages.push('â€¦');
     }
   }
 
   pages.forEach(p => {
-    if (p === '…') {
-      html += `<span style="padding:6px 4px;color:var(--text-3)">…</span>`;
+    if (p === 'â€¦') {
+      html += `<span style="padding:6px 4px;color:var(--text-3)">â€¦</span>`;
     } else {
       html += `<button class="page-btn ${p === currentPage ? 'active' : ''}" onclick="libGoPage(${p})">${p + 1}</button>`;
     }
   });
 
-  html += `<button class="page-btn" onclick="libGoPage(${currentPage + 1})" ${currentPage >= totalPages - 1 ? 'disabled' : ''}>Next →</button>`;
+  html += `<button class="page-btn" onclick="libGoPage(${currentPage + 1})" ${currentPage >= totalPages - 1 ? 'disabled' : ''}>Next â†’</button>`;
 
   container.innerHTML = html;
 }
@@ -1637,7 +1393,15 @@ function libGoPage(page) {
   document.getElementById('char-grid')?.scrollIntoView({ behavior: 'smooth' });
 }
 
-// ─── Settings ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Settings â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+
+async function renderMasterplanPage(container) {
+  await API.loadScript(`js/masterplan.js?v=${API.version}`);
+  if (window.MasterplanModule) return MasterplanModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Masterplan Error</h3></div>';
+}
+
 function renderSettings(container) {
   const s = App.state.settings;
   const p = App.state.progress;
@@ -1797,7 +1561,7 @@ function renderSettings(container) {
         </div>
       </div>
 
-
+      ${typeof isApk !== 'undefined' && isApk ? '' : `
       <div class="card mb-16">
         <div class="settings-section">
           <h3>Security</h3>
@@ -1805,6 +1569,7 @@ function renderSettings(container) {
           <button class="btn btn-outline" onclick="lockApp()">Lock App Now</button>
         </div>
       </div>
+      `}
 
       <div class="card mb-16">
         <div class="settings-section">
@@ -1830,7 +1595,7 @@ function renderSettings(container) {
         <button class="btn btn-primary" id="set-save-btn">Save Settings</button>
         <button class="btn btn-ghost btn-error" id="set-reset-btn">Reset All Progress</button>
       </div>
-      <div id="set-saved-msg" class="hidden" style="margin-top:10px;color:var(--tone2);font-weight:600">✓ Settings saved!</div>
+      <div id="set-saved-msg" class="hidden" style="margin-top:10px;color:var(--tone2);font-weight:600">Ã¢Å“â€œ Settings saved!</div>
     </div>
   `;
 
@@ -1862,7 +1627,7 @@ function renderSettings(container) {
   });
 }
 
-// ─── Progress Management Utilities ───────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Progress Management Utilities Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 // Unified progress sync: one small file for all app progress.
 const ProgressSync = (() => {
   const VERSION = 1;
@@ -2009,7 +1774,7 @@ function copyProgressText() {
   const payload = ProgressSync.collect();
   const json = JSON.stringify(payload);
   navigator.clipboard.writeText(json).then(() => {
-    alert('✓ Progress JSON copied to clipboard! You can paste and save it anywhere.');
+    alert('Ã¢Å“â€œ Progress JSON copied to clipboard! You can paste and save it anywhere.');
   }).catch(() => {
     const box = document.getElementById('sync-text-box');
     if (box) {
@@ -2098,7 +1863,7 @@ async function renderExamsPage(container) {
   container.innerHTML = '<div class="empty-state"><h3>Exam Module Error</h3></div>';
 }
 
-// ─── Topbar level badge ──────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Topbar level badge Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function updateTopbarBadge() {
   const chars = App.state.characters;
   const learned = App.state.progress.learnedChars;
@@ -2124,7 +1889,7 @@ function updateTopbarBadge() {
   badge.className = 'badge ' + badgeClass;
 }
 
-// ─── New module stubs ────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ New module stubs Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 async function renderOnboarding(container) {
   await API.loadScript(`js/onboarding.js?v=${API.version}`);
   if (typeof OnboardingModule !== 'undefined') return OnboardingModule.render(container);
@@ -2167,7 +1932,7 @@ async function renderDialoguePage(container) {
   container.innerHTML = '<div class="empty-state"><h3>Dialogue Module Error</h3></div>';
 }
 
-// ─── Boot ─────────────────────────────────────────────────────────────────────
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Boot Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 async function boot() {
   App.loadSettings();
   App.loadProgress();
@@ -2248,6 +2013,55 @@ if (document.readyState === 'loading') {
 }
 
 
+// ─── Missing Route Renderers ──────────────────────────────────────────────────
+
+async function renderBeginnerLaunchpadPage(container) {
+  await API.loadScript(`js/beginner-launchpad.js?v=${API.version}`);
+  if (window.BeginnerLaunchpadModule) return BeginnerLaunchpadModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Beginner Launchpad Error</h3></div>';
+}
+
+async function renderBeginnerCoachPage(container) {
+  await API.loadScript(`js/beginner-coach.js?v=${API.version}`);
+  if (window.BeginnerCoachModule) return BeginnerCoachModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Beginner Coach Error</h3></div>';
+}
+
+async function renderB1CoachPage(container) {
+  await API.loadScript(`js/b1-coach.js?v=${API.version}`);
+  if (window.B1CoachModule) return B1CoachModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>B1 Coach Error</h3></div>';
+}
+
+async function renderStudyPlanPage(container) {
+  await API.loadScript(`js/study-plan.js?v=${API.version}`);
+  if (window.StudyPlanModule) return StudyPlanModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Study Plan Error</h3></div>';
+}
+
+async function renderMixedRecallPage(container) {
+  await API.loadScript(`js/mixed-recall.js?v=${API.version}`);
+  if (window.MixedRecallModule) return MixedRecallModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Mixed Recall Error</h3></div>';
+}
+
+async function renderSentenceBuilderPage(container) {
+  await API.loadScript(`js/sentence-builder.js?v=${API.version}`);
+  if (window.SentenceBuilderModule) return SentenceBuilderModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Sentence Builder Error</h3></div>';
+}
+
+async function renderTOCFLPage(container) {
+  await API.loadScript(`js/tocfl.js?v=${API.version}`);
+  if (window.TOCFLModule) return TOCFLModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Module Error</h3></div>';
+}
+
+async function renderTOCFLContentPage(container) {
+  await API.loadScript(`js/tocfl-content.js?v=${API.version}`);
+  if (window.TOCFLContentModule) return TOCFLContentModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>TOCFL Content Module Error</h3></div>';
+}
 
 
 

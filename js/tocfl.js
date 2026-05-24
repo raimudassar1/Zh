@@ -5,7 +5,7 @@
 
 'use strict';
 
-const TOCFLModule = (() => {
+window.TOCFLModule = (() => {
   const officialSources = [
     { label: 'TOCFL official test categories', url: 'https://tocfl.edu.tw/tocfl/index.php/test/cat/list/3' },
     { label: 'TOCFL overseas listening/reading brochure', url: 'https://tocfl.edu.tw/OS/dm/TOCFL_En_DM.pdf' },
@@ -131,7 +131,8 @@ const TOCFLModule = (() => {
     const characters = Array.isArray(charsResult) ? charsResult : (charsResult.data || []);
     const vocabulary = flattenVocabulary(vocabResult);
     const sentences = collectSentences(characters, readings, [book1, book2, book3]);
-    return { characters, vocabulary, readings: readings || [], sentences };
+    const passages = collectReadingPassages(readings, [book1, book2, book3], sentences);
+    return { characters, vocabulary, readings: readings || [], sentences, passages };
   }
 
   function flattenVocabulary(raw) {
@@ -174,6 +175,58 @@ const TOCFLModule = (() => {
     const seen = new Set();
     return rows.filter(row => row.zh && row.zh.length >= 3 && row.zh.length <= 120 && !seen.has(row.zh) && seen.add(row.zh));
   }
+  function collectReadingPassages(readings, books, sentences) {
+    const rows = [];
+    (readings || []).forEach((r, idx) => {
+      const zh = String(r.text_zh || r.zh || '').trim();
+      if (zh) rows.push({
+        passage: trimPassage(zh, 180),
+        question: r.title ? `What is this text mainly about: ${r.title}?` : 'What is the main idea of this text?',
+        answer: r.description || r.title || 'The main idea of the passage.',
+        level: (r.difficulty || 'a2').toLowerCase(),
+        source: 'reading'
+      });
+    });
+    (books || []).forEach((book, bookIndex) => {
+      (book?.chapters || []).forEach(ch => {
+        (ch.dialogues || []).forEach((d, dIdx) => {
+          const lines = (d.lines || []).map(line => ({ zh: line.zh || line.chinese || '', en: line.en || line.english || '' })).filter(line => line.zh);
+          if (lines.length >= 2) {
+            rows.push({
+              passage: lines.slice(0, 5).map(line => line.zh).join('\n'),
+              question: 'What are the speakers doing in this dialogue?',
+              answer: lines.find(line => line.en)?.en || ch.title || d.title || 'They are having a conversation.',
+              level: bookIndex === 0 ? 'a1' : bookIndex === 1 ? 'a2' : 'b1',
+              source: 'book-dialogue'
+            });
+          }
+        });
+      });
+    });
+    (sentences || []).forEach((row, idx) => {
+      if (idx % 3 === 0 && row.zh && row.en) rows.push({
+        passage: row.zh,
+        question: 'What does this sentence mean?',
+        answer: row.en,
+        level: row.level || 'novice',
+        source: row.source || 'sentence'
+      });
+    });
+    const seen = new Set();
+    return rows.filter(row => row.passage && row.answer && !seen.has(row.passage) && seen.add(row.passage));
+  }
+
+  function trimPassage(text, maxChars) {
+    const cleaned = String(text || '').replace(/\s+/g, ' ').trim();
+    if (cleaned.length <= maxChars) return cleaned;
+    const parts = cleaned.split(/(?<=[。！？!?])/).filter(Boolean);
+    let out = '';
+    for (const part of parts) {
+      if ((out + part).length > maxChars && out) break;
+      out += part;
+    }
+    return out || cleaned.slice(0, maxChars);
+  }
 
   function firstSentence(text) {
     const first = String(text).split(/[。！？!?]/).filter(Boolean)[0]?.trim();
@@ -194,33 +247,44 @@ const TOCFLModule = (() => {
     const band = bands[state.band];
     area.innerHTML = `
       <div class="tocfl-guidance-grid">
-        <article class="tocfl-guidance-main">
-          <h3>${band.label} Roadmap</h3>
-          <p>${band.chinese} · ${band.cefr}. This band checks whether you can understand daily Chinese at the expected TOCFL level and respond under time pressure.</p>
-          <div class="tocfl-roadmap">
-            ${roadStep('Listening', `${band.listening.questions} questions`, `${band.listening.minutes} minutes`, band.listening.parts)}
-            ${roadStep('Reading', `${band.reading.questions} questions`, `${band.reading.minutes} minutes`, band.reading.parts)}
-            ${roadStep('Writing', band.writing.tasks, `${band.writing.minutes} minutes`, [{ name: band.writing.official ? 'Official-style writing' : 'Website beginner writing practice', count: '' }])}
+        <article class="tocfl-guidance-main tocfl-learning-plan">
+          <h3>${band.label} Learning Order</h3>
+          <p>${band.chinese} · ${band.cefr}. Use this as the spine of the app: learn content first, drill only the skill you are building, then test. Do not start from random quizzes.</p>
+          <div class="tocfl-roadmap tocfl-roadmap-plain">
+            ${planStep('1', 'Foundation', 'Beginner Launchpad + Pinyin/Tones', 'Learn sound, basic words, and sentence order before exam drills.')}
+            ${planStep('2', 'Course Input', 'Course Books + Dialogue Practice', 'Read and listen to real chapter dialogues. Add unknown words to review.')}
+            ${planStep('3', 'Skill Drills', 'Listening, Reading, Writing', `${band.label}: ${band.listening.questions} listening and ${band.reading.questions} reading question format.`)}
+            ${planStep('4', 'Mock Exam', 'TOCFL Native Content + Mock Exams', 'Sit one timed block, review misses, then repeat the same band later.')}
+          </div>
+          <div class="tocfl-band-spec">
+            ${roadStep('Listening format', `${band.listening.questions} questions`, `${band.listening.minutes} minutes`, band.listening.parts)}
+            ${roadStep('Reading format', `${band.reading.questions} questions`, `${band.reading.minutes} minutes`, band.reading.parts)}
+            ${roadStep('Writing practice', band.writing.tasks, `${band.writing.minutes} minutes`, [{ name: band.writing.official ? 'Official-style writing' : 'Website beginner writing practice', count: '' }])}
           </div>
         </article>
         <aside class="tocfl-guidance-side">
-          <h4>Recommended order</h4>
+          <h4>What to do first</h4>
           <ol>
-            <li>Practice the weakest section for 10 questions.</li>
-            <li>Run Mock Exam 1 listening only.</li>
-            <li>Review misses and vocabulary gaps.</li>
-            <li>Run full Listening + Reading simulation.</li>
+            <li>If you are below 300 words, use Beginner Launchpad before TOCFL.</li>
+            <li>If you can read simple sentences, study Course Book 1 dialogues.</li>
+            <li>Use Practice Parts only after learning the content.</li>
+            <li>Use Mock Exams only to measure readiness.</li>
           </ol>
-          <button type="button" class="btn btn-primary w-full" data-jump-mode="practice">Start part practice</button>
-          <button type="button" class="btn btn-outline w-full" data-jump-mode="exams">Go to mock exams</button>
+          <a class="btn btn-primary w-full" href="#/beginner-launchpad">Start foundations</a>
+          <a class="btn btn-outline w-full" href="#/vocabulary-books">Study course content</a>
+          <button type="button" class="btn btn-outline w-full" data-jump-mode="practice">Practice TOCFL parts</button>
+          <button type="button" class="btn btn-outline w-full" data-jump-mode="exams">Mock exams</button>
         </aside>
-      </div>
-      ${sourceNote()}`;
+      </div>      ${sourceNote()}`;
     bindJumpButtons(area);
   }
 
   function roadStep(title, count, time, parts) {
     return `<section><div><strong>${title}</strong><span>${count} · ${time}</span></div><p>${parts.map(p => `${p.name}${p.count ? ` (${p.count})` : ''}`).join(' → ')}</p></section>`;
+  }
+
+  function planStep(number, title, route, detail) {
+    return `<section class="tocfl-plan-step"><span>${number}</span><div><strong>${title}</strong><em>${route}</em><p>${detail}</p></div></section>`;
   }
 
   function renderPractice(area) {
@@ -343,6 +407,7 @@ const TOCFLModule = (() => {
     }
     if (skill === 'writing') return buildWriting(count, seedText);
     const band = bands[state.band];
+    if (skill === 'reading') return buildReading(count, seedText, band);
     const levels = band.levels;
     const sourceChars = state.data.characters.filter(c => levels.includes((c.level || '').toLowerCase()) || levels.includes((c.tocfl_band || '').toLowerCase()));
     const chars = seededShuffle(sourceChars.length ? sourceChars : state.data.characters, seedText).slice(0, count);
@@ -362,37 +427,47 @@ const TOCFLModule = (() => {
 
   function listeningItem(char, idx, part, band) {
     const optionCount = part.options || band.listening.options || 3;
+    const sentence = cleanSentence(char.example_sentence?.sentence) || sampleSentence(char);
+    const sourceRow = { zh: sentence, py: char.example_sentence?.pinyin || char.pinyin || '', en: char.example_sentence?.english || char.definition || '' };
     const useMeaning = state.band === 'bandB' || part.name === 'Dialogue' || part.name === 'Monologue';
-    const options = makeOptions(char, useMeaning ? 'definition' : 'hanzi', optionCount, `L${idx}`);
-    const sentence = char.example_sentence?.sentence || sampleSentence(char);
+    const options = useMeaning
+      ? makeListeningMeaningOptions(sourceRow, optionCount, `L${idx}-${char.hanzi}`)
+      : makeListeningSentenceOptions(sourceRow, optionCount, `L${idx}-${char.hanzi}`);
     return {
       type: 'listening',
       section: part.name,
-      prompt: useMeaning ? 'Listen to the item and choose the best answer.' : 'Listen and choose the matching Traditional Chinese.',
+      prompt: useMeaning ? 'Listen and choose the meaning that matches the audio.' : 'Listen and choose the full Traditional Chinese sentence you heard.',
       audioText: sentence,
       options,
-      answer: useMeaning ? char.definition : char.hanzi,
-      explanation: `${char.hanzi} · ${char.pinyin || ''} · ${char.definition || ''}`,
+      answer: useMeaning ? sourceRow.en : sourceRow.zh,
+      explanation: `${sourceRow.zh}${sourceRow.py ? ` · ${sourceRow.py}` : ''}${sourceRow.en ? ` · ${sourceRow.en}` : ''}`,
       sourceText: sentence
     };
   }
+  function buildReading(count, seedText, band) {
+    const levels = band.levels;
+    const source = (state.data.passages || []).filter(row => levels.includes(String(row.level || '').toLowerCase()));
+    const pool = seededShuffle(source.length ? source : (state.data.passages || []), seedText).slice(0, count);
+    const plan = sectionPlan(band.reading.parts, count);
+    return pool.map((row, idx) => readingPassageItem(row, idx, plan[idx], band, `${seedText}-R${idx}`));
+  }
 
-  function readingItem(char, idx, part, band) {
+  function readingPassageItem(row, idx, part, band, seedText) {
     const optionCount = part.options || band.reading.options || 3;
-    const useSentence = idx % 3 === 0 && char.example_sentence?.sentence;
-    const paragraph = buildMiniPassage(char, idx);
-    const prompt = part.name.includes('Gap')
-      ? paragraph.replace(char.hanzi, '＿＿')
-      : part.name.includes('Comprehension') && useSentence
-        ? `${char.example_sentence.sentence}\n\nWhat is the key meaning of 「${char.hanzi}」?`
-        : `What does 「${char.hanzi}」 mean?`;
+    const isGap = part.name.includes('Gap');
+    const gap = isGap ? makeGapPassage(row.passage) : null;
+    const prompt = isGap
+      ? `Read the passage and choose the best word for the blank.\n\n${gap.prompt}`
+      : `Read the passage, then answer the question.\n\n${row.passage}\n\n${row.question || 'What is the best answer?'}`;
+    const answer = isGap ? gap.answer : row.answer;
+    const options = isGap ? makeGapOptions(gap.answer, optionCount, seedText) : makeReadingAnswerOptions(row, optionCount, seedText);
     return {
       type: 'reading',
       section: part.name,
       prompt,
-      options: makeOptions(char, 'definition', optionCount, `R${idx}`),
-      answer: char.definition,
-      explanation: `${char.hanzi} · ${char.pinyin || ''} · ${char.definition || ''}`
+      options,
+      answer,
+      explanation: `${row.passage}${row.answer ? ` · ${row.answer}` : ''}`
     };
   }
 
@@ -419,6 +494,29 @@ const TOCFLModule = (() => {
     return idx % 2 ? `小明說：「${sentence}」` : sentence;
   }
 
+  function makeReadingAnswerOptions(row, count, seedText) {
+    const correct = row.answer || 'The passage gives this information.';
+    const wrong = seededShuffle((state.data.passages || [])
+      .filter(item => item.answer && item.answer !== correct)
+      .map(item => item.answer), seedText)
+      .slice(0, count - 1);
+    return seededShuffle([correct, ...wrong], `${seedText}-reading-options`).map((text, i) => ({ id: String.fromCharCode(65 + i), text }));
+  }
+
+  function makeGapPassage(passage) {
+    const candidates = String(passage || '').match(/[\u4e00-\u9fff]{1,4}/g) || [];
+    const answer = candidates.find(w => w.length >= 2) || candidates[0] || '是';
+    return { answer, prompt: String(passage || '').replace(answer, '＿＿') };
+  }
+
+  function makeGapOptions(answer, count, seedText) {
+    const pool = seededShuffle((state.data.vocabulary || [])
+      .map(v => v.word || v.hanzi || v.traditional)
+      .filter(Boolean)
+      .filter(word => word !== answer), seedText)
+      .slice(0, count - 1);
+    return seededShuffle([answer, ...pool], `${seedText}-gap-options`).map((text, i) => ({ id: String.fromCharCode(65 + i), text }));
+  }
   function makeOptions(char, mode, count, seedText) {
     const correct = mode === 'hanzi' ? char.hanzi : char.definition;
     const pool = seededShuffle(state.data.characters.filter(c => c.hanzi !== char.hanzi && c.definition), `${seedText}-${char.hanzi}`);
@@ -426,6 +524,29 @@ const TOCFLModule = (() => {
     return seededShuffle([correct, ...wrong], `${seedText}-opts`).map((text, i) => ({ id: String.fromCharCode(65 + i), text }));
   }
 
+  function cleanSentence(value) {
+    const text = String(value || '').trim();
+    if (!text) return '';
+    return text.length > 80 ? firstSentence(text) : text;
+  }
+
+  function sentenceOptionPool(correctRow, seedText) {
+    const rows = (state.data.sentences || [])
+      .map(row => ({ zh: cleanSentence(row.zh), py: row.py || '', en: row.en || '' }))
+      .filter(row => row.zh && row.zh !== correctRow.zh && row.zh.length >= 4 && row.zh.length <= 40);
+    return seededShuffle(rows, seedText);
+  }
+
+  function makeListeningSentenceOptions(correctRow, count, seedText) {
+    const wrong = sentenceOptionPool(correctRow, seedText).slice(0, count - 1).map(row => row.zh);
+    return seededShuffle([correctRow.zh, ...wrong], `${seedText}-sentence-options`).map((text, i) => ({ id: String.fromCharCode(65 + i), text }));
+  }
+
+  function makeListeningMeaningOptions(correctRow, count, seedText) {
+    const correct = correctRow.en || correctRow.zh;
+    const wrong = sentenceOptionPool(correctRow, seedText).map(row => row.en || row.zh).filter(Boolean).slice(0, count - 1);
+    return seededShuffle([correct, ...wrong], `${seedText}-meaning-options`).map((text, i) => ({ id: String.fromCharCode(65 + i), text }));
+  }
   function renderQuestion(area) {
     const q = state.questions[state.current];
     if (!q) return renderWorkspace();
@@ -569,3 +690,7 @@ const TOCFLModule = (() => {
 
   return { render };
 })();
+
+
+
+

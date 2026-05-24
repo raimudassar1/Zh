@@ -90,7 +90,7 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
 
   function playTarget() {
     if (currentState.currentTarget) {
-      TTS.speak(currentState.currentTarget.syllable);
+      TTS.speak(currentState.currentTarget.char || currentState.currentTarget.syllable, 'zh-TW', 0.78);
     }
   }
 

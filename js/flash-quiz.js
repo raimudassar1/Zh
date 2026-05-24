@@ -151,9 +151,10 @@ window.FlashQuizModule = (() => {
     const content = `
       <div class="quiz-overlay-custom">
         <div class="quiz-header-custom">
-          <button class="btn btn-ghost btn-sm" onclick="FlashQuizModule.closeQuiz()">✕ Close</button>
+          <button class="btn btn-ghost btn-sm" onclick="FlashQuizModule.closeQuiz()">Close</button>
+          <button class="btn btn-ghost btn-sm" ${state.index <= 0 ? 'disabled' : ''} onclick="FlashQuizModule.prev()">Previous</button>
           <div style="font-weight:700">Question ${state.index + 1} / ${state.pool.length}</div>
-          <div style="color:var(--gold); font-weight:800">⭐ ${state.score}</div>
+          <div style="color:var(--gold); font-weight:800">Score ${state.score}</div>
         </div>
         
         <div class="quiz-card-custom animate-pop-in">
@@ -170,7 +171,7 @@ window.FlashQuizModule = (() => {
             `).join('')}
           </div>
           
-          <button class="btn btn-primary w-full hidden" id="quiz-next-btn" onclick="FlashQuizModule.next()">Next Question →</button>
+          <button class="btn btn-primary w-full" id="quiz-next-btn" onclick="FlashQuizModule.next()">Next Question</button>
         </div>
       </div>
     `;
@@ -270,6 +271,7 @@ window.FlashQuizModule = (() => {
     setCategory,
     startQuiz,
     checkAnswer,
+    prev: () => { if (state.index > 0) { state.index--; state.chosen = false; showQuestion(); } },
     next: () => { state.index++; state.chosen = false; showQuestion(); },
     closeQuiz: () => { 
         Modal.hide(); 

@@ -22,6 +22,7 @@ window.QuizModule = (() => {
     current: 0,
     score: 0,
     wrong: [],
+    answers: {},
     answered: false,
     startTime: 0,
   };
@@ -609,6 +610,7 @@ window.QuizModule = (() => {
       quizState.current = 0;
       quizState.score = 0;
       quizState.wrong = [];
+      quizState.answers = {};
       quizState.startTime = Date.now();
       quizState.answered = false;
 
@@ -619,11 +621,13 @@ window.QuizModule = (() => {
 
     playQuestionAudio() {
       const q = quizState.questions[quizState.current];
-      if (q && q.correct && q.correct.audio_file) {
+      if (!q) return;
+      if (q.correct && q.correct.audio_file) {
         this.playAudio(q.correct.audio_file);
-      } else {
-        TTS.speak(q.audio_text || q.question_hanzi || q.correct.hanzi);
+        return;
       }
+      const spoken = q.audio_text || q.question_hanzi || q.sentence?.replace('___', q.correct?.hanzi || q.correct?.traditional || '') || q.correct?.traditional || q.correct?.hanzi || '';
+      if (spoken && window.TTS && typeof TTS.speak === 'function') TTS.speak(spoken, 'zh-TW', 0.78);
     },
 
     playAudio(filename) {
@@ -646,6 +650,11 @@ window.QuizModule = (() => {
 
     const progress = `${quizState.current + 1} / ${quizState.questions.length}`;
     const pct = Math.round((quizState.current / quizState.questions.length) * 100);
+    const savedAnswer = quizState.answers[quizState.current] || null;
+    quizState.answered = !!savedAnswer;
+    const canGoBack = quizState.current > 0;
+    const canGoNext = quizState.current < quizState.questions.length - 1;
+    const shouldOfferAudio = ['pinyin-choice', 'tone-choice', 'hanzi-from-pinyin', 'audio-hanzi', 'hanzi-to-def', 'cloze'].includes(q.type);
 
     let questionHTML = '';
     if (q.type === 'pinyin-choice' || q.type === 'tone-choice') {
@@ -678,7 +687,8 @@ window.QuizModule = (() => {
       else if (q.type === 'pinyin-choice') content = `<span style="color:var(--tone${Pinyin.getTone(opt.pinyin)||1})">${opt.pinyin}</span>`;
       else content = `<span class="qo-hanzi">${opt.hanzi}</span><span class="qo-pinyin ${App.state.settings.showQuizPinyin === false ? 'hidden' : ''}">${opt.pinyin || ''}</span>`;
 
-      return `<button class="quiz-option" data-correct="${opt.isCorrect}" onclick="handleAnswer(this)">${content}</button>`;
+      const stateClass = savedAnswer ? (opt.isCorrect ? ' correct' : (savedAnswer.index === i ? ' wrong' : '')) : '';
+      return `<button class="quiz-option${stateClass}" data-correct="${opt.isCorrect}" ${savedAnswer ? 'disabled' : ''} onclick="handleAnswer(this, ${i})">${content}</button>`;
     }).join('');
 
     area.innerHTML = `
@@ -691,13 +701,16 @@ window.QuizModule = (() => {
       <div class="quiz-question-card animate-fade-in">
         <div class="text-small text-muted mb-12 uppercase letter-spacing-1">${q.question_label}</div>
         ${questionHTML}
+        ${shouldOfferAudio ? `<button class="btn btn-ghost btn-sm mt-12" onclick="QuizModule.playQuestionAudio()">Hear prompt</button>` : ''}
       </div>
 
       <div class="quiz-options-grid">${optionsHTML}</div>
-      <div id="quiz-feedback" class="quiz-feedback"></div>
+      <div id="quiz-feedback" class="quiz-feedback ${savedAnswer ? (savedAnswer.isCorrect ? 'correct show' : 'wrong show') : ''}">${savedAnswer ? renderFeedback(q, savedAnswer.isCorrect) : ''}</div>
 
-      <div class="flex-end mt-20">
-        <button id="next-btn" class="btn btn-primary hidden" onclick="QuizModule.nextQuestion()">Next Question →</button>
+      <div class="quiz-nav-row mt-20" style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-ghost" ${canGoBack ? '' : 'disabled'} onclick="QuizModule.prevQuestion()">Previous</button>
+        <div id="quiz-answer-status" class="text-small text-muted">${savedAnswer ? 'Answered' : 'Not answered yet'}</div>
+        <button id="next-btn" class="btn btn-primary" onclick="QuizModule.nextQuestion()">${canGoNext ? 'Next' : 'Finish Quiz'}</button>
       </div>
     `;
 
@@ -706,12 +719,23 @@ window.QuizModule = (() => {
     }
   }
 
-  window.handleAnswer = function(btn) {
-    if (quizState.answered) return;
+  function renderFeedback(q, isCorrect) {
+    const item = q.correct || {};
+    return `
+      <div class="flex-center gap-12">
+        <span>${isCorrect ? 'Correct' : 'Not quite'} <strong>${item.traditional || item.hanzi || ''}</strong> [${Pinyin.colorize(item.pinyin || '')}] - ${item.definition || ''}</span>
+        <button class="btn btn-sm btn-ghost" onclick="QuizModule.playQuestionAudio()">Hear</button>
+      </div>
+    `;
+  }
+
+  window.handleAnswer = function(btn, index) {
+    if (quizState.answered || quizState.answers[quizState.current]) return;
     quizState.answered = true;
 
     const q = quizState.questions[quizState.current];
     const isCorrect = btn.dataset.correct === 'true';
+    quizState.answers[quizState.current] = { index, isCorrect };
 
     document.querySelectorAll('.quiz-option').forEach(b => {
       b.disabled = true;
@@ -721,14 +745,9 @@ window.QuizModule = (() => {
 
     const feedback = document.getElementById('quiz-feedback');
     feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
-    
-    const item = q.correct;
-    feedback.innerHTML = `
-      <div class="flex-center gap-12">
-        <span>${isCorrect ? '✓' : '✗'} <strong>${item.traditional || item.hanzi}</strong> [${Pinyin.colorize(item.pinyin)}] - ${item.definition}</span>
-        <button class="btn btn-sm btn-ghost" onclick="QuizModule.playQuestionAudio()">🔊</button>
-      </div>
-    `;
+    feedback.innerHTML = renderFeedback(q, isCorrect);
+    const status = document.getElementById('quiz-answer-status');
+    if (status) status.textContent = 'Answered';
 
     const elapsed = Date.now() - (quizState.questionStarted || Date.now());
     if (isCorrect) {
@@ -742,11 +761,19 @@ window.QuizModule = (() => {
     }
     if (elapsed > 9000 && window.WeaknessEngine) WeaknessEngine.record('slow', { hanzi: item.hanzi, label: item.traditional || item.hanzi, type: 'quiz-slow', ms: elapsed });
 
-    document.getElementById('next-btn').classList.remove('hidden');
+  };
+
+  window.QuizModule.prevQuestion = function() {
+    if (quizState.current <= 0) return;
+    quizState.current--;
+    showQuestion();
   };
 
   window.QuizModule.nextQuestion = function() {
-    quizState.answered = false;
+    if (quizState.current >= quizState.questions.length - 1) {
+      showResults();
+      return;
+    }
     quizState.current++;
     showQuestion();
   };
