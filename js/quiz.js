@@ -667,14 +667,26 @@ window.QuizModule = (() => {
       showQuestion();
     },
 
-    playQuestionAudio() {
+    async playQuestionAudio() {
       const q = quizState.questions[quizState.current];
       if (!q) return;
       if (q.correct && q.correct.audio_file) {
         this.playAudio(q.correct.audio_file);
         return;
       }
-      const spoken = q.audio_text || q.question_hanzi || q.sentence?.replace('___', q.correct?.hanzi || q.correct?.traditional || '') || q.correct?.traditional || q.correct?.hanzi || '';
+      const filledSentence = q.sentence?.replace('___', q.correct?.hanzi || q.correct?.traditional || '') || '';
+      const spoken = q.audio_text || q.question_hanzi || filledSentence || q.correct?.traditional || q.correct?.hanzi || '';
+      const audioTarget = {
+        audioKey: q.audioKey || q.audio_key || q.correct?.audioKey || q.correct?.audio_key,
+        pinyin: q.question_pinyin || q.correct?.pinyin || q.correct?.py,
+        pinyinNumbered: q.correct?.pinyinNumbered || q.correct?.pinyin_numbered,
+        hanzi: spoken || q.correct?.hanzi || q.correct?.traditional
+      };
+      if (window.PinyinAudio) {
+        const result = await PinyinAudio.play(audioTarget, spoken, { rate: 0.72 });
+        if (!result && window.showToast) showToast('Audio is unavailable on this device. Check Settings > Audio Diagnostics.');
+        return;
+      }
       if (!spoken) {
         if (window.showToast) showToast('No audio text is available for this question.');
         return;
@@ -682,12 +694,6 @@ window.QuizModule = (() => {
       if (typeof TTS !== 'undefined' && TTS && typeof TTS.speak === 'function') {
         const result = TTS.speak(spoken, 'zh-TW', 0.78);
         if (!result && window.showToast) showToast('TTS is unavailable on this device. Check Settings > Audio Diagnostics.');
-      } else if (window.speechSynthesis && window.SpeechSynthesisUtterance) {
-        window.speechSynthesis.cancel();
-        const utt = new SpeechSynthesisUtterance(spoken);
-        utt.lang = 'zh-TW';
-        utt.rate = 0.78;
-        window.speechSynthesis.speak(utt);
       }
     },
 
@@ -695,6 +701,16 @@ window.QuizModule = (() => {
       if (!filename) return;
       const path = `books/book${quizState.book}/audio_b${quizState.book}/${filename}`;
       new Audio(path).play().catch(err => console.error("Quiz Audio Error:", err));
+    },
+
+    async playReviewAudio(index) {
+      const item = quizState.wrong[index];
+      if (!item) return;
+      if (window.PinyinAudio) {
+        await PinyinAudio.play(item, item.traditional || item.hanzi || '', { rate: 0.72 });
+        return;
+      }
+      if (item.traditional || item.hanzi) TTS.speak(item.traditional || item.hanzi, 'zh-TW', 0.72);
     }
   };
 
@@ -834,7 +850,7 @@ window.QuizModule = (() => {
       quizState.score++;
       App.unmarkWeak(item.hanzi);
     } else {
-      quizState.wrong.push(item);
+      quizState.wrong.push({ ...item, _missedQuestion: q });
       App.markWeak(item.hanzi);
       const area = q.type === 'tone-choice' ? 'tone' : (q.type && q.type.includes('pinyin') ? 'pinyin' : 'vocabulary');
       if (window.WeaknessEngine) WeaknessEngine.record(area, { hanzi: item.hanzi, label: item.traditional || item.hanzi, type: 'quiz-wrong', ms: elapsed });
@@ -846,6 +862,18 @@ window.QuizModule = (() => {
   window.QuizModule.prevQuestion = function() {
     if (quizState.current <= 0) return;
     quizState.current--;
+    showQuestion();
+  };
+
+  window.QuizModule.reviewMissed = function() {
+    const missed = quizState.wrong.map(w => w._missedQuestion).filter(Boolean);
+    if (!missed.length) return;
+    quizState.questions = missed;
+    quizState.current = 0;
+    quizState.score = 0;
+    quizState.wrong = [];
+    quizState.answers = {};
+    quizState.startTime = Date.now();
     showQuestion();
   };
 
@@ -882,8 +910,8 @@ window.QuizModule = (() => {
           <div class="review-section">
             <h4 class="mb-12 text-muted uppercase small">Items to Review</h4>
             <div class="review-list">
-              ${quizState.wrong.map(w => `
-                <div class="review-item" onclick="TTS.speak('${w.hanzi}')">
+              ${quizState.wrong.map((w, i) => `
+                <div class="review-item" onclick="QuizModule.playReviewAudio(${i})">
                   <span class="hanzi">${w.traditional || w.hanzi}</span>
                   <span class="pinyin">${w.pinyin}</span>
                   <span class="def">${w.definition}</span>

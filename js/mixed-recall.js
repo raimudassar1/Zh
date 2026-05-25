@@ -122,7 +122,7 @@ window.MixedRecallModule = (() => {
     if (elapsed > 9000 && window.WeaknessEngine) WeaknessEngine.record('slow', { hanzi: q.correct.hanzi, label: charLabel(q.correct), type: 'mixed-slow', ms: elapsed });
     const fb = document.getElementById('mixed-feedback');
     fb.className = `quiz-feedback ${correct ? 'correct' : 'wrong'} show`;
-    fb.innerHTML = `${correct ? 'Correct.' : 'Review this.'} <strong>${charLabel(q.correct)}</strong> ${q.correct.pinyin || ''} - ${q.correct.definition || ''}<br><button class="btn btn-primary btn-sm mt-8" onclick="MixedRecallModule.next()">Next</button>`;
+    fb.innerHTML = `${correct ? 'Correct.' : 'Not quite.'} <strong>${charLabel(q.correct)}</strong> ${q.correct.pinyin || ''} - ${q.correct.definition || ''}<br><small>Why: match the prompt type first, then confirm hanzi, pinyin, and meaning together.</small><br><button class="btn btn-primary btn-sm mt-8" onclick="MixedRecallModule.next()">Next</button>`;
   }
 
   function next() {

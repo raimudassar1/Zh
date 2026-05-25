@@ -440,7 +440,7 @@ window.BeginnerLaunchpadModule = (() => {
     const fb = item.querySelector('.bl-feedback');
     item.classList.toggle('build-correct', ok);
     item.classList.toggle('build-wrong', !ok && Boolean(built));
-    if (fb) fb.textContent = ok ? 'Correct. Great sentence order.' : `Not yet. Your sentence: ${built || 'empty'}`;
+    if (fb) fb.textContent = ok ? 'Correct. Great sentence order. Say the full sentence aloud once.' : `Not yet. Your sentence: ${built || 'empty'}. Use Show answer if you need the model.`;
     return ok;
   }
   function bind(container) {
@@ -476,7 +476,8 @@ window.BeginnerLaunchpadModule = (() => {
           if (option !== btn) option.classList.remove('wrong');
         });
         const fb = action === 'test-answer' ? btn.closest('.bl-test-question')?.querySelector('.bl-test-feedback') : btn.closest('.bl-exercise-item')?.querySelector('.bl-feedback');
-        if (fb) fb.textContent = ok ? 'Correct.' : `Not yet. Correct answer: ${btn.dataset.correct}`;
+        if (fb) fb.textContent = ok ? 'Correct. Replay it once and say it aloud.' : `Not quite. Correct answer: ${btn.dataset.correct}. Compare it with the prompt before moving on.`;
+        if (!ok && window.WeaknessEngine) window.WeaknessEngine.record('beginner', { item: btn.dataset.correct || '', label: btn.dataset.answer || '', type: action === 'test-answer' ? 'launchpad-test' : 'launchpad-exercise' });
         btn.classList.toggle('wrong', !ok);
         if (ok && btn.dataset.text) speak(btn.dataset.text);
       }

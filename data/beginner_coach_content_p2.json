@@ -302,10 +302,16 @@
         }
       ],
       "passage": {
-        "title": "My Family Listening Passage",
-        "zh": "馬克，你看！這是我家的照片。哇，這張照片很漂亮。這是你爸爸和媽媽嗎？對，這是我爸爸，這是我媽媽。他們看起來很年輕。謝謝。這是我哥哥，這是我妹妹。",
-        "en": "Two friends are sitting together. One student has a photo in her hand. It is a photo of her family. She introduces each person in the photo. They talk about how many people are in their families.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Family Dialogue Listening",
+        "zh": "馬克，你看！這是我家的照片。 哇，這張照片很漂亮。這是你爸爸和媽媽嗎？ 對，這是我爸爸，這是我媽媽。 他們看起來很年輕。 謝謝。這是我哥哥，這是我妹妹。 你有兄弟姐妹嗎？ 有，一個哥哥和一個妹妹。你呢？ 我沒有兄弟姐妹，我是獨生子。 喔，那你家有幾口人？ 我家有三口人：爸爸、媽媽和我。 我家有五口人。我們家很大。 真好！",
+        "en": "Mark, look! This is a photo of my family. Wow, this photo is beautiful. Are these your father and mother? Yes, this is my father, and this is my mother. They look very young. Thanks. This is my older brother, and this is my younger sister. Do you have siblings? Yes, one older brother and one younger sister. How about you? I don't have siblings, I am an only child. Oh, then how many people are in your family? There are three people in my family: father, mother, and me. There are five people in my family. Our family is big. That's great!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你看！這是我家的照片。哇，這張照片很漂亮。這是你爸爸和媽媽嗎？對，這是我爸爸，這是我媽媽。他們看起來很年輕。謝謝。這是我哥哥，這是我妹妹。",
+          "en": "Two friends are sitting together. One student has a photo in her hand. It is a photo of her family. She introduces each person in the photo. They talk about how many people are in their families.",
+          "title": "My Family Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 sentences about your family (e.g., 'My family has 4 people', 'I have a brother').",
@@ -676,10 +682,16 @@
         }
       ],
       "passage": {
-        "title": "My Friend Listening Passage",
-        "zh": "馬克，你有很多朋友嗎？有，我在這裡認識了很多新朋友。誰是你最好的朋友？我最好的朋友叫大衛。大衛是哪國人？",
-        "en": "Two students are talking during a break. One student asks about the other's friends. A student describes his best friend. He talks about his friend's name, nationality, and personality. They talk about what they do together.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Friend Dialogue Listening",
+        "zh": "馬克，你有很多朋友嗎？ 有，我在這裡認識了很多新朋友。 誰是你最好的朋友？ 我最好的朋友叫大衛。 大衛是哪國人？ 他是加拿大人。我們一起學中文。 他是一個怎麼樣的人？ 他非常聰明，也很幽默。 你們常在一起做什麼？ 我們常一起打籃球，或者去圖書館看書。 聽起來很不錯。 下次我介紹你們認識。",
+        "en": "Mark, do you have many friends? Yes, I've met many new friends here. Who is your best friend? My best friend is called David. What nationality is David? He is Canadian. We study Chinese together. What kind of person is he? He is very smart and also very humorous. What do you usually do together? We often play basketball together, or go to the library to read. Sounds good. I'll introduce you to each other next time.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你有很多朋友嗎？有，我在這裡認識了很多新朋友。誰是你最好的朋友？我最好的朋友叫大衛。大衛是哪國人？",
+          "en": "Two students are talking during a break. One student asks about the other's friends. A student describes his best friend. He talks about his friend's name, nationality, and personality. They talk about what they do together.",
+          "title": "My Friend Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short profile of your best friend: name, age, nationality, and what they are like (personality).",
@@ -1050,10 +1062,16 @@
         }
       ],
       "passage": {
-        "title": "How Old Are You? Listening Passage",
-        "zh": "各位同學，請填寫這張表格。寫下你的姓名、國籍和年齡。馬克，你今年幾歲？我今年二十歲。你呢？我二十一歲。",
-        "en": "It is the first day of class. The teacher gives the students a form. They need to write their personal information. They ask each other about their ages and birthdays. They practice numbers and age-related questions.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "How Old Are You? Dialogue Listening",
+        "zh": "各位同學，請填寫這張表格。 寫下你的姓名、國籍和年齡。 馬克，你今年幾歲？ 我今年二十歲。你呢？ 我二十一歲。 那你比我大一歲。 對。你的生日是幾月幾號？ 我的生日是十月五號。你呢？ 我的生日是三月十二號。 我們班誰年齡最大？ 我覺得是大明，他二十五歲了。 二十五歲？那他比我們都大。",
+        "en": "Class, please fill out this form. Write down your name, nationality, and age. Mark, how old are you this year? I am twenty years old this year. How about you? I am twenty-one years old. Then you are one year older than me. Right. When is your birthday (month and day)? My birthday is October 5th. How about you? My birthday is March 12th. Who is the oldest in our class? I think it's Daming, he is twenty-five years old. Twenty-five? Then he is older than all of us.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "各位同學，請填寫這張表格。寫下你的姓名、國籍和年齡。馬克，你今年幾歲？我今年二十歲。你呢？我二十一歲。",
+          "en": "It is the first day of class. The teacher gives the students a form. They need to write their personal information. They ask each other about their ages and birthdays. They practice numbers and age-related questions.",
+          "title": "How Old Are You? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Complete a simple personal profile: Name, Country, Age, Birthday.",
@@ -1424,10 +1442,16 @@
         }
       ],
       "passage": {
-        "title": "My Birthday Listening Passage",
-        "zh": "馬克，下個星期六是我的生日。真的嗎？祝你生日快樂！謝謝。我星期六晚上想請朋友來我家玩。太好了！幾點開始？晚上七點。你能來嗎？",
-        "en": "A student's birthday is coming. She wants to have a small party. She invites her friend to her home. They talk about the time and place. They also talk about cake and gifts.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Birthday Dialogue Listening",
+        "zh": "馬克，下個星期六是我的生日。 真的嗎？祝你生日快樂！ 謝謝。我星期六晚上想請朋友來我家玩。 太好了！幾點開始？ 晚上七點。你能來嗎？ 能，我一定去。要做什麼準備嗎？ 不用，我會準備蛋糕和飲料。 你喜歡什麼禮物？ 不用送禮物，你能來我就很高興了。 沒關係，我會帶點好吃的。 那謝謝你。我們星期六晚上見！ 好，星期六見！",
+        "en": "Mark, next Saturday is my birthday. Really? Happy birthday! Thanks. I want to invite friends to my house on Saturday night. Great! What time does it start? 7:00 PM. Can you come? Yes, I'll definitely go. Do I need to prepare anything? No need, I will prepare cake and drinks. What kind of gift do you like? No need for gifts, I'm just happy if you can come. It's okay, I'll bring something delicious. Then thank you. See you Saturday night! Okay, see you Saturday!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，下個星期六是我的生日。真的嗎？祝你生日快樂！謝謝。我星期六晚上想請朋友來我家玩。太好了！幾點開始？晚上七點。你能來嗎？",
+          "en": "A student's birthday is coming. She wants to have a small party. She invites her friend to her home. They talk about the time and place. They also talk about cake and gifts.",
+          "title": "My Birthday Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a birthday invitation: include date, time, place, and 'Please come!'.",
@@ -1798,10 +1822,16 @@
         }
       ],
       "passage": {
-        "title": "Colors in the Room Listening Passage",
-        "zh": "馬克，我們來做海報吧。好啊。你這裡有很多顏色的筆。對。你喜歡什麼顏色？我最喜歡藍色。你呢？我最喜歡紅色和黃色。",
-        "en": "The students are making posters. They have many colored pens and papers. They talk about which colors they like. They decide which colors to use for the posters. The classroom becomes very colorful.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Colors in the Room Dialogue Listening",
+        "zh": "馬克，我們來做海報吧。 好啊。你這裡有很多顏色的筆。 對。你喜歡什麼顏色？ 我最喜歡藍色。你呢？ 我最喜歡紅色和黃色。 那我們用藍色的紙做海報嗎？ 可以。海報的字用什麼顏色？ 我覺得用黑色或者白色比較清楚。 好主意。海報上面畫什麼？ 我們可以畫綠色的樹和紅色的花。 太漂亮了！我們開始畫吧。 好，我來畫樹。",
+        "en": "Mark, let's make posters. Sure. You have pens in many colors here. Yes. What color do you like? I like blue the best. How about you? I like red and yellow the best. Then shall we use blue paper for the poster? Can do. What color for the poster's characters? I think using black or white is clearer. Good idea. What shall we draw on the poster? We can draw green trees and red flowers. So beautiful! Let's start drawing. Okay, I'll draw the trees.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，我們來做海報吧。好啊。你這裡有很多顏色的筆。對。你喜歡什麼顏色？我最喜歡藍色。你呢？我最喜歡紅色和黃色。",
+          "en": "The students are making posters. They have many colored pens and papers. They talk about which colors they like. They decide which colors to use for the posters. The classroom becomes very colorful.",
+          "title": "Colors in the Room Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe 5 colored objects you see in your room (e.g., 'The bed is white', 'The book is blue').",
@@ -2172,10 +2202,16 @@
         }
       ],
       "passage": {
-        "title": "Clothes Today Listening Passage",
-        "zh": "馬克，你今天穿得很帥！謝謝。我穿了我的新襯衫。這件襯衫的顏色很好看。我也很喜歡。你今天的裙子也很漂亮。這是我的生日禮物。",
-        "en": "It is a sunny day. Two friends meet on the street. They look at each other's clothes. They talk about shirts, pants, and shoes. They also talk about colors and style.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Clothes Today Dialogue Listening",
+        "zh": "馬克，你今天穿得很帥！ 謝謝。我穿了我的新襯衫。 這件襯衫的顏色很好看。 我也很喜歡。你今天的裙子也很漂亮。 這是我的生日禮物。 你的鞋子也是新的嗎？ 不是，這雙鞋子我穿了很久了。 但是它們看起來很乾淨。 天氣變冷了，你沒穿夾克嗎？ 夾克在我的書包裡。等一下我會穿上。 好，別感冒了。 沒問題，謝謝提醒。",
+        "en": "Mark, you are dressed very handsomely today! Thanks. I'm wearing my new shirt. The color of this shirt looks very good. I like it too. Your skirt today is also very beautiful. This was my birthday gift. Are your shoes new too? No, I've worn this pair of shoes for a long time. But they look very clean. The weather has turned cold, aren't you wearing a jacket? The jacket is in my schoolbag. I'll put it on in a moment. Okay, don't catch a cold. No problem, thanks for the reminder.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你今天穿得很帥！謝謝。我穿了我的新襯衫。這件襯衫的顏色很好看。我也很喜歡。你今天的裙子也很漂亮。這是我的生日禮物。",
+          "en": "It is a sunny day. Two friends meet on the street. They look at each other's clothes. They talk about shirts, pants, and shoes. They also talk about colors and style.",
+          "title": "Clothes Today Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe what you are wearing today: include 3 items and their colors.",
@@ -2546,10 +2582,16 @@
         }
       ],
       "passage": {
-        "title": "Food I Like Listening Passage",
-        "zh": "馬克，你喜歡吃中國菜嗎？非常喜歡。我覺得中國菜很好吃。你最喜歡吃什麼？我最喜歡吃米飯和牛肉。你呢？我喜歡吃麵條，也喜歡吃很多蔬菜。",
-        "en": "It is lunch time. Students are eating together. They talk about different kinds of food. They ask 'What do you like to eat?'. They talk about fruit, meat, and vegetables.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Food I Like Dialogue Listening",
+        "zh": "馬克，你喜歡吃中國菜嗎？ 非常喜歡。我覺得中國菜很好吃。 你最喜歡吃什麼？ 我最喜歡吃米飯和牛肉。你呢？ 我喜歡吃麵條，也喜歡吃很多蔬菜。 你不喜歡吃肉嗎？ 我不常吃肉。我比較喜歡吃魚。 水果呢？你喜歡什麼水果？ 我最喜歡蘋果和香蕉。西瓜也不錯。 我每天都吃一個蘋果。 那很健康！ 對，醫生也是這麼說的。",
+        "en": "Mark, do you like eating Chinese food? Very much. I think Chinese food is delicious. What do you like to eat the most? I like eating rice and beef the most. How about you? I like eating noodles, and I also like eating lots of vegetables. Don't you like eating meat? I don't often eat meat. I prefer eating fish. What about fruit? What fruit do you like? I like apples and bananas the most. Watermelon is also not bad. I eat an apple every day. That's healthy! Yes, the doctor says so too.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你喜歡吃中國菜嗎？非常喜歡。我覺得中國菜很好吃。你最喜歡吃什麼？我最喜歡吃米飯和牛肉。你呢？我喜歡吃麵條，也喜歡吃很多蔬菜。",
+          "en": "It is lunch time. Students are eating together. They talk about different kinds of food. They ask 'What do you like to eat?'. They talk about fruit, meat, and vegetables.",
+          "title": "Food I Like Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "List 3 foods you like and 3 foods you dislike in Chinese.",
@@ -2920,10 +2962,16 @@
         }
       ],
       "passage": {
-        "title": "At the School Cafeteria Listening Passage",
-        "zh": "你好，我想買這個套餐。好的。你要飯還是麵？我要飯，謝謝。還要別的嗎？還要一碗湯。請問一共多少錢？",
-        "en": "The cafeteria is busy. A student is standing in line. He wants to buy some food and a drink. He asks about the items and prices. He pays with cash.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the School Cafeteria Dialogue Listening",
+        "zh": "你好，我想買這個套餐。 好的。你要飯還是麵？ 我要飯，謝謝。 還要別的嗎？ 還要一碗湯。請問一共多少錢？ 套餐八十塊，湯十五塊，一共九十五塊。 給您一百塊。 好的。找您五塊錢。 謝謝。請問哪裡可以拿餐具？ 就在那邊，桌子上面。 好的，謝謝。 不客氣。請慢用。",
+        "en": "Hello, I'd like to buy this set meal. Okay. Do you want rice or noodles? I want rice, thanks. Anything else? And a bowl of soup. How much is it in total? Set meal is 80, soup is 15, total 95 dollars. Here is 100 dollars. Okay. Here is 5 dollars change. Thanks. Where can I get utensils? Right over there, on top of the table. Okay, thanks. You're welcome. Enjoy your meal.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，我想買這個套餐。好的。你要飯還是麵？我要飯，謝謝。還要別的嗎？還要一碗湯。請問一共多少錢？",
+          "en": "The cafeteria is busy. A student is standing in line. He wants to buy some food and a drink. He asks about the items and prices. He pays with cash.",
+          "title": "At the School Cafeteria Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a simple cafeteria order: one main dish, one side or drink, and the total (imaginary) price.",
@@ -3294,10 +3342,16 @@
         }
       ],
       "passage": {
-        "title": "Drinks and Snacks Listening Passage",
-        "zh": "馬克，你渴嗎？我們去買點喝的吧。好啊，我也覺得有點渴。你想喝什麼？這裡有可樂、果汁和茶。我要一瓶礦泉水。你呢？我要一杯冰紅茶。",
-        "en": "School is over for the day. Two friends are hungry and thirsty. They go to a small shop. They talk about different snacks and drinks. They decide what to buy for a break.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Drinks and Snacks Dialogue Listening",
+        "zh": "馬克，你渴嗎？我們去買點喝的吧。 好啊，我也覺得有點渴。 你想喝什麼？這裡有可樂、果汁和茶。 我要一瓶礦泉水。你呢？ 我要一杯冰紅茶。 你有錢嗎？我也想買點零食。 有。你看，那裡的餅乾和巧克力看起來不錯。 我不喜歡太甜的東西。我要這包洋芋片。 那我要這盒巧克力。 我們去付錢吧。 好。這是我請你的。 謝謝！你真客氣。",
+        "en": "Mark, are you thirsty? Let's go buy something to drink. Sure, I feel a bit thirsty too. What do you want to drink? They have cola, juice, and tea here. I want a bottle of mineral water. How about you? I want a cup of iced black tea. Do you have money? I also want to buy some snacks. Yes. Look, the cookies and chocolate over there look good. I don't like things that are too sweet. I'll take this bag of potato chips. Then I'll take this box of chocolate. Let's go pay. Okay. This is my treat. Thanks! You're so kind.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你渴嗎？我們去買點喝的吧。好啊，我也覺得有點渴。你想喝什麼？這裡有可樂、果汁和茶。我要一瓶礦泉水。你呢？我要一杯冰紅茶。",
+          "en": "School is over for the day. Two friends are hungry and thirsty. They go to a small shop. They talk about different snacks and drinks. They decide what to buy for a break.",
+          "title": "Drinks and Snacks Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Create a simple snack menu with 5 items and their prices in Chinese.",
@@ -3668,10 +3722,16 @@
         }
       ],
       "passage": {
-        "title": "At Home Listening Passage",
-        "zh": "馬克，你搬新家了嗎？對，我上個星期搬家了。新家怎麼樣？大嗎？不太大，但是很舒服。有一間客廳和兩間臥室。有廚房嗎？",
-        "en": "A student lives in a new house. He wants to describe it to his friend. He talks about the different rooms. He mentions the living room, kitchen, and bedroom. They talk about what he does in each room.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At Home Dialogue Listening",
+        "zh": "馬克，你搬新家了嗎？ 對，我上個星期搬家了。 新家怎麼樣？大嗎？ 不太大，但是很舒服。有一間客廳和兩間臥室。 有廚房嗎？ 有，廚房雖然小，但是很乾淨。我常在那裡做飯。 衛生間在哪裡？ 衛生間在臥室旁邊。也有一個小陽台。 你最喜歡哪個房間？ 我最喜歡我的臥室，因為那裡有很大的窗戶。 聽起來真不錯！下次我去參觀一下。 歡迎！我請你喝茶。",
+        "en": "Mark, have you moved to a new home? Yes, I moved last week. How is the new home? Is it big? Not too big, but very comfortable. It has one living room and two bedrooms. Is there a kitchen? Yes, although the kitchen is small, it's very clean. I often cook there. Where is the bathroom? The bathroom is next to the bedroom. There is also a small balcony. Which room do you like the most? I like my bedroom the most because there is a very large window. Sounds really good! I'll go visit next time. Welcome! I'll treat you to some tea.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你搬新家了嗎？對，我上個星期搬家了。新家怎麼樣？大嗎？不太大，但是很舒服。有一間客廳和兩間臥室。有廚房嗎？",
+          "en": "A student lives in a new house. He wants to describe it to his friend. He talks about the different rooms. He mentions the living room, kitchen, and bedroom. They talk about what he does in each room.",
+          "title": "At Home Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 sentences about your home: what rooms it has and what you do in them.",
@@ -4042,10 +4102,16 @@
         }
       ],
       "passage": {
-        "title": "My Room Listening Passage",
-        "zh": "馬克，你現在在臥室嗎？對，你看，這就是我的房間。你的房間很整齊。那是你的床嗎？對，床在窗戶下面。床上面有一條毯子。你的書桌在哪裡？",
-        "en": "Mark is at home. He is talking to a friend on the phone. He uses the camera to show his bedroom. He describes the furniture in the room. He talks about his desk, bed, and lamp.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Room Dialogue Listening",
+        "zh": "馬克，你現在在臥室嗎？ 對，你看，這就是我的房間。 你的房間很整齊。那是你的床嗎？ 對，床在窗戶下面。床上面有一條毯子。 你的書桌在哪裡？ 書桌在床的旁邊。桌子上面有電腦和一盞檯燈。 你有書架嗎？ 有，書架在門後面。上面有很多中文書。 牆上掛著什麼？ 牆上掛著一張我全家人的照片。 真溫馨！你的房間採光真好。 謝謝，我非常喜歡待在這裡。",
+        "en": "Mark, are you in your bedroom right now? Yes, look, this is my room. Your room is very tidy. Is that your bed? Yes, the bed is under the window. There is a blanket on the bed. Where is your desk? The desk is next to the bed. On the desk, there is a computer and a lamp. Do you have a bookshelf? Yes, the bookshelf is behind the door. There are many Chinese books on it. What is hanging on the wall? Hanging on the wall is a photo of my whole family. So warm! Your room has really good lighting. Thanks, I really like staying here.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你現在在臥室嗎？對，你看，這就是我的房間。你的房間很整齊。那是你的床嗎？對，床在窗戶下面。床上面有一條毯子。你的書桌在哪裡？",
+          "en": "Mark is at home. He is talking to a friend on the phone. He uses the camera to show his bedroom. He describes the furniture in the room. He talks about his desk, bed, and lamp.",
+          "title": "My Room Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe 5 things in your room and their positions (e.g., 'The lamp is on the desk', 'The chair is next to the bed').",
@@ -4416,10 +4482,16 @@
         }
       ],
       "passage": {
-        "title": "Where Is My Phone? Listening Passage",
-        "zh": "媽，你看見我的手機了嗎？沒看見。你在客廳找過了嗎？找過了。沙發上面和下面都沒有。會不會在書包裡面？我剛才看了一下，不在裡面。",
-        "en": "A person is looking for his phone. He checked the living room and the kitchen. He asks his mother for help. They search everywhere. They use 'in', 'on', 'under', and 'near'.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Where Is My Phone? Dialogue Listening",
+        "zh": "媽，你看見我的手機了嗎？ 沒看見。你在客廳找過了嗎？ 找過了。沙發上面和下面都沒有。 會不會在書包裡面？ 我剛才看了一下，不在裡面。 那去廚房看看吧。你在那裡喝過水。 喔，對！我去找找看。 不在桌子上，也不在冰箱旁邊。 你聽！手機響了。 是在臥室！啊，找到了！在被子下面。 下次小心點，別亂放。 知道了，謝謝媽。",
+        "en": "Mom, have you seen my phone? I haven't seen it. Have you looked in the living room? I looked. It's not on or under the sofa. Could it be inside the schoolbag? I just took a look, it's not inside. Then go look in the kitchen. You drank water there. Oh, right! I'll go have a look. It's not on the table, and not next to the fridge. Listen! The phone is ringing. It's in the bedroom! Ah, found it! Under the quilt. Be more careful next time, don't just leave it anywhere. Got it, thanks Mom.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "媽，你看見我的手機了嗎？沒看見。你在客廳找過了嗎？找過了。沙發上面和下面都沒有。會不會在書包裡面？我剛才看了一下，不在裡面。",
+          "en": "A person is looking for his phone. He checked the living room and the kitchen. He asks his mother for help. They search everywhere. They use 'in', 'on', 'under', and 'near'.",
+          "title": "Where Is My Phone? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe a time you lost something: what was it, where did you look, and where did you find it? (3-5 sentences).",
@@ -4790,10 +4862,16 @@
         }
       ],
       "passage": {
-        "title": "Simple Directions in School Listening Passage",
-        "zh": "請問，留學生辦公室在哪裡？在那棟大樓的三樓。我要怎麼走？你先往前走，然後往左轉。左轉以後呢？",
-        "en": "A student is new to the school. She doesn't know where the buildings are. She asks another student for directions. They talk about 'left', 'right', 'straight', and 'next to'. She finds her classroom successfully.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Simple Directions in School Dialogue Listening",
+        "zh": "請問，留學生辦公室在哪裡？ 在那棟大樓的三樓。 我要怎麼走？ 你先往前走，然後往左轉。 左轉以後呢？ 左轉以後，你會看到一個花園。辦公室就在花園旁邊。 對了，那洗手間呢？ 洗手間在走廊盡頭，往右轉就到了。 圖書館遠嗎？ 不遠，就在那棟紅色的建築後面。 太謝謝你了！你真熱心。 不客氣，祝你順利。",
+        "en": "Excuse me, where is the international student office? It's on the third floor of that building. How do I get there? First go straight forward, then turn left. And after turning left? After turning left, you'll see a garden. The office is right next to the garden. By the way, what about the restroom? The restroom is at the end of the hallway, turn right and you're there. Is the library far? Not far, it's right behind that red building. Thank you so much! You're really helpful. You're welcome, good luck.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "請問，留學生辦公室在哪裡？在那棟大樓的三樓。我要怎麼走？你先往前走，然後往左轉。左轉以後呢？",
+          "en": "A student is new to the school. She doesn't know where the buildings are. She asks another student for directions. They talk about 'left', 'right', 'straight', and 'next to'. She finds her classroom successfully.",
+          "title": "Simple Directions in School Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write simple directions to your classroom from the school entrance (3-5 sentences).",
@@ -5164,10 +5242,16 @@
         }
       ],
       "passage": {
-        "title": "At the Bus Stop Listening Passage",
-        "zh": "你好，請問你在等哪路公車？我在等105路。你呢？我想去火車站。請問哪路車到火車站？212路和301路都到。但是301路比較快。301路要在這裡等嗎？",
-        "en": "It is afternoon. Two people are standing at a bus stop. They are waiting for different buses. They ask which bus goes to the train station. They talk about waiting and schedules.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the Bus Stop Dialogue Listening",
+        "zh": "你好，請問你在等哪路公車？ 我在等 105 路。你呢？ 我想去火車站。請問哪路車到火車站？ 212 路和 301 路都到。但是 301 路比較快。 301 路要在這裡等嗎？ 對，就在這裡。你看，公車牌上有寫。 公車大約幾分鐘一班？ 大約十五分鐘一班。我已經等了十分鐘了。 喔，那公車快要來了。 看，那邊有一輛車過來了。那是 301 路嗎？ 我看看...對，是 301 路！ 太好了，你上車吧。再見！",
+        "en": "Hello, excuse me, which bus are you waiting for? I'm waiting for the 105. How about you? I want to go to the train station. Which bus goes there? The 212 and 301 both go there. But the 301 is faster. Do I wait for the 301 here? Yes, right here. Look, it's written on the bus stop sign. About every how many minutes does the bus come? About every fifteen minutes. I've already been waiting for ten minutes. Oh, then the bus is coming soon. Look, a bus is coming over there. Is that the 301? Let me see... yes, it's the 301! Great, get on the bus. Goodbye!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，請問你在等哪路公車？我在等105路。你呢？我想去火車站。請問哪路車到火車站？212路和301路都到。但是301路比較快。301路要在這裡等嗎？",
+          "en": "It is afternoon. Two people are standing at a bus stop. They are waiting for different buses. They ask which bus goes to the train station. They talk about waiting and schedules.",
+          "title": "At the Bus Stop Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short question asking which bus to take to a specific place (e.g., 'Does the 202 bus go to the library?').",
@@ -5539,10 +5623,16 @@
         }
       ],
       "passage": {
-        "title": "My Daily Morning Listening Passage",
-        "zh": "馬克，你每天早上幾點起床？我通常六點半起床。那麼早！你起床以後做什麼？我先刷牙、洗臉，然後去跑步。你每天都運動嗎？",
-        "en": "The sun comes up. A student wakes up early. He has a busy morning routine. He talks about brushing teeth and eating breakfast. He gets ready for school.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Daily Morning Dialogue Listening",
+        "zh": "馬克，你每天早上幾點起床？ 我通常六點半起床。 那麼早！你起床以後做什麼？ 我先刷牙、洗臉，然後去跑步。 你每天都運動嗎？ 對，跑步讓我很有精神。七點半我吃早飯。 你早飯吃什麼？ 我常吃雞蛋和麵包，喝一杯牛奶。 你幾點去學校？ 我八點出門，坐公車去學校。 你的早晨很充實。 對，早起很有好處。",
+        "en": "Mark, what time do you get up every morning? I usually get up at 6:30. So early! What do you do after getting up? First I brush my teeth and wash my face, then I go for a run. Do you exercise every day? Yes, running gives me energy. At 7:30 I eat breakfast. What do you eat for breakfast? I often eat eggs and bread, and drink a cup of milk. What time do you go to school? I leave the house at 8:00 and take the bus to school. Your morning is very productive. Yes, getting up early has many benefits.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你每天早上幾點起床？我通常六點半起床。那麼早！你起床以後做什麼？我先刷牙、洗臉，然後去跑步。你每天都運動嗎？",
+          "en": "The sun comes up. A student wakes up early. He has a busy morning routine. He talks about brushing teeth and eating breakfast. He gets ready for school.",
+          "title": "My Daily Morning Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 sentences about your morning routine in Chinese.",
@@ -5913,10 +6003,16 @@
         }
       ],
       "passage": {
-        "title": "After School Listening Passage",
-        "zh": "馬克，放學了！你等一下要做什麼？我先回家休息一下，然後做功課。你每天放學都直接回家嗎？不一定。有時候我會去超市買點東西。你幾點吃晚飯？",
-        "en": "The school bell rings. Classes are finished for today. Two friends walk out of the school gate. They talk about their plans for the evening. They mention studying, resting, and eating dinner.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "After School Dialogue Listening",
+        "zh": "馬克，放學了！你等一下要做什麼？ 我先回家休息一下，然後做功課。 你每天放學都直接回家嗎？ 不一定。有時候我會去超市買點東西。 你幾點吃晚飯？ 我通常七點和全家人一起吃晚飯。 晚飯後你做什麼？ 晚飯後我喜歡看一會兒電視，或者上網。 你幾點睡覺？ 我十一點左右睡覺。你呢？ 我睡得比較早，十點就睡了。 早點睡覺對身體好。明天見！",
+        "en": "Mark, school's out! What are you going to do in a bit? I'll go home and rest for a bit first, then do homework. Do you go straight home after school every day? Not necessarily. Sometimes I'll go to the supermarket to buy some things. What time do you eat dinner? I usually eat dinner with my whole family at 7:00. What do you do after dinner? After dinner I like to watch TV for a while, or go online. What time do you go to bed? I go to bed around 11:00. How about you? I sleep relatively early, I'm asleep by 10:00. Sleeping early is good for the body. See you tomorrow!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，放學了！你等一下要做什麼？我先回家休息一下，然後做功課。你每天放學都直接回家嗎？不一定。有時候我會去超市買點東西。你幾點吃晚飯？",
+          "en": "The school bell rings. Classes are finished for today. Two friends walk out of the school gate. They talk about their plans for the evening. They mention studying, resting, and eating dinner.",
+          "title": "After School Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write your after-school routine (3-5 sentences).",
@@ -6287,10 +6383,16 @@
         }
       ],
       "passage": {
-        "title": "I Can and I Can’t Listening Passage",
-        "zh": "馬克，你會游泳嗎？會，我非常喜歡游泳。你呢？我不會游泳，但是我會打網球。網球很難學，你真厲害！你會唱歌嗎？我唱歌唱得不好。你會彈鋼琴嗎？",
-        "en": "The students are talking about hobbies. They talk about what they can do. They use the word 'can' and 'can't'. They mention sports, music, and art. They find out they have many skills.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "I Can and I Can’t Dialogue Listening",
+        "zh": "馬克，你會游泳嗎？ 會，我非常喜歡游泳。你呢？ 我不會游泳，但是我會打網球。 網球很難學，你真厲害！你會唱歌嗎？ 我唱歌唱得不好。你會彈鋼琴嗎？ 不會，但是我會拉小提琴。我也會一點兒畫畫。 你會做飯嗎？ 我會做簡單的中國菜。我媽媽教過我。 太棒了！我也想學做飯。 沒問題，我可以教你。你會開車嗎？ 我會開車，但是我不常開。 原來大家都會很多東西！",
+        "en": "Mark, can you swim? Yes, I really like swimming. How about you? I can't swim, but I can play tennis. Tennis is hard to learn, you're really great! Can you sing? I don't sing well. Can you play the piano? No, but I can play the violin. I can also draw a little. Can you cook? I can cook simple Chinese dishes. My mom taught me. Excellent! I also want to learn to cook. No problem, I can teach you. Can you drive? I can drive, but I don't drive often. Turns out everyone can do many things!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你會游泳嗎？會，我非常喜歡游泳。你呢？我不會游泳，但是我會打網球。網球很難學，你真厲害！你會唱歌嗎？我唱歌唱得不好。你會彈鋼琴嗎？",
+          "en": "The students are talking about hobbies. They talk about what they can do. They use the word 'can' and 'can't'. They mention sports, music, and art. They find out they have many skills.",
+          "title": "I Can and I Can’t Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 things you can do and 5 things you can't do in Chinese.",
@@ -6661,10 +6763,16 @@
         }
       ],
       "passage": {
-        "title": "My Favorite Animal Listening Passage",
-        "zh": "馬克，你喜歡小動物嗎？喜歡，我最喜歡狗。你呢？我比較喜歡貓。我覺得貓很可愛。貓確實很可愛，但是貓有點兒高冷。你看，這張照片裡的熊貓多可愛啊！",
-        "en": "The students are at the zoo (in their imagination). They look at pictures of animals. They talk about dogs, cats, pandas, and tigers. They use adjectives like 'big', 'small', and 'cute'. They discuss having pets at home.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Favorite Animal Dialogue Listening",
+        "zh": "馬克，你喜歡小動物嗎？ 喜歡，我最喜歡狗。你呢？ 我比較喜歡貓。我覺得貓很可愛。 貓確實很可愛，但是貓有點兒高冷。 你看，這張照片裡的熊貓多可愛啊！ 對，熊貓是中國的國寶。牠們胖胖的。 你怕不怕大動物？比如老虎或者獅子。 有點兒怕，因為牠們很兇，而且很大。 我也不喜歡太兇的動物。 你家裡有寵物嗎？ 有，我有一隻小兔子。 兔子很漂亮，耳朵長長的。",
+        "en": "Mark, do you like small animals? Yes, I like dogs the most. How about you? I prefer cats. I think cats are very cute. Cats are indeed cute, but they're a bit aloof. Look, how cute the panda in this photo is! Yes, pandas are China's national treasure. They are chubby. Are you afraid of big animals? Like tigers or lions. A bit afraid, because they are fierce and also very big. I don't like animals that are too fierce either. Do you have pets at home? Yes, I have a little rabbit. Rabbits are beautiful, with long ears.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你喜歡小動物嗎？喜歡，我最喜歡狗。你呢？我比較喜歡貓。我覺得貓很可愛。貓確實很可愛，但是貓有點兒高冷。你看，這張照片裡的熊貓多可愛啊！",
+          "en": "The students are at the zoo (in their imagination). They look at pictures of animals. They talk about dogs, cats, pandas, and tigers. They use adjectives like 'big', 'small', and 'cute'. They discuss having pets at home.",
+          "title": "My Favorite Animal Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe your favorite animal in 3-5 sentences: what it is, why you like it, and what it looks like.",
@@ -7035,10 +7143,16 @@
         }
       ],
       "passage": {
-        "title": "The Weather Today Listening Passage",
-        "zh": "馬克，今天天氣怎麼樣？今天天氣很好，晴天，而且很暖和。太好了！我想下午去公園散步。但是我看天氣預報，傍晚可能會有雨。真的嗎？那我要帶把傘嗎？",
-        "en": "Mark is looking out the window. It is a new day. He talks to a friend about the weather. They talk about 'sunny', 'rainy', 'hot', and 'cold'. They decide what to do and what to wear.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "The Weather Today Dialogue Listening",
+        "zh": "馬克，今天天氣怎麼樣？ 今天天氣很好，晴天，而且很暖和。 太好了！我想下午去公園散步。 但是我看天氣預報，傍晚可能會有雨。 真的嗎？那我要帶把傘嗎？ 帶一把吧，以防萬一。 現在外面熱不熱？ 不熱，但是有點兒風。你穿一件薄外套吧。 好的。明天的天氣呢？ 明天會降溫，變得很冷。 喔，那我明天得穿毛衣了。 對，要注意保暖。",
+        "en": "Mark, how is the weather today? The weather is good today, sunny, and very warm. Great! I want to go for a walk in the park this afternoon. But I saw the weather forecast, there might be rain in the evening. Really? Then should I bring an umbrella? Bring one, just in case. Is it hot outside right now? Not hot, but there's a bit of wind. Wear a thin jacket. Okay. What about tomorrow's weather? The temperature will drop tomorrow, it will become very cold. Oh, then I'll have to wear a sweater tomorrow. Yes, pay attention to keeping warm.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，今天天氣怎麼樣？今天天氣很好，晴天，而且很暖和。太好了！我想下午去公園散步。但是我看天氣預報，傍晚可能會有雨。真的嗎？那我要帶把傘嗎？",
+          "en": "Mark is looking out the window. It is a new day. He talks to a friend about the weather. They talk about 'sunny', 'rainy', 'hot', and 'cold'. They decide what to do and what to wear.",
+          "title": "The Weather Today Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a simple weather report for today and tomorrow (3-5 sentences).",
@@ -7409,10 +7523,16 @@
         }
       ],
       "passage": {
-        "title": "Review Story: A New Student’s First Week Listening Passage",
-        "zh": "爸爸、媽媽，你們好嗎？我在這裏很好。我的新房間很舒服。我認識了一個新朋友，他叫大衛。大衛是加拿大人，他非常聰明。我們每天一起上課、吃午飯。",
-        "en": "It is the end of the first week. Mark is writing a letter to his parents. He tells them about his new school. He mentions his new friends and his room. He talks about his daily life and the weather.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Review Story: A New Student’s First Week Dialogue Listening",
+        "zh": "爸爸、媽媽，你們好嗎？ 我在這裏很好。我的新房間很舒服。 我認識了一個新朋友，他叫大衛。 大衛是加拿大人，他非常聰明。 我們每天一起上課、吃午飯。 學校的中國菜很好吃，我最喜歡吃牛肉。 今天的天氣很好，是晴天。 我學會了說一點兒中文了。 我現在會介紹我的家人，還會問路。 雖然學中文有點兒難，但是很有意思。 我想你們。祝你們身體健康！ 愛您的，馬克。",
+        "en": "Dad, Mom, how are you? I'm doing well here. My new room is very comfortable. I've met a new friend named David. David is Canadian; he is very smart. We attend class and eat lunch together every day. The school's Chinese food is delicious; I like eating beef the most. The weather today is good; it's a sunny day. I've learned to speak a little Chinese now. I can now introduce my family and also ask for directions. Although learning Chinese is a bit hard, it's very interesting. I miss you. Wish you good health! Love, Mark.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "爸爸、媽媽，你們好嗎？我在這裏很好。我的新房間很舒服。我認識了一個新朋友，他叫大衛。大衛是加拿大人，他非常聰明。我們每天一起上課、吃午飯。",
+          "en": "It is the end of the first week. Mark is writing a letter to his parents. He tells them about his new school. He mentions his new friends and his room. He talks about his daily life and the weather.",
+          "title": "Review Story: A New Student’s First Week Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a 6-8 sentence self-introduction covering your name, nationality, age, favorite food, and one thing you can do.",

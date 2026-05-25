@@ -582,7 +582,7 @@ window.DrawingBoard = (() => {
             if (!Modal) return;
 
             Modal.show(`
-                <button class="modal-close" onclick="Modal.hide()">âœ•</button>
+                <button class="modal-close" onclick="Modal.hide()">X</button>
                 <div style="text-align:center; padding:10px">
                     <h3 style="margin-bottom:12px">Writing Practice</h3>
                     <div style="font-size:1.4rem; margin-bottom:24px; color:var(--text); font-family:var(--font-zh); letter-spacing:2px">
@@ -624,9 +624,9 @@ window.DrawingBoard = (() => {
                         </div>
                         
                         <div style="display:flex; justify-content:space-between; width:100%; max-width:320px; align-items:center">
-                            <button class="btn btn-secondary btn-sm" ${currentIndex === 0 ? 'disabled' : ''} onclick="window._prevChar()">â† Previous</button>
+                            <button class="btn btn-secondary btn-sm" ${currentIndex === 0 ? 'disabled' : ''} onclick="window._prevChar()">Previous</button>
                             <div style="font-weight:700; color:var(--text-3)">${currentIndex + 1} / ${characters.length}</div>
-                            <button class="btn btn-secondary btn-sm" ${currentIndex === characters.length - 1 ? 'disabled' : ''} onclick="window._nextChar()">Next â†’</button>
+                            <button class="btn btn-secondary btn-sm" ${currentIndex === characters.length - 1 ? 'disabled' : ''} onclick="window._nextChar()">Next</button>
                         </div>
                     </div>
                 </div>

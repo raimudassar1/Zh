@@ -168,7 +168,7 @@ const TOCFLContentModule = (() => {
   function answerFeedback(q, given) {
     if (!given) return '';
     const ok = given === q.answer;
-    return `<div class="tocfl-native-feedback ${ok ? 'ok' : 'miss'}"><strong>${ok ? 'Correct' : 'Not quite'}</strong><span>Your answer: ${given}. Official answer: ${q.answer || '?'}</span></div>`;
+    return `<div class="tocfl-native-feedback ${ok ? 'ok' : 'miss'}"><strong>${ok ? 'Correct' : 'Not quite'}</strong><span>Your answer: ${given}. Official answer: ${q.answer || '?'}</span><small>Why: This follows the official answer key. Review the source image/audio and identify the line or visual clue before continuing.</small></div>`;
   }
 
   function textBlock(title, text) {

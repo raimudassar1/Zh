@@ -296,10 +296,16 @@
         }
       ],
       "passage": {
-        "title": "Buying Breakfast Listening Passage",
-        "zh": "老闆，早安！今天有什麼好吃的？早安！有蛋餅、飯糰和三明治。你要哪一個？我要一個起司蛋餅。飯糰多少錢？飯糰一個四十塊。蛋餅三十五塊。那我要一個蛋餅和一個飯糰。還要一杯熱豆漿。好。豆漿要大杯還是小杯？",
-        "en": "It is a busy morning. A student stops at a breakfast stall. He wants to buy something quick and delicious. He looks at the menu and talks to the boss. He asks about the price and pays for his meal.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Buying Breakfast Dialogue Listening",
+        "zh": "老闆，早安！今天有什麼好吃的？ 早安！有蛋餅、飯糰和三明治。你要哪一個？ 我要一個起司蛋餅。飯糰多少錢？ 飯糰一個四十塊。蛋餅三十五塊。 那我要一個蛋餅和一個飯糰。還要一杯熱豆漿。 好。豆漿要大杯還是小杯？ 大杯的。一共多少錢？ 蛋餅三十五，飯糰四十，大豆漿二十五，一共一百塊。 好，給您錢。 謝謝。這是你的早餐。請慢走！ 謝謝老闆，再見！",
+        "en": "Boss, good morning! What's delicious today? Good morning! There's egg pancakes, rice balls, and sandwiches. Which one do you want? I want a cheese egg pancake. How much is a rice ball? Rice balls are forty each. Egg pancakes are thirty-five. Then I want one egg pancake and one rice ball. Also a cup of hot soy milk. Okay. Do you want a large or small soy milk? Large one. How much in total? Egg pancake 35, rice ball 40, large soy milk 25, total 100 dollars. Okay, here's the money. Thank you. Here is your breakfast. Take care! Thank you boss, goodbye!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "老闆，早安！今天有什麼好吃的？早安！有蛋餅、飯糰和三明治。你要哪一個？我要一個起司蛋餅。飯糰多少錢？飯糰一個四十塊。蛋餅三十五塊。那我要一個蛋餅和一個飯糰。還要一杯熱豆漿。好。豆漿要大杯還是小杯？",
+          "en": "It is a busy morning. A student stops at a breakfast stall. He wants to buy something quick and delicious. He looks at the menu and talks to the boss. He asks about the price and pays for his meal.",
+          "title": "Buying Breakfast Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short breakfast order: include 2 food items and 1 drink.",
@@ -670,10 +676,16 @@
         }
       ],
       "passage": {
-        "title": "Choosing Lunch Listening Passage",
-        "zh": "馬克，你餓了嗎？我們去吃午飯吧。好啊，我現在很餓。你想吃什麼？看，這家餐廳的便當看起來不錯。有什麼口味的？有雞腿便當、排骨便當和魚排便當。雞腿便當多少錢？",
-        "en": "It is noon. Two friends are very hungry. They are standing in front of a restaurant. They look at the menu together. They discuss what they want and why.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Choosing Lunch Dialogue Listening",
+        "zh": "馬克，你餓了嗎？我們去吃午飯吧。 好啊，我現在很餓。你想吃什麼？ 看，這家餐廳的便當看起來不錯。 有什麼口味的？ 有雞腿便當、排骨便當和魚排便當。 雞腿便當多少錢？ 一百一十塊。排骨便當一百塊。 我想吃雞腿，但是今天不想吃太貴的。 那吃排骨便當吧，味道也很好。 好。你要喝湯嗎？ 要。我們點兩個排骨便當和兩碗湯吧。 沒問題。進去坐吧。",
+        "en": "Mark, are you hungry? Let's go eat lunch. Sure, I'm very hungry now. What do you want to eat? Look, the bento boxes at this restaurant look good. What flavors are there? There's chicken leg bento, pork chop bento, and fish fillet bento. How much is the chicken leg bento? 110 dollars. Pork chop bento is 100. I want to eat chicken leg, but I don't want to eat anything too expensive today. Then let's eat the pork chop bento, the taste is also very good. Okay. Do you want to drink soup? Yes. Let's order two pork chop bentos and two bowls of soup. No problem. Let's go in and sit down.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你餓了嗎？我們去吃午飯吧。好啊，我現在很餓。你想吃什麼？看，這家餐廳的便當看起來不錯。有什麼口味的？有雞腿便當、排骨便當和魚排便當。雞腿便當多少錢？",
+          "en": "It is noon. Two friends are very hungry. They are standing in front of a restaurant. They look at the menu together. They discuss what they want and why.",
+          "title": "Choosing Lunch Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write your lunch choice and why you chose it (e.g., 'I chose noodles because they are cheap').",
@@ -1044,10 +1056,16 @@
         }
       ],
       "passage": {
-        "title": "At a Convenience Store Listening Passage",
-        "zh": "你好，請問礦泉水在哪裡？在後面的冰箱裡。你要哪一種？我要一瓶大的。還有洋芋片在那裡嗎？對，在那排架子上。有原味和辣味的。我要一包辣味的。還要一包面紙。面紙在櫃檯旁邊。還要別的嗎？",
-        "en": "It is a hot afternoon. A customer enters a convenience store. He needs several items. He searches for water and snacks. He talks to the clerk and pays.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At a Convenience Store Dialogue Listening",
+        "zh": "你好，請問礦泉水在哪裡？ 在後面的冰箱裡。你要哪一種？ 我要一瓶大的。還有洋芋片在那裡嗎？ 對，在那排架子上。有原味和辣味的。 我要一包辣味的。還要一包面紙。 面紙在櫃檯旁邊。還要別的嗎？ 不用了，謝謝。一共多少錢？ 水三十塊，洋芋片二十五塊，面紙十塊，一共六十五塊。 我可以刷卡嗎？ 可以。請在這裡感應。 好的。謝謝。 謝謝。發票在裡面。再見！",
+        "en": "Hello, excuse me, where is the mineral water? In the fridge at the back. Which kind do you want? I want a large bottle. Also, are the potato chips over there? Yes, on that row of shelves. There are original and spicy flavors. I want a bag of spicy ones. And a pack of tissues. Tissues are next to the counter. Anything else? No more, thanks. How much in total? Water is 30, chips are 25, tissues are 10, total 65 dollars. Can I swipe my card? Yes. Please tap here. Okay. Thank you. Thank you. The receipt is inside. Goodbye!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，請問礦泉水在哪裡？在後面的冰箱裡。你要哪一種？我要一瓶大的。還有洋芋片在那裡嗎？對，在那排架子上。有原味和辣味的。我要一包辣味的。還要一包面紙。面紙在櫃檯旁邊。還要別的嗎？",
+          "en": "It is a hot afternoon. A customer enters a convenience store. He needs several items. He searches for water and snacks. He talks to the clerk and pays.",
+          "title": "At a Convenience Store Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Create a mini shopping receipt: list 3 items and their total price in Chinese.",
@@ -1418,10 +1436,16 @@
         }
       ],
       "passage": {
-        "title": "Asking for a Bag Listening Passage",
-        "zh": "老闆，不好意思，我忘了帶購物袋。沒關係。你需要一個塑膠袋嗎？對，我買的東西很多。請問一個袋子多少錢？大的一個兩塊，小的一個一塊。我要一個大的。一共多少錢？加上袋子，一共三百五十塊。",
-        "en": "A person is paying at a supermarket. He has many items to carry. He realizes he doesn't have a bag. He asks the cashier for a plastic bag. They talk about the small fee for the bag.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Asking for a Bag Dialogue Listening",
+        "zh": "老闆，不好意思，我忘了帶購物袋。 沒關係。你需要一個塑膠袋嗎？ 對，我買的東西很多。請問一個袋子多少錢？ 大的一個兩塊，小的一個一塊。 我要一個大的。一共多少錢？ 加上袋子，一共三百五十塊。 好的。給你錢。 謝謝。需要幫你把東西裝進袋子嗎？ 沒關係，我自己來就好。謝謝。 好的。下次記得帶購物袋，可以省兩塊錢。 我記住了。再見！ 再見，慢走！",
+        "en": "Boss, I'm sorry, I forgot to bring a shopping bag. No problem. Do you need a plastic bag? Yes, I bought many things. How much is one bag? A large one is 2 dollars, a small one is 1 dollar. I want a large one. How much in total? Including the bag, it's 350 dollars total. Okay. Here's the money. Thank you. Do you need help putting the things into the bag? No problem, I can do it myself. Thanks. Okay. Remember to bring a shopping bag next time, you can save 2 dollars. I'll remember. Goodbye! Goodbye, take care!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "老闆，不好意思，我忘了帶購物袋。沒關係。你需要一個塑膠袋嗎？對，我買的東西很多。請問一個袋子多少錢？大的一個兩塊，小的一個一塊。我要一個大的。一共多少錢？加上袋子，一共三百五十塊。",
+          "en": "A person is paying at a supermarket. He has many items to carry. He realizes he doesn't have a bag. He asks the cashier for a plastic bag. They talk about the small fee for the bag.",
+          "title": "Asking for a Bag Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 polite request sentences using '不好意思' or '請問'.",
@@ -1792,10 +1816,16 @@
         }
       ],
       "passage": {
-        "title": "At the Fruit Stand Listening Passage",
-        "zh": "老闆，今天的蘋果新鮮嗎？很新鮮！是剛從果園送來的。蘋果怎麼賣？三個一百塊。你要幾個？我要三個。這排香蕉怎麼賣？香蕉一斤四十塊。這串大約兩斤。",
-        "en": "It is morning at the market. A customer wants to buy fresh fruit. He talks to the fruit stand owner. He asks about different kinds of fruit and their prices. He buys a variety of fruits to eat at home.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the Fruit Stand Dialogue Listening",
+        "zh": "老闆，今天的蘋果新鮮嗎？ 很新鮮！是剛從果園送來的。 蘋果怎麼賣？ 三個一百塊。你要幾個？ 我要三個。這排香蕉怎麼賣？ 香蕉一斤四十塊。這串大約兩斤。 好，我要這串。還有橘子甜嗎？ 橘子很甜，水分很多。你要買幾個？ 我買四個橘子。一共多少錢？ 蘋果一百，香蕉八十，橘子四十，一共二百二十塊。 老闆，算便宜一點吧，二百塊好嗎？ 好吧，收你二百塊。下次再來！",
+        "en": "Boss, are the apples fresh today? Very fresh! They were just sent from the orchard. How are the apples sold (what's the price)? Three for 100 dollars. How many do you want? I want three. How are these bananas sold? Bananas are 40 per jin (500g). This bunch is about two jin. Okay, I'll take this bunch. Also, are the oranges sweet? Oranges are very sweet and juicy. How many do you want to buy? I'll buy four oranges. How much in total? Apples 100, bananas 80, oranges 40, total 220 dollars. Boss, can you make it a bit cheaper, how about 200 dollars? Okay, I'll take 200. Come again next time!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "老闆，今天的蘋果新鮮嗎？很新鮮！是剛從果園送來的。蘋果怎麼賣？三個一百塊。你要幾個？我要三個。這排香蕉怎麼賣？香蕉一斤四十塊。這串大約兩斤。",
+          "en": "It is morning at the market. A customer wants to buy fresh fruit. He talks to the fruit stand owner. He asks about different kinds of fruit and their prices. He buys a variety of fruits to eat at home.",
+          "title": "At the Fruit Stand Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a fruit shopping list with 3 fruits and their quantities (e.g., '5 apples, 1 bunch of bananas').",
@@ -2166,10 +2196,16 @@
         }
       ],
       "passage": {
-        "title": "I Need New Shoes Listening Passage",
-        "zh": "你好，我想看看這雙運動鞋。好的。這款鞋子現在很流行。你要什麼顏色？有黑色的嗎？我不喜歡白色的，容易髒。有黑色的。你穿幾號的鞋？我穿四十二號。請給我一雙黑色的試穿一下。好的，請等一下...給你，這雙是四十二號的。",
-        "en": "A student is at a shoe store. His old shoes are broken. He wants to find a pair of comfortable sports shoes. He talks to the shop assistant about size and color. He tries on the shoes before buying them.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "I Need New Shoes Dialogue Listening",
+        "zh": "你好，我想看看這雙運動鞋。 好的。這款鞋子現在很流行。你要什麼顏色？ 有黑色的嗎？我不喜歡白色的，容易髒。 有黑色的。你穿幾號的鞋？ 我穿四十二號。請給我一雙黑色的試穿一下。 好的，請等一下... 給你，這雙是四十二號的。 （試穿後）這雙鞋子有點兒小，腳趾有點兒擠。 那你要不要試試四十三號的？ 好，麻煩你了。這雙大小正好，很舒服。 這雙鞋子正在打折，現在只要一千五百塊。 太好了，我要這雙。請幫我包起來。 沒問題。請到櫃檯結帳。",
+        "en": "Hello, I'd like to take a look at this pair of sports shoes. Okay. This style is very popular right now. What color do you want? Do you have black ones? I don't like white ones, they get dirty easily. We have black. What size shoe do you wear? I wear size 42. Please give me a black pair to try on. Okay, please wait a moment... Here you go, this pair is size 42. (After trying on) This pair is a bit small, the toes are a bit cramped. Then do you want to try size 43? Okay, sorry to trouble you. This pair is the perfect size, very comfortable. These shoes are currently on sale, now only 1500 dollars. Great, I'll take this pair. Please wrap them up for me. No problem. Please go to the counter to pay.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，我想看看這雙運動鞋。好的。這款鞋子現在很流行。你要什麼顏色？有黑色的嗎？我不喜歡白色的，容易髒。有黑色的。你穿幾號的鞋？我穿四十二號。請給我一雙黑色的試穿一下。好的，請等一下...給你，這雙是四十二號的。",
+          "en": "A student is at a shoe store. His old shoes are broken. He wants to find a pair of comfortable sports shoes. He talks to the shop assistant about size and color. He tries on the shoes before buying them.",
+          "title": "I Need New Shoes Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Describe the shoes you want to buy: include color, size, and reason (e.g., 'I want black shoes size 40 because they are comfortable').",
@@ -2540,10 +2576,16 @@
         }
       ],
       "passage": {
-        "title": "Clothes for a Party Listening Passage",
-        "zh": "你覺得我今晚穿哪件衣服比較好？今晚是正式的舞會嗎？不是，只是一個小型的生日派對。那穿這件紅色的毛衣搭配牛仔褲怎麼樣？我覺得紅色太亮了，我不習慣穿紅色的。那這件深藍色的襯衫呢？看起來很穩重。",
-        "en": "There is a party tonight. Mark is going to his friend's birthday party. He is choosing his clothes in front of a mirror. His friend gives him some advice. They talk about what looks good and what is appropriate.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Clothes for a Party Dialogue Listening",
+        "zh": "你覺得我今晚穿哪件衣服比較好？ 今晚是正式的舞會嗎？ 不是，只是一個小型的生日派對。 那穿這件紅色的毛衣搭配牛仔褲怎麼樣？ 我覺得紅色太亮了，我不習慣穿紅色的。 那這件深藍色的襯衫呢？看起來很穩重。 嗯，這件襯衫不錯。但是現在外面有點兒冷。 你可以外面再加一件黑色的外套。這樣既保暖又帥氣。 好主意！鞋子穿運動鞋可以嗎？ 派對的話，運動鞋沒問題，很休閒。 太好了。謝謝你的建議！ 不客氣。祝你玩得開心！",
+        "en": "Which piece of clothing do you think I should wear tonight? Is it a formal ball tonight? No, just a small birthday party. Then how about wearing this red sweater with jeans? I think red is too bright, I'm not used to wearing red. Then how about this dark blue shirt? It looks steady/composed. Hmm, this shirt is not bad. But it's a bit cold outside now. You can add a black jacket on the outside. This way it's both warm and handsome. Good idea! Are sneakers okay for shoes? For a party, sneakers are no problem, very casual. Great. Thanks for your advice! You're welcome. Have a good time!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你覺得我今晚穿哪件衣服比較好？今晚是正式的舞會嗎？不是，只是一個小型的生日派對。那穿這件紅色的毛衣搭配牛仔褲怎麼樣？我覺得紅色太亮了，我不習慣穿紅色的。那這件深藍色的襯衫呢？看起來很穩重。",
+          "en": "There is a party tonight. Mark is going to his friend's birthday party. He is choosing his clothes in front of a mirror. His friend gives him some advice. They talk about what looks good and what is appropriate.",
+          "title": "Clothes for a Party Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write what you will wear to a party tonight: include 2 items and why you chose them (e.g., 'I will wear jeans because they are casual').",
@@ -2914,10 +2956,16 @@
         }
       ],
       "passage": {
-        "title": "Making Plans Listening Passage",
-        "zh": "大衛，你放學以後有空嗎？有空，你有什麼事嗎？我想去那家新開的咖啡店，你要一起去嗎？好啊！我聽說那裡的拿鐵很好喝。那我們幾點見面？四點半可以嗎？我得先去圖書館還一本書。",
-        "en": "School is almost over. Two friends want to spend time together. They talk about going to the library or a café. They decide on a time and a place to meet. They confirm the plan before leaving.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Making Plans Dialogue Listening",
+        "zh": "大衛，你放學以後有空嗎？ 有空，你有什麼事嗎？ 我想去那家新開的咖啡店，你要一起去嗎？ 好啊！我聽說那裡的拿鐵很好喝。 那我們幾點見面？ 四點半可以嗎？我得先去圖書館還一本書。 可以。四點半在那家店門口見。 在那家店門口...等一下，那家店在哪裡？ 就在學校後門對面，郵局旁邊。 喔，我知道了。那沒問題。 好的，那我們四點半見。 不見不散！",
+        "en": "David, are you free after school? Yes, I am. Is something up? I want to go to that newly opened café, do you want to go together? Sure! I heard the lattes there are very good. Then what time shall we meet? Is 4:30 okay? I have to go to the library first to return a book. Can do. Meet at the shop's entrance at 4:30. At the shop's entrance... wait a second, where is that shop? It's right opposite the school's back gate, next to the post office. Oh, I know it. Then no problem. Okay, see you at 4:30. Be there or be square!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，你放學以後有空嗎？有空，你有什麼事嗎？我想去那家新開的咖啡店，你要一起去嗎？好啊！我聽說那裡的拿鐵很好喝。那我們幾點見面？四點半可以嗎？我得先去圖書館還一本書。",
+          "en": "School is almost over. Two friends want to spend time together. They talk about going to the library or a café. They decide on a time and a place to meet. They confirm the plan before leaving.",
+          "title": "Making Plans Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short meeting message: include time, place, and 'See you there!'.",
@@ -3288,10 +3336,16 @@
         }
       ],
       "passage": {
-        "title": "Sorry, I Am Busy Listening Passage",
-        "zh": "大衛，我這有兩張音樂會的票。你週五晚上想去嗎？真可惜，我週五晚上得加班，沒辦法去。你要加班到幾點？音樂會八點才開始。我大約要忙到九點。最近公司事很多。那太遺憾了。週六呢？你週六有空嗎？週六上午我要去補習班學日文，下午要陪家人。",
-        "en": "A student has a concert ticket. He wants to invite his friend to go with him. But his friend has a lot of things to do. They talk about work and study. They try to find another time to meet.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Sorry, I Am Busy Dialogue Listening",
+        "zh": "大衛，我這有兩張音樂會的票。你週五晚上想去嗎？ 真可惜，我週五晚上得加班，沒辦法去。 你要加班到幾點？音樂會八點才開始。 我大約要忙到九點。最近公司事很多。 那太遺憾了。週六呢？你週六有空嗎？ 週六上午我要去補習班學日文，下午要陪家人。 你真的很忙啊！那你什麼時候才有空？ 週日吧。週日我可以整天休息。 好，那我們週日一起吃午飯吧。 太好了！這次換我請客，向你道歉。 不用客氣啦。那我們週日見。 好的，週日見！",
+        "en": "David, I have two concert tickets here. Do you want to go on Friday night? What a pity, I have to work overtime on Friday night, I can't go. Until what time do you have to work? The concert doesn't start until 8:00. I'll be busy until about 9:00. There's a lot of business at the company lately. That's a shame. How about Saturday? Are you free on Saturday? Saturday morning I'm going to a cram school to learn Japanese, and in the afternoon I have to accompany my family. You're really busy! Then when will you be free? Sunday, probably. I can rest all day Sunday. Okay, then let's eat lunch together on Sunday. Great! My treat this time, to apologize to you. No need to be polite. See you Sunday. Okay, see you Sunday!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，我這有兩張音樂會的票。你週五晚上想去嗎？真可惜，我週五晚上得加班，沒辦法去。你要加班到幾點？音樂會八點才開始。我大約要忙到九點。最近公司事很多。那太遺憾了。週六呢？你週六有空嗎？週六上午我要去補習班學日文，下午要陪家人。",
+          "en": "A student has a concert ticket. He wants to invite his friend to go with him. But his friend has a lot of things to do. They talk about work and study. They try to find another time to meet.",
+          "title": "Sorry, I Am Busy Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a polite refusal message to a friend: include a reason and suggest a new time (40-60 words).",
@@ -3662,10 +3716,16 @@
         }
       ],
       "passage": {
-        "title": "Weekend Plans Listening Passage",
-        "zh": "這個週末你有什麼計劃？我打算和朋友去台中旅行。你呢？台中？那裡很有趣。你們要去哪裡玩？我們打算去高美濕地看夕陽，還要去逢甲夜市吃美食。聽起來很棒。但我這個週末得留在家裡。為什麼？你要準備考試嗎？",
-        "en": "The weekend is coming soon. Students are excited about their free time. They share their plans with each other. Some will travel, some will study, and some will just rest. They use future tense structures like 'will' and 'plan to'.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Weekend Plans Dialogue Listening",
+        "zh": "這個週末你有什麼計劃？ 我打算和朋友去台中旅行。你呢？ 台中？那裡很有趣。你們要去哪裡玩？ 我們打算去高美濕地看夕陽，還要去逢甲夜市吃美食。 聽起來很棒。但我這個週末得留在家裡。 為什麼？你要準備考試嗎？ 不是，我的父母這週末要來台北看我。 喔，那也很好啊！你要帶他們去哪裡？ 我要帶他們去故宮博物院，晚上再去吃鼎泰豐。 鼎泰豐的小籠包世界聞名，他們一定會喜歡的。 希望如此。祝你們在台中有個愉快的旅行！ 謝謝，你也一樣。祝你和父母過得開心！",
+        "en": "What plans do you have for this weekend? I plan to go on a trip to Taichung with friends. How about you? Taichung? That place is very interesting. Where are you going to visit? We plan to go to Gaomei Wetlands to see the sunset, and also go to Fengjia Night Market to eat delicious food. Sounds great. But I have to stay home this weekend. Why? Do you need to prepare for an exam? No, my parents are coming to Taipei to see me this weekend. Oh, that's also very good! Where are you going to take them? I'm going to take them to the National Palace Museum, and then go eat at Din Tai Fung in the evening. Din Tai Fung's soup dumplings are world-famous, they will definitely like them. I hope so. Wish you all a pleasant trip in Taichung! Thanks, you too. Wish you and your parents a happy time!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "這個週末你有什麼計劃？我打算和朋友去台中旅行。你呢？台中？那裡很有趣。你們要去哪裡玩？我們打算去高美濕地看夕陽，還要去逢甲夜市吃美食。聽起來很棒。但我這個週末得留在家裡。為什麼？你要準備考試嗎？",
+          "en": "The weekend is coming soon. Students are excited about their free time. They share their plans with each other. Some will travel, some will study, and some will just rest. They use future tense structures like 'will' and 'plan to'.",
+          "title": "Weekend Plans Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 6 sentences about your weekend plans (e.g., 'Saturday I will sleep', 'Sunday I plan to meet friends').",
@@ -4036,10 +4096,16 @@
         }
       ],
       "passage": {
-        "title": "A Simple Phone Call Listening Passage",
-        "zh": "喂？請問是大衛嗎？對，我是大衛。馬克，是你啊！有什麼事嗎？不好意思，這麼晚打擾你。沒關係，我還沒睡呢。怎麼了？我想問一下，今天老師留了什麼功課？老師要我們讀課本第五十頁到五十五頁，還要寫三個句子。",
-        "en": "Mark is at home. He forgot to write down the homework. He picks up his phone and calls his classmate. They talk about the class and the teacher's instructions. They practice basic phone greetings and closing phrases.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "A Simple Phone Call Dialogue Listening",
+        "zh": "喂？請問是大衛嗎？ 對，我是大衛。馬克，是你啊！有什麼事嗎？ 不好意思，這麼晚打擾你。 沒關係，我還沒睡呢。怎麼了？ 我想問一下，今天老師留了什麼功課？ 老師要我們讀課本第五十頁到五十五頁，還要寫三個句子。 喔，我記住了。要把句子寫在筆記本上嗎？ 對，明天上課要交給老師。 好的，太謝謝你了！ 不客氣。還有別的事嗎？ 沒有了。那我們明天學校見。晚安！ 好，晚安！",
+        "en": "Hello? Is this David? Yes, I'm David. Mark, it's you! What's up? I'm sorry to bother you so late. No problem, I haven't slept yet. What's wrong? I wanted to ask, what homework did the teacher leave today? The teacher wants us to read page 50 to 55 of the textbook, and also write three sentences. Oh, I've got it. Do we need to write the sentences in the notebook? Yes, they need to be handed to the teacher in class tomorrow. Okay, thank you so much! You're welcome. Anything else? Nothing else. Then I'll see you at school tomorrow. Good night! Okay, good night!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "喂？請問是大衛嗎？對，我是大衛。馬克，是你啊！有什麼事嗎？不好意思，這麼晚打擾你。沒關係，我還沒睡呢。怎麼了？我想問一下，今天老師留了什麼功課？老師要我們讀課本第五十頁到五十五頁，還要寫三個句子。",
+          "en": "Mark is at home. He forgot to write down the homework. He picks up his phone and calls his classmate. They talk about the class and the teacher's instructions. They practice basic phone greetings and closing phrases.",
+          "title": "A Simple Phone Call Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short phone dialogue (4 lines) between two friends using '喂', '有事嗎', and '再見'.",
@@ -4398,10 +4464,16 @@
         }
       ],
       "passage": {
-        "title": "Sending a Text Message Listening Passage",
-        "zh": "大衛，你在哪裡？我已經到咖啡店了。不好意思，公車剛才誤點了。我還在路上。沒關係。你大概還要多久才到？大概還要十分鐘。我現在在郵局門口。好。我幫你點了咖啡。冰的還是熱的？熱拿鐵，謝謝！",
-        "en": "Mark and David planned to meet. David is late. Mark is waiting at the coffee shop. He sends a text message to David. They exchange locations and arrival times via text.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Sending a Text Message Dialogue Listening",
+        "zh": "大衛，你在哪裡？我已經到咖啡店了。 不好意思，公車剛才誤點了。我還在路上。 沒關係。你大概還要多久才到？ 大概還要十分鐘。我現在在郵局門口。 好。我幫你點了咖啡。冰的還是熱的？ 熱拿鐵，謝謝！ OK，等你哦。 我快到了，下車了！ 看見你了。我在窗戶旁邊。 好，我進去了。",
+        "en": "David, where are you? I've already arrived at the coffee shop. Sorry, the bus was just delayed. I'm still on the way. No problem. Roughly how much longer until you arrive? Roughly ten more minutes. I'm at the post office entrance now. Okay. I ordered coffee for you. Iced or hot? Hot latte, thanks! OK, waiting for you. I'm almost there, getting off the bus! I see you. I'm next to the window. Okay, I'm coming in.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，你在哪裡？我已經到咖啡店了。不好意思，公車剛才誤點了。我還在路上。沒關係。你大概還要多久才到？大概還要十分鐘。我現在在郵局門口。好。我幫你點了咖啡。冰的還是熱的？熱拿鐵，謝謝！",
+          "en": "Mark and David planned to meet. David is late. Mark is waiting at the coffee shop. He sends a text message to David. They exchange locations and arrival times via text.",
+          "title": "Sending a Text Message Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 4 short text messages for different situations: 1. Saying you arrived. 2. Asking where someone is. 3. Saying you're on the way. 4. Asking what to drink.",
@@ -4772,10 +4844,16 @@
         }
       ],
       "passage": {
-        "title": "At the Library Listening Passage",
-        "zh": "老師，你好。請問中文書在哪裡？中文書在二樓。你找哪一類的書？我想找一本關於中國歷史的書。歷史類的書在205架子上。那邊有電腦可以查詢。謝謝。請問我可以借這本書回家嗎？可以。你有借書證嗎？",
-        "en": "The library is a quiet place. A student is looking for a specific book. He goes to the help desk. He talks to the librarian. He asks about borrowing rules and locations.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the Library Dialogue Listening",
+        "zh": "老師，你好。請問中文書在哪裡？ 中文書在二樓。你找哪一類的書？ 我想找一本關於中國歷史的書。 歷史類的書在 205 架子上。那邊有電腦可以查詢。 謝謝。請問我可以借這本書回家嗎？ 可以。你有借書證嗎？ 有。一張借書證可以借幾本書？ 最多可以借十本，借期是一次一個月。 如果到期了，可以續借嗎？ 只要沒有別人預約，就可以續借一次。 好的，我明白了。謝謝老師。 不客氣。圖書館內請保持安靜。",
+        "en": "Teacher (Librarian), hello. Where are the Chinese books? Chinese books are on the second floor. What kind of books are you looking for? I'm looking for a book about Chinese history. History books are on shelf 205. There's a computer over there to search. Thanks. May I borrow this book to take home? Yes. Do you have a library card? Yes. How many books can one library card borrow? You can borrow up to ten books; the borrowing period is one month at a time. If it's due, can I renew it? As long as no one else has reserved it, you can renew it once. Okay, I understand. Thank you, teacher. You're welcome. Please keep quiet in the library.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "老師，你好。請問中文書在哪裡？中文書在二樓。你找哪一類的書？我想找一本關於中國歷史的書。歷史類的書在205架子上。那邊有電腦可以查詢。謝謝。請問我可以借這本書回家嗎？可以。你有借書證嗎？",
+          "en": "The library is a quiet place. A student is looking for a specific book. He goes to the help desk. He talks to the librarian. He asks about borrowing rules and locations.",
+          "title": "At the Library Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a library request: ask where to find a book about a specific topic and how long you can borrow it.",
@@ -5146,10 +5224,16 @@
         }
       ],
       "passage": {
-        "title": "Borrowing Something Listening Passage",
-        "zh": "大衛，不好意思，我今天忘記帶筆了。沒關係，我有兩支。你要借一支嗎？可以嗎？太謝謝你了！當然可以。這支黑色的借給你。喔，這支筆寫起來很順。是新買的嗎？對，昨天剛買的。你要小心用喔，別弄丟了。",
-        "en": "The class is about to start. Mark is checking his bag. He realizes he doesn't have a pen. He asks his neighbor for help. They talk about borrowing and lending politely.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Borrowing Something Dialogue Listening",
+        "zh": "大衛，不好意思，我今天忘記帶筆了。 沒關係，我有兩支。你要借一支嗎？ 可以嗎？太謝謝你了！ 當然可以。這支黑色的借給你。 喔，這支筆寫起來很順。是新買的嗎？ 對，昨天剛買的。你要小心用喔，別弄丟了。 我一定會小心的。課後就還給你。 不用急，你先用吧。 對了，你有橡皮擦嗎？我的也沒帶。 你也太糊塗了！橡皮擦只有一個，我們一起用吧。 哈哈，謝謝你。下次我請你喝飲料。 一言為定！",
+        "en": "David, I'm sorry, I forgot to bring a pen today. No problem, I have two. Do you want to borrow one? Is it okay? Thank you so much! Of course. Borrow this black one. Oh, this pen writes very smoothly. Is it newly bought? Yes, just bought it yesterday. Use it carefully, don't lose it. I'll definitely be careful. I'll return it to you after class. No rush, you use it first. By the way, do you have an eraser? I didn't bring mine either. You're too absent-minded! I only have one eraser, let's use it together. Haha, thanks. Next time I'll treat you to a drink. It's a deal!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，不好意思，我今天忘記帶筆了。沒關係，我有兩支。你要借一支嗎？可以嗎？太謝謝你了！當然可以。這支黑色的借給你。喔，這支筆寫起來很順。是新買的嗎？對，昨天剛買的。你要小心用喔，別弄丟了。",
+          "en": "The class is about to start. Mark is checking his bag. He realizes he doesn't have a pen. He asks his neighbor for help. They talk about borrowing and lending politely.",
+          "title": "Borrowing Something Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 borrowing requests: e.g., 'May I borrow your pen?', 'Can I use your eraser?'.",
@@ -5520,10 +5604,16 @@
         }
       ],
       "passage": {
-        "title": "Simple Homework Talk Listening Passage",
-        "zh": "今天的功課你做了嗎？還沒，我打算等一下再做。你呢？我剛才看了一下，覺得有點兒難。哪一部分難？是聽寫還是閱讀？是聽寫。老師說的很快，我聽不清楚。沒關係。閱讀很簡單，我們可以先做閱讀。",
-        "en": "The class has finished. Students have some homework to do. Two friends talk about the tasks. They discuss if the homework is hard or easy. They talk about when they will finish it.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Simple Homework Talk Dialogue Listening",
+        "zh": "今天的功課你做了嗎？ 還沒，我打算等一下再做。你呢？ 我剛才看了一下，覺得有點兒難。 哪一部分難？是聽寫還是閱讀？ 是聽寫。老師說的很快，我聽不清楚。 沒關係。閱讀很簡單，我們可以先做閱讀。 功課什麼時候要交？ 明天早上第一節課。你有時間跟我一起做嗎？ 有。我們去圖書館吧，那裡比較安靜。 好主意。我還得帶上我的字典。 我已經帶了。我們現在就走吧。 好的，走吧！",
+        "en": "Have you done today's homework? Not yet, I plan to do it later. How about you? I just took a look, and I think it's a bit hard. Which part is hard? Dictation or reading? It's the dictation. The teacher speaks very fast, I can't hear clearly. No problem. The reading is very simple, we can do that first. When should the homework be handed in? Tomorrow morning during the first period. Do you have time to do it with me? Yes. Let's go to the library; it's relatively quiet there. Good idea. I also have to bring my dictionary. I've already brought mine. Let's go right now. Okay, let's go!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "今天的功課你做了嗎？還沒，我打算等一下再做。你呢？我剛才看了一下，覺得有點兒難。哪一部分難？是聽寫還是閱讀？是聽寫。老師說的很快，我聽不清楚。沒關係。閱讀很簡單，我們可以先做閱讀。",
+          "en": "The class has finished. Students have some homework to do. Two friends talk about the tasks. They discuss if the homework is hard or easy. They talk about when they will finish it.",
+          "title": "Simple Homework Talk Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a homework reminder: include what the task is, whether it's easy/hard, and when to hand it in.",
@@ -5894,10 +5984,16 @@
         }
       ],
       "passage": {
-        "title": "My Favorite Subject Listening Passage",
-        "zh": "大衛，你這學期修了幾門課？我修了五門課：中文、歷史、數學、體育和藝術。哇，那很忙！你最喜歡哪一門課？我最喜歡藝術課。我喜歡畫畫，覺得很有意思。藝術課確實不錯。我不擅長畫畫，我比較喜歡數學。數學？你不覺得數學很枯燥嗎？公式那麼多。",
-        "en": "The students are taking a break between classes. They talk about their weekly schedule. They discuss which subjects they like and which ones they find difficult. They share their reasons for their preferences. They talk about their future goals related to these subjects.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Favorite Subject Dialogue Listening",
+        "zh": "大衛，你這學期修了幾門課？ 我修了五門課：中文、歷史、數學、體育和藝術。 哇，那很忙！你最喜歡哪一門課？ 我最喜歡藝術課。我喜歡畫畫，覺得很有意思。 藝術課確實不錯。我不擅長畫畫，我比較喜歡數學。 數學？你不覺得數學很枯燥嗎？公式那麼多。 雖然公式多，但是很有邏輯。解出答案的時候很有成就感。 你真厲害。那歷史課呢？你覺得難嗎？ 歷史課要背的年份和人名太多了，我覺得有點兒吃力。 我也這麼覺得。所以我們要多互相幫助。 沒問題。如果你數學有問題，儘管問我。 太好了，謝謝你！",
+        "en": "David, how many courses are you taking this semester? I'm taking five courses: Chinese, History, Math, PE, and Art. Wow, that's busy! Which course do you like the most? I like Art class the most. I like drawing and find it very interesting. Art class is indeed not bad. I'm not good at drawing; I prefer Math. Math? Don't you think Math is boring? There are so many formulas. Although there are many formulas, it's very logical. I feel a great sense of achievement when I solve the answer. You're really impressive. What about History class? Do you find it hard? There are too many years and names to memorize in History class; I find it a bit strenuous. I feel the same way. So we should help each other more. No problem. If you have questions in Math, feel free to ask me. Great, thank you!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，你這學期修了幾門課？我修了五門課：中文、歷史、數學、體育和藝術。哇，那很忙！你最喜歡哪一門課？我最喜歡藝術課。我喜歡畫畫，覺得很有意思。藝術課確實不錯。我不擅長畫畫，我比較喜歡數學。數學？你不覺得數學很枯燥嗎？公式那麼多。",
+          "en": "The students are taking a break between classes. They talk about their weekly schedule. They discuss which subjects they like and which ones they find difficult. They share their reasons for their preferences. They talk about their future goals related to these subjects.",
+          "title": "My Favorite Subject Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short paragraph about your favorite school subject: what it is, why you like it, and if it's easy or hard for you (40-60 words).",
@@ -6268,10 +6364,16 @@
         }
       ],
       "passage": {
-        "title": "The Test Is Tomorrow Listening Passage",
-        "zh": "大衛，你複習得怎麼樣了？明天的考試我很緊張。我也很緊張。我剛看完前三個單元，還有兩個單元沒看。你還有兩個單元？我才複習完第一單元呢。那你要快點了。老師說第四單元是重點。重點？完了，我最怕重點了。我現在頭有點兒暈。別擔心，我們先休息十分鐘，喝點水吧。",
-        "en": "There is a big test tomorrow morning. The students are studying late in the library. They talk about how they feel before the test. They discuss which parts they have reviewed. They encourage each other to keep going.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "The Test Is Tomorrow Dialogue Listening",
+        "zh": "大衛，你複習得怎麼樣了？明天的考試我很緊張。 我也很緊張。我剛看完前三個單元，還有兩個單元沒看。 你還有兩個單元？我才複習完第一單元呢。 那你要快點了。老師說第四單元是重點。 重點？完了，我最怕重點了。我現在頭有點兒暈。 別擔心，我們先休息十分鐘，喝點水吧。 好。你覺得這次考試會很難嗎？ 應該會有一點兒難。不過只要我們認真複習，一定沒問題。 希望如此。我打算今晚熬夜複習。 熬夜對身體不好，也影響明天的精神。你最好早點睡。 你說得對。那我複習完重點就睡。 好。我們一起加油吧！",
+        "en": "David, how is your review going? I'm very nervous about tomorrow's exam. I'm also nervous. I just finished the first three units, there are still two units I haven't looked at. You still have two units? I only just finished reviewing the first unit. Then you need to hurry up. The teacher said unit four is the key point. Key point? Oh no, I'm most afraid of 'key points'. My head is a bit dizzy now. Don't worry, let's rest for ten minutes first and drink some water. Okay. Do you think this exam will be very hard? It should be a bit hard. But as long as we review seriously, there will definitely be no problem. Hope so. I plan to stay up late tonight to review. Staying up late is bad for the body and also affects tomorrow's energy. You'd better sleep early. You're right. Then I'll sleep after I finish reviewing the key points. Okay. Let's keep at it together!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，你複習得怎麼樣了？明天的考試我很緊張。我也很緊張。我剛看完前三個單元，還有兩個單元沒看。你還有兩個單元？我才複習完第一單元呢。那你要快點了。老師說第四單元是重點。重點？完了，我最怕重點了。我現在頭有點兒暈。別擔心，我們先休息十分鐘，喝點水吧。",
+          "en": "There is a big test tomorrow morning. The students are studying late in the library. They talk about how they feel before the test. They discuss which parts they have reviewed. They encourage each other to keep going.",
+          "title": "The Test Is Tomorrow Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a study plan for an upcoming test: include which subjects to review, when you will study, and how you will stay focused (40-60 words).",
@@ -6642,10 +6744,16 @@
         }
       ],
       "passage": {
-        "title": "At the Doctor Listening Passage",
-        "zh": "你好，哪裡不舒服？醫生，我頭很疼，嗓子也痛。從什麼時候開始的？發燒嗎？從昨天晚上開始的。剛才量了一下，三十八度五。請張開嘴，讓我看看。啊——。啊——。",
-        "en": "Mark is not feeling well today. He has a headache and a fever. He goes to a nearby clinic. He talks to the doctor about his symptoms. The doctor gives him a check-up and advice.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the Doctor Dialogue Listening",
+        "zh": "你好，哪裡不舒服？ 醫生，我頭很疼，嗓子也痛。 從什麼時候開始的？發燒嗎？ 從昨天晚上開始的。剛才量了一下，三十八度五。 請張開嘴，讓我看看。啊—— 啊—— 嗓子有點兒紅腫。咳嗽嗎？ 有一點兒，特別是晚上的時候。 沒關係，是普通的感冒。我給你開點藥。 謝謝醫生。這藥怎麼吃？ 一天三次，飯後吃。你要多喝水，多休息。 好的，我知道了。謝謝醫生。",
+        "en": "Hello, where do you feel unwell? Doctor, I have a bad headache and my throat also hurts. When did it start? Do you have a fever? It started last night. I just measured it, 38.5 degrees. Please open your mouth and let me see. Ah— Ah— The throat is a bit red and swollen. Do you have a cough? A little bit, especially at night. It's okay; it's a common cold. I'll prescribe some medicine for you. Thank you, doctor. How should I take this medicine? Three times a day, take after meals. You need to drink plenty of water and rest a lot. Okay, I got it. Thank you, doctor.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，哪裡不舒服？醫生，我頭很疼，嗓子也痛。從什麼時候開始的？發燒嗎？從昨天晚上開始的。剛才量了一下，三十八度五。請張開嘴，讓我看看。啊——。啊——。",
+          "en": "Mark is not feeling well today. He has a headache and a fever. He goes to a nearby clinic. He talks to the doctor about his symptoms. The doctor gives him a check-up and advice.",
+          "title": "At the Doctor Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short note describing your symptoms to a doctor or a note for taking sick leave (3-5 sentences).",
@@ -7016,10 +7124,16 @@
         }
       ],
       "passage": {
-        "title": "I Don’t Feel Well Listening Passage",
-        "zh": "老師，不好意思，我想請假。怎麼了，馬克？哪裡不舒服？我肚子很疼，覺得渾身沒勁兒。臉色看起來也不太好。是不是吃壞肚子了？可能吧。我想回宿舍休息一下。好。你自己能回去嗎？要不要人陪？",
-        "en": "The class is ongoing. Mark feels very weak and dizzy. He goes to the teacher's desk. He explains his situation and asks for permission. The teacher shows concern and gives instructions.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "I Don’t Feel Well Dialogue Listening",
+        "zh": "老師，不好意思，我想請假。 怎麼了，馬克？哪裡不舒服？ 我肚子很疼，覺得渾身沒勁兒。 臉色看起來也不太好。是不是吃壞肚子了？ 可能吧。我想回宿舍休息一下。 好。你自己能回去嗎？要不要人陪？ 沒關係，我可以自己回去。宿舍離這裡不遠。 那你回去以後先休息。如果還疼，一定要去看醫生。 好的。明天的作業我會補交的。 作業不急。身體最重要。快回去休息吧。 謝謝老師，老師再見。 再見。祝你早日康復。",
+        "en": "Teacher, sorry, I'd like to ask for leave. What's wrong, Mark? Where do you feel unwell? My stomach hurts badly, and I feel weak all over. Your complexion doesn't look too good either. Did you eat something bad? Maybe. I want to go back to the dormitory to rest for a bit. Okay. Can you go back by yourself? Do you need someone to accompany you? No problem, I can go back by myself. The dorm is not far from here. Then rest first after you get back. If it still hurts, you must go see a doctor. Okay. I will make up and hand in tomorrow's homework later. The homework is not urgent. Health is the most important. Go back and rest quickly. Thank you, teacher. Goodbye, teacher. Goodbye. Wish you a speedy recovery.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "老師，不好意思，我想請假。怎麼了，馬克？哪裡不舒服？我肚子很疼，覺得渾身沒勁兒。臉色看起來也不太好。是不是吃壞肚子了？可能吧。我想回宿舍休息一下。好。你自己能回去嗎？要不要人陪？",
+          "en": "The class is ongoing. Mark feels very weak and dizzy. He goes to the teacher's desk. He explains his situation and asks for permission. The teacher shows concern and gives instructions.",
+          "title": "I Don’t Feel Well Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a sick leave message to a teacher: explain your symptoms and ask to go home (40-60 words).",
@@ -7390,10 +7504,16 @@
         }
       ],
       "passage": {
-        "title": "Buying Medicine Listening Passage",
-        "zh": "你好，我想買點感冒藥和止咳藥。好的。你有什麼症狀？我發燒了，三十八度。還有點兒咳嗽，嗓子乾疼。這盒是退燒藥，效果很好。這瓶是止咳糖漿。這兩種藥可以一起吃嗎？可以。退燒藥一天兩次，早晚各一粒。糖漿一天三次，每次十毫升。",
-        "en": "Mark is at a pharmacy. He needs to buy medicine for his fever and cough. He talks to the pharmacist. He asks about the effects and usage of the medicine. The pharmacist gives him instructions and tips.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Buying Medicine Dialogue Listening",
+        "zh": "你好，我想買點感冒藥和止咳藥。 好的。你有什麼症狀？ 我發燒了，三十八度。還有點兒咳嗽，嗓子乾疼。 這盒是退燒藥，效果很好。這瓶是止咳糖漿。 這兩種藥可以一起吃嗎？ 可以。退燒藥一天兩次，早晚各一粒。糖漿一天三次，每次十毫升。 吃了這個藥會不會想睡覺？ 退燒藥可能會讓你有點兒困。所以吃完藥後不要開車。 好的。除了吃藥，還要注意什麼？ 要注意保暖，別吹風。多吃點清淡的食物。 明白了。一共多少錢？ 一共三百二十塊。",
+        "en": "Hello, I'd like to buy some cold medicine and cough medicine. Okay. What symptoms do you have? I have a fever, 38 degrees. Also a bit of a cough, and my throat is dry and painful. This box is fever-reducing medicine, the effect is very good. This bottle is cough syrup. Can these two kinds of medicine be taken together? Yes. Fever medicine twice a day, one pill each morning and evening. Syrup three times a day, 10ml each time. Will taking this medicine make me want to sleep? The fever medicine might make you a bit sleepy. So don't drive after taking the medicine. Okay. Besides taking medicine, what else should I pay attention to? Pay attention to keeping warm, don't catch a draft. Eat more light/bland food. Understood. How much in total? 320 dollars in total.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，我想買點感冒藥和止咳藥。好的。你有什麼症狀？我發燒了，三十八度。還有點兒咳嗽，嗓子乾疼。這盒是退燒藥，效果很好。這瓶是止咳糖漿。這兩種藥可以一起吃嗎？可以。退燒藥一天兩次，早晚各一粒。糖漿一天三次，每次十毫升。",
+          "en": "Mark is at a pharmacy. He needs to buy medicine for his fever and cough. He talks to the pharmacist. He asks about the effects and usage of the medicine. The pharmacist gives him instructions and tips.",
+          "title": "Buying Medicine Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write basic medicine instructions: include how many times a day, how many pills/ml, and if it should be taken before/after meals.",
@@ -7764,10 +7884,16 @@
         }
       ],
       "passage": {
-        "title": "At a Restaurant Listening Passage",
-        "zh": "歡迎光臨！請問幾位？兩位。有安靜一點兒的位置嗎？有的，請跟我來。這邊請。謝謝。大衛，你想吃什麼？我聽說這家的紅燒肉和清蒸魚很有名。那好，我們點一份紅燒肉、一條清蒸魚，再要一個炒青菜。",
-        "en": "Mark and David are hungry after class. They find a nice local restaurant. A waiter comes to their table. They look at the menu and decide what to order. They talk about portions and recommendations.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At a Restaurant Dialogue Listening",
+        "zh": "歡迎光臨！請問幾位？ 兩位。有安靜一點兒的位置嗎？ 有的，請跟我來。這邊請。 謝謝。大衛，你想吃什麼？ 我聽說這家的紅燒肉和清蒸魚很有名。 那好，我們點一份紅燒肉、一條清蒸魚，再要一個炒青菜。 主食要米飯還是饅頭？ 米飯吧，兩碗米飯。 好的。要喝點兒什麼嗎？這裡有免費的熱茶。 熱茶就可以了。謝謝。 好的，請稍等。菜馬上就來。 這家餐廳環境真不錯。",
+        "en": "Welcome! How many people, please? Two people. Is there a quieter seat? Yes, please follow me. This way, please. Thanks. David, what do you want to eat? I heard their braised pork and steamed fish are very famous. Okay then, let's order one braised pork, one steamed fish, and one stir-fried green vegetable. For staple food, do you want rice or steamed buns? Rice, probably, two bowls of rice. Okay. Do you want something to drink? There's free hot tea here. Hot tea is fine. Thanks. Okay, please wait a moment. The dishes will be here shortly. The environment of this restaurant is really not bad.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "歡迎光臨！請問幾位？兩位。有安靜一點兒的位置嗎？有的，請跟我來。這邊請。謝謝。大衛，你想吃什麼？我聽說這家的紅燒肉和清蒸魚很有名。那好，我們點一份紅燒肉、一條清蒸魚，再要一個炒青菜。",
+          "en": "Mark and David are hungry after class. They find a nice local restaurant. A waiter comes to their table. They look at the menu and decide what to order. They talk about portions and recommendations.",
+          "title": "At a Restaurant Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a restaurant dialogue: include entering the shop, asking for a table, and ordering one dish and one drink.",
@@ -8138,10 +8264,16 @@
         }
       ],
       "passage": {
-        "title": "The Food Is Too Spicy Listening Passage",
-        "zh": "（吃了一口）哇，這道菜好辣！真的嗎？我覺得還好。你不能吃辣嗎？我能吃一點兒，但是這個太辣了，我的嗓子都要冒火了。服務員，請給我一杯冰水，謝謝。好的。對不起，這道菜是中辣的。你要換成微辣嗎？現在不用換了，我多喝點水。下次我會記得點微辣的。",
-        "en": "The food has arrived at the table. Mark tries the braised pork. He finds it a bit spicy. He talks to the waiter about the taste. They discuss how to order less spicy food next time.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "The Food Is Too Spicy Dialogue Listening",
+        "zh": "（吃了一口）哇，這道菜好辣！ 真的嗎？我覺得還好。你不能吃辣嗎？ 我能吃一點兒，但是這個太辣了，我的嗓子都要冒火了。 服務員，請給我一杯冰水，謝謝。 好的。對不起，這道菜是中辣的。你要換成微辣嗎？ 現在不用換了，我多喝點水。下次我會記得點微辣的。 這魚排一點兒也不辣，你嚐嚐看。 （嚐了一口）嗯，這個味道很清淡，剛好合我的口味。 那你多吃點魚吧。除了辣，這肉的味道其實不錯。 對，如果沒那麼辣就完美了。 （笑）好了，快喝水吧。 謝謝，冰水舒服多了。",
+        "en": "(After a bite) Wow, this dish is so spicy! Really? I think it's okay. You can't eat spicy food? I can eat a little, but this is too spicy; my throat feels like it's on fire. Waiter, please give me a glass of ice water, thanks. Okay. Sorry, this dish is medium spicy. Do you want to change it to mild spicy? No need to change now, I'll drink more water. Next time I'll remember to order mild spicy. This fish fillet isn't spicy at all, try it. (Tries a bite) Hmm, this taste is very light, just right for my palate. Then eat more fish. Besides being spicy, the taste of this meat is actually good. Yes, if it weren't so spicy, it would be perfect. (Laughs) Okay, drink some water quickly. Thanks, the ice water makes it much more comfortable.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "（吃了一口）哇，這道菜好辣！真的嗎？我覺得還好。你不能吃辣嗎？我能吃一點兒，但是這個太辣了，我的嗓子都要冒火了。服務員，請給我一杯冰水，謝謝。好的。對不起，這道菜是中辣的。你要換成微辣嗎？現在不用換了，我多喝點水。下次我會記得點微辣的。",
+          "en": "The food has arrived at the table. Mark tries the braised pork. He finds it a bit spicy. He talks to the waiter about the taste. They discuss how to order less spicy food next time.",
+          "title": "The Food Is Too Spicy Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 sentences about food taste: include spicy, sweet, salty, and light/bland tastes.",
@@ -8512,10 +8644,16 @@
         }
       ],
       "passage": {
-        "title": "Paying the Bill Listening Passage",
-        "zh": "服務員，結帳！請給我帳單。好的。一共是五百八十塊。這是帳單。馬克，我們AA制吧，每人二百九十塊。不用了，今天我請客。剛才那道菜太辣，害你沒吃好。那怎麼行？說好一起吃的。那下次換我請。好吧，那就下次你請。這是六百塊，不用找了。",
-        "en": "The meal is finished. Mark and David are very full. They call the waiter to pay the bill. They talk about paying together or separately. They check the change and get ready to leave.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Paying the Bill Dialogue Listening",
+        "zh": "服務員，結帳！請給我帳單。 好的。一共是五百八十塊。這是帳單。 馬克，我們AA制吧，每人二百九十塊。 不用了，今天我請客。剛才那道菜太辣，害你沒吃好。 那怎麼行？說好一起吃的。那下次換我請。 好吧，那就下次你請。這是六百塊，不用找了。 謝謝您。歡迎下次光臨！ 你太客氣了。今天吃得真飽。 對，味道確實不錯。我們走吧。 你要去哪裡？我要回圖書館。 我要去超市買點東西，然後也回學校。 好，那我們學校見。",
+        "en": "Waiter, the bill! Please give me the invoice/bill. Okay. Total is 580 dollars. Here is the bill. Mark, let's go Dutch (AA system), 290 dollars each. No need, it's my treat today. That dish just now was too spicy; it caused you not to eat well. How can that be? We agreed to eat together. Then next time it's my turn to treat. Okay, then you treat next time. Here is 600 dollars, keep the change. Thank you. Please come again! You're too kind. I'm really full today. Yes, the taste was indeed not bad. Let's go. Where are you going? I'm going back to the library. I'm going to the supermarket to buy some things, and then I'm also going back to school. Okay, see you at school then.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "服務員，結帳！請給我帳單。好的。一共是五百八十塊。這是帳單。馬克，我們AA制吧，每人二百九十塊。不用了，今天我請客。剛才那道菜太辣，害你沒吃好。那怎麼行？說好一起吃的。那下次換我請。好吧，那就下次你請。這是六百塊，不用找了。",
+          "en": "The meal is finished. Mark and David are very full. They call the waiter to pay the bill. They talk about paying together or separately. They check the change and get ready to leave.",
+          "title": "Paying the Bill Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short dialogue (5 lines) about paying a bill, including the amount and splitting or treating.",
@@ -8886,10 +9024,16 @@
         }
       ],
       "passage": {
-        "title": "Taking a Taxi Listening Passage",
-        "zh": "師傅，你好！去火車站。好的。你是要趕火車嗎？對，火車三點二十分開。現在走哪條路比較快？現在是高峰時段，走高架橋可能會堵車。我走小路吧。可以。大概需要多久能到？如果不堵車的話，二十分鐘左右就能到。",
-        "en": "Mark is in a hurry. He waves his hand and stops a taxi. He tells the driver his destination. They talk about the route and the traffic. He asks about the estimated arrival time.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Taking a Taxi Dialogue Listening",
+        "zh": "師傅，你好！去火車站。 好的。你是要趕火車嗎？ 對，火車三點二十分開。現在走哪條路比較快？ 現在是高峰時段，走高架橋可能會堵車。我走小路吧。 可以。大概需要多久能到？ 如果不堵車的話，二十分鐘左右就能到。 太好了，麻煩你開快一點兒。 沒問題，安全第一。你是在哪個門下車？ 請在北廣場入口停，那裡離進站口最近。 好的。火車站到了，一共是二百六十塊。 給你錢。謝謝師傅！ 不客氣，祝你旅途愉快！",
+        "en": "Master (Driver), hello! Go to the train station. Okay. Are you in a rush to catch a train? Yes, the train leaves at 3:20. Which road is faster now? It's rush hour now; taking the elevated bridge might result in a traffic jam. I'll take the side roads. Can do. Roughly how long will it take to arrive? If there's no traffic jam, we can arrive in about twenty minutes. Great, please drive a bit faster. No problem, safety first. Which gate are you getting off at? Please stop at the North Plaza entrance; it's closest to the station entrance. Okay. The train station is here; total is 260 dollars. Here is the money. Thanks, driver! You're welcome, wish you a pleasant journey!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "師傅，你好！去火車站。好的。你是要趕火車嗎？對，火車三點二十分開。現在走哪條路比較快？現在是高峰時段，走高架橋可能會堵車。我走小路吧。可以。大概需要多久能到？如果不堵車的話，二十分鐘左右就能到。",
+          "en": "Mark is in a hurry. He waves his hand and stops a taxi. He tells the driver his destination. They talk about the route and the traffic. He asks about the estimated arrival time.",
+          "title": "Taking a Taxi Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write taxi instructions: include the address/destination, a request for speed or route, and where exactly to stop.",
@@ -9260,10 +9404,16 @@
         }
       ],
       "passage": {
-        "title": "Lost in the City Listening Passage",
-        "zh": "不好意思，請問一下，去龍山寺怎麼走？龍山寺？離這裡有一段路。你現在走反了。喔，糟了！我應該往哪邊走？你先過馬路，然後一直往前走。一直走，會看到什麼標誌嗎？你會看到一家很大的百貨公司。在路口向右轉。",
-        "en": "Mark is exploring the city alone. He wants to find a famous temple. His phone has no internet. He feels a bit lost and confused. He asks a passerby for directions using landmarks.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Lost in the City Dialogue Listening",
+        "zh": "不好意思，請問一下，去龍山寺怎麼走？ 龍山寺？離這裡有一段路。你現在走反了。 喔，糟了！我應該往哪邊走？ 你先過馬路，然後一直往前走。 一直走，會看到什麼標誌嗎？ 你會看到一家很大的百貨公司。在路口向右轉。 向右轉以後呢？ 右轉後再走五分鐘，你會看到一個捷運站入口。寺廟就在捷運站對面。 捷運站對面...好的，我記住了。現在那裡人多嗎？ 今天週末，遊客肯定不少。那裡很熱鬧。 好的，太感謝你了！ 不客氣，慢慢逛吧。",
+        "en": "Excuse me, how do I get to Longshan Temple? Longshan Temple? It's a way from here. You are walking in the wrong direction now. Oh, no! Which way should I go? First cross the street, then go straight forward. Go straight, will I see any landmarks/signs? You will see a large department store. Turn right at the intersection. And after turning right? After turning right, walk for another five minutes, and you'll see a metro station entrance. The temple is right opposite the metro station. Opposite the metro station... okay, I've remembered it. Are there many people there now? It's the weekend today; there are bound to be many tourists. It's very lively there. Okay, thank you so much! You're welcome, enjoy your stroll.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "不好意思，請問一下，去龍山寺怎麼走？龍山寺？離這裡有一段路。你現在走反了。喔，糟了！我應該往哪邊走？你先過馬路，然後一直往前走。一直走，會看到什麼標誌嗎？你會看到一家很大的百貨公司。在路口向右轉。",
+          "en": "Mark is exploring the city alone. He wants to find a famous temple. His phone has no internet. He feels a bit lost and confused. He asks a passerby for directions using landmarks.",
+          "title": "Lost in the City Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write directions to a local landmark from where you are: use 'first', 'then', and at least one landmark.",
@@ -9634,10 +9784,16 @@
         }
       ],
       "passage": {
-        "title": "At the Train Station Listening Passage",
-        "zh": "你好，我想買一張去台中的票。好的。你要對號座還是自由座？對號座。下一班車幾點開？下一班車是三點四十分，那是普快車。有快一點的車嗎？我有點兒急。四點整有一班特快車，大約一個小時就到了。",
-        "en": "Mark has arrived at the train station. He needs to buy a ticket to another city. He goes to the ticket window. He asks about the train schedule and platforms. He makes sure he has enough time to catch the train.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "At the Train Station Dialogue Listening",
+        "zh": "你好，我想買一張去台中的票。 好的。你要對號座還是自由座？ 對號座。下一班車幾點開？ 下一班車是三點四十分，那是普快車。 有快一點的車嗎？我有點兒急。 四點整有一班特快車，大約一個小時就到了。 那就買四點那一班吧。多少錢？ 七百五十塊。這是你的票，請拿好。 謝謝。請問在幾號月台乘車？ 在第二月台。你可以看大廳的電子螢幕。 好的，我知道了。現在可以進站了嗎？ 可以。祝你旅途愉快！",
+        "en": "Hello, I'd like to buy a ticket to Taichung. Okay. Do you want a reserved seat or a non-reserved seat? Reserved seat. What time does the next train leave? The next train is at 3:40; that's a regular express. Is there a faster train? I'm in a bit of a hurry. There is a super express at 4:00 sharp; it arrives in about an hour. Then I'll buy the 4:00 one. How much? 750 dollars. Here is your ticket, please take it. Thanks. Which platform do I board at? At platform number two. You can look at the electronic screen in the lobby. Okay, I got it. Can I enter the station now? Yes. Wish you a pleasant journey!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，我想買一張去台中的票。好的。你要對號座還是自由座？對號座。下一班車幾點開？下一班車是三點四十分，那是普快車。有快一點的車嗎？我有點兒急。四點整有一班特快車，大約一個小時就到了。",
+          "en": "Mark has arrived at the train station. He needs to buy a ticket to another city. He goes to the ticket window. He asks about the train schedule and platforms. He makes sure he has enough time to catch the train.",
+          "title": "At the Train Station Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a travel information card: include destination, departure time, seat type, and platform number (3-5 items).",
@@ -10008,10 +10164,16 @@
         }
       ],
       "passage": {
-        "title": "On the Bus Listening Passage",
-        "zh": "不好意思，請問這路車去美術館嗎？去的。大概還有五六站就到了。太好了。我應該在哪一站下車？你在'中山公園'站下車。那裡離美術館最近。下一站是中山公園嗎？不是，下一站是'火車站'。中山公園是第四站。",
-        "en": "Mark is sitting on a bus. He is going to a new place. He is not sure when to get off. He asks another passenger for help. They talk about 'next stop' and 'last stop'.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "On the Bus Dialogue Listening",
+        "zh": "不好意思，請問這路車去美術館嗎？ 去的。大概還有五六站就到了。 太好了。我應該在哪一站下車？ 你在'中山公園'站下車。那裡離美術館最近。 下一站是中山公園嗎？ 不是，下一站是'火車站'。中山公園是第四站。 好的，我知道了。公車上有語音播報嗎？ 有，每一站都會播報站名。你聽清楚就好。 如果不小心坐過站了怎麼辦？ 坐過站也沒關係。到下一站下車，再坐反方向的車回來就行。 好的，非常感謝你的幫助。 不客氣，慢慢坐吧。",
+        "en": "Excuse me, does this bus go to the Fine Arts Museum? Yes, it does. Arrives in about five or six more stops. Great. At which stop should I get off? Get off at 'Zhongshan Park' stop. That's closest to the museum. Is the next stop Zhongshan Park? No, the next stop is 'Train Station'. Zhongshan Park is the fourth stop. Okay, I got it. Is there a voice announcement on the bus? Yes, it announces the stop name at every stop. Just listen clearly. What if I accidentally miss my stop (go past it)? It's okay if you miss it. Get off at the next stop, and then take the bus in the opposite direction back. Okay, thank you very much for your help. You're welcome, enjoy the ride.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "不好意思，請問這路車去美術館嗎？去的。大概還有五六站就到了。太好了。我應該在哪一站下車？你在'中山公園'站下車。那裡離美術館最近。下一站是中山公園嗎？不是，下一站是'火車站'。中山公園是第四站。",
+          "en": "Mark is sitting on a bus. He is going to a new place. He is not sure when to get off. He asks another passenger for help. They talk about 'next stop' and 'last stop'.",
+          "title": "On the Bus Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a bus route note: include the bus number, starting point, ending point, and 2 important stops in between.",
@@ -10382,10 +10544,16 @@
         }
       ],
       "passage": {
-        "title": "A Rainy Day Problem Listening Passage",
-        "zh": "看，外面突然下起大雨了。是啊，剛才還是晴天呢。看來我們去不了公園了。真倒霉！我本來很期待去野餐的。沒關係，下雨天也沒辦法。你帶傘了嗎？帶了，但是風太大，打傘也沒用。那我們現在做什麼？一直待在教室裡也很悶。",
-        "en": "Mark and David planned to go to the park. But suddenly, it starts raining heavily. They are stuck indoors. They talk about the weather and their cancelled plans. They decide to do something else indoors instead.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "A Rainy Day Problem Dialogue Listening",
+        "zh": "看，外面突然下起大雨了。 是啊，剛才還是晴天呢。看來我們去不了公園了。 真倒霉！我本來很期待去野餐的。 沒關係，下雨天也沒辦法。你帶傘了嗎？ 帶了，但是風太大，打傘也沒用。 那我們現在做什麼？一直待在教室裡也很悶。 要不我們去逛商場吧？那裡在室內，不會淋雨。 好主意！商場裡還有電影院，我們可以看場電影。 太棒了！那我們怎麼去？坐公車還是打車？ 公車站離這裡有點兒遠，還是打車吧，直接到門口。 行。那我現在用手機叫車。 好，我們在門廳等車吧。",
+        "en": "Look, it suddenly started raining hard outside. Yeah, it was just sunny. Looks like we can't go to the park anymore. So unlucky! I was really looking forward to the picnic. No problem, nothing can be done on a rainy day. Did you bring an umbrella? I did, but the wind is too strong; even an umbrella is useless. So what do we do now? Staying in the classroom all the time is also very boring. How about we go wander the shopping mall? It's indoors there, we won't get rained on. Good idea! There's also a cinema in the mall; we can watch a movie. Great! How shall we get there? Take the bus or catch a cab? The bus stop is a bit far from here; let's catch a cab instead, goes straight to the door. Okay. Then I'll call a car with my phone now. Okay, let's wait for the car in the lobby.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "看，外面突然下起大雨了。是啊，剛才還是晴天呢。看來我們去不了公園了。真倒霉！我本來很期待去野餐的。沒關係，下雨天也沒辦法。你帶傘了嗎？帶了，但是風太大，打傘也沒用。那我們現在做什麼？一直待在教室裡也很悶。",
+          "en": "Mark and David planned to go to the park. But suddenly, it starts raining heavily. They are stuck indoors. They talk about the weather and their cancelled plans. They decide to do something else indoors instead.",
+          "title": "A Rainy Day Problem Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a rainy-day plan: what will you do instead of your original outdoor plan? (3-5 sentences).",
@@ -10756,10 +10924,16 @@
         }
       ],
       "passage": {
-        "title": "Cleaning My Room Listening Passage",
-        "zh": "馬克，你看看你的房間，也太亂了吧！媽，我知道了。我等一下再收。不行！你現在就得收。你下午不是要出去玩嗎？對，我要跟大衛去打球。那你在出門前，必須把房間整理乾淨。好吧。我要做哪些事？",
-        "en": "The weekend morning has arrived. Mark's room is very messy. His mother is not happy about it. She asks him to clean up before he can go play. They talk about specific tasks like sweeping and organizing.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Cleaning My Room Dialogue Listening",
+        "zh": "馬克，你看看你的房間，也太亂了吧！ 媽，我知道了。我等一下再收。 不行！你現在就得收。你下午不是要出去玩嗎？ 對，我要跟大衛去打球。 那你在出門前，必須把房間整理乾淨。 好吧。我要做哪些事？ 先要把衣服疊好，放在櫃子裡。書桌也要收拾一下。 还要掃地嗎？ 當然要。地板上有不少灰塵。最後記得倒垃圾。 这么多事啊！這得花不少時間吧。 只要你動作快一點兒，半個小時就能做完。 行，我現在就開始。完成任務就能出去玩了！",
+        "en": "Mark, look at your room, it's way too messy! Mom, I know. I'll tidy up later. No! You have to tidy up right now. Aren't you going out to play this afternoon? Yes, I'm going to play ball with David. Then before you go out, you must organize your room clean. Okay then. What things do I need to do? First, you need to fold the clothes well and put them in the closet. The desk also needs to be tidied up. Do I still need to sweep the floor? Of course. There's quite a bit of dust on the floor. Finally, remember to take out the trash. So many things! This will probably take quite a lot of time. As long as your movements are a bit faster, you can finish in half an hour. Fine, I'll start right now. Once I complete the mission, I can go out to play!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你看看你的房間，也太亂了吧！媽，我知道了。我等一下再收。不行！你現在就得收。你下午不是要出去玩嗎？對，我要跟大衛去打球。那你在出門前，必須把房間整理乾淨。好吧。我要做哪些事？",
+          "en": "The weekend morning has arrived. Mark's room is very messy. His mother is not happy about it. She asks him to clean up before he can go play. They talk about specific tasks like sweeping and organizing.",
+          "title": "Cleaning My Room Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a chore list for your weekend: include at least 5 tasks using '把' structure if possible.",
@@ -11130,10 +11304,16 @@
         }
       ],
       "passage": {
-        "title": "Review Story: A Busy Weekend Listening Passage",
-        "zh": "五月十九號，星期日，晴轉多雲。這個週末我過得非常充實，但也有一點兒累。昨天上午，我先去便利商店買了點零食和水。然後我坐公車去火車站接父母。公車差點誤點，真緊張。中午我們去了一家有名的餐廳，點了紅燒肉和清蒸魚。爸爸覺得菜有點兒辣，但他很喜歡那個味道。",
-        "en": "Mark has had a very busy weekend. He did many things in the city. He wrote a diary entry about his experiences. He mentions shopping, eating, transport, and health. He reflects on his progress in Stage 2.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Review Story: A Busy Weekend Dialogue Listening",
+        "zh": "五月十九號，星期日，晴轉多雲。 這個週末我過得非常充實，但也有一點兒累。 昨天上午，我先去便利商店買了點零食和水。 然後我坐公車去火車站接父母。公車差點誤點，真緊張。 中午我們去了一家有名的餐廳，點了紅燒肉和清蒸魚。 爸爸覺得菜有點兒辣，但他很喜歡那個味道。 下午突然下大雨了，我們只好打車去逛百貨公司。 晚上我覺得肚子有點兒疼，可能是吃壞東西了。 我吃了一粒感冒藥，早早就睡了。今天早上感覺舒服多了。 我現在學會了怎麼訂餐、買票和問路。 中文真的很有用。下個週末我打算去台中旅遊。 加油，馬克！你可以的。",
+        "en": "May 19th, Sunday, sunny turning cloudy. I had a very productive weekend, but also a bit tired. Yesterday morning, I first went to the convenience store to buy some snacks and water. Then I took the bus to the train station to pick up my parents. The bus almost was delayed; so nervous. At noon we went to a famous restaurant and ordered braised pork and steamed fish. Dad thought the dishes were a bit spicy, but he liked the taste very much. In the afternoon it suddenly rained hard, so we had to take a taxi to browse the department store. At night my stomach hurt a bit; maybe I ate something bad. I took a cold pill and went to sleep early. This morning I feel much better. I've now learned how to order meals, buy tickets, and ask for directions. Chinese is really useful. Next weekend I plan to go to Taichung to travel. Keep it up, Mark! You can do it.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "五月十九號，星期日，晴轉多雲。這個週末我過得非常充實，但也有一點兒累。昨天上午，我先去便利商店買了點零食和水。然後我坐公車去火車站接父母。公車差點誤點，真緊張。中午我們去了一家有名的餐廳，點了紅燒肉和清蒸魚。爸爸覺得菜有點兒辣，但他很喜歡那個味道。",
+          "en": "Mark has had a very busy weekend. He did many things in the city. He wrote a diary entry about his experiences. He mentions shopping, eating, transport, and health. He reflects on his progress in Stage 2.",
+          "title": "Review Story: A Busy Weekend Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short story about your busy weekend (70-100 words): include shopping, transport, eating, and your future plans.",

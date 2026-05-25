@@ -157,27 +157,17 @@ const OnboardingModule = (() => {
           <p class="hpl-stage-note" id="hpl-stage-note">Core 80: most useful beginner syllables first.</p>
         </div>
 
-        <section class="hpl-table-panel" aria-label="Staged pinyin syllable table">
+        <section class="hpl-table-panel hpl-table-preview" aria-label="Staged pinyin syllable table preview">
           <div class="hpl-table-head">
             <div>
               <span class="ob-kicker">Pinyin Syllable Table</span>
-              <h4 id="hpl-table-title">Core 80 syllables</h4>
+              <h4 id="hpl-table-title">Browse the full staged table</h4>
             </div>
-            <p id="hpl-table-count">Loading staged syllables...</p>
+            <p id="hpl-table-count">356 base syllables · paginated practice page</p>
           </div>
-          <div class="hpl-table-wrap">
-            <table class="hpl-syllable-table">
-              <thead>
-                <tr>
-                  <th>Base</th>
-                  <th>Tones in this stage</th>
-                  <th>Examples</th>
-                </tr>
-              </thead>
-              <tbody id="hpl-syllable-table-body">
-                <tr><td colspan="3">Loading pinyin table...</td></tr>
-              </tbody>
-            </table>
+          <div class="hpl-table-preview-copy">
+            <p>Open a dedicated table page with 30 syllables per page, stage filters, and tap-to-hear tone chips.</p>
+            <a class="btn btn-primary" href="#/pinyin-table">Open Pinyin Table</a>
           </div>
         </section>
 
@@ -360,12 +350,40 @@ const OnboardingModule = (() => {
     }).join('') : '<tr><td colspan="3">No syllables found for this stage yet.</td></tr>';
   }
 
+  function numberedAudioKeyFromPinyin(pinyin) {
+    if (!pinyin || typeof Pinyin === 'undefined') return '';
+    if (/\s/.test(String(pinyin).trim())) return '';
+    const tone = Pinyin.getTone(pinyin);
+    if (!tone || tone === 5) return '';
+    return Pinyin.toneBase(pinyin) + tone;
+  }
+
+  function humanAudioCandidates(item) {
+    if (!item) return [];
+    const keys = [item.audioKey, item.pinyinNumbered, numberedAudioKeyFromPinyin(item.pinyin)];
+    const toneMatch = String(item.audioKey || '').match(/^tone_([a-zv]+)_([1-5])$/i);
+    if (toneMatch) keys.push(toneMatch[1].toLowerCase() + toneMatch[2]);
+    const normalized = [];
+    keys.filter(Boolean).forEach(key => {
+      const clean = String(key).toLowerCase().replace(/u:/g, 'v').replace(/\u00fc/g, 'v');
+      normalized.push(clean);
+      if (clean.includes('v')) normalized.push(clean.replace(/v/g, 'uu'));
+    });
+    return Array.from(new Set(normalized));
+  }
+
   function humanAudioFor(item) {
-    return humanPinyinManifest?.items?.[item.audioKey]?.src || '';
+    const manifestItems = humanPinyinManifest?.items || {};
+    const key = humanAudioCandidates(item).find(candidate => manifestItems[candidate]?.src);
+    return key ? manifestItems[key].src : '';
   }
 
   async function playHumanItem(item) {
     if (!item) return;
+    if (window.PinyinAudio) {
+      await PinyinAudio.play(item, item.hanzi || item.audioText || item.example || '', { rate: 0.68 });
+      return;
+    }
     const src = humanAudioFor(item);
     if (src) {
       try {
@@ -374,7 +392,7 @@ const OnboardingModule = (() => {
         return;
       } catch {}
     }
-    const spoken = item.audioText || item.hanzi || item.example || item.pinyin;
+    const spoken = item.audioText || item.hanzi || item.example || '';
     if (spoken) TTS.speak(spoken, 'zh-TW', 0.68);
   }
 
@@ -592,7 +610,7 @@ const OnboardingModule = (() => {
               ['mǎ','3','馬 horse','var(--tone3)'],
               ['mà','4','罵 scold','var(--tone4)'],
             ].map(([py,t,meaning,color]) => `
-              <button class="ob-tone-play" onclick="TTS.speak('${meaning.split(' ')[0]}')" style="flex:1;min-width:100px;background:var(--off-white);border:2px solid ${color};border-radius:var(--radius-sm);padding:14px 10px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
+              <button class="ob-tone-play" onclick="playPinyinByParts('${py}','${meaning.split(' ')[0]}')" style="flex:1;min-width:100px;background:var(--off-white);border:2px solid ${color};border-radius:var(--radius-sm);padding:14px 10px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
                 <div class="ob-tone-pinyin" style="font-size:1.6rem;font-weight:800;color:${color}">${py}</div>
                 <div class="ob-tone-meaning" style="font-size:0.72rem;color:var(--text-3);margin-top:3px">${meaning}</div>
                 <div class="ob-tone-icon" style="font-size:1.1rem;margin-top:4px">🔊</div>
@@ -679,7 +697,7 @@ const OnboardingModule = (() => {
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               ${(tone.examples || []).map(ex => `
-                <button onclick="TTS.speak('${ex.hanzi}')" style="display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.borderColor='var(--tone${tone.number})'" onmouseout="this.style.borderColor='var(--border)'">
+                <button onclick="playPinyinByParts('${ex.pinyin}','${ex.hanzi}')" style="display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;cursor:pointer;transition:all 0.15s;font-family:var(--font-ui)" onmouseover="this.style.borderColor='var(--tone${tone.number})'" onmouseout="this.style.borderColor='var(--border)'">
                   <span style="font-family:var(--font-zh);font-size:1.4rem;font-weight:700">${ex.hanzi}</span>
                   <span>
                     <span style="display:block;font-size:0.85rem;font-weight:600;color:var(--tone${tone.number})">${ex.pinyin}</span>
@@ -696,13 +714,13 @@ const OnboardingModule = (() => {
           <p class="text-small text-muted mb-12">These pairs are commonly confused. Click to hear the difference.</p>
           ${(data.tone_pairs || []).map(pair => `
             <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
-              <button onclick="TTS.speak('${pair.a.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
+              <button onclick="playPinyinByParts('${pair.a.pinyin}','${pair.a.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
                 <div style="font-family:var(--font-zh);font-size:1.6rem;font-weight:700">${pair.a.hanzi}</div>
                 <div style="font-size:0.8rem;color:var(--tone${Pinyin.getTone(pair.a.pinyin)||1})">${pair.a.pinyin}</div>
                 <div style="font-size:0.72rem;color:var(--text-3)">${pair.a.meaning}</div>
               </button>
               <div style="color:var(--text-3);font-size:1.2rem">vs</div>
-              <button onclick="TTS.speak('${pair.b.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
+              <button onclick="playPinyinByParts('${pair.b.pinyin}','${pair.b.hanzi}')" style="flex:1;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;text-align:center" onmouseover="this.style.background='var(--card-bg)'" onmouseout="this.style.background='var(--off-white)'">
                 <div style="font-family:var(--font-zh);font-size:1.6rem;font-weight:700">${pair.b.hanzi}</div>
                 <div style="font-size:0.8rem;color:var(--tone${Pinyin.getTone(pair.b.pinyin)||1})">${pair.b.pinyin}</div>
                 <div style="font-size:0.72rem;color:var(--text-3)">${pair.b.meaning}</div>
@@ -856,27 +874,38 @@ const OnboardingModule = (() => {
   }
 
   function wireEarTraining(data) {
+    window.playPinyinByParts = async (pinyin, hanzi = '') => {
+      if (window.PinyinAudio) {
+        await PinyinAudio.play({ pinyin, hanzi }, hanzi, { rate: 0.72 });
+        return;
+      }
+      if (hanzi) TTS.speak(hanzi, 'zh-TW', 0.72);
+    };
+
     window.playPinyinExample = (label) => {
       const text = String(label || '').trim();
       const hanziMatch = text.match(/[（(]([^）)]+)[）)]/);
-      const target = hanziMatch ? (hanziMatch[1].match(/[\u3400-\u9fff]+/)?.[0] || hanziMatch[1]) : text.split(/\s+/)[0];
-      TTS.speak(target, 'zh-TW', 0.72);
+      const hanzi = hanziMatch ? (hanziMatch[1].match(/[\u3400-\u9fff]+/)?.[0] || hanziMatch[1]) : '';
+      const pinyin = text.split(/\s+/)[0];
+      window.playPinyinByParts(pinyin, hanzi);
     };
 
     window.playInitialSound = (symbol) => {
       const initialAudio = {
-        b: '玻', p: '坡', m: '摸', f: '佛',
-        d: '得', t: '特', n: '訥', l: '勒',
-        g: '哥', k: '科', h: '喝',
-        j: '基', q: '欺', x: '希',
-        zh: '知', ch: '吃', sh: '詩', r: '日',
-        z: '資', c: '雌', s: '思'
+        b: { pinyinNumbered: 'bo1', hanzi: '玻' }, p: { pinyinNumbered: 'po1', hanzi: '坡' }, m: { pinyinNumbered: 'mo1', hanzi: '摸' }, f: { pinyinNumbered: 'fo2', hanzi: '佛' },
+        d: { pinyinNumbered: 'de2', hanzi: '得' }, t: { pinyinNumbered: 'te4', hanzi: '特' }, n: { pinyinNumbered: 'ne4', hanzi: '訥' }, l: { pinyinNumbered: 'le4', hanzi: '勒' },
+        g: { pinyinNumbered: 'ge1', hanzi: '哥' }, k: { pinyinNumbered: 'ke1', hanzi: '科' }, h: { pinyinNumbered: 'he1', hanzi: '喝' },
+        j: { pinyinNumbered: 'ji1', hanzi: '基' }, q: { pinyinNumbered: 'qi1', hanzi: '欺' }, x: { pinyinNumbered: 'xi1', hanzi: '希' },
+        zh: { pinyinNumbered: 'zhi1', hanzi: '知' }, ch: { pinyinNumbered: 'chi1', hanzi: '吃' }, sh: { pinyinNumbered: 'shi1', hanzi: '詩' }, r: { pinyinNumbered: 'ri4', hanzi: '日' },
+        z: { pinyinNumbered: 'zi1', hanzi: '資' }, c: { pinyinNumbered: 'ci2', hanzi: '雌' }, s: { pinyinNumbered: 'si1', hanzi: '思' }
       };
-      TTS.speak(initialAudio[symbol] || symbol, 'zh-TW', 0.68);
+      const item = initialAudio[symbol] || { hanzi: symbol };
+      if (window.PinyinAudio) PinyinAudio.play(item, item.hanzi || '', { rate: 0.68 });
+      else if (item.hanzi) TTS.speak(item.hanzi, 'zh-TW', 0.68);
     };
 
     window.playEar = (text, si, ii) => {
-      TTS.speak(text, 'zh-TW', 0.75);
+      window.playPinyinByParts(text, '');
     };
 
     window.checkEar = (btn, si, ii) => {
@@ -939,12 +968,12 @@ const OnboardingModule = (() => {
             <div style="display:flex;flex-direction:column;gap:8px">
               ${(rule.examples||[]).map(ex => `
                 <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--off-white);border-radius:var(--radius-sm)">
-                  <button class="ob-rule-zh-button" onclick="TTS.speak('${ex.written}')" style="background:none;border:none;cursor:pointer;font-family:var(--font-zh);font-size:1.8rem;font-weight:700;padding:0">${ex.written}</button>
+                  <button class="ob-rule-zh-button" onclick="playPinyinByParts('${ex.spoken_pinyin || ex.pinyin}','${ex.written}')" style="background:none;border:none;cursor:pointer;font-family:var(--font-zh);font-size:1.8rem;font-weight:700;padding:0">${ex.written}</button>
                   <div style="flex:1">
                     <div style="font-size:0.85rem;font-weight:600">Spoken: <span style="color:var(--red)">${ex.spoken_pinyin}</span></div>
                     <div style="font-size:0.75rem;color:var(--text-3)">${ex.note}</div>
                   </div>
-                  <button onclick="TTS.speak('${ex.written}')" class="btn btn-ghost btn-sm btn-icon">🔊</button>
+                  <button onclick="playPinyinByParts('${ex.spoken_pinyin || ex.pinyin}','${ex.written}')" class="btn btn-ghost btn-sm btn-icon">🔊</button>
                 </div>`).join('')}
             </div>
           </div>`).join('')}

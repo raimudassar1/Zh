@@ -298,7 +298,7 @@ window.GrammarModule = (() => {
       ${build ? `<div class="ga-builder-preview ga-builder-live">
         <div class="ga-build-target"><span>Your Chinese sentence</span><div class="ga-build-answer ${correct ? 'correct' : ''}">${build.answer.length ? build.answer.map(tile => `<button type="button" data-ga-action="build-move" data-exercise="${esc(ex.id)}" data-tile="${esc(tile.id)}" onclick="event.stopPropagation(); GrammarModule.moveBuildTile('${esc(ex.id)}', '${esc(tile.id)}')">${esc(tile.text)}</button>`).join('') : '<em>Tap tiles below to build your answer</em>'}</div></div>
         <div class="ga-build-target"><span>Available tiles</span><div class="ga-tiles">${build.bank.map(tile => `<button type="button" data-ga-action="build-move" data-exercise="${esc(ex.id)}" data-tile="${esc(tile.id)}" onclick="event.stopPropagation(); GrammarModule.moveBuildTile('${esc(ex.id)}', '${esc(tile.id)}')">${esc(tile.text)}</button>`).join('')}</div></div>
-        ${build.checked ? `<div class="ga-build-feedback ${correct ? 'correct' : 'wrong'}">${correct ? 'Correct.' : `Not yet. Your answer: ${esc(built || 'empty')}`}</div>` : ''}
+        ${build.checked ? `<div class="ga-build-feedback ${correct ? 'correct' : 'wrong'}">${correct ? 'Correct. Read the Chinese sentence aloud once.' : `Not yet. Your answer: ${esc(built || 'empty')}. Build from the English prompt, then compare word order with the model.`}</div>` : ''}
       </div>` : ''}
       <div class="ga-answer-row">
         <button type="button" class="btn btn-ghost btn-sm" data-ga-action="speak" data-text="${esc(ex.answer)}">Play Answer</button>

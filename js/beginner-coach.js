@@ -667,11 +667,29 @@ window.BeginnerCoachModule = (() => {
     result.innerHTML = `<div class="bc-writing-result ${tone}"><strong>${pct}% match</strong><span>Model: ${esc(item.answer)}</span><ul>${item.checks.map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>`;
   }
 
+  function feedbackStudyNote(isCorrect, answer, type = 'listening') {
+    const cleanAnswer = esc(String(answer ?? ''));
+    const why = type === 'true-false'
+      ? 'Check the exact statement against the listening passage, not just the general topic.'
+      : 'Replay the passage, find the line that proves the answer, then say that line aloud once.';
+    return '<div class="bc-scenario-feedback ' + (isCorrect ? 'good' : 'review') + '">' +
+      '<strong>' + (isCorrect ? 'Correct.' : 'Not quite.') + '</strong>' +
+      '<span>Answer: ' + cleanAnswer + '</span>' +
+      '<small>Why: ' + (isCorrect ? 'You matched the detail from the pack material.' : why) + '</small>' +
+      '</div>';
+  }
+
+  function recordCoachMiss(area, answer, label) {
+    if (!window.WeaknessEngine) return;
+    window.WeaknessEngine.record(area || 'listening', { item: String(answer || ''), label: String(label || answer || ''), type: 'beginner-coach-check' });
+  }
+
   function checkScenarioAnswer(answer, selected, resId) {
     const res = document.getElementById(resId);
     if (!res) return;
     const correct = answer === selected;
-    res.innerHTML = `<div class="bc-scenario-feedback ${correct ? 'good' : 'review'}">${correct ? 'Correct!' : 'Try again.'}</div>`;
+    if (!correct) recordCoachMiss('beginner', answer, selected);
+    res.innerHTML = feedbackStudyNote(correct, answer, 'scenario');
   }
 
   function renderScenario(theme) {
@@ -1125,17 +1143,20 @@ window.BeginnerCoachModule = (() => {
     const input = isMCQ ? inputId : (document.getElementById(inputId)?.value || '');
     const res = document.getElementById(resId);
     if (!res) return;
-    const cleanInput = input.trim().toUpperCase();
-    const cleanCorrect = correct.trim().toUpperCase();
+    const cleanInput = String(input || '').trim().toUpperCase();
+    const cleanCorrect = String(correct || '').trim().toUpperCase();
     const isCorrect = cleanInput === cleanCorrect;
-    res.innerHTML = `<div class="bc-scenario-feedback ${isCorrect ? 'good' : 'review'}">${isCorrect ? 'Correct!' : 'Try: ' + esc(correct)}</div>`;
+    if (!isCorrect) recordCoachMiss('listening', correct, input);
+    res.innerHTML = feedbackStudyNote(isCorrect, correct, 'listening');
   }
 
   function checkTFAnswer(correct, selected, resId) {
     const res = document.getElementById(resId);
     if (!res) return;
     const isCorrect = correct === selected;
-    res.innerHTML = `<div class="bc-scenario-feedback ${isCorrect ? 'good' : 'review'}">${isCorrect ? 'Correct!' : 'Incorrect.'}</div>`;
+    const answerLabel = correct ? 'True' : 'False';
+    if (!isCorrect) recordCoachMiss('listening', answerLabel, selected ? 'True' : 'False');
+    res.innerHTML = feedbackStudyNote(isCorrect, answerLabel, 'true-false');
   }
 
   function renderGlobalToggles() {

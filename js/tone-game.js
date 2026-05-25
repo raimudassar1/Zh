@@ -154,10 +154,18 @@ ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Sound</spa
     setTimeout(() => playTarget(), 500);
   }
 
-  function playTarget() {
-    if (currentState.currentTarget) {
-      TTS.speak(currentState.currentTarget.char || currentState.currentTarget.syllable, 'zh-TW', 0.78);
+  async function playTarget() {
+    if (!currentState.currentTarget) return;
+    const target = currentState.currentTarget;
+    if (window.PinyinAudio) {
+      await PinyinAudio.play(
+        { pinyin: target.syllable, syllable: target.syllable, hanzi: target.char },
+        target.char || '',
+        { rate: 0.72 }
+      );
+      return;
     }
+    if (target.char) TTS.speak(target.char, 'zh-TW', 0.78);
   }
 
   function guess(num, btn) {

@@ -5,7 +5,8 @@
     "description": "Balanced level-based sentence builder curriculum from Novice through A2. Each level contains 100 sentence-building prompts.",
     "totalSentences": 600,
     "grammarAudit": "Balanced and strict grammar-audited on 2026-05-16.",
-    "naturalnessRepair": "Relationship and adjective-template repairs applied on 2026-05-23."
+    "naturalnessRepair": "Relationship and adjective-template repairs applied on 2026-05-23.",
+    "promptContextUpgrade": "Added mini-situation prompts to 600 sentence-builder items so prompts are not contextless."
   },
   "levels": [
     {
@@ -30,7 +31,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I am a student."
         },
         {
           "id": "novice_1_002",
@@ -46,7 +48,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I am a teacher."
         },
         {
           "id": "novice_1_003",
@@ -65,7 +68,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: I am your friend."
         },
         {
           "id": "novice_1_004",
@@ -84,7 +88,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I am your classmate."
         },
         {
           "id": "novice_1_005",
@@ -100,7 +105,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am a doctor."
         },
         {
           "id": "novice_1_006",
@@ -116,7 +122,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am Taiwanese."
         },
         {
           "id": "novice_1_007",
@@ -135,7 +142,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: I am your family member."
         },
         {
           "id": "novice_1_008",
@@ -151,7 +159,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am a clerk."
         },
         {
           "id": "novice_1_009",
@@ -167,7 +176,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You are a student."
         },
         {
           "id": "novice_1_010",
@@ -183,7 +193,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You are a teacher."
         },
         {
           "id": "novice_1_011",
@@ -202,7 +213,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: You are my friend."
         },
         {
           "id": "novice_1_012",
@@ -221,7 +233,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You are my classmate."
         },
         {
           "id": "novice_1_013",
@@ -237,7 +250,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are a doctor."
         },
         {
           "id": "novice_1_014",
@@ -253,7 +267,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are Taiwanese."
         },
         {
           "id": "novice_1_015",
@@ -272,7 +287,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: You are my family member."
         },
         {
           "id": "novice_1_016",
@@ -288,7 +304,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are a clerk."
         },
         {
           "id": "novice_1_017",
@@ -304,7 +321,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He is a student."
         },
         {
           "id": "novice_1_018",
@@ -320,7 +338,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He is a teacher."
         },
         {
           "id": "novice_1_019",
@@ -339,7 +358,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: He is my friend."
         },
         {
           "id": "novice_1_020",
@@ -358,7 +378,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He is my classmate."
         },
         {
           "id": "novice_1_021",
@@ -374,7 +395,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is a doctor."
         },
         {
           "id": "novice_1_022",
@@ -390,7 +412,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is Taiwanese."
         },
         {
           "id": "novice_1_023",
@@ -409,7 +432,8 @@
             "relationship",
             "context-fixed"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: He is my family member."
         },
         {
           "id": "novice_1_024",
@@ -425,7 +449,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is a clerk."
         },
         {
           "id": "novice_1_025",
@@ -441,7 +466,8 @@
             "identity",
             "是"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: She is a student."
         },
         {
           "id": "novice_1_026",
@@ -455,7 +481,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: I drink water."
         },
         {
           "id": "novice_1_027",
@@ -469,7 +496,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: I eat."
         },
         {
           "id": "novice_1_028",
@@ -483,7 +511,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I read a book."
         },
         {
           "id": "novice_1_029",
@@ -497,7 +526,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I write characters."
         },
         {
           "id": "novice_1_030",
@@ -511,7 +541,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I listen to music."
         },
         {
           "id": "novice_1_031",
@@ -525,7 +556,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I study Chinese."
         },
         {
           "id": "novice_1_032",
@@ -539,7 +571,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I go to school."
         },
         {
           "id": "novice_1_033",
@@ -553,7 +586,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: I go home."
         },
         {
           "id": "novice_1_034",
@@ -567,7 +601,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: You drink water."
         },
         {
           "id": "novice_1_035",
@@ -581,7 +616,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: You eat."
         },
         {
           "id": "novice_1_036",
@@ -595,7 +631,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You read a book."
         },
         {
           "id": "novice_1_037",
@@ -609,7 +646,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You write characters."
         },
         {
           "id": "novice_1_038",
@@ -623,7 +661,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You listen to music."
         },
         {
           "id": "novice_1_039",
@@ -637,7 +676,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You study Chinese."
         },
         {
           "id": "novice_1_040",
@@ -651,7 +691,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You go to school."
         },
         {
           "id": "novice_1_041",
@@ -665,7 +706,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: You go home."
         },
         {
           "id": "novice_1_042",
@@ -679,7 +721,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: He drink water."
         },
         {
           "id": "novice_1_043",
@@ -693,7 +736,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: He eat."
         },
         {
           "id": "novice_1_044",
@@ -707,7 +751,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He read a book."
         },
         {
           "id": "novice_1_045",
@@ -721,7 +766,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He write characters."
         },
         {
           "id": "novice_1_046",
@@ -735,7 +781,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He listen to music."
         },
         {
           "id": "novice_1_047",
@@ -749,7 +796,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He study Chinese."
         },
         {
           "id": "novice_1_048",
@@ -763,7 +811,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He go to school."
         },
         {
           "id": "novice_1_049",
@@ -777,7 +826,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: He go home."
         },
         {
           "id": "novice_1_050",
@@ -791,7 +841,8 @@
           "tags": [
             "basic action"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: She drink water."
         },
         {
           "id": "novice_1_051",
@@ -807,7 +858,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I have a book."
         },
         {
           "id": "novice_1_052",
@@ -823,7 +875,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: I have a cup of water."
         },
         {
           "id": "novice_1_053",
@@ -839,7 +892,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I have a pen."
         },
         {
           "id": "novice_1_054",
@@ -855,7 +909,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I have a photo."
         },
         {
           "id": "novice_1_055",
@@ -871,7 +926,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You need to ask or answer a clear question. Build: I have a question."
         },
         {
           "id": "novice_1_056",
@@ -887,7 +943,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: I have two friends."
         },
         {
           "id": "novice_1_057",
@@ -903,7 +960,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I have three books."
         },
         {
           "id": "novice_1_058",
@@ -919,7 +977,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: I have one homework assignment."
         },
         {
           "id": "novice_1_059",
@@ -935,7 +994,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You have a book."
         },
         {
           "id": "novice_1_060",
@@ -951,7 +1011,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: You have a cup of water."
         },
         {
           "id": "novice_1_061",
@@ -967,7 +1028,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You have a pen."
         },
         {
           "id": "novice_1_062",
@@ -983,7 +1045,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You have a photo."
         },
         {
           "id": "novice_1_063",
@@ -999,7 +1062,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You need to ask or answer a clear question. Build: You have a question."
         },
         {
           "id": "novice_1_064",
@@ -1015,7 +1079,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: You have two friends."
         },
         {
           "id": "novice_1_065",
@@ -1031,7 +1096,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You have three books."
         },
         {
           "id": "novice_1_066",
@@ -1047,7 +1113,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: You have one homework assignment."
         },
         {
           "id": "novice_1_067",
@@ -1063,7 +1130,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He has a book."
         },
         {
           "id": "novice_1_068",
@@ -1079,7 +1147,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: He has a cup of water."
         },
         {
           "id": "novice_1_069",
@@ -1095,7 +1164,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He has a pen."
         },
         {
           "id": "novice_1_070",
@@ -1111,7 +1181,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He has a photo."
         },
         {
           "id": "novice_1_071",
@@ -1127,7 +1198,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You need to ask or answer a clear question. Build: He has a question."
         },
         {
           "id": "novice_1_072",
@@ -1143,7 +1215,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are talking about people close to you. Say: He has two friends."
         },
         {
           "id": "novice_1_073",
@@ -1159,7 +1232,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He has three books."
         },
         {
           "id": "novice_1_074",
@@ -1175,7 +1249,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: He has one homework assignment."
         },
         {
           "id": "novice_1_075",
@@ -1191,7 +1266,8 @@
             "possession",
             "measure words"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: She has a book."
         },
         {
           "id": "novice_1_076",
@@ -1207,7 +1283,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I am at school."
         },
         {
           "id": "novice_1_077",
@@ -1223,7 +1300,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: I am at home."
         },
         {
           "id": "novice_1_078",
@@ -1239,7 +1317,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am at the library."
         },
         {
           "id": "novice_1_079",
@@ -1255,7 +1334,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: I am at the store."
         },
         {
           "id": "novice_1_080",
@@ -1271,7 +1351,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: I am at the restaurant."
         },
         {
           "id": "novice_1_081",
@@ -1287,7 +1368,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am at the park."
         },
         {
           "id": "novice_1_082",
@@ -1303,7 +1385,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: I am at the classroom."
         },
         {
           "id": "novice_1_083",
@@ -1319,7 +1402,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: I am at the market."
         },
         {
           "id": "novice_1_084",
@@ -1335,7 +1419,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You are at school."
         },
         {
           "id": "novice_1_085",
@@ -1351,7 +1436,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: You are at home."
         },
         {
           "id": "novice_1_086",
@@ -1367,7 +1453,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are at the library."
         },
         {
           "id": "novice_1_087",
@@ -1383,7 +1470,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: You are at the store."
         },
         {
           "id": "novice_1_088",
@@ -1399,7 +1487,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: You are at the restaurant."
         },
         {
           "id": "novice_1_089",
@@ -1415,7 +1504,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are at the park."
         },
         {
           "id": "novice_1_090",
@@ -1431,7 +1521,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: You are at the classroom."
         },
         {
           "id": "novice_1_091",
@@ -1447,7 +1538,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: You are at the market."
         },
         {
           "id": "novice_1_092",
@@ -1463,7 +1555,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He is at school."
         },
         {
           "id": "novice_1_093",
@@ -1479,7 +1572,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: He is at home."
         },
         {
           "id": "novice_1_094",
@@ -1495,7 +1589,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is at the library."
         },
         {
           "id": "novice_1_095",
@@ -1511,7 +1606,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "You are describing a simple movement or plan. Say: He is at the store."
         },
         {
           "id": "novice_1_096",
@@ -1527,7 +1623,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "At a cafe or meal, say this naturally: He is at the restaurant."
         },
         {
           "id": "novice_1_097",
@@ -1543,7 +1640,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is at the park."
         },
         {
           "id": "novice_1_098",
@@ -1559,7 +1657,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: He is at the classroom."
         },
         {
           "id": "novice_1_099",
@@ -1575,7 +1674,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a real conversation, build this idea in Chinese: He is at the market."
         },
         {
           "id": "novice_1_100",
@@ -1591,7 +1691,8 @@
             "location",
             "在"
           ],
-          "difficulty": 1
+          "difficulty": 1,
+          "scenario": "In a classroom conversation, say: She is at school."
         }
       ]
     },
@@ -1616,7 +1717,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I do not drink water."
         },
         {
           "id": "novice_2_002",
@@ -1631,7 +1733,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I do not eat."
         },
         {
           "id": "novice_2_003",
@@ -1646,7 +1749,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: I do not read a book."
         },
         {
           "id": "novice_2_004",
@@ -1661,7 +1765,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: I do not write characters."
         },
         {
           "id": "novice_2_005",
@@ -1676,7 +1781,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: I do not listen to music."
         },
         {
           "id": "novice_2_006",
@@ -1691,7 +1797,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: I do not study Chinese."
         },
         {
           "id": "novice_2_007",
@@ -1706,7 +1813,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I do not go to school."
         },
         {
           "id": "novice_2_008",
@@ -1721,7 +1829,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I do not go home."
         },
         {
           "id": "novice_2_009",
@@ -1736,7 +1845,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You do not drink water."
         },
         {
           "id": "novice_2_010",
@@ -1751,7 +1861,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You do not eat."
         },
         {
           "id": "novice_2_011",
@@ -1766,7 +1877,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: You do not read a book."
         },
         {
           "id": "novice_2_012",
@@ -1781,7 +1893,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: You do not write characters."
         },
         {
           "id": "novice_2_013",
@@ -1796,7 +1909,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: You do not listen to music."
         },
         {
           "id": "novice_2_014",
@@ -1811,7 +1925,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: You do not study Chinese."
         },
         {
           "id": "novice_2_015",
@@ -1826,7 +1941,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: You do not go to school."
         },
         {
           "id": "novice_2_016",
@@ -1841,7 +1957,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: You do not go home."
         },
         {
           "id": "novice_2_017",
@@ -1856,7 +1973,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He does not drink water."
         },
         {
           "id": "novice_2_018",
@@ -1871,7 +1989,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He does not eat."
         },
         {
           "id": "novice_2_019",
@@ -1886,7 +2005,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: He does not read a book."
         },
         {
           "id": "novice_2_020",
@@ -1901,7 +2021,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: He does not write characters."
         },
         {
           "id": "novice_2_021",
@@ -1916,7 +2037,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: He does not listen to music."
         },
         {
           "id": "novice_2_022",
@@ -1931,7 +2053,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a real conversation, build this idea in Chinese: He does not study Chinese."
         },
         {
           "id": "novice_2_023",
@@ -1946,7 +2069,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: He does not go to school."
         },
         {
           "id": "novice_2_024",
@@ -1961,7 +2085,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: He does not go home."
         },
         {
           "id": "novice_2_025",
@@ -1976,7 +2101,8 @@
           "tags": [
             "negation"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: She does not drink water."
         },
         {
           "id": "novice_2_026",
@@ -1992,7 +2118,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Do I drink water?"
         },
         {
           "id": "novice_2_027",
@@ -2008,7 +2135,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Do I eat?"
         },
         {
           "id": "novice_2_028",
@@ -2024,7 +2152,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do I read a book?"
         },
         {
           "id": "novice_2_029",
@@ -2040,7 +2169,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do I write characters?"
         },
         {
           "id": "novice_2_030",
@@ -2056,7 +2186,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do I listen to music?"
         },
         {
           "id": "novice_2_031",
@@ -2072,7 +2203,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do I study Chinese?"
         },
         {
           "id": "novice_2_032",
@@ -2088,7 +2220,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: Do I go to school?"
         },
         {
           "id": "novice_2_033",
@@ -2104,7 +2237,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: Do I go home?"
         },
         {
           "id": "novice_2_034",
@@ -2120,7 +2254,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Do you drink water?"
         },
         {
           "id": "novice_2_035",
@@ -2136,7 +2271,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Do you eat?"
         },
         {
           "id": "novice_2_036",
@@ -2152,7 +2288,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do you read a book?"
         },
         {
           "id": "novice_2_037",
@@ -2168,7 +2305,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do you write characters?"
         },
         {
           "id": "novice_2_038",
@@ -2184,7 +2322,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do you listen to music?"
         },
         {
           "id": "novice_2_039",
@@ -2200,7 +2339,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Do you study Chinese?"
         },
         {
           "id": "novice_2_040",
@@ -2216,7 +2356,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: Do you go to school?"
         },
         {
           "id": "novice_2_041",
@@ -2232,7 +2373,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: Do you go home?"
         },
         {
           "id": "novice_2_042",
@@ -2248,7 +2390,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Does he drink water?"
         },
         {
           "id": "novice_2_043",
@@ -2264,7 +2407,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Does he eat?"
         },
         {
           "id": "novice_2_044",
@@ -2280,7 +2424,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Does he read a book?"
         },
         {
           "id": "novice_2_045",
@@ -2296,7 +2441,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Does he write characters?"
         },
         {
           "id": "novice_2_046",
@@ -2312,7 +2458,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Does he listen to music?"
         },
         {
           "id": "novice_2_047",
@@ -2328,7 +2475,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You need to ask or answer a clear question. Build: Does he study Chinese?"
         },
         {
           "id": "novice_2_048",
@@ -2344,7 +2492,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: Does he go to school?"
         },
         {
           "id": "novice_2_049",
@@ -2360,7 +2509,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: Does he go home?"
         },
         {
           "id": "novice_2_050",
@@ -2376,7 +2526,8 @@
             "question",
             "嗎"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: Does she drink water?"
         },
         {
           "id": "novice_2_051",
@@ -2392,7 +2543,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to school today."
         },
         {
           "id": "novice_2_052",
@@ -2408,7 +2560,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go home today."
         },
         {
           "id": "novice_2_053",
@@ -2424,7 +2577,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the library today."
         },
         {
           "id": "novice_2_054",
@@ -2440,7 +2594,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the store today."
         },
         {
           "id": "novice_2_055",
@@ -2456,7 +2611,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I go to the restaurant today."
         },
         {
           "id": "novice_2_056",
@@ -2472,7 +2628,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the park today."
         },
         {
           "id": "novice_2_057",
@@ -2488,7 +2645,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to the classroom today."
         },
         {
           "id": "novice_2_058",
@@ -2504,7 +2662,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the market today."
         },
         {
           "id": "novice_2_059",
@@ -2520,7 +2679,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to school tomorrow."
         },
         {
           "id": "novice_2_060",
@@ -2536,7 +2696,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go home tomorrow."
         },
         {
           "id": "novice_2_061",
@@ -2552,7 +2713,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the library tomorrow."
         },
         {
           "id": "novice_2_062",
@@ -2568,7 +2730,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the store tomorrow."
         },
         {
           "id": "novice_2_063",
@@ -2584,7 +2747,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I go to the restaurant tomorrow."
         },
         {
           "id": "novice_2_064",
@@ -2600,7 +2764,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the park tomorrow."
         },
         {
           "id": "novice_2_065",
@@ -2616,7 +2781,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to the classroom tomorrow."
         },
         {
           "id": "novice_2_066",
@@ -2632,7 +2798,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the market tomorrow."
         },
         {
           "id": "novice_2_067",
@@ -2648,7 +2815,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to school in the morning."
         },
         {
           "id": "novice_2_068",
@@ -2664,7 +2832,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go home in the morning."
         },
         {
           "id": "novice_2_069",
@@ -2680,7 +2849,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the library in the morning."
         },
         {
           "id": "novice_2_070",
@@ -2696,7 +2866,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the store in the morning."
         },
         {
           "id": "novice_2_071",
@@ -2712,7 +2883,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I go to the restaurant in the morning."
         },
         {
           "id": "novice_2_072",
@@ -2728,7 +2900,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the park in the morning."
         },
         {
           "id": "novice_2_073",
@@ -2744,7 +2917,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to the classroom in the morning."
         },
         {
           "id": "novice_2_074",
@@ -2760,7 +2934,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are describing a simple movement or plan. Say: I go to the market in the morning."
         },
         {
           "id": "novice_2_075",
@@ -2776,7 +2951,8 @@
             "time place",
             "time"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "In a classroom conversation, say: I go to school in the afternoon."
         },
         {
           "id": "novice_2_076",
@@ -2792,7 +2968,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: I like beef noodle soup."
         },
         {
           "id": "novice_2_077",
@@ -2808,7 +2985,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: I like dumplings."
         },
         {
           "id": "novice_2_078",
@@ -2824,7 +3002,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: I like fruit."
         },
         {
           "id": "novice_2_079",
@@ -2840,7 +3019,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I like coffee."
         },
         {
           "id": "novice_2_080",
@@ -2856,7 +3036,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I like tea."
         },
         {
           "id": "novice_2_081",
@@ -2872,7 +3053,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I like breakfast."
         },
         {
           "id": "novice_2_082",
@@ -2888,7 +3070,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I like dinner."
         },
         {
           "id": "novice_2_083",
@@ -2904,7 +3087,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: I like a lunch box."
         },
         {
           "id": "novice_2_084",
@@ -2920,7 +3104,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: You like beef noodle soup."
         },
         {
           "id": "novice_2_085",
@@ -2936,7 +3121,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: You like dumplings."
         },
         {
           "id": "novice_2_086",
@@ -2952,7 +3138,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: You like fruit."
         },
         {
           "id": "novice_2_087",
@@ -2968,7 +3155,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You like coffee."
         },
         {
           "id": "novice_2_088",
@@ -2984,7 +3172,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You like tea."
         },
         {
           "id": "novice_2_089",
@@ -3000,7 +3189,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You like breakfast."
         },
         {
           "id": "novice_2_090",
@@ -3016,7 +3206,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You like dinner."
         },
         {
           "id": "novice_2_091",
@@ -3032,7 +3223,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: You like a lunch box."
         },
         {
           "id": "novice_2_092",
@@ -3048,7 +3240,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: He likes beef noodle soup."
         },
         {
           "id": "novice_2_093",
@@ -3064,7 +3257,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: He likes dumplings."
         },
         {
           "id": "novice_2_094",
@@ -3080,7 +3274,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: He likes fruit."
         },
         {
           "id": "novice_2_095",
@@ -3096,7 +3291,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He likes coffee."
         },
         {
           "id": "novice_2_096",
@@ -3112,7 +3308,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He likes tea."
         },
         {
           "id": "novice_2_097",
@@ -3128,7 +3325,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He likes breakfast."
         },
         {
           "id": "novice_2_098",
@@ -3144,7 +3342,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He likes dinner."
         },
         {
           "id": "novice_2_099",
@@ -3160,7 +3359,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "At a cafe or meal, say this naturally: He likes a lunch box."
         },
         {
           "id": "novice_2_100",
@@ -3176,7 +3376,8 @@
             "likes",
             "food"
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "scenario": "You are expressing a need, ability, or preference. Say: She likes beef noodle soup."
         }
       ]
     },
@@ -3204,7 +3405,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I take the bus to school today."
         },
         {
           "id": "a1_1_002",
@@ -3221,7 +3423,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I take the bus home today."
         },
         {
           "id": "a1_1_003",
@@ -3239,7 +3442,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the bus to the library today."
         },
         {
           "id": "a1_1_004",
@@ -3257,7 +3461,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I take the bus to the store today."
         },
         {
           "id": "a1_1_005",
@@ -3275,7 +3480,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I take the bus to the restaurant today."
         },
         {
           "id": "a1_1_006",
@@ -3293,7 +3499,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the bus to the park today."
         },
         {
           "id": "a1_1_007",
@@ -3311,7 +3518,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I take the bus to the classroom today."
         },
         {
           "id": "a1_1_008",
@@ -3329,7 +3537,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the bus to the market today."
         },
         {
           "id": "a1_1_009",
@@ -3347,7 +3556,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I take the MRT to school today."
         },
         {
           "id": "a1_1_010",
@@ -3364,7 +3574,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I take the MRT home today."
         },
         {
           "id": "a1_1_011",
@@ -3382,7 +3593,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the MRT to the library today."
         },
         {
           "id": "a1_1_012",
@@ -3400,7 +3612,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I take the MRT to the store today."
         },
         {
           "id": "a1_1_013",
@@ -3418,7 +3631,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I take the MRT to the restaurant today."
         },
         {
           "id": "a1_1_014",
@@ -3436,7 +3650,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the MRT to the park today."
         },
         {
           "id": "a1_1_015",
@@ -3454,7 +3669,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I take the MRT to the classroom today."
         },
         {
           "id": "a1_1_016",
@@ -3472,7 +3688,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I take the MRT to the market today."
         },
         {
           "id": "a1_1_017",
@@ -3490,7 +3707,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I ride a bicycle to school today."
         },
         {
           "id": "a1_1_018",
@@ -3507,7 +3725,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I ride a bicycle home today."
         },
         {
           "id": "a1_1_019",
@@ -3525,7 +3744,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I ride a bicycle to the library today."
         },
         {
           "id": "a1_1_020",
@@ -3543,7 +3763,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I ride a bicycle to the store today."
         },
         {
           "id": "a1_1_021",
@@ -3561,7 +3782,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I ride a bicycle to the restaurant today."
         },
         {
           "id": "a1_1_022",
@@ -3579,7 +3801,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I ride a bicycle to the park today."
         },
         {
           "id": "a1_1_023",
@@ -3597,7 +3820,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I ride a bicycle to the classroom today."
         },
         {
           "id": "a1_1_024",
@@ -3615,7 +3839,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I ride a bicycle to the market today."
         },
         {
           "id": "a1_1_025",
@@ -3633,7 +3858,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I walk to school today."
         },
         {
           "id": "a1_1_026",
@@ -3650,7 +3876,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I walk home today."
         },
         {
           "id": "a1_1_027",
@@ -3668,7 +3895,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I walk to the library today."
         },
         {
           "id": "a1_1_028",
@@ -3686,7 +3914,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I walk to the store today."
         },
         {
           "id": "a1_1_029",
@@ -3704,7 +3933,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I walk to the restaurant today."
         },
         {
           "id": "a1_1_030",
@@ -3722,7 +3952,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I walk to the park today."
         },
         {
           "id": "a1_1_031",
@@ -3740,7 +3971,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I walk to the classroom today."
         },
         {
           "id": "a1_1_032",
@@ -3758,7 +3990,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are talking about time in daily life. Say: I walk to the market today."
         },
         {
           "id": "a1_1_033",
@@ -3776,7 +4009,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I drive to school today."
         },
         {
           "id": "a1_1_034",
@@ -3793,7 +4027,8 @@
             "transport",
             "time"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are describing a simple movement or plan. Say: I drive home today."
         },
         {
           "id": "a1_1_035",
@@ -3811,7 +4046,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I want to buy a cup of coffee."
         },
         {
           "id": "a1_1_036",
@@ -3829,7 +4065,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I want to buy a bowl of rice."
         },
         {
           "id": "a1_1_037",
@@ -3847,7 +4084,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I want to buy a bottle of water."
         },
         {
           "id": "a1_1_038",
@@ -3865,7 +4103,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: I want to buy a ticket."
         },
         {
           "id": "a1_1_039",
@@ -3883,7 +4122,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: I want to buy a piece of clothing."
         },
         {
           "id": "a1_1_040",
@@ -3901,7 +4141,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: I want to buy a steamed bun."
         },
         {
           "id": "a1_1_041",
@@ -3919,7 +4160,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: I want to buy a book."
         },
         {
           "id": "a1_1_042",
@@ -3937,7 +4179,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: I want to buy a pen."
         },
         {
           "id": "a1_1_043",
@@ -3955,7 +4198,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: You want to buy a cup of coffee."
         },
         {
           "id": "a1_1_044",
@@ -3973,7 +4217,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: You want to buy a bowl of rice."
         },
         {
           "id": "a1_1_045",
@@ -3991,7 +4236,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: You want to buy a bottle of water."
         },
         {
           "id": "a1_1_046",
@@ -4009,7 +4255,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: You want to buy a ticket."
         },
         {
           "id": "a1_1_047",
@@ -4027,7 +4274,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: You want to buy a piece of clothing."
         },
         {
           "id": "a1_1_048",
@@ -4045,7 +4293,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: You want to buy a steamed bun."
         },
         {
           "id": "a1_1_049",
@@ -4063,7 +4312,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: You want to buy a book."
         },
         {
           "id": "a1_1_050",
@@ -4081,7 +4331,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: You want to buy a pen."
         },
         {
           "id": "a1_1_051",
@@ -4099,7 +4350,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: He want to buy a cup of coffee."
         },
         {
           "id": "a1_1_052",
@@ -4117,7 +4369,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: He want to buy a bowl of rice."
         },
         {
           "id": "a1_1_053",
@@ -4135,7 +4388,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: He want to buy a bottle of water."
         },
         {
           "id": "a1_1_054",
@@ -4153,7 +4407,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: He want to buy a ticket."
         },
         {
           "id": "a1_1_055",
@@ -4171,7 +4426,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: He want to buy a piece of clothing."
         },
         {
           "id": "a1_1_056",
@@ -4189,7 +4445,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: He want to buy a steamed bun."
         },
         {
           "id": "a1_1_057",
@@ -4207,7 +4464,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: He want to buy a book."
         },
         {
           "id": "a1_1_058",
@@ -4225,7 +4483,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: He want to buy a pen."
         },
         {
           "id": "a1_1_059",
@@ -4243,7 +4502,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: She want to buy a cup of coffee."
         },
         {
           "id": "a1_1_060",
@@ -4261,7 +4521,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: She want to buy a bowl of rice."
         },
         {
           "id": "a1_1_061",
@@ -4279,7 +4540,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: She want to buy a bottle of water."
         },
         {
           "id": "a1_1_062",
@@ -4297,7 +4559,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: She want to buy a ticket."
         },
         {
           "id": "a1_1_063",
@@ -4315,7 +4578,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: She want to buy a piece of clothing."
         },
         {
           "id": "a1_1_064",
@@ -4333,7 +4597,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: She want to buy a steamed bun."
         },
         {
           "id": "a1_1_065",
@@ -4351,7 +4616,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: She want to buy a book."
         },
         {
           "id": "a1_1_066",
@@ -4369,7 +4635,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "You are expressing a need, ability, or preference. Say: She want to buy a pen."
         },
         {
           "id": "a1_1_067",
@@ -4387,7 +4654,8 @@
             "shopping",
             "measure words"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "At a cafe or meal, say this naturally: We want to buy a cup of coffee."
         },
         {
           "id": "a1_1_068",
@@ -4407,7 +4675,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat beef noodle soup first, then go to class."
         },
         {
           "id": "a1_1_069",
@@ -4427,7 +4696,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat dumplings first, then go to class."
         },
         {
           "id": "a1_1_070",
@@ -4447,7 +4717,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat fruit first, then go to class."
         },
         {
           "id": "a1_1_071",
@@ -4467,7 +4738,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat coffee first, then go to class."
         },
         {
           "id": "a1_1_072",
@@ -4487,7 +4759,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat tea first, then go to class."
         },
         {
           "id": "a1_1_073",
@@ -4507,7 +4780,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat breakfast first, then go to class."
         },
         {
           "id": "a1_1_074",
@@ -4527,7 +4801,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat dinner first, then go to class."
         },
         {
           "id": "a1_1_075",
@@ -4547,7 +4822,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: I eat a lunch box first, then go to class."
         },
         {
           "id": "a1_1_076",
@@ -4567,7 +4843,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat beef noodle soup first, then go to class."
         },
         {
           "id": "a1_1_077",
@@ -4587,7 +4864,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat dumplings first, then go to class."
         },
         {
           "id": "a1_1_078",
@@ -4607,7 +4885,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat fruit first, then go to class."
         },
         {
           "id": "a1_1_079",
@@ -4627,7 +4906,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat coffee first, then go to class."
         },
         {
           "id": "a1_1_080",
@@ -4647,7 +4927,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat tea first, then go to class."
         },
         {
           "id": "a1_1_081",
@@ -4667,7 +4948,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat breakfast first, then go to class."
         },
         {
           "id": "a1_1_082",
@@ -4687,7 +4969,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat dinner first, then go to class."
         },
         {
           "id": "a1_1_083",
@@ -4707,7 +4990,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: You eat a lunch box first, then go to class."
         },
         {
           "id": "a1_1_084",
@@ -4727,7 +5011,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat beef noodle soup first, then go to class."
         },
         {
           "id": "a1_1_085",
@@ -4747,7 +5032,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat dumplings first, then go to class."
         },
         {
           "id": "a1_1_086",
@@ -4767,7 +5053,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat fruit first, then go to class."
         },
         {
           "id": "a1_1_087",
@@ -4787,7 +5074,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat coffee first, then go to class."
         },
         {
           "id": "a1_1_088",
@@ -4807,7 +5095,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat tea first, then go to class."
         },
         {
           "id": "a1_1_089",
@@ -4827,7 +5116,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat breakfast first, then go to class."
         },
         {
           "id": "a1_1_090",
@@ -4847,7 +5137,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat dinner first, then go to class."
         },
         {
           "id": "a1_1_091",
@@ -4867,7 +5158,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: He eat a lunch box first, then go to class."
         },
         {
           "id": "a1_1_092",
@@ -4887,7 +5179,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat beef noodle soup first, then go to class."
         },
         {
           "id": "a1_1_093",
@@ -4907,7 +5200,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat dumplings first, then go to class."
         },
         {
           "id": "a1_1_094",
@@ -4927,7 +5221,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat fruit first, then go to class."
         },
         {
           "id": "a1_1_095",
@@ -4947,7 +5242,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat coffee first, then go to class."
         },
         {
           "id": "a1_1_096",
@@ -4967,7 +5263,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat tea first, then go to class."
         },
         {
           "id": "a1_1_097",
@@ -4987,7 +5284,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat breakfast first, then go to class."
         },
         {
           "id": "a1_1_098",
@@ -5007,7 +5305,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat dinner first, then go to class."
         },
         {
           "id": "a1_1_099",
@@ -5027,7 +5326,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: She eat a lunch box first, then go to class."
         },
         {
           "id": "a1_1_100",
@@ -5047,7 +5347,8 @@
             "sequence",
             "先再"
           ],
-          "difficulty": 3
+          "difficulty": 3,
+          "scenario": "In a classroom conversation, say: We eat beef noodle soup first, then go to class."
         }
       ]
     },
@@ -5074,7 +5375,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: I feel very busy today."
         },
         {
           "id": "a1_2_002",
@@ -5091,7 +5393,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: I feel very tired today."
         },
         {
           "id": "a1_2_003",
@@ -5108,7 +5411,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: I feel very happy today."
         },
         {
           "id": "a1_2_004",
@@ -5125,7 +5429,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: I feel very nervous today."
         },
         {
           "id": "a1_2_005",
@@ -5142,7 +5447,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: I feel very comfortable today."
         },
         {
           "id": "a1_2_006",
@@ -5159,7 +5465,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: Doing it this way is convenient."
         },
         {
           "id": "a1_2_007",
@@ -5176,7 +5483,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: The teacher explains it clearly."
         },
         {
           "id": "a1_2_008",
@@ -5193,7 +5501,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You need to ask or answer a clear question. Build: This question is important."
         },
         {
           "id": "a1_2_009",
@@ -5210,7 +5519,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: You feel very busy today."
         },
         {
           "id": "a1_2_010",
@@ -5227,7 +5537,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: You feel very tired today."
         },
         {
           "id": "a1_2_011",
@@ -5244,7 +5555,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: You feel very happy today."
         },
         {
           "id": "a1_2_012",
@@ -5261,7 +5573,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: You feel very nervous today."
         },
         {
           "id": "a1_2_013",
@@ -5278,7 +5591,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: You feel very comfortable today."
         },
         {
           "id": "a1_2_014",
@@ -5295,7 +5609,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: Doing it this way is convenient."
         },
         {
           "id": "a1_2_015",
@@ -5312,7 +5627,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: The teacher explains it clearly."
         },
         {
           "id": "a1_2_016",
@@ -5329,7 +5645,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You need to ask or answer a clear question. Build: This question is important."
         },
         {
           "id": "a1_2_017",
@@ -5346,7 +5663,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: He feel very busy today."
         },
         {
           "id": "a1_2_018",
@@ -5363,7 +5681,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: He feel very tired today."
         },
         {
           "id": "a1_2_019",
@@ -5380,7 +5699,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: He feel very happy today."
         },
         {
           "id": "a1_2_020",
@@ -5397,7 +5717,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: He feel very nervous today."
         },
         {
           "id": "a1_2_021",
@@ -5414,7 +5735,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: He feel very comfortable today."
         },
         {
           "id": "a1_2_022",
@@ -5431,7 +5753,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: Doing it this way is convenient."
         },
         {
           "id": "a1_2_023",
@@ -5448,7 +5771,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: The teacher explains it clearly."
         },
         {
           "id": "a1_2_024",
@@ -5465,7 +5789,8 @@
             "feelings",
             "naturalized"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You need to ask or answer a clear question. Build: This question is important."
         },
         {
           "id": "a1_2_025",
@@ -5482,7 +5807,8 @@
           "tags": [
             "feelings"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: She feel very busy today."
         },
         {
           "id": "a1_2_026",
@@ -5500,7 +5826,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: I study Chinese at school."
         },
         {
           "id": "a1_2_027",
@@ -5518,7 +5845,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: I study Chinese at home."
         },
         {
           "id": "a1_2_028",
@@ -5536,7 +5864,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: I study Chinese at the library."
         },
         {
           "id": "a1_2_029",
@@ -5554,7 +5883,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: I study Chinese at the store."
         },
         {
           "id": "a1_2_030",
@@ -5572,7 +5902,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I study Chinese at the restaurant."
         },
         {
           "id": "a1_2_031",
@@ -5590,7 +5921,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: I study Chinese at the park."
         },
         {
           "id": "a1_2_032",
@@ -5608,7 +5940,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: I study Chinese at the classroom."
         },
         {
           "id": "a1_2_033",
@@ -5626,7 +5959,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: I study Chinese at the market."
         },
         {
           "id": "a1_2_034",
@@ -5644,7 +5978,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: You study Chinese at school."
         },
         {
           "id": "a1_2_035",
@@ -5662,7 +5997,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: You study Chinese at home."
         },
         {
           "id": "a1_2_036",
@@ -5680,7 +6016,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: You study Chinese at the library."
         },
         {
           "id": "a1_2_037",
@@ -5698,7 +6035,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: You study Chinese at the store."
         },
         {
           "id": "a1_2_038",
@@ -5716,7 +6054,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You study Chinese at the restaurant."
         },
         {
           "id": "a1_2_039",
@@ -5734,7 +6073,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: You study Chinese at the park."
         },
         {
           "id": "a1_2_040",
@@ -5752,7 +6092,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: You study Chinese at the classroom."
         },
         {
           "id": "a1_2_041",
@@ -5770,7 +6111,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: You study Chinese at the market."
         },
         {
           "id": "a1_2_042",
@@ -5788,7 +6130,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: He study Chinese at school."
         },
         {
           "id": "a1_2_043",
@@ -5806,7 +6149,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: He study Chinese at home."
         },
         {
           "id": "a1_2_044",
@@ -5824,7 +6168,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: He study Chinese at the library."
         },
         {
           "id": "a1_2_045",
@@ -5842,7 +6187,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: He study Chinese at the store."
         },
         {
           "id": "a1_2_046",
@@ -5860,7 +6206,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He study Chinese at the restaurant."
         },
         {
           "id": "a1_2_047",
@@ -5878,7 +6225,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: He study Chinese at the park."
         },
         {
           "id": "a1_2_048",
@@ -5896,7 +6244,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: He study Chinese at the classroom."
         },
         {
           "id": "a1_2_049",
@@ -5914,7 +6263,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a real conversation, build this idea in Chinese: He study Chinese at the market."
         },
         {
           "id": "a1_2_050",
@@ -5932,7 +6282,8 @@
             "location study",
             "在"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "In a classroom conversation, say: She study Chinese at school."
         },
         {
           "id": "a1_2_051",
@@ -5952,7 +6303,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer beef noodle soup and do not really like coffee."
         },
         {
           "id": "a1_2_052",
@@ -5972,7 +6324,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer dumplings and do not really like coffee."
         },
         {
           "id": "a1_2_053",
@@ -5992,7 +6345,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer fruit and do not really like coffee."
         },
         {
           "id": "a1_2_054",
@@ -6012,7 +6366,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer coffee and do not really like coffee."
         },
         {
           "id": "a1_2_055",
@@ -6032,7 +6387,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer tea and do not really like coffee."
         },
         {
           "id": "a1_2_056",
@@ -6052,7 +6408,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer breakfast and do not really like coffee."
         },
         {
           "id": "a1_2_057",
@@ -6072,7 +6429,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer dinner and do not really like coffee."
         },
         {
           "id": "a1_2_058",
@@ -6092,7 +6450,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: I prefer a lunch box and do not really like coffee."
         },
         {
           "id": "a1_2_059",
@@ -6112,7 +6471,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer beef noodle soup and do not really like coffee."
         },
         {
           "id": "a1_2_060",
@@ -6132,7 +6492,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer dumplings and do not really like coffee."
         },
         {
           "id": "a1_2_061",
@@ -6152,7 +6513,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer fruit and do not really like coffee."
         },
         {
           "id": "a1_2_062",
@@ -6172,7 +6534,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer coffee and do not really like coffee."
         },
         {
           "id": "a1_2_063",
@@ -6192,7 +6555,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer tea and do not really like coffee."
         },
         {
           "id": "a1_2_064",
@@ -6212,7 +6576,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer breakfast and do not really like coffee."
         },
         {
           "id": "a1_2_065",
@@ -6232,7 +6597,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer dinner and do not really like coffee."
         },
         {
           "id": "a1_2_066",
@@ -6252,7 +6618,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: You prefer a lunch box and do not really like coffee."
         },
         {
           "id": "a1_2_067",
@@ -6272,7 +6639,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer beef noodle soup and do not really like coffee."
         },
         {
           "id": "a1_2_068",
@@ -6292,7 +6660,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer dumplings and do not really like coffee."
         },
         {
           "id": "a1_2_069",
@@ -6312,7 +6681,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer fruit and do not really like coffee."
         },
         {
           "id": "a1_2_070",
@@ -6332,7 +6702,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer coffee and do not really like coffee."
         },
         {
           "id": "a1_2_071",
@@ -6352,7 +6723,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer tea and do not really like coffee."
         },
         {
           "id": "a1_2_072",
@@ -6372,7 +6744,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer breakfast and do not really like coffee."
         },
         {
           "id": "a1_2_073",
@@ -6392,7 +6765,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer dinner and do not really like coffee."
         },
         {
           "id": "a1_2_074",
@@ -6412,7 +6786,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: He prefer a lunch box and do not really like coffee."
         },
         {
           "id": "a1_2_075",
@@ -6432,7 +6807,8 @@
             "preference",
             "比較"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: She prefer beef noodle soup and do not really like coffee."
         },
         {
           "id": "a1_2_076",
@@ -6449,7 +6825,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because it is raining today, I want to stay home."
         },
         {
           "id": "a1_2_077",
@@ -6466,7 +6843,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because it is raining today, we need to leave earlier."
         },
         {
           "id": "a1_2_078",
@@ -6483,7 +6861,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because it is raining today, she cannot go."
         },
         {
           "id": "a1_2_079",
@@ -6500,7 +6879,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because it is raining today, you need to bring an umbrella."
         },
         {
           "id": "a1_2_080",
@@ -6517,7 +6897,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because it is raining today, he needs to rest."
         },
         {
           "id": "a1_2_081",
@@ -6534,7 +6915,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because it is raining today, I will do homework first."
         },
         {
           "id": "a1_2_082",
@@ -6551,7 +6933,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because it is raining today, we will go another day."
         },
         {
           "id": "a1_2_083",
@@ -6568,7 +6951,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are talking about time in daily life. Say: Because it is raining today, he decided to take the MRT."
         },
         {
           "id": "a1_2_084",
@@ -6585,7 +6969,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because I have a test, I want to stay home."
         },
         {
           "id": "a1_2_085",
@@ -6602,7 +6987,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because I have a test, we need to leave earlier."
         },
         {
           "id": "a1_2_086",
@@ -6619,7 +7005,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because I have a test, she cannot go."
         },
         {
           "id": "a1_2_087",
@@ -6636,7 +7023,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because I have a test, you need to bring an umbrella."
         },
         {
           "id": "a1_2_088",
@@ -6653,7 +7041,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because I have a test, he needs to rest."
         },
         {
           "id": "a1_2_089",
@@ -6670,7 +7059,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because I have a test, I will do homework first."
         },
         {
           "id": "a1_2_090",
@@ -6687,7 +7077,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because I have a test, we will go another day."
         },
         {
           "id": "a1_2_091",
@@ -6704,7 +7095,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are connecting ideas in a short explanation. Say: Because I have a test, he decided to take the MRT."
         },
         {
           "id": "a1_2_092",
@@ -6721,7 +7113,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because he is not feeling well, I want to stay home."
         },
         {
           "id": "a1_2_093",
@@ -6738,7 +7131,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because he is not feeling well, we need to leave earlier."
         },
         {
           "id": "a1_2_094",
@@ -6755,7 +7149,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because he is not feeling well, she cannot go."
         },
         {
           "id": "a1_2_095",
@@ -6772,7 +7167,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because he is not feeling well, you need to bring an umbrella."
         },
         {
           "id": "a1_2_096",
@@ -6789,7 +7185,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are expressing a need, ability, or preference. Say: Because he is not feeling well, he needs to rest."
         },
         {
           "id": "a1_2_097",
@@ -6806,7 +7203,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because he is not feeling well, I will do homework first."
         },
         {
           "id": "a1_2_098",
@@ -6823,7 +7221,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are describing a simple movement or plan. Say: Because he is not feeling well, we will go another day."
         },
         {
           "id": "a1_2_099",
@@ -6840,7 +7239,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "You are connecting ideas in a short explanation. Say: Because he is not feeling well, he decided to take the MRT."
         },
         {
           "id": "a1_2_100",
@@ -6857,7 +7257,8 @@
             "because so",
             "因為所以"
           ],
-          "difficulty": 4
+          "difficulty": 4,
+          "scenario": "At a cafe or meal, say this naturally: Because the restaurant is far, I want to stay home."
         }
       ]
     },
@@ -6889,7 +7290,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review vocabulary words first and then practice listening today."
         },
         {
           "id": "a2_1_002",
@@ -6911,7 +7313,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review grammar first and then practice listening today."
         },
         {
           "id": "a2_1_003",
@@ -6933,7 +7336,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review tones first and then practice listening today."
         },
         {
           "id": "a2_1_004",
@@ -6955,7 +7359,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review sentences first and then practice listening today."
         },
         {
           "id": "a2_1_005",
@@ -6977,7 +7382,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review the lesson text first and then practice listening today."
         },
         {
           "id": "a2_1_006",
@@ -6999,7 +7405,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review dialogue first and then practice listening today."
         },
         {
           "id": "a2_1_007",
@@ -7021,7 +7428,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review vocabulary words first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_008",
@@ -7043,7 +7451,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review grammar first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_009",
@@ -7065,7 +7474,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review tones first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_010",
@@ -7087,7 +7497,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review sentences first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_011",
@@ -7109,7 +7520,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review the lesson text first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_012",
@@ -7131,7 +7543,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review dialogue first and then practice listening tomorrow."
         },
         {
           "id": "a2_1_013",
@@ -7153,7 +7566,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review vocabulary words first and then practice listening in the morning."
         },
         {
           "id": "a2_1_014",
@@ -7175,7 +7589,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review grammar first and then practice listening in the morning."
         },
         {
           "id": "a2_1_015",
@@ -7197,7 +7612,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review tones first and then practice listening in the morning."
         },
         {
           "id": "a2_1_016",
@@ -7219,7 +7635,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review sentences first and then practice listening in the morning."
         },
         {
           "id": "a2_1_017",
@@ -7241,7 +7658,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review the lesson text first and then practice listening in the morning."
         },
         {
           "id": "a2_1_018",
@@ -7263,7 +7681,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review dialogue first and then practice listening in the morning."
         },
         {
           "id": "a2_1_019",
@@ -7285,7 +7704,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review vocabulary words first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_020",
@@ -7307,7 +7727,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review grammar first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_021",
@@ -7329,7 +7750,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review tones first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_022",
@@ -7351,7 +7773,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review sentences first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_023",
@@ -7373,7 +7796,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review the lesson text first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_024",
@@ -7395,7 +7819,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review dialogue first and then practice listening in the afternoon."
         },
         {
           "id": "a2_1_025",
@@ -7417,7 +7842,8 @@
             "study sequence",
             "先然後"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: I need to review vocabulary words first and then practice listening at night."
         },
         {
           "id": "a2_1_026",
@@ -7438,7 +7864,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If I have time, I will go to school to read."
         },
         {
           "id": "a2_1_027",
@@ -7458,7 +7885,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If I have time, I will read at home."
         },
         {
           "id": "a2_1_028",
@@ -7479,7 +7907,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If I have time, I will go to the library to read."
         },
         {
           "id": "a2_1_029",
@@ -7500,7 +7929,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If I have time, I will go to the store to read."
         },
         {
           "id": "a2_1_030",
@@ -7521,7 +7951,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: If I have time, I will go to the restaurant to read."
         },
         {
           "id": "a2_1_031",
@@ -7542,7 +7973,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If I have time, I will go to the park to read."
         },
         {
           "id": "a2_1_032",
@@ -7563,7 +7995,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If I have time, I will go to the classroom to read."
         },
         {
           "id": "a2_1_033",
@@ -7584,7 +8017,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If I have time, I will go to the market to read."
         },
         {
           "id": "a2_1_034",
@@ -7605,7 +8039,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If you have time, you will go to school to read."
         },
         {
           "id": "a2_1_035",
@@ -7625,7 +8060,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If you have time, you will read at home."
         },
         {
           "id": "a2_1_036",
@@ -7646,7 +8082,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If you have time, you will go to the library to read."
         },
         {
           "id": "a2_1_037",
@@ -7667,7 +8104,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If you have time, you will go to the store to read."
         },
         {
           "id": "a2_1_038",
@@ -7688,7 +8126,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: If you have time, you will go to the restaurant to read."
         },
         {
           "id": "a2_1_039",
@@ -7709,7 +8148,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If you have time, you will go to the park to read."
         },
         {
           "id": "a2_1_040",
@@ -7730,7 +8170,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If you have time, you will go to the classroom to read."
         },
         {
           "id": "a2_1_041",
@@ -7751,7 +8192,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If you have time, you will go to the market to read."
         },
         {
           "id": "a2_1_042",
@@ -7772,7 +8214,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If he has time, he will go to school to read."
         },
         {
           "id": "a2_1_043",
@@ -7792,7 +8235,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If he has time, he will read at home."
         },
         {
           "id": "a2_1_044",
@@ -7813,7 +8257,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If he has time, he will go to the library to read."
         },
         {
           "id": "a2_1_045",
@@ -7834,7 +8279,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If he has time, he will go to the store to read."
         },
         {
           "id": "a2_1_046",
@@ -7855,7 +8301,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: If he has time, he will go to the restaurant to read."
         },
         {
           "id": "a2_1_047",
@@ -7876,7 +8323,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If he has time, he will go to the park to read."
         },
         {
           "id": "a2_1_048",
@@ -7897,7 +8345,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If he has time, he will go to the classroom to read."
         },
         {
           "id": "a2_1_049",
@@ -7918,7 +8367,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are describing a simple movement or plan. Say: If he has time, he will go to the market to read."
         },
         {
           "id": "a2_1_050",
@@ -7939,7 +8389,8 @@
             "condition",
             "如果"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a classroom conversation, say: If she has time, she will go to school to read."
         },
         {
           "id": "a2_1_051",
@@ -7960,7 +8411,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am busy, I still want to study Chinese."
         },
         {
           "id": "a2_1_052",
@@ -7981,7 +8433,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am tired, I still want to study Chinese."
         },
         {
           "id": "a2_1_053",
@@ -8002,7 +8455,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am happy, I still want to study Chinese."
         },
         {
           "id": "a2_1_054",
@@ -8023,7 +8477,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am nervous, I still want to study Chinese."
         },
         {
           "id": "a2_1_055",
@@ -8044,7 +8499,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am comfortable, I still want to study Chinese."
         },
         {
           "id": "a2_1_056",
@@ -8065,7 +8521,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although I am sad, I still want to study Chinese."
         },
         {
           "id": "a2_1_057",
@@ -8086,7 +8543,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are busy, you still want to study Chinese."
         },
         {
           "id": "a2_1_058",
@@ -8107,7 +8565,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are tired, you still want to study Chinese."
         },
         {
           "id": "a2_1_059",
@@ -8128,7 +8587,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are happy, you still want to study Chinese."
         },
         {
           "id": "a2_1_060",
@@ -8149,7 +8609,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are nervous, you still want to study Chinese."
         },
         {
           "id": "a2_1_061",
@@ -8170,7 +8631,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are comfortable, you still want to study Chinese."
         },
         {
           "id": "a2_1_062",
@@ -8191,7 +8653,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although you are sad, you still want to study Chinese."
         },
         {
           "id": "a2_1_063",
@@ -8212,7 +8675,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is busy, he still wants to study Chinese."
         },
         {
           "id": "a2_1_064",
@@ -8233,7 +8697,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is tired, he still wants to study Chinese."
         },
         {
           "id": "a2_1_065",
@@ -8254,7 +8719,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is happy, he still wants to study Chinese."
         },
         {
           "id": "a2_1_066",
@@ -8275,7 +8741,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is nervous, he still wants to study Chinese."
         },
         {
           "id": "a2_1_067",
@@ -8296,7 +8763,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is comfortable, he still wants to study Chinese."
         },
         {
           "id": "a2_1_068",
@@ -8317,7 +8785,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although he is sad, he still wants to study Chinese."
         },
         {
           "id": "a2_1_069",
@@ -8338,7 +8807,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is busy, she still wants to study Chinese."
         },
         {
           "id": "a2_1_070",
@@ -8359,7 +8829,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is tired, she still wants to study Chinese."
         },
         {
           "id": "a2_1_071",
@@ -8380,7 +8851,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is happy, she still wants to study Chinese."
         },
         {
           "id": "a2_1_072",
@@ -8401,7 +8873,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is nervous, she still wants to study Chinese."
         },
         {
           "id": "a2_1_073",
@@ -8422,7 +8895,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is comfortable, she still wants to study Chinese."
         },
         {
           "id": "a2_1_074",
@@ -8443,7 +8917,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although she is sad, she still wants to study Chinese."
         },
         {
           "id": "a2_1_075",
@@ -8464,7 +8939,8 @@
             "contrast",
             "雖然可是"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "You are expressing a need, ability, or preference. Say: Although we are busy, we still want to study Chinese."
         },
         {
           "id": "a2_1_076",
@@ -8483,7 +8959,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: I put a cup of coffee on the table."
         },
         {
           "id": "a2_1_077",
@@ -8502,7 +8979,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: I put a bowl of rice on the table."
         },
         {
           "id": "a2_1_078",
@@ -8521,7 +8999,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: I put a bottle of water on the table."
         },
         {
           "id": "a2_1_079",
@@ -8540,7 +9019,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: I put a ticket on the table."
         },
         {
           "id": "a2_1_080",
@@ -8559,7 +9039,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: I put a piece of clothing on the table."
         },
         {
           "id": "a2_1_081",
@@ -8578,7 +9059,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: I put a steamed bun on the table."
         },
         {
           "id": "a2_1_082",
@@ -8597,7 +9079,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: I put a book on the table."
         },
         {
           "id": "a2_1_083",
@@ -8616,7 +9099,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: I put a pen on the table."
         },
         {
           "id": "a2_1_084",
@@ -8635,7 +9119,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: You put a cup of coffee on the table."
         },
         {
           "id": "a2_1_085",
@@ -8654,7 +9139,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: You put a bowl of rice on the table."
         },
         {
           "id": "a2_1_086",
@@ -8673,7 +9159,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: You put a bottle of water on the table."
         },
         {
           "id": "a2_1_087",
@@ -8692,7 +9179,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: You put a ticket on the table."
         },
         {
           "id": "a2_1_088",
@@ -8711,7 +9199,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: You put a piece of clothing on the table."
         },
         {
           "id": "a2_1_089",
@@ -8730,7 +9219,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: You put a steamed bun on the table."
         },
         {
           "id": "a2_1_090",
@@ -8749,7 +9239,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: You put a book on the table."
         },
         {
           "id": "a2_1_091",
@@ -8768,7 +9259,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: You put a pen on the table."
         },
         {
           "id": "a2_1_092",
@@ -8787,7 +9279,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: He put a cup of coffee on the table."
         },
         {
           "id": "a2_1_093",
@@ -8806,7 +9299,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: He put a bowl of rice on the table."
         },
         {
           "id": "a2_1_094",
@@ -8825,7 +9319,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: He put a bottle of water on the table."
         },
         {
           "id": "a2_1_095",
@@ -8844,7 +9339,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: He put a ticket on the table."
         },
         {
           "id": "a2_1_096",
@@ -8863,7 +9359,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: He put a piece of clothing on the table."
         },
         {
           "id": "a2_1_097",
@@ -8882,7 +9379,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: He put a steamed bun on the table."
         },
         {
           "id": "a2_1_098",
@@ -8901,7 +9399,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: He put a book on the table."
         },
         {
           "id": "a2_1_099",
@@ -8920,7 +9419,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "In a real conversation, build this idea in Chinese: He put a pen on the table."
         },
         {
           "id": "a2_1_100",
@@ -8939,7 +9439,8 @@
             "ba structure",
             "把"
           ],
-          "difficulty": 5
+          "difficulty": 5,
+          "scenario": "At a cafe or meal, say this naturally: She put a cup of coffee on the table."
         }
       ]
     },
@@ -8973,7 +9474,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: I originally wanted to go to school, but later rested at home because it rained."
         },
         {
           "id": "a2_2_002",
@@ -8997,7 +9499,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: I originally wanted to go home, but later rested at home because it rained."
         },
         {
           "id": "a2_2_003",
@@ -9021,7 +9524,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: I originally wanted to go to the library, but later rested at home because it rained."
         },
         {
           "id": "a2_2_004",
@@ -9045,7 +9549,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: I originally wanted to go to the store, but later rested at home because it rained."
         },
         {
           "id": "a2_2_005",
@@ -9069,7 +9574,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I originally wanted to go to the restaurant, but later rested at home because it rained."
         },
         {
           "id": "a2_2_006",
@@ -9093,7 +9599,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: I originally wanted to go to the park, but later rested at home because it rained."
         },
         {
           "id": "a2_2_007",
@@ -9117,7 +9624,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: I originally wanted to go to the classroom, but later rested at home because it rained."
         },
         {
           "id": "a2_2_008",
@@ -9141,7 +9649,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: I originally wanted to go to the market, but later rested at home because it rained."
         },
         {
           "id": "a2_2_009",
@@ -9165,7 +9674,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: You originally wanted to go to school, but later rested at home because it rained."
         },
         {
           "id": "a2_2_010",
@@ -9189,7 +9699,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: You originally wanted to go home, but later rested at home because it rained."
         },
         {
           "id": "a2_2_011",
@@ -9213,7 +9724,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: You originally wanted to go to the library, but later rested at home because it rained."
         },
         {
           "id": "a2_2_012",
@@ -9237,7 +9749,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: You originally wanted to go to the store, but later rested at home because it rained."
         },
         {
           "id": "a2_2_013",
@@ -9261,7 +9774,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You originally wanted to go to the restaurant, but later rested at home because it rained."
         },
         {
           "id": "a2_2_014",
@@ -9285,7 +9799,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: You originally wanted to go to the park, but later rested at home because it rained."
         },
         {
           "id": "a2_2_015",
@@ -9309,7 +9824,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: You originally wanted to go to the classroom, but later rested at home because it rained."
         },
         {
           "id": "a2_2_016",
@@ -9333,7 +9849,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: You originally wanted to go to the market, but later rested at home because it rained."
         },
         {
           "id": "a2_2_017",
@@ -9357,7 +9874,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: He originally wanted to go to school, but later rested at home because it rained."
         },
         {
           "id": "a2_2_018",
@@ -9381,7 +9899,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: He originally wanted to go home, but later rested at home because it rained."
         },
         {
           "id": "a2_2_019",
@@ -9405,7 +9924,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: He originally wanted to go to the library, but later rested at home because it rained."
         },
         {
           "id": "a2_2_020",
@@ -9429,7 +9949,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: He originally wanted to go to the store, but later rested at home because it rained."
         },
         {
           "id": "a2_2_021",
@@ -9453,7 +9974,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He originally wanted to go to the restaurant, but later rested at home because it rained."
         },
         {
           "id": "a2_2_022",
@@ -9477,7 +9999,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: He originally wanted to go to the park, but later rested at home because it rained."
         },
         {
           "id": "a2_2_023",
@@ -9501,7 +10024,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: He originally wanted to go to the classroom, but later rested at home because it rained."
         },
         {
           "id": "a2_2_024",
@@ -9525,7 +10049,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are describing a simple movement or plan. Say: He originally wanted to go to the market, but later rested at home because it rained."
         },
         {
           "id": "a2_2_025",
@@ -9549,7 +10074,8 @@
             "change of plan",
             "本來後來"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a classroom conversation, say: She originally wanted to go to school, but later rested at home because it rained."
         },
         {
           "id": "a2_2_026",
@@ -9572,7 +10098,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's beef noodle soup is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_027",
@@ -9595,7 +10122,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's dumplings is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_028",
@@ -9618,7 +10146,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's fruit is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_029",
@@ -9641,7 +10170,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's coffee is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_030",
@@ -9664,7 +10194,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's tea is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_031",
@@ -9687,7 +10218,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's breakfast is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_032",
@@ -9710,7 +10242,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's dinner is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_033",
@@ -9733,7 +10266,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: I think this shop's a lunch box is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_034",
@@ -9756,7 +10290,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's beef noodle soup is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_035",
@@ -9779,7 +10314,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's dumplings is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_036",
@@ -9802,7 +10338,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's fruit is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_037",
@@ -9825,7 +10362,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's coffee is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_038",
@@ -9848,7 +10386,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's tea is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_039",
@@ -9871,7 +10410,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's breakfast is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_040",
@@ -9894,7 +10434,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's dinner is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_041",
@@ -9917,7 +10458,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: You think this shop's a lunch box is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_042",
@@ -9940,7 +10482,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's beef noodle soup is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_043",
@@ -9963,7 +10506,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's dumplings is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_044",
@@ -9986,7 +10530,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's fruit is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_045",
@@ -10009,7 +10554,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's coffee is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_046",
@@ -10032,7 +10578,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's tea is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_047",
@@ -10055,7 +10602,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's breakfast is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_048",
@@ -10078,7 +10626,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's dinner is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_049",
@@ -10101,7 +10650,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: He think this shop's a lunch box is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_050",
@@ -10124,7 +10674,8 @@
             "not only but also",
             "不但而且"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "At a cafe or meal, say this naturally: She think this shop's beef noodle soup is not only tasty but also reasonably priced."
         },
         {
           "id": "a2_2_051",
@@ -10144,7 +10695,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather take the bus than wait too long on the road."
         },
         {
           "id": "a2_2_052",
@@ -10164,7 +10716,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather take the MRT than wait too long on the road."
         },
         {
           "id": "a2_2_053",
@@ -10184,7 +10737,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather ride a bicycle than wait too long on the road."
         },
         {
           "id": "a2_2_054",
@@ -10204,7 +10758,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather walk than wait too long on the road."
         },
         {
           "id": "a2_2_055",
@@ -10224,7 +10779,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather drive than wait too long on the road."
         },
         {
           "id": "a2_2_056",
@@ -10244,7 +10800,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather take a taxi than wait too long on the road."
         },
         {
           "id": "a2_2_057",
@@ -10264,7 +10821,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather take the train than wait too long on the road."
         },
         {
           "id": "a2_2_058",
@@ -10284,7 +10842,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: I would rather transfer vehicles than wait too long on the road."
         },
         {
           "id": "a2_2_059",
@@ -10304,7 +10863,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather take the bus than wait too long on the road."
         },
         {
           "id": "a2_2_060",
@@ -10324,7 +10884,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather take the MRT than wait too long on the road."
         },
         {
           "id": "a2_2_061",
@@ -10344,7 +10905,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather ride a bicycle than wait too long on the road."
         },
         {
           "id": "a2_2_062",
@@ -10364,7 +10926,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather walk than wait too long on the road."
         },
         {
           "id": "a2_2_063",
@@ -10384,7 +10947,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather drive than wait too long on the road."
         },
         {
           "id": "a2_2_064",
@@ -10404,7 +10968,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather take a taxi than wait too long on the road."
         },
         {
           "id": "a2_2_065",
@@ -10424,7 +10989,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather take the train than wait too long on the road."
         },
         {
           "id": "a2_2_066",
@@ -10444,7 +11010,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: You would rather transfer vehicles than wait too long on the road."
         },
         {
           "id": "a2_2_067",
@@ -10464,7 +11031,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather take the bus than wait too long on the road."
         },
         {
           "id": "a2_2_068",
@@ -10484,7 +11052,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather take the MRT than wait too long on the road."
         },
         {
           "id": "a2_2_069",
@@ -10504,7 +11073,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather ride a bicycle than wait too long on the road."
         },
         {
           "id": "a2_2_070",
@@ -10524,7 +11094,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather walk than wait too long on the road."
         },
         {
           "id": "a2_2_071",
@@ -10544,7 +11115,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather drive than wait too long on the road."
         },
         {
           "id": "a2_2_072",
@@ -10564,7 +11136,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather take a taxi than wait too long on the road."
         },
         {
           "id": "a2_2_073",
@@ -10584,7 +11157,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather take the train than wait too long on the road."
         },
         {
           "id": "a2_2_074",
@@ -10604,7 +11178,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: He would rather transfer vehicles than wait too long on the road."
         },
         {
           "id": "a2_2_075",
@@ -10624,7 +11199,8 @@
             "preference",
             "寧可"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are expressing a need, ability, or preference. Say: She would rather take the bus than wait too long on the road."
         },
         {
           "id": "a2_2_076",
@@ -10647,7 +11223,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as I practice vocabulary words every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_077",
@@ -10670,7 +11247,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as I practice grammar every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_078",
@@ -10693,7 +11271,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as I practice tones every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_079",
@@ -10716,7 +11295,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as I practice sentences every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_080",
@@ -10739,7 +11319,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are connecting ideas in a short explanation. Say: As long as I practice the lesson text every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_081",
@@ -10762,7 +11343,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as I practice dialogue every day, I will gradually remember common expressions."
         },
         {
           "id": "a2_2_082",
@@ -10785,7 +11367,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as you practice vocabulary words every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_083",
@@ -10808,7 +11391,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as you practice grammar every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_084",
@@ -10831,7 +11415,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as you practice tones every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_085",
@@ -10854,7 +11439,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as you practice sentences every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_086",
@@ -10877,7 +11463,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are connecting ideas in a short explanation. Say: As long as you practice the lesson text every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_087",
@@ -10900,7 +11487,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as you practice dialogue every day, you will gradually remember common expressions."
         },
         {
           "id": "a2_2_088",
@@ -10923,7 +11511,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as he practice vocabulary words every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_089",
@@ -10946,7 +11535,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as he practice grammar every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_090",
@@ -10969,7 +11559,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as he practice tones every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_091",
@@ -10992,7 +11583,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as he practice sentences every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_092",
@@ -11015,7 +11607,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are connecting ideas in a short explanation. Say: As long as he practice the lesson text every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_093",
@@ -11038,7 +11631,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as he practice dialogue every day, he will gradually remember common expressions."
         },
         {
           "id": "a2_2_094",
@@ -11061,7 +11655,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as she practice vocabulary words every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_095",
@@ -11084,7 +11679,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as she practice grammar every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_096",
@@ -11107,7 +11703,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as she practice tones every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_097",
@@ -11130,7 +11727,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as she practice sentences every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_098",
@@ -11153,7 +11751,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "You are connecting ideas in a short explanation. Say: As long as she practice the lesson text every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_099",
@@ -11176,7 +11775,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as she practice dialogue every day, she will gradually remember common expressions."
         },
         {
           "id": "a2_2_100",
@@ -11199,7 +11799,8 @@
             "as long as",
             "只要就"
           ],
-          "difficulty": 6
+          "difficulty": 6,
+          "scenario": "In a real conversation, build this idea in Chinese: As long as we practice vocabulary words every day, we will gradually remember common expressions."
         }
       ]
     }

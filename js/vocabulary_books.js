@@ -524,7 +524,7 @@ window.VocabularyBooksModule = (() => {
       const ok = optionIndex === q.correctIndex;
       if (fb) {
         fb.className = `book-exercise-feedback ${ok ? 'correct' : 'wrong'}`;
-        fb.textContent = ok ? 'Correct.' : `Review: ${q.answer}`;
+        fb.textContent = ok ? `Correct. ${q.explanation || 'Say the answer aloud once.'}` : `Not quite. Answer: ${q.answer}. Why: ${q.explanation || 'Review the dialogue or sentence this question came from.'}`;
       }
       if (!ok && window.WeaknessEngine) WeaknessEngine.record(kind === 'pinyin' ? 'pinyin' : 'listening', { item: q.chinese || q.prompt, label: q.answer, type: `book1-${kind}` });
     },
@@ -538,7 +538,7 @@ window.VocabularyBooksModule = (() => {
       const accepted = (q.accepted || [q.answer]).map(x => String(x).replace(/[\s，。！？,.!?]/g, ''));
       const ok = accepted.includes(actual);
       fb.className = `book-exercise-feedback ${ok ? 'correct' : 'wrong'}`;
-      fb.textContent = ok ? 'Correct.' : `Answer: ${q.answer}`;
+      fb.textContent = ok ? 'Correct. Read it once in Chinese before moving on.' : `Not quite. Answer: ${q.answer}. Why: match the full Chinese sentence, not only the key word.`;
       if (!ok && window.WeaknessEngine) WeaknessEngine.record('grammar', { item: q.answer, label: q.prompt, type: 'book1-writing' });
     },
     playDialogueLine(dialogueIndex, lineIndex) {

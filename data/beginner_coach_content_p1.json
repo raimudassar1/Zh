@@ -296,10 +296,16 @@
         }
       ],
       "passage": {
-        "title": "Hello, My Name Is… Listening Passage",
-        "zh": "你好！請問，你叫什麼名字？我叫王小明。你呢？我叫李華。很高興認識你！",
-        "en": "This is a new semester. Two students meet outside the classroom. They meet for the first time and want to know each other. They greet each other very politely. They ask each other's names.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Hello, My Name Is… Dialogue Listening",
+        "zh": "你好！ 你好！ 請問，你叫什麼名字？ 我叫王小明。你呢？ 我叫李華。 很高興認識你！ 我也很高興認識你。 你是學生嗎？ 是的，我是學生。你也是學生嗎？ 對，我們都是學生。 太好了。 再見！ 再見！",
+        "en": "Hello! Hello! Excuse me, what is your name? My name is Wang Xiaoming. How about you? My name is Li Hua. Nice to meet you! Nice to meet you too. Are you a student? Yes, I am a student. Are you also a student? Right, we are both students. Great. Goodbye! Goodbye!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好！請問，你叫什麼名字？我叫王小明。你呢？我叫李華。很高興認識你！",
+          "en": "This is a new semester. Two students meet outside the classroom. They meet for the first time and want to know each other. They greet each other very politely. They ask each other's names.",
+          "title": "Hello, My Name Is… Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Introduce yourself in 3 sentences: say hello, your name, and your identity (student).",
@@ -365,7 +371,10 @@
       "speaking": "Introduce yourself to a friend: '你好，我叫[Name]，我是學生。'",
       "writing": "Write your name, your country, and one greeting in Chinese.",
       "self_check": "Can you say hello and tell someone your name?"
-    }
+    },
+    "audit_note": [
+      "Vocabulary list has 13 items; content preserved for level fit. Expand manually only if new words appear in dialogue/listening."
+    ]
   },
   {
     "id": 2,
@@ -597,9 +606,8 @@
           "a": "Mark"
         },
         {
-          "zh": "誰是新學生？",
-          "q": "Who is the new student?",
-          "a": "Mark"
+          "q": "What does Daming say to Mark?",
+          "a": "Welcome / Welcome you"
         },
         {
           "q": "What did the teacher give to Mark?",
@@ -663,10 +671,16 @@
         }
       ],
       "passage": {
-        "title": "Nice to Meet You Listening Passage",
-        "zh": "各位同學，大家好！這是一位新學生。他叫馬克。大家好，我叫馬克。很高興認識大家。",
-        "en": "A new student is here today. The teacher is in the classroom. The teacher introduces the new student to others. Everyone says 'Nice to meet you'. They are all friendly.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Nice to Meet You Dialogue Listening",
+        "zh": "各位同學，大家好！ 這是一位新學生。 他叫馬克。 大家好，我叫馬克。 很高興認識大家。 馬克，你好！我叫小麗。 我叫大明。歡迎你！ 謝謝你們。 馬克，這是你的課本。 謝謝老師。 請坐吧。 好的。",
+        "en": "Hello class, everyone! This is a new student. His name is Mark. Hello everyone, my name is Mark. Nice to meet you all. Mark, hello! My name is Xiaoli. My name is Daming. Welcome! Thank you (all). Mark, this is your textbook. Thank you, teacher. Please take a seat. Okay.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "各位同學，大家好！這是一位新學生。他叫馬克。大家好，我叫馬克。很高興認識大家。",
+          "en": "A new student is here today. The teacher is in the classroom. The teacher introduces the new student to others. Everyone says 'Nice to meet you'. They are all friendly.",
+          "title": "Nice to Meet You Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 3 sentences about a classmate: their name, if they are a student, and 'Nice to meet you'.",
@@ -732,7 +746,10 @@
       "speaking": "Introduce a friend: '這是我的朋友，他叫[Name]。'",
       "writing": "Write 3 sentences about a classmate.",
       "self_check": "Can you use 'This is...' to introduce someone?"
-    }
+    },
+    "audit_note": [
+      "Vocabulary list has 13 items; content preserved for level fit. Expand manually only if new words appear in dialogue/listening."
+    ]
   },
   {
     "id": 3,
@@ -1031,10 +1048,16 @@
         }
       ],
       "passage": {
-        "title": "Where Are You From? Listening Passage",
-        "zh": "你好，馬克！你好！你是哪國人？我是美國人。你呢？我是台灣人。",
-        "en": "Class is over. Two students are talking. They want to know about their countries. They ask 'Where are you from?'. They talk about cities too.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Where Are You From? Dialogue Listening",
+        "zh": "你好，馬克！ 你好！ 你是哪國人？ 我是美國人。你呢？ 我是台灣人。 你是台灣哪裡人？ 我是台北人。你呢？ 我是紐約人。 紐約很大，對嗎？ 對，紐約很大，也很漂亮。 我希望能去紐約。 歡迎你來紐約！",
+        "en": "Hello, Mark! Hello! Which country are you from? I am American. How about you? I am Taiwanese. Where in Taiwan are you from? I am from Taipei. How about you? I am from New York. New York is very big, right? Yes, New York is big and also beautiful. I hope I can go to New York. Welcome to New York!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "你好，馬克！你好！你是哪國人？我是美國人。你呢？我是台灣人。",
+          "en": "Class is over. Two students are talking. They want to know about their countries. They ask 'Where are you from?'. They talk about cities too.",
+          "title": "Where Are You From? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write where you are from and where you live (country and city). Use 3 sentences.",
@@ -1100,7 +1123,10 @@
       "speaking": "Ask someone: '你是哪國人？' and answer.",
       "writing": "Write: '我是[Country]人，我是[City]人。'",
       "self_check": "Can you say your country and city in Chinese?"
-    }
+    },
+    "audit_note": [
+      "Vocabulary list has 14 items; content preserved for level fit. Expand manually only if new words appear in dialogue/listening."
+    ]
   },
   {
     "id": 4,
@@ -1411,10 +1437,16 @@
         }
       ],
       "passage": {
-        "title": "How Are You Today? Listening Passage",
-        "zh": "大衛，你來了！抱歉，我遲到了。沒關係。你今天怎麼樣？我今天很累。為什麼？你昨天沒睡好嗎？",
-        "en": "The class is starting. One student arrives late. He looks very tired. His friend asks about his feelings. They talk about why he is tired.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "How Are You Today? Dialogue Listening",
+        "zh": "大衛，你來了！ 抱歉，我遲到了。 沒關係。你今天怎麼樣？ 我今天很累。 為什麼？你昨天沒睡好嗎？ 對，我昨晚功課很多。 太辛苦了。 我現在想喝咖啡。 我也想喝。我們課後去買吧。 好主意，謝謝你。 不客氣。現在我們開始上課吧。 好。",
+        "en": "David, you're here! Sorry, I'm late. No problem. How are you today? I am very tired today. Why? Did you not sleep well yesterday? Right, I had a lot of homework last night. That's too hard. I want to drink coffee now. I also want to drink some. Let's go buy some after class. Good idea, thank you. You're welcome. Now let's start class. Okay.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "大衛，你來了！抱歉，我遲到了。沒關係。你今天怎麼樣？我今天很累。為什麼？你昨天沒睡好嗎？",
+          "en": "The class is starting. One student arrives late. He looks very tired. His friend asks about his feelings. They talk about why he is tired.",
+          "title": "How Are You Today? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 4 sentences about how you feel today and why (e.g., happy because it's sunny, or tired because of work).",
@@ -1791,10 +1823,16 @@
         }
       ],
       "passage": {
-        "title": "In the Classroom Listening Passage",
-        "zh": "各位學生，請聽我說。請打開課本，翻到第十頁。請跟我讀。你好。現在，請大家寫這兩個字。",
-        "en": "The teacher is talking. The students are listening. The teacher gives some commands. Students follow the instructions. If they don't understand, they ask questions.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "In the Classroom Dialogue Listening",
+        "zh": "各位學生，請聽我說。 請打開課本，翻到第十頁。 請跟我讀。 你好。 你好。 現在，請大家寫這兩個字。 老師，請等一下。 什麼事？ 我不明白這句話。 沒關係，我再說一遍。 謝謝老師。 大家明白了也？ 明白了。",
+        "en": "Students, please listen to me. Please open your textbook to page ten. Please read after me. Hello. Hello. Now, please everyone write these two characters. Teacher, please wait a moment. What's the matter? I don't understand this sentence. No problem, I'll say it again. Thank you, teacher. Does everyone understand? Understood.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "各位學生，請聽我說。請打開課本，翻到第十頁。請跟我讀。你好。現在，請大家寫這兩個字。",
+          "en": "The teacher is talking. The students are listening. The teacher gives some commands. Students follow the instructions. If they don't understand, they ask questions.",
+          "title": "In the Classroom Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 classroom commands (e.g., 'Listen to me', 'Open the book').",
@@ -2165,10 +2203,16 @@
         }
       ],
       "passage": {
-        "title": "What Is This? Listening Passage",
-        "zh": "小明，這是什麼？這是一支筆。那是什麼？那是我的筆記本。這個也是你的嗎？",
-        "en": "The classroom is quiet. A student is looking at a desk. There are many things on the desk. She asks her friend about the objects. They use 'this' and 'that' to identify things.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "What Is This? Dialogue Listening",
+        "zh": "小明，這是什麼？ 這是一支筆。 那是什麼？ 那是我的筆記本。 這個也是你的嗎？ 不是，那是小華的書。 這本書很大。 對，那是字典。 桌子上還有什麼？ 還有一張地圖和一個書包。 地圖在那裡嗎？ 對，就在那裡。",
+        "en": "Xiaoming, what is this? This is a pen. What is that? That is my notebook. Is this also yours? No, that is Xiaohua's book. This book is very big. Right, that is a dictionary. What else is on the table? There is also a map and a schoolbag. Is the map over there? Yes, right over there.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "小明，這是什麼？這是一支筆。那是什麼？那是我的筆記本。這個也是你的嗎？",
+          "en": "The classroom is quiet. A student is looking at a desk. There are many things on the desk. She asks her friend about the objects. They use 'this' and 'that' to identify things.",
+          "title": "What Is This? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Label 8 objects you might find on a desk in Chinese (e.g., pen, book, notebook, computer, map, etc.).",
@@ -2533,10 +2577,16 @@
         }
       ],
       "passage": {
-        "title": "My Bag Is Missing Listening Passage",
-        "zh": "糟糕，我的書包在哪裡？你找不到書包了嗎？對，我剛才還在這裡。別擔心，我們一起找吧。這是你的嗎？",
-        "en": "The class is over. A student is looking for something. She cannot find her bag. Her friend helps her search. They check the desks and chairs.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "My Bag Is Missing Dialogue Listening",
+        "zh": "糟糕，我的書包在哪裡？ 你找不到書包了嗎？ 對，我剛才還在這裡。 別擔心，我們一起找吧。 這是你的嗎？ 不是，那是小華的。 你的書包是什麼顏色的？ 是藍色的，很大。 看！那是你的嗎？在桌子下面。 對！那是我的書包。太謝謝你了！ 沒關係，找到了就好。 我的書和筆都在裡面。",
+        "en": "Oh no, where is my schoolbag? Can't you find your schoolbag? Right, I was just here a moment ago. Don't worry, let's look together. Is this yours? No, that's Xiaohua's. What color is your schoolbag? It's blue and very big. Look! Is that yours? Under the table. Yes! That is my schoolbag. Thank you so much! No problem, it's good that it's found. My books and pens are all inside.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "糟糕，我的書包在哪裡？你找不到書包了嗎？對，我剛才還在這裡。別擔心，我們一起找吧。這是你的嗎？",
+          "en": "The class is over. A student is looking for something. She cannot find her bag. Her friend helps her search. They check the desks and chairs.",
+          "title": "My Bag Is Missing Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write a short note about a lost item: what it is, its color, and where you last saw it.",
@@ -2602,7 +2652,10 @@
       "speaking": "Ask '這是你的[Item]嗎？' and answer.",
       "writing": "Write a short lost-item note.",
       "self_check": "Can you describe a lost item and its location?"
-    }
+    },
+    "audit_note": [
+      "Vocabulary list has 14 items; content preserved for level fit. Expand manually only if new words appear in dialogue/listening."
+    ]
   },
   {
     "id": 8,
@@ -2907,10 +2960,16 @@
         }
       ],
       "passage": {
-        "title": "Numbers Around Us Listening Passage",
-        "zh": "馬克，你的電話號碼是多少？我的號碼是0912-345-678。好的，我記下來了。你住在哪個房間？我住在305號房間。你呢？",
-        "en": "Two students are talking after class. They want to stay in touch. They exchange phone numbers. They also talk about their room numbers. They use numbers from 1 to 100.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Numbers Around Us Dialogue Listening",
+        "zh": "馬克，你的電話號碼是多少？ 我的號碼是 0912-345-678。 好的，我記下來了。 你住在哪個房間？ 我住在 305 號房間。你呢？ 我住在 218 號。我們很近。 對了，今天的作業在第幾頁？ 在第五十二頁。 五十二頁？這麼多！ 不，是從第四十頁到五十二頁。 喔，一共十二頁。 對，一共十二頁。",
+        "en": "Mark, what is your phone number? My number is 0912-345-678. Okay, I've written it down. Which room do you live in? I live in room 305. How about you? I live in room 218. We are very close. By the way, what page is today's homework on? It's on page fifty-two. Page fifty-two? So many! No, it's from page forty to fifty-two. Oh, twelve pages in total. Correct, twelve pages in total.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，你的電話號碼是多少？我的號碼是0912-345-678。好的，我記下來了。你住在哪個房間？我住在305號房間。你呢？",
+          "en": "Two students are talking after class. They want to stay in touch. They exchange phone numbers. They also talk about their room numbers. They use numbers from 1 to 100.",
+          "title": "Numbers Around Us Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write your own (imaginary) phone number, your room number, and a page range (e.g., 'from page 10 to page 20').",
@@ -3275,10 +3334,16 @@
         }
       ],
       "passage": {
-        "title": "What Time Is It? Listening Passage",
-        "zh": "請問，現在幾點？現在是早上八點五十分。糟糕，九點上課嗎？對，九點整開始。我快要遲到了！",
-        "en": "The sun is high. A student is running to class. He asks another student about the time. They check the clock. They talk about being early or late.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "What Time Is It? Dialogue Listening",
+        "zh": "請問，現在幾點？ 現在是早上八點五十分。 糟糕，九點上課嗎？ 對，九點整開始。 我快要遲到了！ 沒關係，還有十分鐘。 老師到了嗎？ 老師已經在教室裡了。 你為什麼不進去？ 我現在在等朋友。 喔，好吧。我先进去了。再見！ 好，再見！",
+        "en": "Excuse me, what time is it now? It is 8:50 AM now. Oh no, does class start at 9:00? Yes, it starts at 9:00 sharp. I'm about to be late! It's okay, there are still ten minutes left. Has the teacher arrived? The teacher is already in the classroom. Why aren't you going in? I'm waiting for a friend right now. Oh, okay. I'm going in first. Goodbye! Okay, goodbye!",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "請問，現在幾點？現在是早上八點五十分。糟糕，九點上課嗎？對，九點整開始。我快要遲到了！",
+          "en": "The sun is high. A student is running to class. He asks another student about the time. They check the clock. They talk about being early or late.",
+          "title": "What Time Is It? Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 times of day in Chinese (e.g., 7:30 AM, 12:00 PM, 6:15 PM, 10:45 PM, 1:00 AM).",
@@ -3344,7 +3409,10 @@
       "speaking": "Ask '現在幾點？' and tell the time.",
       "writing": "Write 5 times of day.",
       "self_check": "Can you tell and understand time in Chinese?"
-    }
+    },
+    "audit_note": [
+      "Vocabulary list has 14 items; content preserved for level fit. Expand manually only if new words appear in dialogue/listening."
+    ]
   },
   {
     "id": 10,
@@ -3649,10 +3717,16 @@
         }
       ],
       "passage": {
-        "title": "Days of the Week Listening Passage",
-        "zh": "馬克，今天星期幾？今天星期一。我們今天有中文課嗎？有，星期一、三、五都有中文課。那明天星期二沒有中文課？",
-        "en": "The new week is starting. Two friends are talking about classes. They check which days they have Chinese class. They talk about today and tomorrow. They plan to meet later this week.",
-        "instruction": "Listen to the short passage first. Then answer the comprehension, true/false, and fill-in-the-blank questions from memory."
+        "title": "Days of the Week Dialogue Listening",
+        "zh": "馬克，今天星期幾？ 今天星期一。 我們今天有中文課嗎？ 有，星期一、三、五都有中文課。 那明天星期二沒有中文課？ 對，明天沒有。但是有體育課。 太好了，我喜歡體育課。 星期六和星期日你做什麼？ 我週末通常休息，或者看電影。 這個星期六我們一起看電影吧。 好啊，沒問題！ 那我們星期六見。",
+        "en": "Mark, what day of the week is it today? Today is Monday. Do we have Chinese class today? Yes, we have Chinese class every Monday, Wednesday, and Friday. So there is no Chinese class tomorrow, Tuesday? Right, none tomorrow. But we have PE class. Great, I like PE class. What do you do on Saturday and Sunday? I usually rest on weekends, or watch movies. Let's watch a movie together this Saturday. Sure, no problem! Then I'll see you on Saturday.",
+        "instruction": "Listen to the dialogue-style passage first. Then answer from memory. The English below matches the Chinese audio line by line.",
+        "originalBackup": {
+          "zh": "馬克，今天星期幾？今天星期一。我們今天有中文課嗎？有，星期一、三、五都有中文課。那明天星期二沒有中文課？",
+          "en": "The new week is starting. Two friends are talking about classes. They check which days they have Chinese class. They talk about today and tomorrow. They plan to meet later this week.",
+          "title": "Days of the Week Listening Passage"
+        },
+        "source": "dialogue-aligned"
       }
     },
     "writing": "Write 5 sentences about your weekly schedule (e.g., 'Monday I have class', 'Sunday I rest').",
