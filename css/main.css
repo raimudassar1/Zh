@@ -11872,3 +11872,363 @@ body {
     flex-basis: 46px;
   }
 }
+
+/* Study Plan Phase 7: release polish */
+.study-plan-v2 {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-bottom: 28px;
+}
+
+.study-plan-v2 .study-plan-hero,
+.study-plan-v2 .study-month-board,
+.study-plan-v2 .study-plan-controls,
+.study-plan-v2 .study-task,
+.study-plan-v2 .study-plan-coverage {
+  border-radius: 10px !important;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.045) !important;
+}
+
+.study-plan-v2 .study-plan-hero {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--clean-accent) 12%, var(--clean-line)) !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--clean-accent) 5%, var(--clean-surface)) 0%, var(--clean-surface) 52%, var(--clean-surface-2) 100%) !important;
+}
+
+.study-plan-v2 .study-plan-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--clean-accent);
+}
+
+.study-plan-v2 .study-plan-hero h2 {
+  max-width: 760px;
+  font-size: clamp(1.45rem, 3vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.study-plan-v2 .study-plan-hero p {
+  max-width: 780px;
+  font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+}
+
+.study-plan-v2 .study-plan-meter {
+  min-width: 148px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--clean-surface) 78%, white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+.study-plan-v2 .study-progress-bar {
+  height: 6px;
+  margin: -4px 2px 0;
+}
+
+.study-plan-v2 .study-month-board {
+  padding: clamp(14px, 2.2vw, 20px);
+}
+
+.study-plan-v2 .study-month-tabs button {
+  min-height: 86px;
+  border-radius: 8px;
+}
+
+.study-plan-v2 .study-month-tabs button.active {
+  box-shadow: 0 14px 24px color-mix(in srgb, var(--clean-accent) 20%, transparent);
+}
+
+.study-plan-v2 .study-week-circles button {
+  min-width: 72px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.study-plan-v2 .study-week-strip.compact {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(7px, 1.6vw, 12px);
+  padding: 4px 0 2px;
+  overflow: visible;
+}
+
+.study-plan-v2 .study-week-strip.compact button {
+  justify-self: center;
+  width: clamp(42px, 8vw, 56px);
+  height: clamp(42px, 8vw, 56px);
+  min-width: 0;
+  min-height: 0;
+  flex: none;
+  border-radius: 50%;
+}
+
+.study-plan-v2 .study-week-strip.compact button.active {
+  flex-basis: auto;
+}
+
+.study-plan-v2 .study-plan-controls {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, auto));
+  justify-content: start;
+  gap: 10px;
+  padding: 14px;
+}
+
+.study-plan-v2 .study-plan-controls .btn,
+.study-plan-v2 .study-task-actions .btn {
+  min-height: 40px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.study-plan-v2 .study-task-list {
+  gap: 14px;
+}
+
+.study-plan-v2 .study-task {
+  position: relative;
+  overflow: hidden;
+  grid-template-columns: 42px minmax(0, 1fr);
+  border-color: color-mix(in srgb, var(--clean-line) 86%, var(--clean-text)) !important;
+  transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.study-plan-v2 .study-task::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: color-mix(in srgb, var(--clean-accent) 24%, transparent);
+}
+
+.study-plan-v2 .study-task:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--clean-accent) 28%, var(--clean-line)) !important;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07) !important;
+}
+
+.study-plan-v2 .study-task.complete::before {
+  background: var(--tone2);
+}
+
+.study-plan-v2 .study-task-check {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.study-plan-v2 .study-task h3 {
+  font-size: clamp(1.04rem, 1.8vw, 1.22rem);
+}
+
+.study-plan-v2 .study-task p {
+  max-width: 820px;
+}
+
+.study-plan-v2 .study-plan-coverage > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.study-plan-v2 .study-plan-coverage span {
+  border-radius: 8px;
+}
+
+.study-plan-v2 button:focus-visible,
+.study-plan-v2 a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--clean-accent) 28%, transparent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .study-plan-v2 {
+    padding-bottom: 22px;
+  }
+
+  .study-plan-v2 .study-plan-hero {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .study-plan-v2 .study-plan-meter {
+    width: 100%;
+    text-align: left;
+  }
+
+  .study-plan-v2 .study-plan-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .study-plan-v2 .study-plan-controls .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .study-plan-v2 .study-task {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 460px) {
+  .study-plan-v2 .study-week-strip.compact {
+    gap: 6px;
+  }
+
+  .study-plan-v2 .study-week-strip.compact button {
+    width: clamp(38px, 11vw, 44px);
+    height: clamp(38px, 11vw, 44px);
+  }
+
+  .study-plan-v2 .study-plan-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .study-plan-v2 .study-task-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Study Plan Phase 8: stronger visual polish */
+.study-plan-v2 {
+  --study-ink: #0f172a;
+  --study-muted: #64748b;
+  --study-line: #e5e7eb;
+  --study-panel: #ffffff;
+  --study-soft: #f8fafc;
+}
+
+.study-plan-v2 .study-plan-hero {
+  padding: clamp(24px, 4vw, 42px) !important;
+  border: 1px solid color-mix(in srgb, var(--red) 18%, var(--study-line)) !important;
+  background:
+    linear-gradient(135deg, #fff 0%, #fff7f5 58%, #f8fafc 100%) !important;
+}
+
+.study-plan-v2 .study-plan-kicker,
+.study-plan-v2 .study-task-kicker,
+.study-plan-v2 .study-map-head span,
+.study-plan-v2 .study-week-row > span {
+  letter-spacing: 0.13em;
+  color: var(--red) !important;
+}
+
+.study-plan-v2 .study-plan-hero h2 {
+  color: var(--study-ink) !important;
+  font-weight: 900;
+}
+
+.study-plan-v2 .study-plan-meter {
+  background: var(--study-ink);
+  border-color: var(--study-ink);
+  color: #fff;
+}
+
+.study-plan-v2 .study-plan-meter strong,
+.study-plan-v2 .study-plan-meter span,
+.study-plan-v2 .study-plan-meter small {
+  color: #fff !important;
+}
+
+.study-plan-v2 .study-progress-bar {
+  background: #e5e7eb;
+}
+
+.study-plan-v2 .study-progress-bar > div {
+  background: linear-gradient(90deg, var(--red), #ef4444);
+}
+
+.study-plan-v2 .study-month-board {
+  border: 1px solid color-mix(in srgb, var(--red) 14%, var(--study-line));
+  background: var(--study-panel);
+}
+
+.study-plan-v2 .study-month-tabs button {
+  background: var(--study-soft);
+  border-color: var(--study-line);
+  color: var(--study-ink);
+}
+
+.study-plan-v2 .study-month-tabs button.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.study-plan-v2 .study-week-circles button.active,
+.study-plan-v2 .study-week-strip.compact button.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.study-plan-v2 .study-week-strip.compact {
+  padding: 12px;
+  border: 1px solid var(--study-line);
+  border-radius: 10px;
+  background: var(--study-panel);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.study-plan-v2 .study-week-strip.compact button {
+  background: var(--study-soft);
+  box-shadow: none;
+}
+
+.study-plan-v2 .study-plan-controls {
+  background: var(--study-panel);
+  border-color: var(--study-line);
+}
+
+.study-plan-v2 .study-task {
+  background: var(--study-panel) !important;
+  border-color: var(--study-line) !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.045) !important;
+}
+
+.study-plan-v2 .study-task::before {
+  width: 5px;
+  background: var(--red);
+}
+
+.study-plan-v2 .study-task.complete::before {
+  background: var(--tone2);
+}
+
+.study-plan-v2 .study-task-check {
+  background: var(--study-soft);
+}
+
+.study-plan-v2 .study-task h3 {
+  color: var(--study-ink) !important;
+  font-weight: 850;
+}
+
+.study-plan-v2 .study-task-actions .btn-primary {
+  box-shadow: 0 8px 16px rgba(192, 57, 43, 0.18);
+}
+
+.study-plan-v2 .study-plan-coverage {
+  background: var(--study-panel);
+  border-color: var(--study-line);
+}
+
+.study-plan-v2 .study-plan-coverage span {
+  background: var(--study-soft);
+  border-color: var(--study-line);
+}
+
+@media (max-width: 760px) {
+  .study-plan-v2 .study-plan-hero {
+    padding: 22px !important;
+  }
+
+  .study-plan-v2 .study-week-strip.compact {
+    padding: 10px;
+  }
+}
+
