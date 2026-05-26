@@ -1,11 +1,11 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   TOCFL Learning App â€” Main Stylesheet
-   Theme: Deep Red Ã— Charcoal Ã— Warm White Ã— Gold
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+﻿/* ===============================================================
+   TOCFL Learning App - Main Stylesheet
+   Theme: Deep Red x Charcoal x Warm White x Gold
+   =============================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
-/* â”€â”€ CSS Variables â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- CSS Variables ------------------------------------------- */
 :root {
   --red:        #C0392B;
   --red-dark:   #962d22;
@@ -47,7 +47,7 @@
 }
 
 
-/* â”€â”€ Reset & Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Reset & Base -------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -61,7 +61,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Layout -------------------------------------------------- */
 #app { display: flex; width: 100%; min-height: 100vh; }
 
 /* Sidebar */
@@ -278,7 +278,7 @@ body {
 .bottom-nav-item .bn-icon { font-size: 1.3rem; }
 .bottom-nav-item.active { color: var(--red); }
 
-/* â”€â”€ Typography â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Typography ---------------------------------------------- */
 .hanzi { font-family: var(--font-zh); }
 .hanzi-xl { font-family: var(--font-zh); font-size: 4rem; line-height: 1; }
 .hanzi-lg { font-family: var(--font-zh); font-size: 2.5rem; line-height: 1.1; }
@@ -304,7 +304,7 @@ body {
 .tone-colors .tone4 { color: var(--tone4); }
 .tone-colors .tone5 { color: var(--tone5); }
 
-/* â”€â”€ Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Cards --------------------------------------------------- */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -315,7 +315,7 @@ body {
 
 .card-sm { padding: 14px; border-radius: var(--radius-sm); }
 
-/* â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Buttons ------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -350,7 +350,7 @@ body {
 .btn-sm { padding: 5px 12px; font-size: 0.8rem; }
 .btn-lg { padding: 12px 28px; font-size: 1rem; }
 
-/* â”€â”€ Form Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Form Elements ------------------------------------------- */
 .input, select, textarea {
   font-family: var(--font-ui);
   font-size: 0.9rem;
@@ -371,7 +371,7 @@ body {
 
 select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
 
-/* â”€â”€ Badge / Tags â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Badge / Tags -------------------------------------------- */
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -391,7 +391,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 [data-theme="dark"] .badge-a2 { background: rgba(39,174,96,0.2); color: #58d68d; }
 [data-theme="dark"] .badge-b1 { background: rgba(41,128,185,0.2); color: #5dade2; }
 
-/* â”€â”€ Pinyin Ruby â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Pinyin Ruby --------------------------------------------- */
 ruby {
   display: inline-flex;
   flex-direction: column-reverse;
@@ -424,7 +424,7 @@ ruby rb, ruby > :not(rt) {
 
 .reading-text.with-pinyin { line-height: 4; }
 
-/* â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Dashboard ----------------------------------------------- */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -557,7 +557,7 @@ ruby rb, ruby > :not(rt) {
   transition: width 0.5s ease;
 }
 
-/* â”€â”€ Library â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Library ------------------------------------------------- */
 .library-controls {
   display: flex;
   gap: 10px;
@@ -671,7 +671,7 @@ ruby rb, ruby > :not(rt) {
 .page-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
 .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Modal --------------------------------------------------- */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -755,7 +755,7 @@ ruby rb, ruby > :not(rt) {
 .sentence-block .sb-py { font-size: 0.82rem; color: var(--text-2); margin-bottom: 4px; }
 .sentence-block .sb-en { font-size: 0.82rem; color: var(--text-3); font-style: italic; }
 
-/* â”€â”€ Flashcards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Flashcards ---------------------------------------------- */
 .flashcard-container {
   display: flex;
   flex-direction: column;
@@ -872,7 +872,7 @@ ruby rb, ruby > :not(rt) {
   color: var(--text-3);
 }
 
-/* â”€â”€ Quiz â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Quiz ---------------------------------------------------- */
 .quiz-container {
   max-width: 680px;
   margin: 0 auto;
@@ -940,7 +940,7 @@ ruby rb, ruby > :not(rt) {
 .quiz-feedback.correct { background: rgba(39,174,96,0.1); border-left: 3px solid #27ae60; color: #1e8449; }
 .quiz-feedback.wrong { background: rgba(192,57,43,0.08); border-left: 3px solid var(--red); color: var(--red-dark); }
 
-/* â”€â”€ Reading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Reading ------------------------------------------------- */
 .reading-passage-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -1015,7 +1015,7 @@ ruby rb, ruby > :not(rt) {
 .word-tooltip .wt-zhuyin { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-family: var(--font-zh); }
 .word-tooltip .wt-def { font-size: 0.82rem; color: rgba(255,255,255,0.75); margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; }
 
-/* â”€â”€ Mock Test â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Mock Test ----------------------------------------------- */
 .test-layout {
   display: grid;
   grid-template-columns: 1fr 240px;
@@ -1100,7 +1100,7 @@ ruby rb, ruby > :not(rt) {
   margin-bottom: 20px;
 }
 
-/* â”€â”€ Settings â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Settings ------------------------------------------------ */
 .settings-section {
   margin-bottom: 28px;
 }
@@ -1185,7 +1185,7 @@ ruby rb, ruby > :not(rt) {
   color: var(--red);
 }
 
-/* â”€â”€ Animations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Animations ---------------------------------------------- */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
@@ -1204,7 +1204,7 @@ ruby rb, ruby > :not(rt) {
   margin: 40px auto;
 }
 
-/* â”€â”€ Utility â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Utility ------------------------------------------------- */
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
 .items-center { align-items: center; }
@@ -1229,7 +1229,7 @@ ruby rb, ruby > :not(rt) {
 .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
-/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Responsive ---------------------------------------------- */
 @media (max-width: 768px) {
   :root { --nav-width: 0px; }
 
@@ -1267,13 +1267,13 @@ ruby rb, ruby > :not(rt) {
   .quick-tile .tile-name { font-size: 0.72rem; }
 }
 
-/* â”€â”€ Scrollbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Scrollbar ----------------------------------------------- */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 
-/* â”€â”€ Section headers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Section headers ----------------------------------------- */
 .page-header {
   margin-bottom: 24px;
 }
@@ -1440,11 +1440,11 @@ kbd {
 
 .replay-count { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 8px; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   NEW MODULES â€” Onboarding, Learn Path, Dialogue, SRS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ===============================================================
+   NEW MODULES - Onboarding, Learn Path, Dialogue, SRS
+   =============================================================== */
 
-/* â”€â”€ SRS Rating Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- SRS Rating Buttons ---------------------------------------- */
 .srs-session { display: flex; flex-direction: column; gap: 14px; max-width: 580px; margin: 0 auto; }
 
 .srs-rating-grid {
@@ -1471,7 +1471,7 @@ kbd {
 .srs-btn .srs-label { font-size: 0.75rem; font-weight: 700; }
 .srs-btn .srs-interval { font-size: 0.62rem; opacity: 0.6; }
 
-/* â”€â”€ Onboarding â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Onboarding ------------------------------------------------- */
 .tone-demo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1520,7 +1520,7 @@ kbd {
 .ear-opt:hover:not(:disabled) { border-color: var(--charcoal) !important; background: var(--off-white) !important; }
 .ear-opt:disabled { cursor: not-allowed; }
 
-/* â”€â”€ Learning Path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Learning Path --------------------------------------------- */
 .level-card { transition: all 0.2s; }
 .level-card:not(.locked):hover { box-shadow: var(--shadow-lg); }
 .level-card.locked { cursor: not-allowed; }
@@ -1537,13 +1537,13 @@ kbd {
 
 .lesson-char-display:hover { transform: scale(1.05); }
 
-/* â”€â”€ Dialogue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Dialogue -------------------------------------------------- */
 .dlg-line { transition: background 0.2s; border-radius: var(--radius-sm); padding-left: 8px; padding-right: 8px; }
 .dlg-line.active { background: rgba(243,156,18,0.07); }
 
 .dialogue-card { transition: all 0.15s; }
 
-/* â”€â”€ Pinyin quiz minimal pairs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Pinyin quiz minimal pairs -------------------------------- */
 .pair-btn {
   flex: 1;
   background: var(--off-white);
@@ -1557,11 +1557,11 @@ kbd {
 }
 .pair-btn:hover { border-color: var(--charcoal); background: var(--card-bg); }
 
-/* â”€â”€ Tone pitch SVG diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Tone pitch SVG diagram ------------------------------------ */
 .pitch-diagram { display: flex; align-items: flex-end; justify-content: center; gap: 28px; }
 .pitch-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 
-/* â”€â”€ Responsive adjustments for new modules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Responsive adjustments for new modules ------------------- */
 @media (max-width: 768px) {
   .tone-demo-grid { grid-template-columns: repeat(2, 1fr); }
   .srs-rating-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1574,7 +1574,7 @@ kbd {
   .srs-btn .srs-label { font-size: 0.65rem; }
 }
 
-/* â”€â”€ First-time welcome state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- First-time welcome state --------------------------------- */
 .welcome-hero {
   background: linear-gradient(135deg, var(--red), var(--red-dark));
   color: #fff;
@@ -1586,7 +1586,7 @@ kbd {
 }
 
 .welcome-hero::after {
-  content: 'ä½ å¥½';
+  content: '\\4F60\\597D';
   position: absolute;
   right: -20px;
   bottom: -20px;
@@ -1598,7 +1598,7 @@ kbd {
   pointer-events: none;
 }
 
-/* â”€â”€ Grammar point pills â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Grammar point pills --------------------------------------- */
 .grammar-pill {
   display: inline-flex;
   align-items: center;
@@ -1623,7 +1623,7 @@ kbd {
   justify-content: center;
 }
 
-/* â”€â”€ Vocabulary highlight chips â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Vocabulary highlight chips ------------------------------- */
 .vocab-chip {
   display: inline-block;
   background: var(--off-white);
@@ -1641,8 +1641,8 @@ kbd {
   background: rgba(192, 57, 43, 0.04);
 }
 
-/* â”€â”€ Scene tag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-/* â”€â”€ Vocabulary Library (Interactive Pad) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Scene tag ------------------------------------------------ */
+/* -- Vocabulary Library (Interactive Pad) ---------------------- */
 .vocab-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1933,7 +1933,7 @@ kbd {
   .selection-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* â”€â”€ Playground Styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Playground Styles --------------------------------------- */
 .pg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
 .pg-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; cursor: pointer; transition: all 0.2s; display: flex; gap: 16px; align-items: center; }
 .pg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
@@ -2128,7 +2128,7 @@ kbd {
 .tone-btn.tone4:hover, .tone-btn.tone4.selected { background: var(--tone4); color: var(--clean-surface); }
 .tone-score { font-size: 1.2rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
 
-/* â”€â”€ CCC Course Premium UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- CCC Course Premium UI ----------------------------------- */
 .lesson-page-header { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../logo.png'); background-size: cover; background-position: center; color: white; padding: 60px 20px; text-align: center; border-radius: var(--radius-lg); margin-bottom: 24px; position: relative; }
 .lesson-nav-sticky { position: sticky; top: 0; background: var(--warm-white); z-index: 100; border-bottom: 1px solid var(--border); padding: 12px 0; margin-bottom: 32px; box-shadow: var(--shadow-sm); display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .ln-btn { border: none; background: transparent; color: var(--text-2); font-weight: 700; padding: 8px 16px; cursor: pointer; border-radius: 20px; font-size: 0.9rem; transition: all 0.2s; }
@@ -2155,7 +2155,7 @@ kbd {
 .reading-passage-premium { font-family: var(--font-zh); font-size: 1.5rem; line-height: 2.6; color: var(--text); background: white; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 32px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
 
 .listening-card-premium { background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: white; padding: 48px; border-radius: var(--radius-lg); text-align: center; margin-bottom: 32px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
-.listening-card-premium::after { content: 'ðŸŽ§'; position: absolute; font-size: 12rem; opacity: 0.1; right: -20px; bottom: -40px; }
+.listening-card-premium::after { content: '\1F3A7'; position: absolute; font-size: 12rem; opacity: 0.1; right: -20px; bottom: -40px; }
 .listening-card-premium .btn-white { background: white; color: #e67e22; border: none; font-weight: 900; }
 .listening-card-premium .btn-white:hover { background: #fdfdfd; transform: scale(1.05); }
 
@@ -2702,7 +2702,7 @@ textarea {
 }
 
 .onboarding-experience .ob-hero::after {
-  content: "æ‹¼éŸ³";
+  content: '\\62FC\\97F3';
   position: absolute;
   right: clamp(14px, 4vw, 42px);
   bottom: -26px;
@@ -11354,3 +11354,521 @@ body {
 /* Sentence Builder context prompts */
 .builder-situation { margin: 8px 0 12px; color: var(--text); font-weight: 800; line-height: 1.45; }
 .builder-sub-label { display:block; margin-top: 8px; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); font-weight: 900; }
+/* Phase 1 180-day study planner */
+.study-plan-v2 .study-plan-hero {
+  align-items: center;
+}
+
+.study-plan-meta,
+.study-plan-controls,
+.study-week-strip,
+.study-plan-coverage > div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.study-plan-meta {
+  margin-top: 14px;
+}
+
+.study-plan-meta span,
+.study-plan-note,
+.study-plan-coverage span {
+  border: 1px solid var(--clean-line);
+  background: var(--clean-surface-2);
+  border-radius: 9px;
+}
+
+.study-plan-meta span {
+  padding: 6px 10px;
+  color: var(--clean-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.study-plan-meter small {
+  display: block;
+  margin-top: 4px;
+  color: var(--clean-muted);
+  font-size: 0.7rem;
+}
+
+.study-plan-controls {
+  align-items: center;
+  padding: 12px;
+  background: var(--clean-surface);
+  border: 1px solid var(--clean-line);
+  border-radius: 12px;
+}
+
+.study-plan-note {
+  padding: 10px 12px;
+  color: var(--clean-muted);
+  font-size: 0.84rem;
+}
+
+.study-week-strip {
+  padding: 10px;
+  background: var(--clean-surface);
+  border: 1px solid var(--clean-line);
+  border-radius: 12px;
+}
+
+.study-week-strip button {
+  flex: 1 1 92px;
+  min-height: 58px;
+  border: 1px solid var(--clean-line);
+  border-radius: 10px;
+  background: var(--clean-surface-2);
+  color: var(--clean-text);
+  text-align: left;
+  padding: 9px 10px;
+  cursor: pointer;
+}
+
+.study-week-strip button.active {
+  border-color: var(--clean-accent);
+  box-shadow: inset 0 0 0 1px var(--clean-accent);
+}
+
+.study-week-strip button.done {
+  background: color-mix(in srgb, var(--tone2) 12%, var(--clean-surface-2));
+}
+
+.study-week-strip strong,
+.study-week-strip span {
+  display: block;
+}
+
+.study-week-strip span {
+  color: var(--clean-muted);
+  font-size: 0.72rem;
+  text-transform: capitalize;
+}
+
+.study-plan-coverage {
+  background: var(--clean-surface);
+  border: 1px solid var(--clean-line);
+  border-radius: 12px;
+  padding: clamp(16px, 2.5vw, 22px);
+}
+
+.study-plan-coverage h3 {
+  margin: 0 0 12px;
+  color: var(--clean-text);
+}
+
+.study-plan-coverage span {
+  flex: 1 1 180px;
+  padding: 10px 12px;
+}
+
+.study-plan-coverage strong,
+.study-plan-coverage small {
+  display: block;
+}
+
+.study-plan-coverage small {
+  margin-top: 3px;
+  color: var(--clean-muted);
+}
+
+
+
+/* Study Plan Phase 3: compact month/week/day map */
+.study-month-board {
+  display: grid;
+  gap: 12px;
+  background: var(--clean-surface);
+  border: 1px solid var(--clean-line);
+  border-radius: 18px;
+  padding: 12px;
+}
+
+.study-month-tabs,
+.study-week-circles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.study-month-tabs button,
+.study-week-circles button,
+.study-week-strip.compact button {
+  border: 1px solid var(--clean-line);
+  background: var(--clean-surface-2);
+  color: var(--clean-text);
+  cursor: pointer;
+}
+
+.study-month-tabs button {
+  min-width: 78px;
+  border-radius: 12px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.study-month-tabs span,
+.study-month-tabs strong {
+  display: block;
+}
+
+.study-month-tabs span {
+  color: var(--clean-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.study-month-tabs strong {
+  margin-top: 2px;
+  font-size: 1.05rem;
+}
+
+.study-month-tabs button.active {
+  color: white;
+  background: var(--clean-accent);
+  border-color: var(--clean-accent);
+}
+
+.study-month-tabs button.active span {
+  color: color-mix(in srgb, white 78%, var(--clean-accent));
+}
+
+.study-week-circles button,
+.study-week-strip.compact button {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.study-week-circles button.active,
+.study-week-strip.compact button.active {
+  background: color-mix(in srgb, var(--clean-accent) 12%, var(--clean-surface));
+  border-color: var(--clean-accent);
+  color: var(--clean-accent);
+}
+
+.study-week-strip.compact {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.study-week-strip.compact button strong {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.study-week-strip.compact button span {
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .study-month-tabs button {
+    min-width: 64px;
+  }
+
+  .study-week-circles button,
+  .study-week-strip.compact button {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+}
+
+
+/* Study Plan Phase 4: polished roadmap controls */
+.study-month-board {
+  gap: 14px;
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: 16px;
+  border-color: color-mix(in srgb, var(--clean-accent) 16%, var(--clean-line));
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--clean-surface) 96%, white), var(--clean-surface));
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+}
+
+.study-map-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.study-map-head span,
+.study-week-row > span,
+.study-month-tabs span {
+  color: var(--clean-accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.study-map-head strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--clean-text);
+  font-size: 1rem;
+}
+
+.study-map-head small {
+  color: var(--clean-muted);
+  border: 1px solid var(--clean-line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: var(--clean-surface-2);
+  white-space: nowrap;
+}
+
+.study-month-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  overflow: visible;
+}
+
+.study-month-tabs button {
+  position: relative;
+  min-width: 0;
+  min-height: 76px;
+  border-radius: 8px;
+  padding: 10px 9px;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.study-month-tabs button::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--clean-line) 72%, transparent);
+}
+
+.study-month-tabs button:hover,
+.study-week-circles button:hover,
+.study-week-strip.compact button:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--clean-accent) 42%, var(--clean-line));
+}
+
+.study-month-tabs strong {
+  margin-top: 3px;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.study-month-tabs small {
+  display: block;
+  margin-top: 4px;
+  color: var(--clean-muted);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.study-month-tabs button.active {
+  background: var(--clean-accent);
+  border-color: var(--clean-accent);
+  box-shadow: 0 12px 22px color-mix(in srgb, var(--clean-accent) 22%, transparent);
+  transform: translateY(-1px);
+}
+
+.study-month-tabs button.active::after {
+  background: color-mix(in srgb, white 82%, var(--clean-accent));
+}
+
+.study-month-tabs button.active strong,
+.study-month-tabs button.active small {
+  color: white;
+}
+
+.study-week-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.study-week-circles {
+  gap: 10px;
+}
+
+.study-week-circles button,
+.study-week-strip.compact button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-width: 2px;
+  background: var(--clean-surface);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.study-week-circles button.active,
+.study-week-strip.compact button.active {
+  background: var(--clean-accent);
+  border-color: var(--clean-accent);
+  color: white;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--clean-accent) 24%, transparent);
+}
+
+.study-week-strip.compact {
+  gap: 10px;
+  padding: 12px;
+  background: var(--clean-surface);
+  border: 1px solid var(--clean-line);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.study-week-strip.compact button.done:not(.active) {
+  border-color: color-mix(in srgb, var(--tone2) 48%, var(--clean-line));
+  color: var(--tone2);
+  background: color-mix(in srgb, var(--tone2) 9%, var(--clean-surface));
+}
+
+.study-week-strip.compact button strong,
+.study-week-strip.compact button span {
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .study-month-tabs {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .study-month-tabs button {
+    min-width: 92px;
+  }
+}
+
+@media (max-width: 480px) {
+  .study-map-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .study-week-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+
+/* Study Plan Phase 5: cleaner current-week day strip */
+.study-week-strip.compact {
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  justify-content: space-between;
+}
+
+.study-week-strip.compact button {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: 50%;
+}
+
+.study-week-strip.compact button strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.study-week-strip.compact button span {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .study-week-strip.compact {
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .study-week-strip.compact button {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+
+/* Study Plan Phase 6: stable circular day buttons and word week labels */
+.study-week-circles button {
+  width: auto;
+  min-width: 64px;
+  height: 38px;
+  border-radius: 999px;
+  padding: 0 14px;
+  font-size: 0.86rem;
+}
+
+.study-week-strip.compact button {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 0;
+  text-align: center;
+}
+
+.study-week-strip.compact button.active {
+  flex-basis: 56px;
+}
+
+@media (max-width: 520px) {
+  .study-week-strip.compact {
+    gap: 10px;
+  }
+
+  .study-week-strip.compact button {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+  }
+
+  .study-week-strip.compact button.active {
+    flex-basis: 52px;
+  }
+}
+
+@media (max-width: 420px) {
+  .study-week-strip.compact button {
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+  }
+
+  .study-week-strip.compact button.active {
+    flex-basis: 46px;
+  }
+}

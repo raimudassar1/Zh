@@ -7,6 +7,26 @@
 const TOCFLContentModule = (() => {
   const state = { data: null, level: 'novice', sectionId: '', questionIndex: 0, mode: 'browse', answers: {}, finished: false, keepQuestionInView: false };
 
+  function routeParams() {
+    const query = String(window.location.hash || '').split('?')[1] || '';
+    return new URLSearchParams(query);
+  }
+
+  function applyRouteOptions() {
+    const params = routeParams();
+    const level = params.get('level');
+    const section = params.get('section');
+    const mode = params.get('mode');
+    const question = Math.max(0, (parseInt(params.get('question'), 10) || 1) - 1);
+    if (level && state.data.levels.some(item => item.key === level)) state.level = level;
+    const currentLevel = getLevel();
+    if (section && currentLevel.sections.some(item => item.id === section)) state.sectionId = section;
+    else state.sectionId = currentLevel.sections[0]?.id || '';
+    const currentSection = getSection();
+    state.questionIndex = Math.min(question, Math.max(0, (currentSection?.questions?.length || 1) - 1));
+    state.mode = mode === 'test' ? 'test' : 'browse';
+  }
+
   async function render(container) {
     container.innerHTML = '<div class="spinner"></div>';
     state.container = container;
@@ -15,6 +35,7 @@ const TOCFLContentModule = (() => {
     state.sectionId = state.data.levels[0]?.sections[0]?.id || '';
     state.questionIndex = 0;
     state.mode = 'browse';
+  applyRouteOptions();
     draw(container);
   }
 

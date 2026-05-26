@@ -608,7 +608,7 @@ window.DrawingBoard = (() => {
                             </div>
                             <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px">
                                 <button class="btn btn-sm ${state.penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">
-                                    ${state.penOnly ? 'ðŸ–‹ï¸ Pen Only: ON' : 'ðŸ–‹ï¸ Pen Only: OFF'}
+                                    ${state.penOnly ? 'Pen Only: ON' : 'Pen Only: OFF'}
                                 </button>
                                 <button class="btn btn-sm ${state.freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${state.freehandGuide ? 'ON' : 'OFF'}</button>
                                 <div style="flex:1; display:flex; align-items:center; gap:8px">

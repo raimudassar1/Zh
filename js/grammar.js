@@ -81,6 +81,36 @@ window.GrammarModule = (() => {
   }
   function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
+
+  function routeParams() {
+    const query = String(window.location.hash || '').split('?')[1] || '';
+    return new URLSearchParams(query);
+  }
+
+  function applyRouteOptions() {
+    if (!data) return;
+    const params = routeParams();
+    const level = params.get('level');
+    const unit = params.get('unit');
+    const tab = params.get('tab');
+    let changed = false;
+    if (level && data.levels.some(item => item.id === level) && state.level !== level) {
+      state.level = level;
+      state.unit = getLevel(level).units[0]?.id;
+      changed = true;
+    }
+    if (unit && getUnit(unit) && state.unit !== unit) {
+      state.unit = unit;
+      state.level = getUnit(unit).level || state.level;
+      changed = true;
+    }
+    if (tab && ['learn', 'examples', 'practice', 'reading', 'writing'].includes(tab) && state.tab !== tab) {
+      state.tab = tab;
+      changed = true;
+    }
+    if (changed) saveState();
+  }
+
   async function init() {
     if (data) return data;
     data = await API.get('grammar_academy');

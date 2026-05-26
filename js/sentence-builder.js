@@ -80,6 +80,43 @@ window.SentenceBuilderModule = (() => {
     return Math.max(1, Math.min(999, n));
   }
 
+
+  function routeParams() {
+    const query = String(window.location.hash || '').split('?')[1] || '';
+    return new URLSearchParams(query);
+  }
+
+  function applyRouteOptions() {
+    const params = routeParams();
+    let changed = false;
+    const level = params.get('level');
+    if (level && state.levels.some(item => item.id === level) && state.levelId !== level) {
+      state.levelId = level;
+      changed = true;
+    }
+    const mode = params.get('mode');
+    const normalizedMode = mode === 'generated' ? 'generated' : (mode ? 'curriculum' : state.mode);
+    if (mode && state.mode !== normalizedMode) {
+      state.mode = normalizedMode;
+      changed = true;
+    }
+    const size = params.get('size');
+    if (size) {
+      const nextSize = normalizeSessionSize(size);
+      if (state.sessionSize !== nextSize) {
+        state.sessionSize = nextSize;
+        changed = true;
+      }
+    }
+    if (changed) {
+      state.sentences = [];
+      state.idx = 0;
+      localStorage.setItem('sentenceBuilderLevel', state.levelId);
+      localStorage.setItem('sentenceBuilderMode', state.mode);
+      localStorage.setItem('sentenceBuilderSessionSize', state.sessionSize);
+    }
+  }
+
   function pushWord(set, value) {
     const word = cleanSentence(value);
     if (word.length >= 2 && word.length <= 8 && hasChinese(word)) set.add(word);

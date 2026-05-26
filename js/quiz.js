@@ -11,7 +11,7 @@ window.QuizModule = (() => {
     mode: 'A',          // Pronunciation mode (A-E)
     submode: 'hanzi-to-def', // Vocab submode
     source: 'level',    // level | category | chapter | book | radical
-    level: 'a2',
+    level: 'novice',
     category: '',
     chapterId: '',
     book: 1,
@@ -26,6 +26,22 @@ window.QuizModule = (() => {
     answered: false,
     startTime: 0,
   };
+
+  function routeParams() {
+    const hash = window.location.hash || '';
+    const query = hash.includes('?') ? hash.slice(hash.indexOf('?') + 1) : '';
+    return new URLSearchParams(query);
+  }
+
+  function applyRouteOptions() {
+    const params = routeParams();
+    const source = params.get('source');
+    const level = params.get('level');
+    const count = Number(params.get('count'));
+    if (['level', 'category', 'chapter', 'book', 'radical'].includes(source)) quizState.source = source;
+    if (['novice', 'a1', 'a2', 'all'].includes(level)) quizState.level = level;
+    if (Number.isFinite(count) && count > 0) quizState.questionCount = Math.min(60, count);
+  }
 
   // Utility: Shuffle array
   function shuffle(arr) {

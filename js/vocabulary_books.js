@@ -98,6 +98,20 @@ window.VocabularyBooksModule = (() => {
     });
   }
 
+
+  function routeParams() {
+    const query = String(window.location.hash || '').split('?')[1] || '';
+    return new URLSearchParams(query);
+  }
+
+  function applyRouteOptions() {
+    const params = routeParams();
+    const book = parseInt(params.get('book'), 10);
+    const chapter = params.get('chapter');
+    if ([1, 2, 3].includes(book)) state.book = book;
+    if (chapter) state.chapter = String(chapter).padStart(2, '0');
+  }
+
   async function loadBook(bookNum) {
     state.loading = true;
     injectStyles();
