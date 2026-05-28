@@ -136,7 +136,10 @@ window.GrammarModule = (() => {
             <h2>One pattern at a time</h2>
             <p>Choose a level, pick a pattern, then study a short focused section.</p>
           </div>
-          <div class="ga-stats ga-stats-compact"><strong>${data.totals.examples}</strong><span>examples</span><strong>${data.totals.exercises}</strong><span>drills</span></div>
+          <div class="ga-stats ga-stats-compact">
+            <div class="ga-stat"><strong>${data.totals.examples}</strong><span>examples</span></div>
+            <div class="ga-stat"><strong>${data.totals.exercises}</strong><span>drills</span></div>
+          </div>
         </section>
 
         <section class="ga-course-picker">
@@ -154,12 +157,19 @@ window.GrammarModule = (() => {
   function getLevel(id) { return data.levels.find(level => level.id === id) || data.levels[0]; }
   function getUnit(id) { return data.levels.flatMap(level => level.units).find(unit => unit.id === id); }
 
+  function shortLevelLabel(label) {
+    return String(label || '')
+      .replace('Beginner Grammar', 'Beginner')
+      .replace('Novice / A1 Grammar', 'A1')
+      .replace('A2 to B1 Bridge Grammar', 'A2-B1');
+  }
+
   function renderLevelSelector() {
     return `<div class="ga-levels">
       ${data.levels.map(level => `
-        <button type="button" class="ga-level ${level.id === state.level ? 'active' : ''}" data-ga-action="level" data-level="${level.id}">
-          <span>${esc(level.label)}</span>
-          <small>${esc(level.goal)}</small>
+        <button type="button" class="ga-level ${level.id === state.level ? 'active' : ''}" data-ga-action="level" data-level="${level.id}" title="${esc(level.goal)}">
+          <span>${esc(shortLevelLabel(level.label))}</span>
+          <small>${level.units.length} patterns</small>
         </button>`).join('')}
     </div>`;
   }
@@ -176,13 +186,23 @@ window.GrammarModule = (() => {
     </div>`;
   }
 
+  function shortUnitTitle(title) {
+    const text = String(title || '')
+      .replace('Basic Word Order and 是', 'Word Order 是')
+      .replace('有, Numbers, and Measure Words', '有 + Measure Words')
+      .replace('在, Location, and Time Order', '在 + Time/Place')
+      .replace('Questions, Negatives, and Counter-Questions', 'Questions + Negatives')
+      .replace('Basic ', '')
+      .replace(' and ', ' + ');
+    return text.length > 26 ? `${text.slice(0, 24)}...` : text;
+  }
+
   function renderUnitRail(level) {
     return `<div class="ga-unit-rail" aria-label="Grammar units">
       ${level.units.map((unit, index) => `
-        <button type="button" class="ga-unit-pill ${unit.id === state.unit ? 'active' : ''}" data-ga-action="unit" data-unit="${unit.id}">
+        <button type="button" class="ga-unit-pill ${unit.id === state.unit ? 'active' : ''}" data-ga-action="unit" data-unit="${unit.id}" title="${esc(unit.title)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
-          <strong>${esc(unit.title.replace(/Basic |and /g, '').slice(0, 34))}</strong>
-          <small>${renderPattern(unit.structure)}</small>
+          <strong>${esc(shortUnitTitle(unit.title))}</strong>
         </button>`).join('')}
     </div>`;
   }
@@ -203,8 +223,10 @@ window.GrammarModule = (() => {
           <span>Core Pattern</span>
           <strong>${renderPattern(unit.structure)}</strong>
         </div>
-        ${renderPatternKey(unit.structure)}
-        <p>${esc(unit.coreExplanation)}</p>
+        <details class="ga-pattern-details">
+          <summary>Pattern key</summary>
+          ${renderPatternKey(unit.structure)}
+        </details>
       </div>
 
       <div class="ga-toolbar">
@@ -230,26 +252,30 @@ window.GrammarModule = (() => {
   }
 
   function renderLearn(unit) {
-    return `<div class="ga-focus-stack">
+    return `<div class="ga-focus-stack ga-focus-clean">
       <section class="ga-card-large ga-summary-card">
-        <h4>What this pattern does</h4>
+        <div class="ga-card-icon">01</div>
+        <h4>Use it for</h4>
         <p>${esc(unit.coreExplanation)}</p>
       </section>
       <section class="ga-card-large ga-mini-examples">
-        <h4>Two natural examples</h4>
-        ${unit.examples.slice(0,2).map(renderExample).join('')}
+        <div class="ga-card-icon">02</div>
+        <h4>Hear it once</h4>
+        ${unit.examples.slice(0,1).map(renderExample).join('')}
       </section>
       <section class="ga-card-large ga-next-actions">
+        <div class="ga-card-icon">03</div>
         <h4>Practice next</h4>
         <div>
-          <button type="button" data-ga-action="tab" data-tab="examples">See more examples</button>
-          <button type="button" data-ga-action="tab" data-tab="practice">Build sentences</button>
-          <button type="button" data-ga-action="tab" data-tab="writing">Write your own</button>
+          <button type="button" data-ga-action="tab" data-tab="examples">Examples</button>
+          <button type="button" data-ga-action="tab" data-tab="practice">Build</button>
+          <button type="button" data-ga-action="tab" data-tab="writing">Write</button>
         </div>
       </section>
-      <section class="ga-card-large">
-        <h4>Watch out for</h4>
-        ${unit.commonMistakes.slice(0,3).map(item => `<div class="ga-mistake">${esc(item)}</div>`).join('')}
+      <section class="ga-card-large ga-watch-card">
+        <div class="ga-card-icon">!</div>
+        <h4>Common traps</h4>
+        ${unit.commonMistakes.slice(0,2).map(item => `<div class="ga-mistake">${esc(item)}</div>`).join('')}
       </section>
     </div>`;
   }

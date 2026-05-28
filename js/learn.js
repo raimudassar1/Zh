@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    learn.js - Guided Learning Path with Level Progression & SRS
    ═══════════════════════════════════════════════════════════════ */
 
@@ -84,18 +84,18 @@ const LearnModule = (() => {
         <div style="position:absolute;right:-10px;top:-10px;font-size:8rem;opacity:0.05;font-family:var(--font-zh)">學</div>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
           <div style="flex:1;min-width:180px">
-            <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">Today's SRS Queue</div>
+            <div style="font-size:0.7rem;color:var(--text-3);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">Today's SRS Queue</div>
             <div style="font-size:2.2rem;font-weight:900;color:${dueToday > 0 ? 'var(--gold)' : '#58d68d'}">${dueToday}</div>
-            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6)">cards due for review</div>
+            <div style="font-size:0.85rem;color:var(--text-2)">cards due for review</div>
           </div>
           <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
             ${dueToday > 0
               ? `<button class="btn btn-primary" onclick="startSRSSession()">Review ${dueToday} Cards</button>`
-              : `<div style="font-size:0.85rem;color:rgba(255,255,255,0.5)">All caught up! Come back tomorrow.</div>`}
-            <button class="btn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2)" onclick="startSRSSession()">+ Study New</button>
+              : `<div style="font-size:0.85rem;color:var(--text-3)">All caught up! Come back tomorrow.</div>`}
+            <button class="btn btn-outline" onclick="startSRSSession()">+ Study New</button>
           </div>
         </div>
-        <div style="display:flex;gap:20px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap">
+        <div style="display:flex;gap:20px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap">
           ${[
             [srsStats.total||0,'Cards in SRS'],
             [srsStats.learned||0,'Learned'],
@@ -103,8 +103,8 @@ const LearnModule = (() => {
             [srsStats.average_interval||0,'Avg interval (days)'],
           ].map(([val,label]) => `
             <div>
-              <div style="font-size:1.3rem;font-weight:700;color:#fff">${val}</div>
-              <div style="font-size:0.68rem;color:rgba(255,255,255,0.4)">${label}</div>
+              <div style="font-size:1.3rem;font-weight:700;color:var(--text-1)">${val}</div>
+              <div style="font-size:0.68rem;color:var(--text-3)">${label}</div>
             </div>`).join('')}
         </div>
       </div>

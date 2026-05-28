@@ -53,6 +53,65 @@ window.PlaygroundModule = (() => {
     }
   }
 
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  }
+
+  function jsString(value) {
+    return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, '\\n');
+  }
+
+  function listeningText(item, fallbackLines = []) {
+    const direct = item?.text || item?.transcript || item?.zh || item?.passage || '';
+    if (direct) return String(direct).trim();
+    return fallbackLines.map(line => line?.zh || line?.text || '').filter(Boolean).join(' ').trim();
+  }
+
+  function renderListeningCard(item, id, fallbackLines = [], heading = 'Listening Challenge') {
+    const text = listeningText(item, fallbackLines);
+    const questions = Array.isArray(item?.questions) ? item.questions : [];
+    if (!text && !questions.length) return '';
+    return `
+      <div class="playground-listening-card listening-card-premium shadow-lg mb-24">
+        <div class="playground-listening-icon">${window.IconSystem ? window.IconSystem.svg('headphones') : 'Audio'}</div>
+        <div class="playground-listening-heading">${esc(heading)}</div>
+        <div class="playground-listening-actions">
+          <button class="btn btn-primary btn-lg" type="button" onclick="if(window.TTS&&TTS.speak){TTS.speak('${jsString(text)}','zh-TW',0.78)}else if(window.showToast){showToast('Audio engine is not ready. Try Settings audio test.')}">${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Audio</span></button>
+          <button class="btn btn-outline btn-lg" type="button" onclick="document.getElementById('${id}')?.classList.toggle('hidden')">Show Transcript</button>
+        </div>
+        <div id="${id}" class="playground-transcript hidden"><div class="font-zh">${esc(text || 'No transcript available for this listening item yet.')}</div></div>
+      </div>
+      ${questions.length ? `
+        <div class="card p-24 playground-listening-questions">
+          ${questions.map((q, qIdx) => `
+            <div class="mb-24">
+              <div class="playground-question-title">${qIdx + 1}. ${esc(q.q || q.question || '')}</div>
+              <div class="options-grid playground-options">
+                ${(q.options || []).map(opt => `<button class="btn btn-outline" type="button" onclick="window.PlaygroundModule.checkAnswer(this, '${jsString(opt)}', '${jsString(q.answer)}')">${esc(opt)}</button>`).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>` : ''}`;
+  }
+
+  function playListeningText(text) {
+    const clean = String(text || '').trim();
+    if (!clean) {
+      if (window.showToast) window.showToast('No listening transcript is available for this item yet.');
+      return;
+    }
+    if (window.TTS && typeof TTS.speak === 'function') {
+      TTS.speak(clean, 'zh-TW', 0.78);
+      return;
+    }
+    if (window.showToast) window.showToast('Audio engine is not ready. Try the audio test in Settings.');
+  }
+
+  function toggleTranscript(id) {
+    const box = document.getElementById(id);
+    if (box) box.classList.toggle('hidden');
+  }
+
   // ── Main Entry (Path & Books) ──────────────────────────────────────────
 
   async function render(container) {
@@ -251,33 +310,12 @@ window.PlaygroundModule = (() => {
     let listeningHTML = '';
     const listeningData = lesson.listening;
     if (listeningData) {
+      const fallbackLines = Array.isArray(lesson.dialogue) ? lesson.dialogue : [];
       listeningHTML = `
         <section class="lesson-section">
           <h3 class="section-title">Listening Challenge</h3>
-          <div class="listening-card-premium shadow-lg mb-24" style="background:var(--charcoal); padding:40px; border-radius:var(--radius); text-align:center">
-             <div style="font-size:4rem; margin-bottom:16px">🎙️</div>
-             <button class="btn btn-white btn-lg" style="background:var(--card-bg); color:var(--charcoal)" onclick="TTS.speak(\`${listeningData.text.replace(/'/g, "\\'")}\`)">▶ Play Audio</button>
-             <div class="mt-24">
-                <button class="btn btn-outline btn-sm" style="color:white; border-color:white" onclick="this.nextElementSibling.classList.toggle('hidden')">Show Transcript</button>
-                <div class="hidden mt-16 p-16 font-zh" style="background:rgba(255,255,255,0.1); color:white; border-radius:8px; text-align:left">
-                   ${listeningData.text}
-                </div>
-             </div>
-          </div>
-          <div class="card p-24" style="background: var(--card-bg);">
-             ${listeningData.questions.map((q, qIdx) => `
-               <div class="mb-24">
-                 <div style="font-weight:700; margin-bottom:12px; color: var(--text)">${qIdx+1}. ${q.q}</div>
-                 <div class="options-grid" style="display:grid; grid-template-columns:1fr; gap:8px">
-                   ${q.options.map(opt => `
-                     <button class="btn btn-outline" style="text-align:left; justify-content:flex-start; color: var(--text)" onclick="window.PlaygroundModule.checkAnswer(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}')">${opt}</button>
-                   `).join('')}
-                 </div>
-               </div>
-             `).join('')}
-          </div>
-        </section>
-      `;
+          ${renderListeningCard(listeningData, 'pg-listening-transcript-' + lessonId, fallbackLines, 'Listening Challenge')}
+        </section>`;
     }
 
     // Section 3: Reading Comprehension
@@ -438,24 +476,7 @@ window.PlaygroundModule = (() => {
     let listeningHTML = ch.listening && ch.listening.length ? `
       <section class="lesson-section" id="ls-listening">
         <h3 class="section-title">4. Listening Practice</h3>
-        ${ch.listening.map((l, idx) => `
-          <div class="card p-48 mb-40 shadow-sm" style="background:var(--charcoal); color:white; text-align:center">
-             <div style="font-size:4rem; margin-bottom:24px">🎙️</div>
-             <button class="btn btn-white btn-lg" style="background:var(--card-bg); color:var(--charcoal); font-weight:900" onclick="TTS.speak(\`${l.text}\`)">▶ PLAY AUDIO SEGMENT</button>
-             <div class="mt-40 text-left" style="max-width:600px; margin:40px auto 0; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1)">
-                ${l.questions.map((q, qIdx) => `
-                  <div class="q-item mb-32">
-                    <div style="font-weight:700; margin-bottom:16px; color:rgba(255,255,255,0.9)">${qIdx+1}. ${q.q}</div>
-                    <div class="options-grid" style="display:grid; grid-template-columns:1fr; gap:10px">
-                      ${q.options.map(opt => `
-                        <button class="btn btn-outline" style="background:rgba(255,255,255,0.05); color:white; border-color:rgba(255,255,255,0.2)" onclick="window.PlaygroundModule.checkAnswer(this, '${opt}', '${q.answer}')">${opt}</button>
-                      `).join('')}
-                    </div>
-                  </div>
-                `).join('')}
-             </div>
-          </div>
-        `).join('')}
+        ${ch.listening.map((l, idx) => renderListeningCard(l, 'chapter-listening-transcript-' + idx, [], 'Listening Segment ' + (idx + 1))).join('')}
       </section>
     ` : '';
 
@@ -1102,6 +1123,8 @@ window.PlaygroundModule = (() => {
     openPlaygroundGroup,
     startPlaygroundLesson,
     markLessonComplete,
-    openBlockLessons
+    openBlockLessons,
+    playListeningText,
+    toggleTranscript
   };
 })();

@@ -102,7 +102,7 @@ window.StudyPlanModule = (() => {
     }
     const plan = p[PLAN_KEY];
     const calendarDay = clampDay(daysBetween(plan.startDate, today) + 1);
-    if (!plan.selectedDay || plan.selectedDay < calendarDay) plan.selectedDay = calendarDay;
+    if (!plan.selectedDay) plan.selectedDay = calendarDay;
     plan.selectedDay = clampDay(plan.selectedDay);
     plan.selectedMonth = monthForDay(plan.selectedDay);
     plan.completedByDay ||= {};
@@ -199,13 +199,16 @@ window.StudyPlanModule = (() => {
     render(document.getElementById('page-content'));
   }
 
-  function refreshToday() {
+  function goToToday() {
     const plan = ensurePlan();
-    const day = String(plan.selectedDay);
-    plan.refreshOffsets[day] = (plan.refreshOffsets[day] || 0) + 1;
-    plan.refreshHistory.push({ day: plan.selectedDay, at: new Date().toISOString(), offset: plan.refreshOffsets[day] });
-    plan.refreshHistory = plan.refreshHistory.slice(-60);
+    const today = clampDay(daysBetween(plan.startDate, localDateKey()) + 1);
+    plan.selectedDay = today;
+    plan.selectedMonth = monthForDay(today);
     savePlan();
+    render(document.getElementById('page-content'));
+  }
+
+  function refreshToday() {
     render(document.getElementById('page-content'));
   }
 
@@ -715,8 +718,8 @@ window.StudyPlanModule = (() => {
   function getDayPlan(day = currentDayNumber()) {
     const cat = catalog || {};
     const plan = ensurePlan();
-    const offset = plan.refreshOffsets[String(day)] || 0;
-    const index = day - 1 + offset;
+    const offset = 0;
+    const index = day - 1;
     const phase = phaseForDay(day);
     const type = weekType(day);
     const week = Math.ceil(day / 7);
@@ -916,13 +919,11 @@ window.StudyPlanModule = (() => {
 
         <section class="study-plan-controls">
           <button class="btn btn-ghost btn-sm" onclick="StudyPlanModule.setDay(${day - 1})" ${day <= 1 ? 'disabled' : ''}>Previous Day</button>
-          <button class="btn btn-primary btn-sm" onclick="StudyPlanModule.refreshToday()">Refresh Today</button>
+          <button class="btn btn-primary btn-sm" onclick="StudyPlanModule.goToToday()">Today</button>
           <button class="btn btn-ghost btn-sm" onclick="StudyPlanModule.setDay(${day + 1})" ${day >= TOTAL_DAYS ? 'disabled' : ''}>Next Day</button>
           <button class="btn btn-outline btn-sm" onclick="StudyPlanModule.markDayComplete()">Mark Day Complete</button>
           <button class="btn btn-ghost btn-sm" onclick="StudyPlanModule.resetPlan()">Reset Plan</button>
         </section>
-
-        ${dayPlan.offset ? `<div class="study-plan-note">Today has been refreshed ${dayPlan.offset} time${dayPlan.offset === 1 ? '' : 's'}. Content is shifted to the next planned slot, not generated randomly.</div>` : ''}
 
         <div class="study-plan-weakness-slot">${window.WeaknessEngine ? WeaknessEngine.renderSummaryCard() : ''}</div>
 
@@ -930,7 +931,7 @@ window.StudyPlanModule = (() => {
           ${dayPlan.tasks.map(item => renderTaskCard(dayPlan, item)).join('')}
         </section>
 
-        ${renderCoverage(cat)}
+        ${day === 1 ? renderCoverage(cat) : ''}
       </div>`;
   }
 
@@ -942,6 +943,7 @@ window.StudyPlanModule = (() => {
     setDay,
     setMonth,
     setWeek,
+    goToToday,
     refreshToday,
     resetPlan
   };

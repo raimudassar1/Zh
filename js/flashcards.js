@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
-   flashcards.js — Flashcard Study Module
-   ═══════════════════════════════════════════════════════════════ */
+/* Flashcard Study Module */
 
 'use strict';
 
@@ -50,7 +48,7 @@ window.FlashcardsModule = (() => {
     container.innerHTML = `
       <div class="page-header">
         <h2>Flashcards</h2>
-        <p>Study characters with spaced repetition. Use keyboard shortcuts for quick review.</p>
+        <p>Swipe cards on touch screens. Tap to hear, double tap to flip, then mark what you know.</p>
       </div>
 
       <!-- Controls -->
@@ -107,7 +105,7 @@ window.FlashcardsModule = (() => {
             <div class="card-face card-front">
               <button class="fc-tts-btn" id="fc-tts-front" title="Pronounce" aria-label="Pronounce">🔊</button>
               <div class="fc-hanzi" id="fc-hanzi">？</div>
-              <div class="fc-hint">Click card or press <kbd>Space</kbd> to reveal</div>
+              <div class="fc-hint">Tap to hear · double tap to flip · swipe left/right</div>
             </div>
             <!-- Back -->
             <div class="card-face card-back">
@@ -125,16 +123,13 @@ window.FlashcardsModule = (() => {
         <div class="flashcard-controls">
           <button class="btn fc-btn-review" id="fc-btn-review" title="Press R" style="display:none">✗ Review Again <kbd style="font-size:0.65rem;opacity:0.7">R</kbd></button>
           <button class="btn fc-btn-know" id="fc-btn-know" title="Press K" style="display:none">✓ Know It <kbd style="font-size:0.65rem;opacity:0.7">K</kbd></button>
-          <button class="btn fc-btn-skip" id="fc-btn-skip">Skip →</button>
+          <button class="btn fc-btn-prev" id="fc-btn-prev">← Previous</button>
+          <button class="btn fc-btn-skip" id="fc-btn-skip">Next →</button>
         </div>
 
         <!-- Keyboard hints -->
         <div class="kbd-hint">
-          <kbd>Space</kbd> flip &nbsp;
-          <kbd>K</kbd> know it &nbsp;
-          <kbd>R</kbd> review &nbsp;
-          <kbd>→</kbd> next &nbsp;
-          <kbd>←</kbd> prev
+          Tap hear · double tap flip · swipe left/right · <kbd>K</kbd>/<kbd>R</kbd> after flip
         </div>
       </div>
 
@@ -234,9 +229,9 @@ window.FlashcardsModule = (() => {
     document.getElementById('fc-btn-know').style.display = 'none';
     document.getElementById('fc-btn-skip').style.display = 'block';
 
-    // Wire card click
+    // Wire touch and pointer gestures
     const scene = document.getElementById('fc-scene');
-    scene.onclick = flipCard;
+    bindCardGestures(scene, char);
 
     // TTS buttons
     document.getElementById('fc-tts-front').onclick = (e) => {
@@ -249,10 +244,8 @@ window.FlashcardsModule = (() => {
     };
 
     // Nav buttons
-    document.getElementById('fc-btn-skip').onclick = () => {
-      currentIndex++;
-      showCard(currentIndex);
-    };
+    document.getElementById('fc-btn-prev').onclick = () => previousCard();
+    document.getElementById('fc-btn-skip').onclick = () => nextCard();
     document.getElementById('fc-btn-know').onclick = () => handleAnswer(true);
     document.getElementById('fc-btn-review').onclick = () => handleAnswer(false);
   }
@@ -272,6 +265,59 @@ window.FlashcardsModule = (() => {
     }
   }
 
+  function speakCurrentCard() {
+    const char = deck[currentIndex];
+    if (char) TTS.speak(char.traditional || char.hanzi);
+  }
+
+  function nextCard() {
+    nextCard();
+  }
+
+  function previousCard() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showCard(currentIndex);
+    }
+  }
+
+  function bindCardGestures(scene, char) {
+    if (!scene) return;
+    let startX = 0;
+    let startY = 0;
+    let startTime = 0;
+    let tapTimer = null;
+    scene.onclick = null;
+    scene.ondblclick = null;
+    scene.ontouchstart = null;
+    scene.ontouchend = null;
+    scene.onpointerdown = e => {
+      startX = e.clientX;
+      startY = e.clientY;
+      startTime = Date.now();
+    };
+    scene.onpointerup = e => {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        if (dx < 0) nextCard();
+        else previousCard();
+        return;
+      }
+      if (Date.now() - startTime > 450) return;
+      if (tapTimer) {
+        clearTimeout(tapTimer);
+        tapTimer = null;
+        flipCard();
+        return;
+      }
+      tapTimer = setTimeout(() => {
+        tapTimer = null;
+        TTS.speak(char.traditional || char.hanzi);
+      }, 230);
+    };
+  }
+
   function handleAnswer(knew) {
     const char = deck[currentIndex];
     if (!char) return;
@@ -289,8 +335,7 @@ window.FlashcardsModule = (() => {
     App.state.progress.lastStudyDate = new Date().toDateString();
     App.saveProgress();
 
-    currentIndex++;
-    showCard(currentIndex);
+    nextCard();
   }
 
   function endSession() {
@@ -344,12 +389,11 @@ window.FlashcardsModule = (() => {
         break;
       case 'ArrowRight':
         e.preventDefault();
-        currentIndex++;
-        showCard(currentIndex);
+        nextCard();
         break;
       case 'ArrowLeft':
         e.preventDefault();
-        if (currentIndex > 0) { currentIndex--; showCard(currentIndex); }
+        previousCard()
         break;
       case 'k': case 'K':
         if (isFlipped) handleAnswer(true);

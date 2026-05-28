@@ -1,4 +1,4 @@
-﻿/* Zhongwen app core: router, state, dashboard, library, settings. */
+/* Zhongwen app core: router, state, dashboard, library, settings. */
 
 
 
@@ -144,7 +144,7 @@ const App = {
   // Load settings from localStorage
   loadSettings() {
     const defaults = {
-      theme: 'light',
+      theme: 'dark',
       annotation: 'pinyin',       // pinyin | zhuyin | both | none
       toneColors: true,
       dailyGoal: 10,
@@ -170,9 +170,10 @@ const App = {
   },
 
   applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
+    const visualTheme = theme || 'dark';
+    document.documentElement.setAttribute('data-theme', visualTheme);
     const btn = document.getElementById('dark-mode-toggle');
-    if (btn) btn.innerHTML = theme === 'dark' ? '&#9728;' : '&#9790;'
+    if (btn) btn.innerHTML = visualTheme === 'dark' ? '&#9728;' : '&#9790;'
   },
 
   fontPresets: {
@@ -620,7 +621,7 @@ window.PinyinAudio = PinyinAudio;
 // Section
 const API = {
   base: 'data', // Relative to public/
-  version: '182', // Match index.html version for consistency
+  version: '206', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -748,7 +749,7 @@ const API = {
     const characters = App.state.characters;
     const byLevel = { novice: 0, a1: 0, a2: 0, b1: 0 };
     (characters || []).forEach(c => { if (byLevel[c.level] !== undefined) byLevel[c.level]++; });
-    return { total_characters: characters.length, by_level: byLevel, app_version: '2.0.0 (Static)' };
+    return { total_characters: characters.length, by_level: byLevel, app_version: '206' };
   },
 
   annotateText(text, characters, vocab) {
@@ -1510,6 +1511,7 @@ function renderSettings(container) {
   const audio = TTS.status ? TTS.status() : { available:false, hasAndroid:false, hasBrowser:false, voices:0, zhVoices:0 };
   const lastExportRaw = localStorage.getItem('zhongwen_last_progress_export');
   const lastExportText = lastExportRaw ? new Date(lastExportRaw).toLocaleString() : 'Never exported on this device';
+  const currentTheme = (s.theme === 'light' || !s.theme) ? 'red' : s.theme;
 
   container.innerHTML = `
     <div class="page-header">
@@ -1540,14 +1542,21 @@ function renderSettings(container) {
       <div class="card mb-16">
         <div class="settings-section">
           <h3>Display</h3>
-          <div class="setting-row">
-            <div class="setting-info">
-              <div class="setting-label">Dark Mode</div>
+          <div class="setting-row" style="flex-direction:column; align-items:stretch; gap:10px">
+            <div class="setting-info" style="margin-bottom:4px">
+              <div class="setting-label">App Theme</div>
+              <div class="setting-desc">Use the top-bar toggle for quick switching, or choose a mode here.</div>
             </div>
-            <label class="toggle">
-              <input type="checkbox" id="set-dark" ${s.theme === 'dark' ? 'checked' : ''}>
-              <span class="toggle-slider"></span>
-            </label>
+            <div class="theme-swatch-grid theme-mode-grid">
+              <button type="button" class="theme-swatch ${currentTheme === 'dark' ? 'active' : ''}" data-theme-val="dark">
+                <div class="swatch-dot swatch-dot-dark"></div>
+                <span>Dark mode</span>
+              </button>
+              <button type="button" class="theme-swatch ${currentTheme !== 'dark' ? 'active' : ''}" data-theme-val="red">
+                <div class="swatch-dot swatch-dot-red"></div>
+                <span>White mode</span>
+              </button>
+            </div>
           </div>
           <div class="setting-row">
             <div class="setting-info">
@@ -1748,10 +1757,23 @@ function renderSettings(container) {
     </div>
   `;
 
+  // Attach theme swatch click listeners
+  container.querySelectorAll('.theme-swatch').forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      container.querySelectorAll('.theme-swatch').forEach(s => s.classList.remove('active'));
+      swatch.classList.add('active');
+      const val = swatch.getAttribute('data-theme-val');
+      App.applyTheme(val);
+    });
+  });
+
   document.getElementById('set-save-btn')?.addEventListener('click', () => {
     App.state.settings.displayName = document.getElementById('set-name').value || 'Learner';
     App.state.settings.dailyGoal = parseInt(document.getElementById('set-goal').value) || 10;
-    App.state.settings.theme = document.getElementById('set-dark').checked ? 'dark' : 'light';
+    
+    const activeSwatch = container.querySelector('.theme-swatch.active');
+    App.state.settings.theme = activeSwatch ? activeSwatch.getAttribute('data-theme-val') : 'red';
+    
     App.state.settings.fontChoice = document.getElementById('set-font-choice')?.value || 'noto-sans';
     App.state.settings.toneColors = document.getElementById('set-tones').checked;
     App.state.settings.annotation = document.querySelector('input[name="annotation"]:checked')?.value || 'pinyin';
@@ -2103,11 +2125,17 @@ async function boot() {
 
   // 1. Core UI setup (Sync tasks)
   document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
-    const dark = App.state.settings.theme !== 'dark';
-    App.state.settings.theme = dark ? 'dark' : 'light';
-    App.saveSettings();
-    App.applyTheme(App.state.settings.theme);
-  });
+      const currentTheme = document.documentElement.getAttribute('data-theme') || App.state.settings.theme || 'dark';
+      const isDarkNow = currentTheme === 'dark';
+      if (!isDarkNow) {
+        App.state.settings.lastLightTheme = currentTheme;
+        App.state.settings.theme = 'dark';
+      } else {
+        App.state.settings.theme = App.state.settings.lastLightTheme || 'red';
+      }
+      App.saveSettings();
+      App.applyTheme(App.state.settings.theme);
+    });
 
   document.getElementById('topbar-font-select')?.addEventListener('change', e => {
     App.state.settings.fontChoice = e.target.value || 'noto-sans';

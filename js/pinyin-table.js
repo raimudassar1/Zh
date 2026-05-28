@@ -7,7 +7,8 @@ window.PinyinTableModule = (() => {
     pageSize: 30,
     rows: [],
     bank: null,
-    manifest: null
+    manifest: null,
+    openExampleKey: ''
   };
 
   const stageOrder = ['core80', 'core250', 'common600', 'full'];
@@ -113,12 +114,12 @@ window.PinyinTableModule = (() => {
 
   function renderToneChip(row, tone) {
     const item = row.tones.get(tone);
-    const target = item || row.base;
     const src = item ? humanAudioSrc(item) : humanAudioSrc(row.base, tone);
     const missing = src ? '' : ' missing-audio';
+    const active = state.openExampleKey === row.base + ':' + tone ? ' active' : '';
     const title = src ? 'Play local human audio' : 'Missing local MP3; will use safe TTS fallback when available';
-    if (item) return `<button type="button" class="pt-tone-chip tone${tone}${missing}" data-pt-action="play-item" data-id="${esc(item.id)}" title="${title}">${esc(item.pinyin)}</button>`;
-    return `<button type="button" class="pt-tone-chip generated tone${tone}${missing}" data-pt-action="play-generated" data-base="${esc(row.base)}" data-tone="${tone}" title="${title}">${esc(Pinyin.markSyllable(row.base, tone))}</button>`;
+    if (item) return `<button type="button" class="pt-tone-chip tone${tone}${missing}${active}" data-pt-action="play-item" data-row-base="${esc(row.base)}" data-tone="${tone}" data-id="${esc(item.id)}" title="${title}">${esc(item.pinyin)}</button>`;
+    return `<button type="button" class="pt-tone-chip generated tone${tone}${missing}${active}" data-pt-action="play-generated" data-row-base="${esc(row.base)}" data-base="${esc(row.base)}" data-tone="${tone}" title="${title}">${esc(Pinyin.markSyllable(row.base, tone))}</button>`;
   }
 
   function renderExampleChip(item) {
@@ -152,7 +153,12 @@ window.PinyinTableModule = (() => {
       <article class="pt-row">
         <div class="pt-base">${esc(row.base)}</div>
         <div class="pt-tones">${[1, 2, 3, 4].map(tone => renderToneChip(row, tone)).join('')}</div>
-        <div class="pt-examples">${row.examples.length ? row.examples.map(renderExampleChip).join('') : '<span class="pt-empty">No app example yet</span>'}</div>
+        <div class="pt-examples">${(() => {
+          const selectedTone = Number((state.openExampleKey || '').split(':')[1]);
+          const selectedBase = (state.openExampleKey || '').split(':')[0];
+          const activeExamples = selectedBase === row.base ? row.examples.filter(item => Number(item.tone || Pinyin.getTone(item.pinyin)) === selectedTone) : [];
+          return activeExamples.length ? activeExamples.map(renderExampleChip).join('') : '';
+        })()}</div>
       </article>
     `).join('');
     document.querySelectorAll('[data-pt-stage]').forEach(btn => {
@@ -188,8 +194,16 @@ window.PinyinTableModule = (() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
-      if (btn.dataset.ptAction === 'play-item') playItem(btn.dataset.id || '');
-      if (btn.dataset.ptAction === 'play-generated') playGenerated(btn.dataset.base || '', btn.dataset.tone || '');
+      if (btn.dataset.ptAction === 'play-item') {
+        state.openExampleKey = btn.dataset.rowBase + ':' + btn.dataset.tone;
+        renderRows();
+        playItem(btn.dataset.id || '');
+      }
+      if (btn.dataset.ptAction === 'play-generated') {
+        state.openExampleKey = '';
+        renderRows();
+        playGenerated(btn.dataset.base || '', btn.dataset.tone || '');
+      }
     });
   }
 

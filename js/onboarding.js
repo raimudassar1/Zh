@@ -125,7 +125,11 @@ const OnboardingModule = (() => {
           <div class="hpl-status-card">
             <span class="hpl-status-label">Audio source</span>
             <strong id="hpl-audio-source">Checking files...</strong>
-            <small>Human audio goes in <code>assets/audio/pinyin-human</code> and is mapped in <code>data/pinyin_human_manifest.json</code>.</small>
+            <small>Local recordings are used first for pinyin and tone practice. Missing sounds fall back to slow Chinese TTS.</small>
+            <div class="hpl-source-detail">
+              <span>Local pack</span>
+              <code>assets/audio/pinyin-human</code>
+            </div>
           </div>
         </div>
 
