@@ -76,8 +76,14 @@ window.PlaygroundModule = (() => {
         <div class="playground-listening-icon">${window.IconSystem ? window.IconSystem.svg('headphones') : 'Audio'}</div>
         <div class="playground-listening-heading">${esc(heading)}</div>
         <div class="playground-listening-actions">
-          <button class="btn btn-primary btn-lg" type="button" onclick="if(window.TTS&&TTS.speak){TTS.speak('${jsString(text)}','zh-TW',0.78)}else if(window.showToast){showToast('Audio engine is not ready. Try Settings audio test.')}">${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Audio</span></button>
-          <button class="btn btn-outline btn-lg" type="button" onclick="document.getElementById('${id}')?.classList.toggle('hidden')">Show Transcript</button>
+          <button class="btn btn-primary btn-lg" type="button" 
+            onclick="if(window.TTS&&TTS.speak){TTS.speak('${jsString(text)}','zh-TW',0.78)}else if(window.showToast){showToast('Audio engine is not ready. Try Settings audio test.')}">
+            ${window.IconSystem ? window.IconSystem.svg('volume') : ''}<span>Play Audio</span>
+          </button>
+          <button class="btn btn-outline btn-lg" type="button" 
+            onclick="document.getElementById('${id}')?.classList.toggle('hidden')">
+            Show Transcript
+          </button>
         </div>
         <div id="${id}" class="playground-transcript hidden"><div class="font-zh">${esc(text || 'No transcript available for this listening item yet.')}</div></div>
       </div>
@@ -87,7 +93,8 @@ window.PlaygroundModule = (() => {
             <div class="mb-24">
               <div class="playground-question-title">${qIdx + 1}. ${esc(q.q || q.question || '')}</div>
               <div class="options-grid playground-options">
-                ${(q.options || []).map(opt => `<button class="btn btn-outline" type="button" onclick="window.PlaygroundModule.checkAnswer(this, '${jsString(opt)}', '${jsString(q.answer)}')">${esc(opt)}</button>`).join('')}
+                ${(q.options || []).map(opt => `<button class="btn btn-outline" type="button" 
+                  onclick="window.PlaygroundModule.checkAnswer(this, '${jsString(opt)}', '${jsString(q.answer)}')">${esc(opt)}</button>`).join('')}
               </div>
             </div>
           `).join('')}
@@ -289,14 +296,17 @@ window.PlaygroundModule = (() => {
               ${d.title ? `<h4 class="mb-16" style="color:var(--accent); font-size:1.2rem; font-weight:800; border-bottom: 2px solid var(--off-white); padding-bottom: 12px;">${d.title}</h4>` : ''}
               <div style="display:flex; flex-direction:column; gap:16px">
                 ${(d.lines || []).map(line => `
-                  <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
+                  <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" 
+                    onclick="TTS.speak('${line.zh}')" 
+                    style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
                     <div class="line-speaker-badge" style="background: var(--charcoal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; min-width: 80px; text-align: center;">${line.speaker}</div>
                     <div style="flex:1">
                       <div class="font-zh" style="font-size:1.4rem; font-weight:800; margin-bottom:4px; color: var(--text)">${line.zh}</div>
                       <div class="text-muted" style="font-size:1rem; font-weight:600; color:var(--accent)">${line.pinyin}</div>
                       <div style="font-size:0.95rem; margin-top:4px; color: var(--text-2); font-style: italic;">${line.en}</div>
                     </div>
-                    <button class="dialogue-audio-btn" type="button" aria-label="Play line" onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
+                    <button class="dialogue-audio-btn" type="button" aria-label="Play line" 
+                      onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
                   </div>
                 `).join('')}
               </div>
@@ -431,14 +441,17 @@ window.PlaygroundModule = (() => {
             <h4 class="mb-16" style="color:var(--accent); font-weight:800">Part ${idx+1}: ${d.title}</h4>
             <div style="display:flex; flex-direction:column; gap:12px">
               ${d.lines.map(line => `
-                <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" onclick="TTS.speak('${line.zh}')" style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
+                <div class="dialogue-line-premium" data-zh="${String(line.zh).replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" 
+                  onclick="TTS.speak('${line.zh}')" 
+                  style="cursor:pointer; display: flex; gap: 16px; align-items: flex-start;">
                   <div class="line-speaker-badge" style="background: var(--charcoal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; min-width: 80px; text-align: center;">${line.speaker}</div>
                   <div style="flex:1">
                     <div class="font-zh" style="font-size:1.5rem; font-weight:800; margin-bottom:4px; color: var(--text)">${line.zh}</div>
                     <div class="text-muted" style="font-size:0.95rem; font-weight:600; color:var(--accent)">${line.py}</div>
                     <div class="color-text-2" style="font-size:0.9rem; margin-top:4px">${line.en}</div>
                   </div>
-                  <button class="dialogue-audio-btn" type="button" aria-label="Play line" onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
+                  <button class="dialogue-audio-btn" type="button" aria-label="Play line" 
+                    onclick="event.stopPropagation(); TTS.speak(this.closest('.dialogue-line-premium').dataset.zh || '')">${window.IconSystem ? window.IconSystem.svg('volume') : 'Play'}</button>
                 </div>
               `).join('')}
             </div>

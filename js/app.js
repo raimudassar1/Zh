@@ -1194,31 +1194,13 @@ function openMobileSection(section) {
 }
 
 function setupMobileBottomNav() {
-  let lastTouchActivation = 0;
-  const activate = (btn, source = 'click') => {
-    const section = btn?.dataset?.mobileMenu;
-    if (!section) return;
-    if (source === 'touch' || source === 'pointer-touch') lastTouchActivation = Date.now();
-    openMobileSection(section);
-  };
   document.querySelectorAll('.bottom-nav-menu').forEach(btn => {
-    btn.addEventListener('pointerup', e => {
-      if (e.pointerType === 'mouse') return;
-      e.preventDefault();
-      activate(btn, 'pointer-touch');
-    }, { passive: false });
-    btn.addEventListener('touchend', e => {
-      if (Date.now() - lastTouchActivation < 450) return;
-      e.preventDefault();
-      activate(btn, 'touch');
-    }, { passive: false });
     btn.addEventListener('click', e => {
-      if (Date.now() - lastTouchActivation < 450) {
-        e.preventDefault();
-        return;
-      }
       e.preventDefault();
-      activate(btn, 'click');
+      const section = btn.dataset.mobileMenu;
+      if (section) {
+        openMobileSection(section);
+      }
     });
   });
   document.getElementById('mobile-section-bar')?.addEventListener('click', e => {
@@ -2143,9 +2125,21 @@ async function boot() {
     App.applyFontPreference(App.state.settings.fontChoice);
   });
 
-  document.getElementById('mobile-menu-toggle')?.addEventListener('click', toggleMobileNav);
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', e => {
+      e.preventDefault();
+      toggleMobileNav();
+    });
+  }
   setupMobileBottomNav();
-  document.getElementById('nav-scrim')?.addEventListener('click', closeMobileNav);
+  const scrim = document.getElementById('nav-scrim');
+  if (scrim) {
+    scrim.addEventListener('click', e => {
+      e.preventDefault();
+      closeMobileNav();
+    });
+  }
   
   // Use event delegation for sidebar to avoid many listeners
   document.getElementById('sidebar')?.addEventListener('click', e => {

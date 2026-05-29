@@ -15673,7 +15673,7 @@ textarea::placeholder {
   outline: 2px solid var(--accent, #7c5eff);
   box-shadow: 0 0 0 5px rgba(124, 94, 255, .18);
 }
-.flashcard-scene { touch-action: pan-y; user-select: none; }
+.flashcard-scene { touch-action: none; user-select: none; }
 .fc-btn-prev { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid var(--border); }
 @media (max-width: 560px) {
   .study-plan-v2 .study-plan-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }

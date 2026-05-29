@@ -271,7 +271,12 @@ window.FlashcardsModule = (() => {
   }
 
   function nextCard() {
-    nextCard();
+    if (currentIndex < deck.length - 1) {
+      currentIndex++;
+      showCard(currentIndex);
+    } else {
+      endSession();
+    }
   }
 
   function previousCard() {
@@ -287,18 +292,16 @@ window.FlashcardsModule = (() => {
     let startY = 0;
     let startTime = 0;
     let tapTimer = null;
-    scene.onclick = null;
-    scene.ondblclick = null;
-    scene.ontouchstart = null;
-    scene.ontouchend = null;
-    scene.onpointerdown = e => {
-      startX = e.clientX;
-      startY = e.clientY;
+
+    const handleStart = (clientX, clientY) => {
+      startX = clientX;
+      startY = clientY;
       startTime = Date.now();
     };
-    scene.onpointerup = e => {
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
+
+    const handleEnd = (clientX, clientY, e) => {
+      const dx = clientX - startX;
+      const dy = clientY - startY;
       if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
         if (dx < 0) nextCard();
         else previousCard();
@@ -315,6 +318,33 @@ window.FlashcardsModule = (() => {
         tapTimer = null;
         TTS.speak(char.traditional || char.hanzi);
       }, 230);
+    };
+
+    scene.onclick = null;
+    scene.ondblclick = null;
+
+    // Use touch events for mobile touchscreens
+    scene.ontouchstart = e => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        handleStart(touch.clientX, touch.clientY);
+      }
+    };
+    scene.ontouchend = e => {
+      if (e.changedTouches.length > 0) {
+        const touch = e.changedTouches[0];
+        handleEnd(touch.clientX, touch.clientY, e);
+      }
+    };
+
+    // Fallback for pointer/mouse events on desktop
+    scene.onpointerdown = e => {
+      if (e.pointerType === 'touch') return; // Handled by touch events
+      handleStart(e.clientX, e.clientY);
+    };
+    scene.onpointerup = e => {
+      if (e.pointerType === 'touch') return; // Handled by touch events
+      handleEnd(e.clientX, e.clientY, e);
     };
   }
 
