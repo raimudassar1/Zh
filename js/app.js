@@ -1151,6 +1151,7 @@ function closeMobileSectionTray() {
   if (!bar) return;
   bar.hidden = true;
   bar.classList.remove('open');
+  document.getElementById('nav-scrim')?.classList.remove('open');
   document.querySelectorAll('.bottom-nav-menu').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
 }
 
@@ -1185,6 +1186,7 @@ function openMobileSection(section) {
   bar.dataset.section = section;
   bar.hidden = false;
   bar.classList.add('open');
+  document.getElementById('nav-scrim')?.classList.add('open');
   document.querySelectorAll('.bottom-nav-menu').forEach(btn => {
     const isActive = btn.dataset.mobileMenu === section;
     btn.classList.toggle('active', isActive);

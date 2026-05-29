@@ -421,7 +421,7 @@ body {
   background: var(--card-bg);
   border-top: 1px solid var(--border);
   z-index: 100;
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .bottom-nav-inner {
@@ -2655,6 +2655,11 @@ textarea {
 .nav-scrim[hidden] {
   display: none;
 }
+.nav-scrim.open:not([hidden]) {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
 
 @media (min-width: 769px) and (max-width: 1180px) {
   :root {
@@ -2702,7 +2707,7 @@ textarea {
   }
 
   .sidebar-footer {
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   }
 
   #topbar-logo {
@@ -2711,7 +2716,7 @@ textarea {
 
   #main {
     margin-left: 0;
-    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   }
 
   #page-content {
@@ -5118,7 +5123,7 @@ html:not([data-theme="dark"]) .card .btn-primary * {
 
 @media (max-width: 768px) {
   #main {
-    padding-bottom: calc(128px + env(safe-area-inset-bottom));
+    padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
   }
 
   #bottom-nav {
@@ -7056,12 +7061,12 @@ textarea {
 
 @media (max-width: 768px) {
   #main {
-    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom) + 8px) !important;
+    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 8px) !important;
   }
 
   #bottom-nav {
-    padding: 4px 8px calc(4px + env(safe-area-inset-bottom)) !important;
-    min-height: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom)) !important;
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .bottom-nav-inner,
@@ -7100,7 +7105,7 @@ textarea {
     position: fixed !important;
     left: 10px !important;
     right: 10px !important;
-    bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom) + var(--mobile-tray-gap)) !important;
+    bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + var(--mobile-tray-gap)) !important;
     z-index: 1190 !important;
     display: none !important;
     max-height: min(42vh, 260px) !important;
@@ -7284,7 +7289,7 @@ textarea {
 }
 
 .exam-footer {
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) !important;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
   z-index: 1000 !important;
 }
 
