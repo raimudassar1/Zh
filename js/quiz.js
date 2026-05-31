@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    quiz.js — Enhanced Pronunciation & Vocabulary Quiz Modules
    ═══════════════════════════════════════════════════════════════ */
 
@@ -254,10 +254,21 @@ window.QuizModule = (() => {
     return [...new Set(App.state.characters.map(c => c.category).filter(Boolean))].sort();
   }
 
-  async function ensureCharactersLoaded() {
+    async function ensureCharactersLoaded() {
     if (App.state.characters && App.state.characters.length > 0) return;
     const result = await API.getCharacters({ limit: 9999 }).catch(() => ({ data: [] }));
     App.state.characters = Array.isArray(result?.data) ? result.data : (Array.isArray(result) ? result : []);
+  }
+
+  async function ensureVocabularyLoaded() {
+    if (App.state.vocabulary && App.state.vocabulary.length > 0) return;
+    try {
+      const vocabResult = await API.get('vocabulary');
+      App.state.vocabulary = Array.isArray(vocabResult) ? vocabResult : (vocabResult.sets || []);
+    } catch (err) {
+      console.warn('Failed to load vocabulary.json for quiz:', err);
+      App.state.vocabulary = [];
+    }
   }
 
   function getChapterSets() {
@@ -422,9 +433,12 @@ window.QuizModule = (() => {
     if (!quizState.chapterId && sets.length > 0) quizState.chapterId = sets[0].id;
 
     container.innerHTML = `
-      <div class="page-header">
-        <h2>${type === 'pron' ? 'Pronunciation' : 'Vocabulary'} Quiz</h2>
-        <p>${type === 'pron' ? 'Master tones and pinyin recognition.' : 'Test meanings and sentence context.'}</p>
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center; gap: 16px;">
+        <div>
+          <h2>${type === 'pron' ? 'Pronunciation' : 'Vocabulary'} Quiz</h2>
+          <p>${type === 'pron' ? 'Master tones and pinyin recognition.' : 'Test meanings and sentence context.'}</p>
+        </div>
+        <div id="section-header-anim" style="width: 80px; height: 80px; flex-shrink: 0;"></div>
       </div>
 
       <div id="quiz-setup" class="card mb-20" style="max-width:700px">
@@ -554,17 +568,45 @@ window.QuizModule = (() => {
 
       <div id="quiz-area" style="display:none; max-width:600px; margin: 0 auto;"></div>
     `;
+
+    if (window.AnimRegistry) {
+      AnimRegistry.play('section_quiz', 'section-header-anim', { loop: false, duration: 1500 });
+    }
   }
 
   // ── Public API Functions ────────────────────────────────────
   window.QuizModule = {
     state: quizState,
     
-    renderPronunciation(container) {
+        async renderPronunciation(container) {
+      container.innerHTML = `
+        <div class="page-header">
+          <h2>Pronunciation Quiz</h2>
+          <p>Loading quiz setup...</p>
+        </div>
+        <div class="spinner"></div>
+      `;
+      try {
+        await Promise.all([ensureCharactersLoaded(), ensureVocabularyLoaded()]);
+      } catch (e) {
+        console.warn('Quiz preloading failed:', e);
+      }
       renderSetup(container, 'pron');
     },
 
-    renderVocabulary(container) {
+    async renderVocabulary(container) {
+      container.innerHTML = `
+        <div class="page-header">
+          <h2>Vocabulary Quiz</h2>
+          <p>Loading quiz setup...</p>
+        </div>
+        <div class="spinner"></div>
+      `;
+      try {
+        await Promise.all([ensureCharactersLoaded(), ensureVocabularyLoaded()]);
+      } catch (e) {
+        console.warn('Quiz preloading failed:', e);
+      }
       renderSetup(container, 'vocab');
     },
 
@@ -798,6 +840,7 @@ window.QuizModule = (() => {
       </div>
 
       <div class="quiz-options-grid">${optionsHTML}</div>
+      <div id="quiz-feedback-anim" style="display:none; width:120px; height:120px; margin: 12px auto 0; pointer-events:none;"></div>
       <div id="quiz-feedback" class="quiz-feedback ${savedAnswer ? (savedAnswer.isCorrect ? 'correct show' : 'wrong show') : ''}">${savedAnswer ? renderFeedback(q, savedAnswer.isCorrect) : ''}</div>
 
       <div class="quiz-nav-row mt-20" style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap">
@@ -858,6 +901,24 @@ window.QuizModule = (() => {
     const feedback = document.getElementById('quiz-feedback');
     feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'wrong'} show`;
     feedback.innerHTML = renderFeedback(q, isCorrect);
+
+    // Play feedback animation & sound
+    if (isCorrect) {
+      if (window.AnimRegistry) {
+        AnimRegistry.play('correct_answer', 'quiz-feedback-anim', { duration: 1200 });
+      }
+      if (window.SoundManager) {
+        window.SoundManager.playCorrect();
+      }
+    } else {
+      if (window.AnimRegistry) {
+        AnimRegistry.play('wrong_answer', 'quiz-feedback-anim', { duration: 900 });
+      }
+      if (window.SoundManager) {
+        window.SoundManager.playWrong();
+      }
+    }
+
     const status = document.getElementById('quiz-answer-status');
     if (status) status.textContent = 'Answered';
 

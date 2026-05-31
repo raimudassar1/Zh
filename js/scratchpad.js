@@ -69,7 +69,13 @@ window.Scratchpad = (() => {
     saving: false,
     saveError: false,
     storageReady: false,
-    lastSavedAt: null
+    lastSavedAt: null,
+    activeButtons: 0,
+    customColor: localStorage.getItem('zhongwen_scratchpad_custom_color') || '#7C3AED',
+    stylusAction: localStorage.getItem('zhongwen_stylus_button_action') || 'erase_hold',
+    buttonHandled: false,
+    tempEraserActive: false,
+    preTempTool: 'pressure'
   };
 
   let elements = {};
@@ -120,7 +126,7 @@ window.Scratchpad = (() => {
     overlay.className = 'scratchpad-overlay';
     overlay.id = 'scratchpad-draw-overlay';
     overlay.innerHTML =
-      '<header class="scratchpad-header"><div class="scratchpad-header-left"><button class="btn btn-ghost btn-sm" id="scratchpad-back-btn" style="min-height:34px;padding:0 12px">Back</button><span class="scratchpad-header-title">Scratchpad</span><span class="scratchpad-page-indicator" id="sp-page-indicator">Page 1 / 1</span><span class="scratchpad-save-status" id="sp-save-status">Not saved yet</span></div><div class="scratchpad-toolbar"><div class="scratchpad-btn-group"><button id="sp-btn-prev">Previous</button><button id="sp-btn-next">Next</button><button id="sp-btn-add">Add Page</button></div><div class="scratchpad-btn-group"><button id="sp-btn-rename">Rename</button><button id="sp-btn-duplicate">Duplicate</button><button id="sp-btn-delete">Delete</button></div><div class="scratchpad-btn-group"><button id="sp-btn-pen">Pen</button><button id="sp-btn-pressure" class="active">Pressure</button><button id="sp-btn-eraser">Erase</button></div><div class="scratchpad-palette" id="sp-palette"><button class="scratchpad-color-dot active" data-color="#171717" style="background-color:#171717"></button><button class="scratchpad-color-dot" data-color="#B42318" style="background-color:#B42318"></button><button class="scratchpad-color-dot" data-color="#1F4E79" style="background-color:#1F4E79"></button><button class="scratchpad-color-dot" data-color="#2F8F71" style="background-color:#2F8F71"></button><button class="scratchpad-color-dot" data-color="#C98212" style="background-color:#C98212"></button></div><div class="scratchpad-slider-wrap"><span class="scratchpad-slider-label" id="sp-size-label">Size: 6px</span><input type="range" class="scratchpad-slider" id="sp-size-slider" min="1" max="40" value="6"></div><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;font-weight:800;color:var(--text-2);user-select:none"><input type="checkbox" id="sp-stylus-only"> Stylus Only</label><button class="btn btn-ghost btn-sm" id="sp-btn-clear" style="min-height:34px">Clear Page</button></div></header><div class="scratchpad-pagebar" id="sp-pagebar"></div><div class="scratchpad-storage-warning" id="sp-storage-warning">Scratchpad is usable, but saving is unavailable in this browser.</div><div class="scratchpad-canvas-container" id="sp-canvas-container"><canvas class="scratchpad-canvas" id="scratchpad-canvas"></canvas></div><div class="scratchpad-eraser-cursor" id="sp-eraser-cursor"></div>';
+      '<header class="scratchpad-header"><div class="scratchpad-header-left"><button class="btn btn-ghost btn-sm" id="scratchpad-back-btn" style="min-height:34px;padding:0 12px">Back</button><span class="scratchpad-header-title">Scratchpad</span><span class="scratchpad-page-indicator" id="sp-page-indicator">Page 1 / 1</span><span class="scratchpad-save-status" id="sp-save-status">Not saved yet</span></div><div class="scratchpad-toolbar"><div class="scratchpad-btn-group"><button id="sp-btn-prev">Previous</button><button id="sp-btn-next">Next</button><button id="sp-btn-add">Add Page</button></div><div class="scratchpad-btn-group"><button id="sp-btn-rename">Rename</button><button id="sp-btn-duplicate">Duplicate</button><button id="sp-btn-delete">Delete</button></div><div class="scratchpad-btn-group"><button id="sp-btn-pen">Pen</button><button id="sp-btn-pressure" class="active">Pressure</button><button id="sp-btn-eraser">Erase</button></div><div class="scratchpad-palette" id="sp-palette"><button class="scratchpad-color-dot active" data-color="#171717" style="background-color:#171717"></button><button class="scratchpad-color-dot" data-color="#B42318" style="background-color:#B42318"></button><button class="scratchpad-color-dot" data-color="#1F4E79" style="background-color:#1F4E79"></button><button class="scratchpad-color-dot" data-color="#2F8F71" style="background-color:#2F8F71"></button><button class="scratchpad-color-dot" data-color="#C98212" style="background-color:#C98212"></button><button class="scratchpad-color-dot" id="sp-custom-color-btn" style="background:linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;" title="Custom Color"><span style="color:#fff; font-size:14px; font-weight:bold; text-shadow:0 1px 2px rgba(0,0,0,0.6); pointer-events:none">+</span><input type="color" id="sp-custom-color-picker" style="position:absolute; opacity:0; inset:0; width:100%; height:100%; cursor:pointer; padding:0; border:none;"></button></div><div class="scratchpad-slider-wrap"><span class="scratchpad-slider-label" id="sp-size-label">Size: 6px</span><input type="range" class="scratchpad-slider" id="sp-size-slider" min="1" max="40" value="6"></div><select class="input input-sm" id="sp-stylus-action" style="height:34px; background:var(--card-bg); color:var(--text); border-color:var(--border); font-size:.8rem; font-weight:800;" title="Stylus Button Action"><option value="erase_hold">Stylus: Hold to Erase</option><option value="toggle_tool">Stylus: Toggle Pen/Eraser</option><option value="clear">Stylus: Click to Clear</option><option value="disabled">Stylus: Button Disabled</option></select><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;font-weight:800;color:var(--text-2);user-select:none"><input type="checkbox" id="sp-stylus-only"> Stylus Only</label><button class="btn btn-sm btn-error fix-pen-btn" id="sp-btn-fix-pen" style="min-height:34px; border:1px solid var(--border);" title="Click if your pen/stylus is not drawing">Fix Pen Input 🛠️</button><button class="btn btn-sm btn-outline" id="sp-btn-restart-stylus" style="min-height:34px; border:1px solid var(--border);" title="Restart stylus pointer connection and listeners">Restart Stylus 🔄</button><button class="btn btn-ghost btn-sm" id="sp-btn-clear" style="min-height:34px">Clear Page</button></div></header><div class="scratchpad-pagebar" id="sp-pagebar"></div><div class="scratchpad-storage-warning" id="sp-storage-warning">Scratchpad is usable, but saving is unavailable in this browser.</div><div class="scratchpad-canvas-container" id="sp-canvas-container"><canvas class="scratchpad-canvas" id="scratchpad-canvas"></canvas></div><div class="scratchpad-eraser-cursor" id="sp-eraser-cursor"></div>';
     document.body.appendChild(overlay);
 
     elements = {
@@ -143,13 +149,31 @@ window.Scratchpad = (() => {
       btnPressure: document.getElementById('sp-btn-pressure'),
       btnEraser: document.getElementById('sp-btn-eraser'),
       palette: document.getElementById('sp-palette'),
+      customColorBtn: document.getElementById('sp-custom-color-btn'),
+      customColorPicker: document.getElementById('sp-custom-color-picker'),
       sizeSlider: document.getElementById('sp-size-slider'),
       sizeLabel: document.getElementById('sp-size-label'),
       stylusToggle: document.getElementById('sp-stylus-only'),
+      stylusActionSelect: document.getElementById('sp-stylus-action'),
+      fixPenBtn: document.getElementById('sp-btn-fix-pen'),
+      restartStylusBtn: document.getElementById('sp-btn-restart-stylus'),
       clearBtn: document.getElementById('sp-btn-clear'),
       eraserCursor: document.getElementById('sp-eraser-cursor')
     };
     ctx = elements.canvas.getContext('2d');
+
+    // Set custom color startup values
+    const savedCustomColor = state.customColor;
+    if (elements.customColorPicker && elements.customColorBtn) {
+      elements.customColorPicker.value = savedCustomColor;
+      elements.customColorBtn.dataset.color = savedCustomColor;
+      elements.customColorBtn.style.background = savedCustomColor;
+    }
+
+    // Set stylus action startup values
+    if (elements.stylusActionSelect) {
+      elements.stylusActionSelect.value = state.stylusAction;
+    }
 
     elements.backBtn.addEventListener('click', hide);
     elements.btnPrev.addEventListener('click', () => gotoPage(pageIndex() - 1));
@@ -161,6 +185,7 @@ window.Scratchpad = (() => {
     elements.btnPen.addEventListener('click', () => setTool('pen'));
     elements.btnPressure.addEventListener('click', () => setTool('pressure'));
     elements.btnEraser.addEventListener('click', () => setTool('eraser'));
+    elements.restartStylusBtn.addEventListener('click', restartStylus);
     elements.palette.addEventListener('click', e => {
       const dot = e.target.closest('.scratchpad-color-dot');
       if (!dot) return;
@@ -168,6 +193,31 @@ window.Scratchpad = (() => {
       dot.classList.add('active');
       setPenColor(dot.dataset.color);
     });
+
+    if (elements.customColorPicker) {
+      const updateCustomColor = (val) => {
+        state.customColor = val;
+        localStorage.setItem('zhongwen_scratchpad_custom_color', val);
+        elements.customColorBtn.dataset.color = val;
+        elements.customColorBtn.style.background = val;
+        document.querySelectorAll('.scratchpad-color-dot').forEach(d => d.classList.remove('active'));
+        elements.customColorBtn.classList.add('active');
+        setPenColor(val);
+      };
+      elements.customColorPicker.addEventListener('input', e => updateCustomColor(e.target.value));
+      elements.customColorPicker.addEventListener('change', e => updateCustomColor(e.target.value));
+    }
+
+    if (elements.stylusActionSelect) {
+      elements.stylusActionSelect.addEventListener('change', e => {
+        state.stylusAction = e.target.value;
+        localStorage.setItem('zhongwen_stylus_button_action', state.stylusAction);
+      });
+    }
+
+    window.addEventListener('keydown', handleGlobalKeyDown, { capture: true });
+    window.addEventListener('keyup', handleGlobalKeyUp, { capture: true });
+
     elements.sizeSlider.addEventListener('input', e => {
       const val = parseInt(e.target.value, 10);
       if (state.tool === 'eraser') state.eraserSize = val;
@@ -176,6 +226,7 @@ window.Scratchpad = (() => {
       updateEraserCursorSize();
     });
     elements.stylusToggle.addEventListener('change', e => { state.stylusOnly = e.target.checked; });
+    elements.fixPenBtn.addEventListener('click', fixPenInput);
     elements.clearBtn.addEventListener('click', () => {
       if (confirm('Clear this scratchpad page?')) {
         clearCanvas();
@@ -393,6 +444,133 @@ window.Scratchpad = (() => {
     elements.eraserCursor.style.width = state.eraserSize + 'px';
     elements.eraserCursor.style.height = state.eraserSize + 'px';
   }
+  function isPalmTouch(e) {
+    if (e.pointerType === 'touch') {
+      if ((e.width && e.width > 35) || (e.height && e.height > 35)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function fixPenInput() {
+    state.stylusOnly = false;
+    if (elements.stylusToggle) elements.stylusToggle.checked = false;
+    if (window.showToast) {
+        showToast("Stylus Only disabled. Touch drawing enabled. (Standard stylus fallback active)");
+    } else {
+        alert("Stylus Only mode disabled so you can write. (Your stylus is registering as a touch/mouse device, so we enabled touch drawing)");
+    }
+  }
+
+  function restartStylus() {
+    resetPointerState();
+    state.buttonHandled = false;
+    state.activeButtons = 0;
+    
+    if (activePointerId != null) {
+      try { elements.canvas.releasePointerCapture(activePointerId); } catch (_) {}
+    }
+    
+    elements.canvas.removeEventListener('pointerdown', handlePointerDown);
+    elements.canvas.removeEventListener('pointermove', handlePointerMove);
+    
+    elements.canvas.addEventListener('pointerdown', handlePointerDown);
+    elements.canvas.addEventListener('pointermove', handlePointerMove);
+    
+    if (window.showToast) {
+      showToast("Stylus input restarted! Ready to write. 🖊️");
+    } else {
+      alert("Stylus input restarted!");
+    }
+  }
+
+  function updatePaletteForTheme() {
+    if (!elements.palette) return;
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    const dots = Array.from(elements.palette.querySelectorAll('.scratchpad-color-dot')).filter(d => d.id !== 'sp-custom-color-btn');
+    const lightColors = ['#171717', '#B42318', '#1F4E79', '#2F8F71', '#C98212'];
+    const darkColors = ['#F5F5F7', '#F05252', '#63B3ED', '#48BB78', '#ECC94B'];
+    const colors = theme === 'dark' ? darkColors : lightColors;
+    
+    dots.forEach((dot, index) => {
+      if (colors[index]) {
+        dot.dataset.color = colors[index];
+        dot.style.backgroundColor = colors[index];
+      }
+    });
+    
+    const activeDot = elements.palette.querySelector('.scratchpad-color-dot.active');
+    if (activeDot) {
+      if (activeDot.id === 'sp-custom-color-btn') {
+        setPenColor(state.customColor);
+      } else {
+        setPenColor(activeDot.dataset.color);
+      }
+    }
+  }
+
+  function cycleColors() {
+    if (!elements.palette) return;
+    const dots = Array.from(elements.palette.querySelectorAll('.scratchpad-color-dot'));
+    if (dots.length === 0) return;
+    
+    const activeIndex = dots.findIndex(d => d.classList.contains('active'));
+    const nextIndex = (activeIndex + 1) % dots.length;
+    
+    dots.forEach(d => d.classList.remove('active'));
+    const nextDot = dots[nextIndex];
+    nextDot.classList.add('active');
+    
+    if (nextDot.id === 'sp-custom-color-btn') {
+      setPenColor(state.customColor);
+    } else {
+      setPenColor(nextDot.dataset.color);
+    }
+    
+    if (window.showToast) {
+      showToast("Switched color 🎨");
+    }
+  }
+
+  function handleGlobalKeyDown(e) {
+    if (!state.isOpen) return;
+    if (e.key === 'PageUp' || e.key === 'PageDown' || e.code === 'PageUp' || e.code === 'PageDown') {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const isPageDown = e.key === 'PageDown' || e.code === 'PageDown';
+      const isPageUp = e.key === 'PageUp' || e.code === 'PageUp';
+      
+      if (isPageDown) {
+        if (!state.buttonHandled) {
+          state.buttonHandled = true;
+          if (state.tool === 'eraser') {
+            setTool('pressure');
+            if (window.showToast) showToast("Pen Mode active 🖊️");
+          } else {
+            setTool('eraser');
+            if (window.showToast) showToast("Eraser Mode active 🧹");
+          }
+        }
+      } else if (isPageUp) {
+        if (!state.buttonHandled) {
+          state.buttonHandled = true;
+          cycleColors();
+        }
+      }
+    }
+  }
+
+  function handleGlobalKeyUp(e) {
+    if (!state.isOpen) return;
+    if (e.key === 'PageUp' || e.key === 'PageDown' || e.code === 'PageUp' || e.code === 'PageDown') {
+      e.preventDefault();
+      e.stopPropagation();
+      state.buttonHandled = false;
+    }
+  }
+
   function resetPointerState() {
     state.isDrawing = false;
     activePointerId = null;
@@ -407,9 +585,47 @@ window.Scratchpad = (() => {
       y: (e.clientY - rect.top) * (rect.height ? lh / rect.height : 1)
     };
   }
+  function handleStylusButtonAction(e) {
+    if (e.pointerType !== 'pen') return false;
+    const barrelPressed = (e.buttons & (2 | 4)) !== 0;
+    if (!barrelPressed) return false;
+
+    const action = state.stylusAction;
+    if (action === 'toggle_tool') {
+      if (!state.buttonHandled) {
+        state.buttonHandled = true;
+        if (state.tool === 'eraser') {
+          setTool('pressure');
+        } else {
+          setTool('eraser');
+        }
+      }
+      return true;
+    } else if (action === 'clear') {
+      if (!state.buttonHandled) {
+        state.buttonHandled = true;
+        clearCanvas();
+        markDirty();
+      }
+      return true;
+    } else if (action === 'disabled') {
+      return true;
+    }
+    return false;
+  }
+
   function handlePointerDown(e) {
     if (!state.isOpen) return;
     if (state.stylusOnly && e.pointerType !== 'pen') return;
+    if (isPalmTouch(e)) return;
+
+    state.activeButtons = e.buttons;
+    state.buttonHandled = false;
+    if (handleStylusButtonAction(e)) {
+      if (e.cancelable) e.preventDefault();
+      return;
+    }
+
     if (state.isDrawing) {
       const stale = Date.now() - lastPointerEventTime > 500;
       if (e.pointerType === 'pen' || e.pointerId === activePointerId || stale) resetPointerState();
@@ -423,22 +639,43 @@ window.Scratchpad = (() => {
     updateEraserCursor(e);
     if (e.cancelable) e.preventDefault();
   }
+
   function handlePointerMove(e) {
     if (!state.isOpen) return;
     updateEraserCursor(e);
-    if (state.isDrawing && e.pointerId === activePointerId && (e.buttons & 1) === 0) {
+    
+    state.activeButtons = e.buttons;
+    if (handleStylusButtonAction(e)) {
+      if (state.isDrawing && e.pointerId === activePointerId) {
+        try { elements.canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        resetPointerState();
+      }
+      if (e.cancelable) e.preventDefault();
+      return;
+    }
+
+    const isMouse = e.pointerType === 'mouse';
+    if (isMouse && state.isDrawing && e.pointerId === activePointerId && e.buttons === 0) {
       try { elements.canvas.releasePointerCapture(e.pointerId); } catch (_) {}
       resetPointerState();
       return;
     }
     if (!state.isDrawing || e.pointerId !== activePointerId) return;
     if (state.stylusOnly && e.pointerType !== 'pen') return;
+    if (isPalmTouch(e)) return;
     lastPointerEventTime = Date.now();
+    
     const currentPos = getPos(e);
     ctx.beginPath();
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    if (state.tool === 'eraser') {
+    
+    const isEraseHold = state.stylusAction === 'erase_hold';
+    const barrelPressed = e.pointerType === 'pen' && (state.activeButtons & (2 | 4)) !== 0;
+    const tailPressed = e.pointerType === 'pen' && (state.activeButtons & 32) !== 0;
+    const useEraser = state.tool === 'eraser' || tailPressed || (isEraseHold && barrelPressed);
+
+    if (useEraser) {
       ctx.globalCompositeOperation = 'destination-out';
       ctx.strokeStyle = 'rgba(0,0,0,1)';
       ctx.lineWidth = state.eraserSize;
@@ -460,16 +697,25 @@ window.Scratchpad = (() => {
     markDirty();
     if (e.cancelable) e.preventDefault();
   }
+
   function handlePointerUp(e) {
     if (!state.isOpen && activePointerId == null) return;
     if (e.pointerId === activePointerId) {
       try { elements.canvas.releasePointerCapture(e.pointerId); } catch (_) {}
       resetPointerState();
+      state.activeButtons = 0;
       scheduleSave();
     }
+    state.buttonHandled = false;
   }
+
   function updateEraserCursor(e) {
-    if (state.tool === 'eraser') {
+    const isEraseHold = state.stylusAction === 'erase_hold';
+    const barrelPressed = e.pointerType === 'pen' && (e.buttons & (2 | 4)) !== 0;
+    const tailPressed = e.pointerType === 'pen' && (e.buttons & 32) !== 0;
+    const useEraser = state.tool === 'eraser' || tailPressed || (isEraseHold && barrelPressed);
+
+    if (useEraser) {
       elements.eraserCursor.style.display = 'block';
       elements.eraserCursor.style.left = e.clientX + 'px';
       elements.eraserCursor.style.top = e.clientY + 'px';
@@ -512,6 +758,7 @@ window.Scratchpad = (() => {
     document.body.style.overflow = 'hidden';
     window.dispatchEvent(new CustomEvent('scratchpad:open'));
     await ensurePages();
+    updatePaletteForTheme();
     resizeCanvas(false);
     await loadPageToCanvas(currentPage());
     renderPages();
@@ -536,7 +783,7 @@ window.Scratchpad = (() => {
     buildUI();
   }
 
-  return { init, show, hide, clearCanvas, setTool, setPenColor, saveCurrentPage, getState: () => state, storage: Storage };
+  return { init, show, hide, clearCanvas, setTool, setPenColor, saveCurrentPage, fixPenInput, getState: () => state, storage: Storage };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

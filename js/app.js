@@ -621,7 +621,7 @@ window.PinyinAudio = PinyinAudio;
 // Section
 const API = {
   base: 'data', // Relative to public/
-  version: '206', // Match index.html version for consistency
+  version: '207', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -749,7 +749,7 @@ const API = {
     const characters = App.state.characters;
     const byLevel = { novice: 0, a1: 0, a2: 0, b1: 0 };
     (characters || []).forEach(c => { if (byLevel[c.level] !== undefined) byLevel[c.level]++; });
-    return { total_characters: characters.length, by_level: byLevel, app_version: '206' };
+    return { total_characters: characters.length, by_level: byLevel, app_version: '207' };
   },
 
   annotateText(text, characters, vocab) {
@@ -932,6 +932,7 @@ async function showCharModal(hanziOrObj) {
               <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
                 <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                <button class="btn btn-sm btn-error fix-pen-btn" onclick="DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen 🛠️</button>
                 <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
               </div>
             </div>
@@ -1023,6 +1024,7 @@ const routes = {
   '/vocabulary-books':    { title: 'Course Books',       render: renderVocabularyBooks,    route: 'vocabulary-books' },
   '/grammar':             { title: 'Grammar Academy',    render: renderGrammarLibrary,     route: 'grammar' },
   '/flashcards':          { title: 'Flashcards',         render: renderFlashcardsPage,    route: 'flashcards' },
+  '/learning-mode':       { title: 'Learning Mode',      render: renderLearningModePage,  route: 'learning-mode' },
   '/dialogue':            { title: 'Dialogue Practice',  render: renderDialoguePage,      route: 'dialogue' },
   '/quiz/pronunciation':  { title: 'Pronunciation Quiz', render: renderPronunciationQuiz, route: 'quiz-pronunciation' },
   '/quiz/vocabulary':     { title: 'Vocabulary Quiz',    render: renderVocabQuiz,         route: 'quiz-vocabulary' },
@@ -1066,6 +1068,10 @@ async function router() {
   const path = getPath();
   const route = resolveRoute(path);
   closeMobileNav();
+
+  if (window.LearningModeModule && typeof window.LearningModeModule.unmount === 'function') {
+    window.LearningModeModule.unmount();
+  }
 
   // 1. Instant UI update (Top bar and active state)
   requestAnimationFrame(() => {
@@ -1129,7 +1135,7 @@ const mobileNavGroups = {
   start: ['dashboard', 'masterplan', 'b1-coach', 'study-plan', 'learn'],
   beginner: ['onboarding', 'pinyin-table', 'quiz-tones', 'quiz-pronunciation', 'beginner-launchpad', 'playground', 'quiz-flash', 'beginner-coach'],
   course: ['vocabulary-books', 'chapters', 'grammar', 'dialogue', 'reading', 'scenarios'],
-  practice: ['flashcards', 'mixed-recall', 'sentence-builder', 'char-playground', 'library', 'vocabulary'],
+  practice: ['learning-mode', 'flashcards', 'mixed-recall', 'sentence-builder', 'char-playground', 'library', 'vocabulary'],
   exams: ['tocfl', 'tocfl-content', 'exams', 'mock-reading', 'mock-listening', 'quiz-vocabulary']
 };
 
@@ -1162,7 +1168,7 @@ function openMobileSection(section) {
     start: [['/', 'dashboard', 'Dashboard'], ['/masterplan', 'masterplan', 'Masterplan'], ['/b1-coach', 'b1-coach', 'B1 Coach'], ['/study-plan', 'study-plan', 'Today'], ['/learn', 'learn', 'Path']],
     beginner: [['/onboarding', 'onboarding', 'Pinyin'], ['/pinyin-table', 'pinyin-table', 'Table'], ['/quiz/tones', 'quiz-tones', 'Tones'], ['/quiz/pronunciation', 'quiz-pronunciation', 'Pronunciation'], ['/beginner-launchpad', 'beginner-launchpad', 'Launchpad'], ['/playground', 'playground', 'Playground'], ['/quiz/flash', 'quiz-flash', 'Picture Quiz'], ['/beginner-coach', 'beginner-coach', 'Coach']],
     course: [['/vocabulary-books', 'vocabulary-books', 'Books'], ['/chapters', 'chapters', 'Chapters'], ['/grammar', 'grammar', 'Grammar'], ['/dialogue', 'dialogue', 'Dialogue'], ['/reading', 'reading', 'Reading'], ['/scenarios', 'scenarios', 'Scenarios']],
-    practice: [['/flashcards', 'flashcards', 'Cards'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/char-playground', 'char-playground', 'Characters'], ['/library', 'library', 'Library'], ['/vocabulary', 'vocabulary', 'Words']],
+    practice: [['/learning-mode', 'learning-mode', 'Duolingo'], ['/flashcards', 'flashcards', 'Cards'], ['/mixed-recall', 'mixed-recall', 'Mixed'], ['/sentence-builder', 'sentence-builder', 'Sentences'], ['/char-playground', 'char-playground', 'Characters'], ['/library', 'library', 'Library'], ['/vocabulary', 'vocabulary', 'Words']],
     exams: [['/tocfl', 'tocfl', 'TOCFL'], ['/tocfl-content', 'tocfl-content', 'Native'], ['/exams', 'exams', 'Monthly'], ['/mock-test/reading', 'mock-reading', 'Reading Test'], ['/mock-test/listening', 'mock-listening', 'Listening Test'], ['/quiz/vocabulary', 'quiz-vocabulary', 'Vocab Quiz']]
   };
   const sectionIcons = {
@@ -1171,7 +1177,7 @@ function openMobileSection(section) {
     tocfl: 'target', 'tocfl-content': 'file', 'quiz-vocabulary': 'vocabulary', 'quiz-flash': 'flashcards', 'quiz-tones': 'target',
     'quiz-pronunciation': 'letters', exams: 'exam', reading: 'reading', dialogue: 'dialogue', 'mock-reading': 'file',
     'mock-listening': 'headphones', 'study-plan': 'check', 'mixed-recall': 'brain', 'sentence-builder': 'layers',
-    playground: 'play', 'char-playground': 'puzzle', scenarios: 'scenarios'
+    playground: 'play', 'char-playground': 'puzzle', scenarios: 'scenarios', 'learning-mode': 'play'
   };
   const renderIcon = route => window.IconSystem?.svg(sectionIcons[route] || 'dashboard') || '';
   const currentRoute = resolveRoute(getPath()).route;
@@ -2106,6 +2112,7 @@ async function renderDialoguePage(container) {
 async function boot() {
   App.loadSettings();
   App.loadProgress();
+  if (window.AppAnim) await window.AppAnim.init();
 
   // 1. Core UI setup (Sync tasks)
   document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
@@ -2248,6 +2255,12 @@ async function renderTOCFLContentPage(container) {
   await API.loadScript(`js/tocfl-content.js?v=${API.version}`);
   if (window.TOCFLContentModule) return TOCFLContentModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>TOCFL Content Module Error</h3></div>';
+}
+
+async function renderLearningModePage(container) {
+  await API.loadScript(`js/learning-mode.js?v=${API.version}`);
+  if (window.LearningModeModule) return window.LearningModeModule.render(container);
+  container.innerHTML = '<div class="empty-state"><h3>Learning Mode Module Error</h3></div>';
 }
 
 

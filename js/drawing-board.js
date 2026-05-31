@@ -1,70 +1,130 @@
 /**
  * drawing-board.js
  * A non-intrusive controller for HanziWriter and a freehand canvas.
+ * Refactored to support multiple concurrent instances on the same page.
  */
 
 window.DrawingBoard = (() => {
+    let instances = {}; // Registry of active canvas instances indexed by canvasId
+    let activeCanvasId = null; // Canvas ID last interacted with
+
     let state = {
-        mode: 'guided', // animated | guided | freehand | stroke-order
         penOnly: false,
-        freehandGuide: localStorage.getItem('zhongwen_freehand_guide') !== '0',
-        strokeWidth: 4,
-        hanzi: '',
-        hw: null,
-        canvas: null,
-        ctx: null,
-        isDrawing: false,
-        activePointerId: null,
-        lastPointerEventTime: 0,
-        lastPos: null,
-        container: null,
-        writerTarget: null,
-        theme: 'light',
-        hwLoading: null
+        freehandGuide: localStorage.getItem('zhongwen_freehand_guide') !== '0'
     };
+
+    function isPalmTouch(e) {
+        if (e.pointerType === 'touch') {
+            if ((e.width && e.width > 35) || (e.height && e.height > 35)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getContextFromEvent() {
+        const target = window.event?.target;
+        if (!target) return null;
+        
+        let current = target;
+        while (current && current !== document.body) {
+            const canvas = current.querySelector('canvas');
+            if (canvas) {
+                const writerTarget = current.querySelector('[id*="hanzi-writer"]') || current.querySelector('.canvas-writer');
+                return { canvas, writerTarget, container: current };
+            }
+            current = current.parentElement;
+        }
+        return null;
+    }
+
+    function getActiveInstance() {
+        const ctx = getContextFromEvent();
+        if (ctx && ctx.canvas && instances[ctx.canvas.id]) {
+            activeCanvasId = ctx.canvas.id;
+            return instances[ctx.canvas.id];
+        }
+        if (activeCanvasId && instances[activeCanvasId]) {
+            return instances[activeCanvasId];
+        }
+        const keys = Object.keys(instances);
+        if (keys.length > 0) return instances[keys[0]];
+        return null;
+    }
+
+    function fixPenInput() {
+        state.penOnly = false;
+        const inst = getActiveInstance();
+        syncUI(inst);
+        if (window.showToast) {
+            showToast("Pen Only disabled. Touch drawing enabled. (Standard stylus fallback active)");
+        } else {
+            alert("Pen Only mode disabled so you can write. (Your stylus is registering as a touch/mouse device, so we enabled touch drawing)");
+        }
+    }
 
     function togglePenOnly() {
         state.penOnly = !state.penOnly;
-        syncUI();
+        const inst = getActiveInstance();
+        syncUI(inst);
     }
 
     function toggleFreehandGuide() {
         state.freehandGuide = !state.freehandGuide;
         localStorage.setItem('zhongwen_freehand_guide', state.freehandGuide ? '1' : '0');
-        applyGuideVisibility();
-        syncUI();
-    }
-
-    function applyGuideVisibility() {
-        if (!state.hw) return;
-        if (state.mode === 'guided' || state.freehandGuide) {
-            if (typeof state.hw.showOutline === 'function') state.hw.showOutline();
-        } else {
-            if (typeof state.hw.hideOutline === 'function') state.hw.hideOutline();
+        
+        const inst = getActiveInstance();
+        if (inst) {
+            applyGuideVisibility(inst);
+            syncUI(inst);
         }
-        if (typeof state.hw.hideCharacter === 'function') state.hw.hideCharacter();
     }
 
-    function syncUI() {
-        const modeSelects = document.querySelectorAll('select[onchange*="DrawingBoard.setMode"]');
-        modeSelects.forEach(s => s.value = state.mode);
+    function applyGuideVisibility(inst) {
+        if (!inst || !inst.hw) return;
+        if (inst.isExam) {
+            if (typeof inst.hw.hideOutline === 'function') inst.hw.hideOutline();
+            if (typeof inst.hw.hideCharacter === 'function') inst.hw.hideCharacter();
+            return;
+        }
+        if (inst.mode === 'guided' || state.freehandGuide) {
+            if (typeof inst.hw.showOutline === 'function') inst.hw.showOutline();
+        } else {
+            if (typeof inst.hw.hideOutline === 'function') inst.hw.hideOutline();
+        }
+        if (typeof inst.hw.hideCharacter === 'function') inst.hw.hideCharacter();
+    }
 
-        const penControls = [document.getElementById('pen-controls'), document.getElementById('app-pen-controls')];
+    function syncUI(targetInst) {
+        const inst = targetInst || getActiveInstance();
+        if (!inst || !inst.canvas) return;
+
+        // Scope DOM updates only to the container representing this writing board instance
+        const container = inst.canvas.closest('.writing-task') || inst.canvas.closest('.canvas-container')?.parentElement || document;
+
+        const modeSelects = container.querySelectorAll('select[onchange*="DrawingBoard.setMode"]');
+        modeSelects.forEach(s => s.value = inst.mode);
+
+        const penControls = [
+            container.querySelector('#pen-controls'), 
+            container.querySelector('#app-pen-controls'),
+            container.querySelector('.canvas-controls')
+        ];
         penControls.forEach(c => {
-            if (c) c.style.display = state.mode === 'freehand' ? 'flex' : 'none';
+            if (c) c.style.display = (inst.mode === 'freehand' || inst.mode === 'guided') ? 'flex' : 'none';
         });
 
-        // Update all Pen Only buttons
-        const penButtons = document.querySelectorAll('.pen-toggle-btn');
+        // Update Pen Only buttons inside this specific container
+        const penButtons = container.querySelectorAll('.pen-toggle-btn');
         penButtons.forEach(btn => {
             btn.className = state.penOnly ? 'btn btn-sm btn-primary pen-toggle-btn' : 'btn btn-sm btn-outline pen-toggle-btn';
             btn.textContent = state.penOnly ? '🖊️ Pen Only: ON' : '🖊️ Pen Only: OFF';
         });
 
-        const widthSliders = document.querySelectorAll('input[oninput*="DrawingBoard.setPenWidth"]');
-        widthSliders.forEach(s => s.value = state.strokeWidth);
+        const widthSliders = container.querySelectorAll('input[oninput*="DrawingBoard.setPenWidth"]');
+        widthSliders.forEach(s => s.value = inst.strokeWidth);
 
-        const guideButtons = document.querySelectorAll('.freehand-guide-toggle-btn');
+        const guideButtons = container.querySelectorAll('.freehand-guide-toggle-btn');
         guideButtons.forEach(btn => {
             btn.className = state.freehandGuide ? 'btn btn-sm btn-outline freehand-guide-toggle-btn' : 'btn btn-sm btn-primary freehand-guide-toggle-btn';
             btn.textContent = state.freehandGuide ? 'Guide: ON' : 'Guide: OFF';
@@ -73,68 +133,106 @@ window.DrawingBoard = (() => {
     }
 
     // Capture-phase event handler to block non-pen inputs before HanziWriter gets them
-    function handleCaptureEvent(e) {
+    function handleCaptureEvent(e, inst) {
         if (state.penOnly && e.pointerType !== 'pen') {
+            e.stopPropagation();
+            e.preventDefault();
+            return;
+        }
+        if (isPalmTouch(e)) {
             e.stopPropagation();
             e.preventDefault();
         }
     }
 
     function init(writerTargetId, canvasId, hanzi) {
-        state.writerTarget = document.getElementById(writerTargetId);
-        state.canvas = document.getElementById(canvasId);
-        if (!state.writerTarget || !state.canvas) return;
+        const writerTarget = document.getElementById(writerTargetId);
+        const canvas = document.getElementById(canvasId);
+        if (!writerTarget || !canvas) return;
 
-        state.hanzi = hanzi;
-        state.theme = document.documentElement.getAttribute('data-theme') || 'light';
-        state.strokeColor = state.theme === 'dark' ? '#e8e4df' : '#2C3E50';
-        state.outlineColor = state.theme === 'dark' ? '#333333' : '#EAEAEA';
+        const isExam = canvasId.startsWith('writing-canvas-w_');
+        // Initialize unique state mapping for this canvas ID
+        instances[canvasId] = {
+            canvasId: canvasId,
+            writerTargetId: writerTargetId,
+            canvas: canvas,
+            writerTarget: writerTarget,
+            ctx: canvas.getContext('2d'),
+            hanzi: hanzi,
+            hw: null,
+            mode: isExam ? 'freehand' : 'guided',
+            isExam: isExam,
+            strokeWidth: 4,
+            isDrawing: false,
+            activePointerId: null,
+            activeButtons: 0,
+            lastPointerEventTime: 0,
+            lastPos: null,
+            points: [],
+            frameId: null,
+            buttonHandled: false,
+            isEraserMode: false
+        };
 
-        state.ctx = state.canvas.getContext('2d');
-        state.canvas.style.touchAction = 'none';
-        state.writerTarget.style.touchAction = 'none';
+        const inst = instances[canvasId];
+        activeCanvasId = canvasId;
+
+        const theme = document.documentElement.getAttribute('data-theme') || 'light';
+        inst.strokeColor = theme === 'dark' ? '#e8e4df' : '#2C3E50';
+        inst.outlineColor = theme === 'dark' ? '#333333' : '#EAEAEA';
+
+        canvas.style.touchAction = 'none';
+        writerTarget.style.touchAction = 'none';
         
         // Ensure canvas is correctly sized
-        resizeCanvas();
+        resizeCanvas(inst);
 
         // Initialize HanziWriter
-        initHanziWriter();
+        initHanziWriter(inst);
 
         // Canvas events (Freehand)
-        state.canvas.onpointerdown = handlePointerDown;
-        state.canvas.onpointermove = handlePointerMove;
-        state.canvas.onpointerup = handlePointerUp;
-        state.canvas.onpointercancel = handlePointerUp;
-        state.canvas.addEventListener('lostpointercapture', handleLostPointerCapture);
+        canvas.onpointerdown = (e) => handlePointerDown(e, inst);
+        canvas.onpointermove = (e) => handlePointerMove(e, inst);
+        canvas.onpointerup = (e) => handlePointerUp(e, inst);
+        canvas.onpointercancel = (e) => handlePointerUp(e, inst);
+        
+        if (canvas._captureHandler) {
+            canvas.removeEventListener('lostpointercapture', canvas._captureHandler);
+        }
+        canvas._captureHandler = (e) => handleLostPointerCapture(e, inst);
+        canvas.addEventListener('lostpointercapture', canvas._captureHandler);
 
         // Block touch events for Guided mode when Pen Only is enabled
-        const container = state.writerTarget.parentElement;
+        const container = writerTarget.parentElement;
         if (container) {
-            container.removeEventListener('pointerdown', handleCaptureEvent, true);
-            container.removeEventListener('pointermove', handleCaptureEvent, true);
-            container.addEventListener('pointerdown', handleCaptureEvent, true);
-            container.addEventListener('pointermove', handleCaptureEvent, true);
+            if (container._captureHandler) {
+                container.removeEventListener('pointerdown', container._captureHandler, true);
+                container.removeEventListener('pointermove', container._captureHandler, true);
+            }
+            container._captureHandler = (e) => handleCaptureEvent(e, inst);
+            container.addEventListener('pointerdown', container._captureHandler, true);
+            container.addEventListener('pointermove', container._captureHandler, true);
         }
 
         // Auto-resize handling
-        window.removeEventListener('resize', resizeCanvas);
-        window.addEventListener('resize', resizeCanvas);
-        window.removeEventListener('scratchpad:open', resetInteractionState);
-        window.removeEventListener('scratchpad:closed', resetInteractionState);
-        window.addEventListener('scratchpad:open', resetInteractionState);
-        window.addEventListener('scratchpad:closed', resetInteractionState);
-        
-        // Synchronize UI
-        syncUI();
+        window.removeEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize);
+        window.removeEventListener('scratchpad:open', resetAllInteractionStates);
+        window.removeEventListener('scratchpad:closed', resetAllInteractionStates);
+        window.addEventListener('scratchpad:open', resetAllInteractionStates);
+        window.addEventListener('scratchpad:closed', resetAllInteractionStates);
         
         // Initial visibility
-        setMode(state.mode);
+        setMode(inst.mode, inst);
+        syncUI(inst);
     }
 
     function ensureHanziWriter() {
         if (typeof HanziWriter !== 'undefined') return Promise.resolve();
-        if (state.hwLoading) return state.hwLoading;
-        state.hwLoading = new Promise((resolve, reject) => {
+        // Since hwLoading is global, it is safe to keep it as a promise on window/DrawingBoard
+        if (window._hwLoadingPromise) return window._hwLoadingPromise;
+        
+        window._hwLoadingPromise = new Promise((resolve, reject) => {
             const existing = document.querySelector('script[src*="hanzi-writer"]');
             if (existing) {
                 existing.addEventListener('load', resolve, { once: true });
@@ -148,25 +246,25 @@ window.DrawingBoard = (() => {
             script.onload = resolve;
             script.onerror = reject;
             document.head.appendChild(script);
-        }).finally(() => { state.hwLoading = null; });
-        return state.hwLoading;
+        });
+        return window._hwLoadingPromise;
     }
 
-    function initHanziWriter() {
-        if (!state.writerTarget) return;
+    function initHanziWriter(inst) {
+        if (!inst.writerTarget) return;
         if (typeof HanziWriter === 'undefined') {
-            state.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Loading writing engine...</div>';
-            ensureHanziWriter().then(() => initHanziWriter()).catch(() => {
-                state.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Writing engine could not load. Freehand mode still works.</div>';
+            inst.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Loading writing engine...</div>';
+            ensureHanziWriter().then(() => initHanziWriter(inst)).catch(() => {
+                inst.writerTarget.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-2)">Writing engine could not load. Freehand mode still works.</div>';
             });
             return;
         }
-        state.writerTarget.innerHTML = '';
+        inst.writerTarget.innerHTML = '';
         
-        const rect = state.writerTarget.getBoundingClientRect();
+        const rect = inst.writerTarget.getBoundingClientRect();
         const size = Math.min(rect.width, rect.height) - 20;
         
-        state.hw = HanziWriter.create(state.writerTarget.id, state.hanzi, {
+        inst.hw = HanziWriter.create(inst.writerTarget.id, inst.hanzi, {
             width: size > 0 ? size : 280,
             height: size > 0 ? size : 280,
             padding: 10,
@@ -174,9 +272,10 @@ window.DrawingBoard = (() => {
             showOutline: true,
             strokeAnimationSpeed: 1.5,
             delayBetweenStrokes: 50,
-            strokeColor: state.strokeColor,
-            outlineColor: state.outlineColor,
+            strokeColor: inst.strokeColor,
+            outlineColor: inst.outlineColor,
             highlightColor: '#C0392B',
+            drawingColor: inst.strokeColor === '#e8e4df' ? '#ffffff' : '#000000',
             drawingWidth: 15,
             charDataLoader: function(char, onComplete, onFailure) {
                 fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/' + encodeURIComponent(char) + '.json')
@@ -192,91 +291,102 @@ window.DrawingBoard = (() => {
             }
         });
 
-        applyGuideVisibility();
+        applyGuideVisibility(inst);
 
-        if (state.mode === 'guided') {
-            state.hw.quiz();
+        if (inst.mode === 'guided') {
+            inst.hw.quiz();
         }
     }
 
-    function resizeCanvas() {
-        if (!state.canvas) return;
-        const rect = state.canvas.parentElement.getBoundingClientRect();
+    function resizeCanvas(inst) {
+        if (!inst.canvas) return;
+        const rect = inst.canvas.parentElement.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
         
         // Match logical size to container
-        state.canvas.style.width = rect.width + 'px';
-        state.canvas.style.height = rect.height + 'px';
+        inst.canvas.style.width = rect.width + 'px';
+        inst.canvas.style.height = rect.height + 'px';
         
         // Match internal buffer to physical pixels for precision
-        state.canvas.width = rect.width * dpr;
-        state.canvas.height = rect.height * dpr;
+        inst.canvas.width = rect.width * dpr;
+        inst.canvas.height = rect.height * dpr;
         
         // Scale context to match logical coordinates
-        state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        inst.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         
-        clearFreehand();
+        clearFreehand(inst);
     }
 
-    function setMode(mode) {
-        state.mode = mode;
-        if (!state.canvas) return;
+    function handleResize() {
+        Object.values(instances).forEach(inst => {
+            if (inst.canvas) resizeCanvas(inst);
+        });
+    }
 
-        hideStrokeOrderPanel();
+    function setMode(mode, targetInst) {
+        const inst = targetInst || getActiveInstance();
+        if (!inst) return;
+        
+        inst.mode = mode;
+        inst.buttonHandled = false;
+        inst.isEraserMode = false;
+        if (!inst.canvas) return;
+
+        hideStrokeOrderPanel(inst);
 
         if (mode === 'guided') {
-            state.canvas.style.display = 'none';
-            state.canvas.style.pointerEvents = 'none';
-            if (state.hw) {
-                state.hw.cancelAnimation?.();
-                state.hw.hideCharacter?.();
-                state.hw.showOutline?.();
-                state.hw.quiz();
+            inst.canvas.style.display = 'none';
+            inst.canvas.style.pointerEvents = 'none';
+            if (inst.hw) {
+                inst.hw.cancelAnimation?.();
+                inst.hw.hideCharacter?.();
+                inst.hw.showOutline?.();
+                inst.hw.quiz();
             }
         } else if (mode === 'freehand') {
-            state.canvas.style.display = 'block';
-            state.canvas.style.pointerEvents = 'auto';
-            state.canvas.style.zIndex = '10';
-            if (state.hw) {
-                state.hw.cancelQuiz();
-                state.hw.cancelAnimation?.();
-                applyGuideVisibility();
+            inst.canvas.style.display = 'block';
+            inst.canvas.style.pointerEvents = 'auto';
+            inst.canvas.style.zIndex = '10';
+            if (inst.hw) {
+                inst.hw.cancelQuiz();
+                inst.hw.cancelAnimation?.();
+                applyGuideVisibility(inst);
             }
         } else if (mode === 'stroke-order') {
-            state.canvas.style.display = 'none';
-            state.canvas.style.pointerEvents = 'none';
-            if (state.hw) {
-                state.hw.cancelQuiz();
-                state.hw.cancelAnimation?.();
-                state.hw.hideCharacter?.();
-                state.hw.showOutline?.();
+            inst.canvas.style.display = 'none';
+            inst.canvas.style.pointerEvents = 'none';
+            if (inst.hw) {
+                inst.hw.cancelQuiz();
+                inst.hw.cancelAnimation?.();
+                inst.hw.hideCharacter?.();
+                inst.hw.showOutline?.();
             }
-            showStrokeOrderMode();
+            showStrokeOrderMode(inst);
         } else if (mode === 'animated') {
-            state.canvas.style.display = 'none';
-            state.canvas.style.pointerEvents = 'none';
-            playAnimatedCharacter();
+            inst.canvas.style.display = 'none';
+            inst.canvas.style.pointerEvents = 'none';
+            playAnimatedCharacter(inst);
         }
-        syncUI();
+        syncUI(inst);
     }
 
     function escapeAttr(value) {
         return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
     }
 
-    function strokeStripHost() {
-        const canvasContainer = state.canvas?.parentElement || state.writerTarget?.parentElement;
+    function strokeStripHost(inst) {
+        const canvasContainer = inst.canvas?.parentElement || inst.writerTarget?.parentElement;
         return canvasContainer?.parentElement || canvasContainer || null;
     }
 
-    function upsertStrokePanel() {
-        const host = strokeStripHost();
+    function upsertStrokePanel(inst) {
+        const host = strokeStripHost(inst);
         if (!host) return null;
         let panel = Array.from(host.children).find(child => child.classList?.contains('drawing-stroke-strip'));
         if (!panel) {
             panel = document.createElement('div');
             panel.className = 'drawing-stroke-strip';
-            const canvasContainer = state.canvas?.parentElement || state.writerTarget?.parentElement;
+            const canvasContainer = inst.canvas?.parentElement || inst.writerTarget?.parentElement;
             if (canvasContainer && canvasContainer.parentElement === host) {
                 canvasContainer.insertAdjacentElement('afterend', panel);
             } else {
@@ -286,14 +396,14 @@ window.DrawingBoard = (() => {
         return panel;
     }
 
-    function hideStrokeOrderPanel() {
-        const host = strokeStripHost();
+    function hideStrokeOrderPanel(inst) {
+        const host = strokeStripHost(inst);
         const panel = host ? Array.from(host.children).find(child => child.classList?.contains('drawing-stroke-strip')) : null;
         if (panel) panel.hidden = true;
     }
 
-    function strokePreviewSvg(strokes, count) {
-        const strokeColor = state.strokeColor || '#1f2937';
+    function strokePreviewSvg(inst, strokes, count) {
+        const strokeColor = inst.strokeColor || '#1f2937';
         const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#c0392b';
         const visible = strokes.slice(0, count);
         return `
@@ -304,8 +414,8 @@ window.DrawingBoard = (() => {
             </svg>`;
     }
 
-    function renderStrokeOrder(strokes, count = 1) {
-        const panel = upsertStrokePanel();
+    function renderStrokeOrder(inst, strokes, count = 1) {
+        const panel = upsertStrokePanel(inst);
         if (!panel) return;
         panel.hidden = false;
         if (!strokes.length) {
@@ -317,30 +427,29 @@ window.DrawingBoard = (() => {
         panel.innerHTML = `
             <div class="drawing-stroke-title">Stroke order</div>
             <div class="drawing-stroke-slider-layout">
-                <div class="drawing-stroke-preview">${strokePreviewSvg(strokes, current)}</div>
+                <div class="drawing-stroke-preview">${strokePreviewSvg(inst, strokes, current)}</div>
                 <div class="drawing-stroke-controls">
                     <div class="drawing-stroke-count"><strong>${current}</strong> / ${total} strokes</div>
                     <input type="range" min="1" max="${total}" value="${current}" oninput="DrawingBoard.setStrokeOrderStep(this.value)">
-                    <p>Move the slider to reveal the character stroke by stroke.</p>
                 </div>
             </div>`;
     }
 
-    async function loadStrokeData() {
-        const url = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/' + encodeURIComponent(state.hanzi) + '.json';
+    async function loadStrokeData(inst) {
+        const url = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/' + encodeURIComponent(inst.hanzi) + '.json';
         const res = await fetch(url);
         if (!res.ok) throw new Error('Fetch failed: ' + res.status);
         const charData = await res.json();
         return charData?.strokes || [];
     }
 
-    async function showStrokeOrderMode() {
+    async function showStrokeOrderMode(inst) {
         try {
-            const strokes = await loadStrokeData();
-            renderStrokeOrder(strokes, strokes.length);
+            const strokes = await loadStrokeData(inst);
+            renderStrokeOrder(inst, strokes, strokes.length);
         } catch (err) {
             console.warn('Stroke order display failed:', err);
-            const panel = upsertStrokePanel();
+            const panel = upsertStrokePanel(inst);
             if (panel) {
                 panel.hidden = false;
                 panel.innerHTML = '<div class="drawing-stroke-empty">Could not load stroke order for this character.</div>';
@@ -349,208 +458,294 @@ window.DrawingBoard = (() => {
     }
 
     async function setStrokeOrderStep(value) {
+        const inst = getActiveInstance();
+        if (!inst) return;
         try {
-            const strokes = await loadStrokeData();
-            renderStrokeOrder(strokes, value);
+            const strokes = await loadStrokeData(inst);
+            renderStrokeOrder(inst, strokes, value);
         } catch (err) {
             console.warn('Stroke order slider failed:', err);
         }
     }
 
-    function playAnimatedCharacter() {
-        if (!state.hw) return;
+    function playAnimatedCharacter(inst) {
+        if (!inst.hw) return;
         try {
-            state.hw.cancelQuiz();
-            state.hw.cancelAnimation?.();
-            state.hw.hideCharacter?.();
-            state.hw.showOutline?.();
-            state.hw.animateCharacter();
+            inst.hw.cancelQuiz();
+            inst.hw.cancelAnimation?.();
+            inst.hw.hideCharacter?.();
+            inst.hw.showOutline?.();
+            inst.hw.animateCharacter();
         } catch (err) {
             console.warn('Stroke animation failed:', err);
         }
     }
 
     function animate() {
-        setMode('animated');
+        const inst = getActiveInstance();
+        if (inst) setMode('animated', inst);
     }
 
     function reset() {
-        clearFreehand();
-        initHanziWriter();
+        const inst = getActiveInstance();
+        if (inst) {
+            clearFreehand(inst);
+            initHanziWriter(inst);
+        }
     }
 
-    function clearFreehand() {
-        if (!state.ctx) return;
+    function clearFreehand(inst) {
+        if (!inst || !inst.ctx) return;
         const dpr = window.devicePixelRatio || 1;
-        state.ctx.clearRect(0, 0, state.canvas.width / dpr, state.canvas.height / dpr);
+        inst.ctx.clearRect(0, 0, inst.canvas.width / dpr, inst.canvas.height / dpr);
     }
 
-    let frameId = null;
-    let points = [];
-
-    function resetInteractionState() {
-        state.isDrawing = false;
-        state.lastPos = null;
-        const pointerId = state.activePointerId;
-        state.activePointerId = null;
-        points = [];
-        if (frameId) { cancelAnimationFrame(frameId); frameId = null; }
-        if (state.canvas) {
-            if (pointerId != null) { try { state.canvas.releasePointerCapture?.(pointerId); } catch(_) {} }
+    function resetInteractionState(inst) {
+        if (!inst) return;
+        inst.isDrawing = false;
+        inst.lastPos = null;
+        const pointerId = inst.activePointerId;
+        inst.activePointerId = null;
+        inst.points = [];
+        if (inst.frameId) { cancelAnimationFrame(inst.frameId); inst.frameId = null; }
+        if (inst.canvas && pointerId != null) {
+            try { inst.canvas.releasePointerCapture?.(pointerId); } catch(_) {}
         }
     }
 
-    function handleGlobalPointerUp(e) {
-        if (e.pointerId === state.activePointerId) {
-            handlePointerUp(e);
-            window.removeEventListener('pointerup', handleGlobalPointerUp);
-            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+    function resetAllInteractionStates() {
+        Object.values(instances).forEach(resetInteractionState);
+    }
+
+    function handleGlobalPointerUp(e, inst) {
+        if (e.pointerId === inst.activePointerId) {
+            handlePointerUp(e, inst);
+            window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+            window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
         }
     }
 
-    function handleLostPointerCapture(e) {
-        if (e.pointerId === state.activePointerId) {
-            state.isDrawing = false;
-            state.activePointerId = null;
-            window.removeEventListener('pointerup', handleGlobalPointerUp);
-            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+    function handleLostPointerCapture(e, inst) {
+        if (e.pointerId === inst.activePointerId) {
+            inst.isDrawing = false;
+            inst.activePointerId = null;
+            window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+            window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
         }
     }
 
-    function handlePointerDown(e) {
-        if (state.mode !== 'freehand') return;
+    function getStylusAction() {
+        return localStorage.getItem('zhongwen_stylus_button_action') || 'erase_hold';
+    }
 
-        // Pen-only check: if penOnly is enabled, only allow 'pen' pointer types
+    function handleStylusButtonAction(e, inst) {
+        if (e.pointerType !== 'pen') return false;
+        const barrelPressed = (e.buttons & (2 | 4)) !== 0;
+        if (!barrelPressed) return false;
+
+        const action = getStylusAction();
+        if (action === 'toggle_tool') {
+            if (!inst.buttonHandled) {
+                inst.buttonHandled = true;
+                inst.isEraserMode = !inst.isEraserMode;
+                if (window.showToast) {
+                    showToast(inst.isEraserMode ? "Eraser mode active" : "Pen mode active");
+                }
+            }
+            return true;
+        } else if (action === 'clear') {
+            if (!inst.buttonHandled) {
+                inst.buttonHandled = true;
+                clearFreehand(inst);
+            }
+            return true;
+        } else if (action === 'disabled') {
+            return true;
+        }
+        return false;
+    }
+
+    function handlePointerDown(e, inst) {
+        if (inst.mode !== 'freehand') return;
+
         if (state.penOnly && e.pointerType !== 'pen') {
             return;
         }
 
+        if (isPalmTouch(e)) {
+            return;
+        }
+
+        activeCanvasId = inst.canvasId;
+
         // Stuck state recovery and multi-touch rejection
-        if (state.isDrawing) {
-            const timeSinceLastEvent = Date.now() - state.lastPointerEventTime;
-            // Recover if:
-            // 1. New stylus down event (only one stylus can draw at a time)
-            // 2. Or same pointer ID is somehow down again
-            // 3. Or last drawing event was more than 500ms ago (abandoned stroke)
-            if (e.pointerType === 'pen' || e.pointerId === state.activePointerId || timeSinceLastEvent > 500) {
-                state.isDrawing = false;
-                state.activePointerId = null;
-                window.removeEventListener('pointerup', handleGlobalPointerUp);
-                window.removeEventListener('pointercancel', handleGlobalPointerUp);
+        if (inst.isDrawing) {
+            const timeSinceLastEvent = Date.now() - inst.lastPointerEventTime;
+            if (e.pointerType === 'pen' || e.pointerId === inst.activePointerId || timeSinceLastEvent > 500) {
+                inst.isDrawing = false;
+                inst.activePointerId = null;
+                window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+                window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
             } else {
-                // Ignore other concurrent touches (palm rejection / multi-touch block)
                 return;
             }
         }
 
-        state.isDrawing = true;
-        state.activePointerId = e.pointerId;
-        state.lastPointerEventTime = Date.now();
-        state.lastPos = getPos(e);
+        inst.isDrawing = true;
+        inst.activePointerId = e.pointerId;
+        inst.activeButtons = e.buttons;
+        inst.buttonHandled = false;
+        if (handleStylusButtonAction(e, inst)) {
+            if (e.cancelable) e.preventDefault();
+            return;
+        }
+        inst.lastPointerEventTime = Date.now();
+        inst.lastPos = getPos(e, inst);
         
         try {
-            state.canvas.setPointerCapture(e.pointerId);
+            inst.canvas.setPointerCapture(e.pointerId);
         } catch (_) {}
 
-        points = [state.lastPos];
+        inst.points = [inst.lastPos];
 
-        state.ctx.beginPath();
-        state.ctx.lineCap = 'round';
-        state.ctx.lineJoin = 'round';
-        state.ctx.strokeStyle = state.strokeColor;
-        state.ctx.lineWidth = state.strokeWidth;
-        state.ctx.moveTo(state.lastPos.x, state.lastPos.y);
+        inst.ctx.beginPath();
+        inst.ctx.lineCap = 'round';
+        inst.ctx.lineJoin = 'round';
+        
+        const action = getStylusAction();
+        const isEraseHold = action === 'erase_hold';
+        const barrelPressed = e.pointerType === 'pen' && (inst.activeButtons & (2 | 4)) !== 0;
+        const tailPressed = e.pointerType === 'pen' && (inst.activeButtons & 32) !== 0;
+        const useEraser = inst.isEraserMode || tailPressed || (isEraseHold && barrelPressed);
+        if (useEraser) {
+            inst.ctx.globalCompositeOperation = 'destination-out';
+            inst.ctx.strokeStyle = 'rgba(0,0,0,1)';
+            inst.ctx.lineWidth = Math.max(20, inst.strokeWidth * 3);
+        } else {
+            inst.ctx.globalCompositeOperation = 'source-over';
+            inst.ctx.strokeStyle = inst.strokeColor;
+            inst.ctx.lineWidth = inst.strokeWidth;
+        }
+        inst.ctx.moveTo(inst.lastPos.x, inst.lastPos.y);
 
-        if (!frameId) {
-            frameId = requestAnimationFrame(drawFrame);
+        if (!inst.frameId) {
+            inst.frameId = requestAnimationFrame(() => drawFrame(inst));
         }
 
-        // Bind global listeners to clean up when lifted
-        window.addEventListener('pointerup', handleGlobalPointerUp);
-        window.addEventListener('pointercancel', handleGlobalPointerUp);
+        if (inst._globalPointerUpHandler) {
+            window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+            window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
+        }
+        inst._globalPointerUpHandler = (ev) => handleGlobalPointerUp(ev, inst);
+        window.addEventListener('pointerup', inst._globalPointerUpHandler);
+        window.addEventListener('pointercancel', inst._globalPointerUpHandler);
 
-        // Prevent default touch behaviors like scrolling when drawing
         if (e.cancelable) e.preventDefault();
     }
 
-    function handlePointerMove(e) {
-        // Stuck state recovery: if we are supposed to be drawing, but get a hover/lifted event
-        // (no buttons pressed) for the active pointer, clear the drawing state.
-        if (state.isDrawing && e.pointerId === state.activePointerId && (e.buttons & 1) === 0) {
-            state.isDrawing = false;
-            state.activePointerId = null;
-            try {
-                state.canvas.releasePointerCapture(e.pointerId);
-            } catch (_) {}
-            window.removeEventListener('pointerup', handleGlobalPointerUp);
-            window.removeEventListener('pointercancel', handleGlobalPointerUp);
+    function handlePointerMove(e, inst) {
+        inst.activeButtons = e.buttons;
+        if (handleStylusButtonAction(e, inst)) {
+            if (inst.isDrawing && e.pointerId === inst.activePointerId) {
+                inst.isDrawing = false;
+                inst.activePointerId = null;
+                window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+                window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
+            }
+            if (e.cancelable) e.preventDefault();
             return;
         }
 
-        if (!state.isDrawing) return;
-        if (e.pointerId !== state.activePointerId) return;
+        const isMouse = e.pointerType === 'mouse';
+        if (isMouse && inst.isDrawing && e.pointerId === inst.activePointerId && e.buttons === 0) {
+            inst.isDrawing = false;
+            inst.activePointerId = null;
+            inst.activeButtons = 0;
+            try {
+                inst.canvas.releasePointerCapture(e.pointerId);
+            } catch (_) {}
+            window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+            window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
+            return;
+        }
+
+        if (!inst.isDrawing) return;
+        if (e.pointerId !== inst.activePointerId) return;
         if (state.penOnly && e.pointerType !== 'pen') return;
+        if (isPalmTouch(e)) return;
 
-        state.lastPointerEventTime = Date.now();
+        inst.lastPointerEventTime = Date.now();
 
-        // Use coalesced events for highest possible fidelity (sampling between frames)
         if (e.getCoalescedEvents) {
             const events = e.getCoalescedEvents();
             for (const ev of events) {
-                points.push(getPos(ev));
+                inst.points.push(getPos(ev, inst));
             }
         } else {
-            points.push(getPos(e));
+            inst.points.push(getPos(e, inst));
         }
     }
 
-    function drawFrame() {
-        if (points.length > 1) {
-            state.ctx.beginPath();
-            state.ctx.lineWidth = state.strokeWidth;
-            state.ctx.lineCap = 'round';
-            state.ctx.lineJoin = 'round';
-            state.ctx.strokeStyle = state.strokeColor;
+    function drawFrame(inst) {
+        if (inst.points.length > 1) {
+            inst.ctx.beginPath();
             
-            state.ctx.moveTo(state.lastPos.x, state.lastPos.y);
-            
-            for (let i = 1; i < points.length; i++) {
-                state.ctx.lineTo(points[i].x, points[i].y);
-                state.lastPos = points[i];
+            const action = getStylusAction();
+            const isEraseHold = action === 'erase_hold';
+            const barrelPressed = (inst.activeButtons & (2 | 4)) !== 0;
+            const tailPressed = (inst.activeButtons & 32) !== 0;
+            const useEraser = inst.isEraserMode || tailPressed || (isEraseHold && barrelPressed);
+            if (useEraser) {
+                inst.ctx.globalCompositeOperation = 'destination-out';
+                inst.ctx.strokeStyle = 'rgba(0,0,0,1)';
+                inst.ctx.lineWidth = Math.max(20, inst.strokeWidth * 3);
+            } else {
+                inst.ctx.globalCompositeOperation = 'source-over';
+                inst.ctx.strokeStyle = inst.strokeColor;
+                inst.ctx.lineWidth = inst.strokeWidth;
             }
-            state.ctx.stroke();
-            points = [state.lastPos];
+            
+            inst.ctx.lineCap = 'round';
+            inst.ctx.lineJoin = 'round';
+            inst.ctx.moveTo(inst.lastPos.x, inst.lastPos.y);
+            
+            for (let i = 1; i < inst.points.length; i++) {
+                inst.ctx.lineTo(inst.points[i].x, inst.points[i].y);
+                inst.lastPos = inst.points[i];
+            }
+            inst.ctx.stroke();
+            inst.points = [inst.lastPos];
         }
         
-        if (state.isDrawing) {
-            frameId = requestAnimationFrame(drawFrame);
+        if (inst.isDrawing) {
+            inst.frameId = requestAnimationFrame(() => drawFrame(inst));
         } else {
-            frameId = null;
+            inst.frameId = null;
         }
     }
 
-    function handlePointerUp(e) {
-        if (e.pointerId === state.activePointerId) {
-            if (state.isDrawing) {
-                // Draw any remaining points
-                const currentPos = getPos(e);
-                points.push(currentPos);
-                drawFrame();
+    function handlePointerUp(e, inst) {
+        if (e.pointerId === inst.activePointerId) {
+            if (inst.isDrawing) {
+                const currentPos = getPos(e, inst);
+                inst.points.push(currentPos);
+                drawFrame(inst);
             }
-            state.isDrawing = false;
-            state.activePointerId = null;
-            if (state.canvas && e.pointerId) {
-                try { state.canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+            inst.isDrawing = false;
+            inst.activePointerId = null;
+            inst.activeButtons = 0;
+            if (inst.canvas && e.pointerId) {
+                try { inst.canvas.releasePointerCapture(e.pointerId); } catch(err) {}
             }
         }
+        inst.buttonHandled = false;
     }
 
-    function getPos(e) {
-        const rect = state.canvas.getBoundingClientRect();
-        // Accounting for CSS transforms/scaling to fix the "above the pen" offset
+    function getPos(e, inst) {
+        const rect = inst.canvas.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
-        const logicalWidth = state.canvas.width / dpr;
-        const logicalHeight = state.canvas.height / dpr;
+        const logicalWidth = inst.canvas.width / dpr;
+        const logicalHeight = inst.canvas.height / dpr;
         const scaleX = rect.width ? logicalWidth / rect.width : 1;
         const scaleY = rect.height ? logicalHeight / rect.height : 1;
         return {
@@ -562,7 +757,6 @@ window.DrawingBoard = (() => {
     function open(text) {
         if (!text) return;
         
-        // Filter out non-Chinese characters for guided writing but keep track of indices
         const textArray = text.split('');
         const characters = [];
         textArray.forEach((char, index) => {
@@ -606,14 +800,22 @@ window.DrawingBoard = (() => {
                                     <button class="btn btn-ghost btn-sm" onclick="DrawingBoard.reset()">Reset</button>
                                 </div>
                             </div>
-                            <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px">
+                            <div id="pen-controls" style="display:flex; justify-content:flex-start; align-items:center; gap:15px; padding:0 4px; flex-wrap:wrap">
                                 <button class="btn btn-sm ${state.penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">
                                     ${state.penOnly ? 'Pen Only: ON' : 'Pen Only: OFF'}
                                 </button>
+                                <button class="btn btn-sm btn-error fix-pen-btn" onclick="DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen 🛠️</button>
+                                <button class="btn btn-sm btn-outline restart-stylus-btn" onclick="DrawingBoard.restartStylus()" title="Restart stylus pointer connection and listeners">Restart Stylus 🔄</button>
                                 <button class="btn btn-sm ${state.freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${state.freehandGuide ? 'ON' : 'OFF'}</button>
+                                <select id="db-stylus-action" class="input input-sm stylus-action-select" style="height:36px; background:var(--card-bg); color:var(--text); border-color:var(--border); font-size:0.75rem; font-weight:800; padding:0 8px;" onchange="DrawingBoard.setStylusAction(this.value)" title="Stylus Button Action">
+                                    <option value="erase_hold">Stylus: Hold to Erase</option>
+                                    <option value="toggle_tool">Stylus: Toggle Pen/Eraser</option>
+                                    <option value="clear">Stylus: Click to Clear</option>
+                                    <option value="disabled">Stylus: Button Disabled</option>
+                                </select>
                                 <div style="flex:1; display:flex; align-items:center; gap:8px">
                                     <span style="font-size:0.7rem; color:var(--text-3)">Size</span>
-                                    <input type="range" min="1" max="15" value="${state.strokeWidth}" oninput="DrawingBoard.setPenWidth(this.value)" style="flex:1; height:4px">
+                                    <input type="range" min="1" max="15" value="${state.strokeWidth || 4}" oninput="DrawingBoard.setPenWidth(this.value)" style="flex:1; height:4px">
                                 </div>
                             </div>
                         </div>
@@ -634,6 +836,10 @@ window.DrawingBoard = (() => {
             
             setTimeout(() => {
                 init('modal-hanzi-writer', 'modal-freehand-canvas', activeCharObj.char);
+                const dbStylusSelect = document.getElementById('db-stylus-action');
+                if (dbStylusSelect) {
+                    dbStylusSelect.value = localStorage.getItem('zhongwen_stylus_button_action') || 'erase_hold';
+                }
             }, 100);
         };
         
@@ -644,13 +850,85 @@ window.DrawingBoard = (() => {
     }
 
     window.addEventListener('blur', () => {
-        if (state.isDrawing) {
-            state.isDrawing = false;
-            state.activePointerId = null;
-            window.removeEventListener('pointerup', handleGlobalPointerUp);
-            window.removeEventListener('pointercancel', handleGlobalPointerUp);
-        }
+        Object.values(instances).forEach(inst => {
+            if (inst.isDrawing) {
+                inst.isDrawing = false;
+                inst.activePointerId = null;
+                window.removeEventListener('pointerup', inst._globalPointerUpHandler);
+                window.removeEventListener('pointercancel', inst._globalPointerUpHandler);
+            }
+        });
     });
+
+    function handleGlobalKeyDown(e) {
+        const inst = getActiveInstance();
+        if (!inst || inst.mode !== 'freehand') return;
+        
+        if (e.key === 'PageUp' || e.key === 'PageDown' || e.code === 'PageUp' || e.code === 'PageDown') {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isPageDown = e.key === 'PageDown' || e.code === 'PageDown';
+            if (isPageDown) {
+                if (!inst.buttonHandled) {
+                    inst.buttonHandled = true;
+                    inst.isEraserMode = !inst.isEraserMode;
+                    if (window.showToast) {
+                        showToast(inst.isEraserMode ? "Eraser mode active 🧹" : "Pen mode active 🖊️");
+                    }
+                }
+            }
+        }
+    }
+
+    function handleGlobalKeyUp(e) {
+        const inst = getActiveInstance();
+        if (!inst || inst.mode !== 'freehand') return;
+        
+        if (e.key === 'PageUp' || e.key === 'PageDown' || e.code === 'PageUp' || e.code === 'PageDown') {
+            e.preventDefault();
+            e.stopPropagation();
+            inst.buttonHandled = false;
+        }
+    }
+
+    function restartStylus(targetInst) {
+        const inst = targetInst || getActiveInstance();
+        if (!inst) return;
+
+        inst.isDrawing = false;
+        inst.activePointerId = null;
+        inst.buttonHandled = false;
+        inst.isEraserMode = false;
+        inst.points = [];
+        if (inst.frameId) {
+            cancelAnimationFrame(inst.frameId);
+            inst.frameId = null;
+        }
+
+        try {
+            inst.canvas.releasePointerCapture(inst.activePointerId);
+        } catch (_) {}
+
+        inst.canvas.onpointerdown = null;
+        inst.canvas.onpointermove = null;
+        inst.canvas.onpointerup = null;
+        inst.canvas.onpointercancel = null;
+
+        inst.canvas.onpointerdown = (e) => handlePointerDown(e, inst);
+        inst.canvas.onpointermove = (e) => handlePointerMove(e, inst);
+        inst.canvas.onpointerup = (e) => handlePointerUp(e, inst);
+        inst.canvas.onpointercancel = (e) => handlePointerUp(e, inst);
+
+        if (window.showToast) {
+            showToast("Stylus input restarted! Ready to write. 🖊️");
+        } else {
+            alert("Stylus input restarted!");
+        }
+    }
+
+    window.addEventListener('keydown', handleGlobalKeyDown, { capture: true });
+    window.addEventListener('keyup', handleGlobalKeyUp, { capture: true });
 
     return {
         init,
@@ -660,12 +938,31 @@ window.DrawingBoard = (() => {
         open,
         setPenOnly: (v) => { state.penOnly = v; },
         togglePenOnly,
+        fixPenInput,
+        restartStylus,
         toggleFreehandGuide,
         setStrokeOrderStep,
-        setFreehandGuide: (v) => { state.freehandGuide = !!v; localStorage.setItem('zhongwen_freehand_guide', state.freehandGuide ? '1' : '0'); applyGuideVisibility(); syncUI(); },
-        setPenWidth: (v) => { state.strokeWidth = parseInt(v); },
-        getState: () => state
+        setFreehandGuide: (v) => { 
+            state.freehandGuide = !!v; 
+            localStorage.setItem('zhongwen_freehand_guide', state.freehandGuide ? '1' : '0'); 
+            Object.values(instances).forEach(applyGuideVisibility); 
+            const inst = getActiveInstance();
+            syncUI(inst); 
+        },
+        setPenWidth: (v) => { 
+            const inst = getActiveInstance();
+            if (inst) {
+                inst.strokeWidth = parseInt(v) || 4;
+                syncUI(inst);
+            }
+        },
+        setStylusAction: (v) => {
+            localStorage.setItem('zhongwen_stylus_button_action', v);
+            const selects = document.querySelectorAll('#db-stylus-action, #sp-stylus-action');
+            selects.forEach(s => s.value = v);
+        },
+        getState: () => state,
+        getInstances: () => instances,
+        getActiveInstance
     };
 })();
-
-

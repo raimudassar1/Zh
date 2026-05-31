@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/main.css?v=206">
+  <link rel="stylesheet" href="css/main.css?v=207">
   <link rel="icon" href="logo.png">
   <link rel="manifest" href="manifest.json">
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js" async></script>
@@ -64,6 +64,7 @@
       <a class="nav-item" data-route="flashcards" href="#/flashcards"><span class="nav-icon" data-icon="flashcards"></span><span class="nav-label">Flashcards</span></a>
       <a class="nav-item" data-route="mixed-recall" href="#/mixed-recall"><span class="nav-icon" data-icon="brain"></span><span class="nav-label">Mixed Recall</span></a>
       <a class="nav-item" data-route="sentence-builder" href="#/sentence-builder"><span class="nav-icon" data-icon="layers"></span><span class="nav-label">Sentence Builder</span></a>
+      <a class="nav-item" data-route="learning-mode" href="#/learning-mode"><span class="nav-icon" data-icon="play"></span><span class="nav-label">Duolingo Mode</span><span id="duolingo-nav-badge" class="nav-badge">NEW</span></a>
       <a class="nav-item" data-route="char-playground" href="#/char-playground"><span class="nav-icon" data-icon="puzzle"></span><span class="nav-label">Character Playground</span></a>
       <a class="nav-item" data-route="library" href="#/library"><span class="nav-icon" data-icon="library"></span><span class="nav-label">Character Library</span></a>
       <a class="nav-item" data-route="vocabulary" href="#/vocabulary"><span class="nav-icon" data-icon="vocabulary"></span><span class="nav-label">Vocabulary Library</span></a>
@@ -130,16 +131,18 @@
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script defer src="js/icons.js?v=206"></script>
-<script defer src="js/drawing-board.js?v=206"></script>
-<script defer src="js/weakness-engine.js?v=206"></script>
-<script defer src="js/srs.js?v=206"></script>
-<script defer src="js/voice.js?v=206"></script>
-<script defer src="js/ai-chat.js?v=206"></script>
+<script defer src="js/icons.js?v=207"></script>
+<script defer src="js/drawing-board.js?v=207"></script>
+<script defer src="js/weakness-engine.js?v=207"></script>
+<script defer src="js/srs.js?v=207"></script>
+<script defer src="js/voice.js?v=207"></script>
+<script defer src="js/ai-chat.js?v=207"></script>
 
 <!-- Feature modules are loaded on demand by js/app.js for faster first paint. -->
-<script defer src="js/app.js?v=206"></script>
-<script defer src="js/scratchpad.js?v=206"></script>
+<script defer src="js/anim-registry.js?v=207"></script>
+<script defer src="js/app-animations.js?v=207"></script>
+<script defer src="js/app.js?v=207"></script>
+<script defer src="js/scratchpad.js?v=207"></script>
 </body>
 </html>
 

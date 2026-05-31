@@ -11,82 +11,82 @@
       "title": "Meeting Friends on Time",
       "canDo": "Friends arrange a meeting, send messages, apologize for lateness, and keep the plan.",
       "pattern": "週末我們有個家庭聚會。",
-      "patternPinyin": "",
+      "patternPinyin": "zhōu mò wǒ men yǒu gè jiā tíng jù huì.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "聚會",
-          "pinyin": "",
+          "pinyin": "jù huì",
           "english": "gathering/party"
         },
         {
           "zh": "見面",
-          "pinyin": "",
+          "pinyin": "jiàn miàn",
           "english": "to meet"
         },
         {
           "zh": "聯繫",
-          "pinyin": "",
+          "pinyin": "lián xì",
           "english": "to contact"
         },
         {
           "zh": "訊息",
-          "pinyin": "",
+          "pinyin": "xùn xī",
           "english": "message"
         },
         {
           "zh": "邀請",
-          "pinyin": "",
+          "pinyin": "yāo qǐng",
           "english": "to invite"
         },
         {
           "zh": "準時",
-          "pinyin": "",
+          "pinyin": "zhǔn shí",
           "english": "on time"
         },
         {
           "zh": "遲到",
-          "pinyin": "",
+          "pinyin": "chí dào",
           "english": "late"
         },
         {
           "zh": "抱歉",
-          "pinyin": "",
+          "pinyin": "bào qiàn",
           "english": "sorry/apologize"
         },
         {
           "zh": "沒關係",
-          "pinyin": "",
+          "pinyin": "méi guān xì",
           "english": "it's okay"
         },
         {
           "zh": "慶祝",
-          "pinyin": "",
+          "pinyin": "qìng zhù",
           "english": "to celebrate"
         },
         {
           "zh": "生日",
-          "pinyin": "",
+          "pinyin": "shēng rì",
           "english": "birthday"
         },
         {
           "zh": "禮物",
-          "pinyin": "",
+          "pinyin": "lǐ wù",
           "english": "gift"
         },
         {
           "zh": "驚喜",
-          "pinyin": "",
+          "pinyin": "jīng xǐ",
           "english": "surprise"
         },
         {
           "zh": "開心",
-          "pinyin": "",
+          "pinyin": "kāi xīn",
           "english": "happy"
         },
         {
           "zh": "聊天",
-          "pinyin": "",
+          "pinyin": "liáo tiān",
           "english": "to chat"
         }
       ],
@@ -94,32 +94,32 @@
       "story": [
         {
           "zh": "週末我們有個家庭聚會。",
-          "pinyin": "",
+          "pinyin": "zhōu mò wǒ men yǒu gè jiā tíng jù huì.",
           "english": "We have a family gathering this weekend."
         },
         {
           "zh": "我們明天下午三點在咖啡廳見面。",
-          "pinyin": "",
+          "pinyin": "wǒ men míng tiān xià wǔ sān diǎn zài kā fēi tīng jiàn miàn.",
           "english": "We'll meet at the cafe at 3 PM tomorrow."
         },
         {
           "zh": "有問題請隨時跟我聯繫。",
-          "pinyin": "",
+          "pinyin": "yǒu wèn tí qǐng suí shí gēn wǒ lián xì.",
           "english": "If you have questions, please contact me anytime."
         },
         {
           "zh": "我剛收到你的訊息。",
-          "pinyin": "",
+          "pinyin": "wǒ gāng shōu dào nǐ de xùn xī.",
           "english": "I just received your message."
         },
         {
           "zh": "謝謝你邀請我參加派對。",
-          "pinyin": "",
+          "pinyin": "xiè xiè nǐ yāo qǐng wǒ cān jiā pài duì.",
           "english": "Thank you for inviting me to the party."
         },
         {
           "zh": "請準時參加會議。",
-          "pinyin": "",
+          "pinyin": "qǐng zhǔn shí cān jiā huì yì.",
           "english": "Please attend the meeting on time."
         }
       ],
@@ -127,37 +127,37 @@
         {
           "speaker": "A",
           "zh": "週末我們有個家庭聚會。",
-          "pinyin": "",
+          "pinyin": "zhōu mò wǒ men yǒu gè jiā tíng jù huì.",
           "english": "We have a family gathering this weekend."
         },
         {
           "speaker": "B",
           "zh": "我們明天下午三點在咖啡廳見面。",
-          "pinyin": "",
+          "pinyin": "wǒ men míng tiān xià wǔ sān diǎn zài kā fēi tīng jiàn miàn.",
           "english": "We'll meet at the cafe at 3 PM tomorrow."
         },
         {
           "speaker": "A",
           "zh": "有問題請隨時跟我聯繫。",
-          "pinyin": "",
+          "pinyin": "yǒu wèn tí qǐng suí shí gēn wǒ lián xì.",
           "english": "If you have questions, please contact me anytime."
         },
         {
           "speaker": "B",
           "zh": "我剛收到你的訊息。",
-          "pinyin": "",
+          "pinyin": "wǒ gāng shōu dào nǐ de xùn xī.",
           "english": "I just received your message."
         },
         {
           "speaker": "A",
           "zh": "謝謝你邀請我參加派對。",
-          "pinyin": "",
+          "pinyin": "xiè xiè nǐ yāo qǐng wǒ cān jiā pài duì.",
           "english": "Thank you for inviting me to the party."
         },
         {
           "speaker": "B",
           "zh": "請準時參加會議。",
-          "pinyin": "",
+          "pinyin": "qǐng zhǔn shí cān jiā huì yì.",
           "english": "Please attend the meeting on time."
         }
       ],
@@ -242,82 +242,82 @@
       "title": "Inviting a Friend",
       "canDo": "A learner invites a friend and confirms the meeting details.",
       "pattern": "很久不見，你最近好嗎？",
-      "patternPinyin": "",
+      "patternPinyin": "hěn jiǔ bù jiàn, nǐ zuì jìn hǎo ma?",
       "hidePinyin": true,
       "words": [
         {
           "zh": "很久不見",
-          "pinyin": "",
+          "pinyin": "hěn jiǔ bù jiàn",
           "english": "long time no see"
         },
         {
           "zh": "最近",
-          "pinyin": "",
+          "pinyin": "zuì jìn",
           "english": "recently"
         },
         {
           "zh": "順利",
-          "pinyin": "",
+          "pinyin": "shùn lì",
           "english": "smoothly"
         },
         {
           "zh": "介紹",
-          "pinyin": "",
+          "pinyin": "jiè shào",
           "english": "to introduce"
         },
         {
           "zh": "打算",
-          "pinyin": "",
+          "pinyin": "dǎ suàn",
           "english": "to plan/intend"
         },
         {
           "zh": "安排",
-          "pinyin": "",
+          "pinyin": "ān pái",
           "english": "to arrange"
         },
         {
           "zh": "建議",
-          "pinyin": "",
+          "pinyin": "jiàn yì",
           "english": "suggestion/suggest"
         },
         {
           "zh": "決定",
-          "pinyin": "",
+          "pinyin": "jué dìng",
           "english": "to decide"
         },
         {
           "zh": "聚餐",
-          "pinyin": "",
+          "pinyin": "jù cān",
           "english": "group meal"
         },
         {
           "zh": "派對",
-          "pinyin": "",
+          "pinyin": "pài duì",
           "english": "party"
         },
         {
           "zh": "結束",
-          "pinyin": "",
+          "pinyin": "jié shù",
           "english": "to end"
         },
         {
           "zh": "告別",
-          "pinyin": "",
+          "pinyin": "gào bié",
           "english": "to say goodbye"
         },
         {
           "zh": "保持聯絡",
-          "pinyin": "",
+          "pinyin": "bǎo chí lián luò",
           "english": "keep in touch"
         },
         {
           "zh": "下次",
-          "pinyin": "",
+          "pinyin": "xià cì",
           "english": "next time"
         },
         {
           "zh": "期待",
-          "pinyin": "",
+          "pinyin": "qī dài",
           "english": "to look forward to"
         }
       ],
@@ -325,32 +325,32 @@
       "story": [
         {
           "zh": "很久不見，你最近好嗎？",
-          "pinyin": "",
+          "pinyin": "hěn jiǔ bù jiàn, nǐ zuì jìn hǎo ma?",
           "english": "Long time no see, how have you been recently?"
         },
         {
           "zh": "最近天氣變熱了。",
-          "pinyin": "",
+          "pinyin": "zuì jìn tiān qì biàn rè le.",
           "english": "The weather has gotten hotter recently."
         },
         {
           "zh": "希望你的考試一切順利。",
-          "pinyin": "",
+          "pinyin": "xī wàng nǐ de kǎo shì yī qiè shùn lì.",
           "english": "I hope your exam goes smoothly."
         },
         {
           "zh": "讓我來介紹一下我的朋友。",
-          "pinyin": "",
+          "pinyin": "ràng wǒ lái jiè shào yī xià wǒ de péng yǒu.",
           "english": "Let me introduce my friend."
         },
         {
           "zh": "畢業後你打算做什麼？",
-          "pinyin": "",
+          "pinyin": "bì yè hòu nǐ dǎ suàn zuò shén me?",
           "english": "What do you plan to do after graduation?"
         },
         {
           "zh": "這個週末你有什麼安排？",
-          "pinyin": "",
+          "pinyin": "zhè gè zhōu mò nǐ yǒu shén me ān pái?",
           "english": "What arrangements do you have for this weekend?"
         }
       ],
@@ -358,37 +358,37 @@
         {
           "speaker": "A",
           "zh": "很久不見，你最近好嗎？",
-          "pinyin": "",
+          "pinyin": "hěn jiǔ bù jiàn, nǐ zuì jìn hǎo ma?",
           "english": "Long time no see, how have you been recently?"
         },
         {
           "speaker": "B",
           "zh": "最近天氣變熱了。",
-          "pinyin": "",
+          "pinyin": "zuì jìn tiān qì biàn rè le.",
           "english": "The weather has gotten hotter recently."
         },
         {
           "speaker": "A",
           "zh": "希望你的考試一切順利。",
-          "pinyin": "",
+          "pinyin": "xī wàng nǐ de kǎo shì yī qiè shùn lì.",
           "english": "I hope your exam goes smoothly."
         },
         {
           "speaker": "B",
           "zh": "讓我來介紹一下我的朋友。",
-          "pinyin": "",
+          "pinyin": "ràng wǒ lái jiè shào yī xià wǒ de péng yǒu.",
           "english": "Let me introduce my friend."
         },
         {
           "speaker": "A",
           "zh": "畢業後你打算做什麼？",
-          "pinyin": "",
+          "pinyin": "bì yè hòu nǐ dǎ suàn zuò shén me?",
           "english": "What do you plan to do after graduation?"
         },
         {
           "speaker": "B",
           "zh": "這個週末你有什麼安排？",
-          "pinyin": "",
+          "pinyin": "zhè gè zhōu mò nǐ yǒu shén me ān pái?",
           "english": "What arrangements do you have for this weekend?"
         }
       ],
@@ -473,82 +473,82 @@
       "title": "Reading a Menu",
       "canDo": "A learner reads a menu, asks for recommendations, and chooses flavors.",
       "pattern": "這位服務員態度很好。",
-      "patternPinyin": "",
+      "patternPinyin": "zhè wèi fú wù yuán tài dù hěn hǎo.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "服務員",
-          "pinyin": "",
+          "pinyin": "fú wù yuán",
           "english": "waiter/waitress"
         },
         {
           "zh": "菜單",
-          "pinyin": "",
+          "pinyin": "cài dān",
           "english": "menu"
         },
         {
           "zh": "點菜",
-          "pinyin": "",
+          "pinyin": "diǎn cài",
           "english": "to order food"
         },
         {
           "zh": "推薦",
-          "pinyin": "",
+          "pinyin": "tuī jiàn",
           "english": "to recommend"
         },
         {
           "zh": "味道",
-          "pinyin": "",
+          "pinyin": "wèi dào",
           "english": "taste/flavor"
         },
         {
           "zh": "甜",
-          "pinyin": "",
+          "pinyin": "tián",
           "english": "sweet"
         },
         {
           "zh": "酸",
-          "pinyin": "",
+          "pinyin": "suān",
           "english": "sour"
         },
         {
           "zh": "苦",
-          "pinyin": "",
+          "pinyin": "kǔ",
           "english": "bitter"
         },
         {
           "zh": "辣",
-          "pinyin": "",
+          "pinyin": "là",
           "english": "spicy"
         },
         {
           "zh": "鹹",
-          "pinyin": "",
+          "pinyin": "xián",
           "english": "salty"
         },
         {
           "zh": "油膩",
-          "pinyin": "",
+          "pinyin": "yóu nì",
           "english": "greasy/oily"
         },
         {
           "zh": "清淡",
-          "pinyin": "",
+          "pinyin": "qīng dàn",
           "english": "light (food)"
         },
         {
           "zh": "忌口",
-          "pinyin": "",
+          "pinyin": "jì kǒu",
           "english": "dietary restrictions"
         },
         {
           "zh": "過敏",
-          "pinyin": "",
+          "pinyin": "guò mǐn",
           "english": "allergy"
         },
         {
           "zh": "海鮮",
-          "pinyin": "",
+          "pinyin": "hǎi xiān",
           "english": "seafood"
         }
       ],
@@ -556,32 +556,32 @@
       "story": [
         {
           "zh": "這位服務員態度很好。",
-          "pinyin": "",
+          "pinyin": "zhè wèi fú wù yuán tài dù hěn hǎo.",
           "english": "This waiter has a very good attitude."
         },
         {
           "zh": "服務員，請給我菜單。",
-          "pinyin": "",
+          "pinyin": "fú wù yuán, qǐng gěi wǒ cài dān.",
           "english": "Waiter, please give me the menu."
         },
         {
           "zh": "我們準備點菜了。",
-          "pinyin": "",
+          "pinyin": "wǒ men zhǔn bèi diǎn cài le.",
           "english": "We are ready to order."
         },
         {
           "zh": "這家餐廳的菜很好吃，我強烈推薦。",
-          "pinyin": "",
+          "pinyin": "zhè jiā cān tīng de cài hěn hǎo chī, wǒ qiáng liè tuī jiàn.",
           "english": "The food at this restaurant is delicious, I highly recommend it."
         },
         {
           "zh": "這湯的味道有點鹹。",
-          "pinyin": "",
+          "pinyin": "zhè tāng de wèi dào yǒu diǎn xián.",
           "english": "The taste of this soup is a bit salty."
         },
         {
           "zh": "如果你不喜歡太甜，我推薦清淡一點的湯。",
-          "pinyin": "",
+          "pinyin": "rú guǒ nǐ bù xǐ huān tài tián, wǒ tuī jiàn qīng dàn yī diǎn de tāng.",
           "english": "If you do not like food that is too sweet, I recommend a lighter soup."
         }
       ],
@@ -589,37 +589,37 @@
         {
           "speaker": "A",
           "zh": "這位服務員態度很好。",
-          "pinyin": "",
+          "pinyin": "zhè wèi fú wù yuán tài dù hěn hǎo.",
           "english": "This waiter has a very good attitude."
         },
         {
           "speaker": "B",
           "zh": "服務員，請給我菜單。",
-          "pinyin": "",
+          "pinyin": "fú wù yuán, qǐng gěi wǒ cài dān.",
           "english": "Waiter, please give me the menu."
         },
         {
           "speaker": "A",
           "zh": "我們準備點菜了。",
-          "pinyin": "",
+          "pinyin": "wǒ men zhǔn bèi diǎn cài le.",
           "english": "We are ready to order."
         },
         {
           "speaker": "B",
           "zh": "這家餐廳的菜很好吃，我強烈推薦。",
-          "pinyin": "",
+          "pinyin": "zhè jiā cān tīng de cài hěn hǎo chī, wǒ qiáng liè tuī jiàn.",
           "english": "The food at this restaurant is delicious, I highly recommend it."
         },
         {
           "speaker": "A",
           "zh": "這湯的味道有點鹹。",
-          "pinyin": "",
+          "pinyin": "zhè tāng de wèi dào yǒu diǎn xián.",
           "english": "The taste of this soup is a bit salty."
         },
         {
           "speaker": "B",
           "zh": "如果你不喜歡太甜，我推薦清淡一點的湯。",
-          "pinyin": "",
+          "pinyin": "rú guǒ nǐ bù xǐ huān tài tián, wǒ tuī jiàn qīng dàn yī diǎn de tāng.",
           "english": "If you do not like food that is too sweet, I recommend a lighter soup."
         }
       ],
@@ -706,82 +706,82 @@
       "title": "Ordering at a Restaurant",
       "canDo": "A learner talks with the server and solves a small ordering problem.",
       "pattern": "我不吃牛肉。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ bù chī niú ròu.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "牛肉",
-          "pinyin": "",
+          "pinyin": "niú ròu",
           "english": "beef"
         },
         {
           "zh": "豬肉",
-          "pinyin": "",
+          "pinyin": "zhū ròu",
           "english": "pork"
         },
         {
           "zh": "雞肉",
-          "pinyin": "",
+          "pinyin": "jī ròu",
           "english": "chicken meat"
         },
         {
           "zh": "蔬菜",
-          "pinyin": "",
+          "pinyin": "shū cài",
           "english": "vegetables"
         },
         {
           "zh": "米飯",
-          "pinyin": "",
+          "pinyin": "mǐ fàn",
           "english": "cooked rice"
         },
         {
           "zh": "飲料",
-          "pinyin": "",
+          "pinyin": "yǐn liào",
           "english": "beverage"
         },
         {
           "zh": "買單",
-          "pinyin": "",
+          "pinyin": "mǎi dān",
           "english": "to pay the bill"
         },
         {
           "zh": "結帳",
-          "pinyin": "",
+          "pinyin": "jié zhàng",
           "english": "to settle the account"
         },
         {
           "zh": "發票",
-          "pinyin": "",
+          "pinyin": "fā piào",
           "english": "invoice/receipt"
         },
         {
           "zh": "收據",
-          "pinyin": "",
+          "pinyin": "shōu jù",
           "english": "receipt"
         },
         {
           "zh": "分開付",
-          "pinyin": "",
+          "pinyin": "fēn kāi fù",
           "english": "pay separately"
         },
         {
           "zh": "找錢",
-          "pinyin": "",
+          "pinyin": "zhǎo qián",
           "english": "to give change"
         },
         {
           "zh": "小費",
-          "pinyin": "",
+          "pinyin": "xiǎo fèi",
           "english": "tip"
         },
         {
           "zh": "滿意",
-          "pinyin": "",
+          "pinyin": "mǎn yì",
           "english": "satisfied"
         },
         {
           "zh": "訂位",
-          "pinyin": "",
+          "pinyin": "dìng wèi",
           "english": "to book a table"
         }
       ],
@@ -789,32 +789,32 @@
       "story": [
         {
           "zh": "我不吃牛肉。",
-          "pinyin": "",
+          "pinyin": "wǒ bù chī niú ròu.",
           "english": "I don't eat beef."
         },
         {
           "zh": "豬肉在市場賣得很便宜。",
-          "pinyin": "",
+          "pinyin": "zhū ròu zài shì chǎng mài dé hěn pián yi.",
           "english": "Pork is sold very cheaply at the market."
         },
         {
           "zh": "這道菜是雞肉做的。",
-          "pinyin": "",
+          "pinyin": "zhè dào cài shì jī ròu zuò de.",
           "english": "This dish is made of chicken."
         },
         {
           "zh": "多吃蔬菜對身體好。",
-          "pinyin": "",
+          "pinyin": "duō chī shū cài duì shēn tǐ hǎo.",
           "english": "Eating more vegetables is good for your health."
         },
         {
           "zh": "中國人喜歡吃米飯。",
-          "pinyin": "",
+          "pinyin": "zhōng guó rén xǐ huān chī mǐ fàn.",
           "english": "Chinese people like to eat rice."
         },
         {
           "zh": "你想喝什麼飲料？",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng hē shén me yǐn liào?",
           "english": "What beverage would you like to drink?"
         }
       ],
@@ -822,37 +822,37 @@
         {
           "speaker": "A",
           "zh": "我不吃牛肉。",
-          "pinyin": "",
+          "pinyin": "wǒ bù chī niú ròu.",
           "english": "I don't eat beef."
         },
         {
           "speaker": "B",
           "zh": "豬肉在市場賣得很便宜。",
-          "pinyin": "",
+          "pinyin": "zhū ròu zài shì chǎng mài dé hěn pián yi.",
           "english": "Pork is sold very cheaply at the market."
         },
         {
           "speaker": "A",
           "zh": "這道菜是雞肉做的。",
-          "pinyin": "",
+          "pinyin": "zhè dào cài shì jī ròu zuò de.",
           "english": "This dish is made of chicken."
         },
         {
           "speaker": "B",
           "zh": "多吃蔬菜對身體好。",
-          "pinyin": "",
+          "pinyin": "duō chī shū cài duì shēn tǐ hǎo.",
           "english": "Eating more vegetables is good for your health."
         },
         {
           "speaker": "A",
           "zh": "中國人喜歡吃米飯。",
-          "pinyin": "",
+          "pinyin": "zhōng guó rén xǐ huān chī mǐ fàn.",
           "english": "Chinese people like to eat rice."
         },
         {
           "speaker": "B",
           "zh": "你想喝什麼飲料？",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng hē shén me yǐn liào?",
           "english": "What beverage would you like to drink?"
         }
       ],
@@ -936,82 +936,82 @@
       "title": "Talking About Work",
       "canDo": "A learner understands jobs, interviews, salary, and colleagues.",
       "pattern": "明天上午我有個工作面試。",
-      "patternPinyin": "",
+      "patternPinyin": "míng tiān shàng wǔ wǒ yǒu gè gōng zuò miàn shì.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "面試",
-          "pinyin": "",
+          "pinyin": "miàn shì",
           "english": "interview"
         },
         {
           "zh": "簡歷",
-          "pinyin": "",
+          "pinyin": "jiǎn lì",
           "english": "resume/CV"
         },
         {
           "zh": "工作",
-          "pinyin": "",
+          "pinyin": "gōng zuò",
           "english": "work/job"
         },
         {
           "zh": "職業",
-          "pinyin": "",
+          "pinyin": "zhí yè",
           "english": "profession/career"
         },
         {
           "zh": "薪水",
-          "pinyin": "",
+          "pinyin": "xīn shuǐ",
           "english": "salary"
         },
         {
           "zh": "加班",
-          "pinyin": "",
+          "pinyin": "jiā bān",
           "english": "overtime"
         },
         {
           "zh": "獎金",
-          "pinyin": "",
+          "pinyin": "jiǎng jīn",
           "english": "bonus"
         },
         {
           "zh": "同事",
-          "pinyin": "",
+          "pinyin": "tóng shì",
           "english": "colleague"
         },
         {
           "zh": "老闆",
-          "pinyin": "",
+          "pinyin": "lǎo bǎn",
           "english": "boss"
         },
         {
           "zh": "經理",
-          "pinyin": "",
+          "pinyin": "jīng lǐ",
           "english": "manager"
         },
         {
           "zh": "會議",
-          "pinyin": "",
+          "pinyin": "huì yì",
           "english": "meeting"
         },
         {
           "zh": "報告",
-          "pinyin": "",
+          "pinyin": "bào gào",
           "english": "report"
         },
         {
           "zh": "出差",
-          "pinyin": "",
+          "pinyin": "chū chāi",
           "english": "business trip"
         },
         {
           "zh": "辭職",
-          "pinyin": "",
+          "pinyin": "cí zhí",
           "english": "to resign"
         },
         {
           "zh": "退休",
-          "pinyin": "",
+          "pinyin": "tuì xiū",
           "english": "to retire"
         }
       ],
@@ -1019,32 +1019,32 @@
       "story": [
         {
           "zh": "明天上午我有個工作面試。",
-          "pinyin": "",
+          "pinyin": "míng tiān shàng wǔ wǒ yǒu gè gōng zuò miàn shì.",
           "english": "I have a job interview tomorrow morning."
         },
         {
           "zh": "請在面試前準備好你的簡歷。",
-          "pinyin": "",
+          "pinyin": "qǐng zài miàn shì qián zhǔn bèi hǎo nǐ de jiǎn lì.",
           "english": "Please prepare your resume before the interview."
         },
         {
           "zh": "我的工作很忙。",
-          "pinyin": "",
+          "pinyin": "wǒ de gōng zuò hěn máng.",
           "english": "My job is very busy."
         },
         {
           "zh": "你的職業是什麼？",
-          "pinyin": "",
+          "pinyin": "nǐ de zhí yè shì shén me?",
           "english": "What is your profession?"
         },
         {
           "zh": "這份工作的薪水很高。",
-          "pinyin": "",
+          "pinyin": "zhè fèn gōng zuò de xīn shuǐ hěn gāo.",
           "english": "The salary for this job is very high."
         },
         {
           "zh": "最近公司很忙，我經常需要加班。",
-          "pinyin": "",
+          "pinyin": "zuì jìn gōng sī hěn máng, wǒ jīng cháng xū yào jiā bān.",
           "english": "The company is very busy recently, I often need to work overtime."
         }
       ],
@@ -1052,37 +1052,37 @@
         {
           "speaker": "A",
           "zh": "明天上午我有個工作面試。",
-          "pinyin": "",
+          "pinyin": "míng tiān shàng wǔ wǒ yǒu gè gōng zuò miàn shì.",
           "english": "I have a job interview tomorrow morning."
         },
         {
           "speaker": "B",
           "zh": "請在面試前準備好你的簡歷。",
-          "pinyin": "",
+          "pinyin": "qǐng zài miàn shì qián zhǔn bèi hǎo nǐ de jiǎn lì.",
           "english": "Please prepare your resume before the interview."
         },
         {
           "speaker": "A",
           "zh": "我的工作很忙。",
-          "pinyin": "",
+          "pinyin": "wǒ de gōng zuò hěn máng.",
           "english": "My job is very busy."
         },
         {
           "speaker": "B",
           "zh": "你的職業是什麼？",
-          "pinyin": "",
+          "pinyin": "nǐ de zhí yè shì shén me?",
           "english": "What is your profession?"
         },
         {
           "speaker": "A",
           "zh": "這份工作的薪水很高。",
-          "pinyin": "",
+          "pinyin": "zhè fèn gōng zuò de xīn shuǐ hěn gāo.",
           "english": "The salary for this job is very high."
         },
         {
           "speaker": "B",
           "zh": "最近公司很忙，我經常需要加班。",
-          "pinyin": "",
+          "pinyin": "zuì jìn gōng sī hěn máng, wǒ jīng cháng xū yào jiā bān.",
           "english": "The company is very busy recently, I often need to work overtime."
         }
       ],
@@ -1168,82 +1168,82 @@
       "title": "A Day at Work",
       "canDo": "A worker talks about overtime, meetings, and workplace routine.",
       "pattern": "我們公司正在招聘新員工。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ men gōng sī zhèng zài zhāo pìn xīn yuán gōng.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "招聘",
-          "pinyin": "",
+          "pinyin": "zhāo pìn",
           "english": "recruitment"
         },
         {
           "zh": "錄用",
-          "pinyin": "",
+          "pinyin": "lù yòng",
           "english": "to hire"
         },
         {
           "zh": "合同",
-          "pinyin": "",
+          "pinyin": "hé tóng",
           "english": "contract"
         },
         {
           "zh": "保險",
-          "pinyin": "",
+          "pinyin": "bǎo xiǎn",
           "english": "insurance"
         },
         {
           "zh": "福利",
-          "pinyin": "",
+          "pinyin": "fú lì",
           "english": "benefits"
         },
         {
           "zh": "辦公室",
-          "pinyin": "",
+          "pinyin": "bàn gōng shì",
           "english": "office"
         },
         {
           "zh": "電腦",
-          "pinyin": "",
+          "pinyin": "diàn nǎo",
           "english": "computer"
         },
         {
           "zh": "郵件",
-          "pinyin": "",
+          "pinyin": "yóu jiàn",
           "english": "email"
         },
         {
           "zh": "效率",
-          "pinyin": "",
+          "pinyin": "xiào lǜ",
           "english": "efficiency"
         },
         {
           "zh": "壓力",
-          "pinyin": "",
+          "pinyin": "yā lì",
           "english": "pressure/stress"
         },
         {
           "zh": "成功",
-          "pinyin": "",
+          "pinyin": "chéng gōng",
           "english": "success"
         },
         {
           "zh": "機會",
-          "pinyin": "",
+          "pinyin": "jī huì",
           "english": "opportunity"
         },
         {
           "zh": "經驗",
-          "pinyin": "",
+          "pinyin": "jīng yàn",
           "english": "experience"
         },
         {
           "zh": "實習",
-          "pinyin": "",
+          "pinyin": "shí xí",
           "english": "internship"
         },
         {
           "zh": "專業",
-          "pinyin": "",
+          "pinyin": "zhuān yè",
           "english": "professional/major"
         }
       ],
@@ -1251,32 +1251,32 @@
       "story": [
         {
           "zh": "我們公司正在招聘新員工。",
-          "pinyin": "",
+          "pinyin": "wǒ men gōng sī zhèng zài zhāo pìn xīn yuán gōng.",
           "english": "Our company is currently recruiting new employees."
         },
         {
           "zh": "恭喜你被我們公司錄用了。",
-          "pinyin": "",
+          "pinyin": "gōng xǐ nǐ bèi wǒ men gōng sī lù yòng le.",
           "english": "Congratulations, you have been hired by our company."
         },
         {
           "zh": "簽合同之前請仔細閱讀條款。",
-          "pinyin": "",
+          "pinyin": "qiān hé tóng zhī qián qǐng zǎi xì yuè dú tiáo kuǎn.",
           "english": "Please read the terms carefully before signing the contract."
         },
         {
           "zh": "出國旅遊最好買一份旅遊保險。",
-          "pinyin": "",
+          "pinyin": "chū guó lǚ yóu zuì hǎo mǎi yī fèn lǚ yóu bǎo xiǎn.",
           "english": "It is best to buy travel insurance when traveling abroad."
         },
         {
           "zh": "這家公司的員工福利很好。",
-          "pinyin": "",
+          "pinyin": "zhè jiā gōng sī de yuán gōng fú lì hěn hǎo.",
           "english": "This company has great employee benefits."
         },
         {
           "zh": "我的辦公室在三樓。",
-          "pinyin": "",
+          "pinyin": "wǒ de bàn gōng shì zài sān lóu.",
           "english": "My office is on the third floor."
         }
       ],
@@ -1284,37 +1284,37 @@
         {
           "speaker": "A",
           "zh": "我們公司正在招聘新員工。",
-          "pinyin": "",
+          "pinyin": "wǒ men gōng sī zhèng zài zhāo pìn xīn yuán gōng.",
           "english": "Our company is currently recruiting new employees."
         },
         {
           "speaker": "B",
           "zh": "恭喜你被我們公司錄用了。",
-          "pinyin": "",
+          "pinyin": "gōng xǐ nǐ bèi wǒ men gōng sī lù yòng le.",
           "english": "Congratulations, you have been hired by our company."
         },
         {
           "speaker": "A",
           "zh": "簽合同之前請仔細閱讀條款。",
-          "pinyin": "",
+          "pinyin": "qiān hé tóng zhī qián qǐng zǎi xì yuè dú tiáo kuǎn.",
           "english": "Please read the terms carefully before signing the contract."
         },
         {
           "speaker": "B",
           "zh": "出國旅遊最好買一份旅遊保險。",
-          "pinyin": "",
+          "pinyin": "chū guó lǚ yóu zuì hǎo mǎi yī fèn lǚ yóu bǎo xiǎn.",
           "english": "It is best to buy travel insurance when traveling abroad."
         },
         {
           "speaker": "A",
           "zh": "這家公司的員工福利很好。",
-          "pinyin": "",
+          "pinyin": "zhè jiā gōng sī de yuán gōng fú lì hěn hǎo.",
           "english": "This company has great employee benefits."
         },
         {
           "speaker": "B",
           "zh": "我的辦公室在三樓。",
-          "pinyin": "",
+          "pinyin": "wǒ de bàn gōng shì zài sān lóu.",
           "english": "My office is on the third floor."
         }
       ],
@@ -1400,82 +1400,82 @@
       "title": "Opening a Bank Account",
       "canDo": "A learner handles account, deposit, withdrawal, and transfer words.",
       "pattern": "我要去銀行換錢。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ yào qù yín xíng huàn qián.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "銀行",
-          "pinyin": "",
+          "pinyin": "yín xíng",
           "english": "bank"
         },
         {
           "zh": "帳戶",
-          "pinyin": "",
+          "pinyin": "zhàng hù",
           "english": "account"
         },
         {
           "zh": "開戶",
-          "pinyin": "",
+          "pinyin": "kāi hù",
           "english": "to open an account"
         },
         {
           "zh": "存錢",
-          "pinyin": "",
+          "pinyin": "cún qián",
           "english": "to deposit money"
         },
         {
           "zh": "取錢",
-          "pinyin": "",
+          "pinyin": "qǔ qián",
           "english": "to withdraw money"
         },
         {
           "zh": "匯款",
-          "pinyin": "",
+          "pinyin": "huì kuǎn",
           "english": "to remit/transfer money"
         },
         {
           "zh": "手續費",
-          "pinyin": "",
+          "pinyin": "shǒu xù fèi",
           "english": "service charge/fee"
         },
         {
           "zh": "匯率",
-          "pinyin": "",
+          "pinyin": "huì lǜ",
           "english": "exchange rate"
         },
         {
           "zh": "換錢",
-          "pinyin": "",
+          "pinyin": "huàn qián",
           "english": "to exchange money"
         },
         {
           "zh": "美金",
-          "pinyin": "",
+          "pinyin": "měi jīn",
           "english": "US Dollar"
         },
         {
           "zh": "歐元",
-          "pinyin": "",
+          "pinyin": "ōu yuán",
           "english": "Euro"
         },
         {
           "zh": "人民幣",
-          "pinyin": "",
+          "pinyin": "rén mín bì",
           "english": "RMB"
         },
         {
           "zh": "台幣",
-          "pinyin": "",
+          "pinyin": "tái bì",
           "english": "NTD"
         },
         {
           "zh": "信用卡",
-          "pinyin": "",
+          "pinyin": "xìn yòng kǎ",
           "english": "credit card"
         },
         {
           "zh": "借記卡",
-          "pinyin": "",
+          "pinyin": "jiè jì kǎ",
           "english": "debit card"
         }
       ],
@@ -1483,32 +1483,32 @@
       "story": [
         {
           "zh": "我要去銀行換錢。",
-          "pinyin": "",
+          "pinyin": "wǒ yào qù yín xíng huàn qián.",
           "english": "I need to go to the bank to exchange money."
         },
         {
           "zh": "請把錢匯到這個銀行帳戶。",
-          "pinyin": "",
+          "pinyin": "qǐng bǎ qián huì dào zhè gè yín xíng zhàng hù.",
           "english": "Please remit the money to this bank account."
         },
         {
           "zh": "我想在你們銀行開戶。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng zài nǐ men yín xíng kāi hù.",
           "english": "I would like to open an account at your bank."
         },
         {
           "zh": "每個月我都會存錢在銀行。",
-          "pinyin": "",
+          "pinyin": "měi gè yuè wǒ dōu huì cún qián zài yín xíng.",
           "english": "Every month I save money in the bank."
         },
         {
           "zh": "我需要去提款機取錢。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào qù tí kuǎn jī qǔ qián.",
           "english": "I need to go to the ATM to withdraw money."
         },
         {
           "zh": "我要給家裡匯款。",
-          "pinyin": "",
+          "pinyin": "wǒ yào gěi jiā lǐ huì kuǎn.",
           "english": "I want to remit money to my family."
         }
       ],
@@ -1516,37 +1516,37 @@
         {
           "speaker": "A",
           "zh": "我要去銀行換錢。",
-          "pinyin": "",
+          "pinyin": "wǒ yào qù yín xíng huàn qián.",
           "english": "I need to go to the bank to exchange money."
         },
         {
           "speaker": "B",
           "zh": "請把錢匯到這個銀行帳戶。",
-          "pinyin": "",
+          "pinyin": "qǐng bǎ qián huì dào zhè gè yín xíng zhàng hù.",
           "english": "Please remit the money to this bank account."
         },
         {
           "speaker": "A",
           "zh": "我想在你們銀行開戶。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng zài nǐ men yín xíng kāi hù.",
           "english": "I would like to open an account at your bank."
         },
         {
           "speaker": "B",
           "zh": "每個月我都會存錢在銀行。",
-          "pinyin": "",
+          "pinyin": "měi gè yuè wǒ dōu huì cún qián zài yín xíng.",
           "english": "Every month I save money in the bank."
         },
         {
           "speaker": "A",
           "zh": "我需要去提款機取錢。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào qù tí kuǎn jī qǔ qián.",
           "english": "I need to go to the ATM to withdraw money."
         },
         {
           "speaker": "B",
           "zh": "我要給家裡匯款。",
-          "pinyin": "",
+          "pinyin": "wǒ yào gěi jiā lǐ huì kuǎn.",
           "english": "I want to remit money to my family."
         }
       ],
@@ -1630,82 +1630,82 @@
       "title": "Money and Exchange",
       "canDo": "A learner talks about fees, exchange rates, and cash needs.",
       "pattern": "附近有提款機嗎？",
-      "patternPinyin": "",
+      "patternPinyin": "fù jìn yǒu tí kuǎn jī ma?",
       "hidePinyin": true,
       "words": [
         {
           "zh": "提款機",
-          "pinyin": "",
+          "pinyin": "tí kuǎn jī",
           "english": "ATM"
         },
         {
           "zh": "密碼",
-          "pinyin": "",
+          "pinyin": "mì mǎ",
           "english": "password"
         },
         {
           "zh": "簽名",
-          "pinyin": "",
+          "pinyin": "qiān míng",
           "english": "signature/sign"
         },
         {
           "zh": "證件",
-          "pinyin": "",
+          "pinyin": "zhèng jiàn",
           "english": "identification/documents"
         },
         {
           "zh": "護照",
-          "pinyin": "",
+          "pinyin": "hù zhào",
           "english": "passport"
         },
         {
           "zh": "身份證",
-          "pinyin": "",
+          "pinyin": "shēn fèn zhèng",
           "english": "ID card"
         },
         {
           "zh": "利息",
-          "pinyin": "",
+          "pinyin": "lì xī",
           "english": "interest (money)"
         },
         {
           "zh": "貸款",
-          "pinyin": "",
+          "pinyin": "dài kuǎn",
           "english": "loan"
         },
         {
           "zh": "餘額",
-          "pinyin": "",
+          "pinyin": "yú é",
           "english": "balance (account)"
         },
         {
           "zh": "單據",
-          "pinyin": "",
+          "pinyin": "dān jù",
           "english": "forms/documents"
         },
         {
           "zh": "窗口",
-          "pinyin": "",
+          "pinyin": "chuāng kǒu",
           "english": "window/counter"
         },
         {
           "zh": "排隊",
-          "pinyin": "",
+          "pinyin": "pái duì",
           "english": "to queue"
         },
         {
           "zh": "填表",
-          "pinyin": "",
+          "pinyin": "tián biǎo",
           "english": "to fill in a form"
         },
         {
           "zh": "凍結",
-          "pinyin": "",
+          "pinyin": "dòng jié",
           "english": "to freeze (account)"
         },
         {
           "zh": "解凍",
-          "pinyin": "",
+          "pinyin": "jiě dòng",
           "english": "to unfreeze"
         }
       ],
@@ -1713,32 +1713,32 @@
       "story": [
         {
           "zh": "附近有提款機嗎？",
-          "pinyin": "",
+          "pinyin": "fù jìn yǒu tí kuǎn jī ma?",
           "english": "Is there an ATM nearby?"
         },
         {
           "zh": "請輸入您的密碼。",
-          "pinyin": "",
+          "pinyin": "qǐng shū rù nín de mì mǎ.",
           "english": "Please enter your password."
         },
         {
           "zh": "請在這裡簽名。",
-          "pinyin": "",
+          "pinyin": "qǐng zài zhè lǐ qiān míng.",
           "english": "Please sign here."
         },
         {
           "zh": "請出示您的有效證件。",
-          "pinyin": "",
+          "pinyin": "qǐng chū shì nín de yǒu xiào zhèng jiàn.",
           "english": "Please show your valid ID."
         },
         {
           "zh": "出國必須攜帶護照。",
-          "pinyin": "",
+          "pinyin": "chū guó bì xū xié dài hù zhào.",
           "english": "You must bring your passport when going abroad."
         },
         {
           "zh": "請隨身攜帶您的身份證。",
-          "pinyin": "",
+          "pinyin": "qǐng suí shēn xié dài nín de shēn fèn zhèng.",
           "english": "Please carry your ID card with you."
         }
       ],
@@ -1746,37 +1746,37 @@
         {
           "speaker": "A",
           "zh": "附近有提款機嗎？",
-          "pinyin": "",
+          "pinyin": "fù jìn yǒu tí kuǎn jī ma?",
           "english": "Is there an ATM nearby?"
         },
         {
           "speaker": "B",
           "zh": "請輸入您的密碼。",
-          "pinyin": "",
+          "pinyin": "qǐng shū rù nín de mì mǎ.",
           "english": "Please enter your password."
         },
         {
           "speaker": "A",
           "zh": "請在這裡簽名。",
-          "pinyin": "",
+          "pinyin": "qǐng zài zhè lǐ qiān míng.",
           "english": "Please sign here."
         },
         {
           "speaker": "B",
           "zh": "請出示您的有效證件。",
-          "pinyin": "",
+          "pinyin": "qǐng chū shì nín de yǒu xiào zhèng jiàn.",
           "english": "Please show your valid ID."
         },
         {
           "speaker": "A",
           "zh": "出國必須攜帶護照。",
-          "pinyin": "",
+          "pinyin": "chū guó bì xū xié dài hù zhào.",
           "english": "You must bring your passport when going abroad."
         },
         {
           "speaker": "B",
           "zh": "請隨身攜帶您的身份證。",
-          "pinyin": "",
+          "pinyin": "qǐng suí shēn xié dài nín de shēn fèn zhèng.",
           "english": "Please carry your ID card with you."
         }
       ],
@@ -1862,82 +1862,82 @@
       "title": "Booking Travel",
       "canDo": "A learner books a room and plans check-in/check-out.",
       "pattern": "我計畫去日本旅遊。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ jì huà qù rì běn lǚ yóu.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "旅遊",
-          "pinyin": "",
+          "pinyin": "lǚ yóu",
           "english": "travel/tourism"
         },
         {
           "zh": "行程",
-          "pinyin": "",
+          "pinyin": "xíng chéng",
           "english": "itinerary"
         },
         {
           "zh": "景點",
-          "pinyin": "",
+          "pinyin": "jǐng diǎn",
           "english": "scenic spot"
         },
         {
           "zh": "訂房",
-          "pinyin": "",
+          "pinyin": "dìng fáng",
           "english": "to book a room"
         },
         {
           "zh": "入住",
-          "pinyin": "",
+          "pinyin": "rù zhù",
           "english": "check-in"
         },
         {
           "zh": "退房",
-          "pinyin": "",
+          "pinyin": "tuì fáng",
           "english": "check-out"
         },
         {
           "zh": "酒店",
-          "pinyin": "",
+          "pinyin": "jiǔ diàn",
           "english": "hotel"
         },
         {
           "zh": "賓館",
-          "pinyin": "",
+          "pinyin": "bīn guǎn",
           "english": "guesthouse"
         },
         {
           "zh": "單人房",
-          "pinyin": "",
+          "pinyin": "dān rén fáng",
           "english": "single room"
         },
         {
           "zh": "雙人房",
-          "pinyin": "",
+          "pinyin": "shuāng rén fáng",
           "english": "double room"
         },
         {
           "zh": "導遊",
-          "pinyin": "",
+          "pinyin": "dǎo yóu",
           "english": "tour guide"
         },
         {
           "zh": "地圖",
-          "pinyin": "",
+          "pinyin": "dì tú",
           "english": "map"
         },
         {
           "zh": "交通",
-          "pinyin": "",
+          "pinyin": "jiāo tōng",
           "english": "transportation"
         },
         {
           "zh": "門票",
-          "pinyin": "",
+          "pinyin": "mén piào",
           "english": "entrance ticket"
         },
         {
           "zh": "紀念品",
-          "pinyin": "",
+          "pinyin": "jì niàn pǐn",
           "english": "souvenir"
         }
       ],
@@ -1945,32 +1945,32 @@
       "story": [
         {
           "zh": "我計畫去日本旅遊。",
-          "pinyin": "",
+          "pinyin": "wǒ jì huà qù rì běn lǚ yóu.",
           "english": "I plan to travel to Japan."
         },
         {
           "zh": "我們明天的行程很滿。",
-          "pinyin": "",
+          "pinyin": "wǒ men míng tiān de xíng chéng hěn mǎn.",
           "english": "Our itinerary for tomorrow is very full."
         },
         {
           "zh": "這個城市有很多著名的景點。",
-          "pinyin": "",
+          "pinyin": "zhè gè chéng shì yǒu hěn duō zhù míng de jǐng diǎn.",
           "english": "This city has many famous scenic spots."
         },
         {
           "zh": "我已經在網上訂房了。",
-          "pinyin": "",
+          "pinyin": "wǒ yǐ jīng zài wǎng shàng dìng fáng le.",
           "english": "I have already booked a room online."
         },
         {
           "zh": "下午三點可以辦理入住。",
-          "pinyin": "",
+          "pinyin": "xià wǔ sān diǎn kě yǐ bàn lǐ rù zhù.",
           "english": "You can check in at 3 PM."
         },
         {
           "zh": "退房時間是中午十二點。",
-          "pinyin": "",
+          "pinyin": "tuì fáng shí jiān shì zhōng wǔ shí èr diǎn.",
           "english": "Check-out time is 12 noon."
         }
       ],
@@ -1978,37 +1978,37 @@
         {
           "speaker": "A",
           "zh": "我計畫去日本旅遊。",
-          "pinyin": "",
+          "pinyin": "wǒ jì huà qù rì běn lǚ yóu.",
           "english": "I plan to travel to Japan."
         },
         {
           "speaker": "B",
           "zh": "我們明天的行程很滿。",
-          "pinyin": "",
+          "pinyin": "wǒ men míng tiān de xíng chéng hěn mǎn.",
           "english": "Our itinerary for tomorrow is very full."
         },
         {
           "speaker": "A",
           "zh": "這個城市有很多著名的景點。",
-          "pinyin": "",
+          "pinyin": "zhè gè chéng shì yǒu hěn duō zhù míng de jǐng diǎn.",
           "english": "This city has many famous scenic spots."
         },
         {
           "speaker": "B",
           "zh": "我已經在網上訂房了。",
-          "pinyin": "",
+          "pinyin": "wǒ yǐ jīng zài wǎng shàng dìng fáng le.",
           "english": "I have already booked a room online."
         },
         {
           "speaker": "A",
           "zh": "下午三點可以辦理入住。",
-          "pinyin": "",
+          "pinyin": "xià wǔ sān diǎn kě yǐ bàn lǐ rù zhù.",
           "english": "You can check in at 3 PM."
         },
         {
           "speaker": "B",
           "zh": "退房時間是中午十二點。",
-          "pinyin": "",
+          "pinyin": "tuì fáng shí jiān shì zhōng wǔ shí èr diǎn.",
           "english": "Check-out time is 12 noon."
         }
       ],
@@ -2094,82 +2094,82 @@
       "title": "Planning an Itinerary",
       "canDo": "A traveler discusses sights, tickets, and route details.",
       "pattern": "中國有許多名勝古蹟。",
-      "patternPinyin": "",
+      "patternPinyin": "zhōng guó yǒu xǔ duō míng shèng gǔ jī.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "名勝古蹟",
-          "pinyin": "",
+          "pinyin": "míng shèng gǔ jī",
           "english": "historical site"
         },
         {
           "zh": "風景",
-          "pinyin": "",
+          "pinyin": "fēng jǐng",
           "english": "scenery/landscape"
         },
         {
           "zh": "拍照",
-          "pinyin": "",
+          "pinyin": "pāi zhào",
           "english": "to take photos"
         },
         {
           "zh": "預訂",
-          "pinyin": "",
+          "pinyin": "yù dìng",
           "english": "to reserve/pre-book"
         },
         {
           "zh": "確認",
-          "pinyin": "",
+          "pinyin": "què rèn",
           "english": "to confirm"
         },
         {
           "zh": "取消",
-          "pinyin": "",
+          "pinyin": "qǔ xiāo",
           "english": "to cancel"
         },
         {
           "zh": "行李",
-          "pinyin": "",
+          "pinyin": "xíng lǐ",
           "english": "luggage"
         },
         {
           "zh": "簽證",
-          "pinyin": "",
+          "pinyin": "qiān zhèng",
           "english": "visa"
         },
         {
           "zh": "護照",
-          "pinyin": "",
+          "pinyin": "hù zhào",
           "english": "passport"
         },
         {
           "zh": "飛機",
-          "pinyin": "",
+          "pinyin": "fēi jī",
           "english": "airplane"
         },
         {
           "zh": "火車",
-          "pinyin": "",
+          "pinyin": "huǒ chē",
           "english": "train"
         },
         {
           "zh": "巴士",
-          "pinyin": "",
+          "pinyin": "bā shì",
           "english": "bus"
         },
         {
           "zh": "出發",
-          "pinyin": "",
+          "pinyin": "chū fā",
           "english": "to set off/depart"
         },
         {
           "zh": "到達",
-          "pinyin": "",
+          "pinyin": "dào dá",
           "english": "to arrive"
         },
         {
           "zh": "愉快",
-          "pinyin": "",
+          "pinyin": "yú kuài",
           "english": "pleasant/happy"
         }
       ],
@@ -2177,32 +2177,32 @@
       "story": [
         {
           "zh": "中國有許多名勝古蹟。",
-          "pinyin": "",
+          "pinyin": "zhōng guó yǒu xǔ duō míng shèng gǔ jī.",
           "english": "China has many scenic spots and historical sites."
         },
         {
           "zh": "山上的風景真美！",
-          "pinyin": "",
+          "pinyin": "shān shàng de fēng jǐng zhēn měi!",
           "english": "The scenery on the mountain is so beautiful!"
         },
         {
           "zh": "請幫我們拍張照好嗎？",
-          "pinyin": "",
+          "pinyin": "qǐng bāng wǒ men pāi zhāng zhào hǎo ma?",
           "english": "Could you take a picture for us, please?"
         },
         {
           "zh": "我預訂了明天的機票。",
-          "pinyin": "",
+          "pinyin": "wǒ yù dìng le míng tiān de jī piào.",
           "english": "I reserved a flight ticket for tomorrow."
         },
         {
           "zh": "請確認你的個人資料是否正確。",
-          "pinyin": "",
+          "pinyin": "qǐng què rèn nǐ de gè rén zī liào shì fǒu zhèng què.",
           "english": "Please confirm if your personal information is correct."
         },
         {
           "zh": "會議因為天氣原因取消了。",
-          "pinyin": "",
+          "pinyin": "huì yì yīn wèi tiān qì yuán yīn qǔ xiāo le.",
           "english": "The meeting was canceled due to the weather."
         }
       ],
@@ -2210,37 +2210,37 @@
         {
           "speaker": "A",
           "zh": "中國有許多名勝古蹟。",
-          "pinyin": "",
+          "pinyin": "zhōng guó yǒu xǔ duō míng shèng gǔ jī.",
           "english": "China has many scenic spots and historical sites."
         },
         {
           "speaker": "B",
           "zh": "山上的風景真美！",
-          "pinyin": "",
+          "pinyin": "shān shàng de fēng jǐng zhēn měi!",
           "english": "The scenery on the mountain is so beautiful!"
         },
         {
           "speaker": "A",
           "zh": "請幫我們拍張照好嗎？",
-          "pinyin": "",
+          "pinyin": "qǐng bāng wǒ men pāi zhāng zhào hǎo ma?",
           "english": "Could you take a picture for us, please?"
         },
         {
           "speaker": "B",
           "zh": "我預訂了明天的機票。",
-          "pinyin": "",
+          "pinyin": "wǒ yù dìng le míng tiān de jī piào.",
           "english": "I reserved a flight ticket for tomorrow."
         },
         {
           "speaker": "A",
           "zh": "請確認你的個人資料是否正確。",
-          "pinyin": "",
+          "pinyin": "qǐng què rèn nǐ de gè rén zī liào shì fǒu zhèng què.",
           "english": "Please confirm if your personal information is correct."
         },
         {
           "speaker": "B",
           "zh": "會議因為天氣原因取消了。",
-          "pinyin": "",
+          "pinyin": "huì yì yīn wèi tiān qì yuán yīn qǔ xiāo le.",
           "english": "The meeting was canceled due to the weather."
         }
       ],
@@ -2324,82 +2324,82 @@
       "title": "School Subjects",
       "canDo": "A learner talks about subjects, grades, tests, and passing.",
       "pattern": "你最喜歡哪個科目？",
-      "patternPinyin": "",
+      "patternPinyin": "nǐ zuì xǐ huān nǎ gè kē mù?",
       "hidePinyin": true,
       "words": [
         {
           "zh": "科目",
-          "pinyin": "",
+          "pinyin": "kē mù",
           "english": "subject"
         },
         {
           "zh": "數學",
-          "pinyin": "",
+          "pinyin": "shù xué",
           "english": "mathematics"
         },
         {
           "zh": "科學",
-          "pinyin": "",
+          "pinyin": "kē xué",
           "english": "science"
         },
         {
           "zh": "歷史",
-          "pinyin": "",
+          "pinyin": "lì shǐ",
           "english": "history"
         },
         {
           "zh": "地理",
-          "pinyin": "",
+          "pinyin": "dì lǐ",
           "english": "geography"
         },
         {
           "zh": "考試",
-          "pinyin": "",
+          "pinyin": "kǎo shì",
           "english": "exam/test"
         },
         {
           "zh": "成績",
-          "pinyin": "",
+          "pinyin": "chéng jī",
           "english": "grades/results"
         },
         {
           "zh": "及格",
-          "pinyin": "",
+          "pinyin": "jí gé",
           "english": "to pass a test"
         },
         {
           "zh": "複習",
-          "pinyin": "",
+          "pinyin": "fù xí",
           "english": "to review"
         },
         {
           "zh": "作業",
-          "pinyin": "",
+          "pinyin": "zuò yè",
           "english": "homework"
         },
         {
           "zh": "圖書館",
-          "pinyin": "",
+          "pinyin": "tú shū guǎn",
           "english": "library"
         },
         {
           "zh": "借書",
-          "pinyin": "",
+          "pinyin": "jiè shū",
           "english": "to borrow books"
         },
         {
           "zh": "還書",
-          "pinyin": "",
+          "pinyin": "hái shū",
           "english": "to return books"
         },
         {
           "zh": "討論",
-          "pinyin": "",
+          "pinyin": "tǎo lùn",
           "english": "to discuss"
         },
         {
           "zh": "報告",
-          "pinyin": "",
+          "pinyin": "bào gào",
           "english": "report/presentation"
         }
       ],
@@ -2407,32 +2407,32 @@
       "story": [
         {
           "zh": "你最喜歡哪個科目？",
-          "pinyin": "",
+          "pinyin": "nǐ zuì xǐ huān nǎ gè kē mù?",
           "english": "Which subject do you like the most?"
         },
         {
           "zh": "我的數學成績一直很好。",
-          "pinyin": "",
+          "pinyin": "wǒ de shù xué chéng jī yì zhí hěn hǎo.",
           "english": "My math grades have always been good."
         },
         {
           "zh": "這是一個科學的結論。",
-          "pinyin": "",
+          "pinyin": "zhè shì yī gè kē xué de jié lùn.",
           "english": "This is a scientific conclusion."
         },
         {
           "zh": "他對中國歷史很感興趣。",
-          "pinyin": "",
+          "pinyin": "tā duì zhōng guó lì shǐ hěn gǎn xìng qù.",
           "english": "He is very interested in Chinese history."
         },
         {
           "zh": "地理課上我們學習了各國的首都。",
-          "pinyin": "",
+          "pinyin": "dì lǐ kè shàng wǒ men xué xí le gè guó de shǒu dū.",
           "english": "In geography class, we learned the capitals of various countries."
         },
         {
           "zh": "明天有期末考試，我要複習了。",
-          "pinyin": "",
+          "pinyin": "míng tiān yǒu qī mò kǎo shì, wǒ yào fù xí le.",
           "english": "There is a final exam tomorrow, I need to review."
         }
       ],
@@ -2440,37 +2440,37 @@
         {
           "speaker": "A",
           "zh": "你最喜歡哪個科目？",
-          "pinyin": "",
+          "pinyin": "nǐ zuì xǐ huān nǎ gè kē mù?",
           "english": "Which subject do you like the most?"
         },
         {
           "speaker": "B",
           "zh": "我的數學成績一直很好。",
-          "pinyin": "",
+          "pinyin": "wǒ de shù xué chéng jī yì zhí hěn hǎo.",
           "english": "My math grades have always been good."
         },
         {
           "speaker": "A",
           "zh": "這是一個科學的結論。",
-          "pinyin": "",
+          "pinyin": "zhè shì yī gè kē xué de jié lùn.",
           "english": "This is a scientific conclusion."
         },
         {
           "speaker": "B",
           "zh": "他對中國歷史很感興趣。",
-          "pinyin": "",
+          "pinyin": "tā duì zhōng guó lì shǐ hěn gǎn xìng qù.",
           "english": "He is very interested in Chinese history."
         },
         {
           "speaker": "A",
           "zh": "地理課上我們學習了各國的首都。",
-          "pinyin": "",
+          "pinyin": "dì lǐ kè shàng wǒ men xué xí le gè guó de shǒu dū.",
           "english": "In geography class, we learned the capitals of various countries."
         },
         {
           "speaker": "B",
           "zh": "明天有期末考試，我要複習了。",
-          "pinyin": "",
+          "pinyin": "míng tiān yǒu qī mò kǎo shì, wǒ yào fù xí le.",
           "english": "There is a final exam tomorrow, I need to review."
         }
       ],
@@ -2554,82 +2554,82 @@
       "title": "Class Performance",
       "canDo": "A student discusses homework, review, and improving grades.",
       "pattern": "我加入了學校的音樂社團。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ jiā rù le xué xiào de yīn lè shè tuán.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "社團",
-          "pinyin": "",
+          "pinyin": "shè tuán",
           "english": "school club"
         },
         {
           "zh": "活動",
-          "pinyin": "",
+          "pinyin": "huó dòng",
           "english": "activity"
         },
         {
           "zh": "比賽",
-          "pinyin": "",
+          "pinyin": "bǐ sài",
           "english": "competition"
         },
         {
           "zh": "獎學金",
-          "pinyin": "",
+          "pinyin": "jiǎng xué jīn",
           "english": "scholarship"
         },
         {
           "zh": "畢業",
-          "pinyin": "",
+          "pinyin": "bì yè",
           "english": "to graduate"
         },
         {
           "zh": "校園",
-          "pinyin": "",
+          "pinyin": "xiào yuán",
           "english": "campus"
         },
         {
           "zh": "食堂",
-          "pinyin": "",
+          "pinyin": "shí táng",
           "english": "cafeteria"
         },
         {
           "zh": "宿舍",
-          "pinyin": "",
+          "pinyin": "sù shè",
           "english": "dormitory"
         },
         {
           "zh": "教授",
-          "pinyin": "",
+          "pinyin": "jiào shòu",
           "english": "professor"
         },
         {
           "zh": "學位",
-          "pinyin": "",
+          "pinyin": "xué wèi",
           "english": "degree"
         },
         {
           "zh": "研究",
-          "pinyin": "",
+          "pinyin": "yán jiū",
           "english": "to research"
         },
         {
           "zh": "實習",
-          "pinyin": "",
+          "pinyin": "shí xí",
           "english": "internship"
         },
         {
           "zh": "課表",
-          "pinyin": "",
+          "pinyin": "kè biǎo",
           "english": "class schedule"
         },
         {
           "zh": "遲到",
-          "pinyin": "",
+          "pinyin": "chí dào",
           "english": "late"
         },
         {
           "zh": "請假",
-          "pinyin": "",
+          "pinyin": "qǐng jiǎ",
           "english": "ask for leave"
         }
       ],
@@ -2637,32 +2637,32 @@
       "story": [
         {
           "zh": "我加入了學校的音樂社團。",
-          "pinyin": "",
+          "pinyin": "wǒ jiā rù le xué xiào de yīn lè shè tuán.",
           "english": "I joined the school's music club."
         },
         {
           "zh": "學校週末會舉辦很多活動。",
-          "pinyin": "",
+          "pinyin": "xué xiào zhōu mò huì jǔ bàn hěn duō huó dòng.",
           "english": "The school will hold many activities on the weekend."
         },
         {
           "zh": "這場比賽很精彩。",
-          "pinyin": "",
+          "pinyin": "zhè chǎng bǐ sài hěn jīng cǎi.",
           "english": "This match is very exciting."
         },
         {
           "zh": "他因為成績優異獲得了獎學金。",
-          "pinyin": "",
+          "pinyin": "tā yīn wèi chéng jī yōu yì huò dé le jiǎng xué jīn.",
           "english": "He won a scholarship because of his excellent grades."
         },
         {
           "zh": "我明年大學畢業。",
-          "pinyin": "",
+          "pinyin": "wǒ míng nián dà xué bì yè.",
           "english": "I will graduate from college next year."
         },
         {
           "zh": "我們的校園非常漂亮。",
-          "pinyin": "",
+          "pinyin": "wǒ men de xiào yuán fēi cháng piào liàng.",
           "english": "Our campus is very beautiful."
         }
       ],
@@ -2670,37 +2670,37 @@
         {
           "speaker": "A",
           "zh": "我加入了學校的音樂社團。",
-          "pinyin": "",
+          "pinyin": "wǒ jiā rù le xué xiào de yīn lè shè tuán.",
           "english": "I joined the school's music club."
         },
         {
           "speaker": "B",
           "zh": "學校週末會舉辦很多活動。",
-          "pinyin": "",
+          "pinyin": "xué xiào zhōu mò huì jǔ bàn hěn duō huó dòng.",
           "english": "The school will hold many activities on the weekend."
         },
         {
           "speaker": "A",
           "zh": "這場比賽很精彩。",
-          "pinyin": "",
+          "pinyin": "zhè chǎng bǐ sài hěn jīng cǎi.",
           "english": "This match is very exciting."
         },
         {
           "speaker": "B",
           "zh": "他因為成績優異獲得了獎學金。",
-          "pinyin": "",
+          "pinyin": "tā yīn wèi chéng jī yōu yì huò dé le jiǎng xué jīn.",
           "english": "He won a scholarship because of his excellent grades."
         },
         {
           "speaker": "A",
           "zh": "我明年大學畢業。",
-          "pinyin": "",
+          "pinyin": "wǒ míng nián dà xué bì yè.",
           "english": "I will graduate from college next year."
         },
         {
           "speaker": "B",
           "zh": "我們的校園非常漂亮。",
-          "pinyin": "",
+          "pinyin": "wǒ men de xiào yuán fēi cháng piào liàng.",
           "english": "Our campus is very beautiful."
         }
       ],
@@ -2787,82 +2787,82 @@
       "title": "Bargaining at a Market",
       "canDo": "A shopper asks for discounts and compares prices.",
       "pattern": "在菜市場買菜可以討價還價。",
-      "patternPinyin": "",
+      "patternPinyin": "zài cài shì chǎng mǎi cài kě yǐ tǎo jià hái jià.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "討價還價",
-          "pinyin": "",
+          "pinyin": "tǎo jià hái jià",
           "english": "to bargain"
         },
         {
           "zh": "市場",
-          "pinyin": "",
+          "pinyin": "shì chǎng",
           "english": "market"
         },
         {
           "zh": "老闆",
-          "pinyin": "",
+          "pinyin": "lǎo bǎn",
           "english": "shop owner/boss"
         },
         {
           "zh": "便宜",
-          "pinyin": "",
+          "pinyin": "pián yi",
           "english": "cheap"
         },
         {
           "zh": "貴",
-          "pinyin": "",
+          "pinyin": "guì",
           "english": "expensive"
         },
         {
           "zh": "打折",
-          "pinyin": "",
+          "pinyin": "dǎ zhé",
           "english": "to give a discount"
         },
         {
           "zh": "半價",
-          "pinyin": "",
+          "pinyin": "bàn jià",
           "english": "half price"
         },
         {
           "zh": "價格",
-          "pinyin": "",
+          "pinyin": "jià gé",
           "english": "price"
         },
         {
           "zh": "質量",
-          "pinyin": "",
+          "pinyin": "zhì liàng",
           "english": "quality"
         },
         {
           "zh": "保證",
-          "pinyin": "",
+          "pinyin": "bǎo zhèng",
           "english": "to guarantee"
         },
         {
           "zh": "新鮮",
-          "pinyin": "",
+          "pinyin": "xīn xiān",
           "english": "fresh"
         },
         {
           "zh": "特價",
-          "pinyin": "",
+          "pinyin": "tè jià",
           "english": "special price"
         },
         {
           "zh": "特價",
-          "pinyin": "",
+          "pinyin": "tè jià",
           "english": "promotion"
         },
         {
           "zh": "客戶",
-          "pinyin": "",
+          "pinyin": "kè hù",
           "english": "customer"
         },
         {
           "zh": "零錢",
-          "pinyin": "",
+          "pinyin": "líng qián",
           "english": "small change"
         }
       ],
@@ -2870,32 +2870,32 @@
       "story": [
         {
           "zh": "在菜市場買菜可以討價還價。",
-          "pinyin": "",
+          "pinyin": "zài cài shì chǎng mǎi cài kě yǐ tǎo jià hái jià.",
           "english": "You can bargain when buying vegetables at the market."
         },
         {
           "zh": "這個週末我想去跳蚤市場看看。",
-          "pinyin": "",
+          "pinyin": "zhè gè zhōu mò wǒ xiǎng qù tiào zǎo shì chǎng kàn kàn.",
           "english": "I want to go check out the flea market this weekend."
         },
         {
           "zh": "老闆今天心情看起來不錯。",
-          "pinyin": "",
+          "pinyin": "lǎo bǎn jīn tiān xīn qíng kàn qǐ lái bù cuò.",
           "english": "The boss looks to be in a good mood today."
         },
         {
           "zh": "這家超市的東西很便宜。",
-          "pinyin": "",
+          "pinyin": "zhè jiā chāo shì de dōng xī hěn pián yi.",
           "english": "Things in this supermarket are very cheap."
         },
         {
           "zh": "如果覺得太貴，可以先問老闆能不能便宜一點。",
-          "pinyin": "",
+          "pinyin": "rú guǒ jué dé tài guì, kě yǐ xiān wèn lǎo bǎn néng bù néng pián yi yī diǎn.",
           "english": "If you think it is too expensive, you can first ask the owner whether it can be cheaper."
         },
         {
           "zh": "今天所有的衣服都打折。",
-          "pinyin": "",
+          "pinyin": "jīn tiān suǒ yǒu de yī fú dōu dǎ zhé.",
           "english": "All clothes are on discount today."
         }
       ],
@@ -2903,37 +2903,37 @@
         {
           "speaker": "A",
           "zh": "在菜市場買菜可以討價還價。",
-          "pinyin": "",
+          "pinyin": "zài cài shì chǎng mǎi cài kě yǐ tǎo jià hái jià.",
           "english": "You can bargain when buying vegetables at the market."
         },
         {
           "speaker": "B",
           "zh": "這個週末我想去跳蚤市場看看。",
-          "pinyin": "",
+          "pinyin": "zhè gè zhōu mò wǒ xiǎng qù tiào zǎo shì chǎng kàn kàn.",
           "english": "I want to go check out the flea market this weekend."
         },
         {
           "speaker": "A",
           "zh": "老闆今天心情看起來不錯。",
-          "pinyin": "",
+          "pinyin": "lǎo bǎn jīn tiān xīn qíng kàn qǐ lái bù cuò.",
           "english": "The boss looks to be in a good mood today."
         },
         {
           "speaker": "B",
           "zh": "這家超市的東西很便宜。",
-          "pinyin": "",
+          "pinyin": "zhè jiā chāo shì de dōng xī hěn pián yi.",
           "english": "Things in this supermarket are very cheap."
         },
         {
           "speaker": "A",
           "zh": "如果覺得太貴，可以先問老闆能不能便宜一點。",
-          "pinyin": "",
+          "pinyin": "rú guǒ jué dé tài guì, kě yǐ xiān wèn lǎo bǎn néng bù néng pián yi yī diǎn.",
           "english": "If you think it is too expensive, you can first ask the owner whether it can be cheaper."
         },
         {
           "speaker": "B",
           "zh": "今天所有的衣服都打折。",
-          "pinyin": "",
+          "pinyin": "jīn tiān suǒ yǒu de yī fú dōu dǎ zhé.",
           "english": "All clothes are on discount today."
         }
       ],
@@ -3018,82 +3018,82 @@
       "title": "Solving a Shopping Problem",
       "canDo": "A shopper handles size, price, and payment issues.",
       "pattern": "這家店只收現金。",
-      "patternPinyin": "",
+      "patternPinyin": "zhè jiā diàn zhǐ shōu xiàn jīn.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "現金",
-          "pinyin": "",
+          "pinyin": "xiàn jīn",
           "english": "cash"
         },
         {
           "zh": "刷卡",
-          "pinyin": "",
+          "pinyin": "shuā kǎ",
           "english": "pay by card"
         },
         {
           "zh": "掃碼",
-          "pinyin": "",
+          "pinyin": "sǎo mǎ",
           "english": "scan QR code"
         },
         {
           "zh": "水果",
-          "pinyin": "",
+          "pinyin": "shuǐ guǒ",
           "english": "fruit"
         },
         {
           "zh": "衣服",
-          "pinyin": "",
+          "pinyin": "yī fú",
           "english": "clothes"
         },
         {
           "zh": "鞋子",
-          "pinyin": "",
+          "pinyin": "xié zi",
           "english": "shoes"
         },
         {
           "zh": "紀念品",
-          "pinyin": "",
+          "pinyin": "jì niàn pǐn",
           "english": "souvenir"
         },
         {
           "zh": "一共",
-          "pinyin": "",
+          "pinyin": "yī gòng",
           "english": "in total"
         },
         {
           "zh": "合適",
-          "pinyin": "",
+          "pinyin": "hé shì",
           "english": "suitable/fitting"
         },
         {
           "zh": "試穿",
-          "pinyin": "",
+          "pinyin": "shì chuān",
           "english": "to try on"
         },
         {
           "zh": "大小",
-          "pinyin": "",
+          "pinyin": "dà xiǎo",
           "english": "size"
         },
         {
           "zh": "顏色",
-          "pinyin": "",
+          "pinyin": "yán sè",
           "english": "color"
         },
         {
           "zh": "款式",
-          "pinyin": "",
+          "pinyin": "kuǎn shì",
           "english": "style"
         },
         {
           "zh": "換貨",
-          "pinyin": "",
+          "pinyin": "huàn huò",
           "english": "exchange goods"
         },
         {
           "zh": "退貨",
-          "pinyin": "",
+          "pinyin": "tuì huò",
           "english": "to return goods"
         }
       ],
@@ -3101,32 +3101,32 @@
       "story": [
         {
           "zh": "這家店只收現金。",
-          "pinyin": "",
+          "pinyin": "zhè jiā diàn zhǐ shōu xiàn jīn.",
           "english": "This store only accepts cash."
         },
         {
           "zh": "請問可以刷卡嗎？",
-          "pinyin": "",
+          "pinyin": "qǐng wèn kě yǐ shuā kǎ ma?",
           "english": "Excuse me, can I pay by card?"
         },
         {
           "zh": "你可以掃碼支付。",
-          "pinyin": "",
+          "pinyin": "nǐ kě yǐ sǎo mǎ zhī fù.",
           "english": "You can scan the QR code to pay."
         },
         {
           "zh": "你最喜歡吃什麼水果？",
-          "pinyin": "",
+          "pinyin": "nǐ zuì xǐ huān chī shén me shuǐ guǒ?",
           "english": "What fruit do you like to eat the most?"
         },
         {
           "zh": "天氣冷了，多穿點衣服。",
-          "pinyin": "",
+          "pinyin": "tiān qì lěng le, duō chuān diǎn yī fú.",
           "english": "The weather is cold, wear more clothes."
         },
         {
           "zh": "這雙鞋子很舒服。",
-          "pinyin": "",
+          "pinyin": "zhè shuāng xié zi hěn shū fú.",
           "english": "This pair of shoes is very comfortable."
         }
       ],
@@ -3134,37 +3134,37 @@
         {
           "speaker": "A",
           "zh": "這家店只收現金。",
-          "pinyin": "",
+          "pinyin": "zhè jiā diàn zhǐ shōu xiàn jīn.",
           "english": "This store only accepts cash."
         },
         {
           "speaker": "B",
           "zh": "請問可以刷卡嗎？",
-          "pinyin": "",
+          "pinyin": "qǐng wèn kě yǐ shuā kǎ ma?",
           "english": "Excuse me, can I pay by card?"
         },
         {
           "speaker": "A",
           "zh": "你可以掃碼支付。",
-          "pinyin": "",
+          "pinyin": "nǐ kě yǐ sǎo mǎ zhī fù.",
           "english": "You can scan the QR code to pay."
         },
         {
           "speaker": "B",
           "zh": "你最喜歡吃什麼水果？",
-          "pinyin": "",
+          "pinyin": "nǐ zuì xǐ huān chī shén me shuǐ guǒ?",
           "english": "What fruit do you like to eat the most?"
         },
         {
           "speaker": "A",
           "zh": "天氣冷了，多穿點衣服。",
-          "pinyin": "",
+          "pinyin": "tiān qì lěng le, duō chuān diǎn yī fú.",
           "english": "The weather is cold, wear more clothes."
         },
         {
           "speaker": "B",
           "zh": "這雙鞋子很舒服。",
-          "pinyin": "",
+          "pinyin": "zhè shuāng xié zi hěn shū fú.",
           "english": "This pair of shoes is very comfortable."
         }
       ],
@@ -3251,82 +3251,82 @@
       "title": "Asking for Help",
       "canDo": "A traveler reports a lost wallet/passport and asks police for help.",
       "pattern": "發生了緊急情況，請快來。",
-      "patternPinyin": "",
+      "patternPinyin": "fā shēng le jǐn jí qíng kuàng, qǐng kuài lái.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "緊急",
-          "pinyin": "",
+          "pinyin": "jǐn jí",
           "english": "urgent/emergency"
         },
         {
           "zh": "求助",
-          "pinyin": "",
+          "pinyin": "qiú zhù",
           "english": "to seek help"
         },
         {
           "zh": "警察",
-          "pinyin": "",
+          "pinyin": "jǐng chá",
           "english": "police"
         },
         {
           "zh": "小偷",
-          "pinyin": "",
+          "pinyin": "xiǎo tōu",
           "english": "thief"
         },
         {
           "zh": "丟了",
-          "pinyin": "",
+          "pinyin": "diū le",
           "english": "lost"
         },
         {
           "zh": "錢包",
-          "pinyin": "",
+          "pinyin": "qián bāo",
           "english": "wallet"
         },
         {
           "zh": "護照",
-          "pinyin": "",
+          "pinyin": "hù zhào",
           "english": "passport"
         },
         {
           "zh": "被盜",
-          "pinyin": "",
+          "pinyin": "bèi dào",
           "english": "stolen"
         },
         {
           "zh": "受傷",
-          "pinyin": "",
+          "pinyin": "shòu shāng",
           "english": "injured"
         },
         {
           "zh": "救護車",
-          "pinyin": "",
+          "pinyin": "jiù hù chē",
           "english": "ambulance"
         },
         {
           "zh": "醫院",
-          "pinyin": "",
+          "pinyin": "yī yuàn",
           "english": "hospital"
         },
         {
           "zh": "著火",
-          "pinyin": "",
+          "pinyin": "zhù huǒ",
           "english": "on fire"
         },
         {
           "zh": "火警",
-          "pinyin": "",
+          "pinyin": "huǒ jǐng",
           "english": "fire alarm"
         },
         {
           "zh": "迷路",
-          "pinyin": "",
+          "pinyin": "mí lù",
           "english": "lost (directions)"
         },
         {
           "zh": "報警",
-          "pinyin": "",
+          "pinyin": "bào jǐng",
           "english": "report to police"
         }
       ],
@@ -3334,32 +3334,32 @@
       "story": [
         {
           "zh": "發生了緊急情況，請快來。",
-          "pinyin": "",
+          "pinyin": "fā shēng le jǐn jí qíng kuàng, qǐng kuài lái.",
           "english": "An emergency occurred, please come quickly."
         },
         {
           "zh": "遇到困難時要勇敢求助。",
-          "pinyin": "",
+          "pinyin": "yù dào kùn nán shí yào yǒng gǎn qiú zhù.",
           "english": "Be brave to ask for help when facing difficulties."
         },
         {
           "zh": "我需要叫警察。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào jiào jǐng chá.",
           "english": "I need to call the police."
         },
         {
           "zh": "我的包被小偷拿走了。",
-          "pinyin": "",
+          "pinyin": "wǒ de bāo bèi xiǎo tōu ná zǒu le.",
           "english": "My bag was taken by a thief."
         },
         {
           "zh": "我的鑰匙丟了。",
-          "pinyin": "",
+          "pinyin": "wǒ de yào shi diū le.",
           "english": "I lost my keys."
         },
         {
           "zh": "我的錢包不見了。",
-          "pinyin": "",
+          "pinyin": "wǒ de qián bāo bù jiàn le.",
           "english": "My wallet is missing."
         }
       ],
@@ -3367,37 +3367,37 @@
         {
           "speaker": "A",
           "zh": "發生了緊急情況，請快來。",
-          "pinyin": "",
+          "pinyin": "fā shēng le jǐn jí qíng kuàng, qǐng kuài lái.",
           "english": "An emergency occurred, please come quickly."
         },
         {
           "speaker": "B",
           "zh": "遇到困難時要勇敢求助。",
-          "pinyin": "",
+          "pinyin": "yù dào kùn nán shí yào yǒng gǎn qiú zhù.",
           "english": "Be brave to ask for help when facing difficulties."
         },
         {
           "speaker": "A",
           "zh": "我需要叫警察。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào jiào jǐng chá.",
           "english": "I need to call the police."
         },
         {
           "speaker": "B",
           "zh": "我的包被小偷拿走了。",
-          "pinyin": "",
+          "pinyin": "wǒ de bāo bèi xiǎo tōu ná zǒu le.",
           "english": "My bag was taken by a thief."
         },
         {
           "speaker": "A",
           "zh": "我的鑰匙丟了。",
-          "pinyin": "",
+          "pinyin": "wǒ de yào shi diū le.",
           "english": "I lost my keys."
         },
         {
           "speaker": "B",
           "zh": "我的錢包不見了。",
-          "pinyin": "",
+          "pinyin": "wǒ de qián bāo bù jiàn le.",
           "english": "My wallet is missing."
         }
       ],
@@ -3483,82 +3483,82 @@
       "title": "Urgent Situation",
       "canDo": "A learner explains a problem clearly in an emergency.",
       "pattern": "請留下您的緊急聯繫人號碼。",
-      "patternPinyin": "",
+      "patternPinyin": "qǐng liú xià nín de jǐn jí lián xì rén hào mǎ.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "聯繫人",
-          "pinyin": "",
+          "pinyin": "lián xì rén",
           "english": "contact person"
         },
         {
           "zh": "保險",
-          "pinyin": "",
+          "pinyin": "bǎo xiǎn",
           "english": "insurance"
         },
         {
           "zh": "大使館",
-          "pinyin": "",
+          "pinyin": "dà shǐ guǎn",
           "english": "embassy"
         },
         {
           "zh": "證明",
-          "pinyin": "",
+          "pinyin": "zhèng míng",
           "english": "proof/certificate"
         },
         {
           "zh": "丟失",
-          "pinyin": "",
+          "pinyin": "diū shī",
           "english": "lost/missing"
         },
         {
           "zh": "故障",
-          "pinyin": "",
+          "pinyin": "gù zhàng",
           "english": "breakdown/fault"
         },
         {
           "zh": "意外",
-          "pinyin": "",
+          "pinyin": "yì wài",
           "english": "accident"
         },
         {
           "zh": "危險",
-          "pinyin": "",
+          "pinyin": "wēi xiǎn",
           "english": "danger"
         },
         {
           "zh": "安全",
-          "pinyin": "",
+          "pinyin": "ān quán",
           "english": "safe"
         },
         {
           "zh": "救命",
-          "pinyin": "",
+          "pinyin": "jiù mìng",
           "english": "Help! (save life)"
         },
         {
           "zh": "冷靜",
-          "pinyin": "",
+          "pinyin": "lěng jìng",
           "english": "calm"
         },
         {
           "zh": "附近",
-          "pinyin": "",
+          "pinyin": "fù jìn",
           "english": "nearby"
         },
         {
           "zh": "藥局",
-          "pinyin": "",
+          "pinyin": "yào jú",
           "english": "pharmacy"
         },
         {
           "zh": "醫生",
-          "pinyin": "",
+          "pinyin": "yī shēng",
           "english": "doctor"
         },
         {
           "zh": "報案",
-          "pinyin": "",
+          "pinyin": "bào àn",
           "english": "report a case"
         }
       ],
@@ -3566,32 +3566,32 @@
       "story": [
         {
           "zh": "請留下您的緊急聯繫人號碼。",
-          "pinyin": "",
+          "pinyin": "qǐng liú xià nín de jǐn jí lián xì rén hào mǎ.",
           "english": "Please leave your emergency contact number."
         },
         {
           "zh": "出國旅遊最好買一份旅遊保險。",
-          "pinyin": "",
+          "pinyin": "chū guó lǚ yóu zuì hǎo mǎi yī fèn lǚ yóu bǎo xiǎn.",
           "english": "It is best to buy travel insurance when traveling abroad."
         },
         {
           "zh": "護照遺失了可以去大使館補辦。",
-          "pinyin": "",
+          "pinyin": "hù zhào yí shī le kě yǐ qù dà shǐ guǎn bǔ bàn.",
           "english": "If you lose your passport, you can go to the embassy to get it reissued."
         },
         {
           "zh": "我需要一份工作證明。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào yī fèn gōng zuò zhèng míng.",
           "english": "I need an employment certificate."
         },
         {
           "zh": "他丟失了一份重要的文件。",
-          "pinyin": "",
+          "pinyin": "tā diū shī le yī fèn zhòng yào de wén jiàn.",
           "english": "He lost an important document."
         },
         {
           "zh": "電梯發生故障了。",
-          "pinyin": "",
+          "pinyin": "diàn tī fā shēng gù zhàng le.",
           "english": "The elevator has malfunctioned."
         }
       ],
@@ -3599,37 +3599,37 @@
         {
           "speaker": "A",
           "zh": "請留下您的緊急聯繫人號碼。",
-          "pinyin": "",
+          "pinyin": "qǐng liú xià nín de jǐn jí lián xì rén hào mǎ.",
           "english": "Please leave your emergency contact number."
         },
         {
           "speaker": "B",
           "zh": "出國旅遊最好買一份旅遊保險。",
-          "pinyin": "",
+          "pinyin": "chū guó lǚ yóu zuì hǎo mǎi yī fèn lǚ yóu bǎo xiǎn.",
           "english": "It is best to buy travel insurance when traveling abroad."
         },
         {
           "speaker": "A",
           "zh": "護照遺失了可以去大使館補辦。",
-          "pinyin": "",
+          "pinyin": "hù zhào yí shī le kě yǐ qù dà shǐ guǎn bǔ bàn.",
           "english": "If you lose your passport, you can go to the embassy to get it reissued."
         },
         {
           "speaker": "B",
           "zh": "我需要一份工作證明。",
-          "pinyin": "",
+          "pinyin": "wǒ xū yào yī fèn gōng zuò zhèng míng.",
           "english": "I need an employment certificate."
         },
         {
           "speaker": "A",
           "zh": "他丟失了一份重要的文件。",
-          "pinyin": "",
+          "pinyin": "tā diū shī le yī fèn zhòng yào de wén jiàn.",
           "english": "He lost an important document."
         },
         {
           "speaker": "B",
           "zh": "電梯發生故障了。",
-          "pinyin": "",
+          "pinyin": "diàn tī fā shēng gù zhàng le.",
           "english": "The elevator has malfunctioned."
         }
       ],
@@ -3715,82 +3715,82 @@
       "title": "Social Media and Apps",
       "canDo": "A learner uses accounts, passwords, upload/download, and messages.",
       "pattern": "年輕人喜歡使用社群媒體。",
-      "patternPinyin": "",
+      "patternPinyin": "nián qīng rén xǐ huān shǐ yòng shè qún méi tǐ.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "社群媒體",
-          "pinyin": "",
+          "pinyin": "shè qún méi tǐ",
           "english": "social media"
         },
         {
           "zh": "科技",
-          "pinyin": "",
+          "pinyin": "kē jì",
           "english": "technology"
         },
         {
           "zh": "智能手機",
-          "pinyin": "",
+          "pinyin": "zhì néng shǒu jī",
           "english": "smartphone"
         },
         {
           "zh": "應用程式",
-          "pinyin": "",
+          "pinyin": "yīng yòng chéng shì",
           "english": "application/app"
         },
         {
           "zh": "下載",
-          "pinyin": "",
+          "pinyin": "xià zài",
           "english": "to download"
         },
         {
           "zh": "上傳",
-          "pinyin": "",
+          "pinyin": "shàng chuán",
           "english": "to upload"
         },
         {
           "zh": "帳號",
-          "pinyin": "",
+          "pinyin": "zhàng hào",
           "english": "account (online)"
         },
         {
           "zh": "密碼",
-          "pinyin": "",
+          "pinyin": "mì mǎ",
           "english": "password"
         },
         {
           "zh": "登入",
-          "pinyin": "",
+          "pinyin": "dēng rù",
           "english": "to log in"
         },
         {
           "zh": "登出",
-          "pinyin": "",
+          "pinyin": "dēng chū",
           "english": "to log out"
         },
         {
           "zh": "分享",
-          "pinyin": "",
+          "pinyin": "fēn xiǎng",
           "english": "to share"
         },
         {
           "zh": "點讚",
-          "pinyin": "",
+          "pinyin": "diǎn zàn",
           "english": "to like (post)"
         },
         {
           "zh": "留言",
-          "pinyin": "",
+          "pinyin": "liú yán",
           "english": "to comment/leave message"
         },
         {
           "zh": "關注",
-          "pinyin": "",
+          "pinyin": "guān zhù",
           "english": "to follow (user)"
         },
         {
           "zh": "粉絲",
-          "pinyin": "",
+          "pinyin": "fěn sī",
           "english": "fans/followers"
         }
       ],
@@ -3798,32 +3798,32 @@
       "story": [
         {
           "zh": "年輕人喜歡使用社群媒體。",
-          "pinyin": "",
+          "pinyin": "nián qīng rén xǐ huān shǐ yòng shè qún méi tǐ.",
           "english": "Young people like to use social media."
         },
         {
           "zh": "現代科技改變了我們的生活。",
-          "pinyin": "",
+          "pinyin": "xiàn dài kē jì gǎi biàn le wǒ men de shēng huó.",
           "english": "Modern technology has changed our lives."
         },
         {
           "zh": "他買了一支新的智能手機。",
-          "pinyin": "",
+          "pinyin": "tā mǎi le yī zhī xīn de zhì néng shǒu jī.",
           "english": "He bought a new smartphone."
         },
         {
           "zh": "這個應用程式非常實用。",
-          "pinyin": "",
+          "pinyin": "zhè gè yīng yòng chéng shì fēi cháng shí yòng.",
           "english": "This app is very practical."
         },
         {
           "zh": "你可以免費下載這首歌。",
-          "pinyin": "",
+          "pinyin": "nǐ kě yǐ miǎn fèi xià zài zhè shǒu gē.",
           "english": "You can download this song for free."
         },
         {
           "zh": "我剛把照片上傳到網路了。",
-          "pinyin": "",
+          "pinyin": "wǒ gāng bǎ zhào piān shàng chuán dào wǎng lù le.",
           "english": "I just uploaded the photos to the internet."
         }
       ],
@@ -3831,37 +3831,37 @@
         {
           "speaker": "A",
           "zh": "年輕人喜歡使用社群媒體。",
-          "pinyin": "",
+          "pinyin": "nián qīng rén xǐ huān shǐ yòng shè qún méi tǐ.",
           "english": "Young people like to use social media."
         },
         {
           "speaker": "B",
           "zh": "現代科技改變了我們的生活。",
-          "pinyin": "",
+          "pinyin": "xiàn dài kē jì gǎi biàn le wǒ men de shēng huó.",
           "english": "Modern technology has changed our lives."
         },
         {
           "speaker": "A",
           "zh": "他買了一支新的智能手機。",
-          "pinyin": "",
+          "pinyin": "tā mǎi le yī zhī xīn de zhì néng shǒu jī.",
           "english": "He bought a new smartphone."
         },
         {
           "speaker": "B",
           "zh": "這個應用程式非常實用。",
-          "pinyin": "",
+          "pinyin": "zhè gè yīng yòng chéng shì fēi cháng shí yòng.",
           "english": "This app is very practical."
         },
         {
           "speaker": "A",
           "zh": "你可以免費下載這首歌。",
-          "pinyin": "",
+          "pinyin": "nǐ kě yǐ miǎn fèi xià zài zhè shǒu gē.",
           "english": "You can download this song for free."
         },
         {
           "speaker": "B",
           "zh": "我剛把照片上傳到網路了。",
-          "pinyin": "",
+          "pinyin": "wǒ gāng bǎ zhào piān shàng chuán dào wǎng lù le.",
           "english": "I just uploaded the photos to the internet."
         }
       ],
@@ -3946,82 +3946,82 @@
       "title": "Phone and App Problem",
       "canDo": "A learner solves a login or app problem.",
       "pattern": "這是我小時候的照片。",
-      "patternPinyin": "",
+      "patternPinyin": "zhè shì wǒ xiǎo shí hòu de zhào piān.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "照片",
-          "pinyin": "",
+          "pinyin": "zhào piān",
           "english": "photo"
         },
         {
           "zh": "影片",
-          "pinyin": "",
+          "pinyin": "yǐng piàn",
           "english": "video"
         },
         {
           "zh": "直播",
-          "pinyin": "",
+          "pinyin": "zhí bō",
           "english": "live stream"
         },
         {
           "zh": "網路",
-          "pinyin": "",
+          "pinyin": "wǎng lù",
           "english": "internet"
         },
         {
           "zh": "網速",
-          "pinyin": "",
+          "pinyin": "wǎng sù",
           "english": "internet speed"
         },
         {
           "zh": "訊號",
-          "pinyin": "",
+          "pinyin": "xùn hào",
           "english": "signal"
         },
         {
           "zh": "軟體",
-          "pinyin": "",
+          "pinyin": "ruǎn tǐ",
           "english": "software"
         },
         {
           "zh": "硬體",
-          "pinyin": "",
+          "pinyin": "yìng tǐ",
           "english": "hardware"
         },
         {
           "zh": "隱私",
-          "pinyin": "",
+          "pinyin": "yǐn sī",
           "english": "privacy"
         },
         {
           "zh": "設定",
-          "pinyin": "",
+          "pinyin": "shè dìng",
           "english": "settings"
         },
         {
           "zh": "通知",
-          "pinyin": "",
+          "pinyin": "tōng zhī",
           "english": "notification"
         },
         {
           "zh": "垃圾郵件",
-          "pinyin": "",
+          "pinyin": "lā jī yóu jiàn",
           "english": "spam mail"
         },
         {
           "zh": "病毒",
-          "pinyin": "",
+          "pinyin": "bìng dú",
           "english": "virus"
         },
         {
           "zh": "人工智慧",
-          "pinyin": "",
+          "pinyin": "rén gōng zhì huì",
           "english": "AI"
         },
         {
           "zh": "未來",
-          "pinyin": "",
+          "pinyin": "wèi lái",
           "english": "future"
         }
       ],
@@ -4029,32 +4029,32 @@
       "story": [
         {
           "zh": "這是我小時候的照片。",
-          "pinyin": "",
+          "pinyin": "zhè shì wǒ xiǎo shí hòu de zhào piān.",
           "english": "This is a photo of me when I was little."
         },
         {
           "zh": "我們昨天看了一部好笑的影片。",
-          "pinyin": "",
+          "pinyin": "wǒ men zuó tiān kàn le yī bù hǎo xiào de yǐng piàn.",
           "english": "We watched a funny video yesterday."
         },
         {
           "zh": "今晚八點有足球比賽的直播。",
-          "pinyin": "",
+          "pinyin": "jīn wǎn bā diǎn yǒu zú qiú bǐ sài de zhí bō.",
           "english": "There is a live broadcast of the football match at eight tonight."
         },
         {
           "zh": "這裡沒有網路，我無法收信。",
-          "pinyin": "",
+          "pinyin": "zhè lǐ méi yǒu wǎng lù, wǒ wú fǎ shōu xìn.",
           "english": "There is no internet here, I cannot receive emails."
         },
         {
           "zh": "這家咖啡廳的網速很快。",
-          "pinyin": "",
+          "pinyin": "zhè jiā kā fēi tīng de wǎng sù hěn kuài.",
           "english": "The internet speed in this cafe is very fast."
         },
         {
           "zh": "山區的手機訊號很弱。",
-          "pinyin": "",
+          "pinyin": "shān qū de shǒu jī xùn hào hěn ruò.",
           "english": "The cell phone signal in the mountains is very weak."
         }
       ],
@@ -4062,37 +4062,37 @@
         {
           "speaker": "A",
           "zh": "這是我小時候的照片。",
-          "pinyin": "",
+          "pinyin": "zhè shì wǒ xiǎo shí hòu de zhào piān.",
           "english": "This is a photo of me when I was little."
         },
         {
           "speaker": "B",
           "zh": "我們昨天看了一部好笑的影片。",
-          "pinyin": "",
+          "pinyin": "wǒ men zuó tiān kàn le yī bù hǎo xiào de yǐng piàn.",
           "english": "We watched a funny video yesterday."
         },
         {
           "speaker": "A",
           "zh": "今晚八點有足球比賽的直播。",
-          "pinyin": "",
+          "pinyin": "jīn wǎn bā diǎn yǒu zú qiú bǐ sài de zhí bō.",
           "english": "There is a live broadcast of the football match at eight tonight."
         },
         {
           "speaker": "B",
           "zh": "這裡沒有網路，我無法收信。",
-          "pinyin": "",
+          "pinyin": "zhè lǐ méi yǒu wǎng lù, wǒ wú fǎ shōu xìn.",
           "english": "There is no internet here, I cannot receive emails."
         },
         {
           "speaker": "A",
           "zh": "這家咖啡廳的網速很快。",
-          "pinyin": "",
+          "pinyin": "zhè jiā kā fēi tīng de wǎng sù hěn kuài.",
           "english": "The internet speed in this cafe is very fast."
         },
         {
           "speaker": "B",
           "zh": "山區的手機訊號很弱。",
-          "pinyin": "",
+          "pinyin": "shān qū de shǒu jī xùn hào hěn ruò.",
           "english": "The cell phone signal in the mountains is very weak."
         }
       ],
@@ -4178,82 +4178,82 @@
       "title": "Rooms at Home",
       "canDo": "A learner talks about rooms, furniture, and household objects.",
       "pattern": "我今天待在家裡休息。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ jīn tiān dài zài jiā lǐ xiū xī.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "家裡",
-          "pinyin": "",
+          "pinyin": "jiā lǐ",
           "english": "at home"
         },
         {
           "zh": "客廳",
-          "pinyin": "",
+          "pinyin": "kè tīng",
           "english": "living room"
         },
         {
           "zh": "臥室",
-          "pinyin": "",
+          "pinyin": "wò shì",
           "english": "bedroom"
         },
         {
           "zh": "廚房",
-          "pinyin": "",
+          "pinyin": "chú fáng",
           "english": "kitchen"
         },
         {
           "zh": "浴室",
-          "pinyin": "",
+          "pinyin": "yù shì",
           "english": "bathroom"
         },
         {
           "zh": "家具",
-          "pinyin": "",
+          "pinyin": "jiā jù",
           "english": "furniture"
         },
         {
           "zh": "沙發",
-          "pinyin": "",
+          "pinyin": "shā fā",
           "english": "sofa"
         },
         {
           "zh": "桌子",
-          "pinyin": "",
+          "pinyin": "zhuō zi",
           "english": "table"
         },
         {
           "zh": "椅子",
-          "pinyin": "",
+          "pinyin": "yǐ zi",
           "english": "chair"
         },
         {
           "zh": "床",
-          "pinyin": "",
+          "pinyin": "chuáng",
           "english": "bed"
         },
         {
           "zh": "電器",
-          "pinyin": "",
+          "pinyin": "diàn qì",
           "english": "appliances"
         },
         {
           "zh": "電視",
-          "pinyin": "",
+          "pinyin": "diàn shì",
           "english": "TV"
         },
         {
           "zh": "冰箱",
-          "pinyin": "",
+          "pinyin": "bīng xiāng",
           "english": "refrigerator"
         },
         {
           "zh": "洗衣機",
-          "pinyin": "",
+          "pinyin": "xǐ yī jī",
           "english": "washing machine"
         },
         {
           "zh": "空調",
-          "pinyin": "",
+          "pinyin": "kōng diào",
           "english": "air conditioner"
         }
       ],
@@ -4261,32 +4261,32 @@
       "story": [
         {
           "zh": "我今天待在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān dài zài jiā lǐ xiū xī.",
           "english": "I am staying at home to rest today."
         },
         {
           "zh": "我們在客廳看電視。",
-          "pinyin": "",
+          "pinyin": "wǒ men zài kè tīng kàn diàn shì.",
           "english": "We are watching TV in the living room."
         },
         {
           "zh": "我的臥室有一張大床。",
-          "pinyin": "",
+          "pinyin": "wǒ de wò shì yǒu yī zhāng dà chuáng.",
           "english": "My bedroom has a large bed."
         },
         {
           "zh": "媽媽正在廚房做飯。",
-          "pinyin": "",
+          "pinyin": "mā mā zhèng zài chú fáng zuò fàn.",
           "english": "Mom is cooking in the kitchen."
         },
         {
           "zh": "我去浴室洗澡。",
-          "pinyin": "",
+          "pinyin": "wǒ qù yù shì xǐ zǎo.",
           "english": "I am going to the bathroom to take a shower."
         },
         {
           "zh": "我們剛買了一些新家具。",
-          "pinyin": "",
+          "pinyin": "wǒ men gāng mǎi le yī xiē xīn jiā jù.",
           "english": "We just bought some new furniture."
         }
       ],
@@ -4294,37 +4294,37 @@
         {
           "speaker": "A",
           "zh": "我今天待在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān dài zài jiā lǐ xiū xī.",
           "english": "I am staying at home to rest today."
         },
         {
           "speaker": "B",
           "zh": "我們在客廳看電視。",
-          "pinyin": "",
+          "pinyin": "wǒ men zài kè tīng kàn diàn shì.",
           "english": "We are watching TV in the living room."
         },
         {
           "speaker": "A",
           "zh": "我的臥室有一張大床。",
-          "pinyin": "",
+          "pinyin": "wǒ de wò shì yǒu yī zhāng dà chuáng.",
           "english": "My bedroom has a large bed."
         },
         {
           "speaker": "B",
           "zh": "媽媽正在廚房做飯。",
-          "pinyin": "",
+          "pinyin": "mā mā zhèng zài chú fáng zuò fàn.",
           "english": "Mom is cooking in the kitchen."
         },
         {
           "speaker": "A",
           "zh": "我去浴室洗澡。",
-          "pinyin": "",
+          "pinyin": "wǒ qù yù shì xǐ zǎo.",
           "english": "I am going to the bathroom to take a shower."
         },
         {
           "speaker": "B",
           "zh": "我們剛買了一些新家具。",
-          "pinyin": "",
+          "pinyin": "wǒ men gāng mǎi le yī xiē xīn jiā jù.",
           "english": "We just bought some new furniture."
         }
       ],
@@ -4408,82 +4408,82 @@
       "title": "Home Routine",
       "canDo": "A learner describes home tasks and a quiet review routine.",
       "pattern": "我們週末要打掃房間。",
-      "patternPinyin": "",
+      "patternPinyin": "wǒ men zhōu mò yào dǎ sǎo fáng jiān.",
       "hidePinyin": true,
       "words": [
         {
           "zh": "打掃",
-          "pinyin": "",
+          "pinyin": "dǎ sǎo",
           "english": "to clean"
         },
         {
           "zh": "乾淨",
-          "pinyin": "",
+          "pinyin": "qián jìng",
           "english": "clean"
         },
         {
           "zh": "髒",
-          "pinyin": "",
+          "pinyin": "zāng",
           "english": "dirty"
         },
         {
           "zh": "整理",
-          "pinyin": "",
+          "pinyin": "zhěng lǐ",
           "english": "to tidy up"
         },
         {
           "zh": "垃圾",
-          "pinyin": "",
+          "pinyin": "lā jī",
           "english": "trash/garbage"
         },
         {
           "zh": "做飯",
-          "pinyin": "",
+          "pinyin": "zuò fàn",
           "english": "to cook meal"
         },
         {
           "zh": "洗碗",
-          "pinyin": "",
+          "pinyin": "xǐ wǎn",
           "english": "wash dishes"
         },
         {
           "zh": "澆花",
-          "pinyin": "",
+          "pinyin": "jiāo huā",
           "english": "water flowers"
         },
         {
           "zh": "修理",
-          "pinyin": "",
+          "pinyin": "xiū lǐ",
           "english": "to repair"
         },
         {
           "zh": "鄰居",
-          "pinyin": "",
+          "pinyin": "lín jū",
           "english": "neighbor"
         },
         {
           "zh": "搬家",
-          "pinyin": "",
+          "pinyin": "bān jiā",
           "english": "to move house"
         },
         {
           "zh": "裝修",
-          "pinyin": "",
+          "pinyin": "zhuāng xiū",
           "english": "renovation"
         },
         {
           "zh": "舒服",
-          "pinyin": "",
+          "pinyin": "shū fú",
           "english": "comfortable"
         },
         {
           "zh": "環境",
-          "pinyin": "",
+          "pinyin": "huán jìng",
           "english": "environment"
         },
         {
           "zh": "溫馨",
-          "pinyin": "",
+          "pinyin": "wēn xīn",
           "english": "cozy/warm"
         }
       ],
@@ -4491,32 +4491,32 @@
       "story": [
         {
           "zh": "我們週末要打掃房間。",
-          "pinyin": "",
+          "pinyin": "wǒ men zhōu mò yào dǎ sǎo fáng jiān.",
           "english": "We need to clean the room this weekend."
         },
         {
           "zh": "房間整理得很乾淨。",
-          "pinyin": "",
+          "pinyin": "fáng jiān zhěng lǐ dé hěn qián jìng.",
           "english": "The room was tidied up very cleanly."
         },
         {
           "zh": "廚房有點髒，我們吃完飯以後一起整理。",
-          "pinyin": "",
+          "pinyin": "chú fáng yǒu diǎn zāng, wǒ men chī wán fàn yǐ hòu yì qǐ zhěng lǐ.",
           "english": "The kitchen is a little dirty, so after eating we will clean it together."
         },
         {
           "zh": "請把桌上的文件整理好。",
-          "pinyin": "",
+          "pinyin": "qǐng bǎ zhuō shàng de wén jiàn zhěng lǐ hǎo.",
           "english": "Please organize the documents on the desk."
         },
         {
           "zh": "出門時順便把垃圾倒了。",
-          "pinyin": "",
+          "pinyin": "chū mén shí shùn biàn bǎ lā jī dào le.",
           "english": "Take out the trash when you go out."
         },
         {
           "zh": "今晚輪到我做飯了。",
-          "pinyin": "",
+          "pinyin": "jīn wǎn lún dào wǒ zuò fàn le.",
           "english": "It's my turn to cook tonight."
         }
       ],
@@ -4524,37 +4524,37 @@
         {
           "speaker": "A",
           "zh": "我們週末要打掃房間。",
-          "pinyin": "",
+          "pinyin": "wǒ men zhōu mò yào dǎ sǎo fáng jiān.",
           "english": "We need to clean the room this weekend."
         },
         {
           "speaker": "B",
           "zh": "房間整理得很乾淨。",
-          "pinyin": "",
+          "pinyin": "fáng jiān zhěng lǐ dé hěn qián jìng.",
           "english": "The room was tidied up very cleanly."
         },
         {
           "speaker": "A",
           "zh": "廚房有點髒，我們吃完飯以後一起整理。",
-          "pinyin": "",
+          "pinyin": "chú fáng yǒu diǎn zāng, wǒ men chī wán fàn yǐ hòu yì qǐ zhěng lǐ.",
           "english": "The kitchen is a little dirty, so after eating we will clean it together."
         },
         {
           "speaker": "B",
           "zh": "請把桌上的文件整理好。",
-          "pinyin": "",
+          "pinyin": "qǐng bǎ zhuō shàng de wén jiàn zhěng lǐ hǎo.",
           "english": "Please organize the documents on the desk."
         },
         {
           "speaker": "A",
           "zh": "出門時順便把垃圾倒了。",
-          "pinyin": "",
+          "pinyin": "chū mén shí shùn biàn bǎ lā jī dào le.",
           "english": "Take out the trash when you go out."
         },
         {
           "speaker": "B",
           "zh": "今晚輪到我做飯了。",
-          "pinyin": "",
+          "pinyin": "jīn wǎn lún dào wǒ zuò fàn le.",
           "english": "It's my turn to cook tonight."
         }
       ],

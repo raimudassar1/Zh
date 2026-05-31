@@ -46,9 +46,12 @@ window.FlashcardsModule = (() => {
     const categories = getCategories();
 
     container.innerHTML = `
-      <div class="page-header">
-        <h2>Flashcards</h2>
-        <p>Swipe cards on touch screens. Tap to hear, double tap to flip, then mark what you know.</p>
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center; gap: 16px;">
+        <div>
+          <h2>Flashcards</h2>
+          <p>Swipe cards on touch screens. Tap to hear, double tap to flip, then mark what you know.</p>
+        </div>
+        <div id="section-header-anim" style="width: 80px; height: 80px; flex-shrink: 0;"></div>
       </div>
 
       <!-- Controls -->
@@ -155,6 +158,12 @@ window.FlashcardsModule = (() => {
     document.getElementById('fc-start-btn')?.addEventListener('click', startSession);
 
     setupKeyboard();
+
+    if (window.AnimRegistry) {
+      AnimRegistry.play('section_flashcards', 'section-header-anim', {
+        loop: false, duration: 1500
+      });
+    }
   }
 
   function startSession() {
@@ -164,8 +173,18 @@ window.FlashcardsModule = (() => {
 
     deck = buildDeck();
 
+    if (window.AppAnim) {
+      AppAnim.hideEmpty();
+    }
+
     if (!deck.length) {
-      alert('No characters match your selection. Try different filters.');
+      if (window.AppAnim) {
+        document.getElementById('fc-controls').style.display = 'none';
+        document.getElementById('fc-area').style.display = 'flex';
+        AppAnim.showEmpty('fc-area', 'No flashcards yet — add some vocabulary first');
+      } else {
+        alert('No characters match your selection. Try different filters.');
+      }
       return;
     }
 
@@ -253,6 +272,19 @@ window.FlashcardsModule = (() => {
   function flipCard() {
     if (isFlipped) return;
     isFlipped = true;
+
+    // Card flip sound + micro-animation class
+    if (window.SoundManager) {
+      window.SoundManager.playCardFlip();
+    }
+    const cardEl = document.getElementById('fc-card');
+    if (cardEl) {
+      cardEl.classList.add('card-flipping');
+      cardEl.addEventListener('animationend', () => {
+        cardEl.classList.remove('card-flipping');
+      }, { once: true });
+    }
+
     document.getElementById('fc-card').classList.add('flipped');
     document.getElementById('fc-btn-review').style.display = 'flex';
     document.getElementById('fc-btn-know').style.display = 'flex';

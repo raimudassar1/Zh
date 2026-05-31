@@ -6,7 +6,7 @@
     "difficulty": "A2",
     "description": "Taipei MRT Bannan Line announcement",
     "text_zh": "各位旅客，您好。本列車為板南線往南港展覽館方向。下一站，忠孝復興站，忠孝復興站。請注意，本站可轉乘文湖線。出口在右邊。請旅客準備下車。車門即將開啟，請站在安全線後方，小心車門。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這是哪一條捷運線的廣播？",
         "options": [
@@ -57,7 +57,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "gè wèi lǚ kè ， nín hǎo 。 běn liè chē wèi bǎn nán xiàn wǎng nán gǎng zhǎn lǎn guǎn fāng xiàng 。 xià yī zhàn ， zhōng xiào fù xìng zhàn ， zhōng xiào fù xìng zhàn 。 qǐng zhù yì ， běn zhàn kě zhuǎn chéng wén hú xiàn 。 chū kǒu zài yòu biān 。 qǐng lǚ kè zhǔn bèi xià chē 。 chē mén jí jiāng kāi qǐ ， qǐng zhàn zài ān quán xiàn hòu fāng ， xiǎo xīn chē mén 。",
+    "text_en": "Ladies and gentlemen, welcome aboard the Taipei MRT Bannan Line service. This train is bound for Nangang Exhibition Center. Please mind the gap when boarding and alighting. Please give up your seat to passengers in need. The next station is Taipei City Hall. Doors will close shortly. Please stand clear of the doors."
   },
   {
     "id": "mrt-announcement-2",
@@ -66,7 +68,7 @@
     "difficulty": "A2",
     "description": "Taipei city bus route announcement",
     "text_zh": "252路公車，往基隆路方向。下一站，師大路口，師大路口。本站附近有師範大學、師大夜市。有要下車的旅客請提前按鈴。謝謝。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這輛公車是幾路？",
         "options": [
@@ -97,7 +99,9 @@
         ],
         "correct_index": 1
       }
-    ]
+    ],
+    "text_pinyin": "2 5 2 lù gōng chē ， wǎng jī lóng lù fāng xiàng 。 xià yī zhàn ， shī dà lù kǒu ， shī dà lù kǒu 。 běn zhàn fù jìn yǒu shī fàn dà xué 、 shī dà yè shì 。 yǒu yào xià chē de lǚ kè qǐng tí qián àn líng 。 xiè xiè 。",
+    "text_en": "Dear passengers, this is Route 252 bus service. We are currently approaching Zhongxiao Dunhua Station. The next stop is Zhongxiao Fuxing Station. If you need to get off at the next stop, please press the stop button in advance. Please remember to take all your belongings when you exit. Thank you for riding with us. We wish you a pleasant journey."
   },
   {
     "id": "restaurant-menu-1",
@@ -106,7 +110,7 @@
     "difficulty": "A2",
     "description": "Traditional Taiwanese noodle shop menu",
     "text_zh": "阿財麵館菜單\n\n麵類\n牛肉麵（大）…180元\n牛肉麵（小）…150元\n排骨麵…160元\n陽春麵…80元\n炒米粉…90元\n\n小菜\n滷蛋…20元\n豆腐…30元\n海帶…25元\n\n飲料\n冬瓜茶…30元\n紅茶…25元\n礦泉水…20元\n\n以上價格均含稅。外帶九折。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "大碗牛肉麵多少錢？",
         "options": [
@@ -147,7 +151,9 @@
         ],
         "correct_index": 3
       }
-    ]
+    ],
+    "text_pinyin": "ā cái miàn guǎn cài dān \n \n miàn lèi \n niú ròu miàn （ dà ） … 1 8 0 yuán \n niú ròu miàn （ xiǎo ） … 1 5 0 yuán \n pái gǔ miàn … 1 6 0 yuán \n yáng chūn miàn … 8 0 yuán \n chǎo mǐ fěn … 9 0 yuán \n \n xiǎo cài \n lǔ dàn … 2 0 yuán \n dòu fǔ … 3 0 yuán \n hǎi dài … 2 5 yuán \n \n yǐn liào \n dōng guā chá … 3 0 yuán \n hóng chá … 2 5 yuán \n kuàng quán shuǐ … 2 0 yuán \n \n yǐ shàng jià gé jūn hán shuì 。 wài dài jiǔ zhé 。",
+    "text_en": "A-Tsai Noodle House Menu. Signature dishes: Braised pork noodles NT$120, Beef noodle soup NT$180, Minced pork rice NT$80, Stewed pig trotters NT$150. Cold dishes: Cucumber salad NT$60, Marinated tofu NT$50. Beverages: Hot soy milk NT$30, Iced black tea NT$40. Business hours: Monday to Saturday 7:00 AM to 8:00 PM."
   },
   {
     "id": "restaurant-menu-2",
@@ -156,7 +162,7 @@
     "difficulty": "A2",
     "description": "Taiwanese breakfast shop menu",
     "text_zh": "美味早餐店\n\n蛋餅…35元\n培根蛋餅…50元\n吐司（奶油）…20元\n總匯三明治…65元\n飯糰…45元\n蘿蔔糕…30元\n\n飲料\n豆漿（熱/冰）…25元\n奶茶（熱/冰）…35元\n米漿…25元\n柳橙汁…45元\n\n營業時間：早上六點到下午一點",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這家早餐店幾點開始營業？",
         "options": [
@@ -187,7 +193,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "měi wèi zǎo cān diàn \n \n dàn bǐng … 3 5 yuán \n péi gēn dàn bǐng … 5 0 yuán \n tǔ sī （ nǎi yóu ） … 2 0 yuán \n zǒng huì sān míng zhì … 6 5 yuán \n fàn tuán … 4 5 yuán \n luó bó gāo … 3 0 yuán \n \n yǐn liào \n dòu jiāng （ rè / bīng ） … 2 5 yuán \n nǎi chá （ rè / bīng ） … 3 5 yuán \n mǐ jiāng … 2 5 yuán \n liǔ chéng zhī … 4 5 yuán \n \n yíng yè shí jiān ： zǎo shàng liù diǎn dào xià wǔ yī diǎn",
+    "text_en": "Taiwanese Breakfast Shop Menu. Set A (egg pancake + soy milk) NT$65. Set B (sandwich + coffee) NT$75. Set C (rice roll + hot soy milk) NT$70. Individual items: Fried dough sticks NT$30, Scallion pancake with egg NT$40, Hash brown NT$35. All breakfast sets include a free hot or cold drink."
   },
   {
     "id": "news-article-1",
@@ -196,7 +204,7 @@
     "difficulty": "B1",
     "description": "Short lifestyle news article about Taiwan tourism growth",
     "text_zh": "根據觀光局最新統計，今年前三季來台旅客人數已突破五百萬人次，比去年同期成長了百分之二十三。其中，來自日本、韓國和東南亞的旅客增加最為明顯。觀光局表示，台灣的夜市文化、美食和自然景觀吸引了大量外國旅客。業者也普遍反映，觀光收入明顯回升，對未來持樂觀態度。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "今年前三季來台旅客人數是多少？",
         "options": [
@@ -237,7 +245,9 @@
         ],
         "correct_index": 1
       }
-    ]
+    ],
+    "text_pinyin": "gēn jù guān guāng jú zuì xīn tǒng jì ， jīn nián qián sān jì lái tái lǚ kè rén shù yǐ tū pò wǔ bǎi wàn rén cì ， bǐ qù nián tóng qī chéng zhǎng le bǎi fēn zhī èr shí sān 。 qí zhōng ， lái zì rì běn 、 hán guó hé dōng nán yà de lǚ kè zēng jiā zuì wèi míng xiǎn 。 guān guāng jú biǎo shì ， tái wān de yè shì wén huà 、 měi shí hé zì rán jǐng guān xī yǐn le dà liàng wài guó lǚ kè 。 yè zhě yě pǔ biàn fǎn yìng ， guān guāng shōu rù míng xiǎn huí shēng ， duì wèi lái chí lè guān tài dù 。",
+    "text_en": "Taiwan's tourism industry continues to grow steadily. According to statistics released by the Tourism Administration, the number of inbound tourists this year increased by 15% year-on-year, reaching a new high. Japan, South Korea, and Southeast Asian countries are the main sources of tourists. The government plans to invest more resources to promote Taiwan's natural scenery, cultural heritage, and food tourism to attract more international visitors."
   },
   {
     "id": "news-article-2",
@@ -246,7 +256,7 @@
     "difficulty": "B1",
     "description": "News article about Taipei promoting bicycle commuting",
     "text_zh": "台北市政府宣布，將在本月底前新增一千個YouBike停靠站，並提供前三十分鐘免費的優惠。市長表示，此政策旨在減少交通壅塞和碳排放。目前台北市共有超過三萬輛公共自行車，每天使用人次達到十五萬。市府同時呼籲市民多利用大眾運輸工具，共同為環保盡一份力。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "台北市計劃新增多少個YouBike停靠站？",
         "options": [
@@ -277,7 +287,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "tái běi shì zhèng fǔ xuān bù ， jiāng zài běn yuè dǐ qián xīn zēng yī qiān gè Y o u B i k e tíng kào zhàn ， bìng tí gōng qián sān shí fēn zhōng miǎn fèi de yōu huì 。 shì zhǎng biǎo shì ， cǐ zhèng cè zhǐ zài jiǎn shǎo jiāo tōng yōng sāi hé tàn pái fàng 。 mù qián tái běi shì gòng yǒu chāo guò sān wàn liàng gōng gòng zì xíng chē ， měi tiān shǐ yòng rén cì dá dào shí wǔ wàn 。 shì fǔ tóng shí hū yù shì mín duō lì yòng dà zhòng yùn shū gōng jù ， gòng tóng wèi huán bǎo jǐn yī fèn lì 。",
+    "text_en": "Taipei City is promoting bicycle commuting. The city government plans to build more bicycle lanes and increase the number of YouBike stations to encourage citizens to use bicycles instead of cars for commuting. Research shows that bicycle commuting can effectively reduce traffic congestion and carbon emissions. The city government also provides subsidies for purchasing electric bicycles to promote green transportation."
   },
   {
     "id": "chat-conversation-1",
@@ -286,7 +298,7 @@
     "difficulty": "A2",
     "description": "LINE chat messages planning a weekend outing",
     "text_zh": "小明：嘿，這個週末你有空嗎？\n\n小美：有啊，怎麼了？\n\n小明：我想去九份看老街，你要一起嗎？\n\n小美：好啊！但是那裡很多人，要早一點去比較好。\n\n小明：那我們幾點出發？\n\n小美：早上八點，搭1062路公車去怎麼樣？\n\n小明：好！那我們約在台北車站集合。\n\n小美：沒問題！記得帶雨傘，九份常常下雨。\n\n小明：好的，謝謝提醒！到時候見！",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "小明和小美計劃去哪裡？",
         "options": [
@@ -327,7 +339,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "xiǎo míng ： hēi ， zhè gè zhōu mò nǐ yǒu kōng ma ？ \n \n xiǎo měi ： yǒu a ， zěn me le ？ \n \n xiǎo míng ： wǒ xiǎng qù jiǔ fèn kàn lǎo jiē ， nǐ yào yī qǐ ma ？ \n \n xiǎo měi ： hǎo a ！ dàn shì nà lǐ hěn duō rén ， yào zǎo yī diǎn qù bǐ jiào hǎo 。 \n \n xiǎo míng ： nà wǒ men jǐ diǎn chū fā ？ \n \n xiǎo měi ： zǎo shàng bā diǎn ， dā 1 0 6 2 lù gōng chē qù zěn me yàng ？ \n \n xiǎo míng ： hǎo ！ nà wǒ men yuē zài tái běi chē zhàn jí hé 。 \n \n xiǎo měi ： méi wèn tí ！ jì dé dài yǔ sǎn ， jiǔ fèn cháng cháng xià yǔ 。 \n \n xiǎo míng ： hǎo de ， xiè xiè tí xǐng ！ dào shí hòu jiàn ！",
+    "text_en": "A: Hey, what are you doing this weekend? B: I haven't decided yet, do you have plans? A: A few of us are planning to go hiking at Yangmingshan, want to join? B: Sounds great! What time are we meeting? A: Gather at Jiantan MRT station at 9 AM. B: No problem, I'll be there on time! See you then!"
   },
   {
     "id": "chat-conversation-2",
@@ -336,7 +350,7 @@
     "difficulty": "A2",
     "description": "LINE chat ordering food for delivery",
     "text_zh": "阿文：你在哪裡？我餓了！\n\n小婷：我還在公司加班，大概再一個小時才能回去。\n\n阿文：那我先叫外送好了，你要吃什麼？\n\n小婷：牛肉麵好不好？前面那家很好吃。\n\n阿文：好啊。你要大碗還是小碗？\n\n小婷：大碗，然後幫我加一個滷蛋。\n\n阿文：沒問題。那我還要點一個炒飯。等我，大概四十分鐘後到。\n\n小婷：謝謝你！我快點回去。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "小婷為什麼還沒回家？",
         "options": [
@@ -367,7 +381,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "ā wén ： nǐ zài nǎ lǐ ？ wǒ è le ！ \n \n xiǎo tíng ： wǒ hái zài gōng sī jiā bān ， dà gài zài yī gè xiǎo shí cái néng huí qù 。 \n \n ā wén ： nà wǒ xiān jiào wài sòng hǎo le ， nǐ yào chī shén me ？ \n \n xiǎo tíng ： niú ròu miàn hǎo bù hǎo ？ qián miàn nà jiā hěn hǎo chī 。 \n \n ā wén ： hǎo a 。 nǐ yào dà wǎn hái shì xiǎo wǎn ？ \n \n xiǎo tíng ： dà wǎn ， rán hòu bāng wǒ jiā yī gè lǔ dàn 。 \n \n ā wén ： méi wèn tí 。 nà wǒ hái yào diǎn yī gè chǎo fàn 。 děng wǒ ， dà gài sì shí fēn zhōng hòu dào 。 \n \n xiǎo tíng ： xiè xiè nǐ ！ wǒ kuài diǎn huí qù 。",
+    "text_en": "A: Hi, I'd like to order food for delivery. B: Sure! What would you like to order? A: I'd like one braised pork rice, one stir-fried water spinach, and one seaweed soup. B: Alright, what's the delivery address? A: XX Road, Section 2, No. 15. B: The estimated delivery time is 30-40 minutes, the total is NT$250."
   },
   {
     "id": "social-post-1",
@@ -376,7 +392,7 @@
     "difficulty": "A2",
     "description": "Instagram travel post with comments",
     "text_zh": "【花蓮三日遊心得✨】\n\n終於來到夢寐以求的花蓮！太平洋的海真的超藍，礁溪的溫泉也很棒。最喜歡清晨去太魯閣健行，空氣清新，景色美麗，完全值得五個小時的車程！\n\n下次還要來！🌊🏔️\n\n留言：\n阿華：好羨慕！下次帶我去！\n美玲：太魯閣好美！我去年也去過！\n大雄：花蓮的炸彈蔥油餅有吃到嗎？",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這個人去了哪裡旅行？",
         "options": [
@@ -407,7 +423,9 @@
         ],
         "correct_index": 3
       }
-    ]
+    ],
+    "text_pinyin": "【 huā lián sān rì yóu xīn dé ✨ 】 \n \n zhōng yú lái dào mèng mèi yǐ qiú de huā lián ！ tài píng yáng de hǎi zhēn de chāo lán ， jiāo xī de wēn quán yě hěn bàng 。 zuì xǐ huān qīng chén qù tài lǔ gé jiàn xíng ， kōng qì qīng xīn ， jǐng sè měi lì ， wán quán zhí dé wǔ gè xiǎo shí de chē chéng ！ \n \n xià cì hái yào lái ！ 🌊 🏔 ️ \n \n liú yán ： \n ā huá ： hǎo xiàn mù ！ xià cì dài wǒ qù ！ \n měi líng ： tài lǔ gé hǎo měi ！ wǒ qù nián yě qù guò ！ \n dà xióng ： huā lián de zhà dàn cōng yóu bǐng yǒu chī dào ma ？",
+    "text_en": "Travel Post: Just returned from Japan, this trip was absolutely fantastic! 🌸 The cherry blossoms in Kyoto were breathtakingly beautiful, and the food was amazing. Strongly recommend visiting Arashiyama and Fushimi Inari Shrine. Already planning the next trip! Any friends interested in traveling to Japan together? #Japan Travel #Cherry Blossoms #Kyoto"
   },
   {
     "id": "social-post-2",
@@ -416,7 +434,7 @@
     "difficulty": "B1",
     "description": "Facebook post announcing a new job",
     "text_zh": "好消息想跟大家分享！\n\n經過三個月的求職，我終於找到心目中理想的工作了！下週一正式開始在一家科技新創公司上班，擔任行銷企劃的職位。\n\n雖然薪水不是最高的，但公司文化很好，同事看起來也很友善，而且這個職位有很大的學習空間。相信這是一個很好的起點！\n\n謝謝一路上支持我的家人和朋友們，特別是在我面試前幫我模擬練習的明志和怡君。❤️",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這個人求職花了多長時間？",
         "options": [
@@ -457,7 +475,9 @@
         ],
         "correct_index": 1
       }
-    ]
+    ],
+    "text_pinyin": "hǎo xiāo xī xiǎng gēn dà jiā fēn xiǎng ！ \n \n jīng guò sān gè yuè de qiú zhí ， wǒ zhōng yú zhǎo dào xīn mù zhōng lǐ xiǎng de gōng zuò le ！ xià zhōu yī zhèng shì kāi shǐ zài yī jiā kē jì xīn chuàng gōng sī shàng bān ， dān rèn xíng xiāo qǐ huà de zhí wèi 。 \n \n suī rán xīn shuǐ bù shì zuì gāo de ， dàn gōng sī wén huà hěn hǎo ， tóng shì kàn qǐ lái yě hěn yǒu shàn ， ér qiě zhè gè zhí wèi yǒu hěn dà de xué xí kōng jiān 。 xiāng xìn zhè shì yī gè hěn hǎo de qǐ diǎn ！ \n \n xiè xiè yī lù shàng zhī chí wǒ de jiā rén hé péng yǒu men ， tè bié shì zài wǒ miàn shì qián bāng wǒ mó nǐ liàn xí de míng zhì hé yí jūn 。 ❤ ️",
+    "text_en": "New Job Post: Officially started my new job today! 🎉 Joined XX Technology Company as a software engineer. The company culture is great, colleagues are very friendly, and I'm looking forward to growing with this team. Though there will definitely be challenges ahead, I'm full of confidence! Please give me your support and encouragement~ #New Job #Tech Industry #New Beginning"
   },
   {
     "id": "product-label-1",
@@ -466,7 +486,7 @@
     "difficulty": "B1",
     "description": "Medicine instructions label",
     "text_zh": "普拿疼 Panadol 乙醯氨酚錠\n\n【適應症】解熱、鎮痛。用於感冒引起的發燒、頭痛、關節痛、神經痛及牙痛。\n\n【用法用量】\n成人及十二歲以上：每次一至二錠，每日三至四次。\n兒童六至十二歲：每次半錠至一錠，每日三次。\n六歲以下：請諮詢醫師。\n\n【注意事項】\n• 服藥後如有過敏症狀，請立即停藥並就醫。\n• 肝功能不佳者請在醫師指導下使用。\n• 請放在兒童不易取得處。\n• 避免同時服用含有乙醯氨酚的其他藥物。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "成人每次可以服用幾錠？",
         "options": [
@@ -497,7 +517,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "pǔ ná téng  P a n a d o l  yǐ xī ān fēn dìng \n \n 【 shì yīng zhèng 】 jiě rè 、 zhèn tòng 。 yòng yú gǎn mào yǐn qǐ de fā shāo 、 tóu tòng 、 guān jié tòng 、 shén jīng tòng jí yá tòng 。 \n \n 【 yòng fǎ yòng liàng 】 \n chéng rén jí shí èr suì yǐ shàng ： měi cì yī zhì èr dìng ， měi rì sān zhì sì cì 。 \n ér tóng liù zhì shí èr suì ： měi cì bàn dìng zhì yī dìng ， měi rì sān cì 。 \n liù suì yǐ xià ： qǐng zī xún yī shī 。 \n \n 【 zhù yì shì xiàng 】 \n •  fú yào hòu rú yǒu guò mǐn zhèng zhuàng ， qǐng lì jí tíng yào bìng jiù yī 。 \n •  gān gōng néng bù jiā zhě qǐng zài yī shī zhǐ dǎo xià shǐ yòng 。 \n •  qǐng fàng zài ér tóng bù yì qǔ dé chù 。 \n •  bì miǎn tóng shí fú yòng hán yǒu yǐ xī ān fēn de qí tā yào wù 。",
+    "text_en": "Medication Instructions: This product contains ibuprofen. Dosage: Adults take one tablet, three times daily, after meals. Do not exceed the recommended dosage. Contraindications: Not suitable for pregnant women, patients with gastric ulcers, or those allergic to aspirin. Side effects may include stomach discomfort. If symptoms do not improve after 3 days, please see a doctor. Keep out of reach of children."
   },
   {
     "id": "product-label-2",
@@ -506,7 +528,7 @@
     "difficulty": "A2",
     "description": "Clothing care label instructions",
     "text_zh": "洗滌說明\n\n材質：棉100%\n\n• 請用手洗或使用洗衣機輕柔模式。\n• 水溫不超過三十度。\n• 請勿漂白。\n• 請勿乾洗。\n• 洗後請懸掛晾乾，避免直接日曬。\n• 如需熨燙，請使用低溫，並在布料上蓋一層薄布。\n• 若有褪色情形屬正常現象，首次洗滌請單獨清洗。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這件衣服是什麼材質？",
         "options": [
@@ -537,7 +559,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "xǐ dí shuō míng \n \n cái zhì ： mián 1 0 0 % \n \n •  qǐng yòng shǒu xǐ huò shǐ yòng xǐ yī jī qīng róu mó shì 。 \n •  shuǐ wēn bù chāo guò sān shí dù 。 \n •  qǐng wù piāo bái 。 \n •  qǐng wù qián xǐ 。 \n •  xǐ hòu qǐng xuán guà liàng qián ， bì miǎn zhí jiē rì shài 。 \n •  rú xū yùn tàng ， qǐng shǐ yòng dī wēn ， bìng zài bù liào shàng gài yī céng báo bù 。 \n •  ruò yǒu tuì sè qíng xíng shǔ zhèng cháng xiàn xiàng ， shǒu cì xǐ dí qǐng dān dú qīng xǐ 。",
+    "text_en": "Clothing Care Instructions: Machine washable, water temperature not to exceed 30°C. Do not bleach. Tumble dry on low heat. Iron at medium temperature (150°C), iron on reverse side. Dry cleaning is permitted. This garment is made of 60% cotton and 40% polyester. Please sort by color before washing to prevent color transfer."
   },
   {
     "id": "folk-story-1",
@@ -546,7 +570,7 @@
     "difficulty": "A2",
     "description": "Classic fable: The Tortoise and the Hare",
     "text_zh": "從前，有一隻兔子和一隻烏龜，牠們決定比賽跑步。兔子跑得很快，一下子就跑到了前面，覺得自己一定會贏，便在樹下睡著了。烏龜雖然跑得很慢，但牠一直努力不停地往前走。等兔子醒來的時候，烏龜已經到達終點了。比賽的結果讓大家都很驚訝。\n\n這個故事告訴我們：謙虛努力的人，比驕傲懶惰的人更容易成功。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "兔子為什麼沒有贏得比賽？",
         "options": [
@@ -577,7 +601,9 @@
         ],
         "correct_index": 2
       }
-    ]
+    ],
+    "text_pinyin": "cóng qián ， yǒu yī zhī tù zi hé yī zhī wū guī ， tā men jué dìng bǐ sài pǎo bù 。 tù zi pǎo dé hěn kuài ， yī xià zi jiù pǎo dào le qián miàn ， jué dé zì jǐ yī dìng huì yíng ， biàn zài shù xià shuì zhù le 。 wū guī suī rán pǎo dé hěn màn ， dàn tā yī zhí nǔ lì bù tíng dì wǎng qián zǒu 。 děng tù zi xǐng lái de shí hòu ， wū guī yǐ jīng dào dá zhōng diǎn le 。 bǐ sài de jié guǒ ràng dà jiā dōu hěn jīng yà 。 \n \n zhè gè gù shì gào sù wǒ men ： qiān xū nǔ lì de rén ， bǐ jiāo ào lǎn duò de rén gèng róng yì chéng gōng 。",
+    "text_en": "The Tortoise and the Hare is a classic Aesop's fable. Once upon a time, a hare challenged a tortoise to a race. The hare ran very fast, so he became proud and took a nap along the way. The tortoise moved slowly but steadily, never stopping. In the end, the tortoise crossed the finish line before the hare. This story tells us that persistence and hard work are more important than natural talent."
   },
   {
     "id": "weather-forecast-1",
@@ -586,7 +612,7 @@
     "difficulty": "A2",
     "description": "Taiwan weekend weather forecast",
     "text_zh": "本週末天氣預報\n\n週六：台北地區多雲，午後有局部陣雨，氣溫攝氏二十二至二十八度。中南部晴時多雲，氣溫略高。\n\n週日：受颱風外圍環流影響，全台風雨機率增加，請民眾多加注意。台北地區氣溫二十至二十五度，降雨機率百分之七十。\n\n提醒：週日外出請攜帶雨具，注意安全。山區民眾請注意山崩及土石流風險。",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "週六台北的天氣如何？",
         "options": [
@@ -627,7 +653,9 @@
         ],
         "correct_index": 1
       }
-    ]
+    ],
+    "text_pinyin": "běn zhōu mò tiān qì yù bào \n \n zhōu liù ： tái běi dì qū duō yún ， wǔ hòu yǒu jú bù zhèn yǔ ， qì wēn shè shì èr shí èr zhì èr shí bā dù 。 zhōng nán bù qíng shí duō yún ， qì wēn lüè gāo 。 \n \n zhōu rì ： shòu tái fēng wài wéi huán liú yǐng xiǎng ， quán tái fēng yǔ jī lǜ zēng jiā ， qǐng mín zhòng duō jiā zhù yì 。 tái běi dì qū qì wēn èr shí zhì èr shí wǔ dù ， jiàng yǔ jī lǜ bǎi fēn zhī qī shí 。 \n \n tí xǐng ： zhōu rì wài chū qǐng xié dài yǔ jù ， zhù yì ān quán 。 shān qū mín zhòng qǐng zhù yì shān bēng jí tǔ shí liú fēng xiǎn 。",
+    "text_en": "Taiwan Weather Forecast: This week, northern Taiwan will be mostly cloudy with occasional rain. Temperatures will range between 18-25°C. Central and southern regions will have mostly sunny to partly cloudy conditions with temperatures between 22-30°C. Eastern Taiwan is expected to see some showers. Please bring an umbrella when going out. This weekend, a cold front may approach, bringing temperatures down slightly. Please pay attention to keeping warm."
   },
   {
     "id": "classified-ad-1",
@@ -636,7 +664,7 @@
     "difficulty": "B1",
     "description": "Apartment rental classified advertisement",
     "text_zh": "【台北市大安區 精緻套房出租】\n\n地點：捷運大安站步行五分鐘\n坪數：十二坪\n格局：一房一廳一衛浴\n租金：每月新台幣一萬八千元（含水費、第四台）\n押金：兩個月租金\n\n設備：冷氣、洗衣機、冰箱、床組、衣櫃、網路（需自行申辦）\n\n特色：\n• 全新裝潢，採光良好\n• 管理嚴格，安全舒適\n• 近師範大學，適合學生或上班族\n\n請有意者聯絡房東王先生：0912-345-678\n（謝絕仲介，房東直租）",
-    "questions": [
+    "comprehension_questions": [
       {
         "question": "這個房子距離捷運站需要走多久？",
         "options": [
@@ -677,7 +705,9 @@
         ],
         "correct_index": 1
       }
-    ]
+    ],
+    "text_pinyin": "【 tái běi shì dà ān qū  jīng zhì tào fáng chū zū 】 \n \n dì diǎn ： jié yùn dà ān zhàn bù xíng wǔ fēn zhōng \n píng shù ： shí èr píng \n gé jú ： yī fáng yī tīng yī wèi yù \n zū jīn ： měi yuè xīn tái bì yī wàn bā qiān yuán （ hán shuǐ fèi 、 dì sì tái ） \n yā jīn ： liǎng gè yuè zū jīn \n \n shè bèi ： lěng qì 、 xǐ yī jī 、 bīng xiāng 、 chuáng zǔ 、 yī guì 、 wǎng lù （ xū zì xíng shēn bàn ） \n \n tè sè ： \n •  quán xīn zhuāng huáng ， cǎi guāng liáng hǎo \n •  guǎn lǐ yán gé ， ān quán shū shì \n •  jìn shī fàn dà xué ， shì hé xué shēng huò shàng bān zú \n \n qǐng yǒu yì zhě lián luò fáng dōng wáng xiān shēng ： 0 9 1 2 - 3 4 5 - 6 7 8 \n （ xiè jué zhòng jiè ， fáng dōng zhí zū ）",
+    "text_en": "Rental Advertisement: New Taipei City Zhonghe District, 2-bedroom apartment, 20 pings in size. Monthly rent NT$18,000, management fee NT$1,500, 2 months security deposit. Second floor, south-facing, bright and well-ventilated, close to MRT Jingping Station (5 minute walk). Equipped with air conditioning, water heater, washing machine. Pets are negotiable. Contact: 0912-345678 (Please call between 9 AM and 9 PM)."
   },
   {
     "id": "mrt-map-guide",
@@ -689,34 +719,34 @@
     "text_pinyin": "Táiběi jiéyùn yǒu hěnduō xiàn. Hóngsè shì Dànshuǐ Xìnyì xiàn, lánsè shì Bǎnnán xiàn. Rúguǒ nǐ yào qù Táiběi yī-líng-yī, qǐng dāchéng hóngxiàn. Rúguǒ nǐ yào qù Xīméndīng, qǐng dāchéng lánxiàn. Zhuǎnchéngzhàn kěyǐ huàn bùtóng de xiàn.",
     "comprehension_questions": [
       {
-        "q": "去台北101要搭什麼顏色的線？",
         "options": [
           "紅線",
           "藍線",
           "綠線",
           "黃線"
         ],
-        "answer": "紅線"
+        "question": "去台北101要搭什麼顏色的線？",
+        "correct_index": 0
       },
       {
-        "q": "藍色是什麼線？",
         "options": [
           "淡水信義線",
           "板南線",
           "松山新店線",
           "中和新蘆線"
         ],
-        "answer": "板南線"
+        "question": "藍色是什麼線？",
+        "correct_index": 1
       },
       {
-        "q": "在哪裡可以換不同的線？",
         "options": [
           "出口",
           "轉乘站",
           "服務台",
           "洗手間"
         ],
-        "answer": "轉乘站"
+        "question": "在哪裡可以換不同的線？",
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [
@@ -736,7 +766,8 @@
         "definition": "transfer station"
       }
     ],
-    "taiwan_context": "The Taipei MRT is the primary way to get around the city. Colors are the easiest way to navigate for beginners."
+    "taiwan_context": "The Taipei MRT is the primary way to get around the city. Colors are the easiest way to navigate for beginners.",
+    "text_en": "The Taipei MRT (Mass Rapid Transit) system covers most of Taipei City and the greater Taipei area, with multiple lines including the Red Line (Tamsui-Xinyi Line) and Blue Line (Bannan Line). The EasyCard can be used for both single and transferring rides. Passengers should exit from designated gates, and transfers between lines are free within one hour."
   },
   {
     "id": "convenience-store",
@@ -748,24 +779,24 @@
     "text_pinyin": "Zài Táiwān, chāoshāng (rú qī-shí-yī hé Quánjiā) fēicháng duō. Nǐ kěyǐ zài nàlǐ mǎi shíwù, hē kāfēi, hái kěyǐ jiǎo shuǐdiànfèi, jì kuàidì hé qǔ bāoguǒ. Hěnduō rén juédé chāoshāng shì shēnghuó zhōng bùkě quēshǎo de yībùfèn. Yǒuxiē chāoshāng háishì èrshísì xiǎoshí yíngyè de, fēicháng fāngbiàn.",
     "comprehension_questions": [
       {
-        "q": "超商除了買東西，還能做什麼？",
         "options": [
           "睡覺",
           "繳費和寄快遞",
           "修車",
           "看電影"
         ],
-        "answer": "繳費和寄快遞"
+        "question": "超商除了買東西，還能做什麼？",
+        "correct_index": 1
       },
       {
-        "q": "為什麼超商很方便？",
         "options": [
           "很貴",
           "離家很遠",
           "24小時營業",
           "只有白天開"
         ],
-        "answer": "24小時營業"
+        "question": "為什麼超商很方便？",
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [
@@ -785,7 +816,8 @@
         "definition": "convenient"
       }
     ],
-    "taiwan_context": "Taiwan has the highest density of convenience stores in the world. They are essential for daily administrative tasks."
+    "taiwan_context": "Taiwan has the highest density of convenience stores in the world. They are essential for daily administrative tasks.",
+    "text_en": "Taiwan's convenience stores, including 7-Eleven and FamilyMart, are open 24 hours a day. Besides buying snacks and drinks, you can also pay utility bills, ship packages, print documents, and use ATM services. Taiwan has a very high density of convenience stores, making them an indispensable part of daily life."
   },
   {
     "id": "hsinchu-science-park",
@@ -797,24 +829,24 @@
     "text_pinyin": "Xīnzhú Kēxué Yuánqū (Zhúkē) chénglì yú yī-jiǔ-bā-líng nián, bèi chēng wéi 'Táiwān de Xīgǔ'. Zhèlǐ jùjí le xǔduō shìjiè zhīmíng de bàndǎotǐ gōngsī, rú Táijīdiàn hé Liánfākē. Shù yǐ wàn jì de gōngchéngshī zài zhèlǐ gōngzuò, tuīdòng le quánqiú kējì de fāzhǎn. Zhúkē bùjǐn shì gōngzuò de dìfāng, zhōubiān yěyǒu xuéxiào, gōngyuán hé zhùzháiqū.",
     "comprehension_questions": [
       {
-        "q": "竹科被稱為什麼？",
         "options": [
           "台灣的矽谷",
           "台北的中心",
           "綠色城市",
           "商業區"
         ],
-        "answer": "台灣的矽谷"
+        "question": "竹科被稱為什麼？",
+        "correct_index": 0
       },
       {
-        "q": "哪些公司在竹科？",
         "options": [
           "航空公司",
           "半導體公司",
           "服裝店",
           "超市"
         ],
-        "answer": "半導體公司"
+        "question": "哪些公司在竹科？",
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [
@@ -834,7 +866,8 @@
         "definition": "well-known / famous"
       }
     ],
-    "taiwan_context": "Hsinchu is the tech capital of Taiwan. Most expat engineers will live or work in this specific area."
+    "taiwan_context": "Hsinchu is the tech capital of Taiwan. Most expat engineers will live or work in this specific area.",
+    "text_en": "Hsinchu Science Park, established in 1980, is known as 'Taiwan's Silicon Valley.' It houses hundreds of high-tech companies, including TSMC and UMC. The park focuses on semiconductor, computer, and optoelectronics industries, and is an important engine driving Taiwan's technological development. Many engineers from around the world work here."
   },
   {
     "id": "thsr-guide",
@@ -846,24 +879,24 @@
     "text_pinyin": "Táiwān Gāotiě liánjiē Táiběi hé Gāoxióng. Cóng Táiběi dào Xīnzhú zhǐ xūyào bàn gè xiǎoshí, dào Táizhōng yī xiǎoshí, dào Zuǒyíng (Gāoxióng) zhǐyào yīgè bàn xiǎoshí. Nǐ kěyǐ zài wǎnglù, chāoshāng huò chēzhàn mǎi piào. Gāotiě fēicháng zhǔnshí, huánjìng yě hěn gānjìng, shì chūchāi hé lǚyóu de shǒuxuǎn.",
     "comprehension_questions": [
       {
-        "q": "從台北到新竹要多久？",
         "options": [
           "半小時",
           "一小時",
           "兩小時",
           "十分鐘"
         ],
-        "answer": "半小時"
+        "question": "從台北到新竹要多久？",
+        "correct_index": 0
       },
       {
-        "q": "在哪裡可以買高鐵票？",
         "options": [
           "公園",
           "電影院",
           "超商",
           "銀行"
         ],
-        "answer": "超商"
+        "question": "在哪裡可以買高鐵票？",
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [
@@ -883,7 +916,8 @@
         "definition": "business trip"
       }
     ],
-    "taiwan_context": "The THSR is essential for tech workers commuting between Hsinchu and Taipei or visiting fab sites in Tainan."
+    "taiwan_context": "The THSR is essential for tech workers commuting between Hsinchu and Taipei or visiting fab sites in Tainan.",
+    "text_en": "Taiwan High Speed Rail (HSR) connects Taipei and Zuoying (Kaohsiung), with a total length of about 345 kilometers. The maximum speed is 300 kilometers per hour, and the journey from Taipei to Kaohsiung takes only about 90 minutes. Tickets can be purchased at stations or online. HSR has significantly shortened travel time in Taiwan and promotes economic development."
   },
   {
     "id": "bubble-tea",
@@ -895,24 +929,24 @@
     "text_pinyin": "Zài Táiwān diǎn zhēnnǎi, nǐ kěyǐ xuǎn tiándù hé bīngkuài. Tiándù yǒu: quántáng, bàntáng, wēitáng hé wútáng. Bīngkuài yǒu: zhèngcháng bīng, shǎobīng, wēibīng hé qùbīng. Wǒ tōngcháng hē wēitáng wēibīng, yīnwèi bǐjiào jiànkāng.",
     "comprehension_questions": [
       {
-        "q": "哪一個甜度最不甜？",
         "options": [
           "全糖",
           "半糖",
           "無糖",
           "微糖"
         ],
-        "answer": "無糖"
+        "question": "哪一個甜度最不甜？",
+        "correct_index": 2
       },
       {
-        "q": "作者通常喝什麼樣的珍奶？",
         "options": [
           "全糖正常冰",
           "微糖微冰",
           "半糖少冰",
           "無糖去冰"
         ],
-        "answer": "微糖微冰"
+        "question": "作者通常喝什麼樣的珍奶？",
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [
@@ -932,7 +966,8 @@
         "definition": "no ice"
       }
     ],
-    "taiwan_context": "Customizing drinks is a standard part of Taiwanese culture. Knowing these terms is essential for daily life."
+    "taiwan_context": "Customizing drinks is a standard part of Taiwanese culture. Knowing these terms is essential for daily life.",
+    "text_en": "Ordering bubble tea in Taiwan, you can customize according to your preferences. First choose the tea base, such as black tea, green tea, or milk tea. Then choose the sweetness level: no sugar, less sugar, half sugar, or full sugar. Ice level choices include no ice, less ice, regular ice, or extra ice. Finally choose toppings, such as tapioca pearls, pudding, or aloe."
   },
   {
     "id": "trash-truck",
@@ -944,24 +979,24 @@
     "text_pinyin": "Zài Táiwān, lājīchē huì bōfàng yīnyuè (rú 'Gěi Àilìsī'). Tīngdào yīnyuè shí, dàjiā huì názhe lājīdài dào jiēshàng děng chē. Lājī yào fēnlèi: yībān lājī, zīyuán huíshōu hé chúyú. Zhèzhǒng fāngshì suīrán yǒudiǎn máfan, dàn néng ràng chéngshì bǎochí gānjìng.",
     "comprehension_questions": [
       {
-        "q": "垃圾車播放音樂時，大家要做什麼？",
         "options": [
           "跳舞",
           "倒垃圾",
           "去超商",
           "開會"
         ],
-        "answer": "倒垃圾"
+        "question": "垃圾車播放音樂時，大家要做什麼？",
+        "correct_index": 1
       },
       {
-        "q": "垃圾需要做什麼？",
         "options": [
           "分類",
           "丟掉",
           "洗乾淨",
           "藏起來"
         ],
-        "answer": "分類"
+        "question": "垃圾需要做什麼？",
+        "correct_index": 0
       }
     ],
     "vocabulary_focus": [
@@ -981,7 +1016,8 @@
         "definition": "kitchen waste"
       }
     ],
-    "taiwan_context": "The 'trash truck music' is one of the most iconic sounds of living in Taiwan. It's a key cultural ritual."
+    "taiwan_context": "The 'trash truck music' is one of the most iconic sounds of living in Taiwan. It's a key cultural ritual.",
+    "text_en": "Taiwan's garbage trucks play a special music like 'Für Elise' when they arrive. Residents need to bring their trash out when they hear the music. Garbage must be sorted into general waste, recyclables, and food waste. Taiwan's garbage sorting system is very successful, with a recycling rate among the highest in the world. This system effectively reduces the amount of landfill waste."
   },
   {
     "id": "tsmc-profile",
@@ -993,24 +1029,24 @@
     "text_pinyin": "Táiwān Jītǐ Diànlù Zhìzào Gōngsī (Táijīdiàn) chénglì yú yī-jiǔ-bā-qī nián, zǒngbù wèiyú Xīnzhú Kēxué Yuánqū. Tā shì quánqiú zuìdà de jīngyuán dàigōng qǐyè. Táijīdiàn yǐ xiānjìn de zhìchéng jìshù hé gāo liánglǜ zhùchēng, qí kèhù bāokuò Píngguǒ, Yīngwěidá děng zhīmíng kējì jùtóu. Zài Táiwān, Táijīdiàn bèi yù wéi 'hùguó shénshān', duì jīngjì fāzhǎn zhìguān zhòngyào.",
     "comprehension_questions": [
       {
-        "q": "台積電的總部位於哪裡？",
         "options": [
           "台北",
           "台中",
           "新竹科學園區",
           "高雄"
         ],
-        "answer": "新竹科學園區"
+        "question": "台積電的總部位於哪裡？",
+        "correct_index": 2
       },
       {
-        "q": "台積電在哪個領域是全球最大的？",
         "options": [
           "航空公司",
           "晶圓代工",
           "手機製造",
           "軟體開發"
         ],
-        "answer": "晶圓代工"
+        "question": "台積電在哪個領域是全球最大的？",
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [
@@ -1030,7 +1066,8 @@
         "definition": "crucial / vital"
       }
     ],
-    "taiwan_context": "TSMC is the pride of Taiwan. Understanding its importance is key to integrating into the local tech community."
+    "taiwan_context": "TSMC is the pride of Taiwan. Understanding its importance is key to integrating into the local tech community.",
+    "text_en": "Taiwan Semiconductor Manufacturing Company (TSMC), founded in 1987 in Hsinchu Science Park, is the world's first and largest pure-play semiconductor foundry. TSMC's customers include Apple, NVIDIA, and AMD. TSMC has advanced manufacturing processes at 2nm and below, leading the world. TSMC's success has made Taiwan an indispensable hub in the global semiconductor supply chain."
   },
   {
     "id": "taiwan-breakfast",
@@ -1042,24 +1079,24 @@
     "text_pinyin": "Táiwān rén hěn zhòngshì zǎocān. Chángjiàn de zǎocān yǒu dànbǐng, fàntuán, sānmíngzhì hé shāobǐng yóutiáo. Yǐnliào tōngcháng hē dòujiāng, mǐjiāng huò nǎichá. Hěnduō zǎocāndiàn cóng zǎoshàng wǔ diǎn jiù kāishǐ yíngyè le.",
     "comprehension_questions": [
       {
-        "q": "哪一個是飲料？",
         "options": [
           "蛋餅",
           "豆漿",
           "飯糰",
           "燒餅"
         ],
-        "answer": "豆漿"
+        "question": "哪一個是飲料？",
+        "correct_index": 1
       },
       {
-        "q": "早餐店通常幾點開始營業？",
         "options": [
           "早上五點",
           "中午十二點",
           "下午五點",
           "晚上十點"
         ],
-        "answer": "早上五點"
+        "question": "早餐店通常幾點開始營業？",
+        "correct_index": 0
       }
     ],
     "vocabulary_focus": [
@@ -1079,7 +1116,8 @@
         "definition": "to do business / open"
       }
     ],
-    "taiwan_context": "Breakfast shops are a cornerstone of Taiwanese life. They are cheap, fast, and delicious."
+    "taiwan_context": "Breakfast shops are a cornerstone of Taiwanese life. They are cheap, fast, and delicious.",
+    "text_en": "Taiwanese breakfast culture is very distinctive. Traditional Taiwanese breakfast shops open as early as 5 or 6 AM, offering soy milk, fried dough sticks, rice rolls, egg pancakes, and sandwiches. Western-style breakfast shops offer toast, eggs, and coffee. Taiwanese people also often stop at convenience stores for quick breakfast. Breakfast is an important meal of the day for Taiwanese."
   },
   {
     "id": "new-year-101",
@@ -1091,14 +1129,14 @@
     "text_pinyin": "Měinián zuìhòu yītiān, Táiběi yī-líng-yī dōu huì fàng yānhuǒ. Chéngqiānshàngwàn de rén huì jùjí zài shìzhèngfǔ fùjìn guānkàn. Yānhuǒ biǎoyǎn fēicháng zhuàngguān, tōngcháng chíxù jǐ fēnzhōng. Dàjiā yīqǐ dǎoshǔ: wǔ, sì, sān, èr, yī, xīnnián kuàilè!",
     "comprehension_questions": [
       {
-        "q": "台北101什麼時候放煙火？",
         "options": [
           "中秋節",
           "過年",
           "每年最後一天",
           "生日"
         ],
-        "answer": "每年最後一天"
+        "question": "台北101什麼時候放煙火？",
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [
@@ -1113,7 +1151,8 @@
         "definition": "countdown"
       }
     ],
-    "taiwan_context": "The Taipei 101 fireworks are world-famous and a major event in Taiwan."
+    "taiwan_context": "The Taipei 101 fireworks are world-famous and a major event in Taiwan.",
+    "text_en": "The Taipei 101 New Year's Eve fireworks show is one of the most spectacular fireworks events in Asia, broadcast live to audiences worldwide each year. Starting from midnight on the last day of the year, Taipei 101 launches fireworks in multiple waves, with colorful sparks blooming in the night sky. Hundreds of thousands of people gather around the building to watch this grand spectacle welcoming the New Year."
   },
   {
     "id": "alishan",
@@ -1121,20 +1160,51 @@
     "genre": "nature",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "阿里山日出是非常有名的。",
-    "text_pinyin": "阿里山日出 shì fēicháng yǒumíng de.",
+    "text_zh": "阿里山位於台灣嘉義縣，是台灣最著名的山區景點之一。每年春天，阿里山的櫻花盛開，吸引大批遊客前來觀賞。阿里山日出是必看的景色，清晨薄霧中，太陽從雲海之上緩緩升起，景象壯觀美麗。",
+    "text_pinyin": "Ālǐshān wèiyú Táiwān Jiāyìxiàn, shì Táiwān zuì zhùmíng de shānqū jǐngdiǎn zhī yī. Měinián chūntiān, Ālǐshān de yīnghuā shèngkāi, xīyǐn dà pī yóukè qiánlái guānshǎng. Ālǐshān rìchū shì bìkàn de jǐngsè, qīngchén bówù zhōng, tàiyáng cóng yúnhǎi zhīshàng huǎnhuǎn shēngqǐ, jǐngxiàng zhuàngguān měilì.",
     "comprehension_questions": [
       {
-        "q": "阿里山日出有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "阿里山日出有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "阿里山位於台灣哪個縣？",
+        "options": [
+          "台南縣",
+          "嘉義縣",
+          "南投縣",
+          "花蓮縣"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "阿里山春天有什麼特別的景觀？",
+        "options": [
+          "楓葉",
+          "荷花",
+          "櫻花",
+          "玫瑰"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "阿里山日出的景象被形容為怎麼樣？",
+        "options": [
+          "平淡無奇",
+          "壯觀美麗",
+          "令人失望",
+          "普通"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Alishan is located in Chiayi County, Taiwan, and is one of Taiwan's most famous mountain scenic spots. Every spring, the cherry blossoms bloom in Alishan, attracting many tourists. The Alishan sunrise is a must-see; in the early morning mist, the sun slowly rises above the sea of clouds, creating a magnificent and beautiful scene."
   },
   {
     "id": "jiufen",
@@ -1142,20 +1212,51 @@
     "genre": "travel",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "九份老街是非常有名的。",
-    "text_pinyin": "九份老街 shì fēicháng yǒumíng de.",
+    "text_zh": "九份位於台灣新北市，是一個充滿老街風情的山城小鎮。昔日因淘金而繁榮，如今以紅燈籠、石階步道和特色茶樓聞名。夜晚，紅燈籠亮起，整個九份顯得格外迷人，吸引無數國內外遊客前來探訪。",
+    "text_pinyin": "Jiǔfèn wèiyú Táiwān Xīnběishì, shì yī gè chōngmǎn lǎojiē fēngqíng de shānchéng xiǎozhèn. Xīrì yīn táojīn ér fánróng, rújīn yǐ hóngdēnglóng, shíjiē bùdào hé tèsè chálóu wénmíng. Yèwǎn, hóngdēnglóng liàngqǐ, zhěnggè Jiǔfèn xiǎnde géwài mírén, xīyǐn wúshù guónèi wài yóukè qiánlái tànfǎng.",
     "comprehension_questions": [
       {
-        "q": "九份老街有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "九份老街有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "九份位於台灣哪個城市？",
+        "options": [
+          "台北市",
+          "基隆市",
+          "新北市",
+          "桃園市"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "九份昔日因為什麼而繁榮？",
+        "options": [
+          "採茶",
+          "漁業",
+          "農業",
+          "淘金"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "九份以什麼聞名？",
+        "options": [
+          "白燈籠和廣場",
+          "紅燈籠和石階步道",
+          "藍燈籠和海景",
+          "黃燈籠和稻田"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Jiufen is located in New Taipei City, Taiwan, and is a charming mountain town full of old street atmosphere. It was once prosperous due to gold mining; today it is famous for its red lanterns, stone step paths, and distinctive teahouses. At night, when the red lanterns light up, all of Jiufen looks especially enchanting, attracting countless domestic and international visitors."
   },
   {
     "id": "dintaifung",
@@ -1163,20 +1264,51 @@
     "genre": "food",
     "difficulty": "a1",
     "description": "Added via roadmap automation.",
-    "text_zh": "鼎泰豐小籠包是非常有名的。",
-    "text_pinyin": "鼎泰豐小籠包 shì fēicháng yǒumíng de.",
+    "text_zh": "鼎泰豐是台灣著名的連鎖餐廳，以小籠包聞名全球。每一顆小籠包都有十八道褶，皮薄餡多，湯汁豐富。鼎泰豐在全世界都有分店，並曾多次獲得米其林星級評鑑，是許多外國遊客來台必訪的餐廳。",
+    "text_pinyin": "Dǐngtàifēng shì Táiwān zhùmíng de liánsuǒ cāntīng, yǐ xiǎolóngbāo wénmíng quánqiú. Měi yī kē xiǎolóngbāo dōu yǒu shíbā dào zhě, pí báo xiàn duō, tāngzhī fēngfù. Dǐngtàifēng zài quán shìjiè dōu yǒu fēndiàn, bìng céng duōcì huòdé mǐqílín xīngjí píngjian, shì xǔduō wàiguó yóukè lái Tái bìfǎng de cāntīng.",
     "comprehension_questions": [
       {
-        "q": "鼎泰豐小籠包有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "鼎泰豐小籠包有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "鼎泰豐以什麼食物聞名？",
+        "options": [
+          "牛肉麵",
+          "珍珠奶茶",
+          "小籠包",
+          "滷肉飯"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "每一顆鼎泰豐的小籠包有幾道褶？",
+        "options": [
+          "十二道",
+          "十五道",
+          "十六道",
+          "十八道"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "鼎泰豐曾獲得什麼榮譽？",
+        "options": [
+          "米其林星級評鑑",
+          "奧斯卡獎",
+          "諾貝爾獎",
+          "金氏世界紀錄"
+        ],
+        "correct_index": 0
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Din Tai Fung is a famous Taiwanese chain restaurant known worldwide for its xiaolongbao (soup dumplings). Each xiaolongbao has 18 folds, with thin skin, abundant filling, and rich broth. Din Tai Fung has branches worldwide and has received multiple Michelin star ratings, making it a must-visit restaurant for many foreign tourists coming to Taiwan."
   },
   {
     "id": "nhi",
@@ -1184,20 +1316,51 @@
     "genre": "culture",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "台灣的健保是非常有名的。",
-    "text_pinyin": "台灣的健保 shì fēicháng yǒumíng de.",
+    "text_zh": "台灣的全民健康保險（健保）於一九九五年開始實施，是全球最完善的醫療保障制度之一。幾乎所有在台灣的居民都強制加入健保，保費由雇主、員工和政府共同分擔。民眾看病只需支付少量的部分負擔費用，即可在全國各地的醫院和診所就醫，有效減輕了民眾的醫療負擔。",
+    "text_pinyin": "Táiwān de quánmín jiànkāng bǎoxiǎn jiànbǎo yú yījiǔjiǔwǔ nián kāishǐ shíshī, shì quánqiú zuì wánshàn de yīliáo bǎozhàng zhìdù zhī yī. Jīhū suǒyǒu zài Táiwān de jūmín dōu qiángzhì jiārù jiànbǎo, bǎofèi yóu gùzhǔ, yuángōng hé zhèngfǔ gòngtóng fēndān. Mínzhòng kàn bìng zhǐ xū zhīfù shǎoliàng de bùfèn fùdān fèiyòng, jí kě zài quánguó gèdì de yīyuàn hé zhěnsuǒ jiùyī, yǒuxiào jiǎnqīng le mínzhòng de yīliáo fùdān.",
     "comprehension_questions": [
       {
-        "q": "台灣的健保有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "台灣的健保有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台灣全民健保開始實施是哪一年？",
+        "options": [
+          "一九八五年",
+          "一九九○年",
+          "一九九五年",
+          "二○○○年"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "健保的保費由誰來分擔？",
+        "options": [
+          "只由政府",
+          "只由員工",
+          "雇主和員工",
+          "雇主、員工和政府"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "台灣健保最主要的優點是什麼？",
+        "options": [
+          "免費就醫",
+          "減輕民眾醫療負擔",
+          "不用預約",
+          "外國人免費"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taiwan's National Health Insurance (NHI) was implemented in 1995 and is one of the world's most comprehensive medical protection systems. Almost all residents in Taiwan are required to join the NHI; premiums are shared by employers, employees, and the government. People only need to pay a small co-payment to receive medical care at hospitals and clinics nationwide, effectively reducing residents' medical burden."
   },
   {
     "id": "tamsui",
@@ -1205,20 +1368,51 @@
     "genre": "nature",
     "difficulty": "a1",
     "description": "Added via roadmap automation.",
-    "text_zh": "淡水夕陽是非常有名的。",
-    "text_pinyin": "淡水夕陽 shì fēicháng yǒumíng de.",
+    "text_zh": "淡水位於台北近郊，是一個臨海的小城鎮。淡水的夕陽景色非常出名，每到傍晚，天空染上橙紅色的光芒，倒映在淡水河面上，美不勝收。老街上有許多特色小吃，如阿給和魚丸，是遊客必嚐的美食。",
+    "text_pinyin": "Dànshuǐ wèiyú Táiběi jìnjiāo, shì yī gè lín hǎi de xiǎo chéngzhèn. Dànshuǐ de xīyáng jǐngsè fēicháng chūmíng, měi dào bàngwǎn, tiānkōng rǎnshàng chénghóng sè de guāngmáng, dàoyìng zài Dànshuǐ hé miàn shàng, měi bù shèng shōu. Lǎojiē shàng yǒu xǔduō tèsè xiǎochī, rú ā gěi hé yúwán, shì yóukè bì cháng de měishí.",
     "comprehension_questions": [
       {
-        "q": "淡水夕陽有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "淡水夕陽有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "淡水位於哪個城市的近郊？",
+        "options": [
+          "台中",
+          "台南",
+          "高雄",
+          "台北"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "淡水最著名的景色是什麼？",
+        "options": [
+          "日出",
+          "夕陽",
+          "夜景",
+          "雲海"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "淡水老街的特色小吃包括哪些？",
+        "options": [
+          "牛肉麵和滷肉飯",
+          "阿給和魚丸",
+          "蚵仔煎和珍珠奶茶",
+          "小籠包和燒賣"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Tamsui is located in the suburbs of Taipei and is a small coastal town. Tamsui's sunset scenery is very famous; every evening, the sky is dyed with orange-red light that reflects on the Tamsui River surface, creating a breathtakingly beautiful view. The old street has many specialty snacks, such as agei (stuffed tofu puff) and fish balls, which are must-try foods for tourists."
   },
   {
     "id": "moon-festival",
@@ -1226,20 +1420,51 @@
     "genre": "culture",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "中秋節烤肉是非常有名的。",
-    "text_pinyin": "中秋節烤肉 shì fēicháng yǒumíng de.",
+    "text_zh": "中秋節是台灣重要的傳統節日，每年農曆八月十五日慶祝。這一天，家人會團聚在一起賞月、吃月餅。台灣人還有一個獨特的中秋節習俗，就是在戶外烤肉。中秋節的夜晚，到處都能聞到烤肉的香味，非常熱鬧。",
+    "text_pinyin": "Zhōngqiū jié shì Táiwān zhòngyào de chuántǒng jiérì, měinián nónglì bā yuè shíwǔ rì qìngzhù. Zhè yī tiān, jiārén huì tuánjù zài yīqǐ shǎng yuè, chī yuèbǐng. Táiwānyén hái yǒu yī gè dútè de Zhōngqiū jié xísú, jiùshì zài hùwài kǎoròu. Zhōngqiū jié de yèwǎn, dàochù dōu néng wén dào kǎoròu de xiāngwèi, fēicháng rènào.",
     "comprehension_questions": [
       {
-        "q": "中秋節烤肉有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "中秋節烤肉有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台灣的中秋節在農曆幾月幾日？",
+        "options": [
+          "七月初七",
+          "七月十五",
+          "八月十五",
+          "九月初九"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "台灣人中秋節的獨特習俗是什麼？",
+        "options": [
+          "放鞭炮",
+          "戶外烤肉",
+          "猜燈謎",
+          "划龍舟"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "中秋節家人通常會做什麼？",
+        "options": [
+          "看煙火",
+          "賞月和吃月餅",
+          "祭祖掃墓",
+          "放天燈"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Mid-Autumn Festival is an important traditional holiday in Taiwan, celebrated on the 15th day of the eighth lunar month each year. On this day, family members gather to admire the moon and eat mooncakes. Taiwanese also have a unique Mid-Autumn Festival custom of outdoor BBQ. On Mid-Autumn Festival evening, the aroma of BBQ can be smelled everywhere, making it very lively."
   },
   {
     "id": "tainan",
@@ -1247,20 +1472,51 @@
     "genre": "travel",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "台南古蹟是非常有名的。",
-    "text_pinyin": "台南古蹟 shì fēicháng yǒumíng de.",
+    "text_zh": "台南是台灣最古老的城市，有超過三百年的歷史。這裡保存了許多珍貴的歷史古蹟，如赤崁樓、安平古堡和延平郡王祠。台南也以美食聞名，擔仔麵、虱目魚和蝦捲都是當地的特色料理。走訪台南，彷彿走入了台灣的歷史長廊。",
+    "text_pinyin": "Táinán shì Táiwān zuì gǔlǎo de chéngshì, yǒu chāoguò sānbǎi nián de lìshǐ. Zhèlǐ bǎocún le xǔduō zhēnguì de lìshǐ gǔjī, rú Chìkǎnlóu, Ānpíng gǔbǎo hé Yánpíng Jùnwáng Cí. Táinán yě yǐ měishí wénmíng, dǎnzǎimiàn, shīmùyú hé xiājuǎn dōu shì dāngdì de tèsè liàolǐ. Zǒufǎng Táinán, fǎngfú zǒu rù le Táiwān de lìshǐ chángláng.",
     "comprehension_questions": [
       {
-        "q": "台南古蹟有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "台南古蹟有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台南是台灣歷史最悠久的城市，有多少年歷史？",
+        "options": [
+          "超過一百年",
+          "超過兩百年",
+          "超過三百年",
+          "超過四百年"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "台南著名的歷史古蹟包括？",
+        "options": [
+          "101大樓和故宮",
+          "赤崁樓和安平古堡",
+          "日月潭和阿里山",
+          "中正紀念堂和國父紀念館"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "台南的特色料理是？",
+        "options": [
+          "牛肉麵和小籠包",
+          "蚵仔煎和魚丸",
+          "擔仔麵和虱目魚",
+          "鹹酥雞和蚵仔麵線"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Tainan is Taiwan's oldest city with over 300 years of history. Many precious historical sites are preserved here, such as Chihkan Tower, Anping Fort, and the Koxinga Shrine. Tainan is also famous for its food; danzai noodles, milkfish, and shrimp rolls are all local specialty dishes. Visiting Tainan is like walking through the historical corridor of Taiwan."
   },
   {
     "id": "semi-advantage",
@@ -1268,20 +1524,51 @@
     "genre": "tech",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "半導體產業優勢是非常有名的。",
-    "text_pinyin": "半導體產業優勢 shì fēicháng yǒumíng de.",
+    "text_zh": "台灣的半導體產業在全球佔有舉足輕重的地位。台灣積體電路製造公司（台積電）是全球最大的晶圓代工廠，生產全球超過半數的先進晶片。台灣半導體產業的成功，得益於政府的大力支持、完整的供應鏈以及大量優秀的工程師人才。台灣被稱為「晶片之島」，對全球科技發展有深遠影響。",
+    "text_pinyin": "Táiwān de bàndǎotǐ chǎnyè zài quánqiú zhànyǒu jǔzúqīngzhòng de dìwèi. Táiwān jī tǐ diànlù zhìzào gōngsī Táijīdiàn shì quánqiú zuìdà de jīngyuán dàigōng chǎng, shēngchǎn quánqiú chāoguò bànshù de xiānjìn jīnpiàn. Táiwān bàndǎotǐ chǎnyè de chénggōng, déyì yú zhèngfǔ de dàlì zhīchí, wánzhěng de gōngyìng liàn yǐjí dàliàng yōuxiù de gōngchéngshī réncái. Táiwān bèi chēng wéi jīnpiàn zhī dǎo, duì quánqiú kējì fāzhǎn yǒu shēnyuǎn yǐngxiǎng.",
     "comprehension_questions": [
       {
-        "q": "半導體產業優勢有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "半導體產業優勢有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台灣最大的半導體公司是哪一家？",
+        "options": [
+          "聯電",
+          "台積電",
+          "日月光",
+          "瑞昱"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "台積電是什麼類型的公司？",
+        "options": [
+          "品牌設計公司",
+          "晶圓代工廠",
+          "零售商店",
+          "軟體公司"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "台灣被稱為什麼？",
+        "options": [
+          "科技之國",
+          "晶片之島",
+          "半導體王國",
+          "電子天堂"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taiwan's semiconductor industry holds a pivotal position globally. Taiwan Semiconductor Manufacturing Company (TSMC) is the world's largest chip foundry, producing more than half of the world's advanced chips. The success of Taiwan's semiconductor industry is attributed to strong government support, a complete supply chain, and a large pool of excellent engineering talent. Taiwan is known as the 'Island of Chips' and has a profound influence on global technology development."
   },
   {
     "id": "micron-culture",
@@ -1289,20 +1576,51 @@
     "genre": "tech",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "美光公司文化是非常有名的。",
-    "text_pinyin": "美光公司文化 shì fēicháng yǒumíng de.",
+    "text_zh": "美光科技是全球領先的半導體記憶體公司，在台灣設有主要的製造和研發基地。美光台灣的企業文化強調創新、合作與多元，鼓勵員工提出新想法並積極參與團隊專案。公司提供完善的員工福利和培訓機會，致力於打造一個讓員工發展的環境。美光在台灣僱用了數千名工程師和技術人員。",
+    "text_pinyin": "Měiguāng kējì shì quánqiú lǐngxiān de bàndǎotǐ jìyìtǐ gōngsī, zài Táiwān shèyǒu zhǔyào de zhìzào hé yánfā jīdì. Měiguāng Táiwān de qǐyè wénhuà qiángdiào chuàngxīn, hézuò yǔ duōyuán, gǔlì yuángōng tíchū xīn xiǎngfǎ bìng jījí cānyù tuánduì zhuān'àn. Gōngsī tígōng wánshàn de yuángōng fúlì hé péixùn jīhuì, zhìlì yú dǎzào yī gè ràng yuángōng fāzhǎn de huánjìng. Měiguāng zài Táiwān gùyòng le shùqiān míng gōngchéngshī hé jìshù rényuán.",
     "comprehension_questions": [
       {
-        "q": "美光公司文化有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "美光公司文化有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "美光科技主要生產什麼產品？",
+        "options": [
+          "處理器",
+          "記憶體晶片",
+          "顯示卡",
+          "硬碟"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "美光台灣的企業文化強調什麼？",
+        "options": [
+          "階層分明和嚴格紀律",
+          "創新、合作與多元",
+          "個人表現和競爭",
+          "傳統和保守"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "美光在台灣主要僱用哪類人員？",
+        "options": [
+          "銷售人員",
+          "廚師和服務員",
+          "工程師和技術人員",
+          "教師和醫生"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Micron Technology is a world-leading semiconductor memory company with major manufacturing and R&D bases in Taiwan. Micron Taiwan's corporate culture emphasizes innovation, collaboration, and diversity, encouraging employees to propose new ideas and actively participate in team projects. The company provides comprehensive employee benefits and training opportunities, committed to creating an environment for employee development. Micron employs thousands of engineers and technicians in Taiwan."
   },
   {
     "id": "office-etiquette",
@@ -1310,20 +1628,51 @@
     "genre": "work",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "辦公室禮儀是非常有名的。",
-    "text_pinyin": "辦公室禮儀 shì fēicháng yǒumíng de.",
+    "text_zh": "在台灣的職場上，有一些重要的禮儀需要遵守。見到長輩或上司時，應主動問候並使用敬語。開會時要守時，事先準備好資料。與同事相處要友善，遇到問題可以尋求協助。下班後，台灣的職場文化也常有聚餐等社交活動，這是增進同事感情的好機會。",
+    "text_pinyin": "Zài Táiwān de zhíchǎng shàng, yǒu yīxiē zhòngyào de lǐyí xūyào zūnshǒu. Jiàn dào zhǎngbèi huò shàngsī shí, yīng zhǔdòng wènhòu bìng shǐyòng jìngyǔ. Kāihuì shí yào shǒushí, shìxiān zhǔnbèi hǎo zīliào. Yǔ tóngshì xiāngchǔ yào yǒushàn, yù dào wèntí kěyǐ xúnqiú xiézhù. Xià bān hòu, Táiwān de zhíchǎng wénhuà yě cháng yǒu jùcān děng shèjiāo huódòng, zhè shì zēngjìn tóngshì gǎnqíng de hǎo jīhuì.",
     "comprehension_questions": [
       {
-        "q": "辦公室禮儀有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "辦公室禮儀有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "在台灣職場見到上司時應該怎麼做？",
+        "options": [
+          "避開視線不打招呼",
+          "主動問候並使用敬語",
+          "只是點頭",
+          "等上司先開口"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "參加會議時最重要的是什麼？",
+        "options": [
+          "帶手機",
+          "守時並事先準備資料",
+          "穿得漂亮",
+          "早點離開"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "台灣職場文化中，下班後常有什麼活動？",
+        "options": [
+          "體育競賽",
+          "聚餐等社交活動",
+          "宗教活動",
+          "政治討論"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "In Taiwan's workplace, there are some important etiquette rules to follow. When meeting elders or supervisors, you should proactively greet them and use respectful language. Be punctual for meetings and prepare materials in advance. Be friendly with colleagues; if you encounter problems, you can seek help. After work, Taiwan's workplace culture often includes social activities like group meals, which are good opportunities to strengthen relationships with colleagues."
   },
   {
     "id": "interview-tips",
@@ -1331,20 +1680,51 @@
     "genre": "work",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "面試技巧是非常有名的。",
-    "text_pinyin": "面試技巧 shì fēicháng yǒumíng de.",
+    "text_zh": "面試是求職過程中的關鍵環節。準備面試時，應事先研究目標公司的背景、文化和主要業務。面試當天要穿著整齊，提前到達，展現積極的態度。面試中要清楚表達自己的能力和經驗，並展示對這份工作的熱情。面試結束後，可以寫一封感謝信，加深面試官的良好印象。",
+    "text_pinyin": "Miànshì shì qiúzhí guòchéng zhōng de guānjiàn huánjié. Zhǔnbèi miànshì shí, yīng shìxiān yánjiū mùbiāo gōngsī de bèijǐng, wénhuà hé zhǔyào yèwù. Miànshì dāngtiān yào chuānzhuó zhěngqí, tíqián dǐdá, zhǎnxiàn jījí de tàidù. Miànshì zhōng yào qīngchǔ biǎodá zìjǐ de nénglì hé jīngyàn, bìng zhǎnshì duì zhè fèn gōngzuò de rèqíng. Miànshì jiéshù hòu, kěyǐ xiě yī fēng gǎnxiè xìn, jiāshēn miànshìguān de liánghǎo yìnxiàng.",
     "comprehension_questions": [
       {
-        "q": "面試技巧有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "面試技巧有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "面試前最重要的準備是什麼？",
+        "options": [
+          "買新衣服",
+          "研究目標公司的背景和業務",
+          "準備禮物給面試官",
+          "背誦所有問題答案"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "面試當天到達時間應該如何？",
+        "options": [
+          "晚一點到比較好",
+          "準時就好",
+          "提前到達",
+          "隨便什麼時間都可以"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "面試結束後可以做什麼加深良好印象？",
+        "options": [
+          "立刻要求錄取",
+          "寄感謝信給面試官",
+          "再打電話追問結果",
+          "告訴朋友"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "An interview is a key step in the job-seeking process. When preparing for an interview, you should research the target company's background, culture, and main business in advance. On interview day, dress neatly, arrive early, and show a positive attitude. During the interview, clearly express your abilities and experience, and demonstrate enthusiasm for the job. After the interview ends, you can write a thank-you letter to deepen the positive impression on the interviewer."
   },
   {
     "id": "npm",
@@ -1352,20 +1732,51 @@
     "genre": "culture",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "台北故宮是非常有名的。",
-    "text_pinyin": "台北故宮 shì fēicháng yǒumíng de.",
+    "text_zh": "國立故宮博物院位於台北士林區，是世界頂級的博物館之一，收藏超過七十萬件中華文物。博物館的鎮館之寶包括翠玉白菜、肉形石和毛公鼎。這些珍貴的文物來自中國數千年的歷史，是了解中華文化的重要窗口。每年有數百萬名遊客來此參觀。",
+    "text_pinyin": "Guólì gùgōng bówùyuàn wèiyú Táiběi Shìlínqū, shì shìjiè dǐngjí de bówùguǎn zhī yī, shōucáng chāoguò qīshí wàn jiàn Zhōnghuá wénwù. Bówùguǎn de zhèn guǎn zhī bǎo bāokuò cuìyù báicài, ròuxíngshí hé máogōngdǐng. Zhèxiē zhēnguì de wénwù láizì Zhōngguó shùqiān nián de lìshǐ, shì liǎojiě Zhōnghuá wénhuà de zhòngyào chuāngkǒu. Měinián yǒu shùbǎi wàn míng yóukè lái cǐ cānguān.",
     "comprehension_questions": [
       {
-        "q": "台北故宮有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "台北故宮有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "故宮博物院位於台北哪個區？",
+        "options": [
+          "中山區",
+          "大安區",
+          "士林區",
+          "信義區"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "故宮博物院收藏超過多少件文物？",
+        "options": [
+          "十萬件",
+          "三十萬件",
+          "五十萬件",
+          "七十萬件"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "故宮最著名的鎮館之寶之一是？",
+        "options": [
+          "玉璽",
+          "翠玉白菜",
+          "金縷玉衣",
+          "司母戊鼎"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "The National Palace Museum is located in Shilin District, Taipei, and is one of the world's top museums, housing over 700,000 pieces of Chinese cultural artifacts. The museum's treasured masterpieces include the Jadeite Cabbage, Meat-Shaped Stone, and Mao Gong Ding. These precious artifacts spanning thousands of years of Chinese history are an important window for understanding Chinese culture. Millions of tourists visit each year."
   },
   {
     "id": "rechao",
@@ -1373,20 +1784,51 @@
     "genre": "food",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "台式熱炒是非常有名的。",
-    "text_pinyin": "台式熱炒 shì fēicháng yǒumíng de.",
+    "text_zh": "台式熱炒是台灣非常普遍的飲食文化。熱炒店通常在傍晚開始營業，提供各種用大火快炒的料理，如炒空心菜、薑母鴨、三杯雞等。價格實惠，份量十足，深受台灣人喜愛。朋友聚餐或下班後小酌，熱炒店是最受歡迎的選擇之一。",
+    "text_pinyin": "Táishì rè chǎo shì Táiwān fēicháng pǔbiàn de yǐnshí wénhuà. Rè chǎo diàn tōngcháng zài bàngwǎn kāishǐ yíngyè, tígōng gèzhǒng yòng dàhuǒ kuài chǎo de liàolǐ, rú chǎo kōngxīncài, jiāngmǔ yā, sānbēi jī děng. Jiàgé shíhuì, fèn liàng shí zú, shēn shòu Táiwānyén xǐài. Péngyǒu jùcān huò xià bān hòu xiǎo zhuó, rè chǎo diàn shì zuì shòu huānyíng de xuǎnzé zhī yī.",
     "comprehension_questions": [
       {
-        "q": "台式熱炒有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "台式熱炒有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台式熱炒店通常什麼時候開始營業？",
+        "options": [
+          "清晨",
+          "中午",
+          "傍晚",
+          "深夜"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "熱炒店的特點是什麼？",
+        "options": [
+          "貴但精緻",
+          "便宜但份量少",
+          "價格實惠份量十足",
+          "昂貴且等待時間長"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "以下哪個是台式熱炒的代表性料理？",
+        "options": [
+          "牛肉麵",
+          "三杯雞",
+          "小籠包",
+          "珍珠奶茶"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taiwanese stir-fry (rechao) is a very common dining culture in Taiwan. Rechao restaurants typically start operating in the evening and offer various dishes cooked with high-heat stir-frying, such as stir-fried water spinach, sesame ginger duck, and three-cup chicken. The prices are affordable, portions are generous, and they are well-loved by Taiwanese people. Rechao restaurants are one of the most popular choices for friend gatherings or after-work drinks."
   },
   {
     "id": "typhoon",
@@ -1394,20 +1836,51 @@
     "genre": "nature",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "台灣的颱風是非常有名的。",
-    "text_pinyin": "台灣的颱風 shì fēicháng yǒumíng de.",
+    "text_zh": "台灣因為地理位置特殊，每年都會受到颱風影響，通常在五月到十一月之間。颱風帶來強風和豪雨，可能造成洪水、土石流等災害。台灣政府建立了完善的颱風預警系統，當颱風來臨時，政府會宣布停班停課，提醒民眾避免外出，做好防颱準備。台灣人已學會與颱風共存。",
+    "text_pinyin": "Táiwān yīnwèi dìlǐ wèizhì tèshū, měinián dōu huì shòudào táifēng yǐngxiǎng, tōngcháng zài wǔ yuè dào shíyī yuè zhījiān. Táifēng dài lái qiáng fēng hé háoyǔ, kěnéng zàochéng hóngshuǐ, tǔshíliú děng zāihài. Táiwān zhèngfǔ jiànlì le wánshàn de táifēng yùjǐng xìtǒng, dāng táifēng láilín shí, zhèngfǔ huì xuānbù tíng bān tíng kè, tíxǐng mínzhòng bìmiǎn wàichū, zuòhǎo fáng tái zhǔnbèi. Táiwānyén yǐ xuéhuì yǔ táifēng gòngcún.",
     "comprehension_questions": [
       {
-        "q": "台灣的颱風有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "台灣的颱風有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台灣颱風季節通常在幾月到幾月之間？",
+        "options": [
+          "一月到六月",
+          "三月到八月",
+          "五月到十一月",
+          "七月到十二月"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "颱風來臨時政府通常會宣布什麼？",
+        "options": [
+          "延長上班時間",
+          "停班停課",
+          "取消所有活動",
+          "開放避難所只"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "颱風可能帶來哪些災害？",
+        "options": [
+          "地震和火山爆發",
+          "洪水和土石流",
+          "沙塵暴和乾旱",
+          "冰雪和暴風雪"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Due to its special geographical location, Taiwan is affected by typhoons every year, usually between May and November. Typhoons bring strong winds and heavy rain that can cause floods, mudslides, and other disasters. The Taiwan government has established a comprehensive typhoon warning system; when a typhoon approaches, the government will announce cancellation of work and school, reminding people to avoid going out and prepare for typhoon protection. Taiwanese people have learned to coexist with typhoons."
   },
   {
     "id": "night-market-food",
@@ -1415,20 +1888,51 @@
     "genre": "food",
     "difficulty": "a1",
     "description": "Added via roadmap automation.",
-    "text_zh": "夜市小吃是非常有名的。",
-    "text_pinyin": "夜市小吃 shì fēicháng yǒumíng de.",
+    "text_zh": "台灣夜市是小吃天堂。常見的夜市小吃有臭豆腐、蚵仔煎、大腸包小腸、滷味和珍珠奶茶。夜市通常在傍晚開始熱鬧，一直到深夜。台灣各地都有不同特色的夜市，是體驗台灣飲食文化的最好方式。",
+    "text_pinyin": "Táiwān yèshì shì xiǎochī tiāntáng. Chángjian de yèshì xiǎochī yǒu chòudòufu, ézǎijiān, dàcháng bāo xiǎocháng, lǔwèi hé zhēnzhū nǎichá. Yèshì tōngcháng zài bàngwǎn kāishǐ rènào, yīzhí dào shēnyè. Táiwān gèdì dōu yǒu bùtóng tèsè de yèshì, shì tǐyàn Táiwān yǐnshí wénhuà de zuì hǎo fāngshì.",
     "comprehension_questions": [
       {
-        "q": "夜市小吃有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "夜市小吃有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "以下哪個不是台灣夜市常見小吃？",
+        "options": [
+          "臭豆腐",
+          "蚵仔煎",
+          "拉麵",
+          "珍珠奶茶"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "夜市通常從什麼時候開始熱鬧？",
+        "options": [
+          "清晨",
+          "中午",
+          "傍晚",
+          "早上"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "台灣夜市對遊客來說有什麼價值？",
+        "options": [
+          "購物中心",
+          "體驗台灣飲食文化",
+          "高級餐廳享受",
+          "運動場所"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taiwan's night markets are a paradise for street food. Common night market snacks include stinky tofu, oyster omelette, sausage in sticky rice, braised food, and bubble tea. Night markets typically become lively from evening until late night. Different areas of Taiwan have night markets with unique characteristics; they are the best way to experience Taiwan's food culture."
   },
   {
     "id": "bus-guide",
@@ -1436,20 +1940,51 @@
     "genre": "transit",
     "difficulty": "a1",
     "description": "Added via roadmap automation.",
-    "text_zh": "如何搭公車是非常有名的。",
-    "text_pinyin": "如何搭公車 shì fēicháng yǒumíng de.",
+    "text_zh": "在台灣搭公車很方便。首先要找到公車站牌，確認路線號碼。上車時，可以使用悠遊卡感應，或者準備零錢投幣。台灣的公車通常有電子看板顯示下一站資訊。需要下車時，要提前按鈴通知司機。下車時再次感應悠遊卡，部分路線需在下車時補付費用。",
+    "text_pinyin": "Zài Táiwān dā gōngchē hěn fāngbiàn. Shǒuxiān yào zhǎodào gōngchē zhànpái, quèrèn lùxiàn hàomǎ. Shàng chē shí, kěyǐ shǐyòng yōuyóu kǎ gǎnyìng, huòzhě zhǔnbèi líng qián tóu bì. Táiwān de gōngchē tōngcháng yǒu diànzǐ kànbǎn xiǎnshì xià yī zhàn zīxùn. Xūyào xià chē shí, yào tíqián àn líng tōngzhī sījī. Xià chē shí zàicì gǎnyìng yōuyóu kǎ, bùfèn lùxiàn xū zài xià chē shí bǔ fù fèiyòng.",
     "comprehension_questions": [
       {
-        "q": "如何搭公車有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "如何搭公車有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "台灣公車上車時可以用什麼付費？",
+        "options": [
+          "只能投幣",
+          "只能用信用卡",
+          "悠遊卡或零錢",
+          "只能用手機"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "在台灣搭公車需要下車時應該怎麼做？",
+        "options": [
+          "大聲叫司機停車",
+          "提前按鈴通知司機",
+          "直接走到車門旁",
+          "什麼都不用做"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "台灣公車的電子看板通常顯示什麼資訊？",
+        "options": [
+          "天氣預報",
+          "新聞",
+          "下一站資訊",
+          "廣告"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taking the bus in Taiwan is very convenient. First, find the bus stop and confirm the route number. When boarding, you can tap your EasyCard or prepare coins to insert. Taiwan's buses usually have electronic displays showing the next stop information. When you need to get off, press the bell in advance to notify the driver. Tap your EasyCard again when getting off; some routes require additional payment upon exit."
   },
   {
     "id": "longshan",
@@ -1457,20 +1992,51 @@
     "genre": "culture",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "龍山寺拜拜是非常有名的。",
-    "text_pinyin": "龍山寺拜拜 shì fēicháng yǒumíng de.",
+    "text_zh": "龍山寺位於台北萬華區，是台灣最著名的佛道教廟宇之一，建於一七三八年。廟內供奉觀世音菩薩和多位神明，每日有眾多信徒前來燒香祈福。龍山寺的建築融合了閩南式和巴洛克式風格，精美的雕刻和裝飾令人嘆為觀止，是外國遊客必訪的文化景點。",
+    "text_pinyin": "Lóngshānsì wèiyú Táiběi Wànhuáqū, shì Táiwān zuì zhùmíng de fó dàojiào miàoyǔ zhī yī, jiànyú yī qī sān bā nián. Miào nèi gòngfèng Guānshìyīn púsà hé duō wèi shénmíng, měi rì yǒu zhòngduō xìntú qiánlái shāo xiāng qífú. Lóngshānsì de jiànzhù rónghé le Mǐnnán shì hé bāluòkè shì fēnggé, jīngměi de diāokè hé zhuāngshì lìng rén tànwéi guānzhǐ, shì wàiguó yóukè bìfǎng de wénhuà jǐngdiǎn.",
     "comprehension_questions": [
       {
-        "q": "龍山寺拜拜有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "龍山寺拜拜有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "龍山寺位於台北哪個區？",
+        "options": [
+          "信義區",
+          "大安區",
+          "萬華區",
+          "中正區"
+        ],
+        "correct_index": 2
+      },
+      {
+        "question": "龍山寺建於哪一年？",
+        "options": [
+          "一六八三年",
+          "一七三八年",
+          "一八○○年",
+          "一九○○年"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "龍山寺廟內主要供奉哪位神明？",
+        "options": [
+          "媽祖",
+          "土地公",
+          "城隍爺",
+          "觀世音菩薩"
+        ],
+        "correct_index": 3
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Longshan Temple is located in Wanhua District, Taipei, and is one of Taiwan's most famous Buddhist and Taoist temples, built in 1738. The temple enshrines Guanyin Bodhisattva and many other deities; many worshippers come daily to burn incense and pray for blessings. Longshan Temple's architecture blends Southern Min and Baroque styles; the exquisite carvings and decorations are breathtaking, making it a cultural attraction that foreign tourists must visit."
   },
   {
     "id": "kenting",
@@ -1478,20 +2044,51 @@
     "genre": "travel",
     "difficulty": "a2",
     "description": "Added via roadmap automation.",
-    "text_zh": "墾丁海灘是非常有名的。",
-    "text_pinyin": "墾丁海灘 shì fēicháng yǒumíng de.",
+    "text_zh": "墾丁位於台灣最南端的屏東縣，是著名的熱帶海濱度假勝地。這裡有清澈的海水、白沙灘和豐富的珊瑚礁生態，是浮潛和水上活動的天堂。墾丁國家公園擁有多樣的自然景觀，全年氣候溫暖，是台灣人最喜愛的度假目的地之一。",
+    "text_pinyin": "Kěndīng wèiyú Táiwān zuì nán duān de Píngdōng xiàn, shì zhùmíng de rèdài hǎibīn dùjià shèngdì. Zhèlǐ yǒu qīngchè de hǎishuǐ, bái shā tān hé fēngfù de shānhújiāo shēngtài, shì fúqián hé shuǐshàng huódòng de tiāntáng. Kěndīng guójiā gōngyuán yǒngyǒu duōyàng de zìrán jǐngguān, quánnián qìhòu wēnnuǎn, shì Táiwānyén zuì xǐài de dùjià mùdìdì zhī yī.",
     "comprehension_questions": [
       {
-        "q": "墾丁海灘有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "墾丁海灘有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "墾丁位於台灣哪個縣？",
+        "options": [
+          "台東縣",
+          "花蓮縣",
+          "高雄市",
+          "屏東縣"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "墾丁以什麼活動著名？",
+        "options": [
+          "登山健行",
+          "浮潛和水上活動",
+          "文化參觀",
+          "滑雪"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "墾丁一年四季的氣候如何？",
+        "options": [
+          "全年寒冷",
+          "夏熱冬冷",
+          "全年溫暖",
+          "多雨潮濕"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Kenting is located in Pingtung County at the southernmost tip of Taiwan and is a famous tropical seaside resort. It has clear waters, white sandy beaches, and rich coral reef ecosystems, making it a paradise for snorkeling and water activities. Kenting National Park has diverse natural landscapes, and the climate is warm year-round, making it one of the most beloved vacation destinations for Taiwanese people."
   },
   {
     "id": "taroko",
@@ -1499,20 +2096,51 @@
     "genre": "nature",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "太魯閣國家公園是非常有名的。",
-    "text_pinyin": "太魯閣國家公園 shì fēicháng yǒumíng de.",
+    "text_zh": "太魯閣國家公園位於台灣東部，是台灣最著名的自然景觀之一。公園以壯麗的大理石峽谷聞名，清水斷崖高達數百公尺，令人驚嘆。立霧溪穿越峽谷，形成了獨特的地質景觀。太魯閣也是許多原住民族的傳統領地，擁有豐富的自然和文化資產，每年吸引數百萬遊客到訪。",
+    "text_pinyin": "Tài lǔ gé guójiā gōngyuán wèiyú Táiwān dōngbù, shì Táiwān zuì zhùmíng de zìrán jǐngguān zhī yī. Gōngyuán yǐ zhuànglì de dàlǐshí xiágǔ wénmíng, Qīngshuǐ duànyái gāodá shùbǎi gōngchǐ, lìng rén jīngtàn. Lìwù xī chuānyuè xiágǔ, xíngchéng le dútè de dìzhì jǐngguān. Tài lǔ gé yě shì xǔduō yuánzhùmínzú de chuántǒng lǐngdì, yǒngyǒu fēngfù de zìrán hé wénhuà zīchǎn, měinián xīyǐn shùbǎi wàn yóukè dàofǎng.",
     "comprehension_questions": [
       {
-        "q": "太魯閣國家公園有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "太魯閣國家公園有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "太魯閣國家公園位於台灣哪個部分？",
+        "options": [
+          "北部",
+          "南部",
+          "西部",
+          "東部"
+        ],
+        "correct_index": 3
+      },
+      {
+        "question": "太魯閣以什麼地質景觀著名？",
+        "options": [
+          "火山地形",
+          "大理石峽谷",
+          "珊瑚礁",
+          "黃土高坡"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "穿越太魯閣峽谷的河流叫什麼？",
+        "options": [
+          "淡水河",
+          "秀姑巒溪",
+          "立霧溪",
+          "濁水溪"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Taroko National Park is located in eastern Taiwan and is one of Taiwan's most famous natural landscapes. The park is famous for its magnificent marble gorges; Qingshui Cliff rises hundreds of meters, inspiring awe. The Liwu River runs through the gorge, forming unique geological landscapes. Taroko is also the traditional territory of many indigenous peoples and has abundant natural and cultural assets; millions of tourists visit each year."
   },
   {
     "id": "day-at-micron",
@@ -1520,20 +2148,51 @@
     "genre": "tech",
     "difficulty": "b1",
     "description": "Added via roadmap automation.",
-    "text_zh": "在美光工作的一天是非常有名的。",
-    "text_pinyin": "在美光工作的一天 shì fēicháng yǒumíng de.",
+    "text_zh": "在美光台灣工作，每天都充滿挑戰與機會。工程師們通常在早上開始工作，參加部門晨會，討論當天的生產目標和技術問題。下午會有跨部門的協作會議或技術培訓。公司提供員工餐廳和各種設施，讓員工可以在舒適的環境中工作。美光也鼓勵員工持續學習和創新，提供豐富的進修機會。",
+    "text_pinyin": "Zài Měiguāng Táiwān gōngzuò, měitiān dōu chōngmǎn tiǎozhàn yǔ jīhuì. Gōngchéngshīmen tōngcháng zài zǎoshàng kāishǐ gōngzuò, cānjiā bùmén chénhuì, tǎolùn dāngtiān de shēngchǎn mùbiāo hé jìshù wèntí. Xiàwǔ huì yǒu kuà bùmén de xiézuò huìyì huò jìshù péixùn. Gōngsī tígōng yuángōng cāntīng hé gèzhǒng shèshī, ràng yuángōng kěyǐ zài shūshì de huánjìng zhōng gōngzuò. Měiguāng yě gǔlì yuángōng chíxù xuéxí hé chuàngxīn, tígōng fēngfù de jìnxiū jīhuì.",
     "comprehension_questions": [
       {
-        "q": "在美光工作的一天有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "在美光工作的一天有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "美光台灣的工程師早上通常做什麼？",
+        "options": [
+          "健身",
+          "參加部門晨會",
+          "去客戶拜訪",
+          "處理行政事務"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "美光提供員工哪些設施？",
+        "options": [
+          "游泳池和電影院",
+          "員工餐廳和各種設施",
+          "宿舍和交通車只",
+          "健身房只"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "美光鼓勵員工做什麼？",
+        "options": [
+          "加班賺錢",
+          "持續學習和創新",
+          "減少工作量",
+          "準時下班"
+        ],
+        "correct_index": 1
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Working at Micron Taiwan, every day is full of challenges and opportunities. Engineers usually start work in the morning, attending department morning meetings to discuss the day's production goals and technical issues. In the afternoon, there are cross-department collaboration meetings or technical training. The company provides an employee cafeteria and various facilities, allowing employees to work in a comfortable environment. Micron also encourages employees to continue learning and innovating, providing abundant further education opportunities."
   },
   {
     "id": "nanliao",
@@ -1541,19 +2200,50 @@
     "genre": "travel",
     "difficulty": "a1",
     "description": "Added via roadmap automation.",
-    "text_zh": "新竹南寮漁港是非常有名的。",
-    "text_pinyin": "新竹南寮漁港 shì fēicháng yǒumíng de.",
+    "text_zh": "南寮漁港位於新竹市西北部，是新竹最主要的漁港。漁港附近有海景步道，可以欣賞台灣海峽的風光。清晨時分，漁船歸港，帶來新鮮的海鮮。附近的餐廳提供各式海鮮料理，是新竹人周末出遊的好去處。",
+    "text_pinyin": "Nánliáo yúgǎng wèiyú Xīnzhú shì xīběibù, shì Xīnzhú zuì zhǔyào de yúgǎng. Yúgǎng fùjìn yǒu hǎijǐng bùdào, kěyǐ xīnshǎng Táiwān hǎixiá de fēngguāng. Qīngchén shífēn, yúchuán guī gǎng, dài lái xīnxiān de hǎixiān. Fùjìn de cāntīng tígōng gèshì hǎixiān liàolǐ, shì Xīnzhú rén zhōumò chū yóu de hǎo qùchù.",
     "comprehension_questions": [
       {
-        "q": "新竹南寮漁港有名嗎？",
         "options": [
           "是",
           "不是"
         ],
-        "answer": "是"
+        "question": "新竹南寮漁港有名嗎？",
+        "correct_index": 0
+      },
+      {
+        "question": "南寮漁港位於哪個城市？",
+        "options": [
+          "台北市",
+          "新竹市",
+          "苗栗縣",
+          "桃園市"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "南寮漁港附近有什麼可以欣賞的景色？",
+        "options": [
+          "山景",
+          "台灣海峽的風光",
+          "城市夜景",
+          "農田風光"
+        ],
+        "correct_index": 1
+      },
+      {
+        "question": "清晨去南寮漁港可以看到什麼？",
+        "options": [
+          "日落",
+          "煙火",
+          "漁船歸港",
+          "表演活動"
+        ],
+        "correct_index": 2
       }
     ],
     "vocabulary_focus": [],
-    "taiwan_context": "Part of the mandatory 45-passage expansion."
+    "taiwan_context": "Part of the mandatory 45-passage expansion.",
+    "text_en": "Nanliao Fishing Harbor is located in the northwest of Hsinchu City and is Hsinchu's main fishing port. There is a scenic coastal walkway near the port where you can enjoy the views of the Taiwan Strait. In the early morning, fishing boats return to port with fresh seafood. Nearby restaurants offer various seafood dishes, making it a popular weekend outing destination for Hsinchu residents."
   }
 ]

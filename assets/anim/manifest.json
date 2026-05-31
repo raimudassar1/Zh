@@ -1,0 +1,152 @@
+{
+  "correct_answer": {
+    "file": "assets/anim/correct.json"
+  },
+  "wrong_answer": {
+    "file": "assets/anim/wrong.json"
+  },
+  "hint_used": {
+    "file": "assets/anim/thinking.json"
+  },
+  "streak_3": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "streak_5": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "streak_10": {
+    "file": "assets/anim/level_up.json"
+  },
+  "streak_broken": {
+    "file": "assets/anim/out_of_hearts.json"
+  },
+  "xp_gain": {
+    "file": "assets/anim/xp_gain.json"
+  },
+  "level_up": {
+    "file": "assets/anim/level_up.json"
+  },
+  "badge_earned": {
+    "file": "assets/anim/level_up.json"
+  },
+  "session_complete": {
+    "file": "assets/anim/session_complete.json"
+  },
+  "session_start": {
+    "file": "assets/anim/xp_gain.json"
+  },
+  "out_of_hearts": {
+    "file": "assets/anim/out_of_hearts.json"
+  },
+  "perfect_session": {
+    "file": "assets/anim/session_complete.json"
+  },
+  "new_word": {
+    "file": "assets/anim/new_word.json"
+  },
+  "listening_audio": {
+    "file": "assets/anim/audio.json"
+  },
+  "speaking_mic": {
+    "file": "assets/anim/audio.json"
+  },
+  "tile_assembly": {
+    "file": "assets/anim/new_word.json"
+  },
+  "mascot_idle": {
+    "file": "assets/anim/idle.json"
+  },
+  "mascot_thinking": {
+    "file": "assets/anim/thinking.json"
+  },
+  "mascot_happy": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "mascot_sad": {
+    "file": "assets/anim/out_of_hearts.json"
+  },
+  "mascot_encouraging": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "mascot_sleeping": {
+    "file": "assets/anim/idle.json"
+  },
+  "category_greetings": {
+    "file": "assets/anim/idle.json"
+  },
+  "category_food": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "category_family": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "category_time": {
+    "file": "assets/anim/xp_gain.json"
+  },
+  "category_nature": {
+    "file": "assets/anim/idle.json"
+  },
+  "category_work": {
+    "file": "assets/anim/thinking.json"
+  },
+  "category_travel": {
+    "file": "assets/anim/xp_gain.json"
+  },
+  "category_emotions": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "category_numbers": {
+    "file": "assets/anim/xp_gain.json"
+  },
+  "category_colors": {
+    "file": "assets/anim/level_up.json"
+  },
+  "app_loading": {
+    "file": "assets/anim/audio.json"
+  },
+  "app_error": {
+    "file": "assets/anim/wrong.json"
+  },
+  "app_empty_state": {
+    "file": "assets/anim/thinking.json"
+  },
+  "app_search": {
+    "file": "assets/anim/new_word.json"
+  },
+  "app_settings": {
+    "file": "assets/anim/thinking.json"
+  },
+  "app_success": {
+    "file": "assets/anim/correct.json"
+  },
+  "app_notification": {
+    "file": "assets/anim/new_word.json"
+  },
+  "section_flashcards": {
+    "file": "assets/anim/new_word.json"
+  },
+  "section_quiz": {
+    "file": "assets/anim/thinking.json"
+  },
+  "section_progress": {
+    "file": "assets/anim/level_up.json"
+  },
+  "section_dictionary": {
+    "file": "assets/anim/new_word.json"
+  },
+  "section_practice": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "achievement_first": {
+    "file": "assets/anim/new_word.json"
+  },
+  "achievement_streak": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "achievement_speed": {
+    "file": "assets/anim/encouraging.json"
+  },
+  "achievement_master": {
+    "file": "assets/anim/level_up.json"
+  }
+}

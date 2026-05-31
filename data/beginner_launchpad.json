@@ -41,27 +41,27 @@
       "story": [
         {
           "zh": "你好，我叫小明。",
-          "pinyin": "ni3 hao3, wo3 jiao4 xiao3 ming2.",
+          "pinyin": "nǐ hǎo ， wǒ jiào xiǎo míng 。",
           "english": "Hello, my name is Xiaoming."
         },
         {
           "zh": "你好，我叫安安。",
-          "pinyin": "ni3 hao3, wo3 jiao4 an1 an1.",
+          "pinyin": "nǐ hǎo ， wǒ jiào ān ān 。",
           "english": "Hello, my name is Anan."
         },
         {
           "zh": "你叫什麼名字？",
-          "pinyin": "ni3 jiao4 shen2 me5 ming2 zi5?",
+          "pinyin": "nǐ jiào shén me míng zì ？",
           "english": "What is your name?"
         },
         {
           "zh": "我叫安安，你呢？",
-          "pinyin": "wo3 jiao4 an1 an1, ni3 ne5?",
+          "pinyin": "wǒ jiào ān ān ， nǐ ne ？",
           "english": "My name is Anan. How about you?"
         },
         {
           "zh": "很高興認識你。",
-          "pinyin": "hen3 gao1 xing4 ren4 shi5 ni3.",
+          "pinyin": "hěn gāo xìng rèn shí nǐ 。",
           "english": "Nice to meet you."
         }
       ],
@@ -69,31 +69,31 @@
         {
           "speaker": "A",
           "zh": "你好，我叫小明。",
-          "pinyin": "ni3 hao3, wo3 jiao4 xiao3 ming2.",
+          "pinyin": "nǐ hǎo ， wǒ jiào xiǎo míng 。",
           "english": "Hello, my name is Xiaoming."
         },
         {
           "speaker": "B",
           "zh": "你好，我叫安安。",
-          "pinyin": "ni3 hao3, wo3 jiao4 an1 an1.",
+          "pinyin": "nǐ hǎo ， wǒ jiào ān ān 。",
           "english": "Hello, my name is Anan."
         },
         {
           "speaker": "A",
           "zh": "你叫什麼名字？",
-          "pinyin": "ni3 jiao4 shen2 me5 ming2 zi5?",
+          "pinyin": "nǐ jiào shén me míng zì ？",
           "english": "What is your name?"
         },
         {
           "speaker": "B",
           "zh": "我叫安安，你呢？",
-          "pinyin": "wo3 jiao4 an1 an1, ni3 ne5?",
+          "pinyin": "wǒ jiào ān ān ， nǐ ne ？",
           "english": "My name is Anan. How about you?"
         },
         {
           "speaker": "A",
           "zh": "很高興認識你。",
-          "pinyin": "hen3 gao1 xing4 ren4 shi5 ni3.",
+          "pinyin": "hěn gāo xìng rèn shí nǐ 。",
           "english": "Nice to meet you."
         }
       ],
@@ -207,27 +207,27 @@
       "story": [
         {
           "zh": "老師，您好。",
-          "pinyin": "lao3 shi1, nin2 hao3.",
+          "pinyin": "lǎo shī ， nín hǎo 。",
           "english": "Hello, teacher."
         },
         {
           "zh": "你好，你是新學生嗎？",
-          "pinyin": "ni3 hao3, ni3 shi4 xin1 xue2 sheng1 ma?",
+          "pinyin": "nǐ hǎo ， nǐ shì xīn xué shēng ma ？",
           "english": "Hello, are you a new student?"
         },
         {
           "zh": "是的，請問您貴姓？",
-          "pinyin": "shi4 de5, qing3 wen4 nin2 gui4 xing4?",
+          "pinyin": "shì de ， qǐng wèn nín guì xìng ？",
           "english": "Yes. May I ask your surname?"
         },
         {
           "zh": "我姓王。",
-          "pinyin": "wo3 xing4 wang2.",
+          "pinyin": "wǒ xìng wáng 。",
           "english": "My surname is Wang."
         },
         {
           "zh": "謝謝老師。",
-          "pinyin": "xie4 xie5 lao3 shi1.",
+          "pinyin": "xiè xiè lǎo shī 。",
           "english": "Thank you, teacher."
         }
       ],
@@ -235,31 +235,31 @@
         {
           "speaker": "A",
           "zh": "老師，您好。",
-          "pinyin": "lao3 shi1, nin2 hao3.",
+          "pinyin": "lǎo shī ， nín hǎo 。",
           "english": "Hello, teacher."
         },
         {
           "speaker": "B",
           "zh": "你好，你是新學生嗎？",
-          "pinyin": "ni3 hao3, ni3 shi4 xin1 xue2 sheng1 ma?",
+          "pinyin": "nǐ hǎo ， nǐ shì xīn xué shēng ma ？",
           "english": "Hello, are you a new student?"
         },
         {
           "speaker": "A",
           "zh": "是的，請問您貴姓？",
-          "pinyin": "shi4 de5, qing3 wen4 nin2 gui4 xing4?",
+          "pinyin": "shì de ， qǐng wèn nín guì xìng ？",
           "english": "Yes. May I ask your surname?"
         },
         {
           "speaker": "B",
           "zh": "我姓王。",
-          "pinyin": "wo3 xing4 wang2.",
+          "pinyin": "wǒ xìng wáng 。",
           "english": "My surname is Wang."
         },
         {
           "speaker": "A",
           "zh": "謝謝老師。",
-          "pinyin": "xie4 xie5 lao3 shi1.",
+          "pinyin": "xiè xiè lǎo shī 。",
           "english": "Thank you, teacher."
         }
       ],
@@ -375,27 +375,27 @@
       "story": [
         {
           "zh": "你是哪國人？",
-          "pinyin": "ni3 shi4 na3 guo2 ren2?",
+          "pinyin": "nǐ shì nǎ guó rén ？",
           "english": "What country are you from?"
         },
         {
           "zh": "我是美國人。",
-          "pinyin": "wo3 shi4 mei3 guo2 ren2.",
+          "pinyin": "wǒ shì měi guó rén 。",
           "english": "I am American."
         },
         {
           "zh": "他是台灣人嗎？",
-          "pinyin": "ta1 shi4 tai2 wan1 ren2 ma?",
+          "pinyin": "tā shì tái wān rén ma ？",
           "english": "Is he Taiwanese?"
         },
         {
           "zh": "是的，他是台灣人。",
-          "pinyin": "shi4 de5, ta1 shi4 tai2 wan1 ren2.",
+          "pinyin": "shì de ， tā shì tái wān rén 。",
           "english": "Yes, he is Taiwanese."
         },
         {
           "zh": "我也是學生。",
-          "pinyin": "wo3 ye3 shi4 xue2 sheng1.",
+          "pinyin": "wǒ yě shì xué shēng 。",
           "english": "I am also a student."
         }
       ],
@@ -403,31 +403,31 @@
         {
           "speaker": "A",
           "zh": "你是哪國人？",
-          "pinyin": "ni3 shi4 na3 guo2 ren2?",
+          "pinyin": "nǐ shì nǎ guó rén ？",
           "english": "What country are you from?"
         },
         {
           "speaker": "B",
           "zh": "我是美國人。",
-          "pinyin": "wo3 shi4 mei3 guo2 ren2.",
+          "pinyin": "wǒ shì měi guó rén 。",
           "english": "I am American."
         },
         {
           "speaker": "A",
           "zh": "他是台灣人嗎？",
-          "pinyin": "ta1 shi4 tai2 wan1 ren2 ma?",
+          "pinyin": "tā shì tái wān rén ma ？",
           "english": "Is he Taiwanese?"
         },
         {
           "speaker": "B",
           "zh": "是的，他是台灣人。",
-          "pinyin": "shi4 de5, ta1 shi4 tai2 wan1 ren2.",
+          "pinyin": "shì de ， tā shì tái wān rén 。",
           "english": "Yes, he is Taiwanese."
         },
         {
           "speaker": "A",
           "zh": "我也是學生。",
-          "pinyin": "wo3 ye3 shi4 xue2 sheng1.",
+          "pinyin": "wǒ yě shì xué shēng 。",
           "english": "I am also a student."
         }
       ],
@@ -541,27 +541,27 @@
       "story": [
         {
           "zh": "你是學生嗎？",
-          "pinyin": "ni3 shi4 xue2 sheng1 ma?",
+          "pinyin": "nǐ shì xué shēng ma ？",
           "english": "Are you a student?"
         },
         {
           "zh": "是的，我是學生。",
-          "pinyin": "shi4 de5, wo3 shi4 xue2 sheng1.",
+          "pinyin": "shì de ， wǒ shì xué shēng 。",
           "english": "Yes, I am a student."
         },
         {
           "zh": "他也是學生嗎？",
-          "pinyin": "ta1 ye3 shi4 xue2 sheng1 ma?",
+          "pinyin": "tā yě shì xué shēng ma ？",
           "english": "Is he also a student?"
         },
         {
           "zh": "不是，他是老師。",
-          "pinyin": "bu2 shi4, ta1 shi4 lao3 shi1.",
+          "pinyin": "bù shì ， tā shì lǎo shī 。",
           "english": "No, he is a teacher."
         },
         {
           "zh": "你們都很忙嗎？",
-          "pinyin": "ni3 men5 dou1 hen3 mang2 ma?",
+          "pinyin": "nǐ men dōu hěn máng ma ？",
           "english": "Are you all busy?"
         }
       ],
@@ -569,31 +569,31 @@
         {
           "speaker": "A",
           "zh": "你是學生嗎？",
-          "pinyin": "ni3 shi4 xue2 sheng1 ma?",
+          "pinyin": "nǐ shì xué shēng ma ？",
           "english": "Are you a student?"
         },
         {
           "speaker": "B",
           "zh": "是的，我是學生。",
-          "pinyin": "shi4 de5, wo3 shi4 xue2 sheng1.",
+          "pinyin": "shì de ， wǒ shì xué shēng 。",
           "english": "Yes, I am a student."
         },
         {
           "speaker": "A",
           "zh": "他也是學生嗎？",
-          "pinyin": "ta1 ye3 shi4 xue2 sheng1 ma?",
+          "pinyin": "tā yě shì xué shēng ma ？",
           "english": "Is he also a student?"
         },
         {
           "speaker": "B",
           "zh": "不是，他是老師。",
-          "pinyin": "bu2 shi4, ta1 shi4 lao3 shi1.",
+          "pinyin": "bù shì ， tā shì lǎo shī 。",
           "english": "No, he is a teacher."
         },
         {
           "speaker": "A",
           "zh": "你們都很忙嗎？",
-          "pinyin": "ni3 men5 dou1 hen3 mang2 ma?",
+          "pinyin": "nǐ men dōu hěn máng ma ？",
           "english": "Are you all busy?"
         }
       ],
@@ -707,27 +707,27 @@
       "story": [
         {
           "zh": "你喜歡喝茶嗎？",
-          "pinyin": "ni3 xi3 huan1 he1 cha2 ma?",
+          "pinyin": "nǐ xǐ huān hē chá ma ？",
           "english": "Do you like drinking tea?"
         },
         {
           "zh": "我喜歡喝茶。",
-          "pinyin": "wo3 xi3 huan1 he1 cha2.",
+          "pinyin": "wǒ xǐ huān hē chá 。",
           "english": "I like drinking tea."
         },
         {
           "zh": "你喜歡咖啡嗎？",
-          "pinyin": "ni3 xi3 huan1 ka1 fei1 ma?",
+          "pinyin": "nǐ xǐ huān kā fēi ma ？",
           "english": "Do you like coffee?"
         },
         {
           "zh": "我不喜歡咖啡。",
-          "pinyin": "wo3 bu4 xi3 huan1 ka1 fei1.",
+          "pinyin": "wǒ bù xǐ huān kā fēi 。",
           "english": "I do not like coffee."
         },
         {
           "zh": "我想喝水。",
-          "pinyin": "wo3 xiang3 he1 shui3.",
+          "pinyin": "wǒ xiǎng hē shuǐ 。",
           "english": "I want to drink water."
         }
       ],
@@ -735,31 +735,31 @@
         {
           "speaker": "A",
           "zh": "你喜歡喝茶嗎？",
-          "pinyin": "ni3 xi3 huan1 he1 cha2 ma?",
+          "pinyin": "nǐ xǐ huān hē chá ma ？",
           "english": "Do you like drinking tea?"
         },
         {
           "speaker": "B",
           "zh": "我喜歡喝茶。",
-          "pinyin": "wo3 xi3 huan1 he1 cha2.",
+          "pinyin": "wǒ xǐ huān hē chá 。",
           "english": "I like drinking tea."
         },
         {
           "speaker": "A",
           "zh": "你喜歡咖啡嗎？",
-          "pinyin": "ni3 xi3 huan1 ka1 fei1 ma?",
+          "pinyin": "nǐ xǐ huān kā fēi ma ？",
           "english": "Do you like coffee?"
         },
         {
           "speaker": "B",
           "zh": "我不喜歡咖啡。",
-          "pinyin": "wo3 bu4 xi3 huan1 ka1 fei1.",
+          "pinyin": "wǒ bù xǐ huān kā fēi 。",
           "english": "I do not like coffee."
         },
         {
           "speaker": "A",
           "zh": "我想喝水。",
-          "pinyin": "wo3 xiang3 he1 shui3.",
+          "pinyin": "wǒ xiǎng hē shuǐ 。",
           "english": "I want to drink water."
         }
       ],
@@ -873,27 +873,27 @@
       "story": [
         {
           "zh": "你想吃飯還是吃麵？",
-          "pinyin": "ni3 xiang3 chi1 fan4 hai2 shi4 chi1 mian4?",
+          "pinyin": "nǐ xiǎng chī fàn hái shì chī miàn ？",
           "english": "Do you want rice or noodles?"
         },
         {
           "zh": "我想吃麵。",
-          "pinyin": "wo3 xiang3 chi1 mian4.",
+          "pinyin": "wǒ xiǎng chī miàn 。",
           "english": "I want noodles."
         },
         {
           "zh": "你要蛋嗎？",
-          "pinyin": "ni3 yao4 dan4 ma?",
+          "pinyin": "nǐ yào dàn ma ？",
           "english": "Do you want an egg?"
         },
         {
           "zh": "要，謝謝。",
-          "pinyin": "yao4, xie4 xie5.",
+          "pinyin": "yào ， xiè xiè 。",
           "english": "Yes, thank you."
         },
         {
           "zh": "飯後我們吃水果。",
-          "pinyin": "fan4 hou4 wo3 men5 chi1 shui3 guo3.",
+          "pinyin": "fàn hòu wǒ men chī shuǐ guǒ 。",
           "english": "After the meal, we eat fruit."
         }
       ],
@@ -901,31 +901,31 @@
         {
           "speaker": "A",
           "zh": "你想吃飯還是吃麵？",
-          "pinyin": "ni3 xiang3 chi1 fan4 hai2 shi4 chi1 mian4?",
+          "pinyin": "nǐ xiǎng chī fàn hái shì chī miàn ？",
           "english": "Do you want rice or noodles?"
         },
         {
           "speaker": "B",
           "zh": "我想吃麵。",
-          "pinyin": "wo3 xiang3 chi1 mian4.",
+          "pinyin": "wǒ xiǎng chī miàn 。",
           "english": "I want noodles."
         },
         {
           "speaker": "A",
           "zh": "你要蛋嗎？",
-          "pinyin": "ni3 yao4 dan4 ma?",
+          "pinyin": "nǐ yào dàn ma ？",
           "english": "Do you want an egg?"
         },
         {
           "speaker": "B",
           "zh": "要，謝謝。",
-          "pinyin": "yao4, xie4 xie5.",
+          "pinyin": "yào ， xiè xiè 。",
           "english": "Yes, thank you."
         },
         {
           "speaker": "A",
           "zh": "飯後我們吃水果。",
-          "pinyin": "fan4 hou4 wo3 men5 chi1 shui3 guo3.",
+          "pinyin": "fàn hòu wǒ men chī shuǐ guǒ 。",
           "english": "After the meal, we eat fruit."
         }
       ],
@@ -1037,27 +1037,27 @@
       "story": [
         {
           "zh": "你想買什麼？",
-          "pinyin": "ni3 xiang3 mai3 shen2 me5?",
+          "pinyin": "nǐ xiǎng mǎi shén me ？",
           "english": "What do you want to buy?"
         },
         {
           "zh": "我要買一個杯子。",
-          "pinyin": "wo3 yao4 mai3 yi2 ge5 bei1 zi5.",
+          "pinyin": "wǒ yào mǎi yī gè bēi zi 。",
           "english": "I want to buy one cup."
         },
         {
           "zh": "這個多少錢？",
-          "pinyin": "zhe4 ge5 duo1 shao3 qian2?",
+          "pinyin": "zhè gè duō shǎo qián ？",
           "english": "How much is this?"
         },
         {
           "zh": "一個二十塊。",
-          "pinyin": "yi2 ge5 er4 shi2 kuai4.",
+          "pinyin": "yī gè èr shí kuài 。",
           "english": "One is twenty dollars."
         },
         {
           "zh": "好，我買一個。",
-          "pinyin": "hao3, wo3 mai3 yi2 ge5.",
+          "pinyin": "hǎo ， wǒ mǎi yī gè 。",
           "english": "Okay, I will buy one."
         }
       ],
@@ -1065,31 +1065,31 @@
         {
           "speaker": "A",
           "zh": "你想買什麼？",
-          "pinyin": "ni3 xiang3 mai3 shen2 me5?",
+          "pinyin": "nǐ xiǎng mǎi shén me ？",
           "english": "What do you want to buy?"
         },
         {
           "speaker": "B",
           "zh": "我要買一個杯子。",
-          "pinyin": "wo3 yao4 mai3 yi2 ge5 bei1 zi5.",
+          "pinyin": "wǒ yào mǎi yī gè bēi zi 。",
           "english": "I want to buy one cup."
         },
         {
           "speaker": "A",
           "zh": "這個多少錢？",
-          "pinyin": "zhe4 ge5 duo1 shao3 qian2?",
+          "pinyin": "zhè gè duō shǎo qián ？",
           "english": "How much is this?"
         },
         {
           "speaker": "B",
           "zh": "一個二十塊。",
-          "pinyin": "yi2 ge5 er4 shi2 kuai4.",
+          "pinyin": "yī gè èr shí kuài 。",
           "english": "One is twenty dollars."
         },
         {
           "speaker": "A",
           "zh": "好，我買一個。",
-          "pinyin": "hao3, wo3 mai3 yi2 ge5.",
+          "pinyin": "hǎo ， wǒ mǎi yī gè 。",
           "english": "Okay, I will buy one."
         }
       ],
@@ -1227,27 +1227,27 @@
       "story": [
         {
           "zh": "你要幾個？",
-          "pinyin": "ni3 yao4 ji3 ge5?",
+          "pinyin": "nǐ yào jǐ gè ？",
           "english": "How many do you want?"
         },
         {
           "zh": "我要三個。",
-          "pinyin": "wo3 yao4 san1 ge5.",
+          "pinyin": "wǒ yào sān gè 。",
           "english": "I want three."
         },
         {
           "zh": "一共多少錢？",
-          "pinyin": "yi2 gong4 duo1 shao3 qian2?",
+          "pinyin": "yī gòng duō shǎo qián ？",
           "english": "How much altogether?"
         },
         {
           "zh": "一共十塊。",
-          "pinyin": "yi2 gong4 shi2 kuai4.",
+          "pinyin": "yī gòng shí kuài 。",
           "english": "Ten dollars altogether."
         },
         {
           "zh": "我有五塊。",
-          "pinyin": "wo3 you3 wu3 kuai4.",
+          "pinyin": "wǒ yǒu wǔ kuài 。",
           "english": "I have five dollars."
         }
       ],
@@ -1255,31 +1255,31 @@
         {
           "speaker": "A",
           "zh": "你要幾個？",
-          "pinyin": "ni3 yao4 ji3 ge5?",
+          "pinyin": "nǐ yào jǐ gè ？",
           "english": "How many do you want?"
         },
         {
           "speaker": "B",
           "zh": "我要三個。",
-          "pinyin": "wo3 yao4 san1 ge5.",
+          "pinyin": "wǒ yào sān gè 。",
           "english": "I want three."
         },
         {
           "speaker": "A",
           "zh": "一共多少錢？",
-          "pinyin": "yi2 gong4 duo1 shao3 qian2?",
+          "pinyin": "yī gòng duō shǎo qián ？",
           "english": "How much altogether?"
         },
         {
           "speaker": "B",
           "zh": "一共十塊。",
-          "pinyin": "yi2 gong4 shi2 kuai4.",
+          "pinyin": "yī gòng shí kuài 。",
           "english": "Ten dollars altogether."
         },
         {
           "speaker": "A",
           "zh": "我有五塊。",
-          "pinyin": "wo3 you3 wu3 kuai4.",
+          "pinyin": "wǒ yǒu wǔ kuài 。",
           "english": "I have five dollars."
         }
       ],
@@ -1392,27 +1392,27 @@
       "story": [
         {
           "zh": "這是你的家人嗎？",
-          "pinyin": "zhe4 shi4 ni3 de5 jia1 ren2 ma?",
+          "pinyin": "zhè shì nǐ de jiā rén ma ？",
           "english": "Is this your family?"
         },
         {
           "zh": "是，這是我媽媽。",
-          "pinyin": "shi4, zhe4 shi4 wo3 ma1 ma5.",
+          "pinyin": "shì ， zhè shì wǒ mā mā 。",
           "english": "Yes, this is my mom."
         },
         {
           "zh": "你有哥哥嗎？",
-          "pinyin": "ni3 you3 ge1 ge5 ma?",
+          "pinyin": "nǐ yǒu gē gē ma ？",
           "english": "Do you have an older brother?"
         },
         {
           "zh": "我有哥哥和姐姐。",
-          "pinyin": "wo3 you3 ge1 ge5 he2 jie3 jie5.",
+          "pinyin": "wǒ yǒu gē gē hé jiě jiě 。",
           "english": "I have an older brother and older sister."
         },
         {
           "zh": "你爸爸也在家嗎？",
-          "pinyin": "ni3 ba4 ba5 ye3 zai4 jia1 ma?",
+          "pinyin": "nǐ bà bà yě zài jiā ma ？",
           "english": "Is your dad also at home?"
         }
       ],
@@ -1420,31 +1420,31 @@
         {
           "speaker": "A",
           "zh": "這是你的家人嗎？",
-          "pinyin": "zhe4 shi4 ni3 de5 jia1 ren2 ma?",
+          "pinyin": "zhè shì nǐ de jiā rén ma ？",
           "english": "Is this your family?"
         },
         {
           "speaker": "B",
           "zh": "是，這是我媽媽。",
-          "pinyin": "shi4, zhe4 shi4 wo3 ma1 ma5.",
+          "pinyin": "shì ， zhè shì wǒ mā mā 。",
           "english": "Yes, this is my mom."
         },
         {
           "speaker": "A",
           "zh": "你有哥哥嗎？",
-          "pinyin": "ni3 you3 ge1 ge5 ma?",
+          "pinyin": "nǐ yǒu gē gē ma ？",
           "english": "Do you have an older brother?"
         },
         {
           "speaker": "B",
           "zh": "我有哥哥和姐姐。",
-          "pinyin": "wo3 you3 ge1 ge5 he2 jie3 jie5.",
+          "pinyin": "wǒ yǒu gē gē hé jiě jiě 。",
           "english": "I have an older brother and older sister."
         },
         {
           "speaker": "A",
           "zh": "你爸爸也在家嗎？",
-          "pinyin": "ni3 ba4 ba5 ye3 zai4 jia1 ma?",
+          "pinyin": "nǐ bà bà yě zài jiā ma ？",
           "english": "Is your dad also at home?"
         }
       ],
@@ -1557,27 +1557,27 @@
       "story": [
         {
           "zh": "今天你上課嗎？",
-          "pinyin": "jin1 tian1 ni3 shang4 ke4 ma?",
+          "pinyin": "jīn tiān nǐ shàng kè ma ？",
           "english": "Do you have class today?"
         },
         {
           "zh": "今天我上課。",
-          "pinyin": "jin1 tian1 wo3 shang4 ke4.",
+          "pinyin": "jīn tiān wǒ shàng kè 。",
           "english": "I have class today."
         },
         {
           "zh": "明天你來嗎？",
-          "pinyin": "ming2 tian1 ni3 lai2 ma?",
+          "pinyin": "míng tiān nǐ lái ma ？",
           "english": "Are you coming tomorrow?"
         },
         {
           "zh": "明天我來。",
-          "pinyin": "ming2 tian1 wo3 lai2.",
+          "pinyin": "míng tiān wǒ lái 。",
           "english": "I will come tomorrow."
         },
         {
           "zh": "現在幾點？",
-          "pinyin": "xian4 zai4 ji3 dian3?",
+          "pinyin": "xiàn zài jǐ diǎn ？",
           "english": "What time is it now?"
         }
       ],
@@ -1585,31 +1585,31 @@
         {
           "speaker": "A",
           "zh": "今天你上課嗎？",
-          "pinyin": "jin1 tian1 ni3 shang4 ke4 ma?",
+          "pinyin": "jīn tiān nǐ shàng kè ma ？",
           "english": "Do you have class today?"
         },
         {
           "speaker": "B",
           "zh": "今天我上課。",
-          "pinyin": "jin1 tian1 wo3 shang4 ke4.",
+          "pinyin": "jīn tiān wǒ shàng kè 。",
           "english": "I have class today."
         },
         {
           "speaker": "A",
           "zh": "明天你來嗎？",
-          "pinyin": "ming2 tian1 ni3 lai2 ma?",
+          "pinyin": "míng tiān nǐ lái ma ？",
           "english": "Are you coming tomorrow?"
         },
         {
           "speaker": "B",
           "zh": "明天我來。",
-          "pinyin": "ming2 tian1 wo3 lai2.",
+          "pinyin": "míng tiān wǒ lái 。",
           "english": "I will come tomorrow."
         },
         {
           "speaker": "A",
           "zh": "現在幾點？",
-          "pinyin": "xian4 zai4 ji3 dian3?",
+          "pinyin": "xiàn zài jǐ diǎn ？",
           "english": "What time is it now?"
         }
       ],
@@ -1722,27 +1722,27 @@
       "story": [
         {
           "zh": "你去哪裡？",
-          "pinyin": "ni3 qu4 na3 li3?",
+          "pinyin": "nǐ qù nǎ lǐ ？",
           "english": "Where are you going?"
         },
         {
           "zh": "我去學校。",
-          "pinyin": "wo3 qu4 xue2 xiao4.",
+          "pinyin": "wǒ qù xué xiào 。",
           "english": "I am going to school."
         },
         {
           "zh": "你家在哪裡？",
-          "pinyin": "ni3 jia1 zai4 na3 li3?",
+          "pinyin": "nǐ jiā zài nǎ lǐ ？",
           "english": "Where is your home?"
         },
         {
           "zh": "我家在公園旁邊。",
-          "pinyin": "wo3 jia1 zai4 gong1 yuan2 pang2 bian1.",
+          "pinyin": "wǒ jiā zài gōng yuán páng biān 。",
           "english": "My home is beside the park."
         },
         {
           "zh": "我們在餐廳見。",
-          "pinyin": "wo3 men5 zai4 can1 ting1 jian4.",
+          "pinyin": "wǒ men zài cān tīng jiàn 。",
           "english": "Let us meet at the restaurant."
         }
       ],
@@ -1750,31 +1750,31 @@
         {
           "speaker": "A",
           "zh": "你去哪裡？",
-          "pinyin": "ni3 qu4 na3 li3?",
+          "pinyin": "nǐ qù nǎ lǐ ？",
           "english": "Where are you going?"
         },
         {
           "speaker": "B",
           "zh": "我去學校。",
-          "pinyin": "wo3 qu4 xue2 xiao4.",
+          "pinyin": "wǒ qù xué xiào 。",
           "english": "I am going to school."
         },
         {
           "speaker": "A",
           "zh": "你家在哪裡？",
-          "pinyin": "ni3 jia1 zai4 na3 li3?",
+          "pinyin": "nǐ jiā zài nǎ lǐ ？",
           "english": "Where is your home?"
         },
         {
           "speaker": "B",
           "zh": "我家在公園旁邊。",
-          "pinyin": "wo3 jia1 zai4 gong1 yuan2 pang2 bian1.",
+          "pinyin": "wǒ jiā zài gōng yuán páng biān 。",
           "english": "My home is beside the park."
         },
         {
           "speaker": "A",
           "zh": "我們在餐廳見。",
-          "pinyin": "wo3 men5 zai4 can1 ting1 jian4.",
+          "pinyin": "wǒ men zài cān tīng jiàn 。",
           "english": "Let us meet at the restaurant."
         }
       ],
@@ -1887,27 +1887,27 @@
       "story": [
         {
           "zh": "商店在哪裡？",
-          "pinyin": "shang1 dian4 zai4 na3 li3?",
+          "pinyin": "shāng diàn zài nǎ lǐ ？",
           "english": "Where is the store?"
         },
         {
           "zh": "商店在那裡。",
-          "pinyin": "shang1 dian4 zai4 na4 li3.",
+          "pinyin": "shāng diàn zài nà lǐ 。",
           "english": "The store is over there."
         },
         {
           "zh": "學校在這裡嗎？",
-          "pinyin": "xue2 xiao4 zai4 zhe4 li3 ma?",
+          "pinyin": "xué xiào zài zhè lǐ ma ？",
           "english": "Is the school here?"
         },
         {
           "zh": "不是，學校在公園旁邊。",
-          "pinyin": "bu2 shi4, xue2 xiao4 zai4 gong1 yuan2 pang2 bian1.",
+          "pinyin": "bù shì ， xué xiào zài gōng yuán páng biān 。",
           "english": "No, the school is beside the park."
         },
         {
           "zh": "謝謝你。",
-          "pinyin": "xie4 xie5 ni3.",
+          "pinyin": "xiè xiè nǐ 。",
           "english": "Thank you."
         }
       ],
@@ -1915,31 +1915,31 @@
         {
           "speaker": "A",
           "zh": "商店在哪裡？",
-          "pinyin": "shang1 dian4 zai4 na3 li3?",
+          "pinyin": "shāng diàn zài nǎ lǐ ？",
           "english": "Where is the store?"
         },
         {
           "speaker": "B",
           "zh": "商店在那裡。",
-          "pinyin": "shang1 dian4 zai4 na4 li3.",
+          "pinyin": "shāng diàn zài nà lǐ 。",
           "english": "The store is over there."
         },
         {
           "speaker": "A",
           "zh": "學校在這裡嗎？",
-          "pinyin": "xue2 xiao4 zai4 zhe4 li3 ma?",
+          "pinyin": "xué xiào zài zhè lǐ ma ？",
           "english": "Is the school here?"
         },
         {
           "speaker": "B",
           "zh": "不是，學校在公園旁邊。",
-          "pinyin": "bu2 shi4, xue2 xiao4 zai4 gong1 yuan2 pang2 bian1.",
+          "pinyin": "bù shì ， xué xiào zài gōng yuán páng biān 。",
           "english": "No, the school is beside the park."
         },
         {
           "speaker": "A",
           "zh": "謝謝你。",
-          "pinyin": "xie4 xie5 ni3.",
+          "pinyin": "xiè xiè nǐ 。",
           "english": "Thank you."
         }
       ],
@@ -2053,27 +2053,27 @@
       "story": [
         {
           "zh": "你在看什麼？",
-          "pinyin": "ni3 zai4 kan4 shen2 me5?",
+          "pinyin": "nǐ zài kàn shén me ？",
           "english": "What are you reading?"
         },
         {
           "zh": "我在看書。",
-          "pinyin": "wo3 zai4 kan4 shu1.",
+          "pinyin": "wǒ zài kàn shū 。",
           "english": "I am reading a book."
         },
         {
           "zh": "你聽音樂嗎？",
-          "pinyin": "ni3 ting1 yin1 yue4 ma?",
+          "pinyin": "nǐ tīng yīn lè ma ？",
           "english": "Do you listen to music?"
         },
         {
           "zh": "我聽音樂，也寫中文。",
-          "pinyin": "wo3 ting1 yin1 yue4, ye3 xie3 zhong1 wen2.",
+          "pinyin": "wǒ tīng yīn lè ， yě xiě zhōng wén 。",
           "english": "I listen to music and also write Chinese."
         },
         {
           "zh": "請你說慢一點。",
-          "pinyin": "qing3 ni3 shuo1 man4 yi4 dian3.",
+          "pinyin": "qǐng nǐ shuō màn yī diǎn 。",
           "english": "Please speak a little slower."
         }
       ],
@@ -2081,31 +2081,31 @@
         {
           "speaker": "A",
           "zh": "你在看什麼？",
-          "pinyin": "ni3 zai4 kan4 shen2 me5?",
+          "pinyin": "nǐ zài kàn shén me ？",
           "english": "What are you reading?"
         },
         {
           "speaker": "B",
           "zh": "我在看書。",
-          "pinyin": "wo3 zai4 kan4 shu1.",
+          "pinyin": "wǒ zài kàn shū 。",
           "english": "I am reading a book."
         },
         {
           "speaker": "A",
           "zh": "你聽音樂嗎？",
-          "pinyin": "ni3 ting1 yin1 yue4 ma?",
+          "pinyin": "nǐ tīng yīn lè ma ？",
           "english": "Do you listen to music?"
         },
         {
           "speaker": "B",
           "zh": "我聽音樂，也寫中文。",
-          "pinyin": "wo3 ting1 yin1 yue4, ye3 xie3 zhong1 wen2.",
+          "pinyin": "wǒ tīng yīn lè ， yě xiě zhōng wén 。",
           "english": "I listen to music and also write Chinese."
         },
         {
           "speaker": "A",
           "zh": "請你說慢一點。",
-          "pinyin": "qing3 ni3 shuo1 man4 yi4 dian3.",
+          "pinyin": "qǐng nǐ shuō màn yī diǎn 。",
           "english": "Please speak a little slower."
         }
       ],
@@ -2218,27 +2218,27 @@
       "story": [
         {
           "zh": "今天你上課嗎？",
-          "pinyin": "jin1 tian1 ni3 shang4 ke4 ma?",
+          "pinyin": "jīn tiān nǐ shàng kè ma ？",
           "english": "Do you have class today?"
         },
         {
           "zh": "我今天上課。",
-          "pinyin": "wo3 jin1 tian1 shang4 ke4.",
+          "pinyin": "wǒ jīn tiān shàng kè 。",
           "english": "I have class today."
         },
         {
           "zh": "你的書在哪裡？",
-          "pinyin": "ni3 de5 shu1 zai4 na3 li3?",
+          "pinyin": "nǐ de shū zài nǎ lǐ ？",
           "english": "Where is your book?"
         },
         {
           "zh": "書和筆在桌子上。",
-          "pinyin": "shu1 he2 bi3 zai4 zhuo1 zi5 shang4.",
+          "pinyin": "shū hé bǐ zài zhuō zi shàng 。",
           "english": "The book and pen are on the table."
         },
         {
           "zh": "下課後我們喝水。",
-          "pinyin": "xia4 ke4 hou4 wo3 men5 he1 shui3.",
+          "pinyin": "xià kè hòu wǒ men hē shuǐ 。",
           "english": "After class, we drink water."
         }
       ],
@@ -2246,31 +2246,31 @@
         {
           "speaker": "A",
           "zh": "今天你上課嗎？",
-          "pinyin": "jin1 tian1 ni3 shang4 ke4 ma?",
+          "pinyin": "jīn tiān nǐ shàng kè ma ？",
           "english": "Do you have class today?"
         },
         {
           "speaker": "B",
           "zh": "我今天上課。",
-          "pinyin": "wo3 jin1 tian1 shang4 ke4.",
+          "pinyin": "wǒ jīn tiān shàng kè 。",
           "english": "I have class today."
         },
         {
           "speaker": "A",
           "zh": "你的書在哪裡？",
-          "pinyin": "ni3 de5 shu1 zai4 na3 li3?",
+          "pinyin": "nǐ de shū zài nǎ lǐ ？",
           "english": "Where is your book?"
         },
         {
           "speaker": "B",
           "zh": "書和筆在桌子上。",
-          "pinyin": "shu1 he2 bi3 zai4 zhuo1 zi5 shang4.",
+          "pinyin": "shū hé bǐ zài zhuō zi shàng 。",
           "english": "The book and pen are on the table."
         },
         {
           "speaker": "A",
           "zh": "下課後我們喝水。",
-          "pinyin": "xia4 ke4 hou4 wo3 men5 he1 shui3.",
+          "pinyin": "xià kè hòu wǒ men hē shuǐ 。",
           "english": "After class, we drink water."
         }
       ],
@@ -2384,27 +2384,27 @@
       "story": [
         {
           "zh": "今天天氣怎麼樣？",
-          "pinyin": "jin1 tian1 tian1 qi4 zen3 me5 yang4?",
+          "pinyin": "jīn tiān tiān qì zěn me yàng ？",
           "english": "How is the weather today?"
         },
         {
           "zh": "今天天氣很熱。",
-          "pinyin": "jin1 tian1 tian1 qi4 hen3 re4.",
+          "pinyin": "jīn tiān tiān qì hěn rè 。",
           "english": "The weather is hot today."
         },
         {
           "zh": "明天下雨嗎？",
-          "pinyin": "ming2 tian1 xia4 yu3 ma?",
+          "pinyin": "míng tiān xià yǔ ma ？",
           "english": "Will it rain tomorrow?"
         },
         {
           "zh": "可能會下雨。",
-          "pinyin": "ke3 neng2 hui4 xia4 yu3.",
+          "pinyin": "kě néng huì xià yǔ 。",
           "english": "It may rain."
         },
         {
           "zh": "太冷了，我想回家。",
-          "pinyin": "tai4 leng3 le5, wo3 xiang3 hui2 jia1.",
+          "pinyin": "tài lěng le ， wǒ xiǎng huí jiā 。",
           "english": "It is too cold; I want to go home."
         }
       ],
@@ -2412,31 +2412,31 @@
         {
           "speaker": "A",
           "zh": "今天天氣怎麼樣？",
-          "pinyin": "jin1 tian1 tian1 qi4 zen3 me5 yang4?",
+          "pinyin": "jīn tiān tiān qì zěn me yàng ？",
           "english": "How is the weather today?"
         },
         {
           "speaker": "B",
           "zh": "今天天氣很熱。",
-          "pinyin": "jin1 tian1 tian1 qi4 hen3 re4.",
+          "pinyin": "jīn tiān tiān qì hěn rè 。",
           "english": "The weather is hot today."
         },
         {
           "speaker": "A",
           "zh": "明天下雨嗎？",
-          "pinyin": "ming2 tian1 xia4 yu3 ma?",
+          "pinyin": "míng tiān xià yǔ ma ？",
           "english": "Will it rain tomorrow?"
         },
         {
           "speaker": "B",
           "zh": "可能會下雨。",
-          "pinyin": "ke3 neng2 hui4 xia4 yu3.",
+          "pinyin": "kě néng huì xià yǔ 。",
           "english": "It may rain."
         },
         {
           "speaker": "A",
           "zh": "太冷了，我想回家。",
-          "pinyin": "tai4 leng3 le5, wo3 xiang3 hui2 jia1.",
+          "pinyin": "tài lěng le ， wǒ xiǎng huí jiā 。",
           "english": "It is too cold; I want to go home."
         }
       ],
@@ -2549,27 +2549,27 @@
       "story": [
         {
           "zh": "你怎麼去學校？",
-          "pinyin": "ni3 zen3 me5 qu4 xue2 xiao4?",
+          "pinyin": "nǐ zěn me qù xué xiào ？",
           "english": "How do you go to school?"
         },
         {
           "zh": "我坐捷運去。",
-          "pinyin": "wo3 zuo4 jie2 yun4 qu4.",
+          "pinyin": "wǒ zuò jié yùn qù 。",
           "english": "I take the MRT."
         },
         {
           "zh": "車站在哪裡？",
-          "pinyin": "che1 zhan4 zai4 na3 li3?",
+          "pinyin": "chē zhàn zài nǎ lǐ ？",
           "english": "Where is the station?"
         },
         {
           "zh": "車站在商店旁邊。",
-          "pinyin": "che1 zhan4 zai4 shang1 dian4 pang2 bian1.",
+          "pinyin": "chē zhàn zài shāng diàn páng biān 。",
           "english": "The station is beside the store."
         },
         {
           "zh": "他坐火車去台灣。",
-          "pinyin": "ta1 zuo4 huo3 che1 qu4 tai2 wan1.",
+          "pinyin": "tā zuò huǒ chē qù tái wān 。",
           "english": "He takes the train to Taiwan."
         }
       ],
@@ -2577,31 +2577,31 @@
         {
           "speaker": "A",
           "zh": "你怎麼去學校？",
-          "pinyin": "ni3 zen3 me5 qu4 xue2 xiao4?",
+          "pinyin": "nǐ zěn me qù xué xiào ？",
           "english": "How do you go to school?"
         },
         {
           "speaker": "B",
           "zh": "我坐捷運去。",
-          "pinyin": "wo3 zuo4 jie2 yun4 qu4.",
+          "pinyin": "wǒ zuò jié yùn qù 。",
           "english": "I take the MRT."
         },
         {
           "speaker": "A",
           "zh": "車站在哪裡？",
-          "pinyin": "che1 zhan4 zai4 na3 li3?",
+          "pinyin": "chē zhàn zài nǎ lǐ ？",
           "english": "Where is the station?"
         },
         {
           "speaker": "B",
           "zh": "車站在商店旁邊。",
-          "pinyin": "che1 zhan4 zai4 shang1 dian4 pang2 bian1.",
+          "pinyin": "chē zhàn zài shāng diàn páng biān 。",
           "english": "The station is beside the store."
         },
         {
           "speaker": "A",
           "zh": "他坐火車去台灣。",
-          "pinyin": "ta1 zuo4 huo3 che1 qu4 tai2 wan1.",
+          "pinyin": "tā zuò huǒ chē qù tái wān 。",
           "english": "He takes the train to Taiwan."
         }
       ],
@@ -2714,27 +2714,27 @@
       "story": [
         {
           "zh": "這個多少錢？",
-          "pinyin": "zhe4 ge5 duo1 shao3 qian2?",
+          "pinyin": "zhè gè duō shǎo qián ？",
           "english": "How much is this?"
         },
         {
           "zh": "這個很貴。",
-          "pinyin": "zhe4 ge5 hen3 gui4.",
+          "pinyin": "zhè gè hěn guì 。",
           "english": "This is expensive."
         },
         {
           "zh": "那個便宜嗎？",
-          "pinyin": "na4 ge5 pian2 yi2 ma?",
+          "pinyin": "nà gè biàn yí ma ？",
           "english": "Is that one cheap?"
         },
         {
           "zh": "那個比較便宜。",
-          "pinyin": "na4 ge5 bi3 jiao4 pian2 yi2.",
+          "pinyin": "nà gè bǐ jiào biàn yí 。",
           "english": "That one is cheaper."
         },
         {
           "zh": "我要買那個。",
-          "pinyin": "wo3 yao4 mai3 na4 ge5.",
+          "pinyin": "wǒ yào mǎi nà gè 。",
           "english": "I want to buy that one."
         }
       ],
@@ -2742,31 +2742,31 @@
         {
           "speaker": "A",
           "zh": "這個多少錢？",
-          "pinyin": "zhe4 ge5 duo1 shao3 qian2?",
+          "pinyin": "zhè gè duō shǎo qián ？",
           "english": "How much is this?"
         },
         {
           "speaker": "B",
           "zh": "這個很貴。",
-          "pinyin": "zhe4 ge5 hen3 gui4.",
+          "pinyin": "zhè gè hěn guì 。",
           "english": "This is expensive."
         },
         {
           "speaker": "A",
           "zh": "那個便宜嗎？",
-          "pinyin": "na4 ge5 pian2 yi2 ma?",
+          "pinyin": "nà gè biàn yí ma ？",
           "english": "Is that one cheap?"
         },
         {
           "speaker": "B",
           "zh": "那個比較便宜。",
-          "pinyin": "na4 ge5 bi3 jiao4 pian2 yi2.",
+          "pinyin": "nà gè bǐ jiào biàn yí 。",
           "english": "That one is cheaper."
         },
         {
           "speaker": "A",
           "zh": "我要買那個。",
-          "pinyin": "wo3 yao4 mai3 na4 ge5.",
+          "pinyin": "wǒ yào mǎi nà gè 。",
           "english": "I want to buy that one."
         }
       ],
@@ -2879,27 +2879,27 @@
       "story": [
         {
           "zh": "這是什麼？",
-          "pinyin": "zhe4 shi4 shen2 me5?",
+          "pinyin": "zhè shì shén me ？",
           "english": "What is this?"
         },
         {
           "zh": "這是我的書。",
-          "pinyin": "zhe4 shi4 wo3 de5 shu1.",
+          "pinyin": "zhè shì wǒ de shū 。",
           "english": "This is my book."
         },
         {
           "zh": "他是誰？",
-          "pinyin": "ta1 shi4 shei2?",
+          "pinyin": "tā shì shuí ？",
           "english": "Who is he?"
         },
         {
           "zh": "他是我的老師。",
-          "pinyin": "ta1 shi4 wo3 de5 lao3 shi1.",
+          "pinyin": "tā shì wǒ de lǎo shī 。",
           "english": "He is my teacher."
         },
         {
           "zh": "你怎麼去學校？",
-          "pinyin": "ni3 zen3 me5 qu4 xue2 xiao4?",
+          "pinyin": "nǐ zěn me qù xué xiào ？",
           "english": "How do you go to school?"
         }
       ],
@@ -2907,31 +2907,31 @@
         {
           "speaker": "A",
           "zh": "這是什麼？",
-          "pinyin": "zhe4 shi4 shen2 me5?",
+          "pinyin": "zhè shì shén me ？",
           "english": "What is this?"
         },
         {
           "speaker": "B",
           "zh": "這是我的書。",
-          "pinyin": "zhe4 shi4 wo3 de5 shu1.",
+          "pinyin": "zhè shì wǒ de shū 。",
           "english": "This is my book."
         },
         {
           "speaker": "A",
           "zh": "他是誰？",
-          "pinyin": "ta1 shi4 shei2?",
+          "pinyin": "tā shì shuí ？",
           "english": "Who is he?"
         },
         {
           "speaker": "B",
           "zh": "他是我的老師。",
-          "pinyin": "ta1 shi4 wo3 de5 lao3 shi1.",
+          "pinyin": "tā shì wǒ de lǎo shī 。",
           "english": "He is my teacher."
         },
         {
           "speaker": "A",
           "zh": "你怎麼去學校？",
-          "pinyin": "ni3 zen3 me5 qu4 xue2 xiao4?",
+          "pinyin": "nǐ zěn me qù xué xiào ？",
           "english": "How do you go to school?"
         }
       ],
@@ -3042,27 +3042,27 @@
       "story": [
         {
           "zh": "你今天忙嗎？",
-          "pinyin": "ni3 jin1 tian1 mang2 ma?",
+          "pinyin": "nǐ jīn tiān máng ma ？",
           "english": "Are you busy today?"
         },
         {
           "zh": "我很忙，也有點累。",
-          "pinyin": "wo3 hen3 mang2, ye3 you3 dian3 lei4.",
+          "pinyin": "wǒ hěn máng ， yě yǒu diǎn lèi 。",
           "english": "I am busy and a little tired."
         },
         {
           "zh": "你高興嗎？",
-          "pinyin": "ni3 gao1 xing4 ma?",
+          "pinyin": "nǐ gāo xìng ma ？",
           "english": "Are you happy?"
         },
         {
           "zh": "很高興，這個飯很好吃。",
-          "pinyin": "hen3 gao1 xing4, zhe4 ge5 fan4 hen3 hao3 chi1.",
+          "pinyin": "hěn gāo xìng ， zhè gè fàn hěn hǎo chī 。",
           "english": "I am happy; this food is delicious."
         },
         {
           "zh": "那太好了。",
-          "pinyin": "na4 tai4 hao3 le5.",
+          "pinyin": "nà tài hǎo le 。",
           "english": "That is great."
         }
       ],
@@ -3070,31 +3070,31 @@
         {
           "speaker": "A",
           "zh": "你今天忙嗎？",
-          "pinyin": "ni3 jin1 tian1 mang2 ma?",
+          "pinyin": "nǐ jīn tiān máng ma ？",
           "english": "Are you busy today?"
         },
         {
           "speaker": "B",
           "zh": "我很忙，也有點累。",
-          "pinyin": "wo3 hen3 mang2, ye3 you3 dian3 lei4.",
+          "pinyin": "wǒ hěn máng ， yě yǒu diǎn lèi 。",
           "english": "I am busy and a little tired."
         },
         {
           "speaker": "A",
           "zh": "你高興嗎？",
-          "pinyin": "ni3 gao1 xing4 ma?",
+          "pinyin": "nǐ gāo xìng ma ？",
           "english": "Are you happy?"
         },
         {
           "speaker": "B",
           "zh": "很高興，這個飯很好吃。",
-          "pinyin": "hen3 gao1 xing4, zhe4 ge5 fan4 hen3 hao3 chi1.",
+          "pinyin": "hěn gāo xìng ， zhè gè fàn hěn hǎo chī 。",
           "english": "I am happy; this food is delicious."
         },
         {
           "speaker": "A",
           "zh": "那太好了。",
-          "pinyin": "na4 tai4 hao3 le5.",
+          "pinyin": "nà tài hǎo le 。",
           "english": "That is great."
         }
       ],
@@ -3206,27 +3206,27 @@
       "story": [
         {
           "zh": "對不起，請再說一次。",
-          "pinyin": "dui4 bu4 qi3, qing3 zai4 shuo1 yi2 ci4.",
+          "pinyin": "duì bù qǐ ， qǐng zài shuō yī cì 。",
           "english": "Sorry, please say it again."
         },
         {
           "zh": "可以，我說慢一點。",
-          "pinyin": "ke3 yi3, wo3 shuo1 man4 yi4 dian3.",
+          "pinyin": "kě yǐ ， wǒ shuō màn yī diǎn 。",
           "english": "Sure, I will speak slower."
         },
         {
           "zh": "這是什麼意思？",
-          "pinyin": "zhe4 shi4 shen2 me5 yi4 si5?",
+          "pinyin": "zhè shì shén me yì sī ？",
           "english": "What does this mean?"
         },
         {
           "zh": "沒關係，我幫你。",
-          "pinyin": "mei2 guan1 xi4, wo3 bang1 ni3.",
+          "pinyin": "méi guān xì ， wǒ bāng nǐ 。",
           "english": "No problem, I will help you."
         },
         {
           "zh": "謝謝你。",
-          "pinyin": "xie4 xie5 ni3.",
+          "pinyin": "xiè xiè nǐ 。",
           "english": "Thank you."
         }
       ],
@@ -3234,31 +3234,31 @@
         {
           "speaker": "A",
           "zh": "對不起，請再說一次。",
-          "pinyin": "dui4 bu4 qi3, qing3 zai4 shuo1 yi2 ci4.",
+          "pinyin": "duì bù qǐ ， qǐng zài shuō yī cì 。",
           "english": "Sorry, please say it again."
         },
         {
           "speaker": "B",
           "zh": "可以，我說慢一點。",
-          "pinyin": "ke3 yi3, wo3 shuo1 man4 yi4 dian3.",
+          "pinyin": "kě yǐ ， wǒ shuō màn yī diǎn 。",
           "english": "Sure, I will speak slower."
         },
         {
           "speaker": "A",
           "zh": "這是什麼意思？",
-          "pinyin": "zhe4 shi4 shen2 me5 yi4 si5?",
+          "pinyin": "zhè shì shén me yì sī ？",
           "english": "What does this mean?"
         },
         {
           "speaker": "B",
           "zh": "沒關係，我幫你。",
-          "pinyin": "mei2 guan1 xi4, wo3 bang1 ni3.",
+          "pinyin": "méi guān xì ， wǒ bāng nǐ 。",
           "english": "No problem, I will help you."
         },
         {
           "speaker": "A",
           "zh": "謝謝你。",
-          "pinyin": "xie4 xie5 ni3.",
+          "pinyin": "xiè xiè nǐ 。",
           "english": "Thank you."
         }
       ],

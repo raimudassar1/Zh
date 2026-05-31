@@ -171,12 +171,13 @@ window.ExamModule = {
             const resources = await Promise.all([
                 fetch(`data/book${bookId}_content.json`).then(r => r.json()),
                 fetch('data/playground_content.json').then(r => r.json()),
-                fetch('data/char_playground_content.json').then(r => r.json())
+                fetch('data/char_playground_content.json').then(r => r.json()),
+                fetch('data/readings.json').then(r => r.json()).catch(() => [])
             ]);
 
-            const [bookData, playgroundData, charPlaygroundData] = resources;
+            const [bookData, playgroundData, charPlaygroundData, readingsData] = resources;
 
-            this.generateTest(examDef, bookData, playgroundData, charPlaygroundData);
+            this.generateTest(examDef, bookData, playgroundData, charPlaygroundData, readingsData);
             this.renderExam();
         } catch (error) {
             console.error("Error starting exam:", error);
@@ -189,15 +190,13 @@ window.ExamModule = {
     /**
      * Compile a 100-question massive comprehensive test
      */
-    generateTest(def, bookData, playgroundData, charPlaygroundData) {
+    generateTest(def, bookData, playgroundData, charPlaygroundData, readingsData) {
         const test = {
             title: def.title,
             sections: []
         };
 
         const relevantChapters = bookData.filter(c => def.sources.books.chapters.includes(c.chapter));
-        const pgIds = def.sources.playground || [];
-        const relevantPG = playgroundData.filter(p => pgIds.includes(p.id));
         
         // Build exhaustive vocab pool
         const vocabPool = [];
@@ -212,115 +211,232 @@ window.ExamModule = {
 
         this.state.sourceVocab = vocabPool;
 
-        // --- Section 1: Tone & Phonetic Analysis (20 Qs) ---
-        const toneQs = this.getRandom(vocabPool, 20).map((v, idx) => ({
-            id: `t_${idx}`,
-            type: 'tone',
-            question: `Identify correct tone for: <span class="font-zh" style="font-size:2.2rem">「${v.hanzi}」</span>`,
-            options: this.shuffle([v.pinyin, ...this.getRandom(vocabPool.filter(x => x.pinyin !== v.pinyin), 3).map(x => x.pinyin)]),
-            answer: v.pinyin
-        }));
-        test.sections.push({ title: "I. Phonetic & Tone Discrimination", questions: toneQs });
+        // Prepare Reading Section (Section 7) first to dynamically determine its question count (R)
+        // so we can balance Section 5 (Grammar) to make the total exactly 100 questions.
+        let readingQs = [];
+        let readingContext = null;
+        if (readingsData && readingsData.length > 0) {
+            const selectedRead = this.getRandom(readingsData, 1)[0];
+            if (selectedRead) {
+                const questionsList = selectedRead.questions || selectedRead.comprehension_questions;
+                if (questionsList && questionsList.length > 0) {
+                    readingContext = selectedRead.text_zh;
+                    readingQs = questionsList.slice(0, 5).map((q, qIdx) => {
+                        const questionText = q.q || q.question || '';
+                        const answerText = q.answer !== undefined ? q.answer : (q.options && q.correct_index !== undefined ? q.options[q.correct_index] : '');
+                        return {
+                            id: `r_final_${qIdx}`,
+                            type: 'reading',
+                            question: questionText,
+                            options: q.options || [],
+                            answer: answerText
+                        };
+                    });
+                }
+            }
+        }
+        const R = readingQs.length;
+        const grammarCount = 15 + (5 - R);
 
-        // --- Section 2: Character ↔ Definition Match (30 Qs) ---
-        const vocabQs = this.getRandom(vocabPool, 30).map((v, idx) => {
+        // --- Section 1: Auditory Comprehension (Listening) (10 Qs) ---
+        const listenPool = [];
+        relevantChapters.forEach(c => {
+            if (c.dialogues) c.dialogues.forEach(d => listenPool.push(...d.lines));
+        });
+        if (listenPool.length < 20) {
+            bookData.forEach(c => { if (c.dialogues) c.dialogues.forEach(d => listenPool.push(...d.lines)); });
+        }
+        
+        const listenQs = this.getRandom(listenPool, 10).map((l, lIdx) => {
+            const distractors = this.getRandom(listenPool.filter(x => x.en !== l.en), 3).map(x => x.en);
+            return {
+                id: `l_${lIdx}`,
+                type: 'listening',
+                question: 'Click "PLAY AUDIO" and select the correct English translation.',
+                isAudio: true,
+                audioText: l.zh,
+                options: this.shuffle([l.en, ...distractors]),
+                answer: l.en
+            };
+        });
+        test.sections.push({ title: "I. Auditory Comprehension", questions: listenQs });
+
+        // --- Section 2: Phonetic & Tone Discrimination (20 Qs) ---
+        const toneQs = this.getRandom(vocabPool, 20).map((v, idx) => {
+            const pinyin = v.pinyin || '';
+            let distractors = this.getToneVariations(pinyin);
+            
+            if (distractors.length < 3) {
+                const basePinyin = pinyin.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const distractorPool = vocabPool.filter(x => {
+                    if (!x.pinyin || x.pinyin === pinyin) return false;
+                    const xBase = x.pinyin.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    return xBase === basePinyin;
+                });
+                const extra = this.getRandom(distractorPool, 3 - distractors.length).map(x => x.pinyin);
+                distractors.push(...extra);
+            }
+            if (distractors.length < 3) {
+                const similarLen = vocabPool.filter(x => x.pinyin && x.pinyin !== pinyin && Math.abs(x.pinyin.length - pinyin.length) <= 2);
+                const extra = this.getRandom(similarLen, 3 - distractors.length).map(x => x.pinyin);
+                distractors.push(...extra);
+            }
+            if (distractors.length < 3) {
+                const randoms = this.getRandom(vocabPool.filter(x => x.pinyin && x.pinyin !== pinyin), 3 - distractors.length).map(x => x.pinyin);
+                distractors.push(...randoms);
+            }
+            
+            distractors = Array.from(new Set(distractors)).slice(0, 3);
+            
+            return {
+                id: `t_${idx}`,
+                type: 'tone',
+                question: `Identify correct pinyin and tone for: <span class="font-zh" style="font-size:2.2rem">${v.hanzi}</span>`,
+                options: this.shuffle([pinyin, ...distractors]),
+                answer: pinyin
+            };
+        });
+        test.sections.push({ title: "II. Phonetic & Tone Discrimination", questions: toneQs });
+
+        // --- Section 3: Vocabulary & Semantic Recall (20 Qs) ---
+        const vocabQs = this.getRandom(vocabPool, 20).map((v, idx) => {
             const isReverse = idx % 2 === 0;
             const pool = isReverse ? vocabPool.map(x => x.hanzi) : vocabPool.map(x => x.definition);
             const distractors = this.getRandom(pool.filter(x => x !== (isReverse ? v.hanzi : v.definition)), 3);
             return {
                 id: `v_${idx}`,
                 type: 'vocab',
-                question: isReverse ? `Select Hanzi for: "<strong>${v.definition}</strong>"` : `Define: <span class="font-zh" style="font-size:1.5rem">「${v.hanzi}」</span>`,
+                question: isReverse ? `Select Hanzi for: "<strong>${v.definition}</strong>"` : `Define: <span class="font-zh" style="font-size:1.5rem">${v.hanzi}</span>`,
                 options: this.shuffle([(isReverse ? v.hanzi : v.definition), ...distractors]),
                 answer: (isReverse ? v.hanzi : v.definition)
             };
         });
-        test.sections.push({ title: "II. Vocabulary & Semantic Recall", questions: vocabQs });
+        test.sections.push({ title: "III. Vocabulary & Semantic Recall", questions: vocabQs });
 
-        // --- Section 3: Contextual Logic (10 Qs) ---
+        // --- Section 4: Contextual Conversational Logic (20 Qs) ---
         const dialoguePool = [];
         relevantChapters.forEach(c => { if (c.dialogues) dialoguePool.push(...c.dialogues); });
         if (dialoguePool.length === 0) bookData.forEach(c => { if (c.dialogues) dialoguePool.push(...c.dialogues); });
 
-        const dialogueQs = this.getRandom(dialoguePool, 10).map((d, dIdx) => {
-            const line = this.getRandom(d.lines, 1)[0];
-            const distractors = this.getRandom(vocabPool.map(x => x.hanzi), 3);
-            return {
-                id: `d_${dIdx}`,
-                type: 'logic',
-                question: `Complete the conversation logically: <br><strong>A: </strong> (Previous context unavailable)<br><strong>B: </strong> ______`,
-                options: this.shuffle([line.zh, ...distractors]),
-                answer: line.zh
-            };
+        const dialogueQs = [];
+        let dIdx = 0;
+        
+        const pairPool = [];
+        dialoguePool.forEach(d => {
+            if (!d.lines || d.lines.length < 2) return;
+            for (let i = 1; i < d.lines.length; i++) {
+                pairPool.push({
+                    dialogue: d,
+                    lineA: d.lines[i - 1],
+                    lineB: d.lines[i]
+                });
+            }
         });
-        test.sections.push({ title: "III. Contextual Conversational Logic", questions: dialogueQs });
+        
+        const selectedPairs = this.getRandom(pairPool, 20);
+        selectedPairs.forEach(pair => {
+            const d = pair.dialogue;
+            const lineA = pair.lineA;
+            const lineB = pair.lineB;
+            
+            const otherLines = [];
+            dialoguePool.forEach(od => {
+                if (od.lines) {
+                    od.lines.forEach(l => {
+                        if (l.zh !== lineB.zh) {
+                            otherLines.push(l.zh);
+                        }
+                    });
+                }
+            });
+            if (otherLines.length < 3) {
+                vocabPool.forEach(v => {
+                    if (v.hanzi) otherLines.push(v.hanzi);
+                });
+            }
+            
+            const distractors = this.getRandom(Array.from(new Set(otherLines)), 3);
+            
+            dialogueQs.push({
+                id: `d_${dIdx++}`,
+                type: 'logic',
+                question: `Complete the conversation logically: <br><strong>${lineA.speaker || 'A'}: </strong> ${lineA.zh}<br><strong>${lineB.speaker || 'B'}: </strong> ______`,
+                options: this.shuffle([lineB.zh, ...distractors]),
+                answer: lineB.zh
+            });
+        });
+        test.sections.push({ title: "IV. Contextual Conversational Logic", questions: dialogueQs });
 
-        // --- Section 4: Particle & Grammar Mastery (20 Qs) ---
+        // --- Section 5: Syntactic Structure & Particles (grammarCount Qs) ---
         const grammarPool = [];
         relevantChapters.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
-        if (grammarPool.length < 20) bookData.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
+        if (grammarPool.length < 15) bookData.forEach(c => { if (c.quizzes) grammarPool.push(...c.quizzes); });
 
-        const grammarQs = this.getRandom(grammarPool, 20).map((q, idx) => ({
-            id: `g_${idx}`,
-            type: 'grammar',
-            question: q.type === 'fill' ? `Complete correctly: <br><span class="font-zh" style="font-size:1.4rem">${q.sentence.replace('___', '______')}</span>` : q.question,
-            options: q.options || ['Correct', 'Wrong 1', 'Wrong 2', 'Wrong 3'],
-            answer: q.answer
-        }));
-        test.sections.push({ title: "IV. Syntactic Structure & Particles", questions: grammarQs });
+        const grammarQs = this.getRandom(grammarPool, grammarCount).map((q, idx) => {
+            let options = q.options;
+            if (!options || options.length === 0) {
+                // Smart distractor generation for fill-in-the-blank
+                if (q.answer.length === 1) {
+                    const particles = ['的', '了', '在', '是', '得', '地', '就', '才', '都', '也'];
+                    const mw = ['个', '本', '张', '杯', '瓶', '家', '辆', '件', '双', '次'];
+                    if (particles.includes(q.answer)) {
+                        options = this.shuffle([q.answer, ...this.getRandom(particles.filter(x => x !== q.answer), 3)]);
+                    } else if (mw.includes(q.answer)) {
+                        options = this.shuffle([q.answer, ...this.getRandom(mw.filter(x => x !== q.answer), 3)]);
+                    } else {
+                        // Random 1-char vocab
+                        const singleChars = vocabPool.filter(x => x.hanzi && x.hanzi.length === 1 && x.hanzi !== q.answer).map(x => x.hanzi);
+                        let dist = this.getRandom(singleChars, 3);
+                        if (dist.length < 3) dist.push(...this.getRandom(['是', '有', '人', '大', '小'].filter(x => x !== q.answer), 3 - dist.length));
+                        options = this.shuffle([q.answer, ...dist]);
+                    }
+                } else {
+                    const sameLengthChars = vocabPool.filter(x => x.hanzi && x.hanzi.length === q.answer.length && x.hanzi !== q.answer).map(x => x.hanzi);
+                    let dist = this.getRandom(sameLengthChars, 3);
+                    if (dist.length < 3) dist.push(...this.getRandom(['什么', '怎么', '那里', '哪里'].filter(x => x !== q.answer), 3 - dist.length));
+                    options = this.shuffle([q.answer, ...dist]);
+                }
+            }
+            return {
+                id: `g_${idx}`,
+                type: 'grammar',
+                question: q.type === 'fill' ? `Complete correctly: <br><span class="font-zh" style="font-size:1.4rem">${q.sentence.replace('___', '______')}</span>` : q.question,
+                options: options,
+                answer: q.answer
+            };
+        });
+        test.sections.push({ title: "V. Syntactic Structure & Particles", questions: grammarQs });
 
-        // --- Section 5: Orthographic Writing (10 Qs) ---
-        const writingQs = this.getRandom(vocabPool.filter(v => v.hanzi && v.hanzi.length === 1), 10).map((v, idx) => ({
+        // --- Section 6: Orthographic Writing (10 Qs) ---
+        let singleCharPool = vocabPool.filter(v => v.hanzi && v.hanzi.length === 1);
+        if (singleCharPool.length < 10) {
+            const allSingleChars = [];
+            bookData.forEach(c => {
+                if (c.vocab) {
+                    c.vocab.forEach(v => {
+                        if (v.hanzi && v.hanzi.length === 1) allSingleChars.push(v);
+                    });
+                }
+            });
+            singleCharPool = allSingleChars;
+        }
+        const writingQs = this.getRandom(singleCharPool, 10).map((v, idx) => ({
             id: `w_${idx}`,
             type: 'writing',
             targetChar: v.hanzi,
             question: `Write character from memory: <strong>${v.definition}</strong>`,
             answer: v.hanzi
         }));
-        test.sections.push({ title: "V. Orthographic Writing Mastery", questions: writingQs });
+        test.sections.push({ title: "VI. Orthographic Writing Mastery", questions: writingQs });
 
-        // --- Section 6: Auditory Comprehension (5 Qs) ---
-        const listenPassages = [];
-        relevantPG.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPassages.push(l.listening); }));
-        if (!listenPassages.length) {
-            playgroundData.forEach(p => p.lessons.forEach(l => { if (l.listening) listenPassages.push(l.listening); }));
-        }
-
-        const selectedListen = this.getRandom(listenPassages, 1)[0];
-        if (selectedListen) {
-            const qs = selectedListen.questions.slice(0, 5).map((q, qIdx) => ({
-                id: `l_final_${qIdx}`,
-                type: 'listening',
-                question: q.q,
-                options: q.options,
-                answer: q.answer
-            }));
-            test.sections.push({ title: "VI. Auditory Comprehension", context: selectedListen.text, isAudio: true, questions: qs });
-        }
-
-        // --- Section 7: Reading Proficiency (5 Qs) ---
-        const readPassages = [];
-        relevantChapters.forEach(c => { if (c.readings) readPassages.push(...c.readings); });
-        if (!readPassages.length) bookData.forEach(c => { if (c.readings) readPassages.push(...c.readings); });
-
-        const selectedRead = this.getRandom(readPassages, 1)[0];
-        if (selectedRead) {
-            const qs = selectedRead.questions.slice(0, 5).map((q, qIdx) => ({
-                id: `r_final_${qIdx}`,
-                type: 'reading',
-                question: q.q,
-                options: q.options,
-                answer: q.answer
-            }));
-            test.sections.push({ title: "VII. Reading Proficiency", context: selectedRead.text, questions: qs });
+        // --- Section 7: Reading Proficiency ---
+        if (R > 0) {
+            test.sections.push({ title: "VII. Reading Proficiency", context: readingContext, questions: readingQs });
         }
 
         this.state.generatedTest = test;
     },
 
-    /**
-     * Render the massive exam UI
-     */
     renderExam() {
         const container = document.getElementById('page-content');
         if (!container) return;
@@ -395,15 +511,30 @@ window.ExamModule = {
                         <div class="eq-body">
                             <p class="eq-text" style="color: var(--text)">${this.annotateText(q.question)}</p>
                             
+                            ${q.isAudio ? `
+                                <div class="listening-control-box" style="margin-top: 15px; margin-bottom: 25px;">
+                                    <button class="play-audio-btn" data-audio="${q.audioText.replace(/"/g, '&quot;')}" onclick="ExamModule.playText(this.getAttribute('data-audio'))">
+                                        🔊 PLAY AUDIO
+                                    </button>
+                                </div>
+                            ` : ''}
+
                             ${q.type === 'writing' ? `
                                 <div class="writing-task">
-                                    <div class="writing-canvas-box" style="background: white; border: 2px dashed var(--border);">
+                                    <div class="writing-canvas-box" style="background: var(--off-white); border: 2px dashed var(--border);">
                                         <div id="writing-hanzi-${q.id}" class="canvas-writer"></div>
                                         <canvas id="writing-canvas-${q.id}" class="canvas-freehand"></canvas>
                                     </div>
-                                    <div class="canvas-controls">
-                                        <button class="btn btn-ghost btn-sm" onclick="ExamModule.resetWriting('${q.id}', '${q.targetChar}')">Clear Canvas</button>
-                                        <button class="btn btn-ghost btn-sm" onclick="ExamModule.markWritingDone('${q.id}')">Submit Drawing</button>
+                                    <div class="canvas-controls" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:8px">
+                                        <div style="display:flex; align-items:center; gap:8px">
+                                            <button class="btn btn-sm ${window.DrawingBoard && window.DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="window.DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">${window.DrawingBoard && window.DrawingBoard.getState().penOnly ? 'Pen Only: ON' : 'Pen Only: OFF'}</button>
+                                            <button class="btn btn-sm btn-error fix-pen-btn" onclick="window.DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen 🛠️</button>
+                                            <button class="btn btn-sm btn-outline restart-stylus-btn" onclick="window.DrawingBoard.restartStylus()" title="Restart stylus pointer connection and listeners">Restart Stylus 🔄</button>
+                                        </div>
+                                        <div style="display:flex; gap:8px">
+                                            <button class="btn btn-ghost btn-sm" onclick="ExamModule.resetWriting('${q.id}', '${q.targetChar}')">Clear Canvas</button>
+                                            <button class="btn btn-ghost btn-sm" onclick="ExamModule.markWritingDone('${q.id}')">Submit Drawing</button>
+                                        </div>
                                     </div>
                                 </div>
                             ` : `
@@ -569,6 +700,66 @@ window.ExamModule = {
         document.body.appendChild(modal);
     },
 
+    getToneVariations(pinyin) {
+        if (!pinyin) return [];
+        const toneGroups = [
+            ['a', 'ā', 'á', 'ǎ', 'à'],
+            ['e', 'ē', 'é', 'ě', 'è'],
+            ['i', 'ī', 'í', 'ǐ', 'ì'],
+            ['o', 'ō', 'ó', 'ǒ', 'ò'],
+            ['u', 'ū', 'ú', 'ǔ', 'ù'],
+            ['ü', 'ǖ', 'ǘ', 'ǚ', 'ǜ'],
+            ['A', 'Ā', 'Á', 'Ǎ', 'À'],
+            ['E', 'Ē', 'É', 'Ě', 'È'],
+            ['I', 'Ī', 'Í', 'Ǐ', 'Ì'],
+            ['O', 'Ō', 'Ó', 'Ǒ', 'Ò'],
+            ['U', 'Ū', 'Ú', 'Ǔ', 'Ù'],
+            ['Ü', 'Ǖ', 'Ǘ', 'Ǚ', 'Ǜ']
+        ];
+        
+        let foundChar = null;
+        let foundGroup = null;
+        let charIndex = -1;
+        
+        for (let i = 0; i < pinyin.length; i++) {
+            const char = pinyin[i];
+            const group = toneGroups.find(g => g.indexOf(char) >= 1);
+            if (group) {
+                foundChar = char;
+                foundGroup = group;
+                charIndex = i;
+                break;
+            }
+        }
+        
+        if (charIndex === -1) {
+            const priorityVowels = ['a', 'e', 'o', 'i', 'u', 'ü', 'A', 'E', 'O', 'I', 'U', 'Ü'];
+            for (const v of priorityVowels) {
+                const idx = pinyin.indexOf(v);
+                if (idx !== -1) {
+                    foundChar = v;
+                    foundGroup = toneGroups.find(g => g[0] === v);
+                    charIndex = idx;
+                    break;
+                }
+            }
+        }
+        
+        if (charIndex === -1 || !foundGroup) {
+            return [];
+        }
+        
+        const variations = [];
+        for (let t = 1; t <= 4; t++) {
+            const replacement = foundGroup[t];
+            const variant = pinyin.substring(0, charIndex) + replacement + pinyin.substring(charIndex + 1);
+            if (variant !== pinyin) {
+                variations.push(variant);
+            }
+        }
+        return variations;
+    },
+
     getRandom(arr, n) {
         const shuffled = [...arr].sort(() => 0.5 - Math.random());
         return shuffled.slice(0, n);
@@ -687,6 +878,30 @@ window.ExamModule = {
             .eq-option:hover:not(:disabled) { border-color: var(--accent); opacity: 0.8; }
             .eq-option.correct { background: #e6fffa !important; border-color: #38b2ac !important; color: #234e52 !important; font-weight: 800; }
             .eq-option.incorrect { background: #fff5f5 !important; border-color: #f56565 !important; color: #742a2a !important; }
+
+            .listening-control-box { display: flex; justify-content: flex-start; }
+            .play-audio-btn {
+                background: linear-gradient(135deg, var(--accent, #3b82f6), #1d4ed8);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                font-size: 1rem;
+                font-weight: 800;
+                border-radius: 12px;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+                transition: all 0.2s ease;
+            }
+            .play-audio-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            }
+            .play-audio-btn:active {
+                transform: translateY(0);
+            }
 
             .writing-canvas-box { 
                 width: 300px; height: 300px; 

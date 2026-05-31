@@ -311,6 +311,7 @@ window.VocabularyModule = (() => {
                   <div id="app-pen-controls" class="writing-pen-controls" style="display:none; align-items:center; gap:8px; flex-wrap:wrap">
                     <input type="range" min="1" max="15" value="${DrawingBoard.getState().strokeWidth || 4}" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
                     <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
+                    <button class="btn btn-sm btn-error fix-pen-btn" onclick="DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen 🛠️</button>
                     <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
                   </div>
                 </div>

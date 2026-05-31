@@ -20,7 +20,7 @@
         {
           "id": "novice_1_001",
           "zh": "我是學生。",
-          "pinyin": "",
+          "pinyin": "wǒ shì xué shēng.",
           "en": "I am a student.",
           "tiles": [
             "我",
@@ -37,7 +37,7 @@
         {
           "id": "novice_1_002",
           "zh": "我是老師。",
-          "pinyin": "",
+          "pinyin": "wǒ shì lǎo shī.",
           "en": "I am a teacher.",
           "tiles": [
             "我",
@@ -54,7 +54,7 @@
         {
           "id": "novice_1_003",
           "zh": "我是你的朋友。",
-          "pinyin": "",
+          "pinyin": "wǒ shì nǐ de péng yǒu.",
           "en": "I am your friend.",
           "tiles": [
             "我",
@@ -74,7 +74,7 @@
         {
           "id": "novice_1_004",
           "zh": "我是你的同學。",
-          "pinyin": "",
+          "pinyin": "wǒ shì nǐ de tóng xué.",
           "en": "I am your classmate.",
           "tiles": [
             "我",
@@ -94,7 +94,7 @@
         {
           "id": "novice_1_005",
           "zh": "我是醫生。",
-          "pinyin": "",
+          "pinyin": "wǒ shì yī shēng.",
           "en": "I am a doctor.",
           "tiles": [
             "我",
@@ -111,7 +111,7 @@
         {
           "id": "novice_1_006",
           "zh": "我是台灣人。",
-          "pinyin": "",
+          "pinyin": "wǒ shì tái wān rén.",
           "en": "I am Taiwanese.",
           "tiles": [
             "我",
@@ -128,7 +128,7 @@
         {
           "id": "novice_1_007",
           "zh": "我是你的家人。",
-          "pinyin": "",
+          "pinyin": "wǒ shì nǐ de jiā rén.",
           "en": "I am your family member.",
           "tiles": [
             "我",
@@ -148,7 +148,7 @@
         {
           "id": "novice_1_008",
           "zh": "我是店員。",
-          "pinyin": "",
+          "pinyin": "wǒ shì diàn yuán.",
           "en": "I am a clerk.",
           "tiles": [
             "我",
@@ -165,7 +165,7 @@
         {
           "id": "novice_1_009",
           "zh": "你是學生。",
-          "pinyin": "",
+          "pinyin": "nǐ shì xué shēng.",
           "en": "You are a student.",
           "tiles": [
             "你",
@@ -182,7 +182,7 @@
         {
           "id": "novice_1_010",
           "zh": "你是老師。",
-          "pinyin": "",
+          "pinyin": "nǐ shì lǎo shī.",
           "en": "You are a teacher.",
           "tiles": [
             "你",
@@ -199,7 +199,7 @@
         {
           "id": "novice_1_011",
           "zh": "你是我的朋友。",
-          "pinyin": "",
+          "pinyin": "nǐ shì wǒ de péng yǒu.",
           "en": "You are my friend.",
           "tiles": [
             "你",
@@ -219,7 +219,7 @@
         {
           "id": "novice_1_012",
           "zh": "你是我的同學。",
-          "pinyin": "",
+          "pinyin": "nǐ shì wǒ de tóng xué.",
           "en": "You are my classmate.",
           "tiles": [
             "你",
@@ -239,7 +239,7 @@
         {
           "id": "novice_1_013",
           "zh": "你是醫生。",
-          "pinyin": "",
+          "pinyin": "nǐ shì yī shēng.",
           "en": "You are a doctor.",
           "tiles": [
             "你",
@@ -256,7 +256,7 @@
         {
           "id": "novice_1_014",
           "zh": "你是台灣人。",
-          "pinyin": "",
+          "pinyin": "nǐ shì tái wān rén.",
           "en": "You are Taiwanese.",
           "tiles": [
             "你",
@@ -273,7 +273,7 @@
         {
           "id": "novice_1_015",
           "zh": "你是我的家人。",
-          "pinyin": "",
+          "pinyin": "nǐ shì wǒ de jiā rén.",
           "en": "You are my family member.",
           "tiles": [
             "你",
@@ -293,7 +293,7 @@
         {
           "id": "novice_1_016",
           "zh": "你是店員。",
-          "pinyin": "",
+          "pinyin": "nǐ shì diàn yuán.",
           "en": "You are a clerk.",
           "tiles": [
             "你",
@@ -310,7 +310,7 @@
         {
           "id": "novice_1_017",
           "zh": "他是學生。",
-          "pinyin": "",
+          "pinyin": "tā shì xué shēng.",
           "en": "He is a student.",
           "tiles": [
             "他",
@@ -327,7 +327,7 @@
         {
           "id": "novice_1_018",
           "zh": "他是老師。",
-          "pinyin": "",
+          "pinyin": "tā shì lǎo shī.",
           "en": "He is a teacher.",
           "tiles": [
             "他",
@@ -344,7 +344,7 @@
         {
           "id": "novice_1_019",
           "zh": "他是我的朋友。",
-          "pinyin": "",
+          "pinyin": "tā shì wǒ de péng yǒu.",
           "en": "He is my friend.",
           "tiles": [
             "他",
@@ -364,7 +364,7 @@
         {
           "id": "novice_1_020",
           "zh": "他是我的同學。",
-          "pinyin": "",
+          "pinyin": "tā shì wǒ de tóng xué.",
           "en": "He is my classmate.",
           "tiles": [
             "他",
@@ -384,7 +384,7 @@
         {
           "id": "novice_1_021",
           "zh": "他是醫生。",
-          "pinyin": "",
+          "pinyin": "tā shì yī shēng.",
           "en": "He is a doctor.",
           "tiles": [
             "他",
@@ -401,7 +401,7 @@
         {
           "id": "novice_1_022",
           "zh": "他是台灣人。",
-          "pinyin": "",
+          "pinyin": "tā shì tái wān rén.",
           "en": "He is Taiwanese.",
           "tiles": [
             "他",
@@ -418,7 +418,7 @@
         {
           "id": "novice_1_023",
           "zh": "他是我的家人。",
-          "pinyin": "",
+          "pinyin": "tā shì wǒ de jiā rén.",
           "en": "He is my family member.",
           "tiles": [
             "他",
@@ -438,7 +438,7 @@
         {
           "id": "novice_1_024",
           "zh": "他是店員。",
-          "pinyin": "",
+          "pinyin": "tā shì diàn yuán.",
           "en": "He is a clerk.",
           "tiles": [
             "他",
@@ -455,7 +455,7 @@
         {
           "id": "novice_1_025",
           "zh": "她是學生。",
-          "pinyin": "",
+          "pinyin": "tā shì xué shēng.",
           "en": "She is a student.",
           "tiles": [
             "她",
@@ -472,7 +472,7 @@
         {
           "id": "novice_1_026",
           "zh": "我喝水。",
-          "pinyin": "",
+          "pinyin": "wǒ hē shuǐ.",
           "en": "I drink water.",
           "tiles": [
             "我",
@@ -487,7 +487,7 @@
         {
           "id": "novice_1_027",
           "zh": "我吃飯。",
-          "pinyin": "",
+          "pinyin": "wǒ chī fàn.",
           "en": "I eat.",
           "tiles": [
             "我",
@@ -502,7 +502,7 @@
         {
           "id": "novice_1_028",
           "zh": "我看書。",
-          "pinyin": "",
+          "pinyin": "wǒ kàn shū.",
           "en": "I read a book.",
           "tiles": [
             "我",
@@ -517,7 +517,7 @@
         {
           "id": "novice_1_029",
           "zh": "我寫字。",
-          "pinyin": "",
+          "pinyin": "wǒ xiě zì.",
           "en": "I write characters.",
           "tiles": [
             "我",
@@ -532,7 +532,7 @@
         {
           "id": "novice_1_030",
           "zh": "我聽音樂。",
-          "pinyin": "",
+          "pinyin": "wǒ tīng yīn lè.",
           "en": "I listen to music.",
           "tiles": [
             "我",
@@ -547,7 +547,7 @@
         {
           "id": "novice_1_031",
           "zh": "我學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ xué zhōng wén.",
           "en": "I study Chinese.",
           "tiles": [
             "我",
@@ -562,7 +562,7 @@
         {
           "id": "novice_1_032",
           "zh": "我去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ qù xué xiào.",
           "en": "I go to school.",
           "tiles": [
             "我",
@@ -577,7 +577,7 @@
         {
           "id": "novice_1_033",
           "zh": "我回家。",
-          "pinyin": "",
+          "pinyin": "wǒ huí jiā.",
           "en": "I go home.",
           "tiles": [
             "我",
@@ -592,7 +592,7 @@
         {
           "id": "novice_1_034",
           "zh": "你喝水。",
-          "pinyin": "",
+          "pinyin": "nǐ hē shuǐ.",
           "en": "You drink water.",
           "tiles": [
             "你",
@@ -607,7 +607,7 @@
         {
           "id": "novice_1_035",
           "zh": "你吃飯。",
-          "pinyin": "",
+          "pinyin": "nǐ chī fàn.",
           "en": "You eat.",
           "tiles": [
             "你",
@@ -622,7 +622,7 @@
         {
           "id": "novice_1_036",
           "zh": "你看書。",
-          "pinyin": "",
+          "pinyin": "nǐ kàn shū.",
           "en": "You read a book.",
           "tiles": [
             "你",
@@ -637,7 +637,7 @@
         {
           "id": "novice_1_037",
           "zh": "你寫字。",
-          "pinyin": "",
+          "pinyin": "nǐ xiě zì.",
           "en": "You write characters.",
           "tiles": [
             "你",
@@ -652,7 +652,7 @@
         {
           "id": "novice_1_038",
           "zh": "你聽音樂。",
-          "pinyin": "",
+          "pinyin": "nǐ tīng yīn lè.",
           "en": "You listen to music.",
           "tiles": [
             "你",
@@ -667,7 +667,7 @@
         {
           "id": "novice_1_039",
           "zh": "你學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ xué zhōng wén.",
           "en": "You study Chinese.",
           "tiles": [
             "你",
@@ -682,7 +682,7 @@
         {
           "id": "novice_1_040",
           "zh": "你去學校。",
-          "pinyin": "",
+          "pinyin": "nǐ qù xué xiào.",
           "en": "You go to school.",
           "tiles": [
             "你",
@@ -697,7 +697,7 @@
         {
           "id": "novice_1_041",
           "zh": "你回家。",
-          "pinyin": "",
+          "pinyin": "nǐ huí jiā.",
           "en": "You go home.",
           "tiles": [
             "你",
@@ -712,7 +712,7 @@
         {
           "id": "novice_1_042",
           "zh": "他喝水。",
-          "pinyin": "",
+          "pinyin": "tā hē shuǐ.",
           "en": "He drink water.",
           "tiles": [
             "他",
@@ -727,7 +727,7 @@
         {
           "id": "novice_1_043",
           "zh": "他吃飯。",
-          "pinyin": "",
+          "pinyin": "tā chī fàn.",
           "en": "He eat.",
           "tiles": [
             "他",
@@ -742,7 +742,7 @@
         {
           "id": "novice_1_044",
           "zh": "他看書。",
-          "pinyin": "",
+          "pinyin": "tā kàn shū.",
           "en": "He read a book.",
           "tiles": [
             "他",
@@ -757,7 +757,7 @@
         {
           "id": "novice_1_045",
           "zh": "他寫字。",
-          "pinyin": "",
+          "pinyin": "tā xiě zì.",
           "en": "He write characters.",
           "tiles": [
             "他",
@@ -772,7 +772,7 @@
         {
           "id": "novice_1_046",
           "zh": "他聽音樂。",
-          "pinyin": "",
+          "pinyin": "tā tīng yīn lè.",
           "en": "He listen to music.",
           "tiles": [
             "他",
@@ -787,7 +787,7 @@
         {
           "id": "novice_1_047",
           "zh": "他學中文。",
-          "pinyin": "",
+          "pinyin": "tā xué zhōng wén.",
           "en": "He study Chinese.",
           "tiles": [
             "他",
@@ -802,7 +802,7 @@
         {
           "id": "novice_1_048",
           "zh": "他去學校。",
-          "pinyin": "",
+          "pinyin": "tā qù xué xiào.",
           "en": "He go to school.",
           "tiles": [
             "他",
@@ -817,7 +817,7 @@
         {
           "id": "novice_1_049",
           "zh": "他回家。",
-          "pinyin": "",
+          "pinyin": "tā huí jiā.",
           "en": "He go home.",
           "tiles": [
             "他",
@@ -832,7 +832,7 @@
         {
           "id": "novice_1_050",
           "zh": "她喝水。",
-          "pinyin": "",
+          "pinyin": "tā hē shuǐ.",
           "en": "She drink water.",
           "tiles": [
             "她",
@@ -847,7 +847,7 @@
         {
           "id": "novice_1_051",
           "zh": "我有一本書。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī běn shū.",
           "en": "I have a book.",
           "tiles": [
             "我",
@@ -864,7 +864,7 @@
         {
           "id": "novice_1_052",
           "zh": "我有一杯水。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī bēi shuǐ.",
           "en": "I have a cup of water.",
           "tiles": [
             "我",
@@ -881,7 +881,7 @@
         {
           "id": "novice_1_053",
           "zh": "我有一支筆。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī zhī bǐ.",
           "en": "I have a pen.",
           "tiles": [
             "我",
@@ -898,7 +898,7 @@
         {
           "id": "novice_1_054",
           "zh": "我有一張照片。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī zhāng zhào piān.",
           "en": "I have a photo.",
           "tiles": [
             "我",
@@ -915,7 +915,7 @@
         {
           "id": "novice_1_055",
           "zh": "我有一個問題。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī gè wèn tí.",
           "en": "I have a question.",
           "tiles": [
             "我",
@@ -932,7 +932,7 @@
         {
           "id": "novice_1_056",
           "zh": "我有兩個朋友。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu liǎng gè péng yǒu.",
           "en": "I have two friends.",
           "tiles": [
             "我",
@@ -949,7 +949,7 @@
         {
           "id": "novice_1_057",
           "zh": "我有三本書。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu sān běn shū.",
           "en": "I have three books.",
           "tiles": [
             "我",
@@ -966,7 +966,7 @@
         {
           "id": "novice_1_058",
           "zh": "我有一份功課。",
-          "pinyin": "",
+          "pinyin": "wǒ yǒu yī fèn gōng kè.",
           "en": "I have one homework assignment.",
           "tiles": [
             "我",
@@ -983,7 +983,7 @@
         {
           "id": "novice_1_059",
           "zh": "你有一本書。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī běn shū.",
           "en": "You have a book.",
           "tiles": [
             "你",
@@ -1000,7 +1000,7 @@
         {
           "id": "novice_1_060",
           "zh": "你有一杯水。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī bēi shuǐ.",
           "en": "You have a cup of water.",
           "tiles": [
             "你",
@@ -1017,7 +1017,7 @@
         {
           "id": "novice_1_061",
           "zh": "你有一支筆。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī zhī bǐ.",
           "en": "You have a pen.",
           "tiles": [
             "你",
@@ -1034,7 +1034,7 @@
         {
           "id": "novice_1_062",
           "zh": "你有一張照片。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī zhāng zhào piān.",
           "en": "You have a photo.",
           "tiles": [
             "你",
@@ -1051,7 +1051,7 @@
         {
           "id": "novice_1_063",
           "zh": "你有一個問題。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī gè wèn tí.",
           "en": "You have a question.",
           "tiles": [
             "你",
@@ -1068,7 +1068,7 @@
         {
           "id": "novice_1_064",
           "zh": "你有兩個朋友。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu liǎng gè péng yǒu.",
           "en": "You have two friends.",
           "tiles": [
             "你",
@@ -1085,7 +1085,7 @@
         {
           "id": "novice_1_065",
           "zh": "你有三本書。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu sān běn shū.",
           "en": "You have three books.",
           "tiles": [
             "你",
@@ -1102,7 +1102,7 @@
         {
           "id": "novice_1_066",
           "zh": "你有一份功課。",
-          "pinyin": "",
+          "pinyin": "nǐ yǒu yī fèn gōng kè.",
           "en": "You have one homework assignment.",
           "tiles": [
             "你",
@@ -1119,7 +1119,7 @@
         {
           "id": "novice_1_067",
           "zh": "他有一本書。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī běn shū.",
           "en": "He has a book.",
           "tiles": [
             "他",
@@ -1136,7 +1136,7 @@
         {
           "id": "novice_1_068",
           "zh": "他有一杯水。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī bēi shuǐ.",
           "en": "He has a cup of water.",
           "tiles": [
             "他",
@@ -1153,7 +1153,7 @@
         {
           "id": "novice_1_069",
           "zh": "他有一支筆。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī zhī bǐ.",
           "en": "He has a pen.",
           "tiles": [
             "他",
@@ -1170,7 +1170,7 @@
         {
           "id": "novice_1_070",
           "zh": "他有一張照片。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī zhāng zhào piān.",
           "en": "He has a photo.",
           "tiles": [
             "他",
@@ -1187,7 +1187,7 @@
         {
           "id": "novice_1_071",
           "zh": "他有一個問題。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī gè wèn tí.",
           "en": "He has a question.",
           "tiles": [
             "他",
@@ -1204,7 +1204,7 @@
         {
           "id": "novice_1_072",
           "zh": "他有兩個朋友。",
-          "pinyin": "",
+          "pinyin": "tā yǒu liǎng gè péng yǒu.",
           "en": "He has two friends.",
           "tiles": [
             "他",
@@ -1221,7 +1221,7 @@
         {
           "id": "novice_1_073",
           "zh": "他有三本書。",
-          "pinyin": "",
+          "pinyin": "tā yǒu sān běn shū.",
           "en": "He has three books.",
           "tiles": [
             "他",
@@ -1238,7 +1238,7 @@
         {
           "id": "novice_1_074",
           "zh": "他有一份功課。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī fèn gōng kè.",
           "en": "He has one homework assignment.",
           "tiles": [
             "他",
@@ -1255,7 +1255,7 @@
         {
           "id": "novice_1_075",
           "zh": "她有一本書。",
-          "pinyin": "",
+          "pinyin": "tā yǒu yī běn shū.",
           "en": "She has a book.",
           "tiles": [
             "她",
@@ -1272,7 +1272,7 @@
         {
           "id": "novice_1_076",
           "zh": "我在學校。",
-          "pinyin": "",
+          "pinyin": "wǒ zài xué xiào.",
           "en": "I am at school.",
           "tiles": [
             "我",
@@ -1289,7 +1289,7 @@
         {
           "id": "novice_1_077",
           "zh": "我在家。",
-          "pinyin": "",
+          "pinyin": "wǒ zài jiā.",
           "en": "I am at home.",
           "tiles": [
             "我",
@@ -1306,7 +1306,7 @@
         {
           "id": "novice_1_078",
           "zh": "我在圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ zài tú shū guǎn.",
           "en": "I am at the library.",
           "tiles": [
             "我",
@@ -1323,7 +1323,7 @@
         {
           "id": "novice_1_079",
           "zh": "我在商店。",
-          "pinyin": "",
+          "pinyin": "wǒ zài shāng diàn.",
           "en": "I am at the store.",
           "tiles": [
             "我",
@@ -1340,7 +1340,7 @@
         {
           "id": "novice_1_080",
           "zh": "我在餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ zài cān tīng.",
           "en": "I am at the restaurant.",
           "tiles": [
             "我",
@@ -1357,7 +1357,7 @@
         {
           "id": "novice_1_081",
           "zh": "我在公園。",
-          "pinyin": "",
+          "pinyin": "wǒ zài gōng yuán.",
           "en": "I am at the park.",
           "tiles": [
             "我",
@@ -1374,7 +1374,7 @@
         {
           "id": "novice_1_082",
           "zh": "我在教室。",
-          "pinyin": "",
+          "pinyin": "wǒ zài jiào shì.",
           "en": "I am at the classroom.",
           "tiles": [
             "我",
@@ -1391,7 +1391,7 @@
         {
           "id": "novice_1_083",
           "zh": "我在市場。",
-          "pinyin": "",
+          "pinyin": "wǒ zài shì chǎng.",
           "en": "I am at the market.",
           "tiles": [
             "我",
@@ -1408,7 +1408,7 @@
         {
           "id": "novice_1_084",
           "zh": "你在學校。",
-          "pinyin": "",
+          "pinyin": "nǐ zài xué xiào.",
           "en": "You are at school.",
           "tiles": [
             "你",
@@ -1425,7 +1425,7 @@
         {
           "id": "novice_1_085",
           "zh": "你在家。",
-          "pinyin": "",
+          "pinyin": "nǐ zài jiā.",
           "en": "You are at home.",
           "tiles": [
             "你",
@@ -1442,7 +1442,7 @@
         {
           "id": "novice_1_086",
           "zh": "你在圖書館。",
-          "pinyin": "",
+          "pinyin": "nǐ zài tú shū guǎn.",
           "en": "You are at the library.",
           "tiles": [
             "你",
@@ -1459,7 +1459,7 @@
         {
           "id": "novice_1_087",
           "zh": "你在商店。",
-          "pinyin": "",
+          "pinyin": "nǐ zài shāng diàn.",
           "en": "You are at the store.",
           "tiles": [
             "你",
@@ -1476,7 +1476,7 @@
         {
           "id": "novice_1_088",
           "zh": "你在餐廳。",
-          "pinyin": "",
+          "pinyin": "nǐ zài cān tīng.",
           "en": "You are at the restaurant.",
           "tiles": [
             "你",
@@ -1493,7 +1493,7 @@
         {
           "id": "novice_1_089",
           "zh": "你在公園。",
-          "pinyin": "",
+          "pinyin": "nǐ zài gōng yuán.",
           "en": "You are at the park.",
           "tiles": [
             "你",
@@ -1510,7 +1510,7 @@
         {
           "id": "novice_1_090",
           "zh": "你在教室。",
-          "pinyin": "",
+          "pinyin": "nǐ zài jiào shì.",
           "en": "You are at the classroom.",
           "tiles": [
             "你",
@@ -1527,7 +1527,7 @@
         {
           "id": "novice_1_091",
           "zh": "你在市場。",
-          "pinyin": "",
+          "pinyin": "nǐ zài shì chǎng.",
           "en": "You are at the market.",
           "tiles": [
             "你",
@@ -1544,7 +1544,7 @@
         {
           "id": "novice_1_092",
           "zh": "他在學校。",
-          "pinyin": "",
+          "pinyin": "tā zài xué xiào.",
           "en": "He is at school.",
           "tiles": [
             "他",
@@ -1561,7 +1561,7 @@
         {
           "id": "novice_1_093",
           "zh": "他在家。",
-          "pinyin": "",
+          "pinyin": "tā zài jiā.",
           "en": "He is at home.",
           "tiles": [
             "他",
@@ -1578,7 +1578,7 @@
         {
           "id": "novice_1_094",
           "zh": "他在圖書館。",
-          "pinyin": "",
+          "pinyin": "tā zài tú shū guǎn.",
           "en": "He is at the library.",
           "tiles": [
             "他",
@@ -1595,7 +1595,7 @@
         {
           "id": "novice_1_095",
           "zh": "他在商店。",
-          "pinyin": "",
+          "pinyin": "tā zài shāng diàn.",
           "en": "He is at the store.",
           "tiles": [
             "他",
@@ -1612,7 +1612,7 @@
         {
           "id": "novice_1_096",
           "zh": "他在餐廳。",
-          "pinyin": "",
+          "pinyin": "tā zài cān tīng.",
           "en": "He is at the restaurant.",
           "tiles": [
             "他",
@@ -1629,7 +1629,7 @@
         {
           "id": "novice_1_097",
           "zh": "他在公園。",
-          "pinyin": "",
+          "pinyin": "tā zài gōng yuán.",
           "en": "He is at the park.",
           "tiles": [
             "他",
@@ -1646,7 +1646,7 @@
         {
           "id": "novice_1_098",
           "zh": "他在教室。",
-          "pinyin": "",
+          "pinyin": "tā zài jiào shì.",
           "en": "He is at the classroom.",
           "tiles": [
             "他",
@@ -1663,7 +1663,7 @@
         {
           "id": "novice_1_099",
           "zh": "他在市場。",
-          "pinyin": "",
+          "pinyin": "tā zài shì chǎng.",
           "en": "He is at the market.",
           "tiles": [
             "他",
@@ -1680,7 +1680,7 @@
         {
           "id": "novice_1_100",
           "zh": "她在學校。",
-          "pinyin": "",
+          "pinyin": "tā zài xué xiào.",
           "en": "She is at school.",
           "tiles": [
             "她",
@@ -1707,7 +1707,7 @@
         {
           "id": "novice_2_001",
           "zh": "我不喝水。",
-          "pinyin": "",
+          "pinyin": "wǒ bù hē shuǐ.",
           "en": "I do not drink water.",
           "tiles": [
             "我",
@@ -1723,7 +1723,7 @@
         {
           "id": "novice_2_002",
           "zh": "我不吃飯。",
-          "pinyin": "",
+          "pinyin": "wǒ bù chī fàn.",
           "en": "I do not eat.",
           "tiles": [
             "我",
@@ -1739,7 +1739,7 @@
         {
           "id": "novice_2_003",
           "zh": "我不看書。",
-          "pinyin": "",
+          "pinyin": "wǒ bù kàn shū.",
           "en": "I do not read a book.",
           "tiles": [
             "我",
@@ -1755,7 +1755,7 @@
         {
           "id": "novice_2_004",
           "zh": "我不寫字。",
-          "pinyin": "",
+          "pinyin": "wǒ bù xiě zì.",
           "en": "I do not write characters.",
           "tiles": [
             "我",
@@ -1771,7 +1771,7 @@
         {
           "id": "novice_2_005",
           "zh": "我不聽音樂。",
-          "pinyin": "",
+          "pinyin": "wǒ bù tīng yīn lè.",
           "en": "I do not listen to music.",
           "tiles": [
             "我",
@@ -1787,7 +1787,7 @@
         {
           "id": "novice_2_006",
           "zh": "我不學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ bù xué zhōng wén.",
           "en": "I do not study Chinese.",
           "tiles": [
             "我",
@@ -1803,7 +1803,7 @@
         {
           "id": "novice_2_007",
           "zh": "我不去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ bù qù xué xiào.",
           "en": "I do not go to school.",
           "tiles": [
             "我",
@@ -1819,7 +1819,7 @@
         {
           "id": "novice_2_008",
           "zh": "我不回家。",
-          "pinyin": "",
+          "pinyin": "wǒ bù huí jiā.",
           "en": "I do not go home.",
           "tiles": [
             "我",
@@ -1835,7 +1835,7 @@
         {
           "id": "novice_2_009",
           "zh": "你不喝水。",
-          "pinyin": "",
+          "pinyin": "nǐ bù hē shuǐ.",
           "en": "You do not drink water.",
           "tiles": [
             "你",
@@ -1851,7 +1851,7 @@
         {
           "id": "novice_2_010",
           "zh": "你不吃飯。",
-          "pinyin": "",
+          "pinyin": "nǐ bù chī fàn.",
           "en": "You do not eat.",
           "tiles": [
             "你",
@@ -1867,7 +1867,7 @@
         {
           "id": "novice_2_011",
           "zh": "你不看書。",
-          "pinyin": "",
+          "pinyin": "nǐ bù kàn shū.",
           "en": "You do not read a book.",
           "tiles": [
             "你",
@@ -1883,7 +1883,7 @@
         {
           "id": "novice_2_012",
           "zh": "你不寫字。",
-          "pinyin": "",
+          "pinyin": "nǐ bù xiě zì.",
           "en": "You do not write characters.",
           "tiles": [
             "你",
@@ -1899,7 +1899,7 @@
         {
           "id": "novice_2_013",
           "zh": "你不聽音樂。",
-          "pinyin": "",
+          "pinyin": "nǐ bù tīng yīn lè.",
           "en": "You do not listen to music.",
           "tiles": [
             "你",
@@ -1915,7 +1915,7 @@
         {
           "id": "novice_2_014",
           "zh": "你不學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ bù xué zhōng wén.",
           "en": "You do not study Chinese.",
           "tiles": [
             "你",
@@ -1931,7 +1931,7 @@
         {
           "id": "novice_2_015",
           "zh": "你不去學校。",
-          "pinyin": "",
+          "pinyin": "nǐ bù qù xué xiào.",
           "en": "You do not go to school.",
           "tiles": [
             "你",
@@ -1947,7 +1947,7 @@
         {
           "id": "novice_2_016",
           "zh": "你不回家。",
-          "pinyin": "",
+          "pinyin": "nǐ bù huí jiā.",
           "en": "You do not go home.",
           "tiles": [
             "你",
@@ -1963,7 +1963,7 @@
         {
           "id": "novice_2_017",
           "zh": "他不喝水。",
-          "pinyin": "",
+          "pinyin": "tā bù hē shuǐ.",
           "en": "He does not drink water.",
           "tiles": [
             "他",
@@ -1979,7 +1979,7 @@
         {
           "id": "novice_2_018",
           "zh": "他不吃飯。",
-          "pinyin": "",
+          "pinyin": "tā bù chī fàn.",
           "en": "He does not eat.",
           "tiles": [
             "他",
@@ -1995,7 +1995,7 @@
         {
           "id": "novice_2_019",
           "zh": "他不看書。",
-          "pinyin": "",
+          "pinyin": "tā bù kàn shū.",
           "en": "He does not read a book.",
           "tiles": [
             "他",
@@ -2011,7 +2011,7 @@
         {
           "id": "novice_2_020",
           "zh": "他不寫字。",
-          "pinyin": "",
+          "pinyin": "tā bù xiě zì.",
           "en": "He does not write characters.",
           "tiles": [
             "他",
@@ -2027,7 +2027,7 @@
         {
           "id": "novice_2_021",
           "zh": "他不聽音樂。",
-          "pinyin": "",
+          "pinyin": "tā bù tīng yīn lè.",
           "en": "He does not listen to music.",
           "tiles": [
             "他",
@@ -2043,7 +2043,7 @@
         {
           "id": "novice_2_022",
           "zh": "他不學中文。",
-          "pinyin": "",
+          "pinyin": "tā bù xué zhōng wén.",
           "en": "He does not study Chinese.",
           "tiles": [
             "他",
@@ -2059,7 +2059,7 @@
         {
           "id": "novice_2_023",
           "zh": "他不去學校。",
-          "pinyin": "",
+          "pinyin": "tā bù qù xué xiào.",
           "en": "He does not go to school.",
           "tiles": [
             "他",
@@ -2075,7 +2075,7 @@
         {
           "id": "novice_2_024",
           "zh": "他不回家。",
-          "pinyin": "",
+          "pinyin": "tā bù huí jiā.",
           "en": "He does not go home.",
           "tiles": [
             "他",
@@ -2091,7 +2091,7 @@
         {
           "id": "novice_2_025",
           "zh": "她不喝水。",
-          "pinyin": "",
+          "pinyin": "tā bù hē shuǐ.",
           "en": "She does not drink water.",
           "tiles": [
             "她",
@@ -2107,7 +2107,7 @@
         {
           "id": "novice_2_026",
           "zh": "我喝水嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ hē shuǐ ma?",
           "en": "Do I drink water?",
           "tiles": [
             "我",
@@ -2124,7 +2124,7 @@
         {
           "id": "novice_2_027",
           "zh": "我吃飯嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ chī fàn ma?",
           "en": "Do I eat?",
           "tiles": [
             "我",
@@ -2141,7 +2141,7 @@
         {
           "id": "novice_2_028",
           "zh": "我看書嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ kàn shū ma?",
           "en": "Do I read a book?",
           "tiles": [
             "我",
@@ -2158,7 +2158,7 @@
         {
           "id": "novice_2_029",
           "zh": "我寫字嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ xiě zì ma?",
           "en": "Do I write characters?",
           "tiles": [
             "我",
@@ -2175,7 +2175,7 @@
         {
           "id": "novice_2_030",
           "zh": "我聽音樂嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ tīng yīn lè ma?",
           "en": "Do I listen to music?",
           "tiles": [
             "我",
@@ -2192,7 +2192,7 @@
         {
           "id": "novice_2_031",
           "zh": "我學中文嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ xué zhōng wén ma?",
           "en": "Do I study Chinese?",
           "tiles": [
             "我",
@@ -2209,7 +2209,7 @@
         {
           "id": "novice_2_032",
           "zh": "我去學校嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ qù xué xiào ma?",
           "en": "Do I go to school?",
           "tiles": [
             "我",
@@ -2226,7 +2226,7 @@
         {
           "id": "novice_2_033",
           "zh": "我回家嗎？",
-          "pinyin": "",
+          "pinyin": "wǒ huí jiā ma?",
           "en": "Do I go home?",
           "tiles": [
             "我",
@@ -2243,7 +2243,7 @@
         {
           "id": "novice_2_034",
           "zh": "你喝水嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ hē shuǐ ma?",
           "en": "Do you drink water?",
           "tiles": [
             "你",
@@ -2260,7 +2260,7 @@
         {
           "id": "novice_2_035",
           "zh": "你吃飯嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ chī fàn ma?",
           "en": "Do you eat?",
           "tiles": [
             "你",
@@ -2277,7 +2277,7 @@
         {
           "id": "novice_2_036",
           "zh": "你看書嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ kàn shū ma?",
           "en": "Do you read a book?",
           "tiles": [
             "你",
@@ -2294,7 +2294,7 @@
         {
           "id": "novice_2_037",
           "zh": "你寫字嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ xiě zì ma?",
           "en": "Do you write characters?",
           "tiles": [
             "你",
@@ -2311,7 +2311,7 @@
         {
           "id": "novice_2_038",
           "zh": "你聽音樂嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ tīng yīn lè ma?",
           "en": "Do you listen to music?",
           "tiles": [
             "你",
@@ -2328,7 +2328,7 @@
         {
           "id": "novice_2_039",
           "zh": "你學中文嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ xué zhōng wén ma?",
           "en": "Do you study Chinese?",
           "tiles": [
             "你",
@@ -2345,7 +2345,7 @@
         {
           "id": "novice_2_040",
           "zh": "你去學校嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ qù xué xiào ma?",
           "en": "Do you go to school?",
           "tiles": [
             "你",
@@ -2362,7 +2362,7 @@
         {
           "id": "novice_2_041",
           "zh": "你回家嗎？",
-          "pinyin": "",
+          "pinyin": "nǐ huí jiā ma?",
           "en": "Do you go home?",
           "tiles": [
             "你",
@@ -2379,7 +2379,7 @@
         {
           "id": "novice_2_042",
           "zh": "他喝水嗎？",
-          "pinyin": "",
+          "pinyin": "tā hē shuǐ ma?",
           "en": "Does he drink water?",
           "tiles": [
             "他",
@@ -2396,7 +2396,7 @@
         {
           "id": "novice_2_043",
           "zh": "他吃飯嗎？",
-          "pinyin": "",
+          "pinyin": "tā chī fàn ma?",
           "en": "Does he eat?",
           "tiles": [
             "他",
@@ -2413,7 +2413,7 @@
         {
           "id": "novice_2_044",
           "zh": "他看書嗎？",
-          "pinyin": "",
+          "pinyin": "tā kàn shū ma?",
           "en": "Does he read a book?",
           "tiles": [
             "他",
@@ -2430,7 +2430,7 @@
         {
           "id": "novice_2_045",
           "zh": "他寫字嗎？",
-          "pinyin": "",
+          "pinyin": "tā xiě zì ma?",
           "en": "Does he write characters?",
           "tiles": [
             "他",
@@ -2447,7 +2447,7 @@
         {
           "id": "novice_2_046",
           "zh": "他聽音樂嗎？",
-          "pinyin": "",
+          "pinyin": "tā tīng yīn lè ma?",
           "en": "Does he listen to music?",
           "tiles": [
             "他",
@@ -2464,7 +2464,7 @@
         {
           "id": "novice_2_047",
           "zh": "他學中文嗎？",
-          "pinyin": "",
+          "pinyin": "tā xué zhōng wén ma?",
           "en": "Does he study Chinese?",
           "tiles": [
             "他",
@@ -2481,7 +2481,7 @@
         {
           "id": "novice_2_048",
           "zh": "他去學校嗎？",
-          "pinyin": "",
+          "pinyin": "tā qù xué xiào ma?",
           "en": "Does he go to school?",
           "tiles": [
             "他",
@@ -2498,7 +2498,7 @@
         {
           "id": "novice_2_049",
           "zh": "他回家嗎？",
-          "pinyin": "",
+          "pinyin": "tā huí jiā ma?",
           "en": "Does he go home?",
           "tiles": [
             "他",
@@ -2515,7 +2515,7 @@
         {
           "id": "novice_2_050",
           "zh": "她喝水嗎？",
-          "pinyin": "",
+          "pinyin": "tā hē shuǐ ma?",
           "en": "Does she drink water?",
           "tiles": [
             "她",
@@ -2532,7 +2532,7 @@
         {
           "id": "novice_2_051",
           "zh": "我今天去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù xué xiào.",
           "en": "I go to school today.",
           "tiles": [
             "我",
@@ -2549,7 +2549,7 @@
         {
           "id": "novice_2_052",
           "zh": "我今天回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān huí jiā.",
           "en": "I go home today.",
           "tiles": [
             "我",
@@ -2566,7 +2566,7 @@
         {
           "id": "novice_2_053",
           "zh": "我今天去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù tú shū guǎn.",
           "en": "I go to the library today.",
           "tiles": [
             "我",
@@ -2583,7 +2583,7 @@
         {
           "id": "novice_2_054",
           "zh": "我今天去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù shāng diàn.",
           "en": "I go to the store today.",
           "tiles": [
             "我",
@@ -2600,7 +2600,7 @@
         {
           "id": "novice_2_055",
           "zh": "我今天去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù cān tīng.",
           "en": "I go to the restaurant today.",
           "tiles": [
             "我",
@@ -2617,7 +2617,7 @@
         {
           "id": "novice_2_056",
           "zh": "我今天去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù gōng yuán.",
           "en": "I go to the park today.",
           "tiles": [
             "我",
@@ -2634,7 +2634,7 @@
         {
           "id": "novice_2_057",
           "zh": "我今天去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù jiào shì.",
           "en": "I go to the classroom today.",
           "tiles": [
             "我",
@@ -2651,7 +2651,7 @@
         {
           "id": "novice_2_058",
           "zh": "我今天去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qù shì chǎng.",
           "en": "I go to the market today.",
           "tiles": [
             "我",
@@ -2668,7 +2668,7 @@
         {
           "id": "novice_2_059",
           "zh": "我明天去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù xué xiào.",
           "en": "I go to school tomorrow.",
           "tiles": [
             "我",
@@ -2685,7 +2685,7 @@
         {
           "id": "novice_2_060",
           "zh": "我明天回家。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān huí jiā.",
           "en": "I go home tomorrow.",
           "tiles": [
             "我",
@@ -2702,7 +2702,7 @@
         {
           "id": "novice_2_061",
           "zh": "我明天去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù tú shū guǎn.",
           "en": "I go to the library tomorrow.",
           "tiles": [
             "我",
@@ -2719,7 +2719,7 @@
         {
           "id": "novice_2_062",
           "zh": "我明天去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù shāng diàn.",
           "en": "I go to the store tomorrow.",
           "tiles": [
             "我",
@@ -2736,7 +2736,7 @@
         {
           "id": "novice_2_063",
           "zh": "我明天去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù cān tīng.",
           "en": "I go to the restaurant tomorrow.",
           "tiles": [
             "我",
@@ -2753,7 +2753,7 @@
         {
           "id": "novice_2_064",
           "zh": "我明天去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù gōng yuán.",
           "en": "I go to the park tomorrow.",
           "tiles": [
             "我",
@@ -2770,7 +2770,7 @@
         {
           "id": "novice_2_065",
           "zh": "我明天去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù jiào shì.",
           "en": "I go to the classroom tomorrow.",
           "tiles": [
             "我",
@@ -2787,7 +2787,7 @@
         {
           "id": "novice_2_066",
           "zh": "我明天去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān qù shì chǎng.",
           "en": "I go to the market tomorrow.",
           "tiles": [
             "我",
@@ -2804,7 +2804,7 @@
         {
           "id": "novice_2_067",
           "zh": "我早上去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù xué xiào.",
           "en": "I go to school in the morning.",
           "tiles": [
             "我",
@@ -2821,7 +2821,7 @@
         {
           "id": "novice_2_068",
           "zh": "我早上回家。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng huí jiā.",
           "en": "I go home in the morning.",
           "tiles": [
             "我",
@@ -2838,7 +2838,7 @@
         {
           "id": "novice_2_069",
           "zh": "我早上去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù tú shū guǎn.",
           "en": "I go to the library in the morning.",
           "tiles": [
             "我",
@@ -2855,7 +2855,7 @@
         {
           "id": "novice_2_070",
           "zh": "我早上去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù shāng diàn.",
           "en": "I go to the store in the morning.",
           "tiles": [
             "我",
@@ -2872,7 +2872,7 @@
         {
           "id": "novice_2_071",
           "zh": "我早上去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù cān tīng.",
           "en": "I go to the restaurant in the morning.",
           "tiles": [
             "我",
@@ -2889,7 +2889,7 @@
         {
           "id": "novice_2_072",
           "zh": "我早上去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù gōng yuán.",
           "en": "I go to the park in the morning.",
           "tiles": [
             "我",
@@ -2906,7 +2906,7 @@
         {
           "id": "novice_2_073",
           "zh": "我早上去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù jiào shì.",
           "en": "I go to the classroom in the morning.",
           "tiles": [
             "我",
@@ -2923,7 +2923,7 @@
         {
           "id": "novice_2_074",
           "zh": "我早上去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng qù shì chǎng.",
           "en": "I go to the market in the morning.",
           "tiles": [
             "我",
@@ -2940,7 +2940,7 @@
         {
           "id": "novice_2_075",
           "zh": "我下午去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ qù xué xiào.",
           "en": "I go to school in the afternoon.",
           "tiles": [
             "我",
@@ -2957,7 +2957,7 @@
         {
           "id": "novice_2_076",
           "zh": "我喜歡牛肉麵。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān niú ròu miàn.",
           "en": "I like beef noodle soup.",
           "tiles": [
             "我",
@@ -2974,7 +2974,7 @@
         {
           "id": "novice_2_077",
           "zh": "我喜歡水餃。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān shuǐ jiǎo.",
           "en": "I like dumplings.",
           "tiles": [
             "我",
@@ -2991,7 +2991,7 @@
         {
           "id": "novice_2_078",
           "zh": "我喜歡水果。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān shuǐ guǒ.",
           "en": "I like fruit.",
           "tiles": [
             "我",
@@ -3008,7 +3008,7 @@
         {
           "id": "novice_2_079",
           "zh": "我喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān kā fēi.",
           "en": "I like coffee.",
           "tiles": [
             "我",
@@ -3025,7 +3025,7 @@
         {
           "id": "novice_2_080",
           "zh": "我喜歡茶。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān chá.",
           "en": "I like tea.",
           "tiles": [
             "我",
@@ -3042,7 +3042,7 @@
         {
           "id": "novice_2_081",
           "zh": "我喜歡早餐。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān zǎo cān.",
           "en": "I like breakfast.",
           "tiles": [
             "我",
@@ -3059,7 +3059,7 @@
         {
           "id": "novice_2_082",
           "zh": "我喜歡晚餐。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān wǎn cān.",
           "en": "I like dinner.",
           "tiles": [
             "我",
@@ -3076,7 +3076,7 @@
         {
           "id": "novice_2_083",
           "zh": "我喜歡便當。",
-          "pinyin": "",
+          "pinyin": "wǒ xǐ huān biàn dāng.",
           "en": "I like a lunch box.",
           "tiles": [
             "我",
@@ -3093,7 +3093,7 @@
         {
           "id": "novice_2_084",
           "zh": "你喜歡牛肉麵。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān niú ròu miàn.",
           "en": "You like beef noodle soup.",
           "tiles": [
             "你",
@@ -3110,7 +3110,7 @@
         {
           "id": "novice_2_085",
           "zh": "你喜歡水餃。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān shuǐ jiǎo.",
           "en": "You like dumplings.",
           "tiles": [
             "你",
@@ -3127,7 +3127,7 @@
         {
           "id": "novice_2_086",
           "zh": "你喜歡水果。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān shuǐ guǒ.",
           "en": "You like fruit.",
           "tiles": [
             "你",
@@ -3144,7 +3144,7 @@
         {
           "id": "novice_2_087",
           "zh": "你喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān kā fēi.",
           "en": "You like coffee.",
           "tiles": [
             "你",
@@ -3161,7 +3161,7 @@
         {
           "id": "novice_2_088",
           "zh": "你喜歡茶。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān chá.",
           "en": "You like tea.",
           "tiles": [
             "你",
@@ -3178,7 +3178,7 @@
         {
           "id": "novice_2_089",
           "zh": "你喜歡早餐。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān zǎo cān.",
           "en": "You like breakfast.",
           "tiles": [
             "你",
@@ -3195,7 +3195,7 @@
         {
           "id": "novice_2_090",
           "zh": "你喜歡晚餐。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān wǎn cān.",
           "en": "You like dinner.",
           "tiles": [
             "你",
@@ -3212,7 +3212,7 @@
         {
           "id": "novice_2_091",
           "zh": "你喜歡便當。",
-          "pinyin": "",
+          "pinyin": "nǐ xǐ huān biàn dāng.",
           "en": "You like a lunch box.",
           "tiles": [
             "你",
@@ -3229,7 +3229,7 @@
         {
           "id": "novice_2_092",
           "zh": "他喜歡牛肉麵。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān niú ròu miàn.",
           "en": "He likes beef noodle soup.",
           "tiles": [
             "他",
@@ -3246,7 +3246,7 @@
         {
           "id": "novice_2_093",
           "zh": "他喜歡水餃。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān shuǐ jiǎo.",
           "en": "He likes dumplings.",
           "tiles": [
             "他",
@@ -3263,7 +3263,7 @@
         {
           "id": "novice_2_094",
           "zh": "他喜歡水果。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān shuǐ guǒ.",
           "en": "He likes fruit.",
           "tiles": [
             "他",
@@ -3280,7 +3280,7 @@
         {
           "id": "novice_2_095",
           "zh": "他喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān kā fēi.",
           "en": "He likes coffee.",
           "tiles": [
             "他",
@@ -3297,7 +3297,7 @@
         {
           "id": "novice_2_096",
           "zh": "他喜歡茶。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān chá.",
           "en": "He likes tea.",
           "tiles": [
             "他",
@@ -3314,7 +3314,7 @@
         {
           "id": "novice_2_097",
           "zh": "他喜歡早餐。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān zǎo cān.",
           "en": "He likes breakfast.",
           "tiles": [
             "他",
@@ -3331,7 +3331,7 @@
         {
           "id": "novice_2_098",
           "zh": "他喜歡晚餐。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān wǎn cān.",
           "en": "He likes dinner.",
           "tiles": [
             "他",
@@ -3348,7 +3348,7 @@
         {
           "id": "novice_2_099",
           "zh": "他喜歡便當。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān biàn dāng.",
           "en": "He likes a lunch box.",
           "tiles": [
             "他",
@@ -3365,7 +3365,7 @@
         {
           "id": "novice_2_100",
           "zh": "她喜歡牛肉麵。",
-          "pinyin": "",
+          "pinyin": "tā xǐ huān niú ròu miàn.",
           "en": "She likes beef noodle soup.",
           "tiles": [
             "她",
@@ -3392,7 +3392,7 @@
         {
           "id": "a1_1_001",
           "zh": "我今天坐公車去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù xué xiào.",
           "en": "I take the bus to school today.",
           "tiles": [
             "我",
@@ -3411,7 +3411,7 @@
         {
           "id": "a1_1_002",
           "zh": "我今天坐公車回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē huí jiā.",
           "en": "I take the bus home today.",
           "tiles": [
             "我",
@@ -3429,7 +3429,7 @@
         {
           "id": "a1_1_003",
           "zh": "我今天坐公車去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù tú shū guǎn.",
           "en": "I take the bus to the library today.",
           "tiles": [
             "我",
@@ -3448,7 +3448,7 @@
         {
           "id": "a1_1_004",
           "zh": "我今天坐公車去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù shāng diàn.",
           "en": "I take the bus to the store today.",
           "tiles": [
             "我",
@@ -3467,7 +3467,7 @@
         {
           "id": "a1_1_005",
           "zh": "我今天坐公車去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù cān tīng.",
           "en": "I take the bus to the restaurant today.",
           "tiles": [
             "我",
@@ -3486,7 +3486,7 @@
         {
           "id": "a1_1_006",
           "zh": "我今天坐公車去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù gōng yuán.",
           "en": "I take the bus to the park today.",
           "tiles": [
             "我",
@@ -3505,7 +3505,7 @@
         {
           "id": "a1_1_007",
           "zh": "我今天坐公車去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù jiào shì.",
           "en": "I take the bus to the classroom today.",
           "tiles": [
             "我",
@@ -3524,7 +3524,7 @@
         {
           "id": "a1_1_008",
           "zh": "我今天坐公車去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò gōng chē qù shì chǎng.",
           "en": "I take the bus to the market today.",
           "tiles": [
             "我",
@@ -3543,7 +3543,7 @@
         {
           "id": "a1_1_009",
           "zh": "我今天坐捷運去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù xué xiào.",
           "en": "I take the MRT to school today.",
           "tiles": [
             "我",
@@ -3562,7 +3562,7 @@
         {
           "id": "a1_1_010",
           "zh": "我今天坐捷運回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn huí jiā.",
           "en": "I take the MRT home today.",
           "tiles": [
             "我",
@@ -3580,7 +3580,7 @@
         {
           "id": "a1_1_011",
           "zh": "我今天坐捷運去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù tú shū guǎn.",
           "en": "I take the MRT to the library today.",
           "tiles": [
             "我",
@@ -3599,7 +3599,7 @@
         {
           "id": "a1_1_012",
           "zh": "我今天坐捷運去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù shāng diàn.",
           "en": "I take the MRT to the store today.",
           "tiles": [
             "我",
@@ -3618,7 +3618,7 @@
         {
           "id": "a1_1_013",
           "zh": "我今天坐捷運去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù cān tīng.",
           "en": "I take the MRT to the restaurant today.",
           "tiles": [
             "我",
@@ -3637,7 +3637,7 @@
         {
           "id": "a1_1_014",
           "zh": "我今天坐捷運去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù gōng yuán.",
           "en": "I take the MRT to the park today.",
           "tiles": [
             "我",
@@ -3656,7 +3656,7 @@
         {
           "id": "a1_1_015",
           "zh": "我今天坐捷運去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù jiào shì.",
           "en": "I take the MRT to the classroom today.",
           "tiles": [
             "我",
@@ -3675,7 +3675,7 @@
         {
           "id": "a1_1_016",
           "zh": "我今天坐捷運去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zuò jié yùn qù shì chǎng.",
           "en": "I take the MRT to the market today.",
           "tiles": [
             "我",
@@ -3694,7 +3694,7 @@
         {
           "id": "a1_1_017",
           "zh": "我今天騎腳踏車去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù xué xiào.",
           "en": "I ride a bicycle to school today.",
           "tiles": [
             "我",
@@ -3713,7 +3713,7 @@
         {
           "id": "a1_1_018",
           "zh": "我今天騎腳踏車回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē huí jiā.",
           "en": "I ride a bicycle home today.",
           "tiles": [
             "我",
@@ -3731,7 +3731,7 @@
         {
           "id": "a1_1_019",
           "zh": "我今天騎腳踏車去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù tú shū guǎn.",
           "en": "I ride a bicycle to the library today.",
           "tiles": [
             "我",
@@ -3750,7 +3750,7 @@
         {
           "id": "a1_1_020",
           "zh": "我今天騎腳踏車去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù shāng diàn.",
           "en": "I ride a bicycle to the store today.",
           "tiles": [
             "我",
@@ -3769,7 +3769,7 @@
         {
           "id": "a1_1_021",
           "zh": "我今天騎腳踏車去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù cān tīng.",
           "en": "I ride a bicycle to the restaurant today.",
           "tiles": [
             "我",
@@ -3788,7 +3788,7 @@
         {
           "id": "a1_1_022",
           "zh": "我今天騎腳踏車去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù gōng yuán.",
           "en": "I ride a bicycle to the park today.",
           "tiles": [
             "我",
@@ -3807,7 +3807,7 @@
         {
           "id": "a1_1_023",
           "zh": "我今天騎腳踏車去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù jiào shì.",
           "en": "I ride a bicycle to the classroom today.",
           "tiles": [
             "我",
@@ -3826,7 +3826,7 @@
         {
           "id": "a1_1_024",
           "zh": "我今天騎腳踏車去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān qí jiǎo tà chē qù shì chǎng.",
           "en": "I ride a bicycle to the market today.",
           "tiles": [
             "我",
@@ -3845,7 +3845,7 @@
         {
           "id": "a1_1_025",
           "zh": "我今天走路去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù xué xiào.",
           "en": "I walk to school today.",
           "tiles": [
             "我",
@@ -3864,7 +3864,7 @@
         {
           "id": "a1_1_026",
           "zh": "我今天走路回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù huí jiā.",
           "en": "I walk home today.",
           "tiles": [
             "我",
@@ -3882,7 +3882,7 @@
         {
           "id": "a1_1_027",
           "zh": "我今天走路去圖書館。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù tú shū guǎn.",
           "en": "I walk to the library today.",
           "tiles": [
             "我",
@@ -3901,7 +3901,7 @@
         {
           "id": "a1_1_028",
           "zh": "我今天走路去商店。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù shāng diàn.",
           "en": "I walk to the store today.",
           "tiles": [
             "我",
@@ -3920,7 +3920,7 @@
         {
           "id": "a1_1_029",
           "zh": "我今天走路去餐廳。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù cān tīng.",
           "en": "I walk to the restaurant today.",
           "tiles": [
             "我",
@@ -3939,7 +3939,7 @@
         {
           "id": "a1_1_030",
           "zh": "我今天走路去公園。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù gōng yuán.",
           "en": "I walk to the park today.",
           "tiles": [
             "我",
@@ -3958,7 +3958,7 @@
         {
           "id": "a1_1_031",
           "zh": "我今天走路去教室。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù jiào shì.",
           "en": "I walk to the classroom today.",
           "tiles": [
             "我",
@@ -3977,7 +3977,7 @@
         {
           "id": "a1_1_032",
           "zh": "我今天走路去市場。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān zǒu lù qù shì chǎng.",
           "en": "I walk to the market today.",
           "tiles": [
             "我",
@@ -3996,7 +3996,7 @@
         {
           "id": "a1_1_033",
           "zh": "我今天開車去學校。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān kāi chē qù xué xiào.",
           "en": "I drive to school today.",
           "tiles": [
             "我",
@@ -4015,7 +4015,7 @@
         {
           "id": "a1_1_034",
           "zh": "我今天開車回家。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān kāi chē huí jiā.",
           "en": "I drive home today.",
           "tiles": [
             "我",
@@ -4033,7 +4033,7 @@
         {
           "id": "a1_1_035",
           "zh": "我想買一杯咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī bēi kā fēi.",
           "en": "I want to buy a cup of coffee.",
           "tiles": [
             "我",
@@ -4052,7 +4052,7 @@
         {
           "id": "a1_1_036",
           "zh": "我想買一碗飯。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī wǎn fàn.",
           "en": "I want to buy a bowl of rice.",
           "tiles": [
             "我",
@@ -4071,7 +4071,7 @@
         {
           "id": "a1_1_037",
           "zh": "我想買一瓶水。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī píng shuǐ.",
           "en": "I want to buy a bottle of water.",
           "tiles": [
             "我",
@@ -4090,7 +4090,7 @@
         {
           "id": "a1_1_038",
           "zh": "我想買一張票。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī zhāng piào.",
           "en": "I want to buy a ticket.",
           "tiles": [
             "我",
@@ -4109,7 +4109,7 @@
         {
           "id": "a1_1_039",
           "zh": "我想買一件衣服。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī jiàn yī fú.",
           "en": "I want to buy a piece of clothing.",
           "tiles": [
             "我",
@@ -4128,7 +4128,7 @@
         {
           "id": "a1_1_040",
           "zh": "我想買一個包子。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī gè bāo zi.",
           "en": "I want to buy a steamed bun.",
           "tiles": [
             "我",
@@ -4147,7 +4147,7 @@
         {
           "id": "a1_1_041",
           "zh": "我想買一本書。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī běn shū.",
           "en": "I want to buy a book.",
           "tiles": [
             "我",
@@ -4166,7 +4166,7 @@
         {
           "id": "a1_1_042",
           "zh": "我想買一支筆。",
-          "pinyin": "",
+          "pinyin": "wǒ xiǎng mǎi yī zhī bǐ.",
           "en": "I want to buy a pen.",
           "tiles": [
             "我",
@@ -4185,7 +4185,7 @@
         {
           "id": "a1_1_043",
           "zh": "你想買一杯咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī bēi kā fēi.",
           "en": "You want to buy a cup of coffee.",
           "tiles": [
             "你",
@@ -4204,7 +4204,7 @@
         {
           "id": "a1_1_044",
           "zh": "你想買一碗飯。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī wǎn fàn.",
           "en": "You want to buy a bowl of rice.",
           "tiles": [
             "你",
@@ -4223,7 +4223,7 @@
         {
           "id": "a1_1_045",
           "zh": "你想買一瓶水。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī píng shuǐ.",
           "en": "You want to buy a bottle of water.",
           "tiles": [
             "你",
@@ -4242,7 +4242,7 @@
         {
           "id": "a1_1_046",
           "zh": "你想買一張票。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī zhāng piào.",
           "en": "You want to buy a ticket.",
           "tiles": [
             "你",
@@ -4261,7 +4261,7 @@
         {
           "id": "a1_1_047",
           "zh": "你想買一件衣服。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī jiàn yī fú.",
           "en": "You want to buy a piece of clothing.",
           "tiles": [
             "你",
@@ -4280,7 +4280,7 @@
         {
           "id": "a1_1_048",
           "zh": "你想買一個包子。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī gè bāo zi.",
           "en": "You want to buy a steamed bun.",
           "tiles": [
             "你",
@@ -4299,7 +4299,7 @@
         {
           "id": "a1_1_049",
           "zh": "你想買一本書。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī běn shū.",
           "en": "You want to buy a book.",
           "tiles": [
             "你",
@@ -4318,7 +4318,7 @@
         {
           "id": "a1_1_050",
           "zh": "你想買一支筆。",
-          "pinyin": "",
+          "pinyin": "nǐ xiǎng mǎi yī zhī bǐ.",
           "en": "You want to buy a pen.",
           "tiles": [
             "你",
@@ -4337,7 +4337,7 @@
         {
           "id": "a1_1_051",
           "zh": "他想買一杯咖啡。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī bēi kā fēi.",
           "en": "He want to buy a cup of coffee.",
           "tiles": [
             "他",
@@ -4356,7 +4356,7 @@
         {
           "id": "a1_1_052",
           "zh": "他想買一碗飯。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī wǎn fàn.",
           "en": "He want to buy a bowl of rice.",
           "tiles": [
             "他",
@@ -4375,7 +4375,7 @@
         {
           "id": "a1_1_053",
           "zh": "他想買一瓶水。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī píng shuǐ.",
           "en": "He want to buy a bottle of water.",
           "tiles": [
             "他",
@@ -4394,7 +4394,7 @@
         {
           "id": "a1_1_054",
           "zh": "他想買一張票。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī zhāng piào.",
           "en": "He want to buy a ticket.",
           "tiles": [
             "他",
@@ -4413,7 +4413,7 @@
         {
           "id": "a1_1_055",
           "zh": "他想買一件衣服。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī jiàn yī fú.",
           "en": "He want to buy a piece of clothing.",
           "tiles": [
             "他",
@@ -4432,7 +4432,7 @@
         {
           "id": "a1_1_056",
           "zh": "他想買一個包子。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī gè bāo zi.",
           "en": "He want to buy a steamed bun.",
           "tiles": [
             "他",
@@ -4451,7 +4451,7 @@
         {
           "id": "a1_1_057",
           "zh": "他想買一本書。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī běn shū.",
           "en": "He want to buy a book.",
           "tiles": [
             "他",
@@ -4470,7 +4470,7 @@
         {
           "id": "a1_1_058",
           "zh": "他想買一支筆。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī zhī bǐ.",
           "en": "He want to buy a pen.",
           "tiles": [
             "他",
@@ -4489,7 +4489,7 @@
         {
           "id": "a1_1_059",
           "zh": "她想買一杯咖啡。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī bēi kā fēi.",
           "en": "She want to buy a cup of coffee.",
           "tiles": [
             "她",
@@ -4508,7 +4508,7 @@
         {
           "id": "a1_1_060",
           "zh": "她想買一碗飯。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī wǎn fàn.",
           "en": "She want to buy a bowl of rice.",
           "tiles": [
             "她",
@@ -4527,7 +4527,7 @@
         {
           "id": "a1_1_061",
           "zh": "她想買一瓶水。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī píng shuǐ.",
           "en": "She want to buy a bottle of water.",
           "tiles": [
             "她",
@@ -4546,7 +4546,7 @@
         {
           "id": "a1_1_062",
           "zh": "她想買一張票。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī zhāng piào.",
           "en": "She want to buy a ticket.",
           "tiles": [
             "她",
@@ -4565,7 +4565,7 @@
         {
           "id": "a1_1_063",
           "zh": "她想買一件衣服。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī jiàn yī fú.",
           "en": "She want to buy a piece of clothing.",
           "tiles": [
             "她",
@@ -4584,7 +4584,7 @@
         {
           "id": "a1_1_064",
           "zh": "她想買一個包子。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī gè bāo zi.",
           "en": "She want to buy a steamed bun.",
           "tiles": [
             "她",
@@ -4603,7 +4603,7 @@
         {
           "id": "a1_1_065",
           "zh": "她想買一本書。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī běn shū.",
           "en": "She want to buy a book.",
           "tiles": [
             "她",
@@ -4622,7 +4622,7 @@
         {
           "id": "a1_1_066",
           "zh": "她想買一支筆。",
-          "pinyin": "",
+          "pinyin": "tā xiǎng mǎi yī zhī bǐ.",
           "en": "She want to buy a pen.",
           "tiles": [
             "她",
@@ -4641,7 +4641,7 @@
         {
           "id": "a1_1_067",
           "zh": "我們想買一杯咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ men xiǎng mǎi yī bēi kā fēi.",
           "en": "We want to buy a cup of coffee.",
           "tiles": [
             "我們",
@@ -4660,7 +4660,7 @@
         {
           "id": "a1_1_068",
           "zh": "我先吃牛肉麵，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī niú ròu miàn, zài qù shàng kè.",
           "en": "I eat beef noodle soup first, then go to class.",
           "tiles": [
             "我",
@@ -4681,7 +4681,7 @@
         {
           "id": "a1_1_069",
           "zh": "我先吃水餃，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī shuǐ jiǎo, zài qù shàng kè.",
           "en": "I eat dumplings first, then go to class.",
           "tiles": [
             "我",
@@ -4702,7 +4702,7 @@
         {
           "id": "a1_1_070",
           "zh": "我先吃水果，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī shuǐ guǒ, zài qù shàng kè.",
           "en": "I eat fruit first, then go to class.",
           "tiles": [
             "我",
@@ -4723,7 +4723,7 @@
         {
           "id": "a1_1_071",
           "zh": "我先吃咖啡，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī kā fēi, zài qù shàng kè.",
           "en": "I eat coffee first, then go to class.",
           "tiles": [
             "我",
@@ -4744,7 +4744,7 @@
         {
           "id": "a1_1_072",
           "zh": "我先吃茶，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī chá, zài qù shàng kè.",
           "en": "I eat tea first, then go to class.",
           "tiles": [
             "我",
@@ -4765,7 +4765,7 @@
         {
           "id": "a1_1_073",
           "zh": "我先吃早餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī zǎo cān, zài qù shàng kè.",
           "en": "I eat breakfast first, then go to class.",
           "tiles": [
             "我",
@@ -4786,7 +4786,7 @@
         {
           "id": "a1_1_074",
           "zh": "我先吃晚餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī wǎn cān, zài qù shàng kè.",
           "en": "I eat dinner first, then go to class.",
           "tiles": [
             "我",
@@ -4807,7 +4807,7 @@
         {
           "id": "a1_1_075",
           "zh": "我先吃便當，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ xiān chī biàn dāng, zài qù shàng kè.",
           "en": "I eat a lunch box first, then go to class.",
           "tiles": [
             "我",
@@ -4828,7 +4828,7 @@
         {
           "id": "a1_1_076",
           "zh": "你先吃牛肉麵，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī niú ròu miàn, zài qù shàng kè.",
           "en": "You eat beef noodle soup first, then go to class.",
           "tiles": [
             "你",
@@ -4849,7 +4849,7 @@
         {
           "id": "a1_1_077",
           "zh": "你先吃水餃，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī shuǐ jiǎo, zài qù shàng kè.",
           "en": "You eat dumplings first, then go to class.",
           "tiles": [
             "你",
@@ -4870,7 +4870,7 @@
         {
           "id": "a1_1_078",
           "zh": "你先吃水果，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī shuǐ guǒ, zài qù shàng kè.",
           "en": "You eat fruit first, then go to class.",
           "tiles": [
             "你",
@@ -4891,7 +4891,7 @@
         {
           "id": "a1_1_079",
           "zh": "你先吃咖啡，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī kā fēi, zài qù shàng kè.",
           "en": "You eat coffee first, then go to class.",
           "tiles": [
             "你",
@@ -4912,7 +4912,7 @@
         {
           "id": "a1_1_080",
           "zh": "你先吃茶，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī chá, zài qù shàng kè.",
           "en": "You eat tea first, then go to class.",
           "tiles": [
             "你",
@@ -4933,7 +4933,7 @@
         {
           "id": "a1_1_081",
           "zh": "你先吃早餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī zǎo cān, zài qù shàng kè.",
           "en": "You eat breakfast first, then go to class.",
           "tiles": [
             "你",
@@ -4954,7 +4954,7 @@
         {
           "id": "a1_1_082",
           "zh": "你先吃晚餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī wǎn cān, zài qù shàng kè.",
           "en": "You eat dinner first, then go to class.",
           "tiles": [
             "你",
@@ -4975,7 +4975,7 @@
         {
           "id": "a1_1_083",
           "zh": "你先吃便當，再去上課。",
-          "pinyin": "",
+          "pinyin": "nǐ xiān chī biàn dāng, zài qù shàng kè.",
           "en": "You eat a lunch box first, then go to class.",
           "tiles": [
             "你",
@@ -4996,7 +4996,7 @@
         {
           "id": "a1_1_084",
           "zh": "他先吃牛肉麵，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī niú ròu miàn, zài qù shàng kè.",
           "en": "He eat beef noodle soup first, then go to class.",
           "tiles": [
             "他",
@@ -5017,7 +5017,7 @@
         {
           "id": "a1_1_085",
           "zh": "他先吃水餃，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī shuǐ jiǎo, zài qù shàng kè.",
           "en": "He eat dumplings first, then go to class.",
           "tiles": [
             "他",
@@ -5038,7 +5038,7 @@
         {
           "id": "a1_1_086",
           "zh": "他先吃水果，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī shuǐ guǒ, zài qù shàng kè.",
           "en": "He eat fruit first, then go to class.",
           "tiles": [
             "他",
@@ -5059,7 +5059,7 @@
         {
           "id": "a1_1_087",
           "zh": "他先吃咖啡，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī kā fēi, zài qù shàng kè.",
           "en": "He eat coffee first, then go to class.",
           "tiles": [
             "他",
@@ -5080,7 +5080,7 @@
         {
           "id": "a1_1_088",
           "zh": "他先吃茶，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī chá, zài qù shàng kè.",
           "en": "He eat tea first, then go to class.",
           "tiles": [
             "他",
@@ -5101,7 +5101,7 @@
         {
           "id": "a1_1_089",
           "zh": "他先吃早餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī zǎo cān, zài qù shàng kè.",
           "en": "He eat breakfast first, then go to class.",
           "tiles": [
             "他",
@@ -5122,7 +5122,7 @@
         {
           "id": "a1_1_090",
           "zh": "他先吃晚餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī wǎn cān, zài qù shàng kè.",
           "en": "He eat dinner first, then go to class.",
           "tiles": [
             "他",
@@ -5143,7 +5143,7 @@
         {
           "id": "a1_1_091",
           "zh": "他先吃便當，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī biàn dāng, zài qù shàng kè.",
           "en": "He eat a lunch box first, then go to class.",
           "tiles": [
             "他",
@@ -5164,7 +5164,7 @@
         {
           "id": "a1_1_092",
           "zh": "她先吃牛肉麵，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī niú ròu miàn, zài qù shàng kè.",
           "en": "She eat beef noodle soup first, then go to class.",
           "tiles": [
             "她",
@@ -5185,7 +5185,7 @@
         {
           "id": "a1_1_093",
           "zh": "她先吃水餃，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī shuǐ jiǎo, zài qù shàng kè.",
           "en": "She eat dumplings first, then go to class.",
           "tiles": [
             "她",
@@ -5206,7 +5206,7 @@
         {
           "id": "a1_1_094",
           "zh": "她先吃水果，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī shuǐ guǒ, zài qù shàng kè.",
           "en": "She eat fruit first, then go to class.",
           "tiles": [
             "她",
@@ -5227,7 +5227,7 @@
         {
           "id": "a1_1_095",
           "zh": "她先吃咖啡，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī kā fēi, zài qù shàng kè.",
           "en": "She eat coffee first, then go to class.",
           "tiles": [
             "她",
@@ -5248,7 +5248,7 @@
         {
           "id": "a1_1_096",
           "zh": "她先吃茶，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī chá, zài qù shàng kè.",
           "en": "She eat tea first, then go to class.",
           "tiles": [
             "她",
@@ -5269,7 +5269,7 @@
         {
           "id": "a1_1_097",
           "zh": "她先吃早餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī zǎo cān, zài qù shàng kè.",
           "en": "She eat breakfast first, then go to class.",
           "tiles": [
             "她",
@@ -5290,7 +5290,7 @@
         {
           "id": "a1_1_098",
           "zh": "她先吃晚餐，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī wǎn cān, zài qù shàng kè.",
           "en": "She eat dinner first, then go to class.",
           "tiles": [
             "她",
@@ -5311,7 +5311,7 @@
         {
           "id": "a1_1_099",
           "zh": "她先吃便當，再去上課。",
-          "pinyin": "",
+          "pinyin": "tā xiān chī biàn dāng, zài qù shàng kè.",
           "en": "She eat a lunch box first, then go to class.",
           "tiles": [
             "她",
@@ -5332,7 +5332,7 @@
         {
           "id": "a1_1_100",
           "zh": "我們先吃牛肉麵，再去上課。",
-          "pinyin": "",
+          "pinyin": "wǒ men xiān chī niú ròu miàn, zài qù shàng kè.",
           "en": "We eat beef noodle soup first, then go to class.",
           "tiles": [
             "我們",
@@ -5363,7 +5363,7 @@
         {
           "id": "a1_2_001",
           "zh": "我今天覺得很忙。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān jué dé hěn máng.",
           "en": "I feel very busy today.",
           "tiles": [
             "我",
@@ -5381,7 +5381,7 @@
         {
           "id": "a1_2_002",
           "zh": "我今天覺得很累。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān jué dé hěn lèi.",
           "en": "I feel very tired today.",
           "tiles": [
             "我",
@@ -5399,7 +5399,7 @@
         {
           "id": "a1_2_003",
           "zh": "我今天覺得很高興。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān jué dé hěn gāo xìng.",
           "en": "I feel very happy today.",
           "tiles": [
             "我",
@@ -5417,7 +5417,7 @@
         {
           "id": "a1_2_004",
           "zh": "我今天覺得很緊張。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān jué dé hěn jǐn zhāng.",
           "en": "I feel very nervous today.",
           "tiles": [
             "我",
@@ -5435,7 +5435,7 @@
         {
           "id": "a1_2_005",
           "zh": "我今天覺得很舒服。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān jué dé hěn shū fú.",
           "en": "I feel very comfortable today.",
           "tiles": [
             "我",
@@ -5453,7 +5453,7 @@
         {
           "id": "a1_2_006",
           "zh": "這樣做很方便。",
-          "pinyin": "",
+          "pinyin": "zhè yàng zuò hěn fāng biàn.",
           "en": "Doing it this way is convenient.",
           "tiles": [
             "這樣",
@@ -5471,7 +5471,7 @@
         {
           "id": "a1_2_007",
           "zh": "老師說得很清楚。",
-          "pinyin": "",
+          "pinyin": "lǎo shī shuō dé hěn qīng chǔ.",
           "en": "The teacher explains it clearly.",
           "tiles": [
             "老師",
@@ -5489,7 +5489,7 @@
         {
           "id": "a1_2_008",
           "zh": "這個問題很重要。",
-          "pinyin": "",
+          "pinyin": "zhè gè wèn tí hěn zhòng yào.",
           "en": "This question is important.",
           "tiles": [
             "這個",
@@ -5507,7 +5507,7 @@
         {
           "id": "a1_2_009",
           "zh": "你今天覺得很忙。",
-          "pinyin": "",
+          "pinyin": "nǐ jīn tiān jué dé hěn máng.",
           "en": "You feel very busy today.",
           "tiles": [
             "你",
@@ -5525,7 +5525,7 @@
         {
           "id": "a1_2_010",
           "zh": "你今天覺得很累。",
-          "pinyin": "",
+          "pinyin": "nǐ jīn tiān jué dé hěn lèi.",
           "en": "You feel very tired today.",
           "tiles": [
             "你",
@@ -5543,7 +5543,7 @@
         {
           "id": "a1_2_011",
           "zh": "你今天覺得很高興。",
-          "pinyin": "",
+          "pinyin": "nǐ jīn tiān jué dé hěn gāo xìng.",
           "en": "You feel very happy today.",
           "tiles": [
             "你",
@@ -5561,7 +5561,7 @@
         {
           "id": "a1_2_012",
           "zh": "你今天覺得很緊張。",
-          "pinyin": "",
+          "pinyin": "nǐ jīn tiān jué dé hěn jǐn zhāng.",
           "en": "You feel very nervous today.",
           "tiles": [
             "你",
@@ -5579,7 +5579,7 @@
         {
           "id": "a1_2_013",
           "zh": "你今天覺得很舒服。",
-          "pinyin": "",
+          "pinyin": "nǐ jīn tiān jué dé hěn shū fú.",
           "en": "You feel very comfortable today.",
           "tiles": [
             "你",
@@ -5597,7 +5597,7 @@
         {
           "id": "a1_2_014",
           "zh": "這樣做很方便。",
-          "pinyin": "",
+          "pinyin": "zhè yàng zuò hěn fāng biàn.",
           "en": "Doing it this way is convenient.",
           "tiles": [
             "這樣",
@@ -5615,7 +5615,7 @@
         {
           "id": "a1_2_015",
           "zh": "老師說得很清楚。",
-          "pinyin": "",
+          "pinyin": "lǎo shī shuō dé hěn qīng chǔ.",
           "en": "The teacher explains it clearly.",
           "tiles": [
             "老師",
@@ -5633,7 +5633,7 @@
         {
           "id": "a1_2_016",
           "zh": "這個問題很重要。",
-          "pinyin": "",
+          "pinyin": "zhè gè wèn tí hěn zhòng yào.",
           "en": "This question is important.",
           "tiles": [
             "這個",
@@ -5651,7 +5651,7 @@
         {
           "id": "a1_2_017",
           "zh": "他今天覺得很忙。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn máng.",
           "en": "He feel very busy today.",
           "tiles": [
             "他",
@@ -5669,7 +5669,7 @@
         {
           "id": "a1_2_018",
           "zh": "他今天覺得很累。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn lèi.",
           "en": "He feel very tired today.",
           "tiles": [
             "他",
@@ -5687,7 +5687,7 @@
         {
           "id": "a1_2_019",
           "zh": "他今天覺得很高興。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn gāo xìng.",
           "en": "He feel very happy today.",
           "tiles": [
             "他",
@@ -5705,7 +5705,7 @@
         {
           "id": "a1_2_020",
           "zh": "他今天覺得很緊張。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn jǐn zhāng.",
           "en": "He feel very nervous today.",
           "tiles": [
             "他",
@@ -5723,7 +5723,7 @@
         {
           "id": "a1_2_021",
           "zh": "他今天覺得很舒服。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn shū fú.",
           "en": "He feel very comfortable today.",
           "tiles": [
             "他",
@@ -5741,7 +5741,7 @@
         {
           "id": "a1_2_022",
           "zh": "這樣做很方便。",
-          "pinyin": "",
+          "pinyin": "zhè yàng zuò hěn fāng biàn.",
           "en": "Doing it this way is convenient.",
           "tiles": [
             "這樣",
@@ -5759,7 +5759,7 @@
         {
           "id": "a1_2_023",
           "zh": "老師說得很清楚。",
-          "pinyin": "",
+          "pinyin": "lǎo shī shuō dé hěn qīng chǔ.",
           "en": "The teacher explains it clearly.",
           "tiles": [
             "老師",
@@ -5777,7 +5777,7 @@
         {
           "id": "a1_2_024",
           "zh": "這個問題很重要。",
-          "pinyin": "",
+          "pinyin": "zhè gè wèn tí hěn zhòng yào.",
           "en": "This question is important.",
           "tiles": [
             "這個",
@@ -5795,7 +5795,7 @@
         {
           "id": "a1_2_025",
           "zh": "她今天覺得很忙。",
-          "pinyin": "",
+          "pinyin": "tā jīn tiān jué dé hěn máng.",
           "en": "She feel very busy today.",
           "tiles": [
             "她",
@@ -5813,7 +5813,7 @@
         {
           "id": "a1_2_026",
           "zh": "我在學校學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài xué xiào xué zhōng wén.",
           "en": "I study Chinese at school.",
           "tiles": [
             "我",
@@ -5832,7 +5832,7 @@
         {
           "id": "a1_2_027",
           "zh": "我在家學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài jiā xué zhōng wén.",
           "en": "I study Chinese at home.",
           "tiles": [
             "我",
@@ -5851,7 +5851,7 @@
         {
           "id": "a1_2_028",
           "zh": "我在圖書館學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài tú shū guǎn xué zhōng wén.",
           "en": "I study Chinese at the library.",
           "tiles": [
             "我",
@@ -5870,7 +5870,7 @@
         {
           "id": "a1_2_029",
           "zh": "我在商店學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài shāng diàn xué zhōng wén.",
           "en": "I study Chinese at the store.",
           "tiles": [
             "我",
@@ -5889,7 +5889,7 @@
         {
           "id": "a1_2_030",
           "zh": "我在餐廳學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài cān tīng xué zhōng wén.",
           "en": "I study Chinese at the restaurant.",
           "tiles": [
             "我",
@@ -5908,7 +5908,7 @@
         {
           "id": "a1_2_031",
           "zh": "我在公園學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài gōng yuán xué zhōng wén.",
           "en": "I study Chinese at the park.",
           "tiles": [
             "我",
@@ -5927,7 +5927,7 @@
         {
           "id": "a1_2_032",
           "zh": "我在教室學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài jiào shì xué zhōng wén.",
           "en": "I study Chinese at the classroom.",
           "tiles": [
             "我",
@@ -5946,7 +5946,7 @@
         {
           "id": "a1_2_033",
           "zh": "我在市場學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ zài shì chǎng xué zhōng wén.",
           "en": "I study Chinese at the market.",
           "tiles": [
             "我",
@@ -5965,7 +5965,7 @@
         {
           "id": "a1_2_034",
           "zh": "你在學校學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài xué xiào xué zhōng wén.",
           "en": "You study Chinese at school.",
           "tiles": [
             "你",
@@ -5984,7 +5984,7 @@
         {
           "id": "a1_2_035",
           "zh": "你在家學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài jiā xué zhōng wén.",
           "en": "You study Chinese at home.",
           "tiles": [
             "你",
@@ -6003,7 +6003,7 @@
         {
           "id": "a1_2_036",
           "zh": "你在圖書館學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài tú shū guǎn xué zhōng wén.",
           "en": "You study Chinese at the library.",
           "tiles": [
             "你",
@@ -6022,7 +6022,7 @@
         {
           "id": "a1_2_037",
           "zh": "你在商店學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài shāng diàn xué zhōng wén.",
           "en": "You study Chinese at the store.",
           "tiles": [
             "你",
@@ -6041,7 +6041,7 @@
         {
           "id": "a1_2_038",
           "zh": "你在餐廳學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài cān tīng xué zhōng wén.",
           "en": "You study Chinese at the restaurant.",
           "tiles": [
             "你",
@@ -6060,7 +6060,7 @@
         {
           "id": "a1_2_039",
           "zh": "你在公園學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài gōng yuán xué zhōng wén.",
           "en": "You study Chinese at the park.",
           "tiles": [
             "你",
@@ -6079,7 +6079,7 @@
         {
           "id": "a1_2_040",
           "zh": "你在教室學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài jiào shì xué zhōng wén.",
           "en": "You study Chinese at the classroom.",
           "tiles": [
             "你",
@@ -6098,7 +6098,7 @@
         {
           "id": "a1_2_041",
           "zh": "你在市場學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ zài shì chǎng xué zhōng wén.",
           "en": "You study Chinese at the market.",
           "tiles": [
             "你",
@@ -6117,7 +6117,7 @@
         {
           "id": "a1_2_042",
           "zh": "他在學校學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài xué xiào xué zhōng wén.",
           "en": "He study Chinese at school.",
           "tiles": [
             "他",
@@ -6136,7 +6136,7 @@
         {
           "id": "a1_2_043",
           "zh": "他在家學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài jiā xué zhōng wén.",
           "en": "He study Chinese at home.",
           "tiles": [
             "他",
@@ -6155,7 +6155,7 @@
         {
           "id": "a1_2_044",
           "zh": "他在圖書館學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài tú shū guǎn xué zhōng wén.",
           "en": "He study Chinese at the library.",
           "tiles": [
             "他",
@@ -6174,7 +6174,7 @@
         {
           "id": "a1_2_045",
           "zh": "他在商店學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài shāng diàn xué zhōng wén.",
           "en": "He study Chinese at the store.",
           "tiles": [
             "他",
@@ -6193,7 +6193,7 @@
         {
           "id": "a1_2_046",
           "zh": "他在餐廳學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài cān tīng xué zhōng wén.",
           "en": "He study Chinese at the restaurant.",
           "tiles": [
             "他",
@@ -6212,7 +6212,7 @@
         {
           "id": "a1_2_047",
           "zh": "他在公園學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài gōng yuán xué zhōng wén.",
           "en": "He study Chinese at the park.",
           "tiles": [
             "他",
@@ -6231,7 +6231,7 @@
         {
           "id": "a1_2_048",
           "zh": "他在教室學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài jiào shì xué zhōng wén.",
           "en": "He study Chinese at the classroom.",
           "tiles": [
             "他",
@@ -6250,7 +6250,7 @@
         {
           "id": "a1_2_049",
           "zh": "他在市場學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài shì chǎng xué zhōng wén.",
           "en": "He study Chinese at the market.",
           "tiles": [
             "他",
@@ -6269,7 +6269,7 @@
         {
           "id": "a1_2_050",
           "zh": "她在學校學中文。",
-          "pinyin": "",
+          "pinyin": "tā zài xué xiào xué zhōng wén.",
           "en": "She study Chinese at school.",
           "tiles": [
             "她",
@@ -6288,7 +6288,7 @@
         {
           "id": "a1_2_051",
           "zh": "我比較喜歡牛肉麵，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān niú ròu miàn, bù tài xǐ huān kā fēi.",
           "en": "I prefer beef noodle soup and do not really like coffee.",
           "tiles": [
             "我",
@@ -6309,7 +6309,7 @@
         {
           "id": "a1_2_052",
           "zh": "我比較喜歡水餃，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān shuǐ jiǎo, bù tài xǐ huān kā fēi.",
           "en": "I prefer dumplings and do not really like coffee.",
           "tiles": [
             "我",
@@ -6330,7 +6330,7 @@
         {
           "id": "a1_2_053",
           "zh": "我比較喜歡水果，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān shuǐ guǒ, bù tài xǐ huān kā fēi.",
           "en": "I prefer fruit and do not really like coffee.",
           "tiles": [
             "我",
@@ -6351,7 +6351,7 @@
         {
           "id": "a1_2_054",
           "zh": "我比較喜歡咖啡，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān kā fēi, bù tài xǐ huān kā fēi.",
           "en": "I prefer coffee and do not really like coffee.",
           "tiles": [
             "我",
@@ -6372,7 +6372,7 @@
         {
           "id": "a1_2_055",
           "zh": "我比較喜歡茶，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān chá, bù tài xǐ huān kā fēi.",
           "en": "I prefer tea and do not really like coffee.",
           "tiles": [
             "我",
@@ -6393,7 +6393,7 @@
         {
           "id": "a1_2_056",
           "zh": "我比較喜歡早餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān zǎo cān, bù tài xǐ huān kā fēi.",
           "en": "I prefer breakfast and do not really like coffee.",
           "tiles": [
             "我",
@@ -6414,7 +6414,7 @@
         {
           "id": "a1_2_057",
           "zh": "我比較喜歡晚餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān wǎn cān, bù tài xǐ huān kā fēi.",
           "en": "I prefer dinner and do not really like coffee.",
           "tiles": [
             "我",
@@ -6435,7 +6435,7 @@
         {
           "id": "a1_2_058",
           "zh": "我比較喜歡便當，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "wǒ bǐ jiào xǐ huān biàn dāng, bù tài xǐ huān kā fēi.",
           "en": "I prefer a lunch box and do not really like coffee.",
           "tiles": [
             "我",
@@ -6456,7 +6456,7 @@
         {
           "id": "a1_2_059",
           "zh": "你比較喜歡牛肉麵，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān niú ròu miàn, bù tài xǐ huān kā fēi.",
           "en": "You prefer beef noodle soup and do not really like coffee.",
           "tiles": [
             "你",
@@ -6477,7 +6477,7 @@
         {
           "id": "a1_2_060",
           "zh": "你比較喜歡水餃，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān shuǐ jiǎo, bù tài xǐ huān kā fēi.",
           "en": "You prefer dumplings and do not really like coffee.",
           "tiles": [
             "你",
@@ -6498,7 +6498,7 @@
         {
           "id": "a1_2_061",
           "zh": "你比較喜歡水果，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān shuǐ guǒ, bù tài xǐ huān kā fēi.",
           "en": "You prefer fruit and do not really like coffee.",
           "tiles": [
             "你",
@@ -6519,7 +6519,7 @@
         {
           "id": "a1_2_062",
           "zh": "你比較喜歡咖啡，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān kā fēi, bù tài xǐ huān kā fēi.",
           "en": "You prefer coffee and do not really like coffee.",
           "tiles": [
             "你",
@@ -6540,7 +6540,7 @@
         {
           "id": "a1_2_063",
           "zh": "你比較喜歡茶，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān chá, bù tài xǐ huān kā fēi.",
           "en": "You prefer tea and do not really like coffee.",
           "tiles": [
             "你",
@@ -6561,7 +6561,7 @@
         {
           "id": "a1_2_064",
           "zh": "你比較喜歡早餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān zǎo cān, bù tài xǐ huān kā fēi.",
           "en": "You prefer breakfast and do not really like coffee.",
           "tiles": [
             "你",
@@ -6582,7 +6582,7 @@
         {
           "id": "a1_2_065",
           "zh": "你比較喜歡晚餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān wǎn cān, bù tài xǐ huān kā fēi.",
           "en": "You prefer dinner and do not really like coffee.",
           "tiles": [
             "你",
@@ -6603,7 +6603,7 @@
         {
           "id": "a1_2_066",
           "zh": "你比較喜歡便當，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "nǐ bǐ jiào xǐ huān biàn dāng, bù tài xǐ huān kā fēi.",
           "en": "You prefer a lunch box and do not really like coffee.",
           "tiles": [
             "你",
@@ -6624,7 +6624,7 @@
         {
           "id": "a1_2_067",
           "zh": "他比較喜歡牛肉麵，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān niú ròu miàn, bù tài xǐ huān kā fēi.",
           "en": "He prefer beef noodle soup and do not really like coffee.",
           "tiles": [
             "他",
@@ -6645,7 +6645,7 @@
         {
           "id": "a1_2_068",
           "zh": "他比較喜歡水餃，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān shuǐ jiǎo, bù tài xǐ huān kā fēi.",
           "en": "He prefer dumplings and do not really like coffee.",
           "tiles": [
             "他",
@@ -6666,7 +6666,7 @@
         {
           "id": "a1_2_069",
           "zh": "他比較喜歡水果，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān shuǐ guǒ, bù tài xǐ huān kā fēi.",
           "en": "He prefer fruit and do not really like coffee.",
           "tiles": [
             "他",
@@ -6687,7 +6687,7 @@
         {
           "id": "a1_2_070",
           "zh": "他比較喜歡咖啡，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān kā fēi, bù tài xǐ huān kā fēi.",
           "en": "He prefer coffee and do not really like coffee.",
           "tiles": [
             "他",
@@ -6708,7 +6708,7 @@
         {
           "id": "a1_2_071",
           "zh": "他比較喜歡茶，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān chá, bù tài xǐ huān kā fēi.",
           "en": "He prefer tea and do not really like coffee.",
           "tiles": [
             "他",
@@ -6729,7 +6729,7 @@
         {
           "id": "a1_2_072",
           "zh": "他比較喜歡早餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān zǎo cān, bù tài xǐ huān kā fēi.",
           "en": "He prefer breakfast and do not really like coffee.",
           "tiles": [
             "他",
@@ -6750,7 +6750,7 @@
         {
           "id": "a1_2_073",
           "zh": "他比較喜歡晚餐，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān wǎn cān, bù tài xǐ huān kā fēi.",
           "en": "He prefer dinner and do not really like coffee.",
           "tiles": [
             "他",
@@ -6771,7 +6771,7 @@
         {
           "id": "a1_2_074",
           "zh": "他比較喜歡便當，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān biàn dāng, bù tài xǐ huān kā fēi.",
           "en": "He prefer a lunch box and do not really like coffee.",
           "tiles": [
             "他",
@@ -6792,7 +6792,7 @@
         {
           "id": "a1_2_075",
           "zh": "她比較喜歡牛肉麵，不太喜歡咖啡。",
-          "pinyin": "",
+          "pinyin": "tā bǐ jiào xǐ huān niú ròu miàn, bù tài xǐ huān kā fēi.",
           "en": "She prefer beef noodle soup and do not really like coffee.",
           "tiles": [
             "她",
@@ -6813,7 +6813,7 @@
         {
           "id": "a1_2_076",
           "zh": "因為今天下雨，所以我想留在家裡。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ wǒ xiǎng liú zài jiā lǐ.",
           "en": "Because it is raining today, I want to stay home.",
           "tiles": [
             "因為",
@@ -6831,7 +6831,7 @@
         {
           "id": "a1_2_077",
           "zh": "因為今天下雨，所以我們要早一點出門。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ wǒ men yào zǎo yī diǎn chū mén.",
           "en": "Because it is raining today, we need to leave earlier.",
           "tiles": [
             "因為",
@@ -6849,7 +6849,7 @@
         {
           "id": "a1_2_078",
           "zh": "因為今天下雨，所以她不能去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ tā bù néng qù.",
           "en": "Because it is raining today, she cannot go.",
           "tiles": [
             "因為",
@@ -6867,7 +6867,7 @@
         {
           "id": "a1_2_079",
           "zh": "因為今天下雨，所以你要帶傘。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ nǐ yào dài sǎn.",
           "en": "Because it is raining today, you need to bring an umbrella.",
           "tiles": [
             "因為",
@@ -6885,7 +6885,7 @@
         {
           "id": "a1_2_080",
           "zh": "因為今天下雨，所以他需要休息。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ tā xū yào xiū xī.",
           "en": "Because it is raining today, he needs to rest.",
           "tiles": [
             "因為",
@@ -6903,7 +6903,7 @@
         {
           "id": "a1_2_081",
           "zh": "因為今天下雨，所以我先做功課。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ wǒ xiān zuò gōng kè.",
           "en": "Because it is raining today, I will do homework first.",
           "tiles": [
             "因為",
@@ -6921,7 +6921,7 @@
         {
           "id": "a1_2_082",
           "zh": "因為今天下雨，所以我們改天再去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ wǒ men gǎi tiān zài qù.",
           "en": "Because it is raining today, we will go another day.",
           "tiles": [
             "因為",
@@ -6939,7 +6939,7 @@
         {
           "id": "a1_2_083",
           "zh": "因為今天下雨，所以他決定坐捷運。",
-          "pinyin": "",
+          "pinyin": "yīn wèi jīn tiān xià yǔ, suǒ yǐ tā jué dìng zuò jié yùn.",
           "en": "Because it is raining today, he decided to take the MRT.",
           "tiles": [
             "因為",
@@ -6957,7 +6957,7 @@
         {
           "id": "a1_2_084",
           "zh": "因為我有考試，所以我想留在家裡。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ wǒ xiǎng liú zài jiā lǐ.",
           "en": "Because I have a test, I want to stay home.",
           "tiles": [
             "因為",
@@ -6975,7 +6975,7 @@
         {
           "id": "a1_2_085",
           "zh": "因為我有考試，所以我們要早一點出門。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ wǒ men yào zǎo yī diǎn chū mén.",
           "en": "Because I have a test, we need to leave earlier.",
           "tiles": [
             "因為",
@@ -6993,7 +6993,7 @@
         {
           "id": "a1_2_086",
           "zh": "因為我有考試，所以她不能去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ tā bù néng qù.",
           "en": "Because I have a test, she cannot go.",
           "tiles": [
             "因為",
@@ -7011,7 +7011,7 @@
         {
           "id": "a1_2_087",
           "zh": "因為我有考試，所以你要帶傘。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ nǐ yào dài sǎn.",
           "en": "Because I have a test, you need to bring an umbrella.",
           "tiles": [
             "因為",
@@ -7029,7 +7029,7 @@
         {
           "id": "a1_2_088",
           "zh": "因為我有考試，所以他需要休息。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ tā xū yào xiū xī.",
           "en": "Because I have a test, he needs to rest.",
           "tiles": [
             "因為",
@@ -7047,7 +7047,7 @@
         {
           "id": "a1_2_089",
           "zh": "因為我有考試，所以我先做功課。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ wǒ xiān zuò gōng kè.",
           "en": "Because I have a test, I will do homework first.",
           "tiles": [
             "因為",
@@ -7065,7 +7065,7 @@
         {
           "id": "a1_2_090",
           "zh": "因為我有考試，所以我們改天再去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ wǒ men gǎi tiān zài qù.",
           "en": "Because I have a test, we will go another day.",
           "tiles": [
             "因為",
@@ -7083,7 +7083,7 @@
         {
           "id": "a1_2_091",
           "zh": "因為我有考試，所以他決定坐捷運。",
-          "pinyin": "",
+          "pinyin": "yīn wèi wǒ yǒu kǎo shì, suǒ yǐ tā jué dìng zuò jié yùn.",
           "en": "Because I have a test, he decided to take the MRT.",
           "tiles": [
             "因為",
@@ -7101,7 +7101,7 @@
         {
           "id": "a1_2_092",
           "zh": "因為他不舒服，所以我想留在家裡。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ wǒ xiǎng liú zài jiā lǐ.",
           "en": "Because he is not feeling well, I want to stay home.",
           "tiles": [
             "因為",
@@ -7119,7 +7119,7 @@
         {
           "id": "a1_2_093",
           "zh": "因為他不舒服，所以我們要早一點出門。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ wǒ men yào zǎo yī diǎn chū mén.",
           "en": "Because he is not feeling well, we need to leave earlier.",
           "tiles": [
             "因為",
@@ -7137,7 +7137,7 @@
         {
           "id": "a1_2_094",
           "zh": "因為他不舒服，所以她不能去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ tā bù néng qù.",
           "en": "Because he is not feeling well, she cannot go.",
           "tiles": [
             "因為",
@@ -7155,7 +7155,7 @@
         {
           "id": "a1_2_095",
           "zh": "因為他不舒服，所以你要帶傘。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ nǐ yào dài sǎn.",
           "en": "Because he is not feeling well, you need to bring an umbrella.",
           "tiles": [
             "因為",
@@ -7173,7 +7173,7 @@
         {
           "id": "a1_2_096",
           "zh": "因為他不舒服，所以他需要休息。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ tā xū yào xiū xī.",
           "en": "Because he is not feeling well, he needs to rest.",
           "tiles": [
             "因為",
@@ -7191,7 +7191,7 @@
         {
           "id": "a1_2_097",
           "zh": "因為他不舒服，所以我先做功課。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ wǒ xiān zuò gōng kè.",
           "en": "Because he is not feeling well, I will do homework first.",
           "tiles": [
             "因為",
@@ -7209,7 +7209,7 @@
         {
           "id": "a1_2_098",
           "zh": "因為他不舒服，所以我們改天再去。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ wǒ men gǎi tiān zài qù.",
           "en": "Because he is not feeling well, we will go another day.",
           "tiles": [
             "因為",
@@ -7227,7 +7227,7 @@
         {
           "id": "a1_2_099",
           "zh": "因為他不舒服，所以他決定坐捷運。",
-          "pinyin": "",
+          "pinyin": "yīn wèi tā bù shū fú, suǒ yǐ tā jué dìng zuò jié yùn.",
           "en": "Because he is not feeling well, he decided to take the MRT.",
           "tiles": [
             "因為",
@@ -7245,7 +7245,7 @@
         {
           "id": "a1_2_100",
           "zh": "因為餐廳很遠，所以我想留在家裡。",
-          "pinyin": "",
+          "pinyin": "yīn wèi cān tīng hěn yuǎn, suǒ yǐ wǒ xiǎng liú zài jiā lǐ.",
           "en": "Because the restaurant is far, I want to stay home.",
           "tiles": [
             "因為",
@@ -7273,7 +7273,7 @@
         {
           "id": "a2_1_001",
           "zh": "我今天要先複習生詞，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí shēng cí, rán hòu liàn xí tīng lì.",
           "en": "I need to review vocabulary words first and then practice listening today.",
           "tiles": [
             "我",
@@ -7296,7 +7296,7 @@
         {
           "id": "a2_1_002",
           "zh": "我今天要先複習語法，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí yǔ fǎ, rán hòu liàn xí tīng lì.",
           "en": "I need to review grammar first and then practice listening today.",
           "tiles": [
             "我",
@@ -7319,7 +7319,7 @@
         {
           "id": "a2_1_003",
           "zh": "我今天要先複習聲調，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí shēng diào, rán hòu liàn xí tīng lì.",
           "en": "I need to review tones first and then practice listening today.",
           "tiles": [
             "我",
@@ -7342,7 +7342,7 @@
         {
           "id": "a2_1_004",
           "zh": "我今天要先複習句子，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí jù zi, rán hòu liàn xí tīng lì.",
           "en": "I need to review sentences first and then practice listening today.",
           "tiles": [
             "我",
@@ -7365,7 +7365,7 @@
         {
           "id": "a2_1_005",
           "zh": "我今天要先複習課文，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí kè wén, rán hòu liàn xí tīng lì.",
           "en": "I need to review the lesson text first and then practice listening today.",
           "tiles": [
             "我",
@@ -7388,7 +7388,7 @@
         {
           "id": "a2_1_006",
           "zh": "我今天要先複習對話，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ jīn tiān yào xiān fù xí duì huà, rán hòu liàn xí tīng lì.",
           "en": "I need to review dialogue first and then practice listening today.",
           "tiles": [
             "我",
@@ -7411,7 +7411,7 @@
         {
           "id": "a2_1_007",
           "zh": "我明天要先複習生詞，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí shēng cí, rán hòu liàn xí tīng lì.",
           "en": "I need to review vocabulary words first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7434,7 +7434,7 @@
         {
           "id": "a2_1_008",
           "zh": "我明天要先複習語法，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí yǔ fǎ, rán hòu liàn xí tīng lì.",
           "en": "I need to review grammar first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7457,7 +7457,7 @@
         {
           "id": "a2_1_009",
           "zh": "我明天要先複習聲調，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí shēng diào, rán hòu liàn xí tīng lì.",
           "en": "I need to review tones first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7480,7 +7480,7 @@
         {
           "id": "a2_1_010",
           "zh": "我明天要先複習句子，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí jù zi, rán hòu liàn xí tīng lì.",
           "en": "I need to review sentences first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7503,7 +7503,7 @@
         {
           "id": "a2_1_011",
           "zh": "我明天要先複習課文，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí kè wén, rán hòu liàn xí tīng lì.",
           "en": "I need to review the lesson text first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7526,7 +7526,7 @@
         {
           "id": "a2_1_012",
           "zh": "我明天要先複習對話，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ míng tiān yào xiān fù xí duì huà, rán hòu liàn xí tīng lì.",
           "en": "I need to review dialogue first and then practice listening tomorrow.",
           "tiles": [
             "我",
@@ -7549,7 +7549,7 @@
         {
           "id": "a2_1_013",
           "zh": "我早上要先複習生詞，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí shēng cí, rán hòu liàn xí tīng lì.",
           "en": "I need to review vocabulary words first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7572,7 +7572,7 @@
         {
           "id": "a2_1_014",
           "zh": "我早上要先複習語法，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí yǔ fǎ, rán hòu liàn xí tīng lì.",
           "en": "I need to review grammar first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7595,7 +7595,7 @@
         {
           "id": "a2_1_015",
           "zh": "我早上要先複習聲調，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí shēng diào, rán hòu liàn xí tīng lì.",
           "en": "I need to review tones first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7618,7 +7618,7 @@
         {
           "id": "a2_1_016",
           "zh": "我早上要先複習句子，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí jù zi, rán hòu liàn xí tīng lì.",
           "en": "I need to review sentences first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7641,7 +7641,7 @@
         {
           "id": "a2_1_017",
           "zh": "我早上要先複習課文，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí kè wén, rán hòu liàn xí tīng lì.",
           "en": "I need to review the lesson text first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7664,7 +7664,7 @@
         {
           "id": "a2_1_018",
           "zh": "我早上要先複習對話，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ zǎo shàng yào xiān fù xí duì huà, rán hòu liàn xí tīng lì.",
           "en": "I need to review dialogue first and then practice listening in the morning.",
           "tiles": [
             "我",
@@ -7687,7 +7687,7 @@
         {
           "id": "a2_1_019",
           "zh": "我下午要先複習生詞，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí shēng cí, rán hòu liàn xí tīng lì.",
           "en": "I need to review vocabulary words first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7710,7 +7710,7 @@
         {
           "id": "a2_1_020",
           "zh": "我下午要先複習語法，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí yǔ fǎ, rán hòu liàn xí tīng lì.",
           "en": "I need to review grammar first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7733,7 +7733,7 @@
         {
           "id": "a2_1_021",
           "zh": "我下午要先複習聲調，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí shēng diào, rán hòu liàn xí tīng lì.",
           "en": "I need to review tones first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7756,7 +7756,7 @@
         {
           "id": "a2_1_022",
           "zh": "我下午要先複習句子，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí jù zi, rán hòu liàn xí tīng lì.",
           "en": "I need to review sentences first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7779,7 +7779,7 @@
         {
           "id": "a2_1_023",
           "zh": "我下午要先複習課文，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí kè wén, rán hòu liàn xí tīng lì.",
           "en": "I need to review the lesson text first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7802,7 +7802,7 @@
         {
           "id": "a2_1_024",
           "zh": "我下午要先複習對話，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ xià wǔ yào xiān fù xí duì huà, rán hòu liàn xí tīng lì.",
           "en": "I need to review dialogue first and then practice listening in the afternoon.",
           "tiles": [
             "我",
@@ -7825,7 +7825,7 @@
         {
           "id": "a2_1_025",
           "zh": "我晚上要先複習生詞，然後練習聽力。",
-          "pinyin": "",
+          "pinyin": "wǒ wǎn shàng yào xiān fù xí shēng cí, rán hòu liàn xí tīng lì.",
           "en": "I need to review vocabulary words first and then practice listening at night.",
           "tiles": [
             "我",
@@ -7848,7 +7848,7 @@
         {
           "id": "a2_1_026",
           "zh": "我如果有時間，就會去學校看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù xué xiào kàn shū.",
           "en": "If I have time, I will go to school to read.",
           "tiles": [
             "我",
@@ -7870,7 +7870,7 @@
         {
           "id": "a2_1_027",
           "zh": "我如果有時間，就會在家看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì zài jiā kàn shū.",
           "en": "If I have time, I will read at home.",
           "tiles": [
             "我",
@@ -7891,7 +7891,7 @@
         {
           "id": "a2_1_028",
           "zh": "我如果有時間，就會去圖書館看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù tú shū guǎn kàn shū.",
           "en": "If I have time, I will go to the library to read.",
           "tiles": [
             "我",
@@ -7913,7 +7913,7 @@
         {
           "id": "a2_1_029",
           "zh": "我如果有時間，就會去商店看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù shāng diàn kàn shū.",
           "en": "If I have time, I will go to the store to read.",
           "tiles": [
             "我",
@@ -7935,7 +7935,7 @@
         {
           "id": "a2_1_030",
           "zh": "我如果有時間，就會去餐廳看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù cān tīng kàn shū.",
           "en": "If I have time, I will go to the restaurant to read.",
           "tiles": [
             "我",
@@ -7957,7 +7957,7 @@
         {
           "id": "a2_1_031",
           "zh": "我如果有時間，就會去公園看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù gōng yuán kàn shū.",
           "en": "If I have time, I will go to the park to read.",
           "tiles": [
             "我",
@@ -7979,7 +7979,7 @@
         {
           "id": "a2_1_032",
           "zh": "我如果有時間，就會去教室看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù jiào shì kàn shū.",
           "en": "If I have time, I will go to the classroom to read.",
           "tiles": [
             "我",
@@ -8001,7 +8001,7 @@
         {
           "id": "a2_1_033",
           "zh": "我如果有時間，就會去市場看書。",
-          "pinyin": "",
+          "pinyin": "wǒ rú guǒ yǒu shí jiān, jiù huì qù shì chǎng kàn shū.",
           "en": "If I have time, I will go to the market to read.",
           "tiles": [
             "我",
@@ -8023,7 +8023,7 @@
         {
           "id": "a2_1_034",
           "zh": "你如果有時間，就會去學校看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù xué xiào kàn shū.",
           "en": "If you have time, you will go to school to read.",
           "tiles": [
             "你",
@@ -8045,7 +8045,7 @@
         {
           "id": "a2_1_035",
           "zh": "你如果有時間，就會在家看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì zài jiā kàn shū.",
           "en": "If you have time, you will read at home.",
           "tiles": [
             "你",
@@ -8066,7 +8066,7 @@
         {
           "id": "a2_1_036",
           "zh": "你如果有時間，就會去圖書館看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù tú shū guǎn kàn shū.",
           "en": "If you have time, you will go to the library to read.",
           "tiles": [
             "你",
@@ -8088,7 +8088,7 @@
         {
           "id": "a2_1_037",
           "zh": "你如果有時間，就會去商店看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù shāng diàn kàn shū.",
           "en": "If you have time, you will go to the store to read.",
           "tiles": [
             "你",
@@ -8110,7 +8110,7 @@
         {
           "id": "a2_1_038",
           "zh": "你如果有時間，就會去餐廳看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù cān tīng kàn shū.",
           "en": "If you have time, you will go to the restaurant to read.",
           "tiles": [
             "你",
@@ -8132,7 +8132,7 @@
         {
           "id": "a2_1_039",
           "zh": "你如果有時間，就會去公園看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù gōng yuán kàn shū.",
           "en": "If you have time, you will go to the park to read.",
           "tiles": [
             "你",
@@ -8154,7 +8154,7 @@
         {
           "id": "a2_1_040",
           "zh": "你如果有時間，就會去教室看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù jiào shì kàn shū.",
           "en": "If you have time, you will go to the classroom to read.",
           "tiles": [
             "你",
@@ -8176,7 +8176,7 @@
         {
           "id": "a2_1_041",
           "zh": "你如果有時間，就會去市場看書。",
-          "pinyin": "",
+          "pinyin": "nǐ rú guǒ yǒu shí jiān, jiù huì qù shì chǎng kàn shū.",
           "en": "If you have time, you will go to the market to read.",
           "tiles": [
             "你",
@@ -8198,7 +8198,7 @@
         {
           "id": "a2_1_042",
           "zh": "他如果有時間，就會去學校看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù xué xiào kàn shū.",
           "en": "If he has time, he will go to school to read.",
           "tiles": [
             "他",
@@ -8220,7 +8220,7 @@
         {
           "id": "a2_1_043",
           "zh": "他如果有時間，就會在家看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì zài jiā kàn shū.",
           "en": "If he has time, he will read at home.",
           "tiles": [
             "他",
@@ -8241,7 +8241,7 @@
         {
           "id": "a2_1_044",
           "zh": "他如果有時間，就會去圖書館看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù tú shū guǎn kàn shū.",
           "en": "If he has time, he will go to the library to read.",
           "tiles": [
             "他",
@@ -8263,7 +8263,7 @@
         {
           "id": "a2_1_045",
           "zh": "他如果有時間，就會去商店看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù shāng diàn kàn shū.",
           "en": "If he has time, he will go to the store to read.",
           "tiles": [
             "他",
@@ -8285,7 +8285,7 @@
         {
           "id": "a2_1_046",
           "zh": "他如果有時間，就會去餐廳看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù cān tīng kàn shū.",
           "en": "If he has time, he will go to the restaurant to read.",
           "tiles": [
             "他",
@@ -8307,7 +8307,7 @@
         {
           "id": "a2_1_047",
           "zh": "他如果有時間，就會去公園看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù gōng yuán kàn shū.",
           "en": "If he has time, he will go to the park to read.",
           "tiles": [
             "他",
@@ -8329,7 +8329,7 @@
         {
           "id": "a2_1_048",
           "zh": "他如果有時間，就會去教室看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù jiào shì kàn shū.",
           "en": "If he has time, he will go to the classroom to read.",
           "tiles": [
             "他",
@@ -8351,7 +8351,7 @@
         {
           "id": "a2_1_049",
           "zh": "他如果有時間，就會去市場看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù shì chǎng kàn shū.",
           "en": "If he has time, he will go to the market to read.",
           "tiles": [
             "他",
@@ -8373,7 +8373,7 @@
         {
           "id": "a2_1_050",
           "zh": "她如果有時間，就會去學校看書。",
-          "pinyin": "",
+          "pinyin": "tā rú guǒ yǒu shí jiān, jiù huì qù xué xiào kàn shū.",
           "en": "If she has time, she will go to school to read.",
           "tiles": [
             "她",
@@ -8395,7 +8395,7 @@
         {
           "id": "a2_1_051",
           "zh": "我雖然很忙，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn máng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am busy, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8417,7 +8417,7 @@
         {
           "id": "a2_1_052",
           "zh": "我雖然很累，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn lèi, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am tired, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8439,7 +8439,7 @@
         {
           "id": "a2_1_053",
           "zh": "我雖然很高興，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn gāo xìng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am happy, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8461,7 +8461,7 @@
         {
           "id": "a2_1_054",
           "zh": "我雖然很緊張，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn jǐn zhāng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am nervous, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8483,7 +8483,7 @@
         {
           "id": "a2_1_055",
           "zh": "我雖然很舒服，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn shū fú, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am comfortable, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8505,7 +8505,7 @@
         {
           "id": "a2_1_056",
           "zh": "我雖然很傷心，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ suī rán hěn shāng xīn, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although I am sad, I still want to study Chinese.",
           "tiles": [
             "我",
@@ -8527,7 +8527,7 @@
         {
           "id": "a2_1_057",
           "zh": "你雖然很忙，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn máng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are busy, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8549,7 +8549,7 @@
         {
           "id": "a2_1_058",
           "zh": "你雖然很累，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn lèi, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are tired, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8571,7 +8571,7 @@
         {
           "id": "a2_1_059",
           "zh": "你雖然很高興，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn gāo xìng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are happy, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8593,7 +8593,7 @@
         {
           "id": "a2_1_060",
           "zh": "你雖然很緊張，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn jǐn zhāng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are nervous, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8615,7 +8615,7 @@
         {
           "id": "a2_1_061",
           "zh": "你雖然很舒服，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn shū fú, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are comfortable, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8637,7 +8637,7 @@
         {
           "id": "a2_1_062",
           "zh": "你雖然很傷心，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "nǐ suī rán hěn shāng xīn, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although you are sad, you still want to study Chinese.",
           "tiles": [
             "你",
@@ -8659,7 +8659,7 @@
         {
           "id": "a2_1_063",
           "zh": "他雖然很忙，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn máng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is busy, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8681,7 +8681,7 @@
         {
           "id": "a2_1_064",
           "zh": "他雖然很累，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn lèi, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is tired, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8703,7 +8703,7 @@
         {
           "id": "a2_1_065",
           "zh": "他雖然很高興，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn gāo xìng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is happy, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8725,7 +8725,7 @@
         {
           "id": "a2_1_066",
           "zh": "他雖然很緊張，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn jǐn zhāng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is nervous, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8747,7 +8747,7 @@
         {
           "id": "a2_1_067",
           "zh": "他雖然很舒服，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn shū fú, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is comfortable, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8769,7 +8769,7 @@
         {
           "id": "a2_1_068",
           "zh": "他雖然很傷心，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn shāng xīn, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although he is sad, he still wants to study Chinese.",
           "tiles": [
             "他",
@@ -8791,7 +8791,7 @@
         {
           "id": "a2_1_069",
           "zh": "她雖然很忙，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn máng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is busy, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8813,7 +8813,7 @@
         {
           "id": "a2_1_070",
           "zh": "她雖然很累，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn lèi, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is tired, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8835,7 +8835,7 @@
         {
           "id": "a2_1_071",
           "zh": "她雖然很高興，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn gāo xìng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is happy, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8857,7 +8857,7 @@
         {
           "id": "a2_1_072",
           "zh": "她雖然很緊張，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn jǐn zhāng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is nervous, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8879,7 +8879,7 @@
         {
           "id": "a2_1_073",
           "zh": "她雖然很舒服，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn shū fú, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is comfortable, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8901,7 +8901,7 @@
         {
           "id": "a2_1_074",
           "zh": "她雖然很傷心，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "tā suī rán hěn shāng xīn, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although she is sad, she still wants to study Chinese.",
           "tiles": [
             "她",
@@ -8923,7 +8923,7 @@
         {
           "id": "a2_1_075",
           "zh": "我們雖然很忙，可是還是想學中文。",
-          "pinyin": "",
+          "pinyin": "wǒ men suī rán hěn máng, kě shì hái shì xiǎng xué zhōng wén.",
           "en": "Although we are busy, we still want to study Chinese.",
           "tiles": [
             "我們",
@@ -8945,7 +8945,7 @@
         {
           "id": "a2_1_076",
           "zh": "我把一杯咖啡放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī bēi kā fēi fàng zài zhuō zi shàng.",
           "en": "I put a cup of coffee on the table.",
           "tiles": [
             "我",
@@ -8965,7 +8965,7 @@
         {
           "id": "a2_1_077",
           "zh": "我把一碗飯放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī wǎn fàn fàng zài zhuō zi shàng.",
           "en": "I put a bowl of rice on the table.",
           "tiles": [
             "我",
@@ -8985,7 +8985,7 @@
         {
           "id": "a2_1_078",
           "zh": "我把一瓶水放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī píng shuǐ fàng zài zhuō zi shàng.",
           "en": "I put a bottle of water on the table.",
           "tiles": [
             "我",
@@ -9005,7 +9005,7 @@
         {
           "id": "a2_1_079",
           "zh": "我把一張票放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī zhāng piào fàng zài zhuō zi shàng.",
           "en": "I put a ticket on the table.",
           "tiles": [
             "我",
@@ -9025,7 +9025,7 @@
         {
           "id": "a2_1_080",
           "zh": "我把一件衣服放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī jiàn yī fú fàng zài zhuō zi shàng.",
           "en": "I put a piece of clothing on the table.",
           "tiles": [
             "我",
@@ -9045,7 +9045,7 @@
         {
           "id": "a2_1_081",
           "zh": "我把一個包子放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī gè bāo zi fàng zài zhuō zi shàng.",
           "en": "I put a steamed bun on the table.",
           "tiles": [
             "我",
@@ -9065,7 +9065,7 @@
         {
           "id": "a2_1_082",
           "zh": "我把一本書放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī běn shū fàng zài zhuō zi shàng.",
           "en": "I put a book on the table.",
           "tiles": [
             "我",
@@ -9085,7 +9085,7 @@
         {
           "id": "a2_1_083",
           "zh": "我把一支筆放在桌子上。",
-          "pinyin": "",
+          "pinyin": "wǒ bǎ yī zhī bǐ fàng zài zhuō zi shàng.",
           "en": "I put a pen on the table.",
           "tiles": [
             "我",
@@ -9105,7 +9105,7 @@
         {
           "id": "a2_1_084",
           "zh": "你把一杯咖啡放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī bēi kā fēi fàng zài zhuō zi shàng.",
           "en": "You put a cup of coffee on the table.",
           "tiles": [
             "你",
@@ -9125,7 +9125,7 @@
         {
           "id": "a2_1_085",
           "zh": "你把一碗飯放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī wǎn fàn fàng zài zhuō zi shàng.",
           "en": "You put a bowl of rice on the table.",
           "tiles": [
             "你",
@@ -9145,7 +9145,7 @@
         {
           "id": "a2_1_086",
           "zh": "你把一瓶水放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī píng shuǐ fàng zài zhuō zi shàng.",
           "en": "You put a bottle of water on the table.",
           "tiles": [
             "你",
@@ -9165,7 +9165,7 @@
         {
           "id": "a2_1_087",
           "zh": "你把一張票放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī zhāng piào fàng zài zhuō zi shàng.",
           "en": "You put a ticket on the table.",
           "tiles": [
             "你",
@@ -9185,7 +9185,7 @@
         {
           "id": "a2_1_088",
           "zh": "你把一件衣服放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī jiàn yī fú fàng zài zhuō zi shàng.",
           "en": "You put a piece of clothing on the table.",
           "tiles": [
             "你",
@@ -9205,7 +9205,7 @@
         {
           "id": "a2_1_089",
           "zh": "你把一個包子放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī gè bāo zi fàng zài zhuō zi shàng.",
           "en": "You put a steamed bun on the table.",
           "tiles": [
             "你",
@@ -9225,7 +9225,7 @@
         {
           "id": "a2_1_090",
           "zh": "你把一本書放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī běn shū fàng zài zhuō zi shàng.",
           "en": "You put a book on the table.",
           "tiles": [
             "你",
@@ -9245,7 +9245,7 @@
         {
           "id": "a2_1_091",
           "zh": "你把一支筆放在桌子上。",
-          "pinyin": "",
+          "pinyin": "nǐ bǎ yī zhī bǐ fàng zài zhuō zi shàng.",
           "en": "You put a pen on the table.",
           "tiles": [
             "你",
@@ -9265,7 +9265,7 @@
         {
           "id": "a2_1_092",
           "zh": "他把一杯咖啡放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī bēi kā fēi fàng zài zhuō zi shàng.",
           "en": "He put a cup of coffee on the table.",
           "tiles": [
             "他",
@@ -9285,7 +9285,7 @@
         {
           "id": "a2_1_093",
           "zh": "他把一碗飯放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī wǎn fàn fàng zài zhuō zi shàng.",
           "en": "He put a bowl of rice on the table.",
           "tiles": [
             "他",
@@ -9305,7 +9305,7 @@
         {
           "id": "a2_1_094",
           "zh": "他把一瓶水放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī píng shuǐ fàng zài zhuō zi shàng.",
           "en": "He put a bottle of water on the table.",
           "tiles": [
             "他",
@@ -9325,7 +9325,7 @@
         {
           "id": "a2_1_095",
           "zh": "他把一張票放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī zhāng piào fàng zài zhuō zi shàng.",
           "en": "He put a ticket on the table.",
           "tiles": [
             "他",
@@ -9345,7 +9345,7 @@
         {
           "id": "a2_1_096",
           "zh": "他把一件衣服放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī jiàn yī fú fàng zài zhuō zi shàng.",
           "en": "He put a piece of clothing on the table.",
           "tiles": [
             "他",
@@ -9365,7 +9365,7 @@
         {
           "id": "a2_1_097",
           "zh": "他把一個包子放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī gè bāo zi fàng zài zhuō zi shàng.",
           "en": "He put a steamed bun on the table.",
           "tiles": [
             "他",
@@ -9385,7 +9385,7 @@
         {
           "id": "a2_1_098",
           "zh": "他把一本書放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī běn shū fàng zài zhuō zi shàng.",
           "en": "He put a book on the table.",
           "tiles": [
             "他",
@@ -9405,7 +9405,7 @@
         {
           "id": "a2_1_099",
           "zh": "他把一支筆放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī zhī bǐ fàng zài zhuō zi shàng.",
           "en": "He put a pen on the table.",
           "tiles": [
             "他",
@@ -9425,7 +9425,7 @@
         {
           "id": "a2_1_100",
           "zh": "她把一杯咖啡放在桌子上。",
-          "pinyin": "",
+          "pinyin": "tā bǎ yī bēi kā fēi fàng zài zhuō zi shàng.",
           "en": "She put a cup of coffee on the table.",
           "tiles": [
             "她",
@@ -9455,7 +9455,7 @@
         {
           "id": "a2_2_001",
           "zh": "我本來想去學校，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù xué xiào, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to school, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9480,7 +9480,7 @@
         {
           "id": "a2_2_002",
           "zh": "我本來想回家，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng huí jiā, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go home, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9505,7 +9505,7 @@
         {
           "id": "a2_2_003",
           "zh": "我本來想去圖書館，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù tú shū guǎn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the library, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9530,7 +9530,7 @@
         {
           "id": "a2_2_004",
           "zh": "我本來想去商店，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù shāng diàn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the store, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9555,7 +9555,7 @@
         {
           "id": "a2_2_005",
           "zh": "我本來想去餐廳，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù cān tīng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the restaurant, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9580,7 +9580,7 @@
         {
           "id": "a2_2_006",
           "zh": "我本來想去公園，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù gōng yuán, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the park, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9605,7 +9605,7 @@
         {
           "id": "a2_2_007",
           "zh": "我本來想去教室，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù jiào shì, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the classroom, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9630,7 +9630,7 @@
         {
           "id": "a2_2_008",
           "zh": "我本來想去市場，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "wǒ běn lái xiǎng qù shì chǎng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "I originally wanted to go to the market, but later rested at home because it rained.",
           "tiles": [
             "我",
@@ -9655,7 +9655,7 @@
         {
           "id": "a2_2_009",
           "zh": "你本來想去學校，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù xué xiào, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to school, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9680,7 +9680,7 @@
         {
           "id": "a2_2_010",
           "zh": "你本來想回家，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng huí jiā, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go home, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9705,7 +9705,7 @@
         {
           "id": "a2_2_011",
           "zh": "你本來想去圖書館，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù tú shū guǎn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the library, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9730,7 +9730,7 @@
         {
           "id": "a2_2_012",
           "zh": "你本來想去商店，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù shāng diàn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the store, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9755,7 +9755,7 @@
         {
           "id": "a2_2_013",
           "zh": "你本來想去餐廳，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù cān tīng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the restaurant, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9780,7 +9780,7 @@
         {
           "id": "a2_2_014",
           "zh": "你本來想去公園，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù gōng yuán, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the park, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9805,7 +9805,7 @@
         {
           "id": "a2_2_015",
           "zh": "你本來想去教室，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù jiào shì, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the classroom, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9830,7 +9830,7 @@
         {
           "id": "a2_2_016",
           "zh": "你本來想去市場，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "nǐ běn lái xiǎng qù shì chǎng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "You originally wanted to go to the market, but later rested at home because it rained.",
           "tiles": [
             "你",
@@ -9855,7 +9855,7 @@
         {
           "id": "a2_2_017",
           "zh": "他本來想去學校，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù xué xiào, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to school, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -9880,7 +9880,7 @@
         {
           "id": "a2_2_018",
           "zh": "他本來想回家，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng huí jiā, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go home, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -9905,7 +9905,7 @@
         {
           "id": "a2_2_019",
           "zh": "他本來想去圖書館，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù tú shū guǎn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the library, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -9930,7 +9930,7 @@
         {
           "id": "a2_2_020",
           "zh": "他本來想去商店，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù shāng diàn, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the store, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -9955,7 +9955,7 @@
         {
           "id": "a2_2_021",
           "zh": "他本來想去餐廳，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù cān tīng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the restaurant, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -9980,7 +9980,7 @@
         {
           "id": "a2_2_022",
           "zh": "他本來想去公園，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù gōng yuán, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the park, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -10005,7 +10005,7 @@
         {
           "id": "a2_2_023",
           "zh": "他本來想去教室，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù jiào shì, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the classroom, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -10030,7 +10030,7 @@
         {
           "id": "a2_2_024",
           "zh": "他本來想去市場，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù shì chǎng, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "He originally wanted to go to the market, but later rested at home because it rained.",
           "tiles": [
             "他",
@@ -10055,7 +10055,7 @@
         {
           "id": "a2_2_025",
           "zh": "她本來想去學校，後來因為下雨就改在家裡休息。",
-          "pinyin": "",
+          "pinyin": "tā běn lái xiǎng qù xué xiào, hòu lái yīn wèi xià yǔ jiù gǎi zài jiā lǐ xiū xī.",
           "en": "She originally wanted to go to school, but later rested at home because it rained.",
           "tiles": [
             "她",
@@ -10080,7 +10080,7 @@
         {
           "id": "a2_2_026",
           "zh": "我覺得這家店的牛肉麵不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de niú ròu miàn bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's beef noodle soup is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10104,7 +10104,7 @@
         {
           "id": "a2_2_027",
           "zh": "我覺得這家店的水餃不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de shuǐ jiǎo bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's dumplings is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10128,7 +10128,7 @@
         {
           "id": "a2_2_028",
           "zh": "我覺得這家店的水果不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de shuǐ guǒ bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's fruit is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10152,7 +10152,7 @@
         {
           "id": "a2_2_029",
           "zh": "我覺得這家店的咖啡不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de kā fēi bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's coffee is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10176,7 +10176,7 @@
         {
           "id": "a2_2_030",
           "zh": "我覺得這家店的茶不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de chá bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's tea is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10200,7 +10200,7 @@
         {
           "id": "a2_2_031",
           "zh": "我覺得這家店的早餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de zǎo cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's breakfast is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10224,7 +10224,7 @@
         {
           "id": "a2_2_032",
           "zh": "我覺得這家店的晚餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de wǎn cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's dinner is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10248,7 +10248,7 @@
         {
           "id": "a2_2_033",
           "zh": "我覺得這家店的便當不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "wǒ jué dé zhè jiā diàn de biàn dāng bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "I think this shop's a lunch box is not only tasty but also reasonably priced.",
           "tiles": [
             "我",
@@ -10272,7 +10272,7 @@
         {
           "id": "a2_2_034",
           "zh": "你覺得這家店的牛肉麵不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de niú ròu miàn bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's beef noodle soup is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10296,7 +10296,7 @@
         {
           "id": "a2_2_035",
           "zh": "你覺得這家店的水餃不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de shuǐ jiǎo bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's dumplings is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10320,7 +10320,7 @@
         {
           "id": "a2_2_036",
           "zh": "你覺得這家店的水果不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de shuǐ guǒ bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's fruit is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10344,7 +10344,7 @@
         {
           "id": "a2_2_037",
           "zh": "你覺得這家店的咖啡不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de kā fēi bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's coffee is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10368,7 +10368,7 @@
         {
           "id": "a2_2_038",
           "zh": "你覺得這家店的茶不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de chá bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's tea is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10392,7 +10392,7 @@
         {
           "id": "a2_2_039",
           "zh": "你覺得這家店的早餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de zǎo cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's breakfast is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10416,7 +10416,7 @@
         {
           "id": "a2_2_040",
           "zh": "你覺得這家店的晚餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de wǎn cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's dinner is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10440,7 +10440,7 @@
         {
           "id": "a2_2_041",
           "zh": "你覺得這家店的便當不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "nǐ jué dé zhè jiā diàn de biàn dāng bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "You think this shop's a lunch box is not only tasty but also reasonably priced.",
           "tiles": [
             "你",
@@ -10464,7 +10464,7 @@
         {
           "id": "a2_2_042",
           "zh": "他覺得這家店的牛肉麵不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de niú ròu miàn bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's beef noodle soup is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10488,7 +10488,7 @@
         {
           "id": "a2_2_043",
           "zh": "他覺得這家店的水餃不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de shuǐ jiǎo bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's dumplings is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10512,7 +10512,7 @@
         {
           "id": "a2_2_044",
           "zh": "他覺得這家店的水果不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de shuǐ guǒ bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's fruit is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10536,7 +10536,7 @@
         {
           "id": "a2_2_045",
           "zh": "他覺得這家店的咖啡不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de kā fēi bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's coffee is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10560,7 +10560,7 @@
         {
           "id": "a2_2_046",
           "zh": "他覺得這家店的茶不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de chá bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's tea is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10584,7 +10584,7 @@
         {
           "id": "a2_2_047",
           "zh": "他覺得這家店的早餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de zǎo cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's breakfast is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10608,7 +10608,7 @@
         {
           "id": "a2_2_048",
           "zh": "他覺得這家店的晚餐不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de wǎn cān bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's dinner is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10632,7 +10632,7 @@
         {
           "id": "a2_2_049",
           "zh": "他覺得這家店的便當不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de biàn dāng bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "He think this shop's a lunch box is not only tasty but also reasonably priced.",
           "tiles": [
             "他",
@@ -10656,7 +10656,7 @@
         {
           "id": "a2_2_050",
           "zh": "她覺得這家店的牛肉麵不但好吃，而且價錢也合理。",
-          "pinyin": "",
+          "pinyin": "tā jué dé zhè jiā diàn de niú ròu miàn bù dàn hǎo chī, ér qiě jià qián yě hé lǐ.",
           "en": "She think this shop's beef noodle soup is not only tasty but also reasonably priced.",
           "tiles": [
             "她",
@@ -10680,7 +10680,7 @@
         {
           "id": "a2_2_051",
           "zh": "我寧可坐公車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě zuò gōng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather take the bus than wait too long on the road.",
           "tiles": [
             "我",
@@ -10701,7 +10701,7 @@
         {
           "id": "a2_2_052",
           "zh": "我寧可坐捷運，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě zuò jié yùn, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather take the MRT than wait too long on the road.",
           "tiles": [
             "我",
@@ -10722,7 +10722,7 @@
         {
           "id": "a2_2_053",
           "zh": "我寧可騎腳踏車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě qí jiǎo tà chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather ride a bicycle than wait too long on the road.",
           "tiles": [
             "我",
@@ -10743,7 +10743,7 @@
         {
           "id": "a2_2_054",
           "zh": "我寧可走路，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě zǒu lù, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather walk than wait too long on the road.",
           "tiles": [
             "我",
@@ -10764,7 +10764,7 @@
         {
           "id": "a2_2_055",
           "zh": "我寧可開車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě kāi chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather drive than wait too long on the road.",
           "tiles": [
             "我",
@@ -10785,7 +10785,7 @@
         {
           "id": "a2_2_056",
           "zh": "我寧可搭計程車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě dā jì chéng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather take a taxi than wait too long on the road.",
           "tiles": [
             "我",
@@ -10806,7 +10806,7 @@
         {
           "id": "a2_2_057",
           "zh": "我寧可坐火車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě zuò huǒ chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather take the train than wait too long on the road.",
           "tiles": [
             "我",
@@ -10827,7 +10827,7 @@
         {
           "id": "a2_2_058",
           "zh": "我寧可換車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "wǒ níng kě huàn chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "I would rather transfer vehicles than wait too long on the road.",
           "tiles": [
             "我",
@@ -10848,7 +10848,7 @@
         {
           "id": "a2_2_059",
           "zh": "你寧可坐公車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě zuò gōng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather take the bus than wait too long on the road.",
           "tiles": [
             "你",
@@ -10869,7 +10869,7 @@
         {
           "id": "a2_2_060",
           "zh": "你寧可坐捷運，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě zuò jié yùn, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather take the MRT than wait too long on the road.",
           "tiles": [
             "你",
@@ -10890,7 +10890,7 @@
         {
           "id": "a2_2_061",
           "zh": "你寧可騎腳踏車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě qí jiǎo tà chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather ride a bicycle than wait too long on the road.",
           "tiles": [
             "你",
@@ -10911,7 +10911,7 @@
         {
           "id": "a2_2_062",
           "zh": "你寧可走路，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě zǒu lù, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather walk than wait too long on the road.",
           "tiles": [
             "你",
@@ -10932,7 +10932,7 @@
         {
           "id": "a2_2_063",
           "zh": "你寧可開車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě kāi chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather drive than wait too long on the road.",
           "tiles": [
             "你",
@@ -10953,7 +10953,7 @@
         {
           "id": "a2_2_064",
           "zh": "你寧可搭計程車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě dā jì chéng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather take a taxi than wait too long on the road.",
           "tiles": [
             "你",
@@ -10974,7 +10974,7 @@
         {
           "id": "a2_2_065",
           "zh": "你寧可坐火車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě zuò huǒ chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather take the train than wait too long on the road.",
           "tiles": [
             "你",
@@ -10995,7 +10995,7 @@
         {
           "id": "a2_2_066",
           "zh": "你寧可換車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "nǐ níng kě huàn chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "You would rather transfer vehicles than wait too long on the road.",
           "tiles": [
             "你",
@@ -11016,7 +11016,7 @@
         {
           "id": "a2_2_067",
           "zh": "他寧可坐公車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě zuò gōng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather take the bus than wait too long on the road.",
           "tiles": [
             "他",
@@ -11037,7 +11037,7 @@
         {
           "id": "a2_2_068",
           "zh": "他寧可坐捷運，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě zuò jié yùn, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather take the MRT than wait too long on the road.",
           "tiles": [
             "他",
@@ -11058,7 +11058,7 @@
         {
           "id": "a2_2_069",
           "zh": "他寧可騎腳踏車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě qí jiǎo tà chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather ride a bicycle than wait too long on the road.",
           "tiles": [
             "他",
@@ -11079,7 +11079,7 @@
         {
           "id": "a2_2_070",
           "zh": "他寧可走路，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě zǒu lù, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather walk than wait too long on the road.",
           "tiles": [
             "他",
@@ -11100,7 +11100,7 @@
         {
           "id": "a2_2_071",
           "zh": "他寧可開車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě kāi chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather drive than wait too long on the road.",
           "tiles": [
             "他",
@@ -11121,7 +11121,7 @@
         {
           "id": "a2_2_072",
           "zh": "他寧可搭計程車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě dā jì chéng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather take a taxi than wait too long on the road.",
           "tiles": [
             "他",
@@ -11142,7 +11142,7 @@
         {
           "id": "a2_2_073",
           "zh": "他寧可坐火車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě zuò huǒ chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather take the train than wait too long on the road.",
           "tiles": [
             "他",
@@ -11163,7 +11163,7 @@
         {
           "id": "a2_2_074",
           "zh": "他寧可換車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě huàn chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "He would rather transfer vehicles than wait too long on the road.",
           "tiles": [
             "他",
@@ -11184,7 +11184,7 @@
         {
           "id": "a2_2_075",
           "zh": "她寧可坐公車，也不想在路上等太久。",
-          "pinyin": "",
+          "pinyin": "tā níng kě zuò gōng chē, yě bù xiǎng zài lù shàng děng tài jiǔ.",
           "en": "She would rather take the bus than wait too long on the road.",
           "tiles": [
             "她",
@@ -11205,7 +11205,7 @@
         {
           "id": "a2_2_076",
           "zh": "我只要每天練習生詞，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí shēng cí, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice vocabulary words every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11229,7 +11229,7 @@
         {
           "id": "a2_2_077",
           "zh": "我只要每天練習語法，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí yǔ fǎ, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice grammar every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11253,7 +11253,7 @@
         {
           "id": "a2_2_078",
           "zh": "我只要每天練習聲調，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí shēng diào, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice tones every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11277,7 +11277,7 @@
         {
           "id": "a2_2_079",
           "zh": "我只要每天練習句子，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí jù zi, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice sentences every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11301,7 +11301,7 @@
         {
           "id": "a2_2_080",
           "zh": "我只要每天練習課文，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí kè wén, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice the lesson text every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11325,7 +11325,7 @@
         {
           "id": "a2_2_081",
           "zh": "我只要每天練習對話，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ zhǐ yào měi tiān liàn xí duì huà, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as I practice dialogue every day, I will gradually remember common expressions.",
           "tiles": [
             "我",
@@ -11349,7 +11349,7 @@
         {
           "id": "a2_2_082",
           "zh": "你只要每天練習生詞，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí shēng cí, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice vocabulary words every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11373,7 +11373,7 @@
         {
           "id": "a2_2_083",
           "zh": "你只要每天練習語法，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí yǔ fǎ, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice grammar every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11397,7 +11397,7 @@
         {
           "id": "a2_2_084",
           "zh": "你只要每天練習聲調，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí shēng diào, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice tones every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11421,7 +11421,7 @@
         {
           "id": "a2_2_085",
           "zh": "你只要每天練習句子，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí jù zi, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice sentences every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11445,7 +11445,7 @@
         {
           "id": "a2_2_086",
           "zh": "你只要每天練習課文，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí kè wén, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice the lesson text every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11469,7 +11469,7 @@
         {
           "id": "a2_2_087",
           "zh": "你只要每天練習對話，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "nǐ zhǐ yào měi tiān liàn xí duì huà, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as you practice dialogue every day, you will gradually remember common expressions.",
           "tiles": [
             "你",
@@ -11493,7 +11493,7 @@
         {
           "id": "a2_2_088",
           "zh": "他只要每天練習生詞，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí shēng cí, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice vocabulary words every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11517,7 +11517,7 @@
         {
           "id": "a2_2_089",
           "zh": "他只要每天練習語法，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí yǔ fǎ, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice grammar every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11541,7 +11541,7 @@
         {
           "id": "a2_2_090",
           "zh": "他只要每天練習聲調，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí shēng diào, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice tones every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11565,7 +11565,7 @@
         {
           "id": "a2_2_091",
           "zh": "他只要每天練習句子，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí jù zi, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice sentences every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11589,7 +11589,7 @@
         {
           "id": "a2_2_092",
           "zh": "他只要每天練習課文，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí kè wén, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice the lesson text every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11613,7 +11613,7 @@
         {
           "id": "a2_2_093",
           "zh": "他只要每天練習對話，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí duì huà, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as he practice dialogue every day, he will gradually remember common expressions.",
           "tiles": [
             "他",
@@ -11637,7 +11637,7 @@
         {
           "id": "a2_2_094",
           "zh": "她只要每天練習生詞，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí shēng cí, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice vocabulary words every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11661,7 +11661,7 @@
         {
           "id": "a2_2_095",
           "zh": "她只要每天練習語法，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí yǔ fǎ, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice grammar every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11685,7 +11685,7 @@
         {
           "id": "a2_2_096",
           "zh": "她只要每天練習聲調，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí shēng diào, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice tones every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11709,7 +11709,7 @@
         {
           "id": "a2_2_097",
           "zh": "她只要每天練習句子，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí jù zi, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice sentences every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11733,7 +11733,7 @@
         {
           "id": "a2_2_098",
           "zh": "她只要每天練習課文，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí kè wén, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice the lesson text every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11757,7 +11757,7 @@
         {
           "id": "a2_2_099",
           "zh": "她只要每天練習對話，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "tā zhǐ yào měi tiān liàn xí duì huà, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as she practice dialogue every day, she will gradually remember common expressions.",
           "tiles": [
             "她",
@@ -11781,7 +11781,7 @@
         {
           "id": "a2_2_100",
           "zh": "我們只要每天練習生詞，就會慢慢記住常用的說法。",
-          "pinyin": "",
+          "pinyin": "wǒ men zhǐ yào měi tiān liàn xí shēng cí, jiù huì màn màn jì zhù cháng yòng de shuō fǎ.",
           "en": "As long as we practice vocabulary words every day, we will gradually remember common expressions.",
           "tiles": [
             "我們",
