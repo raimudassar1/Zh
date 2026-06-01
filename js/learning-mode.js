@@ -1,1883 +1,2527 @@
-/* ═══════════════════════════════════════════════════════════════
-   learning-mode.js — Duolingo-Style Practice & Spaced Repetition
-   Phone-first full-screen layout. Runs completely client-side.
-   ═══════════════════════════════════════════════════════════════ */
-
 'use strict';
 
 window.LearningModeModule = (() => {
+  /* ─── Constants ─── */
+  const STORE  = 'suyuan_v238';
+  const PINKEY = 'suyuan_pinyin_v238';
+  const MAX_HEARTS = 5;
+  const XP_PER = 15;
 
-  // ── Traditional-to-Simplified Translation Map ──
-  const TRAD_TO_SIMP = {
-    '謝':'谢','興':'兴','認':'认','識':'识','師':'师','學':'学','國':'国','們':'们',
-    '邊':'边','點':'点','麗':'丽','麼':'么','歡':'欢','樣':'样','聽':'听','語':'语',
-    '氣':'气','幾':'几','錢':'钱','買':'买','賣':'卖','醫':'医','寫':'写','乾':'干',
-    '開':'开','關':'关','說':'说','話':'话','讀':'读','書':'书','車':'车','會':'会',
-    '辦':'办','鐘':'钟','媽':'妈','個':'个','兩':'两','這':'这','誰':'谁','東':'东',
-    '問':'问','請':'请','來':'来','對':'对','過':'过','時':'时','間':'间','後':'后',
-    '禮':'礼','兒':'儿','紅':'红','藍':'蓝','黃':'黄','歲':'岁','愛':'爱','熱':'热',
-    '飯':'饭','館':'馆','麵':'面','雞':'鸡','鴨':'鸭','豬':'猪','貓':'猫','馬':'马',
-    '頭':'头','臉':'脸','腳':'脚','發':'发','電':'电','腦':'脑','機':'机','鐵':'铁'
+  /* ─── Palette ─── */
+  const C = {
+    bg:     '#0d0d1a',
+    bg2:    '#13132a',
+    card:   '#1a1a35',
+    card2:  '#21214a',
+    border: '#2a2a55',
+    purple: '#7c3aed',
+    purpleL:'#9d5cf5',
+    purpleD:'#5b21b6',
+    green:  '#22c55e',
+    greenD: '#16a34a',
+    red:    '#ef4444',
+    redD:   '#dc2626',
+    gold:   '#f59e0b',
+    goldD:  '#d97706',
+    blue:   '#3b82f6',
+    blueD:  '#1d4ed8',
+    text:   '#f0eeff',
+    textSub:'#9893b8',
+    textDim:'#5a5680',
   };
 
-  function toSimplified(str) {
-    if (!str) return '';
-    return str.split('').map(c => TRAD_TO_SIMP[c] || c).join('');
+  /* ─── State ─── */
+  const state = {
+    root: null,
+    course: null,
+    vocabBySection: null,
+    units: [],
+    sessions: [],
+    loading: false,
+    loadError: '',
+    progress: loadProgress(),
+    active: null,
+    infoOpen: false,
+    stepIndex: 0,
+    selected: null,
+    selectedMatch: null,
+    matched: new Set(),
+    answerTiles: [],
+    answerTileIds: [],
+    transcript: '',
+    micState: 'idle',
+    selectedSection: 1,
+    showPinyin: localStorage.getItem(PINKEY) !== '0',
+  };
+  state.units = buildFallbackUnits();
+  state.sessions = flattenSessions(state.units);
+
+  /* ─── Persistence ─── */
+  function loadProgress() {
+    try {
+      const p = JSON.parse(localStorage.getItem(STORE) || '{}');
+      return { xp:p.xp||0, streak:p.streak||0, hearts:Number.isFinite(p.hearts)?p.hearts:MAX_HEARTS, done:p.done||{}, mistakes:p.mistakes||[], last:p.last||'' };
+    } catch { return { xp:0, streak:0, hearts:MAX_HEARTS, done:{}, mistakes:[], last:'' }; }
+  }
+  function saveProgress() { localStorage.setItem(STORE, JSON.stringify(state.progress)); }
+
+  /* ─── Content ─── */
+  function item(zh,py,en,example,meta={}){ return {zh,py,en,example,...meta}; }
+  function sent(zh,py,en){ return {zh,py,en}; }
+
+  function buildFallbackUnits() {
+    return [
+      { id:'n01',icon:'👋',title:'Greetings',goal:'Say hello & polite phrases',
+        words:[item('你好','nǐ hǎo','hello'),item('您好','nín hǎo','hello (formal)'),item('嗨','hāi','hi'),item('早安','zǎo ān','good morning'),item('晚安','wǎn ān','good night'),item('再見','zài jiàn','goodbye'),item('謝謝','xiè xie','thank you'),item('不客氣','bú kè qì','you\'re welcome'),item('對不起','duì bù qǐ','sorry'),item('沒關係','méi guān xì','it\'s okay')],
+        sentences:[sent('你好，我是安娜','nǐ hǎo wǒ shì ān nà','Hello, I am Anna'),sent('老師，再見','lǎo shī zài jiàn','Goodbye, teacher'),sent('謝謝你','xiè xie nǐ','Thank you')]},
+      { id:'n02',icon:'🙋',title:'Identity',goal:'Say who people are',
+        words:[item('我','wǒ','I / me'),item('你','nǐ','you'),item('他','tā','he'),item('她','tā','she'),item('是','shì','am/is/are'),item('不是','bú shì','is not'),item('叫','jiào','be called'),item('名字','míng zì','name'),item('學生','xué shēng','student'),item('老師','lǎo shī','teacher')],
+        sentences:[sent('我是學生','wǒ shì xué shēng','I am a student'),sent('她是老師','tā shì lǎo shī','She is a teacher'),sent('你叫什麼名字','nǐ jiào shén me míng zì','What is your name?')]},
+      { id:'n03',icon:'👨‍👩‍👧',title:'Family',goal:'Name family members',
+        words:[item('家','jiā','home/family'),item('爸爸','bà ba','dad'),item('媽媽','mā ma','mom'),item('哥哥','gē ge','older brother'),item('姐姐','jiě jie','older sister'),item('弟弟','dì di','younger brother'),item('妹妹','mèi mei','younger sister'),item('孩子','hái zi','child'),item('太太','tài tai','wife'),item('先生','xiān sheng','husband')],
+        sentences:[sent('這是我的媽媽','zhè shì wǒ de mā ma','This is my mom'),sent('爸爸在家','bà ba zài jiā','Dad is at home'),sent('他是我的哥哥','tā shì wǒ de gē ge','He is my older brother')]},
+      { id:'n04',icon:'👫',title:'People',goal:'Talk about friends',
+        words:[item('朋友','péng yǒu','friend'),item('同學','tóng xué','classmate'),item('大家','dà jiā','everyone'),item('人','rén','person'),item('男生','nán shēng','boy'),item('女生','nǚ shēng','girl'),item('認識','rèn shi','to know'),item('高興','gāo xìng','happy'),item('一起','yì qǐ','together'),item('我們','wǒ men','we/us')],
+        sentences:[sent('她是我的朋友','tā shì wǒ de péng yǒu','She is my friend'),sent('很高興認識你','hěn gāo xìng rèn shi nǐ','Nice to meet you'),sent('我們一起學中文','wǒ men yì qǐ xué zhōng wén','We study Chinese together')]},
+      { id:'n05',icon:'❓',title:'Questions',goal:'Ask simple questions',
+        words:[item('嗎','ma','question marker'),item('什麼','shén me','what'),item('誰','shéi','who'),item('哪','nǎ','which'),item('幾','jǐ','how many'),item('多少','duō shǎo','how much'),item('為什麼','wèi shén me','why'),item('請問','qǐng wèn','excuse me'),item('可以','kě yǐ','can/may'),item('不可以','bù kě yǐ','cannot')],
+        sentences:[sent('這是什麼','zhè shì shén me','What is this?'),sent('他是誰','tā shì shéi','Who is he?'),sent('請問，可以嗎','qǐng wèn kě yǐ ma','Excuse me, is it okay?')]},
+      { id:'n06',icon:'👆',title:'This & That',goal:'Point to things around you',
+        words:[item('這','zhè','this'),item('那','nà','that'),item('這個','zhè ge','this one'),item('那個','nà ge','that one'),item('哪個','nǎ ge','which one'),item('這裡','zhè lǐ','here'),item('那裡','nà lǐ','there'),item('的','de','possessive'),item('也','yě','also'),item('都','dōu','all')],
+        sentences:[sent('這是我的書','zhè shì wǒ de shū','This is my book'),sent('那個也是我的','nà ge yě shì wǒ de','That one is also mine'),sent('你在哪裡','nǐ zài nǎ lǐ','Where are you?')]},
+      { id:'n07',icon:'🤲',title:'Have & Need',goal:'Talk about possessions',
+        words:[item('有','yǒu','have'),item('沒有','méi yǒu','don\'t have'),item('要','yào','want/need'),item('想','xiǎng','would like'),item('給','gěi','give'),item('拿','ná','take'),item('用','yòng','use'),item('找','zhǎo','look for'),item('需要','xū yào','need'),item('東西','dōng xi','thing')],
+        sentences:[sent('我沒有書','wǒ méi yǒu shū','I don\'t have a book'),sent('你有筆嗎','nǐ yǒu bǐ ma','Do you have a pen?'),sent('我需要這個','wǒ xū yào zhè ge','I need this one')]},
+      { id:'n08',icon:'🔢',title:'Numbers 0–9',goal:'Recognize single digits',
+        words:[item('零','líng','zero'),item('一','yī','one'),item('二','èr','two'),item('三','sān','three'),item('四','sì','four'),item('五','wǔ','five'),item('六','liù','six'),item('七','qī','seven'),item('八','bā','eight'),item('九','jiǔ','nine')],
+        sentences:[sent('我有三本書','wǒ yǒu sān běn shū','I have three books'),sent('這是一','zhè shì yī','This is one'),sent('九不是六','jiǔ bú shì liù','Nine is not six')]},
+      { id:'n09',icon:'🔟',title:'Numbers 10–99',goal:'Build larger numbers',
+        words:[item('十','shí','ten'),item('十一','shí yī','eleven'),item('十二','shí èr','twelve'),item('二十','èr shí','twenty'),item('三十','sān shí','thirty'),item('四十','sì shí','forty'),item('五十','wǔ shí','fifty'),item('一百','yì bǎi','one hundred'),item('號碼','hào mǎ','number'),item('電話','diàn huà','phone')],
+        sentences:[sent('我的電話號碼是多少','wǒ de diàn huà hào mǎ shì duō shǎo','What is my phone number?'),sent('這是二十','zhè shì èr shí','This is twenty'),sent('我有十一個朋友','wǒ yǒu shí yī ge péng yǒu','I have eleven friends')]},
+      { id:'n10',icon:'🎂',title:'Age',goal:'Say and ask age',
+        words:[item('歲','suì','years old'),item('今年','jīn nián','this year'),item('年','nián','year'),item('生日','shēng rì','birthday'),item('大','dà','big/old'),item('小','xiǎo','small/young'),item('幾歲','jǐ suì','how old'),item('年輕','nián qīng','young'),item('老','lǎo','old'),item('今天','jīn tiān','today')],
+        sentences:[sent('你今年幾歲','nǐ jīn nián jǐ suì','How old are you?'),sent('我今年二十歲','wǒ jīn nián èr shí suì','I am twenty years old'),sent('今天是我的生日','jīn tiān shì wǒ de shēng rì','Today is my birthday')]},
+      { id:'n11',icon:'📅',title:'Days',goal:'Talk about days of the week',
+        words:[item('星期一','xīng qí yī','Monday'),item('星期二','xīng qí èr','Tuesday'),item('星期三','xīng qí sān','Wednesday'),item('星期四','xīng qí sì','Thursday'),item('星期五','xīng qí wǔ','Friday'),item('星期六','xīng qí liù','Saturday'),item('星期天','xīng qí tiān','Sunday'),item('昨天','zuó tiān','yesterday'),item('明天','míng tiān','tomorrow'),item('每天','měi tiān','every day')],
+        sentences:[sent('今天是星期一','jīn tiān shì xīng qí yī','Today is Monday'),sent('明天是星期二','míng tiān shì xīng qí èr','Tomorrow is Tuesday'),sent('我每天學中文','wǒ měi tiān xué zhōng wén','I study Chinese every day')]},
+      { id:'n12',icon:'⏰',title:'Time',goal:'Ask and tell the time',
+        words:[item('現在','xiàn zài','now'),item('幾點','jǐ diǎn','what time'),item('點','diǎn','o\'clock'),item('分鐘','fēn zhōng','minute'),item('早上','zǎo shàng','morning'),item('中午','zhōng wǔ','noon'),item('下午','xià wǔ','afternoon'),item('晚上','wǎn shàng','evening'),item('半','bàn','half'),item('時間','shí jiān','time')],
+        sentences:[sent('現在幾點','xiàn zài jǐ diǎn','What time is it?'),sent('現在三點半','xiàn zài sān diǎn bàn','It is three thirty'),sent('我晚上學中文','wǒ wǎn shàng xué zhōng wén','I study Chinese in the evening')]},
+      { id:'n13',icon:'🏫',title:'Classroom',goal:'Name classroom objects',
+        words:[item('書','shū','book'),item('筆','bǐ','pen'),item('紙','zhǐ','paper'),item('桌子','zhuō zi','table'),item('椅子','yǐ zi','chair'),item('教室','jiào shì','classroom'),item('學校','xué xiào','school'),item('黑板','hēi bǎn','blackboard'),item('課本','kè běn','textbook'),item('作業','zuò yè','homework')],
+        sentences:[sent('書在桌子上','shū zài zhuō zi shàng','The book is on the table'),sent('我有一本課本','wǒ yǒu yì běn kè běn','I have one textbook'),sent('老師在教室','lǎo shī zài jiào shì','The teacher is in the classroom')]},
+      { id:'n14',icon:'📖',title:'Study',goal:'Talk about studying',
+        words:[item('學','xué','learn'),item('學習','xué xí','study'),item('中文','zhōng wén','Chinese'),item('英文','yīng wén','English'),item('說','shuō','speak'),item('聽','tīng','listen'),item('看','kàn','read/look'),item('寫','xiě','write'),item('讀','dú','read aloud'),item('練習','liàn xí','practice')],
+        sentences:[sent('我學中文','wǒ xué zhōng wén','I learn Chinese'),sent('你會說英文嗎','nǐ huì shuō yīng wén ma','Can you speak English?'),sent('我每天練習','wǒ měi tiān liàn xí','I practice every day')]},
+      { id:'n15',icon:'🍚',title:'Food Basics',goal:'Name common foods',
+        words:[item('飯','fàn','rice/meal'),item('麵','miàn','noodles'),item('水果','shuǐ guǒ','fruit'),item('蘋果','píng guǒ','apple'),item('香蕉','xiāng jiāo','banana'),item('雞肉','jī ròu','chicken'),item('魚','yú','fish'),item('蛋','dàn','egg'),item('菜','cài','vegetable'),item('早餐','zǎo cān','breakfast')],
+        sentences:[sent('我喜歡吃飯','wǒ xǐ huān chī fàn','I like eating rice'),sent('早餐有蛋','zǎo cān yǒu dàn','Breakfast has eggs'),sent('我想吃蘋果','wǒ xiǎng chī píng guǒ','I want to eat an apple')]},
+    ];
   }
 
-  // ── Seed Words Corpus ──
-  const SEED_WORDS = [
-    { id:'seed_1', term:'你好', meaning:'hello', level:'A1', semanticGroup:'Greetings', partOfSpeech:'interjection', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['你好，很高興認識你。','老師，您好。','你好嗎？我很好。'] },
-    { id:'seed_2', term:'謝謝', meaning:'thank you', level:'A1', semanticGroup:'Greetings', partOfSpeech:'verb', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['謝謝你的幫助。','不用客氣，謝謝。','謝謝你請我吃飯。'] },
-    { id:'seed_3', term:'老師', meaning:'teacher', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['我的中文老師很好。','老師，請問這個字怎麼寫？','這位是我們的英文老師。'] },
-    { id:'seed_4', term:'學生', meaning:'student', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['這個學校有很多學生。','我是中文系的學生。','學生們都在教室裡上課。'] },
-    { id:'seed_5', term:'朋友', meaning:'friend', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['週末我和朋友一起去看電影。','他是我的好朋友。','我們是很多年的朋友。'] },
-    { id:'seed_6', term:'學校', meaning:'school', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['我們學校很大。','我每天走路去學校。','學校的圖書館有很多書。'] },
-    { id:'seed_7', term:'教室', meaning:'classroom', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['學生們都在教室裡上課。','我們的教室很乾淨。','教室裡有黑板和桌子。'] },
-    { id:'seed_8', term:'中文', meaning:'Chinese language', level:'A1', semanticGroup:'Greetings', partOfSpeech:'noun', useTTS:true, setId:'ch1', setName:'Chapter 1: Greetings', exampleSentences:['我正在學習中文。','說中文很有意思。','我的中文老師是台灣人。'] },
-    { id:'seed_9', term:'蘋果', meaning:'apple', level:'A1', semanticGroup:'Food', partOfSpeech:'noun', useTTS:true, setId:'ch2', setName:'Chapter 2: Food & Drinks', exampleSentences:['我每天早上吃一個蘋果。','這個蘋果多少錢？','我喜歡紅色的蘋果。'] },
-    { id:'seed_10', term:'香蕉', meaning:'banana', level:'A1', semanticGroup:'Food', partOfSpeech:'noun', useTTS:true, setId:'ch2', setName:'Chapter 2: Food & Drinks', exampleSentences:['這根香蕉很甜。','猴子最喜歡吃香蕉。','媽媽今天買了一包香蕉。'] },
-    { id:'seed_11', term:'爸爸', meaning:'father', level:'A1', semanticGroup:'Family', partOfSpeech:'noun', useTTS:true, setId:'ch3', setName:'Chapter 3: Family Members', exampleSentences:['爸爸每天開車去上班。','我的爸爸是醫生。','爸爸喜歡喝熱茶。'] },
-    { id:'seed_12', term:'媽媽', meaning:'mother', level:'A1', semanticGroup:'Family', partOfSpeech:'noun', useTTS:true, setId:'ch3', setName:'Chapter 3: Family Members', exampleSentences:['媽媽做的菜很好吃。','媽媽今天去市場買菜。','我愛我的媽媽。'] },
-    { id:'seed_13', term:'哥哥', meaning:'older brother', level:'A1', semanticGroup:'Family', partOfSpeech:'noun', useTTS:true, setId:'ch3', setName:'Chapter 3: Family Members', exampleSentences:['哥哥比我大三歲。','我的哥哥在電腦公司上班。','哥哥很高，弟弟很矮。'] },
-    { id:'seed_14', term:'姐姐', meaning:'older sister', level:'A1', semanticGroup:'Family', partOfSpeech:'noun', useTTS:true, setId:'ch3', setName:'Chapter 3: Family Members', exampleSentences:['我姐姐在大學讀書。','姐姐唱歌唱得很好聽。','姐姐買了一件新衣服。'] },
-    { id:'seed_15', term:'弟弟', meaning:'younger brother', level:'A1', semanticGroup:'Family', partOfSpeech:'noun', useTTS:true, setId:'ch3', setName:'Chapter 3: Family Members', exampleSentences:['弟弟很喜歡踢足球。','弟弟今年十歲，上小學。','我和弟弟一起玩遊戲。'] },
-    { id:'seed_16', term:'星期', meaning:'week', level:'A1', semanticGroup:'Time', partOfSpeech:'noun', useTTS:true, setId:'ch4', setName:'Chapter 4: Time Expressions', exampleSentences:['這個星期天天氣很好。','下個星期我們要考試。','星期一我要去台北工作。'] },
-    { id:'seed_17', term:'時間', meaning:'time', level:'A1', semanticGroup:'Time', partOfSpeech:'noun', useTTS:true, setId:'ch4', setName:'Chapter 4: Time Expressions', exampleSentences:['你今天有時間嗎？','時間過得真快。','我沒有時間去看電影。'] },
-    { id:'seed_18', term:'天氣', meaning:'weather', level:'A1', semanticGroup:'Nature', partOfSpeech:'noun', useTTS:true, setId:'ch5', setName:'Chapter 5: Weather & Nature', exampleSentences:['今天天氣很好，我很高興。','明天的天氣怎麼樣？','這幾天天氣非常冷。'] },
-    { id:'seed_19', term:'醫生', meaning:'doctor', level:'A1', semanticGroup:'Work', partOfSpeech:'noun', useTTS:true, setId:'ch6', setName:'Chapter 6: Occupations', exampleSentences:['我的爸爸是醫生。','生病了就要去看醫生。','醫生說要多喝水、多休息。'] },
-    { id:'seed_20', term:'醫院', meaning:'hospital', level:'A1', semanticGroup:'Work', partOfSpeech:'noun', useTTS:true, setId:'ch6', setName:'Chapter 6: Occupations', exampleSentences:['這家醫院在火車站旁邊。','他在那家醫院工作。','我們去醫院看朋友。'] }
+  /* ─── Session helpers ─── */
+  const CLEAN_STARTER_WORDS = [
+    item('你好','ni3 hao3','hello'), item('您好','nin2 hao3','hello (formal)'), item('早安','zao3 an1','good morning'), item('晚安','wan3 an1','good night'), item('再見','zai4 jian4','goodbye'),
+    item('謝謝','xie4 xie5','thank you'), item('不客氣','bu2 ke4 qi4','you are welcome'), item('對不起','dui4 bu4 qi3','sorry'), item('沒關係','mei2 guan1 xi4','it is okay'), item('請問','qing3 wen4','excuse me'),
+    item('我','wo3','I / me'), item('你','ni3','you'), item('他','ta1','he'), item('她','ta1','she'), item('是','shi4','am / is / are'),
+    item('不是','bu2 shi4','is not'), item('叫','jiao4','be called'), item('名字','ming2 zi4','name'), item('學生','xue2 sheng1','student'), item('老師','lao3 shi1','teacher'),
+    item('家','jia1','home / family'), item('爸爸','ba4 ba5','dad'), item('媽媽','ma1 ma5','mom'), item('朋友','peng2 you3','friend'), item('同學','tong2 xue2','classmate'),
+    item('這','zhe4','this'), item('那','na4','that'), item('有','you3','have'), item('沒有','mei2 you3','do not have'), item('要','yao4','want / need'),
+    item('一','yi1','one'), item('二','er4','two'), item('三','san1','three'), item('四','si4','four'), item('五','wu3','five'),
+    item('六','liu4','six'), item('七','qi1','seven'), item('八','ba1','eight'), item('九','jiu3','nine'), item('十','shi2','ten'),
+    item('今天','jin1 tian1','today'), item('明天','ming2 tian1','tomorrow'), item('現在','xian4 zai4','now'), item('幾點','ji3 dian3','what time'), item('早上','zao3 shang4','morning'),
+    item('書','shu1','book'), item('筆','bi3','pen'), item('中文','zhong1 wen2','Chinese'), item('說','shuo1','speak'), item('聽','ting1','listen'),
+    item('飯','fan4','rice / meal'), item('水','shui3','water'), item('茶','cha2','tea'), item('喜歡','xi3 huan1','like'), item('吃','chi1','eat')
   ];
 
-  // ── Persistence Keys ──
-  const USER_STATE_KEY = 'tocfl_duolingo_srs';
-  const CHECKPOINT_KEY = 'tocfl_duolingo_checkpoint';
+  const SECTION_ICONS = ['★','拼','文','聽','說','✓'];
 
-  // ── Duolingo Section Hierarchy ──
-  const SECTIONS = [
-    { id:'sec_novice',       name:'Section 1: Novice',       subtitle:'Basic Greetings, Numbers & Family',           levels:['NOVICE'],          requiredXP:0    },
-    { id:'sec_elementary',   name:'Section 2: Elementary',   subtitle:'Daily Interactions, Restaurants & Work',       levels:['A1'],              requiredXP:1000 },
-    { id:'sec_intermediate', name:'Section 3: Intermediate', subtitle:'Hobbies, Shopping & Transportation',           levels:['A2','A2/B1'],      requiredXP:2500 },
-    { id:'sec_advanced',     name:'Section 4: Advanced',     subtitle:'Business, Tech & TOCFL Mastery',               levels:['B1','B1/B2','B2'], requiredXP:5000 }
-  ];
+  async function loadCourseData(){
+    if(state.course || state.loading) return;
+    state.loading = true;
+    state.loadError = '';
+    try{
+      const res = await fetch('data/learning_mode_course_structure.json', { cache:'no-store' });
+      if(!res.ok) throw new Error(`HTTP ${res.status}`);
+      const course = await res.json();
+      state.vocabBySection = await loadVocabularyPayload();
+      state.course = course;
+      state.units = normalizeCourseUnits(course, state.vocabBySection);
+      state.sessions = flattenSessions(state.units);
+    }catch(err){
+      console.warn('Learning Mode course structure failed to load:', err);
+      state.loadError = 'Course structure failed to load. Showing fallback units.';
+      state.units = buildFallbackUnits().map((unit, index) => ({
+        ...unit,
+        sectionNumber: 1,
+        sectionLevel: 'Novice',
+        unitNumber: index + 1
+      }));
+      state.sessions = flattenSessions(state.units);
+    }finally{
+      state.loading = false;
+    }
+  }
 
-  // ── Question type config ──
-  const QUESTION_TYPE_META = {
-    multiple_choice: { icon:'🧠', label:'Translate this word',   color:'#3b82f6' },
-    listening:       { icon:'🎧', label:'What do you hear?',     color:'#8b5cf6' },
-    fill_blank:      { icon:'✏️',  label:'Fill in the blank',    color:'#f59e0b' },
-    tile_assembly:   { icon:'🧩', label:'Arrange the sentence',  color:'#10b981' },
-    speaking:        { icon:'🎙️', label:'Say this aloud',        color:'#ef4444' }
-  };
+  async function loadVocabularyPayload(){
+    try{
+      const res = await fetch('data/vocabulary.json', { cache:'no-store' });
+      if(!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      return buildVocabularySections(data);
+    }catch(err){
+      console.warn('Learning Mode vocabulary payload failed to load:', err);
+      return null;
+    }
+  }
 
-  // ── Web Audio Sound Generator ──
-  class SoundEngine {
-    constructor() { this.ctx = null; this.voices = []; this.initVoices(); }
-    initCtx() {
-      if (!this.ctx) {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (AC) this.ctx = new AC();
-      }
-    }
-    initVoices() {
-      if (!window.speechSynthesis) return;
-      const load = () => { this.voices = window.speechSynthesis.getVoices(); };
-      load();
-      window.speechSynthesis.addEventListener('voiceschanged', load);
-    }
-    playTone(freq, type, duration, delay = 0) {
-      this.initCtx();
-      if (!this.ctx || this.ctx.state === 'suspended') return;
-      setTimeout(() => {
-        try {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = type;
-          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
-          osc.connect(gain); gain.connect(this.ctx.destination);
-          osc.start(); osc.stop(this.ctx.currentTime + duration);
-        } catch(e) {}
-      }, delay);
-    }
-    playCorrect()  { this.playTone(587.33, 'sine', 0.15); }
-    playWrong()    { this.playTone(120, 'sawtooth', 0.20); }
-    playStreak()   { this.playTone(523.25,'sine',0.15,0); this.playTone(659.25,'sine',0.15,100); this.playTone(783.99,'sine',0.15,200); }
-    playLevelUp()  { this.playTone(523.25,'sine',0.20,0); this.playTone(659.25,'sine',0.20,100); this.playTone(783.99,'sine',0.20,200); this.playTone(1046.50,'sine',0.50,300); }
-    playCardFlip() {
-      this.initCtx();
-      if (!this.ctx || this.ctx.state === 'suspended') return;
-      try {
-        const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(800, this.ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(200, this.ctx.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
-        osc.connect(gain); gain.connect(this.ctx.destination);
-        osc.start(); osc.stop(this.ctx.currentTime + 0.05);
-      } catch(e) {}
-    }
-    async speakWord(term) {
-      const cleanTerm = typeof term === 'object' ? term.term : term;
-      const audioPath = typeof term === 'object' ? term.audioPath : null;
-      if (audioPath) {
-        try { const audio = new Audio(audioPath); await audio.play(); return; } catch (e) {}
-      }
-      if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) return;
-      window.speechSynthesis.cancel();
-      const ut = new SpeechSynthesisUtterance(cleanTerm);
-      ut.rate = 0.82;
-      let list = window.speechSynthesis.getVoices();
-      if (!list.length) list = this.voices;
-      let voice = list.find(v => v.lang && (v.lang.toLowerCase()==='zh-tw'||v.lang.toLowerCase()==='zh_tw'));
-      if (!voice) voice = list.find(v => v.lang && v.lang.toLowerCase().startsWith('zh-'));
-      if (!voice) voice = list.find(v => v.lang && v.lang.toLowerCase().startsWith('zh'));
-      if (voice) { ut.voice = voice; ut.lang = voice.lang; } else { ut.lang = 'zh-CN'; }
-      return new Promise(resolve => {
-        ut.onend = resolve;
-        ut.onerror = () => { window.showToast?.(`🔊 Audio unavailable: ${cleanTerm}`); resolve(); };
-        window.speechSynthesis.speak(ut);
+  function buildVocabularySections(data){
+    const byLevel = {};
+    (data.sets || []).forEach(set => {
+      const level = String(set.level || 'misc').toLowerCase();
+      (set.words || []).forEach(raw => {
+        const word = normalizeVocabWord(raw, set);
+        if(!word.zh || !word.en) return;
+        if(!byLevel[level]) byLevel[level] = [];
+        byLevel[level].push(word);
       });
-    }
-  }
-  const sound = new SoundEngine();
-
-  // ── Pronunciation Fuzzy Matcher ──
-  function levenshtein(a, b) {
-    const tmp = []; let i, j;
-    if (!a.length) return b.length;
-    if (!b.length) return a.length;
-    for (i = 0; i <= a.length; i++) tmp[i] = [i];
-    for (j = 0; j <= b.length; j++) tmp[0][j] = j;
-    for (i = 1; i <= a.length; i++)
-      for (j = 1; j <= b.length; j++)
-        tmp[i][j] = Math.min(tmp[i-1][j]+1, tmp[i][j-1]+1, tmp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
-    return tmp[a.length][b.length];
-  }
-
-  function checkPronunciation(expected, transcript) {
-    const normExp = toSimplified(expected).trim();
-    const normTrans = toSimplified(transcript).trim();
-    const dist = levenshtein(normExp, normTrans);
-    return dist <= Math.ceil(normExp.length * 0.25);
-  }
-
-  // ── SRS Calculator ──
-  function updateSRS(wordState, wasCorrect, isHintUsed = false) {
-    const s = { ...wordState };
-    const q = wasCorrect ? (isHintUsed ? 4 : 5) : 2;
-    s.lastQuestionType = wordState.currentQuestionType || null;
-    if (!wasCorrect) {
-      s.interval = 1;
-      s.incorrectCount = (wordState.incorrectCount || 0) + 1;
-    } else {
-      s.correctCount = (wordState.correctCount || 0) + 1;
-      if (wordState.interval <= 1) s.interval = 1;
-      else if (wordState.interval === 2) s.interval = 6;
-      else s.interval = Math.round(wordState.interval * wordState.easeFactor);
-    }
-    s.easeFactor = Math.max(1.3, wordState.easeFactor + (0.1 - (5 - q) * (0.08 + (5-q)*0.02)));
-    const d = new Date(); d.setDate(d.getDate() + s.interval);
-    s.nextReviewDate = d.toISOString();
-    if (s.correctCount >= 5) s.status = 'mastered';
-    else if (s.correctCount >= 3) s.status = 'familiar';
-    else if (s.correctCount >= 1) s.status = 'learning';
-    else s.status = 'new';
-    const unlocked = ['multiple_choice'];
-    if (s.correctCount >= 1) { unlocked.push('listening'); unlocked.push('fill_blank'); }
-    if (s.correctCount >= 3) { unlocked.push('tile_assembly'); }
-    if (s.correctCount >= 5) { unlocked.push('speaking'); }
-    s.unlockedQuestionTypes = unlocked;
-    return s;
-  }
-
-  // ── Sentence Segmenter ──
-  function segmentSentence(sentence, lexicon) {
-    const clean = sentence.replace(/[\s，。！？,.!?]/g,'').trim();
-    const tiles = []; let i = 0;
-    const sorted = [...lexicon].sort((a,b) => b.length - a.length);
-    while (i < clean.length) {
-      let matched = false;
-      for (const word of sorted) {
-        if (word && clean.startsWith(word, i)) { tiles.push(word); i += word.length; matched = true; break; }
-      }
-      if (!matched) { tiles.push(clean[i]); i++; }
-    }
-    return tiles;
-  }
-
-  // ── Question Factory ──
-  function makeQuestion(type, word, allWords, lexicon) {
-    const sameGroup = allWords.filter(w => w.semanticGroup === word.semanticGroup && w.term !== word.term);
-    const pickDistractors = (prop) => {
-      const list = [...sameGroup];
-      while (list.length < 3) {
-        const fb = allWords[Math.floor(Math.random() * allWords.length)];
-        if (fb.term !== word.term && !list.includes(fb)) list.push(fb);
-      }
-      for (let i = list.length-1; i > 0; i--) {
-        const j = Math.floor(Math.random()*(i+1)); [list[i],list[j]] = [list[j],list[i]];
-      }
-      return list.slice(0,3).map(w => w[prop]);
+    });
+    Object.keys(byLevel).forEach(level => {
+      const seen = new Set();
+      byLevel[level] = byLevel[level].filter(word => {
+        if(seen.has(word.zh)) return false;
+        seen.add(word.zh);
+        return true;
+      });
+    });
+    const novice = byLevel.novice || [];
+    const a1 = byLevel.a1 || [];
+    const a2 = byLevel.a2 || [];
+    const a2b1 = byLevel['a2/b1'] || [];
+    const b1 = byLevel.b1 || [];
+    return {
+      1: novice.slice(0, 300),
+      2: a1.slice(0, 300),
+      3: a2.slice(0, 300),
+      4: a2.slice(300, 590).concat(a2b1, b1).slice(0, 300)
     };
-
-    if (type === 'multiple_choice') {
-      const choices = [word.meaning, ...pickDistractors('meaning')].sort(() => Math.random()-0.5);
-      return { type, word, prompt:word.term, choices, correctAnswer:word.meaning, explanation:word.exampleSentences[0]||`${word.term} means ${word.meaning}.` };
-    }
-    if (type === 'listening') {
-      const choices = [word.meaning, ...pickDistractors('meaning')].sort(() => Math.random()-0.5);
-      return { type, word, prompt:'[tap speaker to hear]', choices, correctAnswer:word.meaning, explanation:word.exampleSentences[0]||`${word.term} means ${word.meaning}.` };
-    }
-    if (type === 'fill_blank') {
-      const sent = word.exampleSentences[Math.floor(Math.random()*word.exampleSentences.length)] || `${word.term}在教室裡面。`;
-      const prompt = sent.replace(word.term,' ______ ');
-      const choices = [word.term, ...pickDistractors('term')].sort(() => Math.random()-0.5).slice(0,4);
-      return { type, word, prompt, choices, correctAnswer:word.term, explanation:sent };
-    }
-    if (type === 'tile_assembly') {
-      let sentence = word.exampleSentences[Math.floor(Math.random()*word.exampleSentences.length)] || `${word.term}在教室裡面。`;
-      let tiles = segmentSentence(sentence, lexicon);
-      if (tiles.length < 3) {
-        for (const s of word.exampleSentences) {
-          const trial = segmentSentence(s, lexicon);
-          if (trial.length >= 3 && trial.length <= 8) { sentence = s; tiles = trial; break; }
-        }
-      }
-      if (tiles.length < 3) tiles.push('。');
-      else if (tiles.length > 8) { tiles = tiles.slice(0,8); sentence = tiles.join(''); }
-      return { type, word, prompt:sentence.replace(/[\s，。！？,.!?]/g,''), tiles:[...tiles].sort(() => Math.random()-0.5), correctAnswer:sentence.replace(/[\s，。！？,.!?]/g,''), explanation:sentence };
-    }
-    if (type === 'speaking') {
-      return { type, word, prompt:`Say: "${word.term}"`, correctAnswer:word.term, explanation:word.exampleSentences[0]||`${word.term} — ${word.meaning}` };
-    }
   }
 
-  // ── Session Builder ──
-  function buildSession(allWords, userStates, sessionSize = 15) {
-    const today = new Date();
-    let dueWords = allWords.filter(w => {
-      const s = userStates.find(us => us.wordId === w.id);
-      if (!s || s.status === 'new') return false;
-      return new Date(s.nextReviewDate) <= today;
+  function normalizeVocabWord(raw, set){
+    const zh = raw.word || raw.traditional || raw.hanzi || raw.zh || '';
+    const py = raw.pinyin || raw.py || '';
+    const en = raw.definition || raw.english || raw.en || '';
+    const ex = raw.example_sentence || null;
+    return item(String(zh).trim(), String(py).trim(), String(en).trim(), ex ? {
+      zh: ex.sentence || ex.zh || '',
+      py: ex.pinyin || ex.py || '',
+      en: ex.english || ex.en || ''
+    } : null, {
+      source: set?.name || '',
+      sourceId: set?.id || '',
+      level: set?.level || ''
     });
-    let sessionWords = [...dueWords];
-    if (sessionWords.length < sessionSize) {
-      const newPool = allWords.filter(w => { const s = userStates.find(us => us.wordId === w.id); return !s || s.status === 'new'; });
-      const lvMap = {'A1':1,'A2':2,'B1':3,'B2':4,'C1':5,'C2':6};
-      newPool.sort((a,b) => (lvMap[a.level]||99)-(lvMap[b.level]||99));
-      for (const w of newPool) { if (sessionWords.length >= sessionSize) break; if (!sessionWords.includes(w)) sessionWords.push(w); }
-    }
-    if (sessionWords.length < sessionSize) {
-      for (const w of allWords) { if (sessionWords.length >= sessionSize) break; if (!sessionWords.includes(w)) sessionWords.push(w); }
-    }
-    sessionWords = sessionWords.slice(0, sessionSize);
-    sessionWords.sort(() => Math.random()-0.5);
-    const lexicon = allWords.map(w => w.term);
-    const questionQueue = sessionWords.map(word => {
-      const ws = userStates.find(s => s.wordId === word.id) || createDefaultState(word.id);
-      const types = ws.unlockedQuestionTypes || ['multiple_choice'];
-      const filtered = types.filter(t => t !== ws.lastQuestionType);
-      const pool = filtered.length ? filtered : types;
-      const chosenType = pool[Math.floor(Math.random()*pool.length)];
-      ws.currentQuestionType = chosenType;
-      return makeQuestion(chosenType, word, allWords, lexicon);
-    });
-    return { id:'session_'+Date.now(), words:sessionWords, questionQueue, currentIndex:0, xpEarned:0, correctStreak:0, totalCorrect:0, totalWrong:0, startedAt:new Date().toISOString() };
   }
 
-  // ── Persistence Layer ──
-  function createDefaultState(wordId) {
-    return { wordId, userId:'default_user', status:'new', easeFactor:2.5, interval:1, nextReviewDate:new Date().toISOString(), correctCount:0, incorrectCount:0, lastQuestionType:null, unlockedQuestionTypes:['multiple_choice'] };
-  }
-  function loadUserWordStates(allWords) {
-    try {
-      const raw = localStorage.getItem(USER_STATE_KEY);
-      const parsed = raw ? JSON.parse(raw) : null;
-      if (parsed && typeof parsed === 'object') {
-        return allWords.map(w => { let s = parsed[w.id]; return (s && s.wordId) ? s : createDefaultState(w.id); });
-      }
-    } catch(e) { console.warn('SRS state corrupt, resetting.', e); }
-    return allWords.map(w => createDefaultState(w.id));
-  }
-  function saveUserWordStates(states) {
-    try { const m = {}; states.forEach(s => { m[s.wordId] = s; }); localStorage.setItem(USER_STATE_KEY, JSON.stringify(m)); } catch(e) {}
-  }
-  function saveCheckpoint(session, states) {
-    try { const d = {session, states, time:Date.now()}; localStorage.setItem(CHECKPOINT_KEY, JSON.stringify(d)); sessionStorage.setItem(CHECKPOINT_KEY, JSON.stringify(d)); } catch(e) {}
-  }
-  function clearCheckpoint() { localStorage.removeItem(CHECKPOINT_KEY); sessionStorage.removeItem(CHECKPOINT_KEY); }
-  function recoverCheckpoint() {
-    try {
-      const raw = localStorage.getItem(CHECKPOINT_KEY) || sessionStorage.getItem(CHECKPOINT_KEY);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (!parsed?.session || !parsed?.states) return null;
-      if (Date.now() - parsed.time > 30*60*1000) { clearCheckpoint(); return null; }
-      return parsed;
-    } catch(e) { return null; }
-  }
-
-  function getLevelIdFromXP(xp) {
-    if (xp >= 4200) return 5; if (xp >= 2400) return 4;
-    if (xp >= 1200) return 3; if (xp >= 500) return 2; return 1;
-  }
-
-  // ── Mascot HTML by question type ──
-  function getMascotHTML(qType, subState) {
-    // Returns inline Lottie container + emoji fallback for the question card header
-    const mascotContainerId = 'lottie-mascot-inline';
-
-    let emoji = '🦆'; // default mascot
-    if (qType === 'listening')       emoji = '🎧';
-    else if (qType === 'speaking')   emoji = '🎙️';
-    else if (qType === 'tile_assembly') emoji = '🧩';
-    else if (qType === 'fill_blank') emoji = '✏️';
-    else if (qType === 'multiple_choice') emoji = '🤔';
-
-    // Emoji fallback sizes
-    return `
-      <div class="duo-mascot-row">
-        <div id="${mascotContainerId}" class="duo-mascot-lottie"></div>
-        <span class="duo-mascot-emoji" aria-hidden="true">${emoji}</span>
-      </div>
-    `;
-  }
-
-  // ── Inline mascot animation using AnimRegistry ──
-  function playInlineMascot(qType, wasCorrect = null) {
-    const id = 'lottie-mascot-inline';
-    if (!window.AnimRegistry) return;
-
-    let key = 'mascot_thinking';
-    if (wasCorrect === true)  key = 'mascot_happy';
-    else if (wasCorrect === false) key = 'mascot_sad';
-    else if (qType === 'listening')       key = 'mascot_idle';
-    else if (qType === 'speaking')        key = 'mascot_encouraging';
-    else if (qType === 'multiple_choice') key = 'mascot_thinking';
-    else if (qType === 'fill_blank')      key = 'mascot_thinking';
-    else if (qType === 'tile_assembly')   key = 'mascot_idle';
-
-    AnimRegistry.play(key, id, { loop: wasCorrect === null });
-  }
-
-  // ── Confetti ──
-  function triggerConfetti() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const colors = ['#f43f5e','#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899'];
-    for (let i = 0; i < 28; i++) {
-      const p = document.createElement('div');
-      p.style.cssText = `position:fixed;top:-10px;left:${Math.random()*100}%;width:8px;height:8px;border-radius:50%;background:${colors[i%colors.length]};pointer-events:none;z-index:9999;animation:confettiFall ${1+Math.random()*0.8}s ${Math.random()*0.4}s linear forwards;`;
-      document.body.appendChild(p);
-      p.addEventListener('animationend', () => p.remove());
-    }
-  }
-
-  // ── Speech-to-Text ──
-  class SpeechBridge {
-    constructor() {
-      this.recognition = null; this.active = false;
-      const RC = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (RC) { this.recognition = new RC(); this.recognition.lang = 'zh-TW'; this.recognition.interimResults = false; this.recognition.maxAlternatives = 1; }
-    }
-    start(onResult, onError, onEnd) {
-      if (!this.recognition) { onError('unavailable'); return; }
-      this.active = true;
-      this.recognition.onresult = e => onResult(e.results[0][0].transcript);
-      this.recognition.onerror = e => onError(e.error);
-      this.recognition.onend = () => { this.active = false; onEnd(); };
-      this.recognition.start();
-    }
-    stop() { if (this.recognition && this.active) this.recognition.stop(); }
-  }
-  const speech = new SpeechBridge();
-
-  // ── Global State ──
-  let state = {
-    userId:'default_user', words:[], userStates:[], session:null,
-    currentQuestion:null, selectedChoice:null, tappedTiles:[],
-    sttSubState:'idle', sttTranscript:'',
-    hearts:3, streak:0, startTime:0,
-    uiState:'PATH_MAP', activeChapterId:null, activeSectionId:null,
-    container:null, feedbackVisible:false
-  };
-
-  function getChapters() {
-    const map = new Map();
-    state.words.forEach(w => {
-      if (!map.has(w.setId)) map.set(w.setId, { id:w.setId, name:w.setName||w.semanticGroup||'Vocabulary Set', semanticGroup:w.semanticGroup||'General', level:w.level||'A1', words:[] });
-      map.get(w.setId).words.push(w);
-    });
-    return Array.from(map.values());
-  }
-
-  // ── CSS Injection ──
-  function injectStyles() {
-    if (document.getElementById('duolingo-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'duolingo-styles';
-    style.textContent = `
-      /* ── Base layout — full-screen phone ── */
-      .duo-layout {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        background: var(--body-bg, #0f172a);
-        color: var(--text, #f8fafc);
-        font-family: 'Outfit', 'Inter', sans-serif;
-        overflow: hidden;
-        z-index: 100;
-      }
-
-      /* ── Top bar ── */
-      .duo-topbar {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 16px 8px;
-        flex-shrink: 0;
-      }
-      .duo-topbar-exit {
-        width: 36px; height: 36px;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255,255,255,0.06);
-        color: var(--text-2, #94a3b8);
-        font-size: 1.1rem;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        flex-shrink: 0;
-        transition: background 0.15s;
-      }
-      .duo-topbar-exit:active { background: rgba(255,255,255,0.12); }
-      .duo-progress-bar {
-        flex: 1;
-        height: 14px;
-        background: rgba(255,255,255,0.08);
-        border-radius: 99px;
-        overflow: hidden;
-        position: relative;
-      }
-      .duo-progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #10b981, #34d399);
-        border-radius: 99px;
-        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-        will-change: width;
-      }
-      .duo-stats-row {
-        display: flex; align-items: center; gap: 10px;
-        flex-shrink: 0;
-      }
-      .duo-stat-chip {
-        display: flex; align-items: center; gap: 4px;
-        font-weight: 800; font-size: 0.95rem;
-      }
-      .duo-heart-icon { color: #ef4444; font-size: 1.1rem; }
-      .duo-streak-icon { color: #f59e0b; font-size: 1.1rem; }
-
-      /* ── Question area — scrollable middle ── */
-      .duo-question-area {
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        padding: 0 16px 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .duo-question-area::-webkit-scrollbar { display: none; }
-
-      /* ── Question type label row ── */
-      .duo-qtype-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 4px 0 10px;
-        flex-shrink: 0;
-      }
-      .duo-qtype-chip {
-        display: flex; align-items: center; gap: 6px;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.82rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.4px;
-      }
-
-      /* ── Mascot row — centered above prompt ── */
-      .duo-mascot-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        margin: 4px 0 8px;
-        min-height: 80px;
-      }
-      .duo-mascot-lottie {
-        width: 88px;
-        height: 88px;
-        position: absolute;
-        display: none;
-      }
-      .duo-mascot-emoji {
-        font-size: 3.5rem;
-        line-height: 1;
-        animation: mascotBob 2s ease-in-out infinite;
-        display: block;
-      }
-      @keyframes mascotBob {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-6px); }
-      }
-      .duo-mascot-emoji.celebrating {
-        animation: mascotCelebrate 0.5s ease;
-      }
-      @keyframes mascotCelebrate {
-        0%  { transform: scale(1) rotate(0deg); }
-        30% { transform: scale(1.3) rotate(-8deg); }
-        60% { transform: scale(1.2) rotate(8deg); }
-        100%{ transform: scale(1) rotate(0deg); }
-      }
-      .duo-mascot-emoji.sad {
-        animation: mascotShake 0.4s ease;
-      }
-      @keyframes mascotShake {
-        0%,100% { transform: translateX(0); }
-        20%,60% { transform: translateX(-5px); }
-        40%,80% { transform: translateX(5px); }
-      }
-
-      /* ── Prompt (Chinese character) ── */
-      .duo-prompt-main {
-        font-family: var(--font-zh, 'Noto Sans TC', serif);
-        font-size: 3rem;
-        font-weight: 900;
-        text-align: center;
-        line-height: 1.15;
-        margin: 4px 0 6px;
-        color: var(--text-1, #f8fafc);
-        word-break: break-all;
-      }
-      .duo-prompt-pinyin {
-        text-align: center;
-        font-size: 0.95rem;
-        color: #64748b;
-        margin-bottom: 4px;
-        font-style: italic;
-      }
-      .duo-prompt-sub {
-        text-align: center;
-        font-size: 1rem;
-        color: var(--text-2, #94a3b8);
-        margin-bottom: 16px;
-        font-style: italic;
-      }
-
-      /* ── Audio button (listening question) ── */
-      .duo-audio-big {
-        width: 86px; height: 86px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-        color: #fff;
-        font-size: 2.4rem;
-        border: none;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        margin: 8px auto 12px;
-        box-shadow: 0 6px 24px rgba(139,92,246,0.45);
-        transition: transform 0.12s, box-shadow 0.12s;
-        position: relative;
-        flex-shrink: 0;
-      }
-      .duo-audio-big:active { transform: scale(0.93); box-shadow: 0 2px 8px rgba(139,92,246,0.4); }
-      .duo-audio-big.playing::after {
-        content: '';
-        position: absolute; inset: -8px;
-        border-radius: 50%;
-        border: 3px solid rgba(139,92,246,0.4);
-        animation: audioRipple 1s ease-out infinite;
-      }
-      @keyframes audioRipple {
-        0%   { opacity:1; transform:scale(1); }
-        100% { opacity:0; transform:scale(1.5); }
-      }
-
-      /* ── Answer options ── */
-      .duo-options {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        margin-top: 4px;
-      }
-      .duo-option-btn {
-        min-height: 58px;
-        width: 100%;
-        border: 2.5px solid rgba(255,255,255,0.1);
-        background: rgba(255,255,255,0.03);
-        color: var(--text, #f8fafc);
-        border-radius: 16px;
-        font-size: 1.05rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        padding: 0 18px;
-        gap: 10px;
-        text-align: left;
-        transition: all 0.15s;
-        position: relative;
-        overflow: hidden;
-      }
-      .duo-option-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: transparent;
-        transition: background 0.15s;
-      }
-      .duo-option-btn:active::before { background: rgba(255,255,255,0.05); }
-      .duo-option-letter {
-        width: 28px; height: 28px;
-        border-radius: 50%;
-        border: 2px solid rgba(255,255,255,0.15);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.78rem;
-        font-weight: 800;
-        flex-shrink: 0;
-        color: var(--text-2, #94a3b8);
-      }
-      .duo-option-btn.selected {
-        border-color: #3b82f6;
-        background: rgba(59,130,246,0.1);
-      }
-      .duo-option-btn.selected .duo-option-letter {
-        background: #3b82f6;
-        border-color: #3b82f6;
-        color: #fff;
-      }
-      .duo-option-btn.correct {
-        border-color: #22c55e;
-        background: rgba(34,197,94,0.12);
-        color: #22c55e;
-        animation: optionCorrect 0.35s ease;
-      }
-      .duo-option-btn.correct .duo-option-letter {
-        background: #22c55e; border-color: #22c55e; color: #fff;
-      }
-      .duo-option-btn.wrong {
-        border-color: #ef4444;
-        background: rgba(239,68,68,0.12);
-        color: #ef4444;
-        animation: optionWrong 0.35s ease;
-      }
-      .duo-option-btn.wrong .duo-option-letter {
-        background: #ef4444; border-color: #ef4444; color: #fff;
-      }
-      .duo-option-btn.dimmed { opacity: 0.35; pointer-events: none; }
-      @keyframes optionCorrect {
-        0%  { transform: scale(1); }
-        40% { transform: scale(1.03); }
-        100%{ transform: scale(1); }
-      }
-      @keyframes optionWrong {
-        0%,100% { transform: translateX(0); }
-        20%,60% { transform: translateX(-6px); }
-        40%,80% { transform: translateX(6px); }
-      }
-
-      /* ── Tile Assembly ── */
-      .duo-tile-section { width: 100%; margin-top: 4px; }
-      .duo-tile-answer-zone {
-        min-height: 64px;
-        border-bottom: 2.5px dashed rgba(255,255,255,0.12);
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 8px 0 10px;
-        margin-bottom: 14px;
-        align-content: flex-start;
-      }
-      .duo-tile-bank {
-        display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-      }
-      .duo-tile {
-        min-height: 48px;
-        padding: 0 16px;
-        background: var(--card-bg, #1e293b);
-        border: 2.5px solid rgba(255,255,255,0.12);
-        border-radius: 14px;
-        color: var(--text, #f8fafc);
-        font-family: var(--font-zh, 'Noto Sans TC', serif);
-        font-size: 1.15rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.15), 0 3px 0 rgba(0,0,0,0.25);
-        transition: transform 0.12s, box-shadow 0.12s;
-        user-select: none;
-      }
-      .duo-tile:active { transform: scale(0.94); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-      .duo-tile.tapped { opacity: 0.12; pointer-events: none; box-shadow: none; }
-      .duo-tile.in-zone {
-        background: rgba(59,130,246,0.12);
-        border-color: rgba(59,130,246,0.5);
-        box-shadow: 0 2px 0 rgba(59,130,246,0.3);
-      }
-      .duo-tile-hint { font-size: 0.78rem; color: #64748b; text-align: center; margin-bottom: 6px; }
-
-      /* ── Speaking UI ── */
-      .duo-mic-btn {
-        width: 90px; height: 90px;
-        border-radius: 50%;
-        border: none;
-        background: linear-gradient(135deg, #ef4444, #b91c1c);
-        color: #fff; font-size: 2.5rem;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        margin: 10px auto 8px;
-        box-shadow: 0 6px 24px rgba(239,68,68,0.45);
-        transition: transform 0.12s;
-        position: relative;
-        flex-shrink: 0;
-      }
-      .duo-mic-btn.pulsing::before {
-        content: '';
-        position: absolute; inset: -10px;
-        border-radius: 50%;
-        border: 3px solid rgba(239,68,68,0.45);
-        animation: micPulse 1.2s ease-out infinite;
-      }
-      .duo-mic-btn.pulsing::after {
-        content: '';
-        position: absolute; inset: -20px;
-        border-radius: 50%;
-        border: 2px solid rgba(239,68,68,0.2);
-        animation: micPulse 1.2s ease-out 0.3s infinite;
-      }
-      @keyframes micPulse {
-        0%   { opacity:1; transform:scale(1); }
-        100% { opacity:0; transform:scale(1.4); }
-      }
-      .duo-mic-status {
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--text-2, #94a3b8);
-        min-height: 24px;
-        margin-bottom: 4px;
-      }
-      .duo-speaking-target {
-        font-family: var(--font-zh, 'Noto Sans TC', serif);
-        font-size: 2.6rem;
-        font-weight: 900;
-        text-align: center;
-        margin: 4px 0 2px;
-      }
-      .duo-speaking-hear {
-        text-align: center;
-        color: #8b5cf6;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        margin-bottom: 8px;
-        display: flex; align-items: center; justify-content: center; gap: 6px;
-      }
-      .duo-speaking-hear:active { opacity: 0.7; }
-
-      /* ── Bottom action area (fixed, never scrolls) ── */
-      .duo-bottom-area {
-        flex-shrink: 0;
-        padding: 0 16px 0;
-        padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
-      }
-
-      /* ── Feedback panel (slides up from bottom) ── */
-      .duo-feedback-panel {
-        border-radius: 20px 20px 0 0;
-        padding: 16px 16px 4px;
-        margin: 0 -16px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
-        will-change: transform;
-      }
-      .duo-feedback-panel.correct {
-        background: rgba(22,163,74,0.12);
-        border-top: 3px solid #22c55e;
-      }
-      .duo-feedback-panel.wrong {
-        background: rgba(220,38,38,0.1);
-        border-top: 3px solid #ef4444;
-      }
-      .duo-feedback-header {
-        display: flex; align-items: center; gap: 10px;
-      }
-      .duo-feedback-icon {
-        width: 36px; height: 36px;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.3rem;
-        flex-shrink: 0;
-      }
-      .correct .duo-feedback-icon { background: rgba(34,197,94,0.15); }
-      .wrong  .duo-feedback-icon { background: rgba(239,68,68,0.15); }
-      .duo-feedback-title {
-        font-size: 1.05rem;
-        font-weight: 800;
-      }
-      .correct .duo-feedback-title { color: #22c55e; }
-      .wrong  .duo-feedback-title  { color: #ef4444; }
-      .duo-feedback-explanation {
-        font-family: var(--font-zh, 'Noto Sans TC', serif);
-        font-size: 1rem;
-        color: var(--text-2, #cbd5e1);
-        line-height: 1.5;
-        padding-left: 46px;
-        margin-top: -4px;
-      }
-
-      /* ── Primary CTA buttons ── */
-      .duo-btn-check {
-        width: 100%;
-        min-height: 54px;
-        border-radius: 16px;
-        border: none;
-        font-size: 1.05rem;
-        font-weight: 800;
-        cursor: pointer;
-        letter-spacing: 0.5px;
-        transition: transform 0.1s, box-shadow 0.1s;
-      }
-      .duo-btn-check:active { transform: translateY(2px); box-shadow: none !important; }
-      .duo-btn-check.active-check {
-        background: #10b981;
-        color: #fff;
-        box-shadow: 0 4px 0 #059669, 0 6px 16px rgba(16,185,129,0.35);
-      }
-      .duo-btn-check.correct-btn {
-        background: #22c55e;
-        color: #fff;
-        box-shadow: 0 4px 0 #15803d, 0 6px 16px rgba(34,197,94,0.35);
-      }
-      .duo-btn-check.wrong-btn {
-        background: #ef4444;
-        color: #fff;
-        box-shadow: 0 4px 0 #b91c1c, 0 6px 16px rgba(239,68,68,0.35);
-      }
-      .duo-btn-check:disabled {
-        background: rgba(255,255,255,0.06);
-        color: rgba(255,255,255,0.3);
-        cursor: not-allowed;
-        box-shadow: none;
-      }
-
-      /* ── XP gain micro-badge ── */
-      .duo-xp-badge {
-        position: fixed;
-        top: 60px;
-        right: 16px;
-        background: #f59e0b;
-        color: #fff;
-        font-weight: 900;
-        font-size: 0.85rem;
-        padding: 4px 10px;
-        border-radius: 20px;
-        z-index: 9000;
-        pointer-events: none;
-        animation: xpBadgePop 0.9s ease forwards;
-      }
-      @keyframes xpBadgePop {
-        0%   { opacity:0; transform: translateY(8px) scale(0.7); }
-        30%  { opacity:1; transform: translateY(0) scale(1.1); }
-        70%  { opacity:1; transform: translateY(-4px) scale(1); }
-        100% { opacity:0; transform: translateY(-16px) scale(0.9); }
-      }
-
-      /* ── Streak banner ── */
-      .duo-streak-banner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-        color: #fff;
-        font-weight: 900;
-        font-size: 1.3rem;
-        padding: 16px 32px;
-        border-radius: 24px;
-        z-index: 9000;
-        pointer-events: none;
-        text-align: center;
-        box-shadow: 0 10px 40px rgba(245,158,11,0.5);
-        animation: streakPop 1.4s ease forwards;
-      }
-      @keyframes streakPop {
-        0%  { transform: translate(-50%,-50%) scale(0); opacity:0; }
-        25% { transform: translate(-50%,-50%) scale(1.1); opacity:1; }
-        70% { transform: translate(-50%,-50%) scale(1); opacity:1; }
-        100%{ transform: translate(-50%,-50%) scale(0.8); opacity:0; }
-      }
-
-      /* ── Screen flash overlay ── */
-      .duo-flash {
-        position: fixed; inset: 0;
-        pointer-events: none; z-index: 8000;
-        animation: screenFlash 0.3s ease forwards;
-      }
-      @keyframes screenFlash {
-        0%   { opacity: 1; }
-        100% { opacity: 0; }
-      }
-
-      /* ── Path Map UI ── */
-      .duo-path-layout {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        background: var(--body-bg, #0f172a);
-        color: var(--text, #f8fafc);
-        font-family: 'Outfit', 'Inter', sans-serif;
-        overflow: hidden;
-        z-index: 100;
-      }
-      .duo-path-topbar {
-        display: flex; align-items: center; gap: 10px;
-        padding: 12px 16px 8px;
-        flex-shrink: 0;
-      }
-      .duo-section-tabs {
-        display: flex; gap: 6px; overflow-x: auto; padding: 0 16px 8px;
-        scrollbar-width: none; flex-shrink: 0;
-      }
-      .duo-section-tabs::-webkit-scrollbar { display: none; }
-      .duo-section-tab {
-        padding: 7px 14px;
-        border-radius: 14px;
-        border: 2px solid transparent;
-        background: rgba(255,255,255,0.05);
-        color: var(--text-2, #cbd5e1);
-        font-weight: 700; font-size: 0.8rem;
-        white-space: nowrap; cursor: pointer;
-        transition: all 0.18s;
-        display: flex; align-items: center; gap: 5px;
-        flex-shrink: 0;
-      }
-      .duo-section-tab.active { background: rgba(59,130,246,0.15); border-color: #3b82f6; color: #3b82f6; }
-      .duo-section-tab.locked { opacity: 0.5; cursor: not-allowed; }
-      .duo-section-banner {
-        margin: 0 16px 14px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: #fff;
-        flex-shrink: 0;
-      }
-      .duo-section-banner.sec_novice       { background: linear-gradient(135deg,#10b981,#059669); }
-      .duo-section-banner.sec_elementary   { background: linear-gradient(135deg,#3b82f6,#1d4ed8); }
-      .duo-section-banner.sec_intermediate { background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
-      .duo-section-banner.sec_advanced     { background: linear-gradient(135deg,#f59e0b,#d97706); }
-      .duo-path-scroll {
-        flex: 1; overflow-y: auto; overflow-x: hidden;
-        padding: 0 20px 20px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        display: flex; flex-direction: column; align-items: center; gap: 28px;
-      }
-      .duo-path-scroll::-webkit-scrollbar { display: none; }
-      .duo-node-wrapper {
-        display: flex; flex-direction: column; align-items: center;
-        position: relative; width: 100%;
-      }
-      .duo-node-wrapper.offset-left  { transform: translateX(-44px); }
-      .duo-node-wrapper.offset-right { transform: translateX(44px); }
-      .duo-node-btn {
-        width: 80px; height: 80px;
-        border-radius: 50%; border: none;
-        background: var(--card-bg, #1e293b);
-        box-shadow: 0 8px 0 #0c1524, 0 12px 20px rgba(0,0,0,0.35);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.9rem; cursor: pointer;
-        transition: transform 0.12s, box-shadow 0.12s;
-        position: relative;
-      }
-      .duo-node-btn:active:not(.locked) {
-        transform: translateY(5px);
-        box-shadow: 0 3px 0 #0c1524, 0 5px 10px rgba(0,0,0,0.25);
-      }
-      .duo-node-btn.locked {
-        background: #1e293b; cursor: not-allowed;
-        box-shadow: 0 6px 0 #0c1524;
-      }
-      .duo-node-btn.locked::after {
-        content: '🔒'; font-size: 0.9rem;
-        position: absolute; bottom: -3px; right: -3px;
-        background: #334155; border: 2px solid #0f172a;
-        width: 22px; height: 22px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .duo-node-ring {
-        position: absolute; top: -9px; left: -9px;
-        width: 98px; height: 98px;
-        transform: rotate(-90deg);
-        pointer-events: none;
-      }
-      .duo-node-label {
-        margin-top: 12px;
-        font-weight: 800; font-size: 0.88rem;
-        color: var(--text-2, #cbd5e1);
-        text-align: center; max-width: 130px; line-height: 1.25;
-      }
-      .duo-node-xp-label {
-        font-size: 0.72rem; color: #64748b;
-        font-weight: 600; margin-top: 3px;
-        text-align: center;
-      }
-
-      /* ── Chapter drawer ── */
-      .duo-drawer-backdrop {
-        position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1990;
-      }
-      .duo-drawer {
-        position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-        width: 100%; max-width: 430px;
-        background: var(--card-bg, #1e293b);
-        border-radius: 28px 28px 0 0;
-        padding: 24px 20px;
-        padding-bottom: calc(env(safe-area-inset-bottom,0px) + 20px);
-        box-sizing: border-box;
-        box-shadow: 0 -12px 48px rgba(0,0,0,0.55);
-        z-index: 2000;
-        animation: slideUp 0.24s cubic-bezier(0.4,0,0.2,1);
-      }
-      @keyframes slideUp { from { transform:translate(-50%,100%); } to { transform:translate(-50%,0); } }
-      .duo-drawer-handle {
-        width: 36px; height: 4px;
-        background: rgba(255,255,255,0.15);
-        border-radius: 2px; margin: 0 auto 18px;
-      }
-      .duo-word-pills {
-        display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
-      }
-      .duo-word-pill {
-        padding: 4px 10px;
-        border-radius: 10px;
-        background: rgba(255,255,255,0.07);
-        font-family: var(--font-zh, 'Noto Sans TC', serif);
-        font-size: 0.9rem; color: var(--text-2, #cbd5e1);
-      }
-      .duo-word-pill.learned {
-        background: rgba(34,197,94,0.12);
-        color: #22c55e;
-        border: 1px solid rgba(34,197,94,0.2);
-      }
-      .duo-drawer-cta {
-        display: flex; gap: 10px; margin-top: 4px;
-      }
-      .duo-btn-primary {
-        flex: 1;
-        min-height: 52px;
-        border-radius: 16px;
-        background: #10b981;
-        color: #fff;
-        font-size: 1.05rem; font-weight: 800;
-        border: none; cursor: pointer;
-        box-shadow: 0 4px 0 #059669, 0 6px 16px rgba(16,185,129,0.35);
-        transition: transform 0.1s, box-shadow 0.1s;
-      }
-      .duo-btn-primary:active { transform: translateY(3px); box-shadow: 0 1px 0 #059669; }
-      .duo-btn-outline {
-        min-height: 52px;
-        padding: 0 20px;
-        border-radius: 16px;
-        background: transparent;
-        color: var(--text-2, #cbd5e1);
-        font-size: 1rem; font-weight: 700;
-        border: 2px solid rgba(255,255,255,0.12);
-        cursor: pointer;
-        transition: background 0.15s;
-      }
-      .duo-btn-outline:active { background: rgba(255,255,255,0.05); }
-
-      /* ── Session complete & out of hearts ── */
-      .duo-end-layout {
-        position: fixed; inset: 0;
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        padding: 20px;
-        background: var(--body-bg, #0f172a);
-        z-index: 100; overflow-y: auto;
-      }
-      .duo-end-card {
-        width: 100%; max-width: 390px;
-        background: var(--card-bg, #1e293b);
-        border-radius: 24px;
-        padding: 28px 24px;
-        text-align: center;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-      }
-      .duo-end-trophy { font-size: 4.5rem; line-height: 1; margin-bottom: 12px; }
-      .duo-end-title  { font-size: 1.8rem; font-weight: 900; margin-bottom: 4px; }
-      .duo-end-sub    { font-size: 0.95rem; color: var(--text-2,#94a3b8); margin-bottom: 20px; }
-      .duo-end-stats  { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 20px; }
-      .duo-end-stat   { background: rgba(255,255,255,0.04); border-radius: 14px; padding: 12px 8px; border: 1.5px solid rgba(255,255,255,0.06); }
-      .duo-end-stat-val { font-size: 1.3rem; font-weight: 900; }
-      .duo-end-stat-label { font-size: 0.65rem; color: #64748b; text-transform: uppercase; font-weight: 800; margin-top: 3px; }
-      .duo-end-actions { display: flex; flex-direction: column; gap: 10px; }
-
-      /* ── Confetti ── */
-      @keyframes confettiFall {
-        0%   { transform: translateY(-10px) rotate(0deg); opacity:1; }
-        100% { transform: translateY(110vh) rotate(720deg); opacity:0; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  // ── Preload animations ──
-  async function initAnimations() {
-    if (!window.AnimRegistry) return;
-    const critical = ['correct_answer','wrong_answer','mascot_idle','mascot_thinking','mascot_happy','mascot_sad','mascot_encouraging'];
-    await Promise.all(critical.map(k => AnimRegistry.load(k)));
-    playInlineMascot(state.currentQuestion?.type ?? 'multiple_choice');
-    setTimeout(() => {
-      ['streak_3','streak_5','xp_gain','level_up','session_complete','out_of_hearts','new_word','listening_audio','speaking_mic'].forEach(k => AnimRegistry.load(k));
-    }, 1500);
-  }
-
-  // ── UI Flash ──
-  function flashScreen(color) {
-    const el = document.createElement('div');
-    el.className = 'duo-flash';
-    el.style.background = color;
-    document.body.appendChild(el);
-    el.addEventListener('animationend', () => el.remove());
-  }
-
-  // ── XP Pop ──
-  function showXPBadge(amount) {
-    const el = document.createElement('div');
-    el.className = 'duo-xp-badge';
-    el.textContent = `+${amount} XP`;
-    document.body.appendChild(el);
-    el.addEventListener('animationend', () => el.remove());
-  }
-
-  // ── Streak Banner ──
-  function showStreakBanner(n) {
-    const el = document.createElement('div');
-    el.className = 'duo-streak-banner';
-    el.innerHTML = `🔥 ${n} in a row!<br><span style="font-size:0.75rem;opacity:0.85;font-weight:600;">Keep going!</span>`;
-    document.body.appendChild(el);
-    el.addEventListener('animationend', () => el.remove());
-  }
-
-  // ── Route Renderer ──
-  async function render(container) {
-    state.container = container;
-    injectStyles();
-
-    if (!App.state.vocabulary || !Array.isArray(App.state.vocabulary)) {
-      container.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:var(--body-bg,#0f172a);color:#fff;"><div class="spinner"></div><p style="margin-top:16px;font-weight:600;">Loading vocabulary...</p></div>`;
-      try {
-        const r = await API.get('vocabulary');
-        App.state.vocabulary = Array.isArray(r) ? r : (r.sets || []);
-      } catch(e) {
-        container.innerHTML = `<div style="text-align:center;padding:40px;color:#fff;"><p>⚠️ Failed to load vocabulary.</p><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;border-radius:12px;background:#3b82f6;color:#fff;border:none;font-weight:700;cursor:pointer;">Retry</button></div>`;
-        return;
-      }
-    }
-
-    const uniqueMap = new Map();
-    App.state.vocabulary.forEach(set => {
-      if (!set.words) return;
-      set.words.forEach(w => {
-        if (w.word && !uniqueMap.has(w.word)) {
-          uniqueMap.set(w.word, {
-            id:'w_'+w.word, term:w.word, pinyin:w.pinyin||'', meaning:w.definition||'',
-            level:set.level?set.level.toUpperCase():'A1', setId:set.id, setName:set.name,
-            semanticGroup:set.name?set.name.replace(/Chapter \d+:\s*/,''):'General',
-            exampleSentences:[w.example_sentence?.sentence,...(w.example_words?.map(ew=>`${w.word}${ew.word}`)||[])].filter(Boolean),
-            useTTS:true, partOfSpeech:'noun'
-          });
-        }
-      });
-    });
-
-    state.words = Array.from(uniqueMap.values());
-    if (!state.words.length) state.words = [...SEED_WORDS];
-
-    const badge = document.getElementById('duolingo-nav-badge');
-    if (badge && localStorage.getItem('tocfl_duolingo_seen') === 'true') badge.remove();
-
-    state.userStates = loadUserWordStates(state.words);
-
-    const totalXP = App.state.progress?.xpTotal || 0;
-    let savedSec = localStorage.getItem('tocfl_duolingo_active_section');
-    let activeSec = SECTIONS.find(s => s.id === savedSec);
-    if (!activeSec || totalXP < activeSec.requiredXP) {
-      const unlocked = SECTIONS.filter(s => totalXP >= s.requiredXP);
-      activeSec = unlocked[unlocked.length-1] || SECTIONS[0];
-    }
-    state.activeSectionId = activeSec.id;
-
-    const cp = recoverCheckpoint();
-    if (cp) {
-      if (confirm('Continue your previous session?')) {
-        state.session = cp.session;
-        state.userStates = cp.states;
-        state.hearts = 3; state.streak = 0;
-        state.startTime = Date.now();
-        state.uiState = 'SHOWING_QUESTION';
-        await initAnimations();
-        showQuestion();
-        return;
-      } else { clearCheckpoint(); }
-    }
-    showPathMap();
-  }
-
-  // ── PATH MAP ──
-  function showPathMap() {
-    state.uiState = 'PATH_MAP';
-    state.activeChapterId = null;
-    renderPathUI();
-  }
-
-  function renderPathUI() {
-    const totalXP = App.state.progress?.xpTotal || 0;
-    const chapters = getChapters();
-    const activeSec = SECTIONS.find(s => s.id === state.activeSectionId) || SECTIONS[0];
-
-    const sectionChapters = chapters.map((ch,gi) => ({...ch,globalIndex:gi})).filter(ch => {
-      const lvl = ch.level.toUpperCase();
-      if (activeSec.id === 'sec_advanced') return !['NOVICE','A1','A2','A2/B1'].includes(lvl);
-      return activeSec.levels.includes(lvl);
-    });
-
-    const progressPct = Math.min(100, Math.round((totalXP/5000)*100));
-    const iconMap = {'Greetings':'💬','Food & Drinks':'🍎','Family Members':'👪','Time Expressions':'🕒','Weather & Nature':'☀️','Occupations':'💼','Food & Dining':'🍜','Transportation':'🚗','Shopping':'🛍️','Weather':'☁️','Health & Body':'🏥','School & Study':'🏫','Directions & Places':'🗺️','Work & Careers':'💼','Hobbies & Leisure':'🎮','Measure Words (量詞)':'📐'};
-
-    const tabsHtml = SECTIONS.map(sec => {
-      const unlocked = totalXP >= sec.requiredXP;
-      const active = sec.id === state.activeSectionId;
-      return `<button class="duo-section-tab ${active?'active':''} ${unlocked?'':'locked'}" onclick="LearningModeModule.clickSectionTab('${sec.id}')">
-        ${unlocked?'':'🔒 '}${sec.name.replace('Section ','Sec ')}
-      </button>`;
-    }).join('');
-
-    const nodesHtml = sectionChapters.map((ch, idx) => {
-      const xpReq = ch.globalIndex * 150;
-      const isUnlocked = totalXP >= xpReq;
-      const total = ch.words.length;
-      const learned = ch.words.filter(w => { const s = state.userStates.find(us => us.wordId===w.id); return s && s.correctCount >= 1; }).length;
-      const pct = total > 0 ? Math.round((learned/total)*100) : 0;
-      const r = 40; const circ = 2*Math.PI*r;
-      const offset = circ - (pct/100)*circ;
-      let align = '';
-      if (idx%4===1) align='offset-left'; else if (idx%4===3) align='offset-right';
-      const icon = iconMap[ch.semanticGroup] || ch.words[0]?.term[0] || '學';
-      const shortName = ch.name.replace(/^Chapter \d+:\s*/,'');
-
-      return `
-        <div class="duo-node-wrapper ${align}">
-          <button class="duo-node-btn ${isUnlocked?'':'locked'}" onclick="LearningModeModule.clickPathNode('${ch.id}',${isUnlocked})" aria-label="Study ${ch.name}">
-            ${isUnlocked?`<svg class="duo-node-ring"><circle cx="49" cy="49" r="${r}" stroke="rgba(255,255,255,0.07)" stroke-width="7" fill="none"/><circle cx="49" cy="49" r="${r}" stroke="#f59e0b" stroke-width="7" fill="none" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round"/></svg>`:''}
-            <span style="font-family:var(--font-zh);font-size:1.8rem;z-index:2;position:relative;">${isUnlocked?icon:''}</span>
-          </button>
-          <div class="duo-node-label">${shortName}</div>
-          ${isUnlocked?`<div class="duo-node-xp-label">${learned}/${total} words${pct===100?' ✓':''}</div>`:''}
-        </div>
-      `;
-    }).join('');
-
-    // Drawer HTML
-    let drawerHtml = '';
-    if (state.activeChapterId) {
-      const ch = chapters.find(c => c.id === state.activeChapterId);
-      if (ch) {
-        const learned = ch.words.filter(w => { const s = state.userStates.find(us => us.wordId===w.id); return s && s.correctCount >= 1; }).length;
-        const pillsHtml = ch.words.slice(0,12).map(w => {
-          const s = state.userStates.find(us => us.wordId===w.id);
-          const done = s && s.correctCount >= 1;
-          return `<span class="duo-word-pill ${done?'learned':''}" title="${w.meaning}">${w.term}</span>`;
-        }).join('') + (ch.words.length > 12 ? `<span class="duo-word-pill">+${ch.words.length-12} more</span>` : '');
-
-        drawerHtml = `
-          <div class="duo-drawer-backdrop" onclick="LearningModeModule.closeDrawer()"></div>
-          <div class="duo-drawer">
-            <div class="duo-drawer-handle"></div>
-            <h3 style="font-size:1.3rem;font-weight:900;margin:0 0 4px;">${ch.name}</h3>
-            <p style="color:#64748b;font-size:0.88rem;margin:0 0 14px;">${learned} of ${ch.words.length} words practiced</p>
-            <div class="duo-word-pills">${pillsHtml}</div>
-            <div class="duo-drawer-cta">
-              <button class="duo-btn-primary" onclick="LearningModeModule.startChapterSession('${ch.id}')">Start Lesson</button>
-              <button class="duo-btn-outline" onclick="LearningModeModule.closeDrawer()">Cancel</button>
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    state.container.innerHTML = `
-      <div class="duo-path-layout">
-        <div class="duo-path-topbar">
-          <a class="duo-topbar-exit" href="#/" aria-label="Home" style="text-decoration:none;color:var(--text-2);">🏠</a>
-          <div class="duo-progress-bar" style="height:12px;">
-            <div class="duo-progress-fill" style="width:${progressPct}%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
-          </div>
-          <div class="duo-stats-row">
-            <div class="duo-stat-chip"><span style="color:#f59e0b;">⭐</span><span>${totalXP}</span></div>
-            <div class="duo-stat-chip"><span class="duo-streak-icon">🔥</span><span>${App.state.progress?.streak||0}</span></div>
-          </div>
-        </div>
-        <div class="duo-section-tabs">${tabsHtml}</div>
-        <div class="duo-section-banner ${activeSec.id}">
-          <div style="font-size:1.15rem;font-weight:900;">${activeSec.name}</div>
-          <div style="font-size:0.82rem;opacity:0.9;margin-top:3px;">${activeSec.subtitle}</div>
-        </div>
-        <div class="duo-path-scroll">
-          ${nodesHtml || '<p style="text-align:center;opacity:0.5;padding:32px 0;">No chapters yet in this section.</p>'}
-        </div>
-        ${drawerHtml}
-      </div>
-    `;
-  }
-
-  // ── SESSION ──
-  function startSessionForChapter(chapterId) {
-    const words = state.words.filter(w => w.setId === chapterId);
-    state.session = buildSession(words, state.userStates, Math.min(15, Math.max(5, words.length)));
-    state.hearts = 3; state.streak = 0;
-    state.startTime = Date.now();
-    state.uiState = 'SHOWING_QUESTION';
-    initAnimations();
-    showQuestion();
-  }
-
-  function showQuestion() {
-    state.uiState = 'SHOWING_QUESTION';
-    state.selectedChoice = null;
-    state.tappedTiles = [];
-    state.sttSubState = 'idle';
-    state.sttTranscript = '';
-    state.feedbackVisible = false;
-
-    if (state.session.currentIndex >= state.session.questionQueue.length) {
-      finishSession(); return;
-    }
-
-    state.currentQuestion = state.session.questionQueue[state.session.currentIndex];
-    sound.playCardFlip();
-    renderUI();
-    setTimeout(() => playInlineMascot(state.currentQuestion.type), 100);
-
-    if (state.currentQuestion.type === 'listening') {
-      setTimeout(() => playAudio(), 600);
-    }
-  }
-
-  // ── RENDER QUESTION UI ──
-  function renderUI() {
-    const q = state.currentQuestion;
-    const progressPct = Math.round((state.session.currentIndex / state.session.questionQueue.length) * 100);
-    const meta = QUESTION_TYPE_META[q.type] || QUESTION_TYPE_META.multiple_choice;
-    const isRevealing = state.uiState === 'REVEALING';
-    const isCorrect = isRevealing ? isAnswerCorrect() : null;
-
-    // Hearts HTML
-    const heartsHtml = [0,1,2].map(i => `<span class="duo-heart-icon">${i < state.hearts ? '❤️' : '🖤'}</span>`).join('');
-    const streakHtml = state.streak >= 2 ? `<span class="duo-stat-chip"><span class="duo-streak-icon">🔥</span><span>${state.streak}</span></span>` : '';
-
-    // Question content
-    let contentHtml = '';
-
-    if (q.type === 'multiple_choice') {
-      contentHtml = `
-        ${getMascotHTML(q.type)}
-        <div class="duo-prompt-main">${q.prompt}</div>
-        ${q.word.pinyin ? `<div class="duo-prompt-pinyin">${q.word.pinyin}</div>` : ''}
-        <div class="duo-prompt-sub">What does this mean?</div>
-        <div class="duo-options">
-          ${q.choices.map((choice, i) => {
-            let cls = '';
-            if (isRevealing) {
-              if (choice === q.correctAnswer) cls = 'correct';
-              else if (choice === state.selectedChoice) cls = 'wrong';
-              else cls = 'dimmed';
-            } else if (state.selectedChoice === choice) cls = 'selected';
-            const letters = 'ABCD';
-            return `<button class="duo-option-btn ${cls}" onclick="LearningModeModule.selectChoice('${choice.replace(/'/g,"\\'")}') " ${isRevealing?'disabled':''}>
-              <span class="duo-option-letter">${letters[i]}</span>
-              <span>${choice}</span>
-            </button>`;
-          }).join('')}
-        </div>
-      `;
-    }
-
-    else if (q.type === 'listening') {
-      contentHtml = `
-        ${getMascotHTML(q.type)}
-        <div style="text-align:center;color:var(--text-2,#94a3b8);font-size:0.9rem;margin-bottom:4px;">Listen and choose the meaning</div>
-        <button class="duo-audio-big ${state.uiState==='PLAYING_AUDIO'?'playing':''}" onclick="LearningModeModule.playAudio()" id="duo-audio-btn" aria-label="Play audio">🔊</button>
-        <div style="text-align:center;font-size:0.78rem;color:#64748b;margin-bottom:10px;">Tap to play again</div>
-        <div class="duo-options">
-          ${q.choices.map((choice, i) => {
-            let cls = '';
-            if (isRevealing) {
-              if (choice === q.correctAnswer) cls = 'correct';
-              else if (choice === state.selectedChoice) cls = 'wrong';
-              else cls = 'dimmed';
-            } else if (state.selectedChoice === choice) cls = 'selected';
-            const letters = 'ABCD';
-            return `<button class="duo-option-btn ${cls}" onclick="LearningModeModule.selectChoice('${choice.replace(/'/g,"\\'")}') " ${isRevealing?'disabled':''}>
-              <span class="duo-option-letter">${letters[i]}</span>
-              <span>${choice}</span>
-            </button>`;
-          }).join('')}
-        </div>
-      `;
-    }
-
-    else if (q.type === 'fill_blank') {
-      contentHtml = `
-        ${getMascotHTML(q.type)}
-        <div class="duo-prompt-main" style="font-size:1.6rem;line-height:1.4;">${q.prompt}</div>
-        <div class="duo-prompt-sub">Choose the missing word</div>
-        <div class="duo-options">
-          ${q.choices.map((choice, i) => {
-            let cls = '';
-            if (isRevealing) {
-              if (choice === q.correctAnswer) cls = 'correct';
-              else if (choice === state.selectedChoice) cls = 'wrong';
-              else cls = 'dimmed';
-            } else if (state.selectedChoice === choice) cls = 'selected';
-            const letters = 'ABCD';
-            return `<button class="duo-option-btn ${cls}" style="font-family:var(--font-zh);font-size:1.15rem;" onclick="LearningModeModule.selectChoice('${choice.replace(/'/g,"\\'")}') " ${isRevealing?'disabled':''}>
-              <span class="duo-option-letter">${letters[i]}</span>
-              <span>${choice}</span>
-            </button>`;
-          }).join('')}
-        </div>
-      `;
-    }
-
-    else if (q.type === 'tile_assembly') {
-      const selectedHtml = state.tappedTiles.map(idx =>
-        `<button class="duo-tile in-zone" onclick="LearningModeModule.removeTile(${idx})" ${isRevealing?'disabled':''}>${q.tiles[idx]}</button>`
-      ).join('');
-      const bankHtml = q.tiles.map((tile, i) => {
-        const tapped = state.tappedTiles.includes(i);
-        return `<button class="duo-tile ${tapped?'tapped':''}" onclick="LearningModeModule.tapTile(${i})" ${(tapped||isRevealing)?'disabled':''}>${tile}</button>`;
-      }).join('');
-
-      contentHtml = `
-        ${getMascotHTML(q.type)}
-        <div class="duo-prompt-main" style="font-size:1.15rem;color:var(--text-2,#94a3b8);">${q.word.meaning}</div>
-        <div class="duo-prompt-sub">Tap words to build the sentence</div>
-        <div class="duo-tile-section">
-          <div class="duo-tile-hint">Your answer:</div>
-          <div class="duo-tile-answer-zone">${selectedHtml}</div>
-          <div class="duo-tile-bank">${bankHtml}</div>
-        </div>
-      `;
-    }
-
-    else if (q.type === 'speaking') {
-      let micStatus = 'Tap the mic to speak';
-      let micClass = '';
-      let btnDisabled = isRevealing;
-      if (state.sttSubState === 'permission_requested') micStatus = 'Requesting mic access...';
-      else if (state.sttSubState === 'recording') { micStatus = 'Listening... speak clearly'; micClass = 'pulsing'; }
-      else if (state.sttSubState === 'processing') micStatus = 'Processing...';
-      else if (state.sttSubState === 'result') micStatus = `Heard: "${state.sttTranscript || '?'}"`;
-
-      contentHtml = `
-        ${getMascotHTML(q.type)}
-        <div class="duo-speaking-target">${q.word.term}</div>
-        <div class="duo-prompt-sub">${q.word.meaning}</div>
-        <div class="duo-speaking-hear" onclick="LearningModeModule.playAudio()">🔊 Hear pronunciation</div>
-        <button class="duo-mic-btn ${micClass}" onclick="LearningModeModule.toggleSTT()" ${btnDisabled?'disabled':''}>🎙️</button>
-        <div class="duo-mic-status">${micStatus}</div>
-      `;
-    }
-
-    // Footer: feedback panel + CTA
-    let footerHtml = '';
-    if (isRevealing) {
-      const ic = isCorrect ? '✓' : '✗';
-      const title = isCorrect ? 'Correct! Great job.' : 'Incorrect';
-      const panelCls = isCorrect ? 'correct' : 'wrong';
-      const btnCls = isCorrect ? 'correct-btn' : 'wrong-btn';
-      footerHtml = `
-        <div class="duo-feedback-panel ${panelCls}">
-          <div class="duo-feedback-header">
-            <div class="duo-feedback-icon">${isCorrect ? '✅' : '❌'}</div>
-            <div class="duo-feedback-title">${title}</div>
-          </div>
-          <div class="duo-feedback-explanation">${q.explanation}</div>
-          <button class="duo-btn-check ${btnCls}" style="margin-top:10px;" onclick="LearningModeModule.advance()">Continue</button>
-        </div>
-      `;
-    } else {
-      let disabled = true;
-      if (q.type === 'multiple_choice' || q.type === 'listening' || q.type === 'fill_blank') disabled = state.selectedChoice === null;
-      else if (q.type === 'tile_assembly') disabled = state.tappedTiles.length === 0;
-      else if (q.type === 'speaking') disabled = state.sttSubState !== 'result';
-      footerHtml = `<button class="duo-btn-check ${disabled?'':'active-check'}" onclick="LearningModeModule.checkAnswer()" ${disabled?'disabled':''}>Check Answer</button>`;
-    }
-
-    state.container.innerHTML = `
-      <div class="duo-layout">
-        <div class="duo-topbar">
-          <button class="duo-topbar-exit" onclick="LearningModeModule.quitSession()" aria-label="Exit session">✕</button>
-          <div class="duo-progress-bar">
-            <div class="duo-progress-fill" style="width:${progressPct}%"></div>
-          </div>
-          <div class="duo-stats-row">
-            ${streakHtml}
-            <div class="duo-stat-chip">${heartsHtml}</div>
-          </div>
-        </div>
-
-        <div class="duo-qtype-row">
-          <div class="duo-qtype-chip" style="background:${meta.color}22;color:${meta.color};">
-            <span>${meta.icon}</span><span>${meta.label}</span>
-          </div>
-          <div style="flex:1;"></div>
-          <span style="font-size:0.8rem;color:#64748b;font-weight:700;">${state.session.currentIndex+1}/${state.session.questionQueue.length}</span>
-        </div>
-
-        <div class="duo-question-area">
-          ${contentHtml}
-        </div>
-
-        <div class="duo-bottom-area">
-          ${footerHtml}
-        </div>
-      </div>
-    `;
-
-    // Re-init inline mascot lottie after render
-    if (window.AnimRegistry) {
-      setTimeout(() => {
-        const key = isRevealing
-          ? (isCorrect ? 'mascot_happy' : 'mascot_sad')
-          : (() => {
-              if (q.type==='listening') return 'mascot_idle';
-              if (q.type==='speaking') return 'mascot_encouraging';
-              return 'mascot_thinking';
-            })();
-        AnimRegistry.play(key, 'lottie-mascot-inline', { loop: true }).then(instance => {
-          if (instance) {
-            const emoji = state.container.querySelector('.duo-mascot-emoji');
-            if (emoji) emoji.style.display = 'none';
-          }
+  function normalizeCourseUnits(course, vocabBySection){
+    const units = [];
+    (course.sections || []).forEach((section, sectionIndex) => {
+      (section.units || []).forEach((unit, unitIndex) => {
+        const words = seedWordsForUnit(sectionIndex, unitIndex, vocabBySection, unit);
+        units.push({
+          id: String(unit.unit_id || `S${sectionIndex+1}U${unitIndex+1}`),
+          unit_id: String(unit.unit_id || `S${sectionIndex+1}U${unitIndex+1}`),
+          sectionId: String(section.section_id || `S${sectionIndex+1}`),
+          sectionNumber: sectionIndex + 1,
+          sectionLevel: section.level || section.title || `Section ${sectionIndex+1}`,
+          unitNumber: unitIndex + 1,
+          icon: SECTION_ICONS[sectionIndex] || '★',
+          title: unit.title || `Unit ${unitIndex+1}`,
+          goal: unit.focus || unit.learning_goal || unit.title || 'Practice this unit.',
+          words,
+          sentences: seedSentencesForUnit(words)
         });
-      }, 80);
-    }
-  }
-
-  // ── Answer evaluation ──
-  function isAnswerCorrect() {
-    const q = state.currentQuestion;
-    if (q.type === 'multiple_choice' || q.type === 'listening' || q.type === 'fill_blank') return state.selectedChoice === q.correctAnswer;
-    if (q.type === 'tile_assembly') {
-      const userStr = state.tappedTiles.map(i => q.tiles[i]).join('').replace(/[\s，。！？,.!?]/g,'');
-      return userStr === q.correctAnswer;
-    }
-    if (q.type === 'speaking') return checkPronunciation(q.correctAnswer, state.sttTranscript);
-    return false;
-  }
-
-  // ── Check Answer ──
-  function checkAnswer() {
-    if (state.uiState === 'REVEALING') return;
-    speech.stop();
-    state.uiState = 'REVEALING';
-
-    const isCorrect = isAnswerCorrect();
-    const q = state.currentQuestion;
-
-    // Visual feedback
-    flashScreen(isCorrect ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.14)');
-    if (!isCorrect && navigator.vibrate) navigator.vibrate([60,40,60]);
-
-    if (isCorrect) {
-      state.streak++;
-      state.session.totalCorrect++;
-      sound.playCorrect();
-      showXPBadge(10);
-
-      if (state.streak === 3 || state.streak === 5 || (state.streak >= 10 && state.streak % 5 === 0)) {
-        setTimeout(() => { showStreakBanner(state.streak); sound.playStreak(); }, 200);
-      }
-
-      const wIdx = state.userStates.findIndex(s => s.wordId === q.word.id);
-      if (wIdx >= 0) state.userStates[wIdx] = updateSRS(state.userStates[wIdx], true);
-    } else {
-      state.streak = 0;
-      state.session.totalWrong++;
-      state.hearts--;
-      sound.playWrong();
-      const wIdx = state.userStates.findIndex(s => s.wordId === q.word.id);
-      if (wIdx >= 0) state.userStates[wIdx] = updateSRS(state.userStates[wIdx], false);
-    }
-
-    renderUI();
-
-    // Auto-checkpoint every 5 questions
-    const total = state.session.totalCorrect + state.session.totalWrong;
-    if (total % 5 === 0) saveCheckpoint(state.session, state.userStates);
-
-    // Auto-advance on correct after 1.4s
-    if (isCorrect) {
-      setTimeout(() => { if (state.uiState === 'REVEALING') advance(); }, 1400);
-    }
-  }
-
-  function advance() {
-    if (state.hearts <= 0) {
-      state.uiState = 'OUT_OF_HEARTS';
-      renderOutOfHearts();
-      sound.playWrong();
-      return;
-    }
-    state.session.currentIndex++;
-    showQuestion();
-  }
-
-  function quitSession() {
-    if (confirm('Quit session? Your progress will be saved.')) {
-      saveCheckpoint(state.session, state.userStates);
-      speech.stop();
-      showPathMap();
-    }
-  }
-
-  // ── Interaction handlers ──
-  function selectChoice(choice) {
-    if (state.uiState === 'REVEALING') return;
-    state.selectedChoice = choice;
-    state.uiState = 'ANSWER_SELECTED';
-    renderUI();
-  }
-
-  function tapTile(index) {
-    if (state.uiState === 'REVEALING') return;
-    if (!state.tappedTiles.includes(index)) { state.tappedTiles.push(index); renderUI(); }
-  }
-
-  function removeTile(index) {
-    if (state.uiState === 'REVEALING') return;
-    state.tappedTiles = state.tappedTiles.filter(i => i !== index);
-    renderUI();
-  }
-
-  function playAudio() {
-    if (state.currentQuestion?.word) {
-      const btn = document.getElementById('duo-audio-btn');
-      if (btn) btn.classList.add('playing');
-      sound.speakWord(state.currentQuestion.word).then(() => {
-        const b = document.getElementById('duo-audio-btn');
-        if (b) b.classList.remove('playing');
       });
-    }
+    });
+    return units.length ? units : buildFallbackUnits();
   }
 
-  function toggleSTT() {
-    if (state.sttSubState === 'recording') {
-      speech.stop(); return;
-    }
-    state.sttSubState = 'permission_requested';
-    renderUI();
-
-    let maxTimer;
-    speech.start(
-      transcript => {
-        clearTimeout(maxTimer);
-        state.sttTranscript = transcript;
-        state.sttSubState = 'result';
-        renderUI();
-      },
-      err => {
-        clearTimeout(maxTimer);
-        console.warn('STT error:', err);
-        state.sttSubState = 'result';
-        state.sttTranscript = '';
-        renderUI();
-      },
-      () => { clearTimeout(maxTimer); }
-    );
-    state.sttSubState = 'recording';
-    renderUI();
-    maxTimer = setTimeout(() => { speech.stop(); state.sttSubState = 'result'; state.sttTranscript = ''; renderUI(); }, 8000);
-  }
-
-  // ── Session end screens ──
-  function finishSession() {
-    clearCheckpoint();
-    localStorage.setItem('tocfl_duolingo_seen', 'true');
-    saveUserWordStates(state.userStates);
-
-    const total = state.session.totalCorrect + state.session.totalWrong;
-    const accuracy = total > 0 ? Math.round((state.session.totalCorrect/total)*100) : 100;
-    const elapsed = Math.round((Date.now() - state.startTime)/1000);
-    const mm = Math.floor(elapsed/60), ss = elapsed%60;
-    const baseXP = state.session.totalCorrect * 10;
-    const xpTotal = baseXP + 100;
-
-    const xpBefore = App.state.progress?.xpTotal || 0;
-    const lvBefore = getLevelIdFromXP(xpBefore);
-    if (App.state.progress) { App.state.progress.xpTotal = xpBefore + xpTotal; App.saveProgress?.(); }
-    const xpAfter = App.state.progress?.xpTotal || 0;
-    const lvAfter = getLevelIdFromXP(xpAfter);
-
-    state.uiState = 'SESSION_COMPLETE';
-
-    const lvNames = ['','Beginner','Elementary','Intermediate','Advanced','Master'];
-    const lvColors = ['','#10b981','#3b82f6','#8b5cf6','#f59e0b','#ef4444'];
-
-    state.container.innerHTML = `
-      <div class="duo-end-layout">
-        <div class="duo-end-card">
-          <div class="duo-end-trophy">🏆</div>
-          <div class="duo-end-title">Session Complete!</div>
-          <div class="duo-end-sub">Amazing work — keep the streak going!</div>
-          <div class="duo-end-stats">
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#f59e0b">+${xpTotal}</div>
-              <div class="duo-end-stat-label">XP Earned</div>
-            </div>
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#10b981">${accuracy}%</div>
-              <div class="duo-end-stat-label">Accuracy</div>
-            </div>
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#3b82f6">${mm}:${String(ss).padStart(2,'0')}</div>
-              <div class="duo-end-stat-label">Duration</div>
-            </div>
-          </div>
-          <div style="background:rgba(255,255,255,0.04);border-radius:16px;padding:14px 16px;text-align:left;margin-bottom:20px;border:1.5px solid rgba(255,255,255,0.06);">
-            <div style="font-size:0.72rem;color:${lvColors[lvAfter]};text-transform:uppercase;font-weight:800;letter-spacing:0.5px;">Current Level</div>
-            <div style="font-size:1.2rem;font-weight:900;margin-top:3px;">Level ${lvAfter}: ${lvNames[lvAfter]}</div>
-            <div style="font-size:0.8rem;color:#64748b;margin-top:2px;">Total: ${xpAfter} XP</div>
-          </div>
-          ${lvAfter > lvBefore ? `<div style="background:linear-gradient(135deg,#f59e0b22,#d9770622);border:1.5px solid #f59e0b44;border-radius:14px;padding:12px 16px;margin-bottom:16px;text-align:center;"><div style="font-size:1.5rem;">🎉</div><div style="font-weight:800;color:#f59e0b;">Level Up! You reached ${lvNames[lvAfter]}!</div></div>` : ''}
-          <div class="duo-end-actions">
-            <button class="duo-btn-primary" style="width:100%;" onclick="LearningModeModule.showPathMap()">Keep Learning</button>
-            <button class="duo-btn-outline" style="width:100%;" onclick="LearningModeModule.restartSession()">Practice Again</button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    sound.playLevelUp();
-    setTimeout(triggerConfetti, 150);
-  }
-
-  function renderOutOfHearts() {
-    clearCheckpoint();
-    state.container.innerHTML = `
-      <div class="duo-end-layout">
-        <div class="duo-end-card">
-          <div class="duo-end-trophy">💔</div>
-          <div class="duo-end-title">Out of Hearts</div>
-          <div class="duo-end-sub">Don't worry — every mistake is a lesson. Try again!</div>
-          <div class="duo-end-stats">
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#10b981">${state.session.totalCorrect}</div>
-              <div class="duo-end-stat-label">Correct</div>
-            </div>
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#ef4444">${state.session.totalWrong}</div>
-              <div class="duo-end-stat-label">Incorrect</div>
-            </div>
-            <div class="duo-end-stat">
-              <div class="duo-end-stat-val" style="color:#f59e0b">+${state.session.totalCorrect*8}</div>
-              <div class="duo-end-stat-label">XP Saved</div>
-            </div>
-          </div>
-          <div class="duo-end-actions">
-            <button class="duo-btn-primary" style="width:100%;" onclick="LearningModeModule.restartSession()">Try Again</button>
-            <button class="duo-btn-outline" style="width:100%;" onclick="LearningModeModule.showPathMap()">Back to Map</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  // ── SRS Self-tests ──
-  function runSelfTests() {
-    let s, sn;
-    s = createDefaultState('t1'); sn = updateSRS(s, true, false);
-    console.assert(sn.interval === 1, 'SRS T1: interval must be 1');
-    console.assert(Math.abs(sn.easeFactor-2.6) < 0.01, 'SRS T1: easeFactor must be 2.6');
-    s = createDefaultState('t2'); sn = updateSRS(s, true, true);
-    console.assert(Math.abs(sn.easeFactor-2.5) < 0.01, 'SRS T2: easeFactor must be 2.5');
-    s = createDefaultState('t3'); sn = updateSRS(s, false);
-    console.assert(sn.interval === 1, 'SRS T3: interval must be 1');
-    console.assert(Math.abs(sn.easeFactor-2.18) < 0.01, 'SRS T3: easeFactor must be 2.18');
-    console.log('✅ SRS self-tests passed.');
-  }
-  runSelfTests();
-
-  return {
-    render,
-    selectChoice,
-    tapTile,
-    removeTile,
-    playAudio,
-    toggleSTT,
-    checkAnswer,
-    advance,
-    quitSession,
-    showPathMap,
-    clickPathNode(chapterId, isUnlocked) {
-      if (!isUnlocked) {
-        const totalXP = App.state.progress?.xpTotal || 0;
-        const ch = getChapters().find(c => c.id === chapterId);
-        const req = (getChapters().findIndex(c => c.id === chapterId)) * 150;
-        window.showToast?.(`🔒 Earn ${Math.max(0,req-totalXP)} more XP to unlock.`);
-        return;
-      }
-      state.activeChapterId = chapterId;
-      renderPathUI();
-    },
-    clickSectionTab(sectionId) {
-      const sec = SECTIONS.find(s => s.id === sectionId);
-      const totalXP = App.state.progress?.xpTotal || 0;
-      if (totalXP < sec.requiredXP) {
-        window.showToast?.(`🔒 Earn ${sec.requiredXP - totalXP} more XP to unlock this section.`);
-        return;
-      }
-      state.activeSectionId = sectionId;
-      localStorage.setItem('tocfl_duolingo_active_section', sectionId);
-      state.activeChapterId = null;
-      renderPathUI();
-    },
-    closeDrawer() { state.activeChapterId = null; renderPathUI(); },
-    startChapterSession(chapterId) { startSessionForChapter(chapterId); },
-    restartSession() {
-      clearCheckpoint();
-      if (state.session?.words?.length) {
-        startSessionForChapter(state.session.words[0].setId);
-      } else {
-        showPathMap();
-      }
-    },
-    unmount() {
-      if (window.AnimRegistry) AnimRegistry.stopAll();
-      speech.stop();
-    }
+  const TOPIC_HINTS = {
+    greeting: ['greetings','hello','polite','goodbye','thank','sorry','taiwan'],
+    identity: ['identity','name','profile','introducing','nationality','student','teacher'],
+    family: ['family','father','mother','home','people'],
+    number: ['numbers','counting','age','time','schedule'],
+    food: ['food','eating','restaurant','drink','meal'],
+    shopping: ['shopping','clothes','buy','money'],
+    direction: ['directions','locations','where','there','here','place'],
+    classroom: ['classroom','school','study','objects','help'],
+    time: ['time','days','future','past','plans'],
+    weather: ['weather','seasons'],
+    hobby: ['hobbies','interests','like'],
+    health: ['health','body','doctor'],
+    sentence: ['sentences','grammar','comparisons','connecting','ideas']
   };
+
+  function seedWordsForUnit(sectionIndex, unitIndex, vocabBySection, unit){
+    const pool = vocabBySection?.[sectionIndex + 1] && vocabBySection[sectionIndex + 1].length >= 10
+      ? vocabBySection[sectionIndex + 1]
+      : CLEAN_STARTER_WORDS;
+    const query = `${unit?.title || ''} ${unit?.focus || ''} ${unit?.theme || ''}`.toLowerCase();
+    const topicTokens = topicKeywords(query);
+    const scored = pool.map((word, index) => ({ word, index, score: scoreWordForUnit(word, topicTokens) }));
+    const exact = scored.filter(row => row.score > 0).sort((a,b) => b.score - a.score || a.index - b.index).map(row => row.word);
+    const start = (unitIndex * 10) % pool.length;
+    const broad = [];
+    for(let i=0; i<pool.length; i++) broad.push(pool[(start + i) % pool.length]);
+    return uniqueWords(exact.slice(0, 4).concat(broad)).slice(0, 10);
+  }
+
+  function topicKeywords(text){
+    const base = new Set(text.split(/[^a-z0-9]+/).filter(t => t.length > 2));
+    Object.entries(TOPIC_HINTS).forEach(([key, values]) => {
+      if(base.has(key) || values.some(v => text.includes(v))) values.forEach(v => base.add(v));
+    });
+    return [...base];
+  }
+
+  function scoreWordForUnit(word, tokens){
+    const hay = `${word.en || ''} ${word.source || ''} ${word.example?.en || ''}`.toLowerCase();
+    return tokens.reduce((sum, token) => sum + (hay.includes(token) ? 1 : 0), 0);
+  }
+
+  function uniqueWords(words){
+    const seen = new Set();
+    return words.filter(word => {
+      if(!word?.zh || seen.has(word.zh)) return false;
+      seen.add(word.zh);
+      return true;
+    });
+  }
+
+  function seedSentencesForUnit(words){
+    const a = words[0] || item('你好','ni3 hao3','hello');
+    const b = words[1] || item('謝謝','xie4 xie5','thank you');
+    const c = words[2] || item('中文','zhong1 wen2','Chinese');
+    const examples = words.map(w => w.example).filter(ex => ex?.zh && ex?.en).slice(0,3);
+    if(examples.length >= 3) return examples.map(ex => sent(ex.zh, ex.py || '', ex.en));
+    return [
+      sent(`${a.zh}，我是學生`, `${a.py} wo3 shi4 xue2 sheng1`, `${a.en}. I am a student.`),
+      sent(`這是${b.zh}`, `zhe4 shi4 ${b.py}`, `This is ${b.en}.`),
+      sent(`我想練習${c.zh}`, `wo3 xiang3 lian4 xi2 ${c.py}`, `I want to practice ${c.en}.`)
+    ];
+  }
+
+  function flattenSessions(units) {
+    const out = [];
+    units.forEach((u,ui) => { for(let s=1;s<=4;s++) out.push({id:u.id+'s'+s,unit:u,unitIndex:ui,session:s,index:out.length}); });
+    return out;
+  }
+  const isDone    = id   => !!state.progress.done[id];
+  const unlocked  = sess => true; // temporary open-map mode while the course UI is being reviewed
+  const curSess   = ()   => state.sessions.find(s=>s.unit.sectionNumber===state.selectedSection&&!isDone(s.id)&&unlocked(s))||state.sessions.find(s=>s.unit.sectionNumber===state.selectedSection)||state.sessions[0];
+  const unitDone  = u    => state.sessions.filter(s=>s.unit.id===u.id&&isDone(s.id)).length;
+
+  function esc(v){ return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function shuffle(a){ return [...a].sort(()=>Math.random()-.5); }
+  function choiceSet(correct,pool){ return shuffle([correct,...shuffle([...new Set(pool.filter(x=>x&&x!==correct))]).slice(0,3)]); }
+  function sessLabel(n){ return ['Learn','Build','Listen','Review'][n-1]||'Practice'; }
+
+  function zhTiles(text,words){
+    const clean=text.replace(/[\s，。！？,.!?]/g,'');
+    const vocab=[...new Set(words.map(w=>w.zh).filter(Boolean))].sort((a,b)=>b.length-a.length);
+    const out=[];
+    for(let i=0;i<clean.length;){ const hit=vocab.find(v=>clean.startsWith(v,i)); if(hit){out.push(hit);i+=hit.length;}else{out.push(clean[i]);i++;} }
+    return out;
+  }
+  function enTiles(text){ return text.replace(/[?.!,]/g,'').split(/\s+/).filter(Boolean); }
+
+  /* Zigzag x-positions (% from left) for sessions 1–4 per unit */
+  const ZIG = [50, 70, 50, 30];
+
+  /* ══ ENTRY ══ */
+  async function render(root){
+    state.root=root;
+    injectStyles();
+    bindRoot();
+    renderLoading();
+    await loadCourseData();
+    renderHome();
+  }
+
+  function renderLoading(){
+    state.root.innerHTML = `
+<div class="el-home duo-map">
+  <div class="el-loading-course">
+    <div class="duo-avatar">${duoOwl('tiny')}</div>
+    <strong>Loading course map</strong>
+    <span>Preparing 180 structured units...</span>
+  </div>
+</div>`;
+  }
+
+  function bindRoot(){
+    if(state.root._lmBound) return;
+    state.root._lmBound=true;
+    state.root.addEventListener('click',e=>{
+      const el=e.target.closest('[data-act]');
+      if(!el) return;
+      const act=el.dataset.act;
+      if(act==='open')        openSession(el.dataset.id);
+      else if(act==='sectionInfo') openSectionInfo();
+      else if(act==='closeInfo')   closeSectionInfo();
+      else if(act==='next')   next();
+      else if(act==='exit')   exitLesson();
+      else if(act==='py')     togglePinyin();
+      else if(act==='section') selectSection(+el.dataset.section);
+      else if(act==='play')   playCurrent(el);
+      else if(act==='choose') choose(+el.dataset.i);
+      else if(act==='check')  checkChoice();
+      else if(act==='match')  pickMatch(el.dataset.side,+el.dataset.i);
+      else if(act==='tile')   addTile(+el.dataset.i);
+      else if(act==='untile') removeTile(+el.dataset.i);
+      else if(act==='checkTiles') checkTiles();
+      else if(act==='mic')    startMic();
+      else if(act==='complete') completeSession();
+      else if(act==='reset')  resetAll();
+    });
+  }
+
+  function renderHome(){
+    const cur = curSess();
+    const sectionUnits = state.units.filter(u => u.sectionNumber === cur.unit.sectionNumber);
+    const sectionDone = sectionUnits.reduce((sum, unit) => sum + unitDone(unit), 0);
+    const sectionTotal = Math.max(1, sectionUnits.length * 4);
+
+    state.root.innerHTML = `
+<div class="el-home duo-map">
+  <header class="duo-topbar">
+    <div class="duo-flag"><span class="duo-flag-cn" aria-label="Chinese course"></span></div>
+    <div class="duo-score flame"><span>STREAK</span><b>${Math.max(0,state.progress.streak)}</b></div>
+    <div class="duo-score gem"><span>XP</span><b>${Math.max(0,state.progress.xp)}</b></div>
+    <div class="duo-avatar">${duoOwl('tiny')}</div>
+  </header>
+
+  <section class="duo-unit-banner">
+    <div>
+      <small>SECTION ${cur.unit.sectionNumber || 1}, UNIT ${cur.unit.unitNumber || cur.unitIndex + 1}</small>
+      <h1>${esc(cur.unit.goal)}</h1>
+      <span class="duo-section-progress">${sectionDone}/${sectionTotal} session checks</span>
+    </div>
+    <button data-act="sectionInfo" aria-label="Open section details"><span>Info</span></button>
+  </section>
+
+  ${state.infoOpen ? renderSectionInfo(cur.unit, sectionDone, sectionTotal) : ''}
+
+  ${renderSectionTabs()}
+  ${state.loadError ? `<div class="el-course-warning">${esc(state.loadError)}</div>` : ''}
+
+  <main class="duo-path-wrap">
+    ${buildPathHTML(cur)}
+  </main>
+
+  <footer class="duo-map-controls">
+    <button class="${state.showPinyin?'active':''}" data-act="py"><span>Pinyin</span><b>${state.showPinyin ? 'On' : 'Off'}</b></button>
+    <button data-act="reset"><span>Reset</span><b>Map</b></button>
+  </footer>
+</div>`;
+  }
+
+  function renderSectionInfo(unit, done, total){
+    const sectionUnits = state.units.filter(u => u.sectionNumber === unit.sectionNumber);
+    const first = sectionUnits[0];
+    const last = sectionUnits[sectionUnits.length - 1];
+    return `<section class="duo-section-card" aria-label="Section details">
+      <div>
+        <small>SECTION ${unit.sectionNumber}</small>
+        <h2>${esc(unit.sectionLevel)}</h2>
+        <p>${esc(first?.goal || unit.goal)}</p>
+      </div>
+      <dl>
+        <div><dt>Units</dt><dd>${sectionUnits.length}</dd></div>
+        <div><dt>Sessions</dt><dd>${total}</dd></div>
+        <div><dt>Done</dt><dd>${done}</dd></div>
+      </dl>
+      <p class="duo-section-range">Starts with ${esc(first?.title || 'Unit 1')} and ends with ${esc(last?.title || 'checkpoint')}.</p>
+      <button type="button" data-act="closeInfo">Close</button>
+    </section>`;
+  }
+
+  function renderSectionTabs(){
+    const sections = [...new Map(state.units.map(u => [u.sectionNumber, u.sectionLevel])).entries()];
+    return `<nav class="duo-section-tabs" aria-label="Course sections">
+      ${sections.map(([num, label]) => `<button data-act="section" data-section="${num}" class="${num===state.selectedSection?'active':''}"><b>${num}</b><span>${esc(label)}</span></button>`).join('')}
+    </nav>`;
+  }
+
+  function buildPathHTML(cur){
+    let html = '';
+    const sessionIcons = ['1','2','3','4'];
+    const visibleUnits = state.units.filter(unit => unit.sectionNumber === state.selectedSection);
+    visibleUnits.forEach((u, ui) => {
+      const sessions = state.sessions.filter(s=>s.unit.id===u.id);
+      const count    = unitDone(u);
+      const allDone  = count===4;
+      const isCurUnit = sessions.some(s=>s.id===cur.id);
+
+      if (ui > 0) {
+        html += `<div class="duo-unit-divider ${isCurUnit?'active':''}"><span>UNIT ${ui+1}</span><b>${esc(u.title)}</b></div>`;
+      }
+
+      sessions.forEach((sess, si) => {
+        const lock   = !unlocked(sess);
+        const done_  = isDone(sess.id);
+        const isCurS = sess.id===cur.id;
+        const xPct   = ZIG[si] || 50;
+        let nodeClass = 'el-node';
+        let inner = '';
+        if(done_){
+          nodeClass += ' el-node-done';
+          inner = `<span class="el-node-check">OK</span>`;
+        } else if(isCurS){
+          nodeClass += ' el-node-current';
+          inner = `<span class="el-node-star">START</span>`;
+        } else if(lock){
+          nodeClass += ' el-node-lock';
+          inner = `<span class="el-node-lock-ic">LOCK</span>`;
+        } else {
+          nodeClass += ' el-node-avail';
+          inner = `<span class="el-node-ic">${sessionIcons[si]}</span>`;
+        }
+        const label = sessLabel(sess.session);
+        const badge = isCurS ? `<div class="el-node-badge">START</div>` : '';
+        const decor = si===0 ? `<div class="duo-path-decor owl right">${duoOwl('map')}</div><div class="duo-stars right"><span>*</span><span>*</span><span>*</span></div>` :
+          si===1 ? `<div class="duo-chest ${done_?'open':'locked'}">BOX</div>` :
+          si===2 ? `<div class="duo-path-decor owl left">${duoOwl('map wave')}</div><div class="duo-stars left"><span>*</span><span>*</span><span>*</span></div>` : '';
+        html += `
+<div class="el-node-row" style="--nx:${xPct}%">
+  ${badge}
+  ${decor}
+  <button class="${nodeClass}" ${lock?'disabled':''} data-act="open" data-id="${esc(sess.id)}" aria-label="${esc(label)}">
+    ${inner}
+  </button>
+  <div class="el-node-label">${esc(label)}</div>
+</div>`;
+      });
+
+      if(ui < visibleUnits.length-1){
+        html += `
+<div class="el-node-row" style="--nx:50%">
+  <div class="el-chest ${allDone?'open':'locked'}">${allDone?'DONE':'LOCK'}</div>
+</div>`;
+      }
+    });
+    return html;
+  }
+
+  function unitCard(u,idx){
+    const sessions = state.sessions.filter(s=>s.unit.id===u.id);
+    const count    = unitDone(u);
+    const isCur    = sessions.some(s=>curSess().id===s.id);
+    const allDone  = count===4;
+    return `
+<div class="el-unit ${isCur?'current':''} ${allDone?'all-done':''}">
+  <div class="el-unit-head">
+    <div class="el-unit-icon">${u.icon}</div>
+    <div class="el-unit-info">
+      <div class="el-unit-tag">${isCur?'▶ NOW':'UNIT'} ${idx+1}</div>
+      <div class="el-unit-name">${esc(u.title)}</div>
+      <div class="el-unit-goal">${esc(u.goal)}</div>
+    </div>
+    <div class="el-unit-count ${allDone?'done':''}">${count}/4</div>
+  </div>
+  <div class="el-unit-bar"><div style="width:${count*25}%"></div></div>
+  <div class="el-sess-grid">
+    ${sessions.map(s=>sessBtn(s)).join('')}
+  </div>
+  <div class="el-word-row">
+    ${u.words.slice(0,8).map(w=>`<button class="el-word-chip" data-act="play" data-zh="${esc(w.zh)}">${esc(w.zh)}</button>`).join('')}
+  </div>
+</div>`;
+  }
+
+  function sessBtn(sess){
+    const lock  = !unlocked(sess);
+    const done_ = isDone(sess.id);
+    const isCur = curSess().id===sess.id;
+    const icons = ['★','▣','🔊','✦'];
+    return `
+<button class="el-sess ${isCur?'cur':''} ${done_?'done':''} ${lock?'locked':''} s${sess.session}"
+  ${lock?'disabled':''} data-act="open" data-id="${esc(sess.id)}">
+  <span class="el-sess-ic">${lock?'🔒':done_?'✓':icons[sess.session-1]}</span>
+  <span class="el-sess-name">${sessLabel(sess.session)}</span>
+</button>`;
+  }
+
+  /* ══════════════════════════
+     SESSION BUILDER
+  ══════════════════════════ */
+  function openSession(id){
+    const sess=state.sessions.find(s=>s.id===id);
+    if(!sess||!unlocked(sess)) return;
+    state.active=buildSteps(sess);
+    state.stepIndex=0;
+    resetStep();
+    renderStep();
+  }
+
+  function buildSteps(sess){
+    const words=sess.unit.words;
+    const sentences=sess.unit.sentences.map(s=>({...s,zhTiles:zhTiles(s.zh,words),enTiles:enTiles(s.en)}));
+    const all=[{type:'intro',sess}];
+    const addSentenceSet=s=>all.push(
+      {type:'sentEn',item:s,choices:choiceSet(s.en,sentences.map(x=>x.en).concat(words.map(x=>x.en)))},
+      {type:'tilesZh',item:s,tiles:shuffle(s.zhTiles)},
+      {type:'tilesEn',item:s,tiles:shuffle(s.enTiles)},
+      {type:'speak',item:s}
+    );
+    if(sess.session===1){
+      words.slice(0,5).forEach(w=>all.push({type:'card',item:w}));
+      words.slice(0,2).forEach(w=>all.push({type:'hanzi',item:w}));
+      words.slice(0,4).forEach(w=>all.push({type:'pinyin',item:w,choices:choiceSet(w.py,words.map(x=>x.py))}));
+      words.slice(0,3).forEach(w=>all.push({type:'listen',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}));
+      all.push({type:'match',pairs:words.slice(0,5)});
+      addSentenceSet(sentences[0]);
+    } else if(sess.session===2){
+      words.slice(5,10).forEach(w=>all.push({type:'card',item:w}));
+      words.slice(5,7).forEach(w=>all.push({type:'hanzi',item:w}));
+      words.slice(0,5).forEach(w=>all.push({type:'enZh',item:w,choices:choiceSet(w.zh,words.map(x=>x.zh))}));
+      all.push({type:'match',pairs:words.slice(5,10)});
+      words.slice(5,8).forEach(w=>all.push({type:'zhEn',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}));
+      addSentenceSet(sentences[1] || sentences[0]);
+    } else if(sess.session===3){
+      words.slice(0,10).forEach((w,i)=>{
+        all.push(i%2===0
+          ? {type:'zhEn',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}
+          : {type:'pinyin',item:w,choices:choiceSet(w.py,words.map(x=>x.py))});
+      });
+      all.push({type:'match',pairs:words.slice(2,7)});
+      addSentenceSet(sentences[2] || sentences[0]);
+    } else {
+      words.slice(0,5).forEach(w=>all.push({type:'listen',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}));
+      words.slice(5,10).forEach(w=>all.push({type:'flash',item:w,choices:choiceSet(w.zh,words.map(x=>x.zh))}));
+      words.slice(0,2).forEach(w=>all.push({type:'hanzi',item:w}));
+      all.push({type:'match',pairs:words.slice(0,5)},{type:'match',pairs:words.slice(5,10)});
+      sentences.forEach(addSentenceSet);
+    }
+    all.push({type:'done',sess});
+    return {sess,steps:all,correct:0,wrong:0,start:Date.now()};
+  }
+
+  /* ══════════════════════════
+     STEP RENDER
+  ══════════════════════════ */
+  function step(){ return state.active?.steps[state.stepIndex]; }
+  function resetStep(){ state.selected=null; state.selectedMatch=null; state.matched=new Set(); state.answerTiles=[]; state.answerTileIds=[]; state.transcript=''; state.micState='idle'; }
+
+  function renderStep(){
+    const st=step();
+    if(!st){ renderHome(); return; }
+    const total=state.active.steps.length-1;
+    const pct=Math.round(state.stepIndex/Math.max(1,total)*100);
+    state.root.innerHTML=`
+<div class="el-lesson">
+  <header class="el-lesson-top">
+    <button class="el-close-btn" data-act="exit" aria-label="Exit">✕</button>
+    <div class="el-prog-track"><div class="el-prog-fill" style="width:${pct}%"></div></div>
+    <div class="el-hearts-disp">
+      ${[...Array(MAX_HEARTS)].map((_,i)=>`<span class="${i<state.progress.hearts?'heart-on':'heart-off'}">♥</span>`).join('')}
+    </div>
+  </header>
+  <div class="el-ex-body">
+    ${buildEx(st)}
+  </div>
+</div>`;
+    if(st.type==='listen') setTimeout(()=>speak(st.item),280);
+    if(st.type==='hanzi') setTimeout(()=>initHanziPractice(st),80);
+  }
+
+  function buildEx(st){
+    if(st.type==='intro')  return introEx(st);
+    if(st.type==='card')   return cardEx(st);
+    if(st.type==='pinyin') return choiceEx('What sound does this make?',soundBtn(st.item),st.choices,st.item.py,'Listen then pick the pinyin.');
+    if(st.type==='zhEn')   return choiceEx('What does this mean?',zhBig(st.item),st.choices,st.item.en,'Choose the English meaning.');
+    if(st.type==='enZh'||st.type==='flash') return choiceEx(st.type==='flash'?'Pick the matching character':'Find the Chinese word',enPrompt(st.item.en),st.choices,st.item.zh,'chars','Match the Traditional Chinese.');
+    if(st.type==='listen') return choiceEx('What does the audio say?',audioBtn(),st.choices,st.item.en,'','Tap the speaker then answer.');
+    if(st.type==='sentEn') return choiceEx('What does this sentence mean?',zhSentence(st.item),st.choices,st.item.en,'Read then choose the meaning.');
+    if(st.type==='hanzi')  return hanziEx(st);
+    if(st.type==='match')  return matchEx(st);
+    if(st.type==='tilesZh') return tilesEx(st,'zh');
+    if(st.type==='tilesEn') return tilesEx(st,'en');
+    if(st.type==='speak')  return speakEx(st);
+    if(st.type==='done')   return doneEx(st);
+    return '';
+  }
+
+  /* ── Intro ── */
+  function introEx(st){
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-lg">${mascot('wave')}</div>
+  <div class="el-kicker">SESSION ${st.sess.session} OF 4</div>
+  <h2 class="el-title">${esc(st.sess.unit.title)}</h2>
+  <p class="el-sub">${esc(st.sess.unit.goal)}</p>
+  <div class="el-chip-grid">
+    ${st.sess.unit.words.map(w=>`<button class="el-chip" data-act="play" data-zh="${esc(w.zh)}">${esc(w.zh)}</button>`).join('')}
+  </div>
+</div>
+${foot('START','next')}`;
+  }
+
+  /* ── Card ── */
+  function cardEx(st){
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-sm">${mascot('teach')}</div>
+  <div class="el-kicker">NEW WORD</div>
+  <div class="el-card-face">
+    <button class="el-zh-big" data-act="play">${esc(st.item.zh)}</button>
+    ${pyLine(st.item)}
+    <div class="el-card-en">${esc(st.item.en)}</div>
+    <div class="el-card-hint">Tap the character to hear it 🔊</div>
+  </div>
+</div>
+${foot('GOT IT ✓','next')}`;
+  }
+
+  /* ── Choice ── */
+  function hanziEx(st){
+    const char = firstHanzi(st.item.zh);
+    const id = `lm-hanzi-${state.stepIndex}`;
+    return `
+<div class="el-screen center">
+  <div class="el-kicker">HANZI PRACTICE</div>
+  <h2 class="el-title">Write ${esc(char)}</h2>
+  <p class="el-sub">${esc(st.item.zh)} / ${state.showPinyin ? esc(st.item.py) + ' / ' : ''}${esc(st.item.en)}</p>
+  <div class="el-hanzi-practice">
+    <div id="${id}-writer" class="el-hanzi-writer"></div>
+    <canvas id="${id}-canvas" class="el-hanzi-canvas"></canvas>
+  </div>
+  <div class="el-hanzi-actions">
+    <button type="button" onclick="window.DrawingBoard?.animate?.()">Show Strokes</button>
+    <button type="button" onclick="window.DrawingBoard?.reset?.()">Clear</button>
+    <button type="button" data-act="play">Hear</button>
+  </div>
+</div>
+${foot('I WROTE IT','next')}`;
+  }
+
+  function firstHanzi(text){
+    return Array.from(String(text || '')).find(ch => /[\u3400-\u9fff]/.test(ch)) || String(text || '').charAt(0) || '字';
+  }
+
+  function initHanziPractice(st){
+    const char = firstHanzi(st.item.zh);
+    const id = `lm-hanzi-${state.stepIndex}`;
+    try { window.DrawingBoard?.init?.(`${id}-writer`, `${id}-canvas`, char); } catch(err) { console.warn('Hanzi practice init failed:', err); }
+  }
+
+  function choiceEx(title,stimulus,opts,correct,mode,helper){
+    if(typeof mode==='string'&&(mode===''||mode==='chars')){
+      // mode is actually helper if passed as 3rd string arg
+      if(arguments.length===5){ helper=mode; mode=''; }
+    }
+    const isChars=mode==='chars';
+    return `
+<div class="el-screen">
+  <div class="el-kicker">${esc(helper||'Choose one answer')}</div>
+  <h2 class="el-title">${esc(title)}</h2>
+  <div class="el-stimulus">${stimulus}</div>
+  <div class="el-opts ${isChars?'chars':''}">
+    ${opts.map((o,i)=>`<button class="el-opt ${state.selected===i?'sel':''}" data-act="choose" data-i="${i}">${esc(o)}</button>`).join('')}
+  </div>
+</div>
+${foot('CHECK','check',state.selected===null)}`;
+  }
+
+  /* ── Match ── */
+  function matchEx(st){
+    if(!st._right) st._right=shuffle(st.pairs);
+    const allDone=state.matched.size>=st.pairs.length;
+    return `
+<div class="el-screen">
+  <div class="el-kicker">TAP THE MATCHING WORD PAIR</div>
+  <h2 class="el-title">Tap to match</h2>
+  <div class="el-match">
+    <div class="el-match-col">
+      ${st.pairs.map((p,i)=>mBtn('zh',p,i)).join('')}
+    </div>
+    <div class="el-match-col">
+      ${st._right.map((p,i)=>mBtn('en',p,i)).join('')}
+    </div>
+  </div>
+</div>
+${foot('CONTINUE','next',!allDone)}`;
+  }
+
+  function mBtn(side,p,i){
+    const id=p.zh+'|'+p.en;
+    const done_=state.matched.has(id);
+    const sel=state.selectedMatch?.side===side&&state.selectedMatch?.id===id;
+    return `<button class="el-mbtn ${sel?'sel':''} ${done_?'done':''}" data-act="match" data-side="${side}" data-i="${i}">
+      ${side==='zh'?esc(p.zh)+(state.showPinyin?`<small>${esc(p.py)}</small>`:''):esc(p.en)}
+    </button>`;
+  }
+
+  /* ── Tiles ── */
+  function tilesEx(st,lang){
+    const isZh=lang==='zh';
+    const hint=isZh?'TRANSLATE THIS SENTENCE':'BUILD THE ENGLISH SENTENCE';
+    const title=isZh?'Translate this sentence':'Build the English sentence';
+    const prompt=isZh
+      ? `<div class="el-tile-prompt-en">${esc(st.item.en)}</div>`
+      : `<div class="el-tile-prompt-zh">${esc(st.item.zh)}${pyLine(st.item)}</div>`;
+    return `
+<div class="el-screen">
+  <div class="el-kicker">${hint}</div>
+  <h2 class="el-title">${title}</h2>
+  <div class="el-tile-source">${prompt}</div>
+  <div class="el-answer ${state.answerTiles.length?'has-tiles':''}">
+    ${state.answerTiles.length
+      ? state.answerTiles.map((t,i)=>`<button class="el-ans-tile" data-act="untile" data-i="${i}">${esc(t)}</button>`).join('')
+      : '<span class="el-ans-ph">Tap tiles below</span>'}
+  </div>
+  <div class="el-tile-bank">
+    ${st.tiles.map((t,i)=>`<button class="el-tile ${state.answerTileIds.includes(i)?'used':''}" ${state.answerTileIds.includes(i)?'disabled':''} data-act="tile" data-i="${i}">${esc(t)}</button>`).join('')}
+  </div>
+</div>
+${foot('CHECK','checkTiles',!state.answerTiles.length)}`;
+  }
+
+  /* ── Speak ── */
+  function speakEx(st){
+    const listening=state.micState==='listening';
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-lg">${mascot(listening?'listen':'speak')}</div>
+  <div class="el-kicker">SPEAK THIS SENTENCE</div>
+  <h2 class="el-title">Say it aloud</h2>
+  <div class="el-speak-card">
+    <div class="el-zh-mid">${esc(st.item.zh)}</div>
+    ${pyLine(st.item)}
+    <div class="el-speak-en">${esc(st.item.en)}</div>
+  </div>
+  <button class="el-replay-btn" data-act="play">🔊 Replay Audio</button>
+  <button class="el-mic-btn ${state.micState}" data-act="mic">
+    ${listening?'🎙 Listening...':'🎤 Tap to Speak'}
+  </button>
+  ${state.transcript?`<div class="el-transcript">${esc(state.transcript)}</div>`:''}
+</div>
+<footer class="el-foot two">
+  <button class="el-btn-secondary" data-act="next">SKIP</button>
+  <button class="el-btn-primary" data-act="next">CONTINUE</button>
+</footer>`;
+  }
+
+  /* ── Done ── */
+  function doneEx(st){
+    const perfect=!state.active.wrong;
+    const acc=Math.round(state.active.correct/Math.max(1,state.active.correct+state.active.wrong)*100);
+    const secs=Math.ceil((Date.now()-state.active.start)/1000);
+    const xp=Math.max(XP_PER,state.active.correct);
+    return `
+<div class="el-screen center el-done-screen">
+  <div class="el-mascot-xl">${mascot(perfect?'celebrate':'happy')}</div>
+  <h1 class="el-done-title">${perfect?'Perfect! 🎉':'Lesson complete!'}</h1>
+  <p class="el-sub">${perfect?'No mistakes — you\'re amazing!':'Keep practicing to improve.'}</p>
+  <div class="el-results">
+    <div class="el-res-card gold">
+      <div class="el-res-val">+${xp}</div>
+      <div class="el-res-lbl">XP</div>
+    </div>
+    <div class="el-res-card blue">
+      <div class="el-res-val">${acc}%</div>
+      <div class="el-res-lbl">Accuracy</div>
+    </div>
+    <div class="el-res-card purple">
+      <div class="el-res-val">${secs}s</div>
+      <div class="el-res-lbl">Time</div>
+    </div>
+  </div>
+</div>
+${foot('CLAIM XP 💎','complete')}`;
+  }
+
+  /* ── Shared UI atoms ── */
+  function zhBig(item){ return `<button class="el-zh-big" data-act="play">${esc(item.zh)}</button>${pyLine(item)}`; }
+  function soundBtn(item){ return `<button class="el-sound-btn" data-act="play">${esc(item.zh)}<small>${state.showPinyin?esc(item.py):''}</small></button>`; }
+  function enPrompt(en){ return `<div class="el-en-prompt">${esc(en)}</div>`; }
+  function zhSentence(item){ return `<div class="el-zh-sent">${esc(item.zh)}${state.showPinyin&&item.py?`<small class="el-py-sm">${esc(item.py)}</small>`:''}</div>`; }
+  function audioBtn(){ return `<button class="el-audio-btn" data-act="play">🔊<span>TAP TO LISTEN</span></button>`; }
+  function pyLine(item){ return state.showPinyin&&item.py?`<div class="el-py">${esc(item.py)}</div>`:''; }
+  function foot(label,act,disabled=false){
+    return `<footer class="el-foot"><button class="el-btn-primary" data-act="${act}" ${disabled?'disabled':''}>${label}</button></footer>`;
+  }
+
+  /* ══════════════════════════
+     MASCOT — Purple teardrop
+  ══════════════════════════ */
+  function mascot(mood='idle'){
+    const body={
+      idle:'#7c3aed', happy:'#7c3aed', wave:'#7c3aed',
+      teach:'#7c3aed', speak:'#7c3aed', listen:'#5b21b6',
+      celebrate:'#7c3aed', review:'#9d5cf5',
+    }[mood]||'#7c3aed';
+
+    /* eye expressions */
+    const eyeL={
+      idle:'M22,30 a5,5 0 1,1 0,-.1',
+      happy:'M19,32 Q22,26 25,32',
+      wave:'M22,30 a5,5 0 1,1 0,-.1',
+      celebrate:'M19,31 Q22,25 25,31',
+      teach:'M22,30 a5,5 0 1,1 0,-.1',
+      speak:'M22,30 a5,5 0 1,1 0,-.1',
+      listen:'M19,31 Q22,27 25,31',
+      review:'M19,32 Q22,28 25,32',
+    }[mood]||'M22,30 a5,5 0 1,1 0,-.1';
+    const eyeR={
+      idle:'M46,30 a5,5 0 1,1 0,-.1',
+      happy:'M43,32 Q46,26 49,32',
+      wave:'M46,30 a5,5 0 1,1 0,-.1',
+      celebrate:'M43,31 Q46,25 49,31',
+      teach:'M46,30 a5,5 0 1,1 0,-.1',
+      speak:'M46,30 a5,5 0 1,1 0,-.1',
+      listen:'M43,31 Q46,27 49,31',
+      review:'M43,32 Q46,28 49,32',
+    }[mood]||'M46,30 a5,5 0 1,1 0,-.1';
+
+    const blush=(mood==='celebrate'||mood==='happy')?'<ellipse cx="18" cy="42" rx="6" ry="4" fill="#ff80ab" opacity=".35"/><ellipse cx="50" cy="42" rx="6" ry="4" fill="#ff80ab" opacity=".35"/>':'';
+    const mouth={
+      idle:'M25,50 Q34,56 43,50',
+      happy:'M23,50 Q34,60 45,50',
+      wave:'M25,50 Q34,57 43,50',
+      celebrate:'M22,50 Q34,62 46,50',
+      teach:'M26,50 Q34,55 42,50',
+      speak:'M27,52 Q34,46 41,52',
+      listen:'M26,50 Q34,54 42,50',
+      review:'M26,52 Q34,48 42,52',
+    }[mood]||'M25,50 Q34,56 43,50';
+
+    /* wave arm */
+    const armR=mood==='wave'||mood==='celebrate'
+      ? '<path d="M58,35 Q70,22 65,12" stroke="#9d5cf5" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="65" cy="10" r="4" fill="#c4b5fd"/>'
+      : '';
+    /* sparkles for celebrate */
+    const sparkles=mood==='celebrate'
+      ? '<text x="66" y="20" font-size="10">✦</text><text x="4" y="20" font-size="8">✦</text><text x="60" y="60" font-size="7">✦</text>'
+      : '';
+
+    const bounce=mood==='celebrate'||mood==='happy'||mood==='wave'?'style="animation:el-bounce 1.1s ease-in-out infinite"':'';
+
+    return `<svg class="el-mascot-svg" ${bounce} viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shadow -->
+  <ellipse cx="40" cy="96" rx="18" ry="4" fill="rgba(0,0,0,.25)"/>
+  <!-- Body: teardrop -->
+  <path d="M40,8 C40,8 68,38 68,60 a28,28 0 1,1 -56,0 C12,38 40,8 40,8 Z" fill="${body}"/>
+  <!-- Shine -->
+  <ellipse cx="28" cy="30" rx="7" ry="10" fill="rgba(255,255,255,.18)" transform="rotate(-20,28,30)"/>
+  <!-- Eye whites -->
+  <circle cx="28" cy="44" r="10" fill="white"/>
+  <circle cx="52" cy="44" r="10" fill="white"/>
+  <!-- Pupils / expression -->
+  <path d="${eyeL}" stroke="#1e1b4b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="${eyeR}" stroke="#1e1b4b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Pupils dots (idle/normal) -->
+  ${(mood==='idle'||mood==='teach'||mood==='speak'||mood==='wave')?'<circle cx="28" cy="44" r="4" fill="#1e1b4b"/><circle cx="52" cy="44" r="4" fill="#1e1b4b"/><circle cx="30" cy="42" r="1.5" fill="white"/><circle cx="54" cy="42" r="1.5" fill="white"/>':''}
+  ${blush}
+  <!-- Mouth -->
+  <path d="${mouth}" stroke="#1e1b4b" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Arms -->
+  <path d="M14,58 Q6,52 10,44" stroke="${body}" stroke-width="8" stroke-linecap="round" fill="none"/>
+  ${armR||`<path d="M66,58 Q74,52 70,44" stroke="${body}" stroke-width="8" stroke-linecap="round" fill="none"/>`}
+  <!-- Feet -->
+  <ellipse cx="30" cy="92" rx="9" ry="5" fill="#5b21b6"/>
+  <ellipse cx="50" cy="92" rx="9" ry="5" fill="#5b21b6"/>
+  ${sparkles}
+</svg>`;
+  }
+
+  /* ══════════════════════════
+     HANDLERS
+  ══════════════════════════ */
+  function choose(i){ state.selected=i; renderStep(); }
+
+  function checkChoice(){
+    const st=step();
+    const choice=st.choices[state.selected];
+    let correct=st.item.en;
+    if(st.type==='pinyin') correct=st.item.py;
+    if(st.type==='enZh'||st.type==='flash') correct=st.item.zh;
+    choice===correct ? good('Correct! 🎯',`${st.item.zh} = ${st.item.en}`) : bad('Incorrect 😅','Correct: '+correct,st.item);
+  }
+
+  function pickMatch(side,i){
+    const st=step();
+    const lst=side==='zh'?st.pairs:st._right;
+    const itm=lst[i]; const id=itm.zh+'|'+itm.en;
+    if(state.matched.has(id)) return;
+    if(!state.selectedMatch||state.selectedMatch.side===side){
+      state.selectedMatch={side,id};
+      if(side==='zh') speak(itm);
+      renderStep(); return;
+    }
+    if(state.selectedMatch.id===id){ state.matched.add(id); state.active.correct++; tone(true); }
+    else { state.active.wrong++; lose(itm); tone(false); }
+    state.selectedMatch=null; renderStep();
+  }
+
+  function addTile(i){ if(state.answerTileIds.includes(i)) return; state.answerTileIds.push(i); state.answerTiles.push(step().tiles[i]); renderStep(); }
+  function removeTile(i){ state.answerTileIds.splice(i,1); state.answerTiles.splice(i,1); renderStep(); }
+
+  function checkTiles(){
+    const st=step();
+    const answer=state.answerTiles.join(st.type==='tilesEn'?' ':'');
+    const target=st.type==='tilesEn'?st.item.en.replace(/[?.!,]/g,''):st.item.zh.replace(/[\s，。！？,.!?]/g,'');
+    answer===target ? good('Correct! 🎯',st.type==='tilesEn'?st.item.en:st.item.zh) : bad('Not quite 😅','Correct: '+target,st.item);
+  }
+
+  function good(t,b){ state.active.correct++; feedback(true,t,b); }
+  function bad(t,b,item){ state.active.wrong++; lose(item); feedback(false,t,b); }
+  function lose(item){ state.progress.hearts=Math.max(0,state.progress.hearts-1); state.progress.mistakes.unshift({...item,at:Date.now()}); state.progress.mistakes=state.progress.mistakes.slice(0,100); saveProgress(); }
+
+  function feedback(ok,title,body_){
+    closeFeedback(); tone(ok);
+    const el=document.createElement('div');
+    el.className='el-feedback '+(ok?'ok':'bad');
+    el.innerHTML=`
+<div class="el-fb-row">
+  <div class="el-fb-mascot">${mascot(ok?'happy':'review')}</div>
+  <div class="el-fb-text">
+    <strong>${esc(title)}</strong>
+    <span>${esc(body_)}</span>
+  </div>
+  <div class="el-fb-icon">${ok?'✓':'✕'}</div>
+</div>
+<button class="el-fb-btn">${ok?'CONTINUE':'GOT IT'}</button>`;
+    el.addEventListener('click',e=>{ if(e.target.tagName==='BUTTON') next(); });
+    document.body.appendChild(el);
+  }
+
+  function closeFeedback(){ document.querySelectorAll('.el-feedback').forEach(x=>x.remove()); }
+  function next(){ closeFeedback(); state.stepIndex++; resetStep(); renderStep(); }
+
+  function completeSession(){
+    const s=state.active.sess;
+    state.progress.done[s.id]={at:new Date().toISOString(),correct:state.active.correct,wrong:state.active.wrong};
+    state.progress.xp+=Math.max(XP_PER,state.active.correct);
+    const today=new Date().toISOString().slice(0,10);
+    if(state.progress.last!==today){ state.progress.streak++; state.progress.last=today; }
+    state.progress.hearts=Math.min(MAX_HEARTS,state.progress.hearts+1);
+    saveProgress();
+    state.active=null;
+    renderHome();
+  }
+
+  function exitLesson(){ closeFeedback(); state.active=null; renderHome(); }
+  function togglePinyin(){ state.showPinyin=!state.showPinyin; localStorage.setItem(PINKEY,state.showPinyin?'1':'0'); state.active?renderStep():renderHome(); }
+  function openSectionInfo(){ state.infoOpen = true; renderHome(); }
+  function closeSectionInfo(){ state.infoOpen = false; renderHome(); }
+  function selectSection(n){ if(!Number.isFinite(n)) return; state.selectedSection=n; state.infoOpen=false; renderHome(); }
+  function resetAll(){ if(!confirm('Reset all progress?')) return; localStorage.removeItem(STORE); state.progress=loadProgress(); renderHome(); }
+
+  function playCurrent(el){
+    if(el?.dataset?.zh){ speak({zh:el.dataset.zh}); return; }
+    const st=step(); if(st?.item) speak(st.item);
+  }
+  function speak(item){
+    try{
+      if(window.TTS?.speak){ window.TTS.speak(item.zh,'zh-TW',0.75); return; }
+      if(window.speechSynthesis&&window.SpeechSynthesisUtterance){
+        speechSynthesis.cancel();
+        const u=new SpeechSynthesisUtterance(item.zh); u.lang='zh-TW'; u.rate=0.78;
+        speechSynthesis.speak(u);
+      }
+    }catch{}
+  }
+  function startMic(){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SR){ state.transcript='Speech recognition not available. Say it aloud then continue.'; state.micState='idle'; renderStep(); return; }
+    const rec=new SR(); rec.lang='zh-TW'; rec.interimResults=false; rec.maxAlternatives=1;
+    state.micState='listening'; state.transcript=''; renderStep();
+    const t=setTimeout(()=>{try{rec.stop();}catch{}},8000);
+    rec.onresult=e=>{clearTimeout(t);state.transcript=e.results?.[0]?.[0]?.transcript||'';state.micState='done';renderStep();};
+    rec.onerror=()=>{clearTimeout(t);state.transcript='Could not hear. Try again or skip.';state.micState='idle';renderStep();};
+    rec.onend=()=>{clearTimeout(t);if(state.micState==='listening'){state.micState='idle';state.transcript='No speech detected.';renderStep();}};
+    try{rec.start();}catch{state.micState='idle';state.transcript='Mic could not start.';renderStep();}
+  }
+  function tone(ok){
+    try{
+      const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+      const c=new AC(),t=c.currentTime;
+      (ok?[660,880]:[220,160]).forEach((f,i)=>{
+        const o=c.createOscillator(),g=c.createGain();
+        o.type=ok?'sine':'sawtooth'; o.frequency.value=f;
+        g.gain.setValueAtTime(.001,t+i*.08);
+        g.gain.exponentialRampToValueAtTime(.12,t+i*.08+.025);
+        g.gain.exponentialRampToValueAtTime(.001,t+i*.08+.22);
+        o.connect(g);g.connect(c.destination);
+        o.start(t+i*.08);o.stop(t+i*.08+.28);
+      });
+      setTimeout(()=>c.close(),700);
+    }catch{}
+  }
+
+  /* ══════════════════════════
+     STYLES (dark purple theme)
+  ══════════════════════════ */
+  function duoOwl(extra=''){
+    return `<span class="duo-owl ${esc(extra)}" aria-hidden="true">
+      <i class="eye l"></i><i class="eye r"></i><b></b><em class="wing l"></em><em class="wing r"></em><strong></strong>
+    </span>`;
+  }
+
+  function injectStyles(){
+    if(document.getElementById('el-styles-v235')) return;
+    const s=document.createElement('style');
+    s.id='el-styles-v235';
+    s.textContent=`
+/* ── NAV CLEARANCE ── */
+:root{
+  --el-nav: calc(92px + env(safe-area-inset-bottom,0px));
+  --el-font: 'Outfit','Inter',system-ui,sans-serif;
+  --el-zh: var(--font-zh,'Noto Sans TC','PingFang TC',sans-serif);
+}
+
+/* ── PAGE OVERRIDE ── */
+#page-content:has(.el-home),
+#page-content:has(.el-lesson){
+  padding:0!important;
+  max-width:100%!important;
+  background:#0d0d1a!important;
+  color:#f0eeff!important;
+}
+
+/* ── HOME ── */
+.el-home{
+  font-family:var(--el-font);
+  color:#f0eeff;
+  background:#0d0d1a;
+  min-height:100vh;
+  max-width:430px;
+  margin:0 auto;
+  padding:0 0 calc(var(--el-nav) + 20px);
+  box-sizing:border-box;
+}
+
+/* TOP BAR */
+.el-top{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:14px 18px 10px;
+  background:#0d0d1a;
+  position:sticky;top:0;z-index:20;
+  border-bottom:1px solid #1e1e40;
+}
+.el-stat{display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:800}
+.el-stat:last-child{justify-content:flex-end}
+.el-stat-num{color:#f0eeff;font-weight:900}
+.el-flame{font-size:1.1rem}
+.el-gem{font-size:1.1rem}
+.el-logo{font-size:.9rem;font-weight:950;color:#c4b5fd;letter-spacing:-.01em;text-align:center}
+
+/* HERO */
+.el-hero{
+  margin:14px 14px 10px;
+  background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 60%,#9d5cf5 100%);
+  border-radius:24px;
+  padding:18px 16px 16px;
+  display:grid;grid-template-columns:90px 1fr;
+  gap:12px;
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 32px rgba(124,58,237,.4);
+}
+.el-hero::after{
+  content:'中';
+  position:absolute;right:-14px;top:-10px;
+  font-family:var(--el-zh);
+  font-size:7rem;font-weight:900;
+  color:rgba(255,255,255,.06);
+  line-height:1;pointer-events:none;
+}
+.el-hero-mascot{width:90px;height:90px;display:flex;align-items:flex-end;justify-content:center}
+.el-mascot-svg{width:80px;height:auto}
+.el-hero-text{display:flex;flex-direction:column;gap:4px;justify-content:center}
+.el-hero-pill{
+  background:rgba(255,255,255,.18);backdrop-filter:blur(4px);
+  border-radius:99px;padding:3px 10px;font-size:.6rem;
+  font-weight:950;letter-spacing:.1em;color:#e9d5ff;
+  width:fit-content;
+}
+.el-hero h1{font-size:1.38rem;font-weight:950;color:#fff;margin:0;line-height:1.1}
+.el-hero p{font-size:.76rem;font-weight:800;color:rgba(255,255,255,.8);margin:0;line-height:1.2}
+.el-hero-btn{
+  grid-column:1/-1;width:100%;
+  border:0;border-radius:16px;
+  background:#fff;color:#7c3aed;
+  font-weight:950;font-size:.94rem;
+  min-height:50px;cursor:pointer;
+  font-family:var(--el-font);
+  box-shadow:0 4px 0 rgba(0,0,0,.2);
+  transition:transform .1s,box-shadow .1s;
+}
+.el-hero-btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
+
+/* STATS ROW */
+.el-stats-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:8px;margin:0 14px 10px;
+}
+.el-stat-box{
+  background:#1a1a35;border:1px solid #2a2a55;border-radius:16px;
+  padding:10px 8px;text-align:center;
+}
+.el-stat-box span{display:block;font-size:1.1rem;font-weight:950;color:#c4b5fd}
+.el-stat-box small{display:block;font-size:.64rem;color:#5a5680;font-weight:800;margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
+
+/* OVERALL BAR */
+.el-overall-bar{
+  height:6px;border-radius:99px;
+  background:#1a1a35;margin:0 14px 14px;overflow:hidden;
+}
+.el-overall-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#7c3aed,#c084fc);transition:width .7s}
+
+/* SECTION LABEL */
+.el-section-label{
+  font-size:.64rem;font-weight:950;letter-spacing:.14em;
+  color:#5a5680;padding:0 14px 8px;text-transform:uppercase;
+}
+
+/* PATH */
+.el-path{padding:0 14px;display:grid;gap:12px}
+
+/* UNIT CARD */
+.el-unit{
+  background:#13132a;border:1px solid #1e1e40;
+  border-radius:22px;overflow:hidden;
+}
+.el-unit.current{border-color:#7c3aed;box-shadow:0 0 0 1px #7c3aed40}
+.el-unit.all-done{border-color:#22c55e30;background:#0f1f17}
+.el-unit-head{display:grid;grid-template-columns:46px 1fr 36px;gap:10px;align-items:center;padding:14px 14px 10px}
+.el-unit-icon{width:44px;height:44px;background:#1e1e40;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.el-unit-tag{font-size:.6rem;font-weight:950;letter-spacing:.1em;color:#7c3aed;margin-bottom:3px}
+.el-unit.current .el-unit-tag{color:#c084fc}
+.el-unit-name{font-size:1rem;font-weight:950;color:#f0eeff;line-height:1}
+.el-unit-goal{font-size:.72rem;color:#5a5680;font-weight:800;margin-top:3px;line-height:1.2}
+.el-unit-count{background:#1e1e40;color:#7c3aed;border-radius:99px;padding:5px 8px;font-size:.72rem;font-weight:950;text-align:center;white-space:nowrap}
+.el-unit-count.done{background:#14532d;color:#22c55e}
+.el-unit-bar{height:4px;background:#1e1e40;margin:0 14px 12px}
+.el-unit-bar div{height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#c084fc);transition:width .5s}
+.el-unit.all-done .el-unit-bar div{background:linear-gradient(90deg,#16a34a,#22c55e)}
+
+/* SESSION BUTTONS */
+.el-sess-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 14px 12px}
+.el-sess{
+  background:#1a1a35;border:1.5px solid #2a2a55;
+  border-radius:16px;padding:10px 10px 10px;
+  display:flex;align-items:center;gap:8px;
+  cursor:pointer;font-family:var(--el-font);color:#f0eeff;
+  min-height:56px;transition:border-color .15s,background .15s;
+  text-align:left;
+}
+.el-sess:active{background:#21214a}
+.el-sess.cur{border-color:#7c3aed;background:#1e1045}
+.el-sess.done .el-sess-ic{background:#22c55e;box-shadow:0 2px 0 #16a34a;color:#fff}
+.el-sess:disabled,.el-sess.locked{opacity:.45;cursor:not-allowed}
+.el-sess-ic{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:950;color:#fff;
+}
+.el-sess.s1 .el-sess-ic{background:#7c3aed;box-shadow:0 2px 0 #5b21b6}
+.el-sess.s2 .el-sess-ic{background:#3b82f6;box-shadow:0 2px 0 #1d4ed8}
+.el-sess.s3 .el-sess-ic{background:#c084fc;box-shadow:0 2px 0 #9333ea}
+.el-sess.s4 .el-sess-ic{background:#f59e0b;box-shadow:0 2px 0 #d97706}
+.el-sess:disabled .el-sess-ic,.el-sess.locked .el-sess-ic{background:#2a2a55;box-shadow:0 2px 0 #1e1e40;color:#5a5680}
+.el-sess-name{font-size:.82rem;font-weight:900}
+
+/* WORD CHIPS */
+.el-word-row{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 14px}
+.el-word-chip{
+  border:1px solid #2a2a55;border-radius:10px;
+  background:#1a1a35;color:#c4b5fd;
+  padding:5px 10px;font-size:.96rem;
+  font-family:var(--el-zh);font-weight:900;cursor:pointer;
+  transition:border-color .15s;
+}
+.el-word-chip:active{border-color:#7c3aed;background:#1e1045}
+
+/* HOME FOOTER */
+.el-home-footer{display:flex;gap:10px;padding:16px 14px 0}
+.el-pill-btn{
+  flex:1;min-height:44px;border:1.5px solid #2a2a55;
+  border-radius:14px;background:#13132a;
+  color:#9893b8;font-weight:900;font-size:.8rem;
+  font-family:var(--el-font);cursor:pointer;transition:.15s;
+}
+.el-pill-btn.active{background:#4c1d95;border-color:#7c3aed;color:#e9d5ff}
+.el-pill-btn.danger{color:#ef4444;border-color:#3f1212}
+.el-pill-btn:active{opacity:.7}
+
+/* ═══ LESSON ═══ */
+.el-lesson{
+  font-family:var(--el-font);
+  background:#0d0d1a;color:#f0eeff;
+  min-height:100vh;max-width:430px;
+  margin:0 auto;display:flex;flex-direction:column;
+  box-sizing:border-box;
+}
+
+/* LESSON TOP */
+.el-lesson-top{
+  display:grid;grid-template-columns:40px 1fr auto;
+  align-items:center;gap:10px;
+  padding:12px 16px 10px;
+  position:sticky;top:0;z-index:20;
+  background:#0d0d1a;border-bottom:1px solid #1e1e40;
+}
+.el-close-btn{
+  border:0;background:#1a1a35;color:#9893b8;
+  font-size:1rem;font-weight:900;cursor:pointer;
+  border-radius:10px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;
+}
+.el-close-btn:active{background:#2a2a55}
+.el-prog-track{
+  height:12px;border-radius:99px;
+  background:#1a1a35;overflow:hidden;
+}
+.el-prog-fill{
+  height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,#7c3aed,#c084fc);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.el-hearts-disp{display:flex;gap:3px;align-items:center}
+.heart-on{color:#ef4444;font-size:1rem}
+.heart-off{color:#2a2a55;font-size:1rem}
+
+/* EXERCISE BODY */
+.el-ex-body{flex:1;display:flex;flex-direction:column}
+
+/* SCREEN */
+.el-screen{
+  flex:1;display:flex;flex-direction:column;gap:14px;
+  padding:18px 16px calc(var(--el-nav) + 85px);
+}
+.el-screen.center{align-items:center;text-align:center}
+
+.el-kicker{
+  font-size:.68rem;font-weight:950;letter-spacing:.1em;
+  color:#7c3aed;text-transform:uppercase;
+}
+.el-title{
+  margin:0;font-size:1.38rem;font-weight:950;
+  color:#f0eeff;line-height:1.15;
+}
+.el-sub{color:#9893b8;font-weight:800;font-size:.88rem;line-height:1.35;margin:0}
+
+/* MASCOT SIZES */
+.el-mascot-lg{width:130px;height:120px;display:flex;align-items:flex-end;justify-content:center}
+.el-mascot-sm{width:80px;height:74px;display:flex;align-items:flex-end;justify-content:center}
+.el-mascot-xl{width:160px;height:150px;display:flex;align-items:flex-end;justify-content:center}
+.el-mascot-lg .el-mascot-svg{width:110px}
+.el-mascot-sm .el-mascot-svg{width:68px}
+.el-mascot-xl .el-mascot-svg{width:140px}
+
+/* INTRO CHIPS */
+.el-chip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:300px}
+.el-chip{
+  border:1.5px solid #2a2a55;border-radius:14px;
+  background:#1a1a35;color:#c4b5fd;
+  padding:10px 6px;font-size:1.12rem;
+  font-family:var(--el-zh);font-weight:950;cursor:pointer;
+}
+.el-chip:active{border-color:#7c3aed;background:#1e1045}
+
+/* CARD FACE */
+.el-card-face{
+  background:#1a1a35;border:1.5px solid #2a2a55;
+  border-radius:24px;padding:24px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  width:100%;max-width:320px;box-sizing:border-box;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.el-zh-big{
+  font-family:var(--el-zh);font-size:4.5rem;font-weight:900;
+  border:0;background:transparent;color:#f0eeff;cursor:pointer;
+  padding:0;line-height:1;letter-spacing:-.02em;
+}
+.el-zh-big:active{opacity:.7}
+.el-card-en{font-size:1.1rem;font-weight:950;color:#f0eeff}
+.el-card-hint{color:#5a5680;font-size:.76rem;font-weight:800}
+.el-hanzi-practice{
+  width:min(280px,78vw);
+  aspect-ratio:1;
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  background:#f8fafc;
+  border:2px solid #d9eef2;
+  box-shadow:0 8px 0 #bfd6df;
+  touch-action:none;
+}
+.el-hanzi-writer,
+.el-hanzi-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.el-hanzi-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  width:min(320px,88vw);
+}
+.el-hanzi-actions button{
+  min-height:40px;
+  border:0;
+  border-radius:13px;
+  background:#1a1a35;
+  color:#c4b5fd;
+  font-family:var(--el-font);
+  font-size:.72rem;
+  font-weight:950;
+}
+.el-py{font-size:.96rem;color:#7c3aed;font-weight:900;font-style:italic}
+
+/* STIMULUS */
+.el-stimulus{display:flex;justify-content:center;align-items:center;min-height:90px}
+.el-en-prompt{
+  background:#1a1a35;border:1.5px solid #2a2a55;border-radius:18px;
+  padding:16px 20px;font-size:1.1rem;font-weight:950;
+  color:#f0eeff;text-align:center;width:100%;max-width:300px;
+}
+.el-audio-btn{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  width:130px;height:120px;border-radius:28px;
+  background:#4c1d95;box-shadow:0 6px 0 #3b0764;
+  color:#f0eeff;border:0;cursor:pointer;font-family:var(--el-font);
+  font-size:2.4rem;padding-top:20px;
+  transition:transform .1s;
+}
+.el-audio-btn span{font-size:.68rem;font-weight:950;letter-spacing:.06em;color:#c4b5fd}
+.el-audio-btn:active{transform:scale(.95)}
+.el-sound-btn{
+  min-height:110px;width:160px;border:1.5px solid #7c3aed;border-radius:24px;
+  background:#1e1045;color:#f0eeff;cursor:pointer;
+  font-family:var(--el-zh);font-size:3rem;font-weight:900;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;box-shadow:0 6px 0 #3b0764;padding:12px;
+  transition:transform .1s;
+}
+.el-sound-btn:active{transform:scale(.95)}
+.el-sound-btn small{font-family:var(--el-font);font-size:.78rem;color:#c4b5fd;font-style:italic;font-weight:800}
+.el-zh-sent{
+  background:#1a1a35;border:1.5px solid #2a2a55;border-radius:18px;
+  padding:16px;font-family:var(--el-zh);font-size:1.5rem;font-weight:900;
+  color:#f0eeff;text-align:center;width:100%;max-width:320px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.el-py-sm{font-family:var(--el-font);font-size:.78rem;color:#7c3aed;font-style:italic;font-weight:800}
+
+/* OPTIONS */
+.el-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.el-opt{
+  min-height:80px;border:1.5px solid #2a2a55;border-radius:18px;
+  background:#1a1a35;color:#f0eeff;font-weight:950;
+  font-size:.9rem;cursor:pointer;font-family:var(--el-font);
+  padding:10px 8px;line-height:1.3;
+  transition:border-color .1s,background .1s,transform .08s;
+}
+.el-opt:active{transform:translateY(2px)}
+.el-opts.chars .el-opt{font-family:var(--el-zh);font-size:1.6rem;min-height:110px}
+.el-opt.sel{
+  background:#1e1045;border-color:#7c3aed;color:#c4b5fd;
+  box-shadow:0 0 0 2px rgba(124,58,237,.3);
+}
+
+/* MATCH */
+.el-match{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.el-match-col{display:grid;gap:10px}
+.el-mbtn{
+  min-height:56px;border:1.5px solid #2a2a55;border-radius:16px;
+  background:#1a1a35;color:#f0eeff;font-weight:950;
+  font-family:var(--el-zh);font-size:.9rem;cursor:pointer;
+  padding:8px 6px;line-height:1.3;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;
+  transition:border-color .1s,background .1s;
+}
+.el-mbtn small{font-family:var(--el-font);color:#5a5680;font-size:.64rem;font-style:italic}
+.el-mbtn:active{background:#21214a}
+.el-mbtn.sel{background:#1e1045;border-color:#7c3aed;color:#c4b5fd}
+.el-mbtn.done{opacity:.28;pointer-events:none}
+
+/* TILE SCREEN */
+.el-tile-source{
+  border:1.5px solid #2a2a55;border-radius:18px;
+  background:#1a1a35;padding:14px;
+  width:100%;box-sizing:border-box;
+}
+.el-tile-prompt-en{font-size:1rem;font-weight:950;color:#f0eeff}
+.el-tile-prompt-zh{
+  font-family:var(--el-zh);font-size:1.6rem;font-weight:900;
+  color:#f0eeff;display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.el-answer{
+  min-height:64px;border:1.5px dashed #2a2a55;border-radius:18px;
+  background:#0d0d1a;padding:10px;display:flex;flex-wrap:wrap;
+  gap:8px;align-content:flex-start;width:100%;box-sizing:border-box;
+}
+.el-answer.has-tiles{border-style:solid;border-color:#7c3aed30;background:#13132a}
+.el-ans-ph{color:#2a2a55;font-weight:950;font-size:.86rem;align-self:center;margin:auto}
+.el-ans-tile{
+  border:1.5px solid #7c3aed;border-radius:12px;
+  background:#1e1045;color:#c4b5fd;
+  font-family:var(--el-zh);font-weight:950;
+  padding:6px 12px;cursor:pointer;font-size:1rem;
+  transition:opacity .1s;
+}
+.el-ans-tile:active{opacity:.6}
+.el-tile-bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
+.el-tile{
+  border:1.5px solid #3b82f6;border-radius:12px;
+  background:#1e3a8a;color:#bfdbfe;
+  font-family:var(--el-zh);font-weight:950;
+  padding:8px 14px;cursor:pointer;font-size:1rem;
+  box-shadow:0 3px 0 #1e40af;transition:transform .08s;
+}
+.el-tile:active{transform:translateY(2px);box-shadow:0 1px 0 #1e40af}
+.el-tile.used{opacity:.28;pointer-events:none;box-shadow:none}
+
+/* SPEAK */
+.el-speak-card{
+  background:#1a1a35;border:1.5px solid #2a2a55;border-radius:20px;
+  padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  width:100%;max-width:300px;
+}
+.el-zh-mid{font-family:var(--el-zh);font-size:2.4rem;font-weight:900;color:#f0eeff}
+.el-speak-en{font-size:.9rem;font-weight:800;color:#9893b8}
+.el-replay-btn{
+  border:1.5px solid #2a2a55;border-radius:14px;
+  background:#1a1a35;color:#c4b5fd;
+  padding:10px 20px;font-weight:900;cursor:pointer;
+  font-family:var(--el-font);font-size:.84rem;
+}
+.el-mic-btn{
+  min-height:52px;border:0;border-radius:16px;
+  background:linear-gradient(135deg,#7c3aed,#9d5cf5);
+  color:#fff;font-weight:950;font-family:var(--el-font);
+  font-size:.92rem;cursor:pointer;padding:0 24px;
+  box-shadow:0 4px 0 #5b21b6;transition:transform .1s;
+}
+.el-mic-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #5b21b6}
+.el-mic-btn.listening{animation:el-pulse 1s ease-in-out infinite}
+.el-transcript{
+  color:#9893b8;font-size:.8rem;font-weight:800;
+  font-style:italic;max-width:280px;text-align:center;
+}
+
+/* DONE */
+.el-done-screen{justify-content:center}
+.el-done-title{font-size:1.7rem;font-weight:950;color:#f0eeff;margin:0}
+.el-results{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:320px}
+.el-res-card{
+  border-radius:20px;padding:16px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  border:1.5px solid transparent;
+}
+.el-res-card.gold{background:#1c1400;border-color:#f59e0b40}
+.el-res-card.blue{background:#0f1e3a;border-color:#3b82f640}
+.el-res-card.purple{background:#130d2e;border-color:#7c3aed40}
+.el-res-val{font-size:1.5rem;font-weight:950}
+.el-res-card.gold .el-res-val{color:#f59e0b}
+.el-res-card.blue .el-res-val{color:#60a5fa}
+.el-res-card.purple .el-res-val{color:#a78bfa}
+.el-res-lbl{font-size:.64rem;color:#5a5680;font-weight:950;text-transform:uppercase;letter-spacing:.06em}
+
+/* BUTTONS */
+.el-btn-primary{
+  width:100%;min-height:56px;border:0;border-radius:16px;
+  background:linear-gradient(135deg,#7c3aed,#9d5cf5);color:#fff;
+  box-shadow:0 4px 0 #5b21b6;
+  font-weight:950;font-size:1rem;font-family:var(--el-font);
+  cursor:pointer;transition:transform .1s,box-shadow .1s;
+}
+.el-btn-primary:active{transform:translateY(3px);box-shadow:0 1px 0 #5b21b6}
+.el-btn-primary:disabled{background:#2a2a55;color:#5a5680;box-shadow:none;cursor:not-allowed}
+.el-btn-secondary{
+  width:100%;min-height:56px;border:0;border-radius:16px;
+  background:#1a1a35;color:#9893b8;box-shadow:0 4px 0 #0d0d1a;
+  font-weight:950;font-size:1rem;font-family:var(--el-font);cursor:pointer;
+  transition:transform .1s;
+}
+.el-btn-secondary:active{transform:translateY(3px)}
+
+/* FOOTER */
+.el-foot{
+  position:fixed;
+  left:50%;transform:translateX(-50%);
+  bottom:var(--el-nav);
+  width:min(430px,100vw);
+  box-sizing:border-box;
+  padding:10px 16px 14px;
+  background:linear-gradient(180deg,rgba(13,13,26,0),#0d0d1a 28%);
+  z-index:9997;
+}
+.el-foot.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* FEEDBACK */
+.el-feedback{
+  position:fixed;left:50%;bottom:var(--el-nav);
+  transform:translateX(-50%);
+  width:min(430px,100vw);box-sizing:border-box;
+  z-index:10000;
+  padding:16px 16px 14px;
+  border-radius:24px 24px 0 0;
+  animation:el-slideup .22s cubic-bezier(.34,1.56,.64,1);
+}
+.el-feedback.ok{background:#052e16;border-top:2px solid #22c55e}
+.el-feedback.bad{background:#2d0a0a;border-top:2px solid #ef4444}
+.el-fb-row{display:grid;grid-template-columns:60px 1fr 32px;gap:10px;align-items:center;margin-bottom:12px}
+.el-fb-row .el-mascot-svg{width:52px}
+.el-fb-text strong{display:block;font-size:1rem;font-weight:950}
+.el-feedback.ok .el-fb-text strong{color:#22c55e}
+.el-feedback.bad .el-fb-text strong{color:#ef4444}
+.el-fb-text span{font-size:.82rem;font-weight:800;color:#9893b8}
+.el-fb-icon{
+  font-size:1.4rem;font-weight:950;
+  display:flex;align-items:center;justify-content:center;
+}
+.el-feedback.ok .el-fb-icon{color:#22c55e}
+.el-feedback.bad .el-fb-icon{color:#ef4444}
+.el-fb-btn{
+  width:100%;min-height:52px;border:0;border-radius:14px;
+  font-weight:950;font-size:.96rem;font-family:var(--el-font);
+  cursor:pointer;
+}
+.el-feedback.ok .el-fb-btn{background:#22c55e;color:#052e16;box-shadow:0 4px 0 #16a34a}
+.el-feedback.bad .el-fb-btn{background:#ef4444;color:#fff;box-shadow:0 4px 0 #dc2626}
+
+/* ANIMATIONS */
+@keyframes el-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes el-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes el-slideup{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}
+
+/* DUOLINGO-STYLE MAP OVERRIDE */
+.duo-map{
+  --duo-bg:#101d23;
+  --duo-green:#58cc02;
+  --duo-green-dark:#3ba800;
+  --duo-gold:#ffc800;
+  --duo-blue:#1cb0f6;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(88,204,2,.08),transparent 23%),
+    linear-gradient(180deg,#122129 0%,#0f1c22 100%)!important;
+  color:#f7fff8;
+  min-height:100vh;
+  padding:0 0 calc(var(--el-nav) + 18px);
+  overflow:hidden auto;
+  position:relative;
+}
+.duo-topbar{
+  height:92px;
+  display:grid;
+  grid-template-columns:64px 1fr 1fr 58px;
+  gap:12px;
+  align-items:end;
+  padding:18px 20px 10px;
+  box-sizing:border-box;
+  background:#101d23;
+  position:sticky;
+  top:0;
+  z-index:30;
+}
+.duo-flag,.duo-score,.duo-avatar{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.duo-flag{
+  font-size:2rem;
+  filter:drop-shadow(0 5px 0 rgba(0,0,0,.24));
+}
+.duo-flag-cn{
+  width:54px;
+  height:36px;
+  border-radius:10px;
+  background:#ef4444;
+  border:4px solid #fff;
+  box-shadow:0 5px 0 rgba(0,0,0,.22);
+  position:relative;
+  display:block;
+}
+.duo-flag-cn:before{
+  content:'';
+  position:absolute;
+  left:8px;
+  top:7px;
+  width:11px;
+  height:11px;
+  background:#ffd43b;
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.duo-flag-cn:after{
+  content:'';
+  position:absolute;
+  left:24px;
+  top:8px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#ffd43b;
+  box-shadow:8px 4px 0 #ffd43b,2px 13px 0 #ffd43b,11px 15px 0 #ffd43b;
+}
+.duo-score{
+  gap:9px;
+  font-size:1.52rem;
+  font-weight:950;
+  letter-spacing:.04em;
+}
+.duo-score span{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:#172b33;
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.18),0 2px 0 rgba(255,255,255,.08);
+  font-size:.58rem;
+  font-weight:950;
+}
+.duo-score.flame b{color:#ffb020}
+.duo-score.gem b{color:#3cc6ff}
+.duo-avatar .duo-owl{transform:scale(.58)}
+.duo-avatar .duo-owl{
+  width:48px;
+  height:48px;
+  transform:none;
+  border-radius:38% 38% 44% 44%;
+  box-shadow:inset 0 -6px 0 rgba(0,0,0,.14),0 6px 0 rgba(0,0,0,.28);
+}
+.duo-avatar .duo-owl:before,
+.duo-avatar .duo-owl:after{
+  top:15px;
+  width:15px;
+  height:18px;
+}
+.duo-avatar .duo-owl:before{left:9px}
+.duo-avatar .duo-owl:after{right:9px}
+.duo-avatar .duo-owl .eye{
+  top:22px;
+  width:6px;
+  height:9px;
+}
+.duo-avatar .duo-owl .eye.l{left:16px}
+.duo-avatar .duo-owl .eye.r{right:16px}
+.duo-avatar .duo-owl b{
+  left:20px;
+  top:31px;
+  width:8px;
+  height:7px;
+}
+.duo-avatar .duo-owl .wing{
+  top:29px;
+  width:12px;
+  height:15px;
+}
+.duo-avatar .duo-owl strong{
+  left:15px;
+  right:15px;
+  bottom:-5px;
+  height:8px;
+}
+.duo-side-handle{
+  position:fixed;
+  left:-12px;
+  top:112px;
+  width:58px;
+  height:118px;
+  border:0;
+  border-radius:0 24px 24px 0;
+  background:linear-gradient(90deg,#3e4745,#18262c);
+  color:#d6e1e3;
+  font-size:4rem;
+  line-height:1;
+  z-index:35;
+  box-shadow:0 12px 26px rgba(0,0,0,.35);
+}
+.duo-unit-banner{
+  margin:8px 18px 20px;
+  min-height:116px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 74px;
+  align-items:stretch;
+  border-radius:22px;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.12) 0 18%,transparent 18% 42%,rgba(255,255,255,.08) 42% 60%,transparent 60%),
+    var(--duo-green);
+  box-shadow:0 7px 0 var(--duo-green-dark),0 18px 34px rgba(0,0,0,.28);
+}
+.duo-unit-banner>div{
+  padding:18px 16px;
+  min-width:0;
+}
+.duo-unit-banner small{
+  display:block;
+  color:rgba(255,255,255,.82);
+  font-size:.92rem;
+  font-weight:950;
+  letter-spacing:.03em;
+  margin-bottom:8px;
+}
+.duo-unit-banner h1{
+  margin:0;
+  color:#fff;
+  font-size:clamp(1.18rem,5.3vw,1.46rem);
+  line-height:1.18;
+  font-weight:950;
+  text-shadow:0 2px 0 rgba(0,0,0,.12);
+}
+.duo-section-progress{
+  display:inline-block;
+  margin-top:8px;
+  color:rgba(255,255,255,.82);
+  font-size:.72rem;
+  font-weight:900;
+}
+.duo-unit-banner button{
+  border:0;
+  border-left:4px solid rgba(0,0,0,.12);
+  background:rgba(0,0,0,.04);
+  color:#fff;
+  font-size:.86rem;
+  font-weight:950;
+  font-family:var(--el-font);
+  display:grid;
+  place-items:center;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  overflow:hidden;
+}
+.duo-unit-banner button span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.duo-section-card{
+  margin:-8px 18px 16px;
+  padding:16px;
+  border-radius:22px;
+  background:#f7fff3;
+  color:#172b33;
+  box-shadow:0 8px 0 #cbe8bd,0 18px 30px rgba(0,0,0,.24);
+  border:2px solid #dff4d5;
+}
+.duo-section-card small{
+  color:#58a700;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.duo-section-card h2{
+  margin:4px 0 6px;
+  font-size:1.42rem;
+  line-height:1.05;
+}
+.duo-section-card p{
+  margin:0;
+  color:#53636a;
+  font-weight:800;
+  line-height:1.35;
+}
+.duo-section-card dl{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:14px 0;
+}
+.duo-section-card dl div{
+  border-radius:14px;
+  background:#e9f7e3;
+  padding:8px;
+  text-align:center;
+}
+.duo-section-card dt{
+  color:#58a700;
+  font-size:.66rem;
+  font-weight:950;
+  text-transform:uppercase;
+}
+.duo-section-card dd{
+  margin:2px 0 0;
+  font-size:1.05rem;
+  font-weight:950;
+}
+.duo-section-card .duo-section-range{
+  font-size:.8rem;
+}
+.duo-section-card button{
+  width:100%;
+  min-height:42px;
+  margin-top:12px;
+  border:0;
+  border-radius:14px;
+  background:#58cc02;
+  color:#fff;
+  font-weight:950;
+  box-shadow:0 4px 0 #3ba800;
+}
+.duo-section-tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:8px 18px 10px;
+  scrollbar-width:none;
+}
+.duo-section-tabs::-webkit-scrollbar{display:none}
+.duo-section-tabs button{
+  min-width:78px;
+  border:2px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  color:#d8e6de;
+  padding:8px 10px;
+  text-align:left;
+  font-family:var(--el-font);
+  box-shadow:0 4px 0 rgba(0,0,0,.18);
+}
+.duo-section-tabs button.active{
+  background:#58cc02;
+  color:#fff;
+  border-color:#78e623;
+  box-shadow:0 5px 0 #3ba800;
+}
+.duo-section-tabs b{display:block;font-size:1rem;line-height:1}
+.duo-section-tabs span{display:block;margin-top:3px;font-size:.68rem;font-weight:900;white-space:nowrap}
+.el-course-warning,
+.el-loading-course{
+  margin:18px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  color:#d8e6de;
+  font-weight:900;
+}
+.el-loading-course{
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.el-loading-course span{color:#93a6a0;font-size:.84rem}
+.duo-path-wrap{
+  position:relative;
+  min-height:1500px;
+  padding:0 0 120px;
+}
+.duo-path-wrap:before{
+  content:'';
+  position:absolute;
+  top:14px;
+  bottom:20px;
+  left:50%;
+  width:10px;
+  transform:translateX(-50%);
+  border-radius:99px;
+  background:linear-gradient(180deg,transparent,#27363c 4%,#27363c 96%,transparent);
+  opacity:.72;
+}
+.duo-unit-divider{
+  position:relative;
+  z-index:2;
+  margin:30px 72px 18px;
+  padding:8px 12px;
+  border-radius:16px;
+  background:#172b33;
+  border:2px solid #24383f;
+  text-align:center;
+}
+.duo-unit-divider span{
+  display:block;
+  color:#58cc02;
+  font-size:.68rem;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.duo-unit-divider b{
+  display:block;
+  color:#d9eef2;
+  font-size:.9rem;
+}
+.el-path-section{display:none}
+.el-node-row{
+  position:relative;
+  height:178px;
+  --node-size:92px;
+}
+.el-node-row:has(.el-chest){
+  height:134px;
+}
+.el-node{
+  position:absolute;
+  left:var(--nx);
+  top:28px;
+  width:var(--node-size);
+  height:var(--node-size);
+  transform:translateX(-50%);
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:var(--el-font);
+  font-weight:950;
+  color:#fff;
+  z-index:5;
+  cursor:pointer;
+}
+.el-node-current,.el-node-avail{
+  background:
+    radial-gradient(circle at 32% 26%,rgba(255,255,255,.28),transparent 18%),
+    linear-gradient(135deg,#61db06,#46bd00);
+  box-shadow:0 11px 0 #2f9300,0 18px 22px rgba(0,0,0,.32);
+}
+.el-node-done{
+  background:
+    radial-gradient(circle at 32% 26%,rgba(255,255,255,.28),transparent 18%),
+    linear-gradient(135deg,#ffd94d,#f6b900);
+  box-shadow:0 11px 0 #ca8e00,0 18px 22px rgba(0,0,0,.32);
+}
+.el-node-lock{
+  background:linear-gradient(135deg,#d7e4eb,#adc5d0);
+  box-shadow:0 9px 0 #7b98a6,0 16px 22px rgba(0,0,0,.28);
+  color:#5d7682;
+}
+.el-node,
+.el-chest,
+.duo-chest{
+  overflow:hidden;
+}
+.el-node span{
+  font-size:1.42rem;
+  line-height:1;
+  text-shadow:0 2px 0 rgba(0,0,0,.14);
+}
+.el-node .el-node-star{
+  max-width:68px;
+  font-size:.76rem;
+  letter-spacing:.01em;
+}
+.el-node .el-node-check,
+.el-node .el-node-lock-ic{
+  font-size:.74rem;
+}
+.el-node-badge{
+  position:absolute;
+  left:var(--nx);
+  top:0;
+  transform:translateX(-50%);
+  z-index:9;
+  background:#fff;
+  color:#58cc02;
+  border:3px solid #d9eef2;
+  border-radius:12px;
+  padding:3px 10px;
+  font-size:.78rem;
+  font-weight:950;
+  box-shadow:0 4px 0 rgba(0,0,0,.18);
+}
+.el-node-label{
+  position:absolute;
+  left:var(--nx);
+  top:126px;
+  transform:translateX(-50%);
+  width:118px;
+  text-align:center;
+  color:#abc2c9;
+  font-size:.78rem;
+  font-weight:950;
+}
+.el-chest,.duo-chest{
+  position:absolute;
+  left:var(--nx);
+  top:20px;
+  transform:translateX(-50%);
+  width:96px;
+  height:86px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ffda2d 0 28%,#aa6500 28% 74%,#ffbd16 74%);
+  border:8px solid #ffc800;
+  box-shadow:0 10px 0 #53636a,0 18px 24px rgba(0,0,0,.32);
+  font-size:.78rem;
+  font-weight:950;
+  color:#5b3a00;
+  z-index:4;
+}
+.el-chest.locked,.duo-chest.locked{filter:saturate(.7);opacity:.92}
+.duo-path-decor{
+  position:absolute;
+  top:2px;
+  z-index:3;
+  pointer-events:none;
+}
+.duo-path-decor.right{left:70%}
+.duo-path-decor.left{left:20%}
+.duo-path-decor .duo-owl{transform:scale(1.05)}
+.duo-stars{
+  position:absolute;
+  display:flex;
+  gap:8px;
+  top:106px;
+  color:#ffc800;
+  font-size:1.8rem;
+  filter:drop-shadow(0 4px 0 rgba(0,0,0,.2));
+}
+.duo-stars.right{left:70%}
+.duo-stars.left{left:18%}
+.duo-map-controls{
+  position:fixed;
+  right:22px;
+  bottom:calc(var(--el-nav) + 18px);
+  z-index:40;
+  display:grid;
+  gap:10px;
+}
+.duo-map-controls button{
+  width:72px;
+  min-height:58px;
+  border-radius:18px;
+  border:4px solid #31444c;
+  background:#172b33;
+  color:#1cb0f6;
+  font-size:.72rem;
+  font-weight:950;
+  box-shadow:0 5px 0 rgba(0,0,0,.24);
+  font-family:var(--el-font);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+}
+.duo-map-controls button span{font-size:.72rem;line-height:1}
+.duo-map-controls button b{font-size:.64rem;line-height:1;color:#d8e6de}
+.duo-map-controls button.active{
+  color:#58cc02;
+  border-color:#3f5b30;
+}
+.duo-owl{
+  position:relative;
+  display:inline-block;
+  width:86px;
+  height:86px;
+  border-radius:36% 36% 44% 44%;
+  background:#58cc02;
+  box-shadow:inset 0 -10px 0 rgba(0,0,0,.14),0 9px 0 rgba(0,0,0,.28);
+}
+.duo-owl:before,.duo-owl:after{
+  content:'';
+  position:absolute;
+  top:26px;
+  width:26px;
+  height:32px;
+  border-radius:50%;
+  background:#fff;
+}
+.duo-owl:before{left:16px}
+.duo-owl:after{right:16px}
+.duo-owl .eye{
+  position:absolute;
+  top:39px;
+  width:10px;
+  height:16px;
+  border-radius:50%;
+  background:#253238;
+  z-index:2;
+}
+.duo-owl .eye.l{left:27px}
+.duo-owl .eye.r{right:27px}
+.duo-owl b{
+  position:absolute;
+  left:37px;
+  top:55px;
+  width:14px;
+  height:12px;
+  background:#ff9600;
+  border-radius:50% 50% 60% 60%;
+  z-index:3;
+}
+.duo-owl .wing{
+  position:absolute;
+  top:54px;
+  width:22px;
+  height:28px;
+  border-radius:70% 35% 65% 35%;
+  background:#46bd00;
+}
+.duo-owl .wing.l{left:-2px;transform:rotate(24deg)}
+.duo-owl .wing.r{right:-2px;transform:rotate(-24deg)}
+.duo-owl strong{
+  position:absolute;
+  left:27px;
+  right:27px;
+  bottom:-7px;
+  height:14px;
+  border-radius:99px;
+  background:#ff9600;
+}
+.duo-owl.wave .wing.r{animation:duo-wave 1s ease-in-out infinite}
+@keyframes duo-wave{0%,100%{transform:rotate(-24deg)}50%{transform:rotate(-78deg)}}
+
+/* DUOLINGO MAP FINAL POLISH */
+#main:has(.duo-map) #topbar{
+  display:none!important;
+}
+#main:has(.el-lesson) #topbar{
+  display:none!important;
+}
+#main:has(.duo-map){
+  background:#101d23!important;
+}
+#main:has(.el-lesson){
+  background:#0d0d1a!important;
+}
+body:has(.el-lesson) #bottom-nav{
+  background:#fff!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:0!important;
+  width:100%!important;
+  max-width:430px!important;
+  transform:translateX(-50%)!important;
+  border-radius:22px 22px 0 0!important;
+}
+body:has(.el-lesson) .bottom-nav-inner{
+  max-width:100%!important;
+  margin:0 auto!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+  box-shadow:none!important;
+}
+body:has(.el-lesson) #scratchpad-fab-btn{
+  display:none!important;
+}
+html:has(.el-lesson),
+body:has(.el-lesson){
+  height:100dvh!important;
+  overflow:hidden!important;
+  overscroll-behavior:none!important;
+}
+body:has(.duo-map) #bottom-nav{
+  background:#101d23!important;
+  border-top:2px solid #263940!important;
+  box-shadow:0 -8px 24px rgba(0,0,0,.28)!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:0!important;
+  width:100%!important;
+  transform:translateX(-50%)!important;
+  border-radius:22px 22px 0 0!important;
+}
+body:has(.duo-map) .bottom-nav-inner{
+  max-width:100%!important;
+  margin:0 auto!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+  box-shadow:none!important;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))!important;
+}
+body:has(.duo-map) .bottom-nav-item{
+  color:#8fa1a8!important;
+  font-weight:900!important;
+  border-radius:16px!important;
+}
+body:has(.duo-map) .bottom-nav-item.active{
+  color:#dff7ff!important;
+  background:#172b33!important;
+  outline:3px solid #28515f!important;
+}
+body:has(.duo-map) .bottom-nav-item.active .bn-icon,
+body:has(.duo-map) .bottom-nav-menu.active .bn-icon{
+  color:#dff7ff!important;
+}
+body:has(.duo-map) #scratchpad-fab-btn{
+  display:none!important;
+}
+.duo-map{
+  max-width:100%!important;
+  width:100%!important;
+  min-height:100dvh!important;
+  isolation:isolate;
+}
+.duo-side-handle{
+  display:none!important;
+}
+.duo-topbar{
+  height:76px!important;
+  grid-template-columns:62px 1fr 1fr 58px!important;
+  padding:10px 18px 8px!important;
+}
+.duo-unit-banner{
+  margin:8px 18px 22px!important;
+  min-height:112px!important;
+  border-radius:22px!important;
+}
+.duo-unit-banner h1{
+  font-size:clamp(1.32rem,6vw,1.62rem)!important;
+  max-width:100%;
+}
+.duo-path-wrap{
+  min-height:1500px!important;
+  padding-top:6px!important;
+}
+.duo-path-wrap:before{
+  display:none!important;
+}
+.el-node-row{
+  height:154px!important;
+  overflow:visible!important;
+}
+.el-node-row:has(.el-chest){
+  height:120px!important;
+}
+.el-node{
+  --node-size:84px;
+  top:20px!important;
+  border:5px solid rgba(255,255,255,.12)!important;
+}
+.el-node-current{
+  animation:duo-node-pop 1.9s ease-in-out infinite;
+}
+.el-node-badge{
+  top:-6px!important;
+  color:#58cc02!important;
+  border-color:#dff7d1!important;
+}
+.el-node-label{
+  top:112px!important;
+  color:#d8e5e8!important;
+  text-shadow:0 2px 0 rgba(0,0,0,.32);
+}
+.el-chest,.duo-chest{
+  top:10px!important;
+  width:84px!important;
+  height:74px!important;
+  border-radius:16px!important;
+}
+.duo-path-decor.right{left:69%!important}
+.duo-path-decor.left{left:18%!important}
+.duo-path-decor .duo-owl{transform:scale(.86)!important}
+.duo-stars{
+  top:94px!important;
+  font-size:1.48rem!important;
+  text-shadow:0 3px 0 #b97700;
+}
+.duo-stars.right{left:68%!important}
+.duo-stars.left{left:17%!important}
+.duo-map-controls{
+  right:18px!important;
+  bottom:calc(var(--el-nav) + 22px)!important;
+}
+.duo-map-controls button{
+  width:66px!important;
+  min-height:50px!important;
+  border-radius:16px!important;
+}
+@keyframes duo-node-pop{
+  0%,100%{transform:translateX(-50%) translateY(0) scale(1)}
+  50%{transform:translateX(-50%) translateY(-5px) scale(1.035)}
+}
+
+@media(max-width:430px){
+  .duo-side-handle{
+    width:50px!important;
+    height:104px!important;
+    left:-18px!important;
+    top:128px!important;
+    font-size:3rem!important;
+  }
+  .duo-topbar{
+    grid-template-columns:54px 1fr 1fr 50px!important;
+    gap:8px!important;
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+  .duo-score{
+    gap:6px!important;
+    font-size:1.22rem!important;
+  }
+  .duo-score span{
+    width:36px!important;
+    height:36px!important;
+  }
+  .duo-unit-banner{
+    margin-left:14px!important;
+    margin-right:14px!important;
+    grid-template-columns:1fr 72px!important;
+  }
+  .duo-unit-banner>div{
+    padding:18px 14px 18px 24px!important;
+  }
+  .duo-unit-banner small{
+    font-size:.92rem!important;
+  }
+  .duo-unit-banner button{
+    font-size:2.4rem!important;
+  }
+  .el-node{
+    --node-size:78px;
+  }
+  .duo-path-decor .duo-owl{
+    transform:scale(.86)!important;
+  }
+  .duo-stars{
+    font-size:1.44rem!important;
+    gap:5px!important;
+  }
+  .duo-map-controls button{
+    width:46px!important;
+    height:46px!important;
+  }
+}
+
+/* RESPONSIVE */
+@media(max-width:380px){
+  :root{--el-nav:calc(90px + env(safe-area-inset-bottom,0px))}
+  .el-home,.el-lesson{max-width:100%}
+  .el-hero{grid-template-columns:76px 1fr}
+  .el-hero-mascot{width:76px;height:76px}
+  .el-opts{grid-template-columns:1fr}
+  .el-results{grid-template-columns:1fr}
+  .el-title{font-size:1.18rem}
+  .el-foot.two{grid-template-columns:1fr}
+  .el-zh-big{font-size:3.6rem}
+}
+@media(max-height:620px){
+  .el-screen{padding-bottom:calc(var(--el-nav) + 70px)}
+}
+
+/* LESSON ONE-SCREEN FIT */
+#page-content:has(.el-lesson){
+  height:calc(100dvh - var(--mobile-nav-h, 68px) - env(safe-area-inset-bottom,0px))!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.el-lesson{
+  height:calc(100dvh - var(--mobile-nav-h, 68px) - env(safe-area-inset-bottom,0px))!important;
+  min-height:0!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+.el-lesson-top{
+  flex:0 0 54px!important;
+  padding:9px 14px 8px!important;
+}
+.el-ex-body{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.el-screen{
+  min-height:0!important;
+  overflow:hidden!important;
+  padding:10px 16px 82px!important;
+  gap:9px!important;
+}
+.el-screen.center{
+  justify-content:flex-start!important;
+}
+.el-kicker{
+  font-size:.62rem!important;
+}
+.el-title{
+  font-size:clamp(1.08rem,5vw,1.32rem)!important;
+}
+.el-sub{
+  font-size:.78rem!important;
+}
+.el-mascot-lg{
+  width:90px!important;
+  height:82px!important;
+}
+.el-mascot-lg .el-mascot-svg{
+  width:82px!important;
+}
+.el-mascot-sm{
+  width:60px!important;
+  height:54px!important;
+}
+.el-mascot-sm .el-mascot-svg{
+  width:54px!important;
+}
+.el-mascot-xl{
+  width:112px!important;
+  height:104px!important;
+}
+.el-mascot-xl .el-mascot-svg{
+  width:98px!important;
+}
+.el-chip-grid{
+  max-width:100%!important;
+  gap:8px!important;
+}
+.el-chip{
+  min-height:48px!important;
+  padding:6px!important;
+  font-size:clamp(1rem,6vw,1.18rem)!important;
+}
+.el-card-face{
+  padding:18px!important;
+}
+.el-zh-big{
+  font-size:clamp(3rem,17vw,4.2rem)!important;
+}
+.el-opts{
+  gap:8px!important;
+}
+.el-opt{
+  min-height:64px!important;
+}
+.el-opts.chars .el-opt{
+  min-height:78px!important;
+}
+.el-match,
+.el-match-col{
+  gap:7px!important;
+}
+.el-mbtn{
+  min-height:44px!important;
+  font-size:.82rem!important;
+}
+.el-tile-source{
+  padding:10px!important;
+}
+.el-answer{
+  min-height:50px!important;
+}
+.el-tile-bank{
+  gap:6px!important;
+}
+.el-tile,
+.el-ans-tile{
+  padding:6px 10px!important;
+}
+.el-speak-card{
+  padding:12px!important;
+}
+.el-zh-mid{
+  font-size:2rem!important;
+}
+.el-foot{
+  bottom:calc(var(--mobile-nav-h, 68px) + env(safe-area-inset-bottom,0px))!important;
+  width:min(430px,100vw)!important;
+  padding:8px 16px 10px!important;
+}
+.el-btn-primary,
+.el-btn-secondary{
+  min-height:50px!important;
+}
+.el-feedback{
+  bottom:calc(var(--mobile-nav-h, 68px) + env(safe-area-inset-bottom,0px))!important;
+}
+    `;
+    document.head.appendChild(s);
+  }
+
+  /* ─── Public API ─── */
+  return { render, exitLesson, unmount:closeFeedback, playCurrent, togglePinyin };
 })();

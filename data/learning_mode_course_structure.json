@@ -1,0 +1,370 @@
+{
+  "version": 1,
+  "course_id": "traditional_mandarin_duolingo_mode",
+  "title": "Traditional Mandarin Mastery",
+  "script": "traditional",
+  "pronunciation": "taiwan_mandarin",
+  "status": "structure_ready_content_pending",
+  "design_rules": {
+    "unit_count": 180,
+    "sections": 6,
+    "units_per_section": 30,
+    "sessions_per_unit": 4,
+    "minimum_exercises_per_unit": 50,
+    "new_vocabulary_target_per_unit": "20-40",
+    "review_policy": "Each unit reuses earlier vocabulary and patterns before adding new material.",
+    "no_random_generation": true,
+    "content_payload_required_before_publish": true
+  },
+  "content_schema": {
+    "unit_id": "string",
+    "section_id": "string",
+    "unit_number": "number",
+    "title": "string",
+    "level": "string",
+    "theme": "string",
+    "learning_goal": "string",
+    "core_vocabulary": [],
+    "grammar_patterns": [],
+    "dialogue_context": "string",
+    "main_dialogue": [],
+    "listening_task": "string",
+    "reading_task": "string",
+    "speaking_task": "string",
+    "writing_task": "string",
+    "review_words_from_previous_units": [],
+    "personalization_notes": "string",
+    "tocfl_skill_focus": "string",
+    "audio_manifest_keys": [],
+    "exercise_payloads": []
+  },
+  "unit_session_template": [
+    {
+      "session": 1,
+      "name": "Learn",
+      "purpose": "Introduce new words, pronunciation, pinyin, and first sentence pattern.",
+      "exercise_mix": ["new_word_card", "tap_to_hear", "pinyin_choice", "meaning_choice", "matching_pairs", "sentence_builder_zh"]
+    },
+    {
+      "session": 2,
+      "name": "Build",
+      "purpose": "Build Chinese from English and English from Chinese using controlled tiles.",
+      "exercise_mix": ["review_card", "english_to_chinese_tiles", "chinese_to_english_tiles", "flash_choice", "matching_pairs", "speaking_repeat"]
+    },
+    {
+      "session": 3,
+      "name": "Listen",
+      "purpose": "Train audio recognition, tone/pinyin discrimination, and short sentence listening.",
+      "exercise_mix": ["listen_choose_meaning", "listen_choose_pinyin", "dictation_tiles", "dialogue_listening", "speaking_repeat"]
+    },
+    {
+      "session": 4,
+      "name": "Review",
+      "purpose": "Mixed review with older material, short output, and mission-style checks.",
+      "exercise_mix": ["spaced_review", "mixed_matching", "sentence_builder_zh", "sentence_builder_en", "roleplay_prompt", "unit_checkpoint"]
+    }
+  ],
+  "exercise_types": {
+    "new_word_card": {
+      "requires": ["zh", "pinyin", "english", "audio"],
+      "interaction": "tap character to hear audio; reveal meaning"
+    },
+    "pinyin_choice": {
+      "requires": ["zh", "correct_pinyin", "distractors", "audio"],
+      "interaction": "hear or see character, choose pinyin"
+    },
+    "meaning_choice": {
+      "requires": ["zh", "pinyin", "correct_english", "distractors", "audio"],
+      "interaction": "choose English meaning"
+    },
+    "flash_choice": {
+      "requires": ["prompt", "correct_zh", "distractors", "optional_image"],
+      "interaction": "choose the matching Traditional Chinese item"
+    },
+    "matching_pairs": {
+      "requires": ["zh_items", "english_items", "audio"],
+      "interaction": "tap matching word pairs"
+    },
+    "sentence_builder_zh": {
+      "requires": ["english_prompt", "zh_answer", "zh_tiles", "audio"],
+      "interaction": "build Chinese sentence from English"
+    },
+    "sentence_builder_en": {
+      "requires": ["zh_prompt", "english_answer", "english_tiles", "audio"],
+      "interaction": "build English sentence from Chinese"
+    },
+    "listen_choose_meaning": {
+      "requires": ["audio", "correct_answer", "distractors"],
+      "interaction": "listen and choose meaning"
+    },
+    "listen_choose_pinyin": {
+      "requires": ["audio", "correct_pinyin", "distractors"],
+      "interaction": "listen and choose pinyin"
+    },
+    "dictation_tiles": {
+      "requires": ["audio", "zh_answer", "zh_tiles"],
+      "interaction": "listen and build what was heard"
+    },
+    "speaking_repeat": {
+      "requires": ["zh", "pinyin", "english", "audio"],
+      "interaction": "play audio, record or self-check pronunciation"
+    },
+    "roleplay_prompt": {
+      "requires": ["scenario", "target_phrases", "sample_answer"],
+      "interaction": "answer aloud or choose response"
+    },
+    "unit_checkpoint": {
+      "requires": ["mixed_review_items", "pass_threshold"],
+      "interaction": "final unit mastery check"
+    }
+  },
+  "sections": [
+    {
+      "section_id": "S1",
+      "section_number": 1,
+      "level": "Novice",
+      "theme": "Sounds, greetings, people, numbers, and first classroom Mandarin",
+      "goal": "Build sound confidence and basic phrase control before survival situations.",
+      "unlock_policy": "available_now",
+      "units": [
+        {"unit": 1, "unit_id": "S1U01", "title": "Greetings", "focus": "Say hello and polite phrases."},
+        {"unit": 2, "unit_id": "S1U02", "title": "Identity", "focus": "Say who people are."},
+        {"unit": 3, "unit_id": "S1U03", "title": "Family", "focus": "Name family members."},
+        {"unit": 4, "unit_id": "S1U04", "title": "People", "focus": "Talk about friends and classmates."},
+        {"unit": 5, "unit_id": "S1U05", "title": "Questions", "focus": "Ask simple questions."},
+        {"unit": 6, "unit_id": "S1U06", "title": "This and That", "focus": "Point to things around you."},
+        {"unit": 7, "unit_id": "S1U07", "title": "Have and Need", "focus": "Talk about possessions and needs."},
+        {"unit": 8, "unit_id": "S1U08", "title": "Numbers 0-9", "focus": "Recognize single digits."},
+        {"unit": 9, "unit_id": "S1U09", "title": "Numbers 10-99", "focus": "Build larger numbers."},
+        {"unit": 10, "unit_id": "S1U10", "title": "Age", "focus": "Say and ask age."},
+        {"unit": 11, "unit_id": "S1U11", "title": "Days", "focus": "Talk about days of the week."},
+        {"unit": 12, "unit_id": "S1U12", "title": "Time", "focus": "Ask and tell the time."},
+        {"unit": 13, "unit_id": "S1U13", "title": "Classroom", "focus": "Name classroom objects."},
+        {"unit": 14, "unit_id": "S1U14", "title": "Study", "focus": "Talk about studying."},
+        {"unit": 15, "unit_id": "S1U15", "title": "Food Basics", "focus": "Name common foods."},
+        {"unit": 16, "unit_id": "S1U16", "title": "Tone Confidence", "focus": "Identify tones in useful words."},
+        {"unit": 17, "unit_id": "S1U17", "title": "Initial Sounds", "focus": "Hear and choose Mandarin initials."},
+        {"unit": 18, "unit_id": "S1U18", "title": "Final Sounds", "focus": "Hear and choose Mandarin finals."},
+        {"unit": 19, "unit_id": "S1U19", "title": "Polite Classroom Commands", "focus": "Understand listen, repeat, read, and write."},
+        {"unit": 20, "unit_id": "S1U20", "title": "Yes, No, Not", "focus": "Use simple affirmation and negation."},
+        {"unit": 21, "unit_id": "S1U21", "title": "Measure Word Starter", "focus": "Use ge, ben, bei with beginner nouns."},
+        {"unit": 22, "unit_id": "S1U22", "title": "Simple Locations", "focus": "Say here, there, at home, at school."},
+        {"unit": 23, "unit_id": "S1U23", "title": "Basic Actions", "focus": "Use go, come, eat, drink, learn, speak."},
+        {"unit": 24, "unit_id": "S1U24", "title": "Like Starter", "focus": "Say what you like and do not like."},
+        {"unit": 25, "unit_id": "S1U25", "title": "First Mini Dialogue", "focus": "Greet, introduce, and answer politely."},
+        {"unit": 26, "unit_id": "S1U26", "title": "First Listening Mission", "focus": "Understand short classroom and greeting audio."},
+        {"unit": 27, "unit_id": "S1U27", "title": "First Sentence Builder", "focus": "Build short SVO and identity sentences."},
+        {"unit": 28, "unit_id": "S1U28", "title": "First Reading Cards", "focus": "Read short notices and chat-like lines."},
+        {"unit": 29, "unit_id": "S1U29", "title": "Novice Mixed Review", "focus": "Review sound, people, numbers, time, and classroom words."},
+        {"unit": 30, "unit_id": "S1U30", "title": "Section 1 Checkpoint", "focus": "Prove readiness for Pre-A1 survival Mandarin."}
+      ]
+    },
+    {
+      "section_id": "S2",
+      "section_number": 2,
+      "level": "Pre-A1",
+      "theme": "Survival Mandarin, classroom, food, time, shopping, transport",
+      "goal": "Survive basic situations in Taiwan using short phrases, fixed expressions, and simple sentences.",
+      "unlock_policy": "content_pending",
+      "units": [
+        {"unit": 1, "unit_id": "S2U01", "title": "Hello Taiwan", "focus": "Greetings, goodbye, thank you, sorry, excuse me, yes/no, basic polite phrases."},
+        {"unit": 2, "unit_id": "S2U02", "title": "My Name Is", "focus": "Introducing name, nationality, student identity, I am, my name is."},
+        {"unit": 3, "unit_id": "S2U03", "title": "Classroom Survival", "focus": "Teacher/student phrases: listen, repeat, write, read, ask, understand/don't understand."},
+        {"unit": 4, "unit_id": "S2U04", "title": "Numbers 0-20", "focus": "Basic numbers, phone numbers, classroom counting, simple quantity recognition."},
+        {"unit": 5, "unit_id": "S2U05", "title": "Numbers 21-100", "focus": "Prices, ages, addresses, bus numbers, classroom activities."},
+        {"unit": 6, "unit_id": "S2U06", "title": "This and That", "focus": "This, that, this one, that one, asking what is this and naming objects."},
+        {"unit": 7, "unit_id": "S2U07", "title": "Basic Classroom Objects", "focus": "Book, pen, notebook, bag, desk, chair, phone, computer."},
+        {"unit": 8, "unit_id": "S2U08", "title": "Please Help Me", "focus": "Asking for help, repeating, speaking slowly, can you say it again."},
+        {"unit": 9, "unit_id": "S2U09", "title": "Food Words 1", "focus": "Rice, noodles, tea, water, coffee, milk, bread, egg, fruit."},
+        {"unit": 10, "unit_id": "S2U10", "title": "Ordering Simple Food", "focus": "I want, please give me, one cup/two bowls, basic ordering."},
+        {"unit": 11, "unit_id": "S2U11", "title": "Drinks in Taiwan", "focus": "Bubble tea, tea sweetness, ice level, hot/cold drinks, simple preferences."},
+        {"unit": 12, "unit_id": "S2U12", "title": "Like and Don't Like", "focus": "Like and dislike with food, drinks, people, activities."},
+        {"unit": 13, "unit_id": "S2U13", "title": "Time: Morning to Night", "focus": "Morning, afternoon, evening, today, tomorrow, yesterday."},
+        {"unit": 14, "unit_id": "S2U14", "title": "Clock Time 1", "focus": "O'clock, half past, class time, meeting time."},
+        {"unit": 15, "unit_id": "S2U15", "title": "Days of the Week", "focus": "Monday-Sunday, today is, class schedule, simple plans."},
+        {"unit": 16, "unit_id": "S2U16", "title": "My Daily Items", "focus": "Clothes, shoes, umbrella, wallet, keys, ID card, EasyCard."},
+        {"unit": 17, "unit_id": "S2U17", "title": "At the Convenience Store", "focus": "Buying water, snacks, coffee, asking price, paying."},
+        {"unit": 18, "unit_id": "S2U18", "title": "Money and Prices", "focus": "NT dollars, expensive/cheap, how much, simple payment dialogue."},
+        {"unit": 19, "unit_id": "S2U19", "title": "Colors and Simple Choices", "focus": "Red, blue, black, white, big/small, choosing items."},
+        {"unit": 20, "unit_id": "S2U20", "title": "Basic Shopping", "focus": "I want this, do you have, too expensive, I'll take it."},
+        {"unit": 21, "unit_id": "S2U21", "title": "Places Around Me", "focus": "School, home, store, station, restaurant, bathroom, hospital."},
+        {"unit": 22, "unit_id": "S2U22", "title": "Where Is It?", "focus": "Where is it, here/there, left/right, basic location phrases."},
+        {"unit": 23, "unit_id": "S2U23", "title": "MRT and Bus Basics", "focus": "Station, bus stop, get on/off, ticket, EasyCard, destination."},
+        {"unit": 24, "unit_id": "S2U24", "title": "Taxi Survival", "focus": "Go to, address, please stop here, how much."},
+        {"unit": 25, "unit_id": "S2U25", "title": "Emergency Phrases", "focus": "Help, I'm lost, I'm sick, call someone, police station, hospital."},
+        {"unit": 26, "unit_id": "S2U26", "title": "Family Words 1", "focus": "Mom, dad, older/younger siblings, simple family introduction."},
+        {"unit": 27, "unit_id": "S2U27", "title": "Countries and Languages", "focus": "Taiwan, Pakistan, Japan, Korea, America, English, Chinese, Urdu."},
+        {"unit": 28, "unit_id": "S2U28", "title": "Simple Feelings", "focus": "Happy, tired, hungry, thirsty, busy, okay, not okay."},
+        {"unit": 29, "unit_id": "S2U29", "title": "Mini Story: First Day in Taiwan", "focus": "Short survival story using greetings, food, classroom, transport."},
+        {"unit": 30, "unit_id": "S2U30", "title": "Section 2 Review Mission", "focus": "Arrive in Taiwan, buy food, go to class, ask for help."}
+      ]
+    },
+    {
+      "section_id": "S3",
+      "section_number": 3,
+      "level": "A1",
+      "theme": "Daily routine, family, school/work, locations, simple opinions",
+      "goal": "Describe yourself, routines, family, school/work, and simple preferences in complete sentences.",
+      "unlock_policy": "content_pending",
+      "units": [
+        {"unit": 1, "unit_id": "S3U01", "title": "My Basic Profile", "focus": "Age, nationality, student/job, where you live, basic self-introduction."},
+        {"unit": 2, "unit_id": "S3U02", "title": "My Daily Routine 1", "focus": "Wake up, eat breakfast, go to school/work, sleep."},
+        {"unit": 3, "unit_id": "S3U03", "title": "My Daily Routine 2", "focus": "Time-based routine: wake up at 7, go home at 6."},
+        {"unit": 4, "unit_id": "S3U04", "title": "Eating Every Day", "focus": "Breakfast/lunch/dinner, common Taiwan meals, meal times."},
+        {"unit": 5, "unit_id": "S3U05", "title": "Family Introduction", "focus": "Describing family members, names, ages, jobs."},
+        {"unit": 6, "unit_id": "S3U06", "title": "My Home", "focus": "Room, kitchen, bathroom, living room, bedroom, furniture."},
+        {"unit": 7, "unit_id": "S3U07", "title": "Where Things Are", "focus": "On, under, inside, outside, beside, in front, behind."},
+        {"unit": 8, "unit_id": "S3U08", "title": "School Life", "focus": "Class, homework, exam, teacher, classmates, classroom activities."},
+        {"unit": 9, "unit_id": "S3U09", "title": "Work Life Basics", "focus": "Company, office, boss, coworker, meeting, salary, schedule."},
+        {"unit": 10, "unit_id": "S3U10", "title": "My Week", "focus": "Weekly schedule, class days, work days, free time."},
+        {"unit": 11, "unit_id": "S3U11", "title": "Hobbies 1", "focus": "Watching movies, listening to music, reading, exercising, gaming."},
+        {"unit": 12, "unit_id": "S3U12", "title": "Hobbies 2", "focus": "I like to, I often, I sometimes."},
+        {"unit": 13, "unit_id": "S3U13", "title": "Weather 1", "focus": "Hot, cold, raining, sunny, cloudy, windy, humid."},
+        {"unit": 14, "unit_id": "S3U14", "title": "Clothing and Weather", "focus": "Wearing jacket, umbrella, shoes, clothes for weather."},
+        {"unit": 15, "unit_id": "S3U15", "title": "Simple Opinions", "focus": "Good, bad, delicious, fun, boring, difficult, easy."},
+        {"unit": 16, "unit_id": "S3U16", "title": "Describing People", "focus": "Tall, short, kind, busy, smart, funny, serious."},
+        {"unit": 17, "unit_id": "S3U17", "title": "Describing Things", "focus": "Big/small, new/old, beautiful, useful, expensive, cheap."},
+        {"unit": 18, "unit_id": "S3U18", "title": "Basic Questions", "focus": "Who, what, where, when, how many, how much."},
+        {"unit": 19, "unit_id": "S3U19", "title": "Going Places", "focus": "Go to school, go home, go to restaurant, go to station."},
+        {"unit": 20, "unit_id": "S3U20", "title": "Transportation Routine", "focus": "Taking bus/MRT/bike/walking to places."},
+        {"unit": 21, "unit_id": "S3U21", "title": "At a Restaurant 1", "focus": "Menu, ordering meal, asking for water, paying."},
+        {"unit": 22, "unit_id": "S3U22", "title": "At a Restaurant 2", "focus": "Table, spicy/not spicy, vegetarian, takeout, dine-in."},
+        {"unit": 23, "unit_id": "S3U23", "title": "Shopping for Daily Things", "focus": "Buying clothes, stationery, food, household items."},
+        {"unit": 24, "unit_id": "S3U24", "title": "Health Basics", "focus": "Head hurts, stomach hurts, tired, cold, fever, medicine."},
+        {"unit": 25, "unit_id": "S3U25", "title": "Making Simple Plans", "focus": "Today/tomorrow/weekend plans with friends/classmates."},
+        {"unit": 26, "unit_id": "S3U26", "title": "Phone and Messaging", "focus": "Calling, texting, Line messages, are you free."},
+        {"unit": 27, "unit_id": "S3U27", "title": "Mini Story: A Busy Student", "focus": "Daily life story about school, meals, transport, homework."},
+        {"unit": 28, "unit_id": "S3U28", "title": "Mini Dialogue Pack: Family and Friends", "focus": "Short conversations introducing people and relationships."},
+        {"unit": 29, "unit_id": "S3U29", "title": "A1 Reading Practice", "focus": "Notices, simple chats, short diary entries, class schedule."},
+        {"unit": 30, "unit_id": "S3U30", "title": "Section 3 Review Mission", "focus": "Introduce yourself, describe routine, order food, make a plan."}
+      ]
+    },
+    {
+      "section_id": "S4",
+      "section_number": 4,
+      "level": "Pre-A2",
+      "theme": "Longer sentence patterns, comparisons, directions, plans, health, travel",
+      "goal": "Combine ideas, compare options, explain needs, ask directions, and handle travel/health situations.",
+      "unlock_policy": "content_pending",
+      "units": [
+        {"unit": 1, "unit_id": "S4U01", "title": "Longer Sentences 1", "focus": "Connecting ideas with and, also, still, but."},
+        {"unit": 2, "unit_id": "S4U02", "title": "Longer Sentences 2", "focus": "Because/so basics."},
+        {"unit": 3, "unit_id": "S4U03", "title": "Past Actions 1", "focus": "Completed actions: ate, bought, went."},
+        {"unit": 4, "unit_id": "S4U04", "title": "Past Actions 2", "focus": "Yesterday, last week, last month events."},
+        {"unit": 5, "unit_id": "S4U05", "title": "Future Plans 1", "focus": "Want, will, would like for future intention."},
+        {"unit": 6, "unit_id": "S4U06", "title": "Future Plans 2", "focus": "Weekend, vacation, study, work plans."},
+        {"unit": 7, "unit_id": "S4U07", "title": "Comparisons 1", "focus": "A is bigger/cheaper than B."},
+        {"unit": 8, "unit_id": "S4U08", "title": "Comparisons 2", "focus": "More/less, better/worse, faster/slower."},
+        {"unit": 9, "unit_id": "S4U09", "title": "Asking Directions 1", "focus": "Left, right, straight, turn, intersection, near/far."},
+        {"unit": 10, "unit_id": "S4U10", "title": "Asking Directions 2", "focus": "Finding station, classroom, store, office, bathroom."},
+        {"unit": 11, "unit_id": "S4U11", "title": "Taiwan Street Life", "focus": "Roads, alleys, intersections, signs, traffic lights, scooters."},
+        {"unit": 12, "unit_id": "S4U12", "title": "Travel Preparation", "focus": "Passport, ticket, hotel, luggage, reservation, map."},
+        {"unit": 13, "unit_id": "S4U13", "title": "At the Hotel", "focus": "Check-in, room, key card, Wi-Fi, breakfast, room problems."},
+        {"unit": 14, "unit_id": "S4U14", "title": "At the Train Station", "focus": "Train types, platform, ticket, arrival/departure, seat."},
+        {"unit": 15, "unit_id": "S4U15", "title": "Travel Problems", "focus": "Lost luggage, missed bus, wrong station, asking for help."},
+        {"unit": 16, "unit_id": "S4U16", "title": "Health 1: Symptoms", "focus": "Cold, cough, sore throat, headache, fever, allergy."},
+        {"unit": 17, "unit_id": "S4U17", "title": "Health 2: Clinic Visit", "focus": "Registration, doctor, medicine, pharmacy, insurance card."},
+        {"unit": 18, "unit_id": "S4U18", "title": "Body Parts", "focus": "Head, eyes, ears, mouth, stomach, hands, feet, back."},
+        {"unit": 19, "unit_id": "S4U19", "title": "Food Details", "focus": "Taste: sweet, salty, sour, spicy, oily, fresh."},
+        {"unit": 20, "unit_id": "S4U20", "title": "Cooking and Ingredients", "focus": "Rice, vegetables, meat, fish, soup, cook, boil, fry."},
+        {"unit": 21, "unit_id": "S4U21", "title": "Invitations", "focus": "Inviting friends, accepting, refusing politely, giving reason."},
+        {"unit": 22, "unit_id": "S4U22", "title": "Making Appointments", "focus": "Date, time, location, changing time, being late."},
+        {"unit": 23, "unit_id": "S4U23", "title": "Simple Problem Solving", "focus": "Forgot, lost, broken, can you help."},
+        {"unit": 24, "unit_id": "S4U24", "title": "Feelings and Reasons", "focus": "Nervous, worried, excited, bored, because."},
+        {"unit": 25, "unit_id": "S4U25", "title": "Study Goals", "focus": "Learning Chinese, preparing test, listening/speaking practice."},
+        {"unit": 26, "unit_id": "S4U26", "title": "Work and Tasks", "focus": "Finish work, send email, meeting, deadline, report."},
+        {"unit": 27, "unit_id": "S4U27", "title": "Mini Story: Weekend Trip", "focus": "Planning, transport, hotel, food, problem, solution."},
+        {"unit": 28, "unit_id": "S4U28", "title": "Mini Story: Sick Day", "focus": "Symptoms, clinic, medicine, rest, recovery."},
+        {"unit": 29, "unit_id": "S4U29", "title": "Pre-A2 Listening Mission", "focus": "Longer dialogues with directions, shopping, health, plans."},
+        {"unit": 30, "unit_id": "S4U30", "title": "Section 4 Review Mission", "focus": "Plan a trip, compare choices, ask directions, visit clinic."}
+      ]
+    },
+    {
+      "section_id": "S5",
+      "section_number": 5,
+      "level": "A2",
+      "theme": "Topic conversations, reading/listening mini stories, practical scenarios",
+      "goal": "Handle extended everyday conversations, short practical texts, and controlled natural Taiwan Mandarin.",
+      "unlock_policy": "content_pending",
+      "units": [
+        {"unit": 1, "unit_id": "S5U01", "title": "Talking About Experiences", "focus": "Have been to, have eaten, have seen, basic experience sharing."},
+        {"unit": 2, "unit_id": "S5U02", "title": "My Life in Taiwan", "focus": "Housing, food, school/work, friends, transport, daily adjustment."},
+        {"unit": 3, "unit_id": "S5U03", "title": "Renting a Room 1", "focus": "Rent, deposit, electricity, water bill, location, room type."},
+        {"unit": 4, "unit_id": "S5U04", "title": "Renting a Room 2", "focus": "Talking to landlord, reporting problems, asking for repairs."},
+        {"unit": 5, "unit_id": "S5U05", "title": "University Life", "focus": "Department, professor, lab, presentation, report, scholarship."},
+        {"unit": 6, "unit_id": "S5U06", "title": "Workplace Communication", "focus": "Asking for tasks, confirming deadlines, workplace politeness."},
+        {"unit": 7, "unit_id": "S5U07", "title": "Email and Messages", "focus": "Short formal messages, Line replies, asking questions politely."},
+        {"unit": 8, "unit_id": "S5U08", "title": "Food Culture in Taiwan", "focus": "Night market, lunch box, vegetarian food, spicy food, drinks."},
+        {"unit": 9, "unit_id": "S5U09", "title": "At the Night Market", "focus": "Ordering snacks, asking price, describing taste, crowded places."},
+        {"unit": 10, "unit_id": "S5U10", "title": "Shopping Online", "focus": "Delivery, address, order, return, payment, customer service."},
+        {"unit": 11, "unit_id": "S5U11", "title": "Banking Basics", "focus": "Account, ATM, transfer, card, password, payment problems."},
+        {"unit": 12, "unit_id": "S5U12", "title": "Post Office and Delivery", "focus": "Sending package, receiving parcel, address format, tracking."},
+        {"unit": 13, "unit_id": "S5U13", "title": "Travel in Taiwan 1", "focus": "Planning city trips, attractions, tickets, opening hours."},
+        {"unit": 14, "unit_id": "S5U14", "title": "Travel in Taiwan 2", "focus": "Describing places, taking photos, weather, travel problems."},
+        {"unit": 15, "unit_id": "S5U15", "title": "Public Announcements", "focus": "MRT/bus announcements, safety signs, schedule changes."},
+        {"unit": 16, "unit_id": "S5U16", "title": "Talking About Rules", "focus": "Can/cannot, must, need to, not allowed."},
+        {"unit": 17, "unit_id": "S5U17", "title": "Giving Advice", "focus": "Should, better to, don't forget, remember to."},
+        {"unit": 18, "unit_id": "S5U18", "title": "Explaining Problems", "focus": "Internet broken, phone lost, card not working, late for class."},
+        {"unit": 19, "unit_id": "S5U19", "title": "Health and Lifestyle", "focus": "Exercise, sleep, diet, stress, healthy habits."},
+        {"unit": 20, "unit_id": "S5U20", "title": "Social Relationships", "focus": "Making friends, classmates, coworkers, polite small talk."},
+        {"unit": 21, "unit_id": "S5U21", "title": "Opinions 1", "focus": "I think, I feel, in my opinion, agreeing/disagreeing."},
+        {"unit": 22, "unit_id": "S5U22", "title": "Opinions 2", "focus": "Comparing cities, food, schools, jobs, lifestyles."},
+        {"unit": 23, "unit_id": "S5U23", "title": "Story Reading 1", "focus": "Short personal story: moving to a new city."},
+        {"unit": 24, "unit_id": "S5U24", "title": "Story Reading 2", "focus": "Problem-solution story: lost wallet or missed train."},
+        {"unit": 25, "unit_id": "S5U25", "title": "Listening Story 1", "focus": "Dialogue-based story with natural pauses and review questions."},
+        {"unit": 26, "unit_id": "S5U26", "title": "Listening Story 2", "focus": "Multi-speaker conversation: planning an event or trip."},
+        {"unit": 27, "unit_id": "S5U27", "title": "A2 Grammar Review", "focus": "Completed actions, experience, comparisons, because/so, contrast, future intention."},
+        {"unit": 28, "unit_id": "S5U28", "title": "A2 TOCFL-Style Reading", "focus": "Short notices, messages, schedules, ads, simple articles."},
+        {"unit": 29, "unit_id": "S5U29", "title": "A2 TOCFL-Style Listening", "focus": "Short dialogues with inference: place, reason, time, intention."},
+        {"unit": 30, "unit_id": "S5U30", "title": "Section 5 Review Mission", "focus": "Solve apartment, travel, shopping, health, and work problems."}
+      ]
+    },
+    {
+      "section_id": "S6",
+      "section_number": 6,
+      "level": "B1 Bridge",
+      "theme": "Longer dialogues, short essays, native-style reading/listening, TOCFL-style tasks",
+      "goal": "Move from controlled A2 to early B1: inference, opinion expression, explanation, narrative, comparison, academic/workplace communication.",
+      "unlock_policy": "content_pending",
+      "units": [
+        {"unit": 1, "unit_id": "S6U01", "title": "B1 Sentence Expansion", "focus": "Add time, place, reason, result, condition in one sentence."},
+        {"unit": 2, "unit_id": "S6U02", "title": "Telling Personal Stories", "focus": "Beginning, middle, end; describe what happened and feelings."},
+        {"unit": 3, "unit_id": "S6U03", "title": "Explaining Reasons Clearly", "focus": "Cause and result patterns."},
+        {"unit": 4, "unit_id": "S6U04", "title": "Expressing Contrast", "focus": "Although/but, however, still, comparing two opinions."},
+        {"unit": 5, "unit_id": "S6U05", "title": "Giving Detailed Opinions", "focus": "I think, I feel, for me, my view is."},
+        {"unit": 6, "unit_id": "S6U06", "title": "Agreeing and Disagreeing Politely", "focus": "Soft disagreement, partial agreement, giving reasons."},
+        {"unit": 7, "unit_id": "S6U07", "title": "Describing Changes", "focus": "Become, more and more, from...to, comparing past and present."},
+        {"unit": 8, "unit_id": "S6U08", "title": "Education Topics", "focus": "Study pressure, exams, language learning, teachers, classmates."},
+        {"unit": 9, "unit_id": "S6U09", "title": "Work Topics", "focus": "Job search, interview, salary, coworkers, workplace habits."},
+        {"unit": 10, "unit_id": "S6U10", "title": "Technology Life", "focus": "Phone, apps, online payment, AI tools, internet problems."},
+        {"unit": 11, "unit_id": "S6U11", "title": "Social Media and Communication", "focus": "Posting, replying, privacy, online habits, message tone."},
+        {"unit": 12, "unit_id": "S6U12", "title": "City Life vs Countryside", "focus": "Transportation, cost, convenience, environment, lifestyle."},
+        {"unit": 13, "unit_id": "S6U13", "title": "Taiwan Culture 1", "focus": "Festivals, family gatherings, food customs, polite behavior."},
+        {"unit": 14, "unit_id": "S6U14", "title": "Taiwan Culture 2", "focus": "Temple culture, night markets, gift-giving, local habits."},
+        {"unit": 15, "unit_id": "S6U15", "title": "Travel Essay Skills", "focus": "Write about a trip: place, reason, activity, feeling, recommendation."},
+        {"unit": 16, "unit_id": "S6U16", "title": "Health and Society", "focus": "Stress, sleep, exercise, hospital visits, health advice."},
+        {"unit": 17, "unit_id": "S6U17", "title": "Environmental Topics", "focus": "Recycling, pollution, weather, energy saving, public behavior."},
+        {"unit": 18, "unit_id": "S6U18", "title": "Public Services", "focus": "Government office, immigration, insurance, documents, appointments."},
+        {"unit": 19, "unit_id": "S6U19", "title": "Academic Communication", "focus": "Ask professor, explain class/research problem, presentation basics."},
+        {"unit": 20, "unit_id": "S6U20", "title": "Workplace Problem Solving", "focus": "Mistake, delay, request, apology, solution proposal."},
+        {"unit": 21, "unit_id": "S6U21", "title": "Reading: Short Article 1", "focus": "Native-style short article about lifestyle, study, or society."},
+        {"unit": 22, "unit_id": "S6U22", "title": "Reading: Short Article 2", "focus": "Article with opinion and supporting reasons."},
+        {"unit": 23, "unit_id": "S6U23", "title": "Listening: Longer Dialogue 1", "focus": "Two-person natural dialogue with implied meaning and attitude."},
+        {"unit": 24, "unit_id": "S6U24", "title": "Listening: Longer Dialogue 2", "focus": "Multi-turn workplace, school, travel, or apartment issue."},
+        {"unit": 25, "unit_id": "S6U25", "title": "Listening: Short Monologue", "focus": "Announcement, short talk, advice, explanation, event information."},
+        {"unit": 26, "unit_id": "S6U26", "title": "Writing: Short Paragraph", "focus": "80-120 character paragraph: routine, experience, opinion, plan."},
+        {"unit": 27, "unit_id": "S6U27", "title": "Writing: Short Essay", "focus": "150-250 character essay: topic, reason, example, conclusion."},
+        {"unit": 28, "unit_id": "S6U28", "title": "TOCFL Reading Strategy", "focus": "Main idea, detail, inference, purpose, vocabulary in context."},
+        {"unit": 29, "unit_id": "S6U29", "title": "TOCFL Listening Strategy", "focus": "Speaker intention, location, relationship, reason, next action."},
+        {"unit": 30, "unit_id": "S6U30", "title": "Section 6 Final Mission", "focus": "Read article, listen to dialogue, answer TOCFL-style questions, write opinion paragraph."}
+      ]
+    }
+  ],
+  "implementation_phases": [
+    {"phase": 1, "name": "Structure", "status": "done", "scope": "Course schema, section/unit map, session templates, exercise contract."},
+    {"phase": 2, "name": "Content Payloads", "status": "pending", "scope": "Fill vocabulary, grammar, dialogue, listening, reading, speaking, writing, and review payloads for each unit."},
+    {"phase": 3, "name": "Engine Integration", "status": "pending", "scope": "Load structure and payloads into Learning Mode instead of hardcoded units."},
+    {"phase": 4, "name": "Audio and Speech", "status": "pending", "scope": "Map local pinyin/word audio first, TTS fallback second, speech recognition timeout and skip flow."},
+    {"phase": 5, "name": "QA", "status": "pending", "scope": "Validate each unit has 4 sessions, 50+ exercises, correct answer coverage, no level jumps, mobile one-screen fit."}
+  ]
+}

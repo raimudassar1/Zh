@@ -360,34 +360,34 @@ const TTS = {
     // Map common standalone pinyin examples to Hanzi so browser/native TTS speaks
     // the syllable naturally instead of spelling Latin letters one by one.
     const exactPinyinMap = {
-      'mā': '媽', 'má': '麻', 'mǎ': '馬', 'mà': '罵',
-      'bā': '八', 'bá': '拔', 'bǎ': '把', 'bà': '爸',
-      'bō': '波', 'bó': '伯', 'bǐ': '比', 'bù': '不',
-      'pā': '趴', 'pá': '爬', 'pó': '婆', 'pǐ': '匹',
-      'wū': '屋', 'wú': '無', 'wǔ': '五', 'wù': '物',
-      'hú': '胡', 'hé': '河', 'hē': '喝', 'hǎo': '好', 'hòu': '後',
-      'yī': '一', 'yí': '疑', 'yǐ': '以', 'yì': '意',
-      'nǚ': '女', 'lǚ': '旅', 'qù': '去', 'jū': '居', 'xū': '需',
-      'yǔ': '語', 'yú': '魚', 'nǐ hǎo': '你好', 'nǐ': '你',
-      'nán': '男', 'nǎi': '奶', 'niú': '牛',
-      'lǐ': '裡', 'lán': '藍', 'lái': '來', 'liù': '六',
-      'jiā': '家', 'jiē': '街', 'jiù': '舊',
-      'qī': '七', 'qǐ': '起',
-      'xī': '西', 'xiā': '蝦', 'xiǎo': '小', 'xīn': '心', 'xiū': '修', 'xiē': '些',
-      'zhī': '知', 'zhǐ': '紙', 'zhù': '住', 'zhǎo': '找', 'zhā': '渣', 'zhài': '債', 'zhōng': '中',
-      'zī': '資', 'zǐ': '子', 'zū': '租', 'zǎo': '早', 'zài': '在',
-      'chī': '吃', 'chū': '出',
-      'shā': '沙', 'shēn': '身', 'shī': '詩', 'shū': '書', 'shú': '熟', 'shǔ': '鼠', 'shù': '樹', 'shōu': '收',
-      'rén': '人', 'māo': '貓', 'máo': '毛', 'mǎo': '卯', 'mào': '帽',
-      'tāng': '湯', 'táng': '糖', 'tǎng': '躺', 'tàng': '燙',
-      'mái': '埋', 'mài': '賣', 'mǎi': '買', 'wén': '聞', 'wèn': '問',
-      'sǐ': '死', 'sì': '四', 'tiān': '天', 'tī': '梯', 'tài': '太', 'tóu': '頭',
-      'dà': '大', 'dài': '帶', 'diào': '掉',
-      'fàn': '飯', 'fēi': '飛', 'fān': '翻', 'fāng': '方', 'fēng': '風',
-      'gē': '哥', 'gǒu': '狗', 'gōu': '溝', 'gěi': '給', 'gōng': '工',
-      'kāi': '開', 'mén': '門', 'mán': '蠻', 'màn': '慢', 'máng': '忙', 'míng': '明', 'mēng': '蒙',
-      'bēi': '杯', 'bào': '報', 'biàn': '變', 'biē': '憋', 'piào': '票',
-      'a': '啊', 'o': '喔', 'e': '鵝', 'i': '衣', 'u': '屋', 'ü': '魚'
+      'mÄ': 'åª½', 'mÃ¡': 'éº»', 'mÇŽ': 'é¦¬', 'mÃ ': 'ç½µ',
+      'bÄ': 'å…«', 'bÃ¡': 'æ‹”', 'bÇŽ': 'æŠŠ', 'bÃ ': 'çˆ¸',
+      'bÅ': 'æ³¢', 'bÃ³': 'ä¼¯', 'bÇ': 'æ¯”', 'bÃ¹': 'ä¸',
+      'pÄ': 'è¶´', 'pÃ¡': 'çˆ¬', 'pÃ³': 'å©†', 'pÇ': 'åŒ¹',
+      'wÅ«': 'å±‹', 'wÃº': 'ç„¡', 'wÇ”': 'äº”', 'wÃ¹': 'ç‰©',
+      'hÃº': 'èƒ¡', 'hÃ©': 'æ²³', 'hÄ“': 'å–', 'hÇŽo': 'å¥½', 'hÃ²u': 'å¾Œ',
+      'yÄ«': 'ä¸€', 'yÃ­': 'ç–‘', 'yÇ': 'ä»¥', 'yÃ¬': 'æ„',
+      'nÇš': 'å¥³', 'lÇš': 'æ—…', 'qÃ¹': 'åŽ»', 'jÅ«': 'å±…', 'xÅ«': 'éœ€',
+      'yÇ”': 'èªž', 'yÃº': 'é­š', 'nÇ hÇŽo': 'ä½ å¥½', 'nÇ': 'ä½ ',
+      'nÃ¡n': 'ç”·', 'nÇŽi': 'å¥¶', 'niÃº': 'ç‰›',
+      'lÇ': 'è£¡', 'lÃ¡n': 'è—', 'lÃ¡i': 'ä¾†', 'liÃ¹': 'å…­',
+      'jiÄ': 'å®¶', 'jiÄ“': 'è¡—', 'jiÃ¹': 'èˆŠ',
+      'qÄ«': 'ä¸ƒ', 'qÇ': 'èµ·',
+      'xÄ«': 'è¥¿', 'xiÄ': 'è¦', 'xiÇŽo': 'å°', 'xÄ«n': 'å¿ƒ', 'xiÅ«': 'ä¿®', 'xiÄ“': 'äº›',
+      'zhÄ«': 'çŸ¥', 'zhÇ': 'ç´™', 'zhÃ¹': 'ä½', 'zhÇŽo': 'æ‰¾', 'zhÄ': 'æ¸£', 'zhÃ i': 'å‚µ', 'zhÅng': 'ä¸­',
+      'zÄ«': 'è³‡', 'zÇ': 'å­', 'zÅ«': 'ç§Ÿ', 'zÇŽo': 'æ—©', 'zÃ i': 'åœ¨',
+      'chÄ«': 'åƒ', 'chÅ«': 'å‡º',
+      'shÄ': 'æ²™', 'shÄ“n': 'èº«', 'shÄ«': 'è©©', 'shÅ«': 'æ›¸', 'shÃº': 'ç†Ÿ', 'shÇ”': 'é¼ ', 'shÃ¹': 'æ¨¹', 'shÅu': 'æ”¶',
+      'rÃ©n': 'äºº', 'mÄo': 'è²“', 'mÃ¡o': 'æ¯›', 'mÇŽo': 'å¯', 'mÃ o': 'å¸½',
+      'tÄng': 'æ¹¯', 'tÃ¡ng': 'ç³–', 'tÇŽng': 'èºº', 'tÃ ng': 'ç‡™',
+      'mÃ¡i': 'åŸ‹', 'mÃ i': 'è³£', 'mÇŽi': 'è²·', 'wÃ©n': 'èž', 'wÃ¨n': 'å•',
+      'sÇ': 'æ­»', 'sÃ¬': 'å››', 'tiÄn': 'å¤©', 'tÄ«': 'æ¢¯', 'tÃ i': 'å¤ª', 'tÃ³u': 'é ­',
+      'dÃ ': 'å¤§', 'dÃ i': 'å¸¶', 'diÃ o': 'æŽ‰',
+      'fÃ n': 'é£¯', 'fÄ“i': 'é£›', 'fÄn': 'ç¿»', 'fÄng': 'æ–¹', 'fÄ“ng': 'é¢¨',
+      'gÄ“': 'å“¥', 'gÇ’u': 'ç‹—', 'gÅu': 'æº', 'gÄ›i': 'çµ¦', 'gÅng': 'å·¥',
+      'kÄi': 'é–‹', 'mÃ©n': 'é–€', 'mÃ¡n': 'è »', 'mÃ n': 'æ…¢', 'mÃ¡ng': 'å¿™', 'mÃ­ng': 'æ˜Ž', 'mÄ“ng': 'è’™',
+      'bÄ“i': 'æ¯', 'bÃ o': 'å ±', 'biÃ n': 'è®Š', 'biÄ“': 'æ†‹', 'piÃ o': 'ç¥¨',
+      'a': 'å•Š', 'o': 'å–”', 'e': 'éµ', 'i': 'è¡£', 'u': 'å±‹', 'Ã¼': 'é­š'
     };
 
     if (exactPinyinMap[pinyinKey]) {
@@ -402,14 +402,14 @@ const TTS = {
 
     // Try to get a high-quality Chinese voice. Gender is best-effort because browsers expose different voice lists.
     const voices = window.speechSynthesis.getVoices();
-    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google åœ‹èªž'];
-    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google æ™®é€šè©±', 'Google Mandarin'];
+    const preferredFemale = ['Yating', 'Hanhan', 'Xiaoxiao', 'HsiaoChen', 'Mei-Jia', 'Ting-Ting', 'Google Ã¥Å“â€¹Ã¨ÂªÅ¾'];
+    const preferredMale = ['Yunxi', 'Zhiwei', 'Kangkang', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â©Â±', 'Google Mandarin'];
     const preferred = [
       'Microsoft Yating Online (Natural) - Chinese (Taiwan)',
       'Microsoft Yunxi Online (Natural) - Chinese (Mainland)',
       'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)',
       'Microsoft Hiuga Online (Natural) - Chinese (Hong Kong)',
-      'Google åœ‹èªž', 'Google æ™®é€šè©±', 'Google Mandarin',
+      'Google Ã¥Å“â€¹Ã¨ÂªÅ¾', 'Google Ã¦â„¢Â®Ã©â‚¬Å¡Ã¨Â©Â±', 'Google Mandarin',
       'Xiaoxiao', 'Yating', 'Hanhan', 'Yunxi', 'Zhiwei', 'Mei-Jia'
     ];
     const zhVoices = voices.filter(v => v.lang && v.lang.startsWith('zh'));
@@ -621,7 +621,7 @@ window.PinyinAudio = PinyinAudio;
 // Section
 const API = {
   base: 'data', // Relative to public/
-  version: '207', // Match index.html version for consistency
+  version: '238', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -749,7 +749,7 @@ const API = {
     const characters = App.state.characters;
     const byLevel = { novice: 0, a1: 0, a2: 0, b1: 0 };
     (characters || []).forEach(c => { if (byLevel[c.level] !== undefined) byLevel[c.level]++; });
-    return { total_characters: characters.length, by_level: byLevel, app_version: '207' };
+    return { total_characters: characters.length, by_level: byLevel, app_version: '238' };
   },
 
   annotateText(text, characters, vocab) {
@@ -932,7 +932,7 @@ async function showCharModal(hanziOrObj) {
               <div id="app-pen-controls" style="display:flex; align-items:center; gap:8px">
                 <input type="range" min="1" max="15" value="4" style="width:60px" oninput="DrawingBoard.setPenWidth(this.value)">
                 <button class="btn btn-sm ${DrawingBoard.getState().penOnly ? 'btn-primary' : 'btn-outline'} pen-toggle-btn" id="app-pen-toggle" onclick="DrawingBoard.togglePenOnly()" title="Ignore hand/finger touch, only draw with pen/stylus">Pen Only: ${DrawingBoard.getState().penOnly ? 'ON' : 'OFF'}</button>
-                <button class="btn btn-sm btn-error fix-pen-btn" onclick="DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen 🛠️</button>
+                <button class="btn btn-sm btn-error fix-pen-btn" onclick="DrawingBoard.fixPenInput()" title="Click if your pen/stylus is not drawing">Fix Pen ðŸ› ï¸</button>
                 <button class="btn btn-sm ${DrawingBoard.getState().freehandGuide ? 'btn-outline' : 'btn-primary'} freehand-guide-toggle-btn" onclick="DrawingBoard.toggleFreehandGuide()" title="Show or hide the faint guide outline in freehand mode">Guide: ${DrawingBoard.getState().freehandGuide ? 'ON' : 'OFF'}</button>
               </div>
             </div>
@@ -2262,6 +2262,7 @@ async function renderLearningModePage(container) {
   if (window.LearningModeModule) return window.LearningModeModule.render(container);
   container.innerHTML = '<div class="empty-state"><h3>Learning Mode Module Error</h3></div>';
 }
+
 
 
 
