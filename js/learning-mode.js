@@ -2,8 +2,8 @@
 
 window.LearningModeModule = (() => {
   /* ─── Constants ─── */
-  const STORE  = 'suyuan_v238';
-  const PINKEY = 'suyuan_pinyin_v238';
+  const STORE  = 'suyuan_v246';
+  const PINKEY = 'suyuan_pinyin_v246';
   const MAX_HEARTS = 5;
   const XP_PER = 15;
 
@@ -50,6 +50,7 @@ window.LearningModeModule = (() => {
     answerTileIds: [],
     transcript: '',
     micState: 'idle',
+    hanziCharIndex: 0,
     selectedSection: 1,
     showPinyin: localStorage.getItem(PINKEY) !== '0',
   };
@@ -60,8 +61,8 @@ window.LearningModeModule = (() => {
   function loadProgress() {
     try {
       const p = JSON.parse(localStorage.getItem(STORE) || '{}');
-      return { xp:p.xp||0, streak:p.streak||0, hearts:Number.isFinite(p.hearts)?p.hearts:MAX_HEARTS, done:p.done||{}, mistakes:p.mistakes||[], last:p.last||'' };
-    } catch { return { xp:0, streak:0, hearts:MAX_HEARTS, done:{}, mistakes:[], last:'' }; }
+      return { xp:p.xp||0, streak:p.streak||0, hearts:Number.isFinite(p.hearts)?p.hearts:MAX_HEARTS, done:p.done||{}, mistakes:p.mistakes||[], wordStats:p.wordStats||{}, gates:p.gates||{}, last:p.last||'' };
+    } catch { return { xp:0, streak:0, hearts:MAX_HEARTS, done:{}, mistakes:[], wordStats:{}, gates:{}, last:'' }; }
   }
   function saveProgress() { localStorage.setItem(STORE, JSON.stringify(state.progress)); }
 
@@ -201,9 +202,11 @@ window.LearningModeModule = (() => {
     const b1 = byLevel.b1 || [];
     return {
       1: novice.slice(0, 300),
-      2: a1.slice(0, 300),
-      3: a2.slice(0, 300),
-      4: a2.slice(300, 590).concat(a2b1, b1).slice(0, 300)
+      2: uniqueWords(novice.slice(0, 120).concat(a1)).slice(0, 360),
+      3: uniqueWords(a1.concat(a2.slice(0, 120))).slice(0, 420),
+      4: uniqueWords(a2.concat(a2b1.slice(0, 40))).slice(0, 420),
+      5: uniqueWords(a2.slice(180).concat(a2b1, b1.slice(0, 220))).slice(0, 440),
+      6: uniqueWords(b1.concat(a2b1)).slice(0, 520)
     };
   }
 
@@ -228,6 +231,7 @@ window.LearningModeModule = (() => {
     (course.sections || []).forEach((section, sectionIndex) => {
       (section.units || []).forEach((unit, unitIndex) => {
         const words = seedWordsForUnit(sectionIndex, unitIndex, vocabBySection, unit);
+        const payload = buildUnitPayload(section, unit, sectionIndex, unitIndex, words);
         units.push({
           id: String(unit.unit_id || `S${sectionIndex+1}U${unitIndex+1}`),
           unit_id: String(unit.unit_id || `S${sectionIndex+1}U${unitIndex+1}`),
@@ -239,11 +243,764 @@ window.LearningModeModule = (() => {
           title: unit.title || `Unit ${unitIndex+1}`,
           goal: unit.focus || unit.learning_goal || unit.title || 'Practice this unit.',
           words,
-          sentences: seedSentencesForUnit(words)
+          payload,
+          grammar: payload.grammar,
+          dialogue: payload.dialogue,
+          listening: payload.listening,
+          reading: payload.reading,
+          speaking: payload.speaking,
+          writing: payload.writing,
+          objectives: payload.objectives,
+          substitution: payload.substitution,
+          sentences: seedSentencesForUnit(words, payload)
         });
       });
     });
     return units.length ? units : buildFallbackUnits();
+  }
+
+  function buildUnitPayload(section, unit, sectionIndex, unitIndex, words){
+    const level = section?.level || `Section ${sectionIndex + 1}`;
+    const title = unit?.title || `Unit ${unitIndex + 1}`;
+    const focus = unit?.focus || unit?.learning_goal || title;
+    const topic = unitTopic(title, focus);
+    const grammar = grammarTargetFor(sectionIndex, unitIndex, topic);
+    const canDo = canDoFor(sectionIndex, topic, focus);
+    const a = words[0] || item('中文','zhong1 wen2','Chinese');
+    const b = words[1] || item('練習','lian4 xi2','practice');
+    const c = words[2] || item('問題','wen4 ti2','question');
+    const authored = authoredUnitContent(sectionIndex, unitIndex, title, focus, words);
+    const dialogue = authored.dialogue || buildDialoguePayload(sectionIndex, topic, title, focus, a, b, c);
+    const objectives = buildUnitObjectives(sectionIndex, title, topic, focus, grammar, words);
+    const comprehension = authored.listeningQuestions || buildComprehensionQuestions(dialogue, topic);
+    const substitution = authored.substitution || buildSubstitutionPractice(sectionIndex, topic, a, b, c);
+    return {
+      level,
+      title,
+      topic,
+      canDo,
+      objectives,
+      grammar,
+      dialogue,
+      listening: {
+        title: `${title} listening mission`,
+        prompt: `Listen for the speaker's main need in ${topic}.`,
+        audioText: dialogue.lines.map(line => line.zh).join(' '),
+        question: 'What is the speaker trying to do?',
+        answer: dialogue.intent,
+        questions: comprehension,
+        distractors: [
+          `Ignore the ${topic} situation.`,
+          'Talk about an unrelated topic.',
+          'Ask for spelling only.'
+        ]
+      },
+      reading: {
+        title: `${title} reading card`,
+        prompt: `Read a short message about ${topic} and identify the key detail.`,
+        text: dialogue.lines.map(line => line.zh).join(' ')
+      },
+      speaking: {
+        title: `${title} speaking task`,
+        prompt: authored.roleplay?.prompt || `Say one useful sentence about ${topic}.`,
+        model: authored.roleplay?.model || dialogue.lines[Math.min(1, dialogue.lines.length - 1)],
+        roleplay: authored.roleplay || null
+      },
+      writing: {
+        title: `${title} writing task`,
+        prompt: `Write one short Traditional Chinese sentence using ${a.zh} or ${b.zh}.`
+      },
+      substitution,
+      authoredSentences: authored.sentences || null
+    };
+  }
+
+  function buildComprehensionQuestions(dialogue, topic){
+    const first = dialogue.lines[0]?.en || dialogue.intent;
+    const second = dialogue.lines[1]?.en || 'The other speaker responds.';
+    const third = dialogue.lines[2]?.en || 'The speaker asks a follow-up question.';
+    return [
+      {
+        question: 'What is the main situation?',
+        answer: dialogue.intent,
+        distractors: [`talk about unrelated ${topic}`, 'spell a name only', 'count numbers only']
+      },
+      {
+        question: 'What happens first?',
+        answer: first,
+        distractors: [second, third, 'They finish without asking anything.']
+      },
+      {
+        question: 'What should the learner listen for?',
+        answer: third,
+        distractors: [first, second, 'Only the speaker names.']
+      }
+    ];
+  }
+
+  function authoredUnitContent(sectionIndex, unitIndex, title, focus, words){
+    const profile = authoredProfileForUnit(title, focus);
+    const a = words[0] || item('中文','zhong1 wen2','Chinese');
+    const b = words[1] || item('問題','wen4 ti2','question');
+    const c = words[2] || item('時間','shi2 jian1','time');
+    const d = words[3] || item('地方','di4 fang1','place');
+    const lineSet = profile.lines(a, b, c, d, sectionIndex, unitIndex);
+    const dialogue = {
+      title,
+      context: profile.context(title, focus),
+      intent: profile.intent(title, focus),
+      lines: lineSet.dialogue.map((line, index) => ({
+        speaker: index % 2 === 0 ? profile.speakers[0] : profile.speakers[1],
+        ...line
+      }))
+    };
+    const roleModel = lineSet.roleModel || lineSet.dialogue[1] || lineSet.dialogue[0];
+    return {
+      dialogue,
+      sentences: lineSet.sentences,
+      listeningQuestions: authoredListeningQuestions(dialogue, profile, lineSet),
+      substitution: lineSet.substitution,
+      roleplay: {
+        title: `${title} roleplay`,
+        prompt: lineSet.roleplayPrompt,
+        model: roleModel,
+        checklist: profile.roleChecklist
+      }
+    };
+  }
+
+  function authoredListeningQuestions(dialogue, profile, lineSet){
+    const first = dialogue.lines[0]?.en || profile.intent('', '');
+    const second = dialogue.lines[1]?.en || 'The other speaker replies.';
+    const third = dialogue.lines[2]?.en || 'They confirm the next step.';
+    return [
+      {
+        question: 'What is the situation?',
+        answer: dialogue.intent,
+        distractors: [profile.badSituation, 'They are only spelling a word.', 'They are counting random numbers.']
+      },
+      {
+        question: 'What does the first speaker need?',
+        answer: first,
+        distractors: [second, third, profile.badNeed]
+      },
+      {
+        question: 'What is the best next response?',
+        answer: lineSet.bestResponse || third,
+        distractors: [first, second, profile.badResponse]
+      }
+    ];
+  }
+
+  function authoredProfileForUnit(title, focus){
+    const t = `${title || ''} ${focus || ''}`.toLowerCase();
+    const profiles = [
+      ['food', ['food','drink','restaurant','ordering','night market','meal','tea','breakfast','cooking'], foodProfile],
+      ['shopping', ['shopping','money','price','store','convenience','online','colors','daily items'], shoppingProfile],
+      ['transport', ['mrt','bus','taxi','directions','where','places','travel','station','hotel','train','trip'], transportProfile],
+      ['health', ['health','clinic','doctor','sick','body','symptom','lifestyle'], healthProfile],
+      ['work', ['work','office','meeting','deadline','report','career','workplace','company','interview'], workProfile],
+      ['message', ['email','message','line','phone','digital','technology','social media','communication'], messageProfile],
+      ['family', ['family','people','friend','classmate','relationship','home'], familyProfile],
+      ['time', ['time','days','week','routine','clock','schedule','plans','appointment','future','past'], timeProfile],
+      ['classroom', ['classroom','school','study','teacher','homework','exam','reading','sentence builder','listening','tone','initial','final'], classroomProfile],
+      ['service', ['bank','post office','delivery','package','public','government','immigration','insurance','document'], serviceProfile],
+      ['culture', ['taiwan','culture','festival','temple','customs','night market'], cultureProfile],
+      ['opinion', ['opinion','agree','disagree','compare','contrast','society','environment','nature','pollution','education','academic','essay','article'], opinionProfile],
+      ['story', ['story','experience','changes','narration','monologue'], storyProfile],
+      ['identity', ['hello','greeting','name','identity','profile','nationality','countries','language','age'], identityProfile],
+      ['basic', ['question','this','that','have','need','yes','no','not','measure','action','like','number'], basicProfile]
+    ];
+    const hit = profiles.find(([, keys]) => keys.some(k => t.includes(k)));
+    return (hit ? hit[2] : basicProfile)();
+  }
+
+  function contentProfile(kind, speakers, intent, badSituation, badNeed, badResponse, roleChecklist, lines){
+    return {
+      kind,
+      speakers,
+      intent: title => intent(title),
+      context: (title, focus) => focus || title,
+      badSituation,
+      badNeed,
+      badResponse,
+      roleChecklist,
+      lines
+    };
+  }
+
+  function identityProfile(){
+    return contentProfile('identity', ['A','B'], title => `introduce yourself in ${title}`, 'They are buying food.', 'They need directions.', 'Refuse to answer.', ['Say your name clearly','Use a polite greeting','Answer one follow-up'], (a,b,c) => ({
+      dialogue:[
+        sent(`你好，我叫${a.zh}。`, `ni3 hao3 wo3 jiao4 ${a.py}`, `Hello, my name is ${a.en}.`),
+        sent(`很高興認識你，你是學生嗎？`, 'hen3 gao1 xing4 ren4 shi4 ni3 ni3 shi4 xue2 sheng1 ma', 'Nice to meet you. Are you a student?'),
+        sent(`對，我在台灣學中文。`, 'dui4 wo3 zai4 tai2 wan1 xue2 zhong1 wen2', 'Yes, I study Chinese in Taiwan.')
+      ],
+      sentences:[
+        sent(`我叫${a.zh}。`, `wo3 jiao4 ${a.py}`, `My name is ${a.en}.`),
+        sent(`我是${b.zh}。`, `wo3 shi4 ${b.py}`, `I am ${b.en}.`),
+        sent(`很高興認識你。`, 'hen3 gao1 xing4 ren4 shi4 ni3', 'Nice to meet you.'),
+        sent(`我在台灣學中文。`, 'wo3 zai4 tai2 wan1 xue2 zhong1 wen2', 'I study Chinese in Taiwan.'),
+        sent(`你叫什麼名字？`, 'ni3 jiao4 shen2 me ming2 zi4', 'What is your name?')
+      ],
+      substitution:{frameZh:'我叫__。', frameEn:'My name is __.', slots:[a,b,c]},
+      roleplayPrompt:'Introduce yourself, ask the other person’s name, and answer one simple question.',
+      bestResponse:'Say your name and ask for the other person’s name.'
+    }));
+  }
+
+  function basicProfile(){
+    return contentProfile('basic', ['A','B'], title => `handle a beginner ${title} exchange`, 'They are discussing an advanced opinion.', 'They need a bank transfer.', 'Change the topic.', ['Ask one clear question','Use the target word','Confirm the answer'], (a,b,c) => ({
+      dialogue:[
+        sent(`請問，這是${a.zh}嗎？`, `qing3 wen4 zhe4 shi4 ${a.py} ma`, `Excuse me, is this ${a.en}?`),
+        sent(`對，這是${a.zh}。`, `dui4 zhe4 shi4 ${a.py}`, `Yes, this is ${a.en}.`),
+        sent(`好，謝謝，我知道了。`, 'hao3 xie4 xie5 wo3 zhi1 dao4 le', 'Okay, thank you. I understand now.')
+      ],
+      sentences:[
+        sent(`這是${a.zh}。`, `zhe4 shi4 ${a.py}`, `This is ${a.en}.`),
+        sent(`那不是${b.zh}。`, `na4 bu2 shi4 ${b.py}`, `That is not ${b.en}.`),
+        sent(`請問，${c.zh}在哪裡？`, `qing3 wen4 ${c.py} zai4 na3 li3`, `Excuse me, where is ${c.en}?`),
+        sent(`我需要${a.zh}。`, `wo3 xu1 yao4 ${a.py}`, `I need ${a.en}.`),
+        sent(`你有${b.zh}嗎？`, `ni3 you3 ${b.py} ma`, `Do you have ${b.en}?`)
+      ],
+      substitution:{frameZh:'這是__嗎？', frameEn:'Is this __?', slots:[a,b,c]},
+      roleplayPrompt:'Ask what something is, listen to the answer, then confirm politely.',
+      bestResponse:'Confirm the item and say thank you.'
+    }));
+  }
+
+  function classroomProfile(){
+    return contentProfile('classroom', ['學生','老師'], title => `ask for classroom help in ${title}`, 'They are ordering food.', 'They need a taxi.', 'Speak faster and ignore the problem.', ['Ask for repetition','Use listen/read/write language','Confirm understanding'], (a,b,c) => ({
+      dialogue:[
+        sent(`老師，請再說一次，可以嗎？`, 'lao3 shi1 qing3 zai4 shuo1 yi2 ci4 ke3 yi3 ma', 'Teacher, could you please say it one more time?'),
+        sent(`可以，請先聽，再跟我念。`, 'ke3 yi3 qing3 xian1 ting1 zai4 gen1 wo3 nian4', 'Yes. Please listen first, then repeat after me.'),
+        sent(`好，我現在懂了。`, 'hao3 wo3 xian4 zai4 dong3 le', 'Okay, I understand now.')
+      ],
+      sentences:[
+        sent(`請再說一次。`, 'qing3 zai4 shuo1 yi2 ci4', 'Please say it one more time.'),
+        sent(`我聽不懂${a.zh}。`, `wo3 ting1 bu4 dong3 ${a.py}`, `I do not understand ${a.en}.`),
+        sent(`請你寫在黑板上。`, 'qing3 ni3 xie3 zai4 hei1 ban3 shang4', 'Please write it on the board.'),
+        sent(`我會讀${b.zh}。`, `wo3 hui4 du2 ${b.py}`, `I can read ${b.en}.`),
+        sent(`我們一起練習${c.zh}。`, `wo3 men5 yi4 qi3 lian4 xi2 ${c.py}`, `We practice ${c.en} together.`)
+      ],
+      substitution:{frameZh:'請再說__。', frameEn:'Please say __ again.', slots:[a,b,c]},
+      roleplayPrompt:'Ask the teacher to repeat, listen, then say that you understand.',
+      bestResponse:'Ask politely for repetition.'
+    }));
+  }
+
+  function timeProfile(){
+    return contentProfile('time', ['A','B'], title => `make a time or routine plan for ${title}`, 'They are asking about rent.', 'They need medicine.', 'Cancel without saying why.', ['Ask when','Give a time','Confirm the plan'], (a,b,c) => ({
+      dialogue:[
+        sent(`你今天幾點有空？`, 'ni3 jin1 tian1 ji3 dian3 you3 kong4', 'What time are you free today?'),
+        sent(`我下午三點以後有空。`, 'wo3 xia4 wu3 san1 dian3 yi3 hou4 you3 kong4', 'I am free after three this afternoon.'),
+        sent(`好，那我們四點見。`, 'hao3 na4 wo3 men5 si4 dian3 jian4', 'Okay, then let us meet at four.')
+      ],
+      sentences:[
+        sent(`我今天${a.zh}有空。`, `wo3 jin1 tian1 ${a.py} you3 kong4`, `I am free at ${a.en} today.`),
+        sent(`我們明天見。`, 'wo3 men5 ming2 tian1 jian4', 'Let us meet tomorrow.'),
+        sent(`你幾點下課？`, 'ni3 ji3 dian3 xia4 ke4', 'What time do you finish class?'),
+        sent(`我每天都學中文。`, 'wo3 mei3 tian1 dou1 xue2 zhong1 wen2', 'I study Chinese every day.'),
+        sent(`這個星期我很忙。`, 'zhe4 ge xing1 qi2 wo3 hen3 mang2', 'I am busy this week.')
+      ],
+      substitution:{frameZh:'我__有空。', frameEn:'I am free __.', slots:[a,b,c]},
+      roleplayPrompt:'Arrange a time to meet and confirm the final plan.',
+      bestResponse:'Give a clear available time.'
+    }));
+  }
+
+  function familyProfile(){
+    return contentProfile('family', ['A','B'], title => `talk about people in ${title}`, 'They are buying a ticket.', 'They need a password.', 'Ask for a price only.', ['Introduce one person','Describe relation','Ask one follow-up'], (a,b,c) => ({
+      dialogue:[
+        sent(`這是我的朋友，他也在台灣學中文。`, 'zhe4 shi4 wo3 de peng2 you3 ta1 ye3 zai4 tai2 wan1 xue2 zhong1 wen2', 'This is my friend. He also studies Chinese in Taiwan.'),
+        sent(`你們是同學嗎？`, 'ni3 men5 shi4 tong2 xue2 ma', 'Are you classmates?'),
+        sent(`對，我們每個星期一起上課。`, 'dui4 wo3 men5 mei3 ge xing1 qi2 yi4 qi3 shang4 ke4', 'Yes, we have class together every week.')
+      ],
+      sentences:[
+        sent(`這是我的${a.zh}。`, `zhe4 shi4 wo3 de ${a.py}`, `This is my ${a.en}.`),
+        sent(`他是我的朋友。`, 'ta1 shi4 wo3 de peng2 you3', 'He is my friend.'),
+        sent(`我們一起上課。`, 'wo3 men5 yi4 qi3 shang4 ke4', 'We have class together.'),
+        sent(`我家有四個人。`, 'wo3 jia1 you3 si4 ge ren2', 'There are four people in my family.'),
+        sent(`你認識${b.zh}嗎？`, `ni3 ren4 shi4 ${b.py} ma`, `Do you know ${b.en}?`)
+      ],
+      substitution:{frameZh:'這是我的__。', frameEn:'This is my __.', slots:[a,b,c]},
+      roleplayPrompt:'Introduce a friend or family member and answer one question about them.',
+      bestResponse:'Explain who the person is.'
+    }));
+  }
+
+  function foodProfile(){
+    return contentProfile('food', ['客人','店員'], title => `order food or drinks in ${title}`, 'They are asking about homework.', 'They need an exam score.', 'Ask for the train platform.', ['Order clearly','Ask one detail','Confirm takeout or dine-in'], (a,b,c) => ({
+      dialogue:[
+        sent(`我要一份${a.zh}，請不要太辣。`, `wo3 yao4 yi2 fen4 ${a.py} qing3 bu2 yao4 tai4 la4`, `I would like one ${a.en}. Please do not make it too spicy.`),
+        sent(`要內用還是外帶？`, 'yao4 nei4 yong4 hai2 shi4 wai4 dai4', 'For here or takeout?'),
+        sent(`外帶，另外給我一杯${b.zh}。`, `wai4 dai4 ling4 wai4 gei3 wo3 yi4 bei1 ${b.py}`, `Takeout, and also give me one cup of ${b.en}.`)
+      ],
+      sentences:[
+        sent(`我要${a.zh}，謝謝。`, `wo3 yao4 ${a.py} xie4 xie5`, `I would like ${a.en}, thank you.`),
+        sent(`請不要太辣。`, 'qing3 bu2 yao4 tai4 la4', 'Please do not make it too spicy.'),
+        sent(`這杯${b.zh}要少冰。`, `zhe4 bei1 ${b.py} yao4 shao3 bing1`, `This cup of ${b.en} should have less ice.`),
+        sent(`我要外帶。`, 'wo3 yao4 wai4 dai4', 'I want takeout.'),
+        sent(`這個${c.zh}好吃嗎？`, `zhe4 ge ${c.py} hao3 chi1 ma`, `Is this ${c.en} tasty?`)
+      ],
+      substitution:{frameZh:'我要__，謝謝。', frameEn:'I would like __, thank you.', slots:[a,b,c]},
+      roleplayPrompt:'Order one item, adjust one detail, and answer dine-in or takeout.',
+      bestResponse:'Order the item and say whether it is for here or takeout.'
+    }));
+  }
+
+  function shoppingProfile(){
+    return contentProfile('shopping', ['客人','店員'], title => `buy or compare items in ${title}`, 'They are at a clinic.', 'They need a grammar explanation.', 'Start a family introduction.', ['Ask price','Choose quantity','Confirm payment'], (a,b,c) => ({
+      dialogue:[
+        sent(`請問，這個${a.zh}多少錢？`, `qing3 wen4 zhe4 ge ${a.py} duo1 shao3 qian2`, `Excuse me, how much is this ${a.en}?`),
+        sent(`一個一百二，兩個兩百。`, 'yi2 ge yi4 bai3 er4 liang3 ge liang3 bai3', 'One is 120. Two are 200.'),
+        sent(`好，我要兩個，可以刷卡嗎？`, 'hao3 wo3 yao4 liang3 ge ke3 yi3 shua1 ka3 ma', 'Okay, I want two. Can I pay by card?')
+      ],
+      sentences:[
+        sent(`這個${a.zh}多少錢？`, `zhe4 ge ${a.py} duo1 shao3 qian2`, `How much is this ${a.en}?`),
+        sent(`太貴了，可以便宜一點嗎？`, 'tai4 gui4 le ke3 yi3 pian2 yi2 yi4 dian3 ma', 'It is too expensive. Can it be a little cheaper?'),
+        sent(`我想買${b.zh}。`, `wo3 xiang3 mai3 ${b.py}`, `I want to buy ${b.en}.`),
+        sent(`我只要一個。`, 'wo3 zhi3 yao4 yi2 ge', 'I only want one.'),
+        sent(`可以刷卡嗎？`, 'ke3 yi3 shua1 ka3 ma', 'Can I pay by card?')
+      ],
+      substitution:{frameZh:'請問，__多少錢？', frameEn:'Excuse me, how much is __?', slots:[a,b,c]},
+      roleplayPrompt:'Ask the price, choose one item, and confirm how you will pay.',
+      bestResponse:'Ask the price and choose the quantity.'
+    }));
+  }
+
+  function transportProfile(){
+    return contentProfile('transport', ['旅客','路人'], title => `move around Taiwan in ${title}`, 'They are discussing family age.', 'They need a classroom pen.', 'Ask for dessert.', ['Ask direction','Confirm time or stop','Thank the helper'], (a,b,c) => ({
+      dialogue:[
+        sent(`請問，${a.zh}怎麼走？`, `qing3 wen4 ${a.py} zen3 me zou3`, `Excuse me, how do I get to ${a.en}?`),
+        sent(`一直走，到了路口再右轉。`, 'yi4 zhi2 zou3 dao4 le lu4 kou3 zai4 you4 zhuan3', 'Go straight, then turn right at the intersection.'),
+        sent(`大概需要幾分鐘？`, 'da4 gai4 xu1 yao4 ji3 fen1 zhong1', 'About how many minutes does it take?')
+      ],
+      sentences:[
+        sent(`請問，${a.zh}在哪裡？`, `qing3 wen4 ${a.py} zai4 na3 li3`, `Excuse me, where is ${a.en}?`),
+        sent(`我要去${b.zh}。`, `wo3 yao4 qu4 ${b.py}`, `I want to go to ${b.en}.`),
+        sent(`請在這裡停車。`, 'qing3 zai4 zhe4 li3 ting2 che1', 'Please stop here.'),
+        sent(`我坐公車去學校。`, 'wo3 zuo4 gong1 che1 qu4 xue2 xiao4', 'I take the bus to school.'),
+        sent(`大概需要十分鐘。`, 'da4 gai4 xu1 yao4 shi2 fen1 zhong1', 'It takes about ten minutes.')
+      ],
+      substitution:{frameZh:'我要去__。', frameEn:'I want to go to __.', slots:[a,b,c]},
+      roleplayPrompt:'Ask how to get somewhere, confirm the direction, and ask how long it takes.',
+      bestResponse:'Ask for directions to the target place.'
+    }));
+  }
+
+  function healthProfile(){
+    return contentProfile('health', ['病人','醫生'], title => `explain a health issue in ${title}`, 'They are shopping online.', 'They need a bus ticket.', 'Discuss a festival.', ['Name symptom','Ask medicine question','Repeat doctor advice'], (a,b,c) => ({
+      dialogue:[
+        sent(`我今天${a.zh}，還有一點不舒服。`, `wo3 jin1 tian1 ${a.py} hai2 you3 yi4 dian3 bu4 shu1 fu2`, `I have ${a.en} today, and I feel a little unwell.`),
+        sent(`你先休息，多喝水。`, 'ni3 xian1 xiu1 xi2 duo1 he1 shui3', 'Rest first and drink more water.'),
+        sent(`請問藥一天要吃幾次？`, 'qing3 wen4 yao4 yi4 tian1 yao4 chi1 ji3 ci4', 'Excuse me, how many times a day should I take the medicine?')
+      ],
+      sentences:[
+        sent(`我今天${a.zh}。`, `wo3 jin1 tian1 ${a.py}`, `I have ${a.en} today.`),
+        sent(`我想看醫生。`, 'wo3 xiang3 kan4 yi1 sheng1', 'I want to see a doctor.'),
+        sent(`這個藥怎麼吃？`, 'zhe4 ge yao4 zen3 me chi1', 'How should I take this medicine?'),
+        sent(`我需要休息。`, 'wo3 xu1 yao4 xiu1 xi2', 'I need to rest.'),
+        sent(`我昨天開始不舒服。`, 'wo3 zuo2 tian1 kai1 shi3 bu4 shu1 fu2', 'I started feeling unwell yesterday.')
+      ],
+      substitution:{frameZh:'我今天__。', frameEn:'I have __ today.', slots:[a,b,c]},
+      roleplayPrompt:'Tell the doctor your symptom, ask how to take medicine, and repeat the instruction.',
+      bestResponse:'Describe the symptom clearly.'
+    }));
+  }
+
+  function workProfile(){
+    return contentProfile('work', ['同事','主管'], title => `communicate at work in ${title}`, 'They are ordering tea.', 'They need a family photo.', 'Ignore the deadline.', ['Confirm task','Ask deadline','Report next step'], (a,b,c) => ({
+      dialogue:[
+        sent(`這份${a.zh}今天下午以前要完成。`, `zhe4 fen4 ${a.py} jin1 tian1 xia4 wu3 yi3 qian2 yao4 wan2 cheng2`, `This ${a.en} needs to be finished before this afternoon.`),
+        sent(`我可以先確認資料，再回覆你嗎？`, 'wo3 ke3 yi3 xian1 que4 ren4 zi1 liao4 zai4 hui2 fu4 ni3 ma', 'Can I confirm the information first, then reply to you?'),
+        sent(`可以，如果有問題請馬上告訴我。`, 'ke3 yi3 ru2 guo3 you3 wen4 ti2 qing3 ma3 shang4 gao4 su4 wo3', 'Yes. If there is a problem, please tell me immediately.')
+      ],
+      sentences:[
+        sent(`我今天要完成${a.zh}。`, `wo3 jin1 tian1 yao4 wan2 cheng2 ${a.py}`, `I need to finish ${a.en} today.`),
+        sent(`我先確認資料。`, 'wo3 xian1 que4 ren4 zi1 liao4', 'I will confirm the information first.'),
+        sent(`請問截止時間是幾點？`, 'qing3 wen4 jie2 zhi3 shi2 jian1 shi4 ji3 dian3', 'Excuse me, what time is the deadline?'),
+        sent(`我會寄給你。`, 'wo3 hui4 ji4 gei3 ni3', 'I will send it to you.'),
+        sent(`如果有問題，我會馬上說。`, 'ru2 guo3 you3 wen4 ti2 wo3 hui4 ma3 shang4 shuo1', 'If there is a problem, I will say it immediately.')
+      ],
+      substitution:{frameZh:'我先確認__。', frameEn:'I will confirm __ first.', slots:[a,b,c]},
+      roleplayPrompt:'Confirm a task, ask one deadline/detail, and say what you will do next.',
+      bestResponse:'Confirm the task and ask for the deadline.'
+    }));
+  }
+
+  function messageProfile(){
+    return contentProfile('message', ['A','B'], title => `send or answer a message in ${title}`, 'They are asking for a room deposit.', 'They need body medicine.', 'Do not reply at all.', ['Acknowledge message','Confirm time/detail','Reply politely'], (a,b,c) => ({
+      dialogue:[
+        sent(`我剛剛收到你的訊息，可是還沒回。`, 'wo3 gang1 gang1 shou1 dao4 ni3 de xun4 xi2 ke3 shi4 hai2 mei2 hui2', 'I just received your message, but I have not replied yet.'),
+        sent(`沒關係，你有空再回就好。`, 'mei2 guan1 xi4 ni3 you3 kong4 zai4 hui2 jiu4 hao3', 'No problem. Reply when you have time.'),
+        sent(`好，我確認${a.zh}以後馬上告訴你。`, `hao3 wo3 que4 ren4 ${a.py} yi3 hou4 ma3 shang4 gao4 su4 ni3`, `Okay, after I confirm ${a.en}, I will tell you right away.`)
+      ],
+      sentences:[
+        sent(`我收到你的訊息了。`, 'wo3 shou1 dao4 ni3 de xun4 xi2 le', 'I received your message.'),
+        sent(`我晚一點回覆你。`, 'wo3 wan3 yi4 dian3 hui2 fu4 ni3', 'I will reply to you later.'),
+        sent(`請把${a.zh}傳給我。`, `qing3 ba3 ${a.py} chuan2 gei3 wo3`, `Please send me ${a.en}.`),
+        sent(`我確認以後再說。`, 'wo3 que4 ren4 yi3 hou4 zai4 shuo1', 'I will confirm first, then say it.'),
+        sent(`謝謝你的提醒。`, 'xie4 xie5 ni3 de ti2 xing3', 'Thank you for the reminder.')
+      ],
+      substitution:{frameZh:'請把__傳給我。', frameEn:'Please send me __.', slots:[a,b,c]},
+      roleplayPrompt:'Reply to a message, confirm one detail, and promise a follow-up.',
+      bestResponse:'Acknowledge the message and say when you will reply.'
+    }));
+  }
+
+  function serviceProfile(){
+    return contentProfile('service', ['客人','服務員'], title => `handle documents or services in ${title}`, 'They are planning a hobby class.', 'They need dessert.', 'Leave without confirming documents.', ['State purpose','Ask required item','Confirm next visit'], (a,b,c) => ({
+      dialogue:[
+        sent(`請問，我要辦這個${a.zh}，需要帶什麼？`, `qing3 wen4 wo3 yao4 ban4 zhe4 ge ${a.py} xu1 yao4 dai4 shen2 me`, `Excuse me, to handle this ${a.en}, what do I need to bring?`),
+        sent(`請帶護照、居留證，還有一份影本。`, 'qing3 dai4 hu4 zhao4 ju1 liu2 zheng4 hai2 you3 yi2 fen4 ying3 ben3', 'Please bring your passport, ARC, and one photocopy.'),
+        sent(`好，謝謝。我明天早上再來。`, 'hao3 xie4 xie5 wo3 ming2 tian1 zao3 shang4 zai4 lai2', 'Okay, thank you. I will come again tomorrow morning.')
+      ],
+      sentences:[
+        sent(`我要辦${a.zh}。`, `wo3 yao4 ban4 ${a.py}`, `I need to handle ${a.en}.`),
+        sent(`需要帶什麼文件？`, 'xu1 yao4 dai4 shen2 me wen2 jian4', 'What documents do I need to bring?'),
+        sent(`我沒有影本。`, 'wo3 mei2 you3 ying3 ben3', 'I do not have a photocopy.'),
+        sent(`我明天再來。`, 'wo3 ming2 tian1 zai4 lai2', 'I will come again tomorrow.'),
+        sent(`可以線上申請嗎？`, 'ke3 yi3 xian4 shang4 shen1 qing3 ma', 'Can I apply online?')
+      ],
+      substitution:{frameZh:'我要辦__。', frameEn:'I need to handle __.', slots:[a,b,c]},
+      roleplayPrompt:'Ask what documents are required and confirm when you will return.',
+      bestResponse:'Ask what documents to bring.'
+    }));
+  }
+
+  function cultureProfile(){
+    return contentProfile('culture', ['A','B'], title => `talk about Taiwan culture in ${title}`, 'They are asking for a bank password.', 'They need a taxi receipt.', 'Only say the price.', ['Ask cultural meaning','Give simple explanation','Compare with your culture'], (a,b,c) => ({
+      dialogue:[
+        sent(`這個${a.zh}在台灣很重要嗎？`, `zhe4 ge ${a.py} zai4 tai2 wan1 hen3 zhong4 yao4 ma`, `Is this ${a.en} important in Taiwan?`),
+        sent(`很重要，很多人會跟家人一起參加。`, 'hen3 zhong4 yao4 hen3 duo1 ren2 hui4 gen1 jia1 ren2 yi4 qi3 can1 jia1', 'Yes, it is important. Many people join with their families.'),
+        sent(`原來如此，我想多了解一點。`, 'yuan2 lai2 ru2 ci3 wo3 xiang3 duo1 liao3 jie3 yi4 dian3', 'I see. I want to understand a little more.')
+      ],
+      sentences:[
+        sent(`這個活動很有意思。`, 'zhe4 ge huo2 dong4 hen3 you3 yi4 si5', 'This activity is interesting.'),
+        sent(`我想了解台灣文化。`, 'wo3 xiang3 liao3 jie3 tai2 wan1 wen2 hua4', 'I want to understand Taiwanese culture.'),
+        sent(`很多人會跟家人一起去。`, 'hen3 duo1 ren2 hui4 gen1 jia1 ren2 yi4 qi3 qu4', 'Many people go with their families.'),
+        sent(`這跟我的文化不太一樣。`, 'zhe4 gen1 wo3 de wen2 hua4 bu4 tai4 yi2 yang4', 'This is not quite the same as my culture.'),
+        sent(`你可以介紹一下嗎？`, 'ni3 ke3 yi3 jie4 shao4 yi2 xia4 ma', 'Could you introduce it briefly?')
+      ],
+      substitution:{frameZh:'我想了解__。', frameEn:'I want to understand __.', slots:[a,b,c]},
+      roleplayPrompt:'Ask about one Taiwan custom and compare it briefly with your own experience.',
+      bestResponse:'Ask what the custom means.'
+    }));
+  }
+
+  function opinionProfile(){
+    return contentProfile('opinion', ['A','B'], title => `explain an opinion in ${title}`, 'They are buying a snack.', 'They need a classroom chair.', 'Avoid giving any reason.', ['State opinion','Give one reason','Respond politely'], (a,b,c) => ({
+      dialogue:[
+        sent(`你覺得${a.zh}最重要的是什麼？`, `ni3 jue2 de ${a.py} zui4 zhong4 yao4 de shi4 shen2 me`, `What do you think is most important about ${a.en}?`),
+        sent(`我覺得要先了解${b.zh}，再決定怎麼做。`, `wo3 jue2 de yao4 xian1 liao3 jie3 ${b.py} zai4 jue2 ding4 zen3 me zuo4`, `I think we should understand ${b.en} first, then decide what to do.`),
+        sent(`有道理，我們也可以參考${c.zh}。`, `you3 dao4 li3 wo3 men5 ye3 ke3 yi3 can1 kao3 ${c.py}`, `That makes sense. We can also refer to ${c.en}.`)
+      ],
+      sentences:[
+        sent(`我覺得${a.zh}很重要。`, `wo3 jue2 de ${a.py} hen3 zhong4 yao4`, `I think ${a.en} is important.`),
+        sent(`我同意一部分。`, 'wo3 tong2 yi4 yi2 bu4 fen4', 'I partly agree.'),
+        sent(`但是我還有一個問題。`, 'dan4 shi4 wo3 hai2 you3 yi2 ge wen4 ti2', 'But I still have one question.'),
+        sent(`我們可以先比較兩個選擇。`, 'wo3 men5 ke3 yi3 xian1 bi3 jiao4 liang3 ge xuan3 ze2', 'We can compare two choices first.'),
+        sent(`因為${b.zh}，所以我這樣想。`, `yin1 wei4 ${b.py} suo3 yi3 wo3 zhe4 yang4 xiang3`, `Because of ${b.en}, I think this way.`)
+      ],
+      substitution:{frameZh:'我覺得__很重要。', frameEn:'I think __ is important.', slots:[a,b,c]},
+      roleplayPrompt:'State your opinion, give one reason, and respond politely to a different view.',
+      bestResponse:'Give an opinion with one clear reason.'
+    }));
+  }
+
+  function storyProfile(){
+    return contentProfile('story', ['A','B'], title => `tell a short story in ${title}`, 'They are filing a document.', 'They need to order one drink.', 'Only list isolated words.', ['Say what happened','Add feeling/result','Give one lesson learned'], (a,b,c) => ({
+      dialogue:[
+        sent(`昨天我第一次自己處理${a.zh}。`, `zuo2 tian1 wo3 di4 yi1 ci4 zi4 ji3 chu3 li3 ${a.py}`, `Yesterday I handled ${a.en} by myself for the first time.`),
+        sent(`一開始我有一點緊張，可是後來很順利。`, 'yi4 kai1 shi3 wo3 you3 yi4 dian3 jin3 zhang1 ke3 shi4 hou4 lai2 hen3 shun4 li4', 'At first I was a little nervous, but later it went smoothly.'),
+        sent(`下次如果不懂，我會先問清楚。`, 'xia4 ci4 ru2 guo3 bu4 dong3 wo3 hui4 xian1 wen4 qing1 chu3', 'Next time, if I do not understand, I will ask clearly first.')
+      ],
+      sentences:[
+        sent(`昨天我遇到${a.zh}。`, `zuo2 tian1 wo3 yu4 dao4 ${a.py}`, `Yesterday I encountered ${a.en}.`),
+        sent(`一開始我有一點緊張。`, 'yi4 kai1 shi3 wo3 you3 yi4 dian3 jin3 zhang1', 'At first I was a little nervous.'),
+        sent(`後來事情很順利。`, 'hou4 lai2 shi4 qing2 hen3 shun4 li4', 'Later, things went smoothly.'),
+        sent(`我學到要先問清楚。`, 'wo3 xue2 dao4 yao4 xian1 wen4 qing1 chu3', 'I learned to ask clearly first.'),
+        sent(`下次我會早一點準備。`, 'xia4 ci4 wo3 hui4 zao3 yi4 dian3 zhun3 bei4', 'Next time I will prepare earlier.')
+      ],
+      substitution:{frameZh:'昨天我遇到__。', frameEn:'Yesterday I encountered __.', slots:[a,b,c]},
+      roleplayPrompt:'Tell what happened yesterday, how you felt, and what you learned.',
+      bestResponse:'Tell the event in past sequence.'
+    }));
+  }
+
+  function buildSubstitutionPractice(sectionIndex, topic, a, b, c){
+    const t = String(topic || '').toLowerCase();
+    const slots = [a, b, c].filter(Boolean);
+    if(hasAny(t, ['food', 'drink', 'restaurant', 'ordering', 'night market'])){
+      return { frameZh:'我要__，謝謝。', frameEn:'I would like __, thank you.', slots };
+    }
+    if(hasAny(t, ['shopping', 'money', 'price', 'store', 'convenience'])){
+      return { frameZh:'請問，__多少錢？', frameEn:'Excuse me, how much is __?', slots };
+    }
+    if(hasAny(t, ['where', 'location', 'direction', 'mrt', 'bus', 'taxi', 'travel'])){
+      return { frameZh:'請問，__在哪裡？', frameEn:'Excuse me, where is __?', slots };
+    }
+    if(hasAny(t, ['health', 'clinic', 'doctor', 'sick', 'body'])){
+      return { frameZh:'我今天__，想看醫生。', frameEn:'I have __ today, and I want to see a doctor.', slots };
+    }
+    if(hasAny(t, ['work', 'email', 'message', 'office', 'meeting', 'report'])){
+      return { frameZh:'我先確認__，再回覆你。', frameEn:'I will confirm __ first, then reply to you.', slots };
+    }
+    if(hasAny(t, ['opinion', 'agree', 'disagree', 'compare', 'contrast', 'society'])){
+      return { frameZh:'我覺得__很重要。', frameEn:'I think __ is important.', slots };
+    }
+    if(hasAny(t, ['story', 'past', 'experience', 'change'])){
+      return { frameZh:'昨天我遇到__。', frameEn:'Yesterday I encountered __.', slots };
+    }
+    const basic = {
+      frameZh: `我想學__。`,
+      frameEn: `I want to learn __.`,
+      slots
+    };
+    const practical = {
+      frameZh: `請問，__可以嗎？`,
+      frameEn: `Excuse me, is __ okay?`,
+      slots
+    };
+    const advanced = {
+      frameZh: `關於__，我想先聽你的看法。`,
+      frameEn: `About __, I want to hear your view first.`,
+      slots
+    };
+    return sectionIndex < 2 ? basic : sectionIndex < 4 ? practical : advanced;
+  }
+
+  function buildUnitObjectives(sectionIndex, title, topic, focus, grammar, words){
+    const vocab = words.slice(0, 10).map(w => w.zh).join(' / ');
+    const levelFocus = [
+      'recognize the sound, meaning, and first sentence use',
+      'handle the situation with polite survival phrases',
+      'describe personal information and daily life clearly',
+      'connect ideas and solve practical problems',
+      'manage real-life tasks with reasons and follow-up questions',
+      'explain opinions, summarize information, and keep a conversation moving'
+    ][Math.min(sectionIndex, 5)];
+    return {
+      canDo: canDoFor(sectionIndex, topic, focus),
+      targetVocabulary: vocab,
+      targetGrammar: grammar.pattern,
+      conversationSkill: `Use ${title} language to ${levelFocus}.`,
+      listeningGoal: `Understand the main purpose and key detail in a short ${topic} exchange.`,
+      speakingGoal: `Say a model sentence, then replace one word to make it personal.`,
+      writingGoal: `Write one accurate Traditional Chinese sentence for ${topic}.`,
+      reviewGoal: `Recall current words, recent words, and one older weak item without pinyin.`
+    };
+  }
+
+  function unitTopic(title, focus){
+    const raw = `${title || ''} ${focus || ''}`.replace(/\s+/g,' ').trim();
+    return raw || 'this situation';
+  }
+
+  function grammarTargetFor(sectionIndex, unitIndex, topic){
+    const banks = [
+      ['A is B with 是', 'basic word order', 'yes/no questions with 嗎', 'negation with 不 and 沒有'],
+      ['requests with 請', 'measure words', 'where questions with 在哪裡', 'want/need with 要 and 想'],
+      ['time before action', 'frequency with 常常/有時候', 'describing people and things', 'making plans with 要'],
+      ['because/so', 'past action with 了', 'comparisons with 比', 'contrast with 但是'],
+      ['experience with 過', 'advice with 應該', 'rules with 可以/不可以', 'problem explanation with 因為'],
+      ['longer clauses', 'although/however contrast', 'reason-result chains', 'opinion paragraphs']
+    ];
+    const bank = banks[Math.min(sectionIndex, banks.length - 1)];
+    const pattern = bank[unitIndex % bank.length];
+    return {
+      pattern,
+      title: pattern.replace(/^\w/, ch => ch.toUpperCase()),
+      note: `Use this pattern to talk about ${topic}.`,
+      microTip: `Build one clear sentence first, then add time, place, reason, or feeling only when needed.`
+    };
+  }
+
+  function canDoFor(sectionIndex, topic, focus){
+    const verbs = ['recognize and say', 'handle', 'describe', 'explain', 'solve', 'discuss'];
+    return `I can ${verbs[Math.min(sectionIndex, verbs.length - 1)]} ${topic.toLowerCase()} in Mandarin. ${focus}`;
+  }
+
+  function buildDialoguePayload(sectionIndex, topic, title, focus, a, b, c){
+    const speakerA = sectionIndex < 2 ? 'A' : sectionIndex < 4 ? '同學' : '林先生';
+    const speakerB = sectionIndex < 2 ? 'B' : sectionIndex < 4 ? '朋友' : '王小姐';
+    const contextual = contextualDialogueLines(sectionIndex, topic, title);
+    const starters = [
+      sent(`你好，我想練習${a.zh}。`, `ni3 hao3 wo3 xiang3 lian4 xi2 ${a.py}`, `Hello, I want to practice ${a.en}.`),
+      sent(`請問，${b.zh}是什麼意思？`, `qing3 wen4 ${b.py} shi4 shen2 me yi4 si`, `Excuse me, what does ${b.en} mean?`),
+      sent(`我可以用${c.zh}造句。`, `wo3 ke3 yi3 yong4 ${c.py} zao4 ju4`, `I can make a sentence with ${c.en}.`)
+    ];
+    const middle = [
+      sent(`我今天需要處理${a.zh}。`, `wo3 jin1 tian1 xu1 yao4 chu3 li3 ${a.py}`, `I need to handle ${a.en} today.`),
+      sent(`如果有${b.zh}的問題，我會再問。`, `ru2 guo3 you3 ${b.py} de wen4 ti2 wo3 hui4 zai4 wen4`, `If there is a problem with ${b.en}, I will ask again.`),
+      sent(`這跟${c.zh}有關，所以要聽清楚。`, `zhe4 gen1 ${c.py} you3 guan1 suo3 yi3 yao4 ting1 qing1 chu3`, `This is related to ${c.en}, so listen carefully.`)
+    ];
+    const advanced = [
+      sent(`關於${a.zh}，我的看法是先了解情況。`, `guan1 yu2 ${a.py} wo3 de kan4 fa3 shi4 xian1 liao3 jie3 qing2 kuang4`, `About ${a.en}, my view is to understand the situation first.`),
+      sent(`雖然${b.zh}有一點複雜，但是可以一步一步處理。`, `sui1 ran2 ${b.py} you3 yi4 dian3 fu4 za2 dan4 shi4 ke3 yi3 yi2 bu4 yi2 bu4 chu3 li3`, `Although ${b.en} is a little complex, it can be handled step by step.`),
+      sent(`最後，我會用${c.zh}整理重點。`, `zui4 hou4 wo3 hui4 yong4 ${c.py} zheng3 li3 zhong4 dian3`, `Finally, I will use ${c.en} to organize the key points.`)
+    ];
+    const lines = contextual.length ? contextual : fallbackDialogueLines(sectionIndex, topic, title, a, b, c);
+    return {
+      title,
+      context: focus,
+      intent: sectionIndex < 2 ? `practice basic ${topic}` : sectionIndex < 4 ? `handle a ${topic} situation` : `explain an opinion about ${topic}`,
+      lines: lines.map((line, index) => ({
+        speaker: index % 2 === 0 ? speakerA : speakerB,
+        ...line
+      }))
+    };
+  }
+
+  function fallbackDialogueLines(sectionIndex, topic, title, a, b, c){
+    if(sectionIndex < 2){
+      return [
+        sent(`你好，請問這是${a.zh}嗎？`, `ni3 hao3 qing3 wen4 zhe4 shi4 ${a.py} ma`, `Hello, excuse me, is this ${a.en}?`),
+        sent(`對，這是${a.zh}。`, `dui4 zhe4 shi4 ${a.py}`, `Yes, this is ${a.en}.`),
+        sent(`謝謝，我知道了。`, `xie4 xie5 wo3 zhi1 dao4 le`, `Thank you. I understand now.`)
+      ];
+    }
+    if(sectionIndex < 4){
+      return [
+        sent(`請問，我可以用${a.zh}嗎？`, `qing3 wen4 wo3 ke3 yi3 yong4 ${a.py} ma`, `Excuse me, may I use ${a.en}?`),
+        sent(`可以，不過請先確認${b.zh}。`, `ke3 yi3 bu2 guo4 qing3 xian1 que4 ren4 ${b.py}`, `Yes, but please confirm ${b.en} first.`),
+        sent(`好，我確認以後再跟你說。`, `hao3 wo3 que4 ren4 yi3 hou4 zai4 gen1 ni3 shuo1`, `Okay, I will confirm and then tell you.`)
+      ];
+    }
+    return [
+      sent(`關於${a.zh}，你覺得最重要的是什麼？`, `guan1 yu2 ${a.py} ni3 jue2 de zui4 zhong4 yao4 de shi4 shen2 me`, `About ${a.en}, what do you think is most important?`),
+      sent(`我覺得要先了解${b.zh}，再決定怎麼做。`, `wo3 jue2 de yao4 xian1 liao3 jie3 ${b.py} zai4 jue2 ding4 zen3 me zuo4`, `I think we should understand ${b.en} first, then decide what to do.`),
+      sent(`有道理，我們也可以參考${c.zh}。`, `you3 dao4 li3 wo3 men5 ye3 ke3 yi3 can1 kao3 ${c.py}`, `That makes sense. We can also refer to ${c.en}.`)
+    ];
+  }
+
+  function contextualDialogueLines(sectionIndex, topic, title){
+    const t = `${topic || ''} ${title || ''}`.toLowerCase();
+    if(hasAny(t, ['rent', 'room', 'apartment', 'landlord', 'deposit'])){
+      return [
+        sent('請問，這個房間的租金是多少？','qing3 wen4 zhe4 ge fang2 jian1 de zu1 jin1 shi4 duo1 shao3','Excuse me, how much is the rent for this room?'),
+        sent('一個月一萬五，押金兩個月。','yi2 ge yue4 yi2 wan4 wu3 ya1 jin1 liang3 ge yue4','It is 15,000 per month, and the deposit is two months.'),
+        sent('水電費包含在租金裡嗎？','shui3 dian4 fei4 bao1 han2 zai4 zu1 jin1 li3 ma','Are water and electricity included in the rent?')
+      ];
+    }
+    if(hasAny(t, ['food', 'restaurant', 'night market', 'drink', 'order'])){
+      return [
+        sent('我要一份雞肉飯，請不要太辣。','wo3 yao4 yi2 fen4 ji1 rou4 fan4 qing3 bu2 yao4 tai4 la4','I want one chicken rice. Please do not make it too spicy.'),
+        sent('要內用還是外帶？','yao4 nei4 yong4 hai2 shi4 wai4 dai4','For here or takeout?'),
+        sent('外帶，另外給我一杯無糖綠茶。','wai4 dai4 ling4 wai4 gei3 wo3 yi4 bei1 wu2 tang2 lv4 cha2','Takeout, and also give me one unsweetened green tea.')
+      ];
+    }
+    if(hasAny(t, ['direction', 'where', 'station', 'mrt', 'bus', 'taxi', 'travel'])){
+      return [
+        sent('請問，捷運站怎麼走？','qing3 wen4 jie2 yun4 zhan4 zen3 me zou3','Excuse me, how do I get to the MRT station?'),
+        sent('一直走，到了路口再右轉。','yi4 zhi2 zou3 dao4 le lu4 kou3 zai4 you4 zhuan3','Go straight, then turn right at the intersection.'),
+        sent('大概需要幾分鐘？','da4 gai4 xu1 yao4 ji3 fen1 zhong1','About how many minutes does it take?')
+      ];
+    }
+    if(hasAny(t, ['clinic', 'health', 'symptom', 'doctor', 'sick', 'body'])){
+      return [
+        sent('我今天喉嚨痛，還有一點發燒。','wo3 jin1 tian1 hou2 long2 tong4 hai2 you3 yi4 dian3 fa1 shao1','My throat hurts today, and I also have a slight fever.'),
+        sent('你先休息，多喝水，等一下看醫生。','ni3 xian1 xiu1 xi2 duo1 he1 shui3 deng3 yi2 xia4 kan4 yi1 sheng1','Rest first, drink more water, and see the doctor later.'),
+        sent('請問藥一天要吃幾次？','qing3 wen4 yao4 yi4 tian1 yao4 chi1 ji3 ci4','Excuse me, how many times a day should I take the medicine?')
+      ];
+    }
+    if(hasAny(t, ['work', 'office', 'meeting', 'email', 'deadline', 'report'])){
+      return [
+        sent('這份報告今天下午以前要完成。','zhe4 fen4 bao4 gao4 jin1 tian1 xia4 wu3 yi3 qian2 yao4 wan2 cheng2','This report needs to be finished before this afternoon.'),
+        sent('我可以先確認資料，再寄給你嗎？','wo3 ke3 yi3 xian1 que4 ren4 zi1 liao4 zai4 ji4 gei3 ni3 ma','Can I confirm the information first, then send it to you?'),
+        sent('可以，如果有問題請馬上告訴我。','ke3 yi3 ru2 guo3 you3 wen4 ti2 qing3 ma3 shang4 gao4 su4 wo3','Yes. If there is a problem, please tell me immediately.')
+      ];
+    }
+    if(hasAny(t, ['opinion', 'agree', 'disagree', 'compare', 'contrast'])){
+      return [
+        sent('我覺得這個方法比較清楚。','wo3 jue2 de zhe4 ge fang1 fa3 bi3 jiao4 qing1 chu3','I think this method is clearer.'),
+        sent('我同意一部分，但是還有一個問題。','wo3 tong2 yi4 yi2 bu4 fen4 dan4 shi4 hai2 you3 yi2 ge wen4 ti2','I partly agree, but there is still one problem.'),
+        sent('我們可以先比較兩個選擇，再決定。','wo3 men ke3 yi3 xian1 bi3 jiao4 liang3 ge xuan3 ze2 zai4 jue2 ding4','We can compare the two choices first, then decide.')
+      ];
+    }
+    if(hasAny(t, ['story', 'past', 'experience', 'happened'])){
+      return [
+        sent('昨天我第一次自己去夜市。','zuo2 tian1 wo3 di4 yi1 ci4 zi4 ji3 qu4 ye4 shi4','Yesterday I went to the night market by myself for the first time.'),
+        sent('一開始我有一點緊張，可是後來很順利。','yi4 kai1 shi3 wo3 you3 yi4 dian3 jin3 zhang1 ke3 shi4 hou4 lai2 hen3 shun4 li4','At first I was a little nervous, but later it went smoothly.'),
+        sent('我學到如果聽不懂，可以請別人再說一次。','wo3 xue2 dao4 ru2 guo3 ting1 bu4 dong3 ke3 yi3 qing3 bie2 ren2 zai4 shuo1 yi2 ci4','I learned that if I do not understand, I can ask someone to say it again.')
+      ];
+    }
+    if(hasAny(t, ['hello', 'greeting', 'name', 'identity', 'profile'])){
+      return [
+        sent('你好，我叫安娜。','ni3 hao3 wo3 jiao4 an1 na4','Hello, my name is Anna.'),
+        sent('很高興認識你。','hen3 gao1 xing4 ren4 shi4 ni3','Nice to meet you.'),
+        sent('我也很高興認識你。','wo3 ye3 hen3 gao1 xing4 ren4 shi4 ni3','I am also happy to meet you.')
+      ];
+    }
+    if(hasAny(t, ['classroom', 'school', 'study', 'teacher', 'homework', 'exam', 'help me'])){
+      return [
+        sent('老師，請再說一次，可以嗎？','lao3 shi1 qing3 zai4 shuo1 yi2 ci4 ke3 yi3 ma','Teacher, could you please say it one more time?'),
+        sent('可以，請你先聽，再跟我念。','ke3 yi3 qing3 ni3 xian1 ting1 zai4 gen1 wo3 nian4','Yes. Please listen first, then repeat after me.'),
+        sent('好，我現在懂了，謝謝老師。','hao3 wo3 xian4 zai4 dong3 le xie4 xie5 lao3 shi1','Okay, I understand now. Thank you, teacher.')
+      ];
+    }
+    if(hasAny(t, ['family', 'people', 'friend', 'classmate', 'relationship'])){
+      return [
+        sent('這是我的朋友，他也在台灣學中文。','zhe4 shi4 wo3 de peng2 you3 ta1 ye3 zai4 tai2 wan1 xue2 zhong1 wen2','This is my friend. He is also studying Chinese in Taiwan.'),
+        sent('你們是同學嗎？','ni3 men5 shi4 tong2 xue2 ma','Are you classmates?'),
+        sent('對，我們每個星期一起上課。','dui4 wo3 men5 mei3 ge xing1 qi2 yi4 qi3 shang4 ke4','Yes, we have class together every week.')
+      ];
+    }
+    if(hasAny(t, ['routine', 'daily', 'week', 'days', 'clock', 'time', 'plans', 'appointment'])){
+      return [
+        sent('你今天幾點下課？','ni3 jin1 tian1 ji3 dian3 xia4 ke4','What time do you finish class today?'),
+        sent('我下午三點下課，然後去圖書館。','wo3 xia4 wu3 san1 dian3 xia4 ke4 ran2 hou4 qu4 tu2 shu1 guan3','I finish class at three in the afternoon, then go to the library.'),
+        sent('好，那我們四點見。','hao3 na4 wo3 men5 si4 dian3 jian4','Okay, then let us meet at four.')
+      ];
+    }
+    if(hasAny(t, ['shopping', 'money', 'price', 'store', 'convenience', 'online'])){
+      return [
+        sent('請問，這個多少錢？','qing3 wen4 zhe4 ge duo1 shao3 qian2','Excuse me, how much is this?'),
+        sent('這個一百二，兩個兩百。','zhe4 ge yi4 bai3 er4 liang3 ge liang3 bai3','This is 120. Two are 200.'),
+        sent('好，我要兩個，可以刷卡嗎？','hao3 wo3 yao4 liang3 ge ke3 yi3 shua1 ka3 ma','Okay, I want two. Can I pay by card?')
+      ];
+    }
+    if(hasAny(t, ['email', 'message', 'line', 'reply', 'phone', 'digital', 'technology', 'social media'])){
+      return [
+        sent('我剛剛收到你的訊息，可是還沒回。','wo3 gang1 gang1 shou1 dao4 ni3 de xun4 xi2 ke3 shi4 hai2 mei2 hui2','I just received your message, but I have not replied yet.'),
+        sent('沒關係，你有空再回就好。','mei2 guan1 xi4 ni3 you3 kong4 zai4 hui2 jiu4 hao3','No problem. Reply when you have time.'),
+        sent('好，我確認時間以後馬上告訴你。','hao3 wo3 que4 ren4 shi2 jian1 yi3 hou4 ma3 shang4 gao4 su4 ni3','Okay, after I confirm the time, I will tell you right away.')
+      ];
+    }
+    if(hasAny(t, ['taiwan culture', 'culture', 'festival', 'temple', 'customs', 'gift'])){
+      return [
+        sent('這個節日在台灣很重要嗎？','zhe4 ge jie2 ri4 zai4 tai2 wan1 hen3 zhong4 yao4 ma','Is this festival important in Taiwan?'),
+        sent('很重要，很多人會跟家人一起吃飯。','hen3 zhong4 yao4 hen3 duo1 ren2 hui4 gen1 jia1 ren2 yi4 qi3 chi1 fan4','Yes, it is important. Many people eat with their families.'),
+        sent('原來如此，我想多了解一點。','yuan2 lai2 ru2 ci3 wo3 xiang3 duo1 liao3 jie3 yi4 dian3','I see. I want to understand a little more.')
+      ];
+    }
+    if(hasAny(t, ['bank', 'post office', 'delivery', 'package', 'public service', 'government', 'immigration', 'insurance'])){
+      return [
+        sent('請問，我要辦這個文件，需要帶什麼？','qing3 wen4 wo3 yao4 ban4 zhe4 ge wen2 jian4 xu1 yao4 dai4 shen2 me','Excuse me, to process this document, what do I need to bring?'),
+        sent('請帶護照、居留證，還有一份影本。','qing3 dai4 hu4 zhao4 ju1 liu2 zheng4 hai2 you3 yi2 fen4 ying3 ben3','Please bring your passport, ARC, and one photocopy.'),
+        sent('好，謝謝。我明天早上再來。','hao3 xie4 xie5 wo3 ming2 tian1 zao3 shang4 zai4 lai2','Okay, thank you. I will come again tomorrow morning.')
+      ];
+    }
+    if(hasAny(t, ['environment', 'nature', 'recycling', 'pollution', 'energy'])){
+      return [
+        sent('你覺得這個城市最大的環境問題是什麼？','ni3 jue2 de zhe4 ge cheng2 shi4 zui4 da4 de huan2 jing4 wen4 ti2 shi4 shen2 me','What do you think is this city’s biggest environmental problem?'),
+        sent('我覺得是空氣污染，還有垃圾分類。','wo3 jue2 de shi4 kong1 qi4 wu1 ran3 hai2 you3 la1 ji1 fen1 lei4','I think it is air pollution and trash sorting.'),
+        sent('對，所以日常生活也要慢慢改變。','dui4 suo3 yi3 ri4 chang2 sheng1 huo2 ye3 yao4 man4 man4 gai3 bian4','Right, so daily life also needs to slowly change.')
+      ];
+    }
+    if(hasAny(t, ['education', 'university', 'academic', 'research', 'presentation', 'scholarship'])){
+      return [
+        sent('你的報告主題是什麼？','ni3 de bao4 gao4 zhu3 ti2 shi4 shen2 me','What is the topic of your report?'),
+        sent('我想介紹台灣學生的學習壓力。','wo3 xiang3 jie4 shao4 tai2 wan1 xue2 sheng1 de xue2 xi2 ya1 li4','I want to introduce the study pressure of Taiwanese students.'),
+        sent('這個題目不錯，記得加一些例子。','zhe4 ge ti2 mu4 bu2 cuo4 ji4 de2 jia1 yi4 xie1 li4 zi5','That topic is good. Remember to add some examples.')
+      ];
+    }
+    return [];
+  }
+
+  function hasAny(text, words){
+    return words.some(word => text.includes(word));
   }
 
   const TOPIC_HINTS = {
@@ -259,7 +1016,19 @@ window.LearningModeModule = (() => {
     weather: ['weather','seasons'],
     hobby: ['hobbies','interests','like'],
     health: ['health','body','doctor'],
-    sentence: ['sentences','grammar','comparisons','connecting','ideas']
+    housing: ['renting','room','apartment','landlord','deposit','bill','housing'],
+    work: ['work','workplace','career','company','office','boss','coworker','meeting','deadline','report','interview','salary'],
+    school: ['university','department','professor','lab','presentation','scholarship','academic','education','exam','research'],
+    message: ['email','message','line','reply','communication','digital','online','app','privacy','posting'],
+    culture: ['culture','festival','temple','night market','customs','gift','taiwan'],
+    travel: ['travel','trip','hotel','train','station','passport','ticket','luggage','reservation','attractions'],
+    service: ['banking','bank','post office','delivery','package','customer','complaint','service','atm','transfer','card','password'],
+    advice: ['advice','should','rules','must','allowed','remember','forget'],
+    problem: ['problem','broken','lost','late','mistake','delay','solution','help','repair'],
+    opinion: ['opinion','think','feel','agreeing','disagreeing','compare','contrast','view'],
+    environment: ['environment','nature','recycling','pollution','weather','energy'],
+    government: ['public','service','government','immigration','insurance','document','appointment'],
+    sentence: ['sentences','grammar','comparisons','connecting','ideas','because','although','condition','result','reason']
   };
 
   function seedWordsForUnit(sectionIndex, unitIndex, vocabBySection, unit){
@@ -273,7 +1042,7 @@ window.LearningModeModule = (() => {
     const start = (unitIndex * 10) % pool.length;
     const broad = [];
     for(let i=0; i<pool.length; i++) broad.push(pool[(start + i) % pool.length]);
-    return uniqueWords(exact.slice(0, 4).concat(broad)).slice(0, 10);
+    return uniqueWords(exact.slice(0, 2).concat(broad)).slice(0, 10);
   }
 
   function topicKeywords(text){
@@ -298,17 +1067,20 @@ window.LearningModeModule = (() => {
     });
   }
 
-  function seedSentencesForUnit(words){
+  function seedSentencesForUnit(words, payload){
     const a = words[0] || item('你好','ni3 hao3','hello');
     const b = words[1] || item('謝謝','xie4 xie5','thank you');
     const c = words[2] || item('中文','zhong1 wen2','Chinese');
+    const authored = (payload?.authoredSentences || []).filter(ex => ex?.zh && ex?.en).map(ex => sent(ex.zh, ex.py || '', ex.en));
     const examples = words.map(w => w.example).filter(ex => ex?.zh && ex?.en).slice(0,3);
-    if(examples.length >= 3) return examples.map(ex => sent(ex.zh, ex.py || '', ex.en));
-    return [
-      sent(`${a.zh}，我是學生`, `${a.py} wo3 shi4 xue2 sheng1`, `${a.en}. I am a student.`),
-      sent(`這是${b.zh}`, `zhe4 shi4 ${b.py}`, `This is ${b.en}.`),
-      sent(`我想練習${c.zh}`, `wo3 xiang3 lian4 xi2 ${c.py}`, `I want to practice ${c.en}.`)
-    ];
+    const payloadLines = (payload?.dialogue?.lines || []).filter(ex => ex?.zh && ex?.en).map(ex => sent(ex.zh, ex.py || '', ex.en));
+    const out = authored.concat(examples.map(ex => sent(ex.zh, ex.py || '', ex.en)), payloadLines);
+    if(out.length >= 3) return out.slice(0, 5);
+    return out.concat([
+      sent(`請問，這是${a.zh}嗎？`, `qing3 wen4 zhe4 shi4 ${a.py} ma`, `Excuse me, is this ${a.en}?`),
+      sent(`我今天需要${b.zh}。`, `wo3 jin1 tian1 xu1 yao4 ${b.py}`, `I need ${b.en} today.`),
+      sent(`你可以幫我確認${c.zh}嗎？`, `ni3 ke3 yi3 bang1 wo3 que4 ren4 ${c.py} ma`, `Can you help me confirm ${c.en}?`)
+    ]).slice(0, 5);
   }
 
   function flattenSessions(units) {
@@ -380,6 +1152,9 @@ window.LearningModeModule = (() => {
       else if(act==='tile')   addTile(+el.dataset.i);
       else if(act==='untile') removeTile(+el.dataset.i);
       else if(act==='checkTiles') checkTiles();
+      else if(act==='hanziChar') setHanziChar(+el.dataset.i);
+      else if(act==='hanziPrev') moveHanziChar(-1);
+      else if(act==='hanziNext') moveHanziChar(1);
       else if(act==='mic')    startMic();
       else if(act==='complete') completeSession();
       else if(act==='reset')  resetAll();
@@ -565,7 +1340,10 @@ window.LearningModeModule = (() => {
   }
 
   function buildSteps(sess){
+    ensureUnitPayload(sess.unit);
     const words=sess.unit.words;
+    const recentWords=spacedReviewWords(sess, 'recent');
+    const reviewWords=spacedReviewWords(sess, 'mixed');
     const sentences=sess.unit.sentences.map(s=>({...s,zhTiles:zhTiles(s.zh,words),enTiles:enTiles(s.en)}));
     const all=[{type:'intro',sess}];
     const addSentenceSet=s=>all.push(
@@ -575,6 +1353,7 @@ window.LearningModeModule = (() => {
       {type:'speak',item:s}
     );
     if(sess.session===1){
+      all.push({type:'tip',unit:sess.unit});
       words.slice(0,5).forEach(w=>all.push({type:'card',item:w}));
       words.slice(0,2).forEach(w=>all.push({type:'hanzi',item:w}));
       words.slice(0,4).forEach(w=>all.push({type:'pinyin',item:w,choices:choiceSet(w.py,words.map(x=>x.py))}));
@@ -582,14 +1361,20 @@ window.LearningModeModule = (() => {
       all.push({type:'match',pairs:words.slice(0,5)});
       addSentenceSet(sentences[0]);
     } else if(sess.session===2){
+      all.push({type:'dialogue',unit:sess.unit});
       words.slice(5,10).forEach(w=>all.push({type:'card',item:w}));
       words.slice(5,7).forEach(w=>all.push({type:'hanzi',item:w}));
       words.slice(0,5).forEach(w=>all.push({type:'enZh',item:w,choices:choiceSet(w.zh,words.map(x=>x.zh))}));
+      all.push({type:'substitution',unit:sess.unit});
       all.push({type:'match',pairs:words.slice(5,10)});
       words.slice(5,8).forEach(w=>all.push({type:'zhEn',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}));
       addSentenceSet(sentences[1] || sentences[0]);
     } else if(sess.session===3){
-      words.slice(0,10).forEach((w,i)=>{
+      all.push({type:'dialogueListen',unit:sess.unit,choices:choiceSet(sess.unit.listening.answer,[sess.unit.listening.answer].concat(sess.unit.listening.distractors || [])),correct:sess.unit.listening.answer});
+      (sess.unit.listening.questions || []).forEach(q => {
+        all.push({type:'listenQuestion',unit:sess.unit,item:q,choices:choiceSet(q.answer,[q.answer].concat(q.distractors || [])),correct:q.answer});
+      });
+      uniqueWords(words.slice(0,8).concat(recentWords.slice(0,2))).slice(0,10).forEach((w,i)=>{
         all.push(i%2===0
           ? {type:'zhEn',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}
           : {type:'pinyin',item:w,choices:choiceSet(w.py,words.map(x=>x.py))});
@@ -597,21 +1382,54 @@ window.LearningModeModule = (() => {
       all.push({type:'match',pairs:words.slice(2,7)});
       addSentenceSet(sentences[2] || sentences[0]);
     } else {
-      words.slice(0,5).forEach(w=>all.push({type:'listen',item:w,choices:choiceSet(w.en,words.map(x=>x.en))}));
-      words.slice(5,10).forEach(w=>all.push({type:'flash',item:w,choices:choiceSet(w.zh,words.map(x=>x.zh))}));
+      all.push({type:'mission',unit:sess.unit});
+      reviewWords.slice(0,5).forEach(w=>all.push({type:'listen',item:w,choices:choiceSet(w.en,reviewWords.map(x=>x.en))}));
+      reviewWords.slice(5,10).forEach(w=>all.push({type:'flash',item:w,choices:choiceSet(w.zh,reviewWords.map(x=>x.zh))}));
       words.slice(0,2).forEach(w=>all.push({type:'hanzi',item:w}));
-      all.push({type:'match',pairs:words.slice(0,5)},{type:'match',pairs:words.slice(5,10)});
+      all.push({type:'match',pairs:reviewWords.slice(0,5)},{type:'match',pairs:reviewWords.slice(5,10)});
       sentences.forEach(addSentenceSet);
+      all.push({type:'roleplay',unit:sess.unit});
+      all.push({type:'selfCheck',unit:sess.unit});
+      if(sess.unit.unitNumber % 5 === 0) all.push({type:'commMission',unit:sess.unit});
+      if(sess.unit.unitNumber === 30) all.push({type:'gateExam',unit:sess.unit});
     }
     all.push({type:'done',sess});
     return {sess,steps:all,correct:0,wrong:0,start:Date.now()};
+  }
+
+  function ensureUnitPayload(unit){
+    if(unit?.payload && unit?.grammar && unit?.dialogue && unit?.listening) return;
+    const sectionIndex = Math.max(0, (unit.sectionNumber || 1) - 1);
+    const unitIndex = Math.max(0, (unit.unitNumber || 1) - 1);
+    const payload = buildUnitPayload({ level: unit.sectionLevel || `Section ${sectionIndex + 1}` }, unit, sectionIndex, unitIndex, unit.words || []);
+    unit.payload = payload;
+    unit.grammar = payload.grammar;
+    unit.dialogue = payload.dialogue;
+    unit.listening = payload.listening;
+    unit.reading = payload.reading;
+    unit.speaking = payload.speaking;
+    unit.writing = payload.writing;
+    unit.objectives = payload.objectives;
+    unit.substitution = payload.substitution;
+    if(!unit.sentences || unit.sentences.length < 3) unit.sentences = seedSentencesForUnit(unit.words || [], payload);
+  }
+
+  function spacedReviewWords(sess, mode='mixed'){
+    const current = sess.unit.words || [];
+    const unitIndex = Number.isFinite(sess.unitIndex) ? sess.unitIndex : state.units.findIndex(u => u.id === sess.unit.id);
+    const priorUnits = state.units.slice(Math.max(0, unitIndex - 8), Math.max(0, unitIndex));
+    const recent = priorUnits.slice(-3).flatMap(u => u.words || []);
+    const older = state.units.slice(0, Math.max(0, unitIndex - 8)).flatMap(u => u.words || []);
+    const weak = (state.progress.mistakes || []).map(m => item(m.zh, m.py || '', m.en || '')).filter(w => w.zh);
+    if(mode === 'recent') return uniqueWords(recent.concat(weak)).slice(0, 6);
+    return uniqueWords(current.slice(0,7).concat(recent.slice(0,2), weak.slice(0,1), older.slice(0,1), current)).slice(0, 10);
   }
 
   /* ══════════════════════════
      STEP RENDER
   ══════════════════════════ */
   function step(){ return state.active?.steps[state.stepIndex]; }
-  function resetStep(){ state.selected=null; state.selectedMatch=null; state.matched=new Set(); state.answerTiles=[]; state.answerTileIds=[]; state.transcript=''; state.micState='idle'; }
+  function resetStep(){ state.selected=null; state.selectedMatch=null; state.matched=new Set(); state.answerTiles=[]; state.answerTileIds=[]; state.transcript=''; state.micState='idle'; state.hanziCharIndex=0; }
 
   function renderStep(){
     const st=step();
@@ -637,6 +1455,16 @@ window.LearningModeModule = (() => {
 
   function buildEx(st){
     if(st.type==='intro')  return introEx(st);
+    if(st.type==='tip')    return tipEx(st);
+    if(st.type==='dialogue') return dialogueEx(st);
+    if(st.type==='dialogueListen') return dialogueListenEx(st);
+    if(st.type==='listenQuestion') return listenQuestionEx(st);
+    if(st.type==='substitution') return substitutionEx(st);
+    if(st.type==='mission') return missionEx(st);
+    if(st.type==='roleplay') return roleplayEx(st);
+    if(st.type==='selfCheck') return selfCheckEx(st);
+    if(st.type==='commMission') return commMissionEx(st);
+    if(st.type==='gateExam') return gateExamEx(st);
     if(st.type==='card')   return cardEx(st);
     if(st.type==='pinyin') return choiceEx('What sound does this make?',soundBtn(st.item),st.choices,st.item.py,'Listen then pick the pinyin.');
     if(st.type==='zhEn')   return choiceEx('What does this mean?',zhBig(st.item),st.choices,st.item.en,'Choose the English meaning.');
@@ -668,6 +1496,212 @@ ${foot('START','next')}`;
   }
 
   /* ── Card ── */
+  function tipEx(st){
+    const u = st.unit;
+    const o = u.objectives || u.payload.objectives;
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-sm">${mascot('teach')}</div>
+  <div class="el-kicker">QUICK LESSON</div>
+  <h2 class="el-title">${esc(u.grammar.title)}</h2>
+  <div class="el-tip-card">
+    <strong>${esc(u.grammar.pattern)}</strong>
+    <p>${esc(u.grammar.note)}</p>
+    <small>${esc(u.grammar.microTip)}</small>
+  </div>
+  <div class="el-can-do">${esc(o.canDo)}</div>
+  <div class="el-objective-grid">
+    <div><b>Words</b><span>${esc(o.targetVocabulary)}</span></div>
+    <div><b>Grammar</b><span>${esc(o.targetGrammar)}</span></div>
+    <div><b>Speak</b><span>${esc(o.speakingGoal)}</span></div>
+    <div><b>Review</b><span>${esc(o.reviewGoal)}</span></div>
+  </div>
+</div>
+${foot('PRACTICE','next')}`;
+  }
+
+  function dialogueEx(st){
+    const d = st.unit.dialogue;
+    return `
+<div class="el-screen">
+  <div class="el-kicker">MINI DIALOGUE</div>
+  <h2 class="el-title">${esc(d.title)}</h2>
+  <p class="el-sub">${esc(d.context)}</p>
+  <div class="el-dialogue-card">
+    ${d.lines.map(line => `
+      <button class="el-dialogue-line" data-act="play" data-zh="${esc(line.zh)}">
+        <b>${esc(line.speaker)}</b>
+        <span>${esc(line.zh)}</span>
+        ${state.showPinyin ? `<small>${esc(line.py)}</small>` : ''}
+        <em>${esc(line.en)}</em>
+      </button>
+    `).join('')}
+  </div>
+</div>
+${foot('CONTINUE','next')}`;
+  }
+
+  function dialogueListenEx(st){
+    const d = st.unit.dialogue;
+    const zh = d.lines.map(line => line.zh).join(' ');
+    return choiceEx(
+      st.unit.listening.question,
+      `<button class="el-audio-btn" data-act="play" data-zh="${esc(zh)}">🔊<span>PLAY DIALOGUE</span></button>`,
+      st.choices,
+      st.unit.listening.answer,
+      '',
+      st.unit.listening.prompt
+    );
+  }
+
+  function listenQuestionEx(st){
+    return choiceEx(
+      st.item.question,
+      `<button class="el-audio-btn" data-act="play" data-zh="${esc(st.unit.listening.audioText || '')}">🔊<span>PLAY LISTENING</span></button>`,
+      st.choices,
+      st.correct,
+      '',
+      'Answer from the dialogue, not from isolated words.'
+    );
+  }
+
+  function substitutionEx(st){
+    const sub = st.unit.substitution || {};
+    const slots = (sub.slots || st.unit.words || []).slice(0, 4);
+    const first = slots[0] || st.unit.words?.[0] || item('練習', 'liàn xí', 'practice');
+    const exampleZh = String(sub.frameZh || '我想練習__。').replace('__', first.zh);
+    const exampleEn = String(sub.frameEn || 'I want to practice __.').replace('__', first.en);
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-sm">${mascot('teach')}</div>
+  <div class="el-kicker">SUBSTITUTION PRACTICE</div>
+  <h2 class="el-title">Change one useful sentence</h2>
+  <div class="el-substitution-card">
+    <div class="el-frame-zh">${esc(sub.frameZh || '我想練習__。')}</div>
+    <div class="el-frame-en">${esc(sub.frameEn || 'I want to practice __.')}</div>
+    <button class="el-dialogue-line sample" data-act="play" data-zh="${esc(exampleZh)}">
+      <b>Example</b>
+      <span>${esc(exampleZh)}</span>
+      <em>${esc(exampleEn)}</em>
+    </button>
+  </div>
+  <div class="el-slot-row">
+    ${slots.map(w => `<button class="el-slot-chip" data-act="play" data-zh="${esc(w.zh)}">${esc(w.zh)}<small>${state.showPinyin ? esc(w.py) : esc(w.en)}</small></button>`).join('')}
+  </div>
+</div>
+${foot('CONTINUE','next')}`;
+  }
+
+  function missionEx(st){
+    const u = st.unit;
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-sm">${mascot('happy')}</div>
+  <div class="el-kicker">UNIT MISSION</div>
+  <h2 class="el-title">${esc(u.title)}</h2>
+  <div class="el-mission-list">
+    <div><b>Read</b><span>${esc(u.reading.prompt)}</span></div>
+    <div><b>Listen</b><span>${esc(u.listening.prompt)}</span></div>
+    <div><b>Speak</b><span>${esc(u.speaking.prompt)}</span></div>
+    <div><b>Write</b><span>${esc(u.writing.prompt)}</span></div>
+  </div>
+</div>
+${foot('START REVIEW','next')}`;
+  }
+
+  function roleplayEx(st){
+    const model = st.unit.speaking.model || st.unit.sentences?.[0] || st.unit.dialogue.lines[0];
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-lg">${mascot('speak')}</div>
+  <div class="el-kicker">ROLEPLAY</div>
+  <h2 class="el-title">${esc(st.unit.speaking.title)}</h2>
+  <p class="el-sub">${esc(st.unit.speaking.prompt)}</p>
+  <div class="el-speak-card">
+    <div class="el-zh-mid">${esc(model.zh)}</div>
+    ${pyLine(model)}
+    <div class="el-speak-en">${esc(model.en)}</div>
+  </div>
+  <button class="el-replay-btn" data-act="play" data-zh="${esc(model.zh)}">🔊 Hear Model</button>
+  <button class="el-mic-btn ${state.micState}" data-act="mic">${state.micState === 'listening' ? 'Listening...' : 'Try Speaking'}</button>
+  ${state.transcript?`<div class="el-transcript">${esc(state.transcript)}</div>`:''}
+</div>
+<footer class="el-foot two">
+  <button class="el-btn-secondary" data-act="next">SKIP</button>
+  <button class="el-btn-primary" data-act="next">SELF CHECK</button>
+</footer>`;
+  }
+
+  function selfCheckEx(st){
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-sm">${mascot('review')}</div>
+  <div class="el-kicker">SPEAKING SELF-CHECK</div>
+  <h2 class="el-title">Check your output</h2>
+  <div class="el-mission-list self">
+    <div><b>Syllables</b><span>Did you say every syllable clearly?</span></div>
+    <div><b>Tones</b><span>Were the tones clear enough to recognize?</span></div>
+    <div><b>Flow</b><span>Did you pause naturally, not word-by-word?</span></div>
+    <div><b>No pinyin</b><span>Can you say it again without looking at pinyin?</span></div>
+    <div><b>Personalize</b><span>Can you replace one word and make a new sentence?</span></div>
+  </div>
+</div>
+${foot('I CHECKED IT','next')}`;
+  }
+
+  function commMissionEx(st){
+    const u = st.unit;
+    const mission = communicationMissionFor(u);
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-lg">${mascot('celebrate')}</div>
+  <div class="el-kicker">COMMUNICATION MISSION</div>
+  <h2 class="el-title">${esc(mission.title)}</h2>
+  <p class="el-sub">${esc(mission.goal)}</p>
+  <div class="el-mission-list">
+    <div><b>Listen</b><span>${esc(mission.listen)}</span></div>
+    <div><b>Speak</b><span>${esc(mission.speak)}</span></div>
+    <div><b>Build</b><span>${esc(mission.build)}</span></div>
+    <div><b>Write</b><span>${esc(mission.write)}</span></div>
+  </div>
+</div>
+${foot('MISSION DONE','next')}`;
+  }
+
+  function gateExamEx(st){
+    return `
+<div class="el-screen center">
+  <div class="el-mascot-lg">${mascot('review')}</div>
+  <div class="el-kicker">SECTION GATE</div>
+  <h2 class="el-title">${esc(st.unit.sectionLevel)} Checkpoint</h2>
+  <p class="el-sub">Pass this checkpoint by completing mixed vocabulary, listening, sentence building, speaking, and writing tasks.</p>
+  <div class="el-mission-list">
+    <div><b>Vocabulary</b><span>Recognize key words without pinyin.</span></div>
+    <div><b>Listening</b><span>Understand the purpose of a short dialogue.</span></div>
+    <div><b>Sentence</b><span>Build one Chinese sentence and one English meaning.</span></div>
+    <div><b>Output</b><span>Speak and write one useful response.</span></div>
+  </div>
+</div>
+${foot('FINISH GATE','next')}`;
+  }
+
+  function communicationMissionFor(unit){
+    const n = unit.unitNumber;
+    const cycle = Math.floor((n - 1) / 5) % 8;
+    const missions = [
+      ['Introduce yourself', 'Introduce yourself and ask one follow-up question.', 'Catch name, role, and one detail.', 'Say who you are and why you are here.', 'Build a self-introduction sentence.', 'Write your name, role, and one goal.'],
+      ['Order food', 'Order something politely and confirm one detail.', 'Catch item, quantity, and preference.', 'Order with 請 and one preference.', 'Build an order sentence.', 'Write one food or drink request.'],
+      ['Ask directions', 'Ask where something is and understand the answer.', 'Catch direction words and destination.', 'Ask how to get somewhere.', 'Build a where/how sentence.', 'Write one direction question.'],
+      ['Visit a clinic', 'Explain one symptom and ask about medicine.', 'Catch symptom and instruction.', 'Say what hurts and ask what to do.', 'Build a symptom sentence.', 'Write one health problem.'],
+      ['Rent a room', 'Ask about rent, deposit, and included fees.', 'Catch price, deposit, and condition.', 'Ask a landlord one clear question.', 'Build a rent question.', 'Write one apartment question.'],
+      ['Explain a problem', 'Explain what happened and ask for help.', 'Catch problem, reason, and next step.', 'Say the problem and one request.', 'Build a because/so sentence.', 'Write one problem report.'],
+      ['Give an opinion', 'Give an opinion with one reason.', 'Catch opinion and reason.', 'Say whether you agree and why.', 'Build an opinion sentence.', 'Write one short opinion.'],
+      ['Tell a story', 'Tell what happened in order.', 'Catch beginning, problem, and result.', 'Say first, then, finally.', 'Build a short story sentence.', 'Write three connected actions.']
+    ];
+    const [title, goal, listen, speak, build, write] = missions[cycle];
+    return { title, goal: `${goal} Use this unit: ${unit.title}.`, listen, speak, build, write };
+  }
+
   function cardEx(st){
     return `
 <div class="el-screen center">
@@ -685,19 +1719,28 @@ ${foot('GOT IT ✓','next')}`;
 
   /* ── Choice ── */
   function hanziEx(st){
-    const char = firstHanzi(st.item.zh);
+    const chars = hanziChars(st.item.zh).slice(0, 4);
+    if(!chars.length) chars.push(firstHanzi(st.item.zh) || st.item.zh || '?');
+    const activeIndex = Math.min(Math.max(0, state.hanziCharIndex), chars.length - 1);
+    const char = chars[activeIndex] || firstHanzi(st.item.zh);
     const id = `lm-hanzi-${state.stepIndex}`;
     return `
 <div class="el-screen center">
   <div class="el-kicker">HANZI PRACTICE</div>
-  <h2 class="el-title">Write ${esc(char)}</h2>
+  <h2 class="el-title">Write ${esc(st.item.zh)}</h2>
   <p class="el-sub">${esc(st.item.zh)} / ${state.showPinyin ? esc(st.item.py) + ' / ' : ''}${esc(st.item.en)}</p>
+  <div class="el-hanzi-switcher" aria-label="Characters in word">
+    ${chars.map((c, index) => `<button type="button" class="${index === activeIndex ? 'active' : ''}" data-act="hanziChar" data-i="${index}">${esc(c)}</button>`).join('')}
+  </div>
+  <div class="el-hanzi-active-label">Character ${activeIndex + 1} of ${chars.length}: <b>${esc(char)}</b></div>
   <div class="el-hanzi-practice">
     <div id="${id}-writer" class="el-hanzi-writer"></div>
     <canvas id="${id}-canvas" class="el-hanzi-canvas"></canvas>
   </div>
   <div class="el-hanzi-actions">
-    <button type="button" onclick="window.DrawingBoard?.animate?.()">Show Strokes</button>
+    <button type="button" data-act="hanziPrev" ${activeIndex <= 0 ? 'disabled' : ''}>Previous</button>
+    <button type="button" onclick="window.DrawingBoard?.animate?.()">Strokes</button>
+    <button type="button" data-act="hanziNext" ${activeIndex >= chars.length - 1 ? 'disabled' : ''}>Next</button>
     <button type="button" onclick="window.DrawingBoard?.reset?.()">Clear</button>
     <button type="button" data-act="play">Hear</button>
   </div>
@@ -705,12 +1748,20 @@ ${foot('GOT IT ✓','next')}`;
 ${foot('I WROTE IT','next')}`;
   }
 
+  function hanziChars(text){
+    const chars = Array.from(String(text || '')).filter(ch => /[\u3400-\u9fff]/.test(ch));
+    return chars.length ? chars : [firstHanzi(text)];
+  }
+
   function firstHanzi(text){
     return Array.from(String(text || '')).find(ch => /[\u3400-\u9fff]/.test(ch)) || String(text || '').charAt(0) || '字';
   }
 
   function initHanziPractice(st){
-    const char = firstHanzi(st.item.zh);
+    const chars = hanziChars(st.item.zh).slice(0, 4);
+    if(!chars.length) chars.push(firstHanzi(st.item.zh) || st.item.zh || '?');
+    const index = Math.min(Math.max(0, state.hanziCharIndex), chars.length - 1);
+    const char = chars[index] || firstHanzi(st.item.zh);
     const id = `lm-hanzi-${state.stepIndex}`;
     try { window.DrawingBoard?.init?.(`${id}-writer`, `${id}-canvas`, char); } catch(err) { console.warn('Hanzi practice init failed:', err); }
   }
@@ -943,9 +1994,12 @@ ${foot('CLAIM XP 💎','complete')}`;
   function checkChoice(){
     const st=step();
     const choice=st.choices[state.selected];
-    let correct=st.item.en;
+    let correct=st.correct || st.item?.en;
     if(st.type==='pinyin') correct=st.item.py;
     if(st.type==='enZh'||st.type==='flash') correct=st.item.zh;
+    if(st.correct){
+      return choice===correct ? good('Correct!', correct) : bad('Incorrect', 'Correct: '+correct, st.item || {});
+    }
     choice===correct ? good('Correct! 🎯',`${st.item.zh} = ${st.item.en}`) : bad('Incorrect 😅','Correct: '+correct,st.item);
   }
 
@@ -966,6 +2020,14 @@ ${foot('CLAIM XP 💎','complete')}`;
 
   function addTile(i){ if(state.answerTileIds.includes(i)) return; state.answerTileIds.push(i); state.answerTiles.push(step().tiles[i]); renderStep(); }
   function removeTile(i){ state.answerTileIds.splice(i,1); state.answerTiles.splice(i,1); renderStep(); }
+  function setHanziChar(i){
+    const st = step();
+    if(!st || st.type !== 'hanzi') return;
+    const max = Math.max(0, hanziChars(st.item.zh).slice(0,4).length - 1);
+    state.hanziCharIndex = Math.min(Math.max(0, i), max);
+    renderStep();
+  }
+  function moveHanziChar(delta){ setHanziChar(state.hanziCharIndex + delta); }
 
   function checkTiles(){
     const st=step();
@@ -1002,6 +2064,16 @@ ${foot('CLAIM XP 💎','complete')}`;
   function completeSession(){
     const s=state.active.sess;
     state.progress.done[s.id]={at:new Date().toISOString(),correct:state.active.correct,wrong:state.active.wrong};
+    recordSessionWordExposure(state.active);
+    if(s.unit.unitNumber === 30 && s.session === 4){
+      const total = Math.max(1, state.active.correct + state.active.wrong);
+      const score = Math.round((state.active.correct / total) * 100);
+      state.progress.gates[s.unit.sectionNumber] = {
+        at: new Date().toISOString(),
+        score,
+        passed: score >= 70
+      };
+    }
     state.progress.xp+=Math.max(XP_PER,state.active.correct);
     const today=new Date().toISOString().slice(0,10);
     if(state.progress.last!==today){ state.progress.streak++; state.progress.last=today; }
@@ -1009,6 +2081,26 @@ ${foot('CLAIM XP 💎','complete')}`;
     saveProgress();
     state.active=null;
     renderHome();
+  }
+
+  function recordSessionWordExposure(active){
+    if(!active?.steps) return;
+    active.steps.forEach(st => {
+      const words = [];
+      if(st.item?.zh) words.push(st.item);
+      if(st.pairs) words.push(...st.pairs);
+      words.forEach(w => {
+        if(!w?.zh) return;
+        const key = w.zh;
+        const prev = state.progress.wordStats[key] || { seen:0, correct:0, last:'' };
+        prev.seen += 1;
+        prev.correct += st.type === 'done' ? 0 : 1;
+        prev.last = new Date().toISOString();
+        prev.py = w.py || prev.py || '';
+        prev.en = w.en || prev.en || '';
+        state.progress.wordStats[key] = prev;
+      });
+    });
   }
 
   function exitLesson(){ closeFeedback(); state.active=null; renderHome(); }
@@ -1070,9 +2162,9 @@ ${foot('CLAIM XP 💎','complete')}`;
   }
 
   function injectStyles(){
-    if(document.getElementById('el-styles-v235')) return;
+    if(document.getElementById('el-styles-v246')) return;
     const s=document.createElement('style');
-    s.id='el-styles-v235';
+    s.id='el-styles-v246';
     s.textContent=`
 /* ── NAV CLEARANCE ── */
 :root{
@@ -1086,6 +2178,8 @@ ${foot('CLAIM XP 💎','complete')}`;
 #page-content:has(.el-lesson){
   padding:0!important;
   max-width:100%!important;
+  width:100%!important;
+  overflow-x:hidden!important;
   background:#0d0d1a!important;
   color:#f0eeff!important;
 }
@@ -1096,6 +2190,7 @@ ${foot('CLAIM XP 💎','complete')}`;
   color:#f0eeff;
   background:#0d0d1a;
   min-height:100vh;
+  width:100%;
   max-width:430px;
   margin:0 auto;
   padding:0 0 calc(var(--el-nav) + 20px);
@@ -1347,8 +2442,161 @@ ${foot('CLAIM XP 💎','complete')}`;
 .el-zh-big:active{opacity:.7}
 .el-card-en{font-size:1.1rem;font-weight:950;color:#f0eeff}
 .el-card-hint{color:#5a5680;font-size:.76rem;font-weight:800}
+.el-tip-card,
+.el-dialogue-card,
+.el-mission-list{
+  width:100%;
+  max-width:340px;
+  box-sizing:border-box;
+}
+.el-tip-card{
+  background:linear-gradient(180deg,#1e1e40,#171731);
+  border:1.5px solid #3a2a66;
+  border-radius:22px;
+  padding:18px;
+  display:grid;
+  gap:10px;
+  box-shadow:0 10px 26px rgba(0,0,0,.34);
+}
+.el-tip-card strong{color:#f8fafc;font-size:1.08rem;line-height:1.15}
+.el-tip-card p{margin:0;color:#c4b5fd;font-size:.94rem;font-weight:850;line-height:1.35}
+.el-tip-card small{color:#9ca3af;font-weight:800;line-height:1.35}
+.el-can-do{
+  width:100%;
+  max-width:340px;
+  border-radius:18px;
+  background:#0f2a22;
+  border:1.5px solid #1f7a4d;
+  color:#bbf7d0;
+  padding:12px 14px;
+  font-size:.86rem;
+  font-weight:900;
+  line-height:1.32;
+  box-sizing:border-box;
+}
+.el-objective-grid{
+  width:100%;
+  max-width:340px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.el-objective-grid div{
+  background:#171731;
+  border:1.5px solid #2a2a55;
+  border-radius:15px;
+  padding:10px;
+  display:grid;
+  gap:4px;
+  min-width:0;
+}
+.el-objective-grid b{
+  color:#a78bfa;
+  font-size:.64rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.el-objective-grid span{
+  color:#f0eeff;
+  font-size:.72rem;
+  font-weight:850;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+.el-dialogue-card{display:grid;gap:10px}
+.el-dialogue-line{
+  width:100%;
+  border:1.5px solid #2a2a55;
+  border-radius:18px;
+  background:#171731;
+  color:#f8fafc;
+  padding:12px;
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:4px 10px;
+  text-align:left;
+  box-shadow:0 4px 0 #0f1020;
+}
+.el-dialogue-line b{
+  grid-row:1 / span 3;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#7c3aed;
+  color:#fff;
+  font-size:.74rem;
+}
+.el-dialogue-line span{font-family:var(--el-zh);font-size:1.16rem;font-weight:950;line-height:1.25}
+.el-dialogue-line small{color:#c4b5fd;font-size:.76rem;font-weight:850}
+.el-dialogue-line em{color:#9ca3af;font-size:.78rem;font-style:normal;font-weight:800;line-height:1.25}
+.el-dialogue-line.sample{margin-top:8px}
+.el-substitution-card{
+  width:100%;
+  max-width:340px;
+  border:1.5px solid #3a2a66;
+  border-radius:22px;
+  background:linear-gradient(180deg,#1e1e40,#171731);
+  padding:14px;
+  box-sizing:border-box;
+  display:grid;
+  gap:8px;
+  box-shadow:0 10px 26px rgba(0,0,0,.34);
+}
+.el-frame-zh{
+  font-family:var(--el-zh);
+  color:#f8fafc;
+  font-size:1.35rem;
+  font-weight:950;
+  line-height:1.18;
+}
+.el-frame-en{
+  color:#a7a1c9;
+  font-size:.86rem;
+  font-weight:850;
+  line-height:1.25;
+}
+.el-slot-row{
+  width:100%;
+  max-width:340px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.el-slot-chip{
+  min-height:48px;
+  border:1.5px solid #2a2a55;
+  border-radius:16px;
+  background:#171731;
+  color:#f8fafc;
+  font-family:var(--el-zh);
+  font-size:1.05rem;
+  font-weight:950;
+  display:grid;
+  gap:2px;
+  place-items:center;
+}
+.el-slot-chip small{
+  color:#c4b5fd;
+  font-family:var(--font-body);
+  font-size:.7rem;
+  font-weight:850;
+}
+.el-mission-list{display:grid;gap:10px}
+.el-mission-list div{
+  background:#171731;
+  border:1.5px solid #2a2a55;
+  border-radius:18px;
+  padding:12px 14px;
+  display:grid;
+  gap:4px;
+}
+.el-mission-list b{color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem}
+.el-mission-list span{color:#f0eeff;font-size:.84rem;font-weight:850;line-height:1.3}
 .el-hanzi-practice{
-  width:min(280px,78vw);
+  width:min(310px,82vw);
   aspect-ratio:1;
   position:relative;
   border-radius:22px;
@@ -1357,6 +2605,39 @@ ${foot('CLAIM XP 💎','complete')}`;
   border:2px solid #d9eef2;
   box-shadow:0 8px 0 #bfd6df;
   touch-action:none;
+}
+.el-hanzi-switcher{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+  width:min(320px,88vw);
+}
+.el-hanzi-switcher button{
+  min-width:44px;
+  min-height:38px;
+  border:1.5px solid #2a2a55;
+  border-radius:13px;
+  background:#1a1a35;
+  color:#c4b5fd;
+  font-family:var(--el-zh);
+  font-size:1.25rem;
+  font-weight:950;
+}
+.el-hanzi-switcher button.active{
+  background:#7c3aed;
+  border-color:#9d5cf5;
+  color:#fff;
+  box-shadow:0 4px 0 #5b21b6;
+}
+.el-hanzi-active-label{
+  color:#9893b8;
+  font-size:.82rem;
+  font-weight:900;
+}
+.el-hanzi-active-label b{
+  color:#f0eeff;
+  font-family:var(--el-zh);
 }
 .el-hanzi-writer,
 .el-hanzi-canvas{
@@ -1367,9 +2648,9 @@ ${foot('CLAIM XP 💎','complete')}`;
 }
 .el-hanzi-actions{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:8px;
-  width:min(320px,88vw);
+  width:min(360px,92vw);
 }
 .el-hanzi-actions button{
   min-height:40px;
@@ -1380,6 +2661,9 @@ ${foot('CLAIM XP 💎','complete')}`;
   font-family:var(--el-font);
   font-size:.72rem;
   font-weight:950;
+}
+.el-hanzi-actions button:disabled{
+  opacity:.42;
 }
 .el-py{font-size:.96rem;color:#7c3aed;font-weight:900;font-style:italic}
 
@@ -2177,6 +3461,8 @@ ${foot('CLAIM XP 💎','complete')}`;
 }
 #main:has(.duo-map){
   background:#101d23!important;
+  overflow-x:hidden!important;
+  width:100%!important;
 }
 #main:has(.el-lesson){
   background:#0d0d1a!important;
@@ -2217,6 +3503,15 @@ body:has(.duo-map) #bottom-nav{
   width:100%!important;
   transform:translateX(-50%)!important;
   border-radius:22px 22px 0 0!important;
+}
+html:has(.duo-map),
+body:has(.duo-map){
+  overflow-x:hidden!important;
+  background:#101d23!important;
+}
+body:has(.duo-map)::-webkit-scrollbar{
+  width:0!important;
+  height:0!important;
 }
 body:has(.duo-map) .bottom-nav-inner{
   max-width:100%!important;
@@ -2523,5 +3818,12 @@ body:has(.duo-map) #scratchpad-fab-btn{
   }
 
   /* ─── Public API ─── */
-  return { render, exitLesson, unmount:closeFeedback, playCurrent, togglePinyin };
+  return { render, exitLesson, unmount:closeFeedback, playCurrent, togglePinyin, auditCourse:()=>state.units.map(u=>({
+    id:u.id,
+    title:u.title,
+    sentences:u.sentences?.length||0,
+    dialogue:u.dialogue?.lines?.length||0,
+    questions:u.listening?.questions?.length||0,
+    roleplay:!!u.speaking?.roleplay
+  })) };
 })();

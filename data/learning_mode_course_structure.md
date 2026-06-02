@@ -1,6 +1,6 @@
 # Learning Mode Course Structure
 
-Status: structure ready, content payloads pending.
+Status: active with deterministic vocabulary seeding and runtime unit teaching payloads.
 
 This document defines the Duolingo-style Learning Mode architecture. It is intentionally a structure contract only. Lesson content should be added later through `learning_mode_course_structure.json` without changing the app flow.
 
@@ -62,6 +62,20 @@ flowchart LR
   F --> G["Speaking Repeat"]
   G --> H["Checkpoint"]
 ```
+
+## Runtime Teaching Payload
+
+Each unit now receives a deterministic teaching payload at runtime:
+
+- can-do goal
+- grammar micro-lesson
+- mini dialogue
+- listening mission
+- reading prompt
+- speaking prompt
+- writing prompt
+
+This keeps the 180-unit course maintainable while avoiding random generation inside the app.
 
 ## Exercise Types
 

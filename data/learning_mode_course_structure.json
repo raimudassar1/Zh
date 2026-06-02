@@ -4,7 +4,7 @@
   "title": "Traditional Mandarin Mastery",
   "script": "traditional",
   "pronunciation": "taiwan_mandarin",
-  "status": "structure_ready_content_pending",
+  "status": "active_deterministic_vocabulary_and_teaching_payloads",
   "design_rules": {
     "unit_count": 180,
     "sections": 6,
