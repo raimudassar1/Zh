@@ -2,8 +2,8 @@
 
 window.LearningModeModule = (() => {
   /* ─── Constants ─── */
-  const STORE  = 'suyuan_v246';
-  const PINKEY = 'suyuan_pinyin_v246';
+  const STORE  = 'suyuan_v258';
+  const PINKEY = 'suyuan_pinyin_v258';
   const MAX_HEARTS = 5;
   const XP_PER = 15;
 
@@ -42,6 +42,7 @@ window.LearningModeModule = (() => {
     progress: loadProgress(),
     active: null,
     infoOpen: false,
+    unitPickerId: '',
     stepIndex: 0,
     selected: null,
     selectedMatch: null,
@@ -344,7 +345,7 @@ window.LearningModeModule = (() => {
     const b = words[1] || item('問題','wen4 ti2','question');
     const c = words[2] || item('時間','shi2 jian1','time');
     const d = words[3] || item('地方','di4 fang1','place');
-    const lineSet = profile.lines(a, b, c, d, sectionIndex, unitIndex);
+    const lineSet = naturalizeLineSet(profile.kind, profile.lines(a, b, c, d, sectionIndex, unitIndex));
     const dialogue = {
       title,
       context: profile.context(title, focus),
@@ -390,6 +391,268 @@ window.LearningModeModule = (() => {
         distractors: [first, second, profile.badResponse]
       }
     ];
+  }
+
+  function naturalizeLineSet(kind, original){
+    const bank = {
+      identity: {
+        dialogue: [
+          sent('你好，我叫安娜。', 'ni3 hao3 wo3 jiao4 an1 na4', 'Hello, my name is Anna.'),
+          sent('很高興認識你。你是學生嗎？', 'hen3 gao1 xing4 ren4 shi4 ni3 ni3 shi4 xue2 sheng1 ma', 'Nice to meet you. Are you a student?'),
+          sent('對，我在台灣學中文。', 'dui4 wo3 zai4 tai2 wan1 xue2 zhong1 wen2', 'Yes, I study Chinese in Taiwan.')
+        ],
+        sentences: [
+          sent('我叫安娜。', 'wo3 jiao4 an1 na4', 'My name is Anna.'),
+          sent('我是學生。', 'wo3 shi4 xue2 sheng1', 'I am a student.'),
+          sent('很高興認識你。', 'hen3 gao1 xing4 ren4 shi4 ni3', 'Nice to meet you.'),
+          sent('我在台灣學中文。', 'wo3 zai4 tai2 wan1 xue2 zhong1 wen2', 'I study Chinese in Taiwan.'),
+          sent('你叫什麼名字？', 'ni3 jiao4 shen2 me ming2 zi4', 'What is your name?')
+        ],
+        substitution: { frameZh: '我叫__。', frameEn: 'My name is __.', slots: [item('安娜','an1 na4','Anna'), item('大明','da4 ming2','Daming'), item('美玲','mei3 ling2','Meiling')] },
+        roleplayPrompt: 'Introduce yourself, ask the other person’s name, and say you study Chinese in Taiwan.',
+        bestResponse: 'Say your name and ask for the other person’s name.'
+      },
+      basic: {
+        dialogue: [
+          sent('請問，這是什麼？', 'qing3 wen4 zhe4 shi4 shen2 me', 'Excuse me, what is this?'),
+          sent('這是你的課本。', 'zhe4 shi4 ni3 de ke4 ben3', 'This is your textbook.'),
+          sent('謝謝，我知道了。', 'xie4 xie5 wo3 zhi1 dao4 le', 'Thank you. I understand now.')
+        ],
+        sentences: [
+          sent('這是我的書。', 'zhe4 shi4 wo3 de shu1', 'This is my book.'),
+          sent('那不是我的筆。', 'na4 bu2 shi4 wo3 de bi3', 'That is not my pen.'),
+          sent('請問，教室在哪裡？', 'qing3 wen4 jiao4 shi4 zai4 na3 li3', 'Excuse me, where is the classroom?'),
+          sent('我需要一支筆。', 'wo3 xu1 yao4 yi4 zhi1 bi3', 'I need one pen.'),
+          sent('你有課本嗎？', 'ni3 you3 ke4 ben3 ma', 'Do you have a textbook?')
+        ],
+        substitution: { frameZh: '這是__嗎？', frameEn: 'Is this __?', slots: [item('書','shu1','book'), item('筆','bi3','pen'), item('課本','ke4 ben3','textbook')] },
+        roleplayPrompt: 'Ask what an object is and confirm the answer politely.',
+        bestResponse: 'Ask what the object is.'
+      },
+      classroom: {
+        dialogue: [
+          sent('老師，請再說一次，可以嗎？', 'lao3 shi1 qing3 zai4 shuo1 yi2 ci4 ke3 yi3 ma', 'Teacher, could you please say it one more time?'),
+          sent('可以，請先聽，再跟我念。', 'ke3 yi3 qing3 xian1 ting1 zai4 gen1 wo3 nian4', 'Yes. Please listen first, then repeat after me.'),
+          sent('好，我現在懂了。', 'hao3 wo3 xian4 zai4 dong3 le', 'Okay, I understand now.')
+        ],
+        sentences: [
+          sent('請再說一次。', 'qing3 zai4 shuo1 yi2 ci4', 'Please say it one more time.'),
+          sent('我聽不懂。', 'wo3 ting1 bu4 dong3', 'I do not understand.'),
+          sent('請你寫在黑板上。', 'qing3 ni3 xie3 zai4 hei1 ban3 shang4', 'Please write it on the board.'),
+          sent('我會讀這個句子。', 'wo3 hui4 du2 zhe4 ge ju4 zi5', 'I can read this sentence.'),
+          sent('我們一起練習。', 'wo3 men5 yi4 qi3 lian4 xi2', 'We practice together.')
+        ],
+        substitution: { frameZh: '請再說__。', frameEn: 'Please say __ again.', slots: [item('一次','yi2 ci4','one more time'), item('慢一點','man4 yi4 dian3','more slowly'), item('清楚一點','qing1 chu3 yi4 dian3','more clearly')] },
+        roleplayPrompt: 'Ask the teacher to repeat something and confirm that you understand.',
+        bestResponse: 'Ask politely for repetition.'
+      },
+      time: {
+        dialogue: [
+          sent('你今天幾點有空？', 'ni3 jin1 tian1 ji3 dian3 you3 kong4', 'What time are you free today?'),
+          sent('我下午三點以後有空。', 'wo3 xia4 wu3 san1 dian3 yi3 hou4 you3 kong4', 'I am free after three this afternoon.'),
+          sent('好，那我們四點見。', 'hao3 na4 wo3 men5 si4 dian3 jian4', 'Okay, then let us meet at four.')
+        ],
+        sentences: [
+          sent('我今天下午有空。', 'wo3 jin1 tian1 xia4 wu3 you3 kong4', 'I am free this afternoon.'),
+          sent('我們明天見。', 'wo3 men5 ming2 tian1 jian4', 'Let us meet tomorrow.'),
+          sent('你幾點下課？', 'ni3 ji3 dian3 xia4 ke4', 'What time do you finish class?'),
+          sent('我每天都學中文。', 'wo3 mei3 tian1 dou1 xue2 zhong1 wen2', 'I study Chinese every day.'),
+          sent('這個星期我很忙。', 'zhe4 ge xing1 qi2 wo3 hen3 mang2', 'I am busy this week.')
+        ],
+        substitution: { frameZh: '我__有空。', frameEn: 'I am free __.', slots: [item('下午','xia4 wu3','in the afternoon'), item('明天','ming2 tian1','tomorrow'), item('星期五','xing1 qi2 wu3','Friday')] },
+        roleplayPrompt: 'Arrange a time to meet and confirm the final plan.',
+        bestResponse: 'Give a clear available time.'
+      },
+      family: {
+        dialogue: [
+          sent('這是我的朋友，他也在台灣學中文。', 'zhe4 shi4 wo3 de peng2 you3 ta1 ye3 zai4 tai2 wan1 xue2 zhong1 wen2', 'This is my friend. He also studies Chinese in Taiwan.'),
+          sent('你們是同學嗎？', 'ni3 men5 shi4 tong2 xue2 ma', 'Are you classmates?'),
+          sent('對，我們每個星期一起上課。', 'dui4 wo3 men5 mei3 ge xing1 qi2 yi4 qi3 shang4 ke4', 'Yes, we have class together every week.')
+        ],
+        sentences: [
+          sent('這是我的朋友。', 'zhe4 shi4 wo3 de peng2 you3', 'This is my friend.'),
+          sent('他是我的同學。', 'ta1 shi4 wo3 de tong2 xue2', 'He is my classmate.'),
+          sent('我們一起上課。', 'wo3 men5 yi4 qi3 shang4 ke4', 'We have class together.'),
+          sent('我家有四個人。', 'wo3 jia1 you3 si4 ge ren2', 'There are four people in my family.'),
+          sent('你認識她嗎？', 'ni3 ren4 shi4 ta1 ma', 'Do you know her?')
+        ],
+        substitution: { frameZh: '這是我的__。', frameEn: 'This is my __.', slots: [item('朋友','peng2 you3','friend'), item('同學','tong2 xue2','classmate'), item('老師','lao3 shi1','teacher')] },
+        roleplayPrompt: 'Introduce a friend or family member and answer one question about them.',
+        bestResponse: 'Explain who the person is.'
+      },
+      food: {
+        dialogue: [
+          sent('我要一份雞肉飯，請不要太辣。', 'wo3 yao4 yi2 fen4 ji1 rou4 fan4 qing3 bu2 yao4 tai4 la4', 'I would like one chicken rice. Please do not make it too spicy.'),
+          sent('要內用還是外帶？', 'yao4 nei4 yong4 hai2 shi4 wai4 dai4', 'For here or takeout?'),
+          sent('外帶，另外給我一杯無糖綠茶。', 'wai4 dai4 ling4 wai4 gei3 wo3 yi4 bei1 wu2 tang2 lv4 cha2', 'Takeout, and also give me one unsweetened green tea.')
+        ],
+        sentences: [
+          sent('我要雞肉飯，謝謝。', 'wo3 yao4 ji1 rou4 fan4 xie4 xie5', 'I would like chicken rice, thank you.'),
+          sent('請不要太辣。', 'qing3 bu2 yao4 tai4 la4', 'Please do not make it too spicy.'),
+          sent('這杯綠茶要少冰。', 'zhe4 bei1 lv4 cha2 yao4 shao3 bing1', 'This green tea should have less ice.'),
+          sent('我要外帶。', 'wo3 yao4 wai4 dai4', 'I want takeout.'),
+          sent('這個好吃嗎？', 'zhe4 ge hao3 chi1 ma', 'Is this tasty?')
+        ],
+        substitution: { frameZh: '我要__，謝謝。', frameEn: 'I would like __, thank you.', slots: [item('雞肉飯','ji1 rou4 fan4','chicken rice'), item('綠茶','lv4 cha2','green tea'), item('一份','yi2 fen4','one serving')] },
+        roleplayPrompt: 'Order one item, adjust one detail, and answer dine-in or takeout.',
+        bestResponse: 'Order the item and say whether it is for here or takeout.'
+      },
+      shopping: {
+        dialogue: [
+          sent('請問，這件外套多少錢？', 'qing3 wen4 zhe4 jian4 wai4 tao4 duo1 shao3 qian2', 'Excuse me, how much is this jacket?'),
+          sent('這件一千二百塊，今天有打折。', 'zhe4 jian4 yi4 qian1 er4 bai3 kuai4 jin1 tian1 you3 da3 zhe2', 'This one is 1,200 dollars. It is discounted today.'),
+          sent('可以刷卡嗎？我想試穿一下。', 'ke3 yi3 shua1 ka3 ma wo3 xiang3 shi4 chuan1 yi2 xia4', 'Can I pay by card? I would like to try it on.')
+        ],
+        sentences: [
+          sent('這個多少錢？', 'zhe4 ge duo1 shao3 qian2', 'How much is this?'),
+          sent('太貴了，可以便宜一點嗎？', 'tai4 gui4 le ke3 yi3 pian2 yi2 yi4 dian3 ma', 'It is too expensive. Can it be a little cheaper?'),
+          sent('我想買這個。', 'wo3 xiang3 mai3 zhe4 ge', 'I would like to buy this.'),
+          sent('可以刷卡嗎？', 'ke3 yi3 shua1 ka3 ma', 'Can I pay by card?'),
+          sent('請給我收據。', 'qing3 gei3 wo3 shou1 ju4', 'Please give me a receipt.')
+        ],
+        substitution: { frameZh: '我想買__。', frameEn: 'I would like to buy __.', slots: [item('這件外套','zhe4 jian4 wai4 tao4','this jacket'), item('這個杯子','zhe4 ge bei1 zi5','this cup'), item('兩個袋子','liang3 ge dai4 zi5','two bags')] },
+        roleplayPrompt: 'Ask the price, ask for a small discount, and confirm how you will pay.',
+        bestResponse: 'Ask the price and confirm payment.'
+      },
+      transport: {
+        dialogue: [
+          sent('請問，捷運站在哪裡？', 'qing3 wen4 jie2 yun4 zhan4 zai4 na3 li3', 'Excuse me, where is the MRT station?'),
+          sent('往前走，第二個路口右轉。', 'wang3 qian2 zou3 di4 er4 ge lu4 kou3 you4 zhuan3', 'Walk straight ahead and turn right at the second intersection.'),
+          sent('謝謝，我要去台北車站。', 'xie4 xie5 wo3 yao4 qu4 tai2 bei3 che1 zhan4', 'Thank you. I am going to Taipei Main Station.')
+        ],
+        sentences: [
+          sent('我要去台北車站。', 'wo3 yao4 qu4 tai2 bei3 che1 zhan4', 'I want to go to Taipei Main Station.'),
+          sent('請問，公車站在哪裡？', 'qing3 wen4 gong1 che1 zhan4 zai4 na3 li3', 'Excuse me, where is the bus stop?'),
+          sent('請在這裡停車。', 'qing3 zai4 zhe4 li3 ting2 che1', 'Please stop here.'),
+          sent('這班車到台中嗎？', 'zhe4 ban1 che1 dao4 tai2 zhong1 ma', 'Does this train go to Taichung?'),
+          sent('我想買一張票。', 'wo3 xiang3 mai3 yi4 zhang1 piao4', 'I would like to buy one ticket.')
+        ],
+        substitution: { frameZh: '我要去__。', frameEn: 'I want to go to __.', slots: [item('台北車站','tai2 bei3 che1 zhan4','Taipei Main Station'), item('捷運站','jie2 yun4 zhan4','the MRT station'), item('夜市','ye4 shi4','the night market')] },
+        roleplayPrompt: 'Ask for directions, repeat the route, and say where you need to go.',
+        bestResponse: 'Ask where the station is.'
+      },
+      health: {
+        dialogue: [
+          sent('醫生，我今天喉嚨痛，還有一點發燒。', 'yi1 sheng1 wo3 jin1 tian1 hou2 long2 tong4 hai2 you3 yi4 dian3 fa1 shao1', 'Doctor, my throat hurts today, and I have a slight fever.'),
+          sent('你先多喝水，這個藥一天吃三次。', 'ni3 xian1 duo1 he1 shui3 zhe4 ge yao4 yi4 tian1 chi1 san1 ci4', 'First drink more water. Take this medicine three times a day.'),
+          sent('好，請問我需要休息幾天？', 'hao3 qing3 wen4 wo3 xu1 yao4 xiu1 xi2 ji3 tian1', 'Okay. How many days do I need to rest?')
+        ],
+        sentences: [
+          sent('我今天不太舒服。', 'wo3 jin1 tian1 bu4 tai4 shu1 fu2', 'I do not feel very well today.'),
+          sent('我想看醫生。', 'wo3 xiang3 kan4 yi1 sheng1', 'I want to see a doctor.'),
+          sent('我的喉嚨很痛。', 'wo3 de hou2 long2 hen3 tong4', 'My throat hurts a lot.'),
+          sent('這個藥怎麼吃？', 'zhe4 ge yao4 zen3 me chi1', 'How do I take this medicine?'),
+          sent('我需要請假一天。', 'wo3 xu1 yao4 qing3 jia4 yi4 tian1', 'I need to take one day off.')
+        ],
+        substitution: { frameZh: '我__很痛。', frameEn: 'My __ hurts a lot.', slots: [item('喉嚨','hou2 long2','throat'), item('頭','tou2','head'), item('肚子','du4 zi5','stomach')] },
+        roleplayPrompt: 'Tell the doctor one symptom, ask how to take medicine, and ask whether you should rest.',
+        bestResponse: 'Describe the symptom clearly.'
+      },
+      work: {
+        dialogue: [
+          sent('這份報告今天下午要完成嗎？', 'zhe4 fen4 bao4 gao4 jin1 tian1 xia4 wu3 yao4 wan2 cheng2 ma', 'Does this report need to be finished this afternoon?'),
+          sent('對，請先整理資料，五點前寄給我。', 'dui4 qing3 xian1 zheng3 li3 zi1 liao4 wu3 dian3 qian2 ji4 gei3 wo3', 'Yes. Please organize the data first and send it to me before five.'),
+          sent('沒問題，我會準時寄出。', 'mei2 wen4 ti2 wo3 hui4 zhun3 shi2 ji4 chu1', 'No problem. I will send it on time.')
+        ],
+        sentences: [
+          sent('我今天要完成報告。', 'wo3 jin1 tian1 yao4 wan2 cheng2 bao4 gao4', 'I need to finish the report today.'),
+          sent('請問截止時間是幾點？', 'qing3 wen4 jie2 zhi3 shi2 jian1 shi4 ji3 dian3', 'What time is the deadline?'),
+          sent('我先整理資料。', 'wo3 xian1 zheng3 li3 zi1 liao4', 'I will organize the data first.'),
+          sent('我們下午開會。', 'wo3 men5 xia4 wu3 kai1 hui4', 'We have a meeting this afternoon.'),
+          sent('我會準時寄給你。', 'wo3 hui4 zhun3 shi2 ji4 gei3 ni3', 'I will send it to you on time.')
+        ],
+        substitution: { frameZh: '我今天要完成__。', frameEn: 'I need to finish __ today.', slots: [item('報告','bao4 gao4','the report'), item('資料','zi1 liao4','the data'), item('簡報','jian3 bao4','the presentation')] },
+        roleplayPrompt: 'Ask about a deadline, confirm the task, and promise when you will send it.',
+        bestResponse: 'Confirm the deadline and next action.'
+      },
+      message: {
+        dialogue: [
+          sent('我剛剛傳訊息給你，你有看到嗎？', 'wo3 gang1 gang1 chuan2 xun4 xi2 gei3 ni3 ni3 you3 kan4 dao4 ma', 'I just sent you a message. Did you see it?'),
+          sent('有，我現在在上課，等一下回你。', 'you3 wo3 xian4 zai4 zai4 shang4 ke4 deng3 yi2 xia4 hui2 ni3', 'Yes. I am in class now. I will reply later.'),
+          sent('好，不急，晚上再說也可以。', 'hao3 bu4 ji2 wan3 shang4 zai4 shuo1 ye3 ke3 yi3', 'Okay, no rush. We can also talk tonight.')
+        ],
+        sentences: [
+          sent('我傳訊息給你。', 'wo3 chuan2 xun4 xi2 gei3 ni3', 'I will send you a message.'),
+          sent('我等一下回你。', 'wo3 deng3 yi2 xia4 hui2 ni3', 'I will reply to you later.'),
+          sent('你可以打電話給我嗎？', 'ni3 ke3 yi3 da3 dian4 hua4 gei3 wo3 ma', 'Can you call me?'),
+          sent('我現在不方便說話。', 'wo3 xian4 zai4 bu4 fang1 bian4 shuo1 hua4', 'It is not convenient for me to talk now.'),
+          sent('請把地址傳給我。', 'qing3 ba3 di4 zhi3 chuan2 gei3 wo3', 'Please send me the address.')
+        ],
+        substitution: { frameZh: '請把__傳給我。', frameEn: 'Please send me __.', slots: [item('地址','di4 zhi3','the address'), item('照片','zhao4 pian4','the photo'), item('電話','dian4 hua4','the phone number')] },
+        roleplayPrompt: 'Send or reply to a message, explain that you are busy, and arrange a later reply.',
+        bestResponse: 'Say when you can reply.'
+      },
+      service: {
+        dialogue: [
+          sent('您好，我想辦理居留證延期。', 'nin2 hao3 wo3 xiang3 ban4 li3 ju1 liu2 zheng4 yan2 qi2', 'Hello, I would like to extend my ARC.'),
+          sent('請先填這張表，還要護照影本。', 'qing3 xian1 tian2 zhe4 zhang1 biao3 hai2 yao4 hu4 zhao4 ying3 ben3', 'Please fill out this form first. We also need a passport copy.'),
+          sent('好的，請問今天可以辦好嗎？', 'hao3 de qing3 wen4 jin1 tian1 ke3 yi3 ban4 hao3 ma', 'Okay. Can it be completed today?')
+        ],
+        sentences: [
+          sent('我想辦理這個文件。', 'wo3 xiang3 ban4 li3 zhe4 ge wen2 jian4', 'I would like to process this document.'),
+          sent('請問需要什麼資料？', 'qing3 wen4 xu1 yao4 shen2 me zi1 liao4', 'What information or documents are needed?'),
+          sent('我需要護照影本。', 'wo3 xu1 yao4 hu4 zhao4 ying3 ben3', 'I need a passport copy.'),
+          sent('這張表要怎麼填？', 'zhe4 zhang1 biao3 yao4 zen3 me tian2', 'How should I fill out this form?'),
+          sent('今天可以辦好嗎？', 'jin1 tian1 ke3 yi3 ban4 hao3 ma', 'Can it be completed today?')
+        ],
+        substitution: { frameZh: '我想辦理__。', frameEn: 'I would like to handle __.', slots: [item('居留證延期','ju1 liu2 zheng4 yan2 qi2','ARC extension'), item('包裹寄送','bao1 guo3 ji4 song4','package shipping'), item('銀行帳戶','yin2 hang2 zhang4 hu4','a bank account')] },
+        roleplayPrompt: 'Ask what documents are needed and confirm whether the service can be completed today.',
+        bestResponse: 'Ask what documents are required.'
+      },
+      culture: {
+        dialogue: [
+          sent('中秋節的時候，台灣人通常做什麼？', 'zhong1 qiu1 jie2 de shi2 hou4 tai2 wan1 ren2 tong1 chang2 zuo4 shen2 me', 'What do people in Taiwan usually do during Mid-Autumn Festival?'),
+          sent('很多人會烤肉、吃月餅，也會跟家人見面。', 'hen3 duo1 ren2 hui4 kao3 rou4 chi1 yue4 bing3 ye3 hui4 gen1 jia1 ren2 jian4 mian4', 'Many people barbecue, eat mooncakes, and meet family.'),
+          sent('聽起來很熱鬧，我也想參加。', 'ting1 qi3 lai2 hen3 re4 nao4 wo3 ye3 xiang3 can1 jia1', 'That sounds lively. I would also like to join.')
+        ],
+        sentences: [
+          sent('台灣的夜市很熱鬧。', 'tai2 wan1 de ye4 shi4 hen3 re4 nao4', 'Taiwan night markets are lively.'),
+          sent('中秋節可以吃月餅。', 'zhong1 qiu1 jie2 ke3 yi3 chi1 yue4 bing3', 'You can eat mooncakes during Mid-Autumn Festival.'),
+          sent('我想了解台灣文化。', 'wo3 xiang3 liao3 jie3 tai2 wan1 wen2 hua4', 'I want to understand Taiwanese culture.'),
+          sent('這個習慣很有意思。', 'zhe4 ge xi2 guan4 hen3 you3 yi4 si5', 'This custom is interesting.'),
+          sent('我們週末去夜市吧。', 'wo3 men5 zhou1 mo4 qu4 ye4 shi4 ba5', 'Let us go to the night market this weekend.')
+        ],
+        substitution: { frameZh: '我想了解__。', frameEn: 'I want to understand __.', slots: [item('台灣文化','tai2 wan1 wen2 hua4','Taiwanese culture'), item('夜市','ye4 shi4','night markets'), item('中秋節','zhong1 qiu1 jie2','Mid-Autumn Festival')] },
+        roleplayPrompt: 'Ask about a Taiwanese custom, say what sounds interesting, and accept an invitation.',
+        bestResponse: 'Ask what people usually do.'
+      },
+      opinion: {
+        dialogue: [
+          sent('你覺得在台灣學中文最大的困難是什麼？', 'ni3 jue2 de zai4 tai2 wan1 xue2 zhong1 wen2 zui4 da4 de kun4 nan2 shi4 shen2 me', 'What do you think is the biggest difficulty in learning Chinese in Taiwan?'),
+          sent('我覺得聽力最難，因為大家說得很快。', 'wo3 jue2 de ting1 li4 zui4 nan2 yin1 wei4 da4 jia1 shuo1 de hen3 kuai4', 'I think listening is the hardest because people speak quickly.'),
+          sent('我同意，不過每天聽一點會有幫助。', 'wo3 tong2 yi4 bu2 guo4 mei3 tian1 ting1 yi4 dian3 hui4 you3 bang1 zhu4', 'I agree, but listening a little every day helps.')
+        ],
+        sentences: [
+          sent('我覺得聽力最難。', 'wo3 jue2 de ting1 li4 zui4 nan2', 'I think listening is the hardest.'),
+          sent('我同意你的看法。', 'wo3 tong2 yi4 ni3 de kan4 fa3', 'I agree with your view.'),
+          sent('我不太同意，因為情況不一樣。', 'wo3 bu4 tai4 tong2 yi4 yin1 wei4 qing2 kuang4 bu4 yi2 yang4', 'I do not quite agree because the situation is different.'),
+          sent('這個方法對我有幫助。', 'zhe4 ge fang1 fa3 dui4 wo3 you3 bang1 zhu4', 'This method helps me.'),
+          sent('我想先聽你的理由。', 'wo3 xiang3 xian1 ting1 ni3 de li3 you2', 'I want to hear your reason first.')
+        ],
+        substitution: { frameZh: '我覺得__最難。', frameEn: 'I think __ is the hardest.', slots: [item('聽力','ting1 li4','listening'), item('發音','fa1 yin1','pronunciation'), item('寫字','xie3 zi4','writing characters')] },
+        roleplayPrompt: 'Give one opinion, add a reason, and respond politely to a different view.',
+        bestResponse: 'Give an opinion with a reason.'
+      },
+      story: {
+        dialogue: [
+          sent('你第一次在台灣坐公車的時候順利嗎？', 'ni3 di4 yi1 ci4 zai4 tai2 wan1 zuo4 gong1 che1 de shi2 hou4 shun4 li4 ma', 'Was your first time taking a bus in Taiwan smooth?'),
+          sent('不太順利。我上錯車，後來請司機幫忙。', 'bu4 tai4 shun4 li4 wo3 shang4 cuo4 che1 hou4 lai2 qing3 si1 ji1 bang1 mang2', 'Not really. I got on the wrong bus, then asked the driver for help.'),
+          sent('還好你有問。下次你可以先看路線。', 'hai2 hao3 ni3 you3 wen4 xia4 ci4 ni3 ke3 yi3 xian1 kan4 lu4 xian4', 'Good thing you asked. Next time you can check the route first.')
+        ],
+        sentences: [
+          sent('我第一次在台灣坐公車。', 'wo3 di4 yi1 ci4 zai4 tai2 wan1 zuo4 gong1 che1', 'It was my first time taking a bus in Taiwan.'),
+          sent('我上錯車了。', 'wo3 shang4 cuo4 che1 le', 'I got on the wrong bus.'),
+          sent('後來我請司機幫忙。', 'hou4 lai2 wo3 qing3 si1 ji1 bang1 mang2', 'Later I asked the driver for help.'),
+          sent('這次經驗讓我學到很多。', 'zhe4 ci4 jing1 yan4 rang4 wo3 xue2 dao4 hen3 duo1', 'This experience taught me a lot.'),
+          sent('下次我會先確認路線。', 'xia4 ci4 wo3 hui4 xian1 que4 ren4 lu4 xian4', 'Next time I will confirm the route first.')
+        ],
+        substitution: { frameZh: '後來我請__幫忙。', frameEn: 'Later I asked __ for help.', slots: [item('司機','si1 ji1','the driver'), item('朋友','peng2 you3','a friend'), item('老師','lao3 shi1','the teacher')] },
+        roleplayPrompt: 'Tell a short story with first, later, and next-time sentences.',
+        bestResponse: 'Explain what happened and what you learned.'
+      }
+    };
+    const selected = bank[kind] || bank.basic;
+    return { ...original, ...selected };
   }
 
   function authoredProfileForUnit(title, focus){
@@ -800,26 +1063,59 @@ window.LearningModeModule = (() => {
 
   function grammarTargetFor(sectionIndex, unitIndex, topic){
     const banks = [
-      ['A is B with 是', 'basic word order', 'yes/no questions with 嗎', 'negation with 不 and 沒有'],
-      ['requests with 請', 'measure words', 'where questions with 在哪裡', 'want/need with 要 and 想'],
-      ['time before action', 'frequency with 常常/有時候', 'describing people and things', 'making plans with 要'],
-      ['because/so', 'past action with 了', 'comparisons with 比', 'contrast with 但是'],
-      ['experience with 過', 'advice with 應該', 'rules with 可以/不可以', 'problem explanation with 因為'],
-      ['longer clauses', 'although/however contrast', 'reason-result chains', 'opinion paragraphs']
+      [
+        { pattern:'我是學生。', title:'Use 是 for identity', note:'Use 是 when you say who someone is or what something is.', microTip:'Keep the sentence simple: subject + 是 + role or category.' },
+        { pattern:'這是我的書。', title:'Point to real things', note:'Use 這是 and 那是 to identify objects around you.', microTip:'Add 的 when you need to say whose object it is.' },
+        { pattern:'你有筆嗎？', title:'Ask with 有 and 嗎', note:'Use 有 to ask whether someone has something.', microTip:'Put 嗎 at the end to make a clear yes/no question.' },
+        { pattern:'我聽不懂。', title:'Use 不 for simple negation', note:'Use 不 before many verbs and adjectives for “not”.', microTip:'For “do not have”, use 沒有 instead of 不有.' }
+      ],
+      [
+        { pattern:'請再說一次。', title:'Make polite requests', note:'Use 請 before a request when you need help.', microTip:'This is useful in class, shops, stations, and clinics.' },
+        { pattern:'我要一杯茶。', title:'Use measure words naturally', note:'Use a measure word between the number and the noun.', microTip:'杯 is for drinks, 張 is for tickets or forms, 件 is for clothing.' },
+        { pattern:'捷運站在哪裡？', title:'Ask where something is', note:'Use 在哪裡 to ask for a place or location.', microTip:'Start with 請問 when asking a stranger.' },
+        { pattern:'我想買這個。', title:'Say what you want', note:'Use 想 for intention and 要 when you are ready to order or choose.', microTip:'想 sounds softer when you are still deciding.' }
+      ],
+      [
+        { pattern:'我下午三點有空。', title:'Put time before the action', note:'Mandarin usually places time before the verb phrase.', microTip:'Say when first, then what happens.' },
+        { pattern:'我每天都練習。', title:'Talk about routine', note:'Use 每天, 常常, 有時候, and 都 to describe habits.', microTip:'Use 都 after the subject when something is true every time.' },
+        { pattern:'他很有耐心。', title:'Describe people clearly', note:'Use 很 before many adjectives in simple descriptions.', microTip:'很 often connects the subject and adjective; it does not always mean “very”.' },
+        { pattern:'我們明天去吃飯。', title:'Make simple plans', note:'Use a time word plus action to make a plan.', microTip:'You can add 好嗎 at the end to ask if the plan works.' }
+      ],
+      [
+        { pattern:'因為下雨，所以我晚到了。', title:'Give a reason and result', note:'Use 因為 for the reason and 所以 for the result.', microTip:'In conversation, you can often use only one of them if the meaning is clear.' },
+        { pattern:'我已經吃過了。', title:'Talk about completed actions', note:'Use 了 or 過 when you need to show completion or experience.', microTip:'了 marks a change or completed event; 過 marks past experience.' },
+        { pattern:'這家店比那家便宜。', title:'Make comparisons', note:'Use 比 to compare two people, places, or things.', microTip:'Put the compared item after 比.' },
+        { pattern:'我想去，但是今天很忙。', title:'Add contrast politely', note:'Use 但是 or 不過 when your second idea changes the direction.', microTip:'This helps you disagree or refuse without sounding abrupt.' }
+      ],
+      [
+        { pattern:'我以前去過台南。', title:'Talk about experience', note:'Use 過 to say you have done something before.', microTip:'Add 以前 when you want to emphasize “before”.' },
+        { pattern:'你應該先休息。', title:'Give advice', note:'Use 應該 for advice, suggestions, and expected actions.', microTip:'For softer advice, add 我覺得 before the sentence.' },
+        { pattern:'這裡可以刷卡嗎？', title:'Ask rules and permission', note:'Use 可以 to ask whether something is allowed or possible.', microTip:'Use 不可以 for clear restrictions.' },
+        { pattern:'因為資料不完整，所以不能送出。', title:'Explain practical problems', note:'Use cause and result to explain service, work, or daily problems.', microTip:'Say the problem first, then ask what to do next.' }
+      ],
+      [
+        { pattern:'我覺得這個方法很有幫助。', title:'State an opinion', note:'Use 我覺得 to give a personal view.', microTip:'Follow the opinion with one reason to sound more natural.' },
+        { pattern:'雖然很難，但是我想繼續。', title:'Use although and however', note:'Use 雖然 and 但是 to balance two ideas.', microTip:'This pattern is useful for B1-style speaking and writing.' },
+        { pattern:'先說原因，再說結果。', title:'Organize longer answers', note:'Use sequencing words to make a longer answer easy to follow.', microTip:'先, 然後, 最後 are simple but powerful.' },
+        { pattern:'我同意，不過我有另一個看法。', title:'Respond to another view', note:'Use 同意, 不同意, 不過, and 因為 to discuss ideas politely.', microTip:'A good response acknowledges the other person before adding your view.' }
+      ]
     ];
     const bank = banks[Math.min(sectionIndex, banks.length - 1)];
-    const pattern = bank[unitIndex % bank.length];
-    return {
-      pattern,
-      title: pattern.replace(/^\w/, ch => ch.toUpperCase()),
-      note: `Use this pattern to talk about ${topic}.`,
-      microTip: `Build one clear sentence first, then add time, place, reason, or feeling only when needed.`
-    };
+    return bank[unitIndex % bank.length];
   }
 
   function canDoFor(sectionIndex, topic, focus){
-    const verbs = ['recognize and say', 'handle', 'describe', 'explain', 'solve', 'discuss'];
-    return `I can ${verbs[Math.min(sectionIndex, verbs.length - 1)]} ${topic.toLowerCase()} in Mandarin. ${focus}`;
+    const cleanFocus = String(focus || '').replace(/\s+/g, ' ').trim();
+    const defaults = [
+      'recognize key words, hear them clearly, and use them in one natural sentence.',
+      'handle a short daily-life exchange with polite survival phrases.',
+      'describe personal information, routine, and plans in clear sentences.',
+      'connect ideas with time, reason, contrast, and simple problem solving.',
+      'manage practical Taiwan situations with follow-up questions and explanations.',
+      'state opinions, summarize information, and keep a conversation moving.'
+    ];
+    const goal = cleanFocus || defaults[Math.min(sectionIndex, defaults.length - 1)];
+    return `After this unit, I can ${goal.charAt(0).toLowerCase()}${goal.slice(1)}`;
   }
 
   function buildDialoguePayload(sectionIndex, topic, title, focus, a, b, c){
@@ -856,22 +1152,22 @@ window.LearningModeModule = (() => {
   function fallbackDialogueLines(sectionIndex, topic, title, a, b, c){
     if(sectionIndex < 2){
       return [
-        sent(`你好，請問這是${a.zh}嗎？`, `ni3 hao3 qing3 wen4 zhe4 shi4 ${a.py} ma`, `Hello, excuse me, is this ${a.en}?`),
-        sent(`對，這是${a.zh}。`, `dui4 zhe4 shi4 ${a.py}`, `Yes, this is ${a.en}.`),
-        sent(`謝謝，我知道了。`, `xie4 xie5 wo3 zhi1 dao4 le`, `Thank you. I understand now.`)
+        sent('你好，請問這是你的課本嗎？', 'ni3 hao3 qing3 wen4 zhe4 shi4 ni3 de ke4 ben3 ma', 'Hello, excuse me, is this your textbook?'),
+        sent('對，這是我的課本。謝謝你。', 'dui4 zhe4 shi4 wo3 de ke4 ben3 xie4 xie5 ni3', 'Yes, this is my textbook. Thank you.'),
+        sent('不客氣，我們一起上課吧。', 'bu2 ke4 qi4 wo3 men5 yi4 qi3 shang4 ke4 ba5', 'You are welcome. Let us go to class together.')
       ];
     }
     if(sectionIndex < 4){
       return [
-        sent(`請問，我可以用${a.zh}嗎？`, `qing3 wen4 wo3 ke3 yi3 yong4 ${a.py} ma`, `Excuse me, may I use ${a.en}?`),
-        sent(`可以，不過請先確認${b.zh}。`, `ke3 yi3 bu2 guo4 qing3 xian1 que4 ren4 ${b.py}`, `Yes, but please confirm ${b.en} first.`),
-        sent(`好，我確認以後再跟你說。`, `hao3 wo3 que4 ren4 yi3 hou4 zai4 gen1 ni3 shuo1`, `Okay, I will confirm and then tell you.`)
+        sent('請問，我下午三點可以過去嗎？', 'qing3 wen4 wo3 xia4 wu3 san1 dian3 ke3 yi3 guo4 qu4 ma', 'Excuse me, can I come over at three this afternoon?'),
+        sent('可以，不過請你先傳訊息確認。', 'ke3 yi3 bu2 guo4 qing3 ni3 xian1 chuan2 xun4 xi2 que4 ren4', 'Yes, but please send a message to confirm first.'),
+        sent('好，我等一下傳給你。', 'hao3 wo3 deng3 yi2 xia4 chuan2 gei3 ni3', 'Okay, I will send it to you later.')
       ];
     }
     return [
-      sent(`關於${a.zh}，你覺得最重要的是什麼？`, `guan1 yu2 ${a.py} ni3 jue2 de zui4 zhong4 yao4 de shi4 shen2 me`, `About ${a.en}, what do you think is most important?`),
-      sent(`我覺得要先了解${b.zh}，再決定怎麼做。`, `wo3 jue2 de yao4 xian1 liao3 jie3 ${b.py} zai4 jue2 ding4 zen3 me zuo4`, `I think we should understand ${b.en} first, then decide what to do.`),
-      sent(`有道理，我們也可以參考${c.zh}。`, `you3 dao4 li3 wo3 men5 ye3 ke3 yi3 can1 kao3 ${c.py}`, `That makes sense. We can also refer to ${c.en}.`)
+      sent('你覺得這個方法適合初學者嗎？', 'ni3 jue2 de zhe4 ge fang1 fa3 shi4 he2 chu1 xue2 zhe3 ma', 'Do you think this method is suitable for beginners?'),
+      sent('我覺得可以，但是需要更多聽力練習。', 'wo3 jue2 de ke3 yi3 dan4 shi4 xu1 yao4 geng4 duo1 ting1 li4 lian4 xi2', 'I think it can work, but it needs more listening practice.'),
+      sent('我同意。我們可以先做短對話，再做角色扮演。', 'wo3 tong2 yi4 wo3 men5 ke3 yi3 xian1 zuo4 duan3 dui4 hua4 zai4 zuo4 jue2 se4 ban4 yan3', 'I agree. We can do a short dialogue first, then a roleplay.')
     ];
   }
 
@@ -1139,6 +1435,7 @@ window.LearningModeModule = (() => {
       if(!el) return;
       const act=el.dataset.act;
       if(act==='open')        openSession(el.dataset.id);
+      else if(act==='unitPick') toggleUnitPicker(el.dataset.unit);
       else if(act==='sectionInfo') openSectionInfo();
       else if(act==='closeInfo')   closeSectionInfo();
       else if(act==='next')   next();
@@ -1170,7 +1467,7 @@ window.LearningModeModule = (() => {
     state.root.innerHTML = `
 <div class="el-home duo-map">
   <header class="duo-topbar">
-    <div class="duo-flag"><span class="duo-flag-cn" aria-label="Chinese course"></span></div>
+    <div class="duo-flag"><span class="duo-flag-tw" aria-label="Taiwan Mandarin course"></span></div>
     <div class="duo-score flame"><span>STREAK</span><b>${Math.max(0,state.progress.streak)}</b></div>
     <div class="duo-score gem"><span>XP</span><b>${Math.max(0,state.progress.xp)}</b></div>
     <div class="duo-avatar">${duoOwl('tiny')}</div>
@@ -1230,7 +1527,7 @@ window.LearningModeModule = (() => {
 
   function buildPathHTML(cur){
     let html = '';
-    const sessionIcons = ['1','2','3','4'];
+    const sessionSymbols = ['★','拼','♪','✓'];
     const visibleUnits = state.units.filter(unit => unit.sectionNumber === state.selectedSection);
     visibleUnits.forEach((u, ui) => {
       const sessions = state.sessions.filter(s=>s.unit.id===u.id);
@@ -1247,33 +1544,13 @@ window.LearningModeModule = (() => {
         const done_  = isDone(sess.id);
         const isCurS = sess.id===cur.id;
         const xPct   = ZIG[si] || 50;
-        let nodeClass = 'el-node';
-        let inner = '';
-        if(done_){
-          nodeClass += ' el-node-done';
-          inner = `<span class="el-node-check">OK</span>`;
-        } else if(isCurS){
-          nodeClass += ' el-node-current';
-          inner = `<span class="el-node-star">START</span>`;
-        } else if(lock){
-          nodeClass += ' el-node-lock';
-          inner = `<span class="el-node-lock-ic">LOCK</span>`;
-        } else {
-          nodeClass += ' el-node-avail';
-          inner = `<span class="el-node-ic">${sessionIcons[si]}</span>`;
-        }
-        const label = sessLabel(sess.session);
-        const badge = isCurS ? `<div class="el-node-badge">START</div>` : '';
-        const decor = si===0 ? `<div class="duo-path-decor owl right">${duoOwl('map')}</div><div class="duo-stars right"><span>*</span><span>*</span><span>*</span></div>` :
-          si===1 ? `<div class="duo-chest ${done_?'open':'locked'}">BOX</div>` :
-          si===2 ? `<div class="duo-path-decor owl left">${duoOwl('map wave')}</div><div class="duo-stars left"><span>*</span><span>*</span><span>*</span></div>` : '';
+        const label  = sessLabel(sess.session);
+        const decor = si===0 ? `<div class="duo-path-decor owl right">${duoOwl('map')}</div><div class="duo-stars right"><span>★</span><span>★</span><span>★</span></div>` :
+          si===2 ? `<div class="duo-path-decor owl left">${duoOwl('map wave')}</div><div class="duo-stars left"><span>★</span><span>★</span><span>★</span></div>` : '';
         html += `
-<div class="el-node-row" style="--nx:${xPct}%">
-  ${badge}
+<div class="el-node-row skill-row" style="--nx:${xPct}%">
   ${decor}
-  <button class="${nodeClass}" ${lock?'disabled':''} data-act="open" data-id="${esc(sess.id)}" aria-label="${esc(label)}">
-    ${inner}
-  </button>
+  ${renderMapSkillNode(sess, { done_, lock, isCurS, symbol: sessionSymbols[si] || '★', label, progress: (si + 1) * 25 })}
   <div class="el-node-label">${esc(label)}</div>
 </div>`;
       });
@@ -1281,11 +1558,75 @@ window.LearningModeModule = (() => {
       if(ui < visibleUnits.length-1){
         html += `
 <div class="el-node-row" style="--nx:50%">
-  <div class="el-chest ${allDone?'open':'locked'}">${allDone?'DONE':'LOCK'}</div>
+  ${renderMapChest(allDone)}
 </div>`;
       }
     });
     return html;
+  }
+
+  function renderMapSkillNode(sess, opts){
+    const cls = ['el-node','map-skill-node'];
+    if(opts.done_) cls.push('skill-done');
+    else if(opts.lock) cls.push('skill-lock');
+    else if(opts.isCurS) cls.push('skill-current');
+    else cls.push('skill-open');
+    const bubble = opts.isCurS && !opts.done_ ? `<span class="map-start-bubble">START</span>` : '';
+    const icon = opts.lock ? `<span class="map-lock">🔒</span>` : `<span class="map-star"></span>`;
+    return `<button class="${cls.join(' ')}" style="--skill-progress:${Math.max(0, Math.min(100, opts.progress || 0))}%" ${opts.lock?'disabled':''} data-act="open" data-id="${esc(sess.id)}" aria-label="${esc(opts.label)}">
+      ${bubble}
+      <span class="map-depth">
+        <span class="map-progress side"></span>
+        <span class="map-progress top"></span>
+        <span class="map-inner-gap"></span>
+        <span class="map-coin">
+          <span class="map-coin-side"></span>
+          <span class="map-coin-face">${icon}</span>
+        </span>
+      </span>
+    </button>`;
+  }
+
+  function renderMapChest(open){
+    return `<div class="el-chest duo-map-chest ${open?'open':'locked'}" aria-hidden="true">
+      <span class="map-chest-shadow"></span>
+      <span class="map-chest-beam"></span>
+      <span class="map-chest-glow"></span>
+      <span class="map-chest-base"></span>
+      <span class="map-chest-rim"></span>
+      <span class="map-chest-corner left"></span>
+      <span class="map-chest-corner right"></span>
+      <span class="map-chest-strap"></span>
+      <span class="map-chest-lock"></span>
+      <span class="map-chest-lid">
+        <span class="map-chest-lid-side"></span>
+        <span class="map-chest-lid-top"></span>
+        <span class="map-chest-lid-rim"></span>
+      </span>
+      <span class="map-chest-spark s1"></span>
+      <span class="map-chest-spark s2"></span>
+      <span class="map-chest-spark s3"></span>
+    </div>`;
+  }
+
+  function renderUnitPartPicker(unit, sessions, ui){
+    const parts = sessions.map(sess => {
+      const done_ = isDone(sess.id);
+      const lock = !unlocked(sess);
+      const icons = ['Learn','Build','Listen','Review'];
+      return `<button type="button" class="duo-part ${done_?'done':''} ${lock?'locked':''}" ${lock?'disabled':''} data-act="open" data-id="${esc(sess.id)}">
+        <span>${icons[sess.session-1] || sessLabel(sess.session)}</span>
+        <b>${done_ ? 'Done' : lock ? 'Locked' : 'Start'}</b>
+      </button>`;
+    }).join('');
+    return `<section class="duo-unit-picker" aria-label="Choose unit part">
+      <div>
+        <small>UNIT ${ui + 1}</small>
+        <h3>${esc(unit.title)}</h3>
+        <p>${esc(unit.goal)}</p>
+      </div>
+      <div class="duo-part-grid">${parts}</div>
+    </section>`;
   }
 
   function unitCard(u,idx){
@@ -2108,6 +2449,12 @@ ${foot('CLAIM XP 💎','complete')}`;
   function openSectionInfo(){ state.infoOpen = true; renderHome(); }
   function closeSectionInfo(){ state.infoOpen = false; renderHome(); }
   function selectSection(n){ if(!Number.isFinite(n)) return; state.selectedSection=n; state.infoOpen=false; renderHome(); }
+  function toggleUnitPicker(id){
+    if(!id) return;
+    state.unitPickerId = state.unitPickerId === id ? '' : id;
+    state.infoOpen=false;
+    renderHome();
+  }
   function resetAll(){ if(!confirm('Reset all progress?')) return; localStorage.removeItem(STORE); state.progress=loadProgress(); renderHome(); }
 
   function playCurrent(el){
@@ -2162,9 +2509,9 @@ ${foot('CLAIM XP 💎','complete')}`;
   }
 
   function injectStyles(){
-    if(document.getElementById('el-styles-v246')) return;
+    if(document.getElementById('el-styles-v258')) return;
     const s=document.createElement('style');
-    s.id='el-styles-v246';
+    s.id='el-styles-v258';
     s.textContent=`
 /* ── NAV CLEARANCE ── */
 :root{
@@ -2924,36 +3271,38 @@ ${foot('CLAIM XP 💎','complete')}`;
   font-size:2rem;
   filter:drop-shadow(0 5px 0 rgba(0,0,0,.24));
 }
-.duo-flag-cn{
+.duo-flag-tw{
   width:54px;
   height:36px;
   border-radius:10px;
-  background:#ef4444;
+  background:#e11d48;
   border:4px solid #fff;
   box-shadow:0 5px 0 rgba(0,0,0,.22);
   position:relative;
   display:block;
+  overflow:hidden;
 }
-.duo-flag-cn:before{
+.duo-flag-tw:before{
   content:'';
   position:absolute;
-  left:8px;
-  top:7px;
-  width:11px;
-  height:11px;
-  background:#ffd43b;
-  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  left:0;
+  top:0;
+  width:25px;
+  height:18px;
+  background:#1d4ed8;
 }
-.duo-flag-cn:after{
-  content:'';
+.duo-flag-tw:after{
+  content:'✹';
   position:absolute;
-  left:24px;
-  top:8px;
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:#ffd43b;
-  box-shadow:8px 4px 0 #ffd43b,2px 13px 0 #ffd43b,11px 15px 0 #ffd43b;
+  left:5px;
+  top:2px;
+  width:15px;
+  height:15px;
+  color:#fff;
+  font-size:13px;
+  line-height:15px;
+  text-align:center;
+  text-shadow:0 1px 0 rgba(0,0,0,.18);
 }
 .duo-score{
   gap:9px;
@@ -3356,6 +3705,13 @@ ${foot('CLAIM XP 💎','complete')}`;
   font-size:1.8rem;
   filter:drop-shadow(0 4px 0 rgba(0,0,0,.2));
 }
+.duo-stars span{
+  display:inline-block;
+  color:#ffc800;
+  font-size:1em;
+  line-height:1;
+  text-shadow:0 3px 0 #b97700,0 0 8px rgba(255,200,0,.25);
+}
 .duo-stars.right{left:70%}
 .duo-stars.left{left:18%}
 .duo-map-controls{
@@ -3389,6 +3745,185 @@ ${foot('CLAIM XP 💎','complete')}`;
   color:#58cc02;
   border-color:#3f5b30;
 }
+.duo-path-wrap:has(.unit-row){
+  min-height:auto;
+  padding:2px 0 120px;
+}
+.duo-path-wrap:has(.unit-row):before{
+  width:8px;
+  opacity:.55;
+}
+.el-node-row.unit-row{
+  height:164px;
+}
+.el-node-row.unit-row .el-node{
+  --node-size:86px;
+}
+.el-unit-node{
+  overflow:visible;
+  border-radius:50%;
+}
+.el-unit-node .el-node-ic{
+  position:relative;
+  z-index:3;
+  font-size:2.1rem;
+  min-width:42px;
+  max-width:64px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  color:#fff;
+  text-shadow:0 3px 0 rgba(0,0,0,.14);
+}
+.el-unit-node .el-unit-progress-ring{
+  position:absolute;
+  inset:-22px;
+  border-radius:50%;
+  background:conic-gradient(#58cc02 var(--pct),#45565e 0);
+  -webkit-mask:radial-gradient(circle,transparent 0 58%,#000 60% 78%,transparent 80%);
+  mask:radial-gradient(circle,transparent 0 58%,#000 60% 78%,transparent 80%);
+  box-shadow:0 10px 22px rgba(0,0,0,.24);
+  z-index:-1;
+}
+.el-unit-node.picked{
+  box-shadow:0 10px 0 #2f9300,0 18px 26px rgba(0,0,0,.34);
+}
+.el-unit-node.el-node-current,
+.el-unit-node.el-node-avail{
+  background:
+    radial-gradient(circle at 34% 24%,rgba(255,255,255,.26),transparent 18%),
+    linear-gradient(180deg,#63df08 0%,#46bd00 78%);
+  box-shadow:0 10px 0 #2f9300,0 18px 26px rgba(0,0,0,.34);
+}
+.el-node-row.unit-row .el-node-label{
+  top:124px;
+  width:154px;
+}
+.el-node-row.unit-row .el-node-label b{
+  display:block;
+  color:#e8fff3;
+  font-size:.82rem;
+  line-height:1.05;
+  max-height:2.1em;
+  overflow:hidden;
+}
+.el-node-row.unit-row .el-node-label span{
+  display:inline-flex;
+  margin-top:3px;
+  color:#58cc02;
+  font-size:.72rem;
+  font-weight:950;
+}
+.el-start-bubble{
+  top:-18px;
+  min-width:132px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border-radius:22px;
+  padding:0 18px;
+  background:#102128;
+  color:#58cc02;
+  border:5px solid #3b4b50;
+  box-shadow:none;
+  font-size:1.22rem;
+  letter-spacing:.03em;
+}
+.el-start-bubble:after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-21px;
+  transform:translateX(-50%);
+  width:0;
+  height:0;
+  border-left:22px solid transparent;
+  border-right:22px solid transparent;
+  border-top:22px solid #3b4b50;
+}
+.el-start-bubble:before{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-13px;
+  transform:translateX(-50%);
+  width:0;
+  height:0;
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #102128;
+  z-index:2;
+}
+.duo-unit-picker{
+  position:relative;
+  z-index:10;
+  margin:-2px 18px 22px;
+  padding:14px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#f8fff3,#ecffe5);
+  border:3px solid rgba(88,204,2,.35);
+  color:#17343d;
+  box-shadow:0 8px 0 rgba(66,150,0,.25),0 18px 28px rgba(0,0,0,.28);
+}
+.duo-unit-picker small{
+  display:block;
+  color:#58a800;
+  font-size:.66rem;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.duo-unit-picker h3{
+  margin:2px 0 4px;
+  font-size:1.12rem;
+  line-height:1.05;
+  color:#17343d;
+}
+.duo-unit-picker p{
+  margin:0;
+  color:#4c6368;
+  font-size:.78rem;
+  line-height:1.25;
+  font-weight:850;
+}
+.duo-part-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.duo-part{
+  min-height:58px;
+  border-radius:16px;
+  border:2px solid #dce8df;
+  background:#fff;
+  color:#17343d;
+  font-family:var(--el-font);
+  font-weight:950;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  padding:8px 12px;
+  box-shadow:0 4px 0 #d9e8d7;
+}
+.duo-part span{
+  font-size:.86rem;
+  line-height:1;
+}
+.duo-part b{
+  margin-top:5px;
+  font-size:.66rem;
+  color:#58cc02;
+}
+.duo-part.done{
+  background:#e9ffe2;
+  border-color:#b5f49c;
+}
+.duo-part.locked{
+  background:#eef5f8;
+  color:#7b9199;
+  box-shadow:0 4px 0 #c9d8de;
+}
+.duo-part.locked b{color:#7b9199}
 .duo-owl{
   position:relative;
   display:inline-block;
@@ -3580,6 +4115,26 @@ body:has(.duo-map) #scratchpad-fab-btn{
   top:20px!important;
   border:5px solid rgba(255,255,255,.12)!important;
 }
+.el-unit-node{
+  width:86px!important;
+  height:86px!important;
+  border-radius:50%!important;
+  border:0!important;
+  padding:0!important;
+  aspect-ratio:1/1!important;
+  clip-path:circle(50% at 50% 50%)!important;
+}
+.el-unit-node .el-unit-progress-ring{
+  clip-path:none!important;
+}
+.el-unit-node.el-node-current,
+.el-unit-node.el-node-avail,
+.el-unit-node.el-node-done{
+  border-radius:50%!important;
+}
+.el-node-row.unit-row .el-node-label{
+  top:130px!important;
+}
 .el-node-current{
   animation:duo-node-pop 1.9s ease-in-out infinite;
 }
@@ -3587,6 +4142,11 @@ body:has(.duo-map) #scratchpad-fab-btn{
   top:-6px!important;
   color:#58cc02!important;
   border-color:#dff7d1!important;
+}
+.el-start-bubble{
+  top:-28px!important;
+  border-color:#3b4b50!important;
+  border-radius:22px!important;
 }
 .el-node-label{
   top:112px!important;
@@ -3623,6 +4183,452 @@ body:has(.duo-map) #scratchpad-fab-btn{
   50%{transform:translateX(-50%) translateY(-5px) scale(1.035)}
 }
 
+/* RESTORED 4-PART UNIT MAP ICONS */
+.el-node-row.skill-row{
+  height:158px!important;
+  overflow:visible!important;
+}
+.map-skill-node{
+  --skill-progress:76%;
+  --coin-bg:linear-gradient(145deg,#78e900 0%,#58cc02 57%,#43a600 100%);
+  --coin-side:#2f8f00;
+  --ring-fill:#58cc02;
+  --ring-track:#45565e;
+  position:absolute!important;
+  left:var(--nx)!important;
+  top:18px!important;
+  width:124px!important;
+  height:124px!important;
+  transform:translateX(-50%)!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding:0!important;
+  cursor:pointer;
+  overflow:visible!important;
+}
+.map-skill-node,
+.map-skill-node *{
+  box-sizing:border-box;
+}
+.map-skill-node span{
+  line-height:normal!important;
+  text-shadow:none!important;
+}
+.map-skill-node.skill-current{
+  animation:map-skill-pop 1.9s ease-in-out infinite;
+}
+.map-skill-node.skill-done{
+  --skill-progress:100%;
+  --coin-bg:linear-gradient(145deg,#ffed47 0%,#ffd21f 53%,#e6a900 100%);
+  --coin-side:#d28b00;
+  --ring-fill:#ffd21f;
+  --ring-track:#cfcfcf;
+}
+.map-skill-node.skill-done-direct{
+  width:92px!important;
+  height:92px!important;
+  top:34px!important;
+  display:block!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.map-done-coin{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  transform:rotate(-8deg) scaleY(.86)!important;
+  overflow:visible!important;
+}
+.map-done-side{
+  position:absolute!important;
+  left:0!important;
+  top:9px!important;
+  width:92px!important;
+  height:92px!important;
+  border-radius:50%!important;
+  background:#d28b00!important;
+  box-shadow:0 8px 14px rgba(0,0,0,.18)!important;
+}
+.map-done-face{
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  width:92px!important;
+  height:92px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  background:linear-gradient(145deg,#ffed47 0%,#ffd21f 53%,#e6a900 100%)!important;
+  overflow:hidden!important;
+}
+.map-done-face:before{
+  content:''!important;
+  position:absolute!important;
+  left:13px!important;
+  top:9px!important;
+  width:60px!important;
+  height:32px!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.28)!important;
+  transform:rotate(-18deg)!important;
+}
+.map-done-face:after{
+  content:''!important;
+  position:absolute!important;
+  width:48px!important;
+  height:72px!important;
+  border-radius:20px!important;
+  background:rgba(255,238,80,.45)!important;
+  transform:skewX(-22deg) rotate(3deg)!important;
+}
+.map-skill-node.skill-lock{
+  --skill-progress:0%;
+  --coin-bg:linear-gradient(145deg,#f1f1f1 0%,#dddddd 55%,#bdbdbd 100%);
+  --coin-side:#aaa;
+  --ring-fill:#aaa;
+  --ring-track:#d6d6d6;
+  opacity:.84;
+  cursor:not-allowed;
+}
+.map-depth{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  transform:rotate(-8deg) scaleY(.82);
+  transform-origin:center;
+  overflow:visible!important;
+}
+.map-progress{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:conic-gradient(from 28deg,var(--ring-fill) var(--skill-progress),var(--ring-track) 0);
+  -webkit-mask:radial-gradient(circle,transparent 0 59%,#000 60% 75%,transparent 76%);
+  mask:radial-gradient(circle,transparent 0 59%,#000 60% 75%,transparent 76%);
+}
+.map-progress.side{
+  transform:translateY(8px);
+  filter:brightness(.78);
+  z-index:1;
+}
+.map-progress.top{
+  z-index:3;
+}
+.map-inner-gap{
+  position:absolute;
+  z-index:4;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#102128;
+}
+.map-coin{
+  position:absolute;
+  z-index:6;
+  width:70px;
+  height:70px;
+  transform:translateY(-4px);
+  overflow:visible!important;
+}
+.map-coin-side{
+  position:absolute;
+  left:0;
+  top:8px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:var(--coin-side);
+  box-shadow:0 8px 14px rgba(0,0,0,.16);
+}
+.map-coin-face{
+  position:absolute;
+  left:0;
+  top:0;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--coin-bg);
+  overflow:hidden;
+  color:transparent!important;
+}
+.map-skill-node.skill-done .map-coin-face{
+  background:linear-gradient(145deg,#ffed47 0%,#ffd21f 53%,#e6a900 100%)!important;
+}
+.map-skill-node.skill-done .map-coin-side{
+  background:#d28b00!important;
+}
+.map-coin-face:before{
+  content:'';
+  position:absolute;
+  left:12px;
+  top:9px;
+  width:45px;
+  height:24px;
+  border-radius:50%;
+  background:rgba(255,255,255,.27);
+  transform:rotate(-18deg);
+}
+.map-coin-face:after{
+  content:'';
+  position:absolute;
+  width:39px;
+  height:58px;
+  border-radius:18px;
+  background:rgba(255,255,255,.13);
+  transform:skewX(-22deg) rotate(3deg);
+}
+.map-star{
+  position:relative;
+  z-index:3;
+  width:32px;
+  height:32px;
+  color:transparent;
+  background:#fff;
+  clip-path:polygon(50% 4%,61% 35%,95% 35%,67% 55%,78% 90%,50% 69%,22% 90%,33% 55%,5% 35%,39% 35%);
+}
+.map-check{
+  position:relative;
+  z-index:3;
+  width:30px;
+  height:19px;
+  border-left:8px solid #b87500;
+  border-bottom:8px solid #b87500;
+  border-radius:5px;
+  transform:rotate(-45deg) translate(2px,-2px);
+}
+.map-done-face .map-check{
+  display:block!important;
+  width:36px!important;
+  height:23px!important;
+  border-left:9px solid #b87500!important;
+  border-bottom:9px solid #b87500!important;
+}
+.map-lock{
+  position:relative;
+  z-index:3;
+  font-size:1.4rem;
+  filter:saturate(.8);
+}
+.map-start-bubble{
+  position:absolute;
+  z-index:20;
+  top:-38px;
+  left:50%;
+  width:104px;
+  height:44px;
+  transform:translateX(-50%);
+  border-radius:17px;
+  border:4px solid #e6e6e6;
+  background:#fff;
+  box-shadow:0 5px 10px rgba(0,0,0,.12);
+  display:grid;
+  place-items:center;
+  color:#58cc02;
+  font-size:1.06rem;
+  font-weight:950;
+  letter-spacing:.02em;
+}
+.map-start-bubble:after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-15px;
+  width:25px;
+  height:25px;
+  background:#fff;
+  border-right:4px solid #e6e6e6;
+  border-bottom:4px solid #e6e6e6;
+  border-radius:0 0 6px 0;
+  transform:translateX(-50%) rotate(45deg);
+}
+.map-skill-node:active .map-depth{
+  transform:rotate(-8deg) scaleY(.82) translateY(4px) scale(.96);
+}
+.skill-row .el-node-label{
+  top:122px!important;
+  width:122px!important;
+}
+.duo-map-chest{
+  color:transparent!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  width:112px!important;
+  height:102px!important;
+  transform:translateX(-50%) rotate(-8deg) scaleY(.86)!important;
+}
+.duo-map-chest:before,
+.duo-map-chest:after{display:none!important}
+.map-chest-shadow{
+  position:absolute;
+  left:16px;
+  right:8px;
+  bottom:0;
+  height:16px;
+  border-radius:50%;
+  background:rgba(0,0,0,.2);
+  filter:blur(2px);
+}
+.map-chest-base{
+  position:absolute;
+  left:18px;
+  top:54px;
+  width:78px;
+  height:38px;
+  border-radius:8px 8px 14px 14px;
+  background:linear-gradient(90deg,#6f2a19 0 25%,#8b3722 25% 50%,#6f2a19 50% 75%,#8b3722 75%);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.14);
+}
+.map-chest-rim{
+  position:absolute;
+  left:12px;
+  top:44px;
+  width:90px;
+  height:18px;
+  border-radius:7px;
+  background:linear-gradient(180deg,#fff0a0,#ffc943 45%,#ef8f22);
+}
+.map-chest-corner{
+  position:absolute;
+  top:42px;
+  width:15px;
+  height:56px;
+  border-radius:7px;
+  background:linear-gradient(180deg,#ffbf4d,#ff8f27 55%,#d8621f);
+  z-index:3;
+}
+.map-chest-corner.left{left:11px}
+.map-chest-corner.right{right:12px}
+.map-chest-strap{
+  position:absolute;
+  left:50%;
+  top:43px;
+  width:12px;
+  height:50px;
+  transform:translateX(-50%);
+  border-radius:8px;
+  background:linear-gradient(180deg,#bf6825,#8b3f1c);
+  z-index:4;
+}
+.map-chest-lock{
+  position:absolute;
+  left:50%;
+  top:62px;
+  width:22px;
+  height:25px;
+  transform:translateX(-50%);
+  border-radius:10px 10px 13px 13px;
+  background:linear-gradient(180deg,#fff1a5,#ffcb41 45%,#ea9121);
+  z-index:5;
+}
+.map-chest-lock:after{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:9px;
+  width:7px;
+  height:10px;
+  transform:translateX(-50%);
+  background:#8f4b11;
+  clip-path:polygon(50% 0%,85% 28%,85% 58%,50% 100%,15% 58%,15% 28%);
+}
+.map-chest-lid{
+  position:absolute;
+  left:8px;
+  top:13px;
+  width:98px;
+  height:50px;
+  transform-origin:50% 100%;
+  transition:transform .42s cubic-bezier(.2,.8,.2,1);
+  z-index:7;
+}
+.map-chest-lid-side,
+.map-chest-lid-top{
+  position:absolute;
+  inset:0;
+  border-radius:52px 52px 11px 11px;
+}
+.map-chest-lid-side{
+  transform:translateY(7px);
+  background:#b8481c;
+}
+.map-chest-lid-top{
+  background:linear-gradient(90deg,#8b5a2d 0 20%,#d79c5a 20% 42%,#9f6534 42% 62%,#d79c5a 62% 82%,#8b5a2d 82%);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+}
+.map-chest-lid-rim{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:5px;
+  height:11px;
+  border-radius:7px;
+  background:linear-gradient(180deg,#fff0a0,#ffc943 45%,#ef8f22);
+}
+.map-chest-beam,
+.map-chest-glow,
+.map-chest-spark{
+  opacity:0;
+  transition:opacity .25s ease;
+}
+.map-chest-beam{
+  position:absolute;
+  left:32px;
+  top:24px;
+  width:50px;
+  height:62px;
+  background:linear-gradient(180deg,rgba(255,233,90,.6),rgba(255,233,90,0));
+  clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);
+  z-index:1;
+}
+.map-chest-glow{
+  position:absolute;
+  left:24px;
+  top:56px;
+  width:66px;
+  height:20px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,232,88,.95),rgba(255,232,88,0) 72%);
+  z-index:2;
+}
+.map-chest-spark{
+  position:absolute;
+  width:13px;
+  height:13px;
+  background:#ffd542;
+  clip-path:polygon(50% 0,60% 38%,100% 50%,60% 62%,50% 100%,40% 62%,0 50%,40% 38%);
+  z-index:9;
+}
+.map-chest-spark.s1{left:22px;top:28px}
+.map-chest-spark.s2{left:52px;top:20px}
+.map-chest-spark.s3{right:18px;top:32px}
+.duo-map-chest.open .map-chest-lid{
+  transform:translateY(-35px) scaleY(.62) skewX(-4deg);
+}
+.duo-map-chest.open .map-chest-beam,
+.duo-map-chest.open .map-chest-glow,
+.duo-map-chest.open .map-chest-spark{
+  opacity:1;
+}
+.skill-row .duo-path-decor.right{left:78%!important}
+.skill-row .duo-path-decor.left{left:7%!important}
+.skill-row .duo-path-decor .duo-owl{transform:scale(.74)!important}
+.skill-row .duo-stars.right{left:79%!important}
+.skill-row .duo-stars.left{left:7%!important}
+@keyframes map-skill-pop{
+  0%,100%{transform:translateX(-50%) translateY(0) scale(1)}
+  50%{transform:translateX(-50%) translateY(-5px) scale(1.025)}
+}
+
 @media(max-width:430px){
   .duo-side-handle{
     width:50px!important;
@@ -3657,7 +4663,7 @@ body:has(.duo-map) #scratchpad-fab-btn{
     font-size:.92rem!important;
   }
   .duo-unit-banner button{
-    font-size:2.4rem!important;
+    font-size:.86rem!important;
   }
   .el-node{
     --node-size:78px;

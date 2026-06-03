@@ -621,7 +621,7 @@ window.PinyinAudio = PinyinAudio;
 // Section
 const API = {
   base: 'data', // Relative to public/
-  version: '246', // Match index.html version for consistency
+  version: '258', // Match index.html version for consistency
   _cache: {}, // In-memory cache to prevent redundant JSON parsing lag
 
   async get(path) {
@@ -749,7 +749,7 @@ const API = {
     const characters = App.state.characters;
     const byLevel = { novice: 0, a1: 0, a2: 0, b1: 0 };
     (characters || []).forEach(c => { if (byLevel[c.level] !== undefined) byLevel[c.level]++; });
-    return { total_characters: characters.length, by_level: byLevel, app_version: '246' };
+    return { total_characters: characters.length, by_level: byLevel, app_version: '258' };
   },
 
   annotateText(text, characters, vocab) {
